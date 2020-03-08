@@ -8,34 +8,34 @@
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
-<layer number="2" name="Route2" color="16" fill="1" visible="yes" active="no"/>
-<layer number="3" name="Route3" color="17" fill="1" visible="yes" active="no"/>
-<layer number="4" name="Route4" color="18" fill="1" visible="yes" active="no"/>
-<layer number="5" name="Route5" color="19" fill="1" visible="yes" active="no"/>
-<layer number="6" name="Route6" color="25" fill="1" visible="yes" active="no"/>
-<layer number="7" name="Route7" color="26" fill="1" visible="yes" active="no"/>
-<layer number="8" name="Route8" color="27" fill="1" visible="yes" active="no"/>
-<layer number="9" name="Route9" color="28" fill="1" visible="yes" active="no"/>
-<layer number="10" name="Route10" color="29" fill="1" visible="yes" active="no"/>
-<layer number="11" name="Route11" color="30" fill="1" visible="yes" active="no"/>
-<layer number="12" name="Route12" color="20" fill="1" visible="yes" active="no"/>
-<layer number="13" name="Route13" color="21" fill="1" visible="yes" active="no"/>
-<layer number="14" name="Route14" color="22" fill="1" visible="yes" active="no"/>
-<layer number="15" name="Route15" color="23" fill="1" visible="yes" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="no"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="no"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="no"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="no"/>
-<layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="no"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="no"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="no"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="no"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="no"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="no"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="no"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="no"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="no"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
+<layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
+<layer number="3" name="Route3" color="17" fill="1" visible="no" active="no"/>
+<layer number="4" name="Route4" color="18" fill="1" visible="no" active="no"/>
+<layer number="5" name="Route5" color="19" fill="1" visible="no" active="no"/>
+<layer number="6" name="Route6" color="25" fill="1" visible="no" active="no"/>
+<layer number="7" name="Route7" color="26" fill="1" visible="no" active="no"/>
+<layer number="8" name="Route8" color="27" fill="1" visible="no" active="no"/>
+<layer number="9" name="Route9" color="28" fill="1" visible="no" active="no"/>
+<layer number="10" name="Route10" color="29" fill="1" visible="no" active="no"/>
+<layer number="11" name="Route11" color="30" fill="1" visible="no" active="no"/>
+<layer number="12" name="Route12" color="20" fill="1" visible="no" active="no"/>
+<layer number="13" name="Route13" color="21" fill="1" visible="no" active="no"/>
+<layer number="14" name="Route14" color="22" fill="1" visible="no" active="no"/>
+<layer number="15" name="Route15" color="23" fill="1" visible="no" active="no"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="no"/>
+<layer number="20" name="Dimension" color="24" fill="1" visible="no" active="no"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="no"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="no"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="no"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="no"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="no"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="no"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="no" active="no"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="no"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="no"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="no"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="no"/>
@@ -44,8 +44,8 @@
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="no"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="no"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="no"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="no"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="no"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="no"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="no"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="no"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="no"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="no"/>
@@ -53,22 +53,22 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="no"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="no"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="no"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="no"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="no"/>
-<layer number="48" name="Document" color="7" fill="1" visible="yes" active="no"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="no"/>
-<layer number="50" name="dxf" color="7" fill="1" visible="yes" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="no"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="no"/>
-<layer number="53" name="tGND_GNDA" color="7" fill="9" visible="yes" active="no"/>
-<layer number="54" name="bGND_GNDA" color="1" fill="9" visible="yes" active="no"/>
-<layer number="55" name="tPotisk" color="7" fill="1" visible="yes" active="no"/>
-<layer number="56" name="wert" color="7" fill="1" visible="yes" active="no"/>
-<layer number="57" name="tCAD" color="7" fill="1" visible="yes" active="no"/>
-<layer number="58" name="bNC" color="7" fill="1" visible="yes" active="no"/>
-<layer number="59" name="tCarbon" color="7" fill="1" visible="yes" active="no"/>
-<layer number="60" name="bCarbon" color="7" fill="1" visible="yes" active="no"/>
-<layer number="61" name="stand" color="7" fill="1" visible="yes" active="no"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="no"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="no"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="no"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="no" active="no"/>
+<layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="no"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="no"/>
+<layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
+<layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
+<layer number="55" name="tPotisk" color="7" fill="1" visible="no" active="no"/>
+<layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
+<layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="58" name="bNC" color="7" fill="1" visible="no" active="no"/>
+<layer number="59" name="tCarbon" color="7" fill="1" visible="no" active="no"/>
+<layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
+<layer number="61" name="stand" color="7" fill="1" visible="no" active="no"/>
 <layer number="88" name="SimResults" color="9" fill="1" visible="no" active="yes"/>
 <layer number="89" name="SimProbes" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
@@ -27615,6 +27615,9 @@ General-purpose diode for high-speed switching</description>
 <clearance class="0" value="0.2"/>
 </class>
 </classes>
+<groups>
+<schematic_group name="OA-CURRENT" selectable="no"/>
+</groups>
 <parts>
 <part name="IM6" library="esp32" deviceset="DEVKITC" device=""/>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -27910,8 +27913,32 @@ General-purpose diode for high-speed switching</description>
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
-<part name="IC5" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4"/>
-<part name="IC6" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4"/>
+<part name="IC5" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4">
+<attribute name="DESCRIPTION" value="
+PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
+<attribute name="LCSC_ID" value="C133969"/>
+<attribute name="MF" value="TI"/>
+<attribute name="MF_ID" value="INA180A4IDBVT"/>
+<attribute name="PACKAGE" value="SOT-23-5"/>
+<attribute name="PRICE_100PLUS" value="$0.2638"/>
+<attribute name="PRICE_10PLUS" value="$0.2986"/>
+<attribute name="PRICE_1PLUS" value="$0.3943"/>
+<attribute name="PRICE_30PLUS" value="$0.2812"/>
+<attribute name="PRICE_500PLUS" value="$0.2566"/>
+</part>
+<part name="IC6" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4">
+<attribute name="DESCRIPTION" value="
+PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
+<attribute name="LCSC_ID" value="C133969"/>
+<attribute name="MF" value="TI"/>
+<attribute name="MF_ID" value="INA180A4IDBVT"/>
+<attribute name="PACKAGE" value="SOT-23-5"/>
+<attribute name="PRICE_100PLUS" value="$0.2638"/>
+<attribute name="PRICE_10PLUS" value="$0.2986"/>
+<attribute name="PRICE_1PLUS" value="$0.3943"/>
+<attribute name="PRICE_30PLUS" value="$0.2812"/>
+<attribute name="PRICE_500PLUS" value="$0.2566"/>
+</part>
 <part name="C21" library="rcl_upravena" deviceset="C-EU" device="C0603" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -27983,8 +28010,32 @@ General-purpose diode for high-speed switching</description>
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
-<part name="IC2" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4"/>
-<part name="IC3" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4"/>
+<part name="IC2" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4">
+<attribute name="DESCRIPTION" value="
+PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
+<attribute name="LCSC_ID" value="C133969"/>
+<attribute name="MF" value="TI"/>
+<attribute name="MF_ID" value="INA180A4IDBVT"/>
+<attribute name="PACKAGE" value="SOT-23-5"/>
+<attribute name="PRICE_100PLUS" value="$0.2638"/>
+<attribute name="PRICE_10PLUS" value="$0.2986"/>
+<attribute name="PRICE_1PLUS" value="$0.3943"/>
+<attribute name="PRICE_30PLUS" value="$0.2812"/>
+<attribute name="PRICE_500PLUS" value="$0.2566"/>
+</part>
+<part name="IC3" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4">
+<attribute name="DESCRIPTION" value="
+PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
+<attribute name="LCSC_ID" value="C133969"/>
+<attribute name="MF" value="TI"/>
+<attribute name="MF_ID" value="INA180A4IDBVT"/>
+<attribute name="PACKAGE" value="SOT-23-5"/>
+<attribute name="PRICE_100PLUS" value="$0.2638"/>
+<attribute name="PRICE_10PLUS" value="$0.2986"/>
+<attribute name="PRICE_1PLUS" value="$0.3943"/>
+<attribute name="PRICE_30PLUS" value="$0.2812"/>
+<attribute name="PRICE_500PLUS" value="$0.2566"/>
+</part>
 <part name="C28" library="rcl_upravena" deviceset="C-EU" device="C0603" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -28006,7 +28057,18 @@ General-purpose diode for high-speed switching</description>
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
-<part name="IC7" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4"/>
+<part name="IC7" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4">
+<attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
+<attribute name="LCSC_ID" value="C133969"/>
+<attribute name="MF" value="TI"/>
+<attribute name="MF_ID" value="INA180A4IDBVT"/>
+<attribute name="PACKAGE" value="SOT-23-5"/>
+<attribute name="PRICE_100PLUS" value="$0.2638"/>
+<attribute name="PRICE_10PLUS" value="$0.2986"/>
+<attribute name="PRICE_1PLUS" value="$0.3943"/>
+<attribute name="PRICE_30PLUS" value="$0.2812"/>
+<attribute name="PRICE_500PLUS" value="$0.2566"/>
+</part>
 <part name="GND46" library="Supply" deviceset="GND" device=""/>
 <part name="+3V14" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND47" library="Supply" deviceset="GND" device=""/>
@@ -28041,7 +28103,18 @@ General-purpose diode for high-speed switching</description>
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
-<part name="IC8" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4"/>
+<part name="IC8" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4">
+<attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
+<attribute name="LCSC_ID" value="C133969"/>
+<attribute name="MF" value="TI"/>
+<attribute name="MF_ID" value="INA180A4IDBVT"/>
+<attribute name="PACKAGE" value="SOT-23-5"/>
+<attribute name="PRICE_100PLUS" value="$0.2638"/>
+<attribute name="PRICE_10PLUS" value="$0.2986"/>
+<attribute name="PRICE_1PLUS" value="$0.3943"/>
+<attribute name="PRICE_30PLUS" value="$0.2812"/>
+<attribute name="PRICE_500PLUS" value="$0.2566"/>
+</part>
 <part name="GND53" library="Supply" deviceset="GND" device=""/>
 <part name="+3V16" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND54" library="Supply" deviceset="GND" device=""/>
@@ -28076,7 +28149,18 @@ General-purpose diode for high-speed switching</description>
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
-<part name="IC9" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4"/>
+<part name="IC9" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4">
+<attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
+<attribute name="LCSC_ID" value="C133969"/>
+<attribute name="MF" value="TI"/>
+<attribute name="MF_ID" value="INA180A4IDBVT"/>
+<attribute name="PACKAGE" value="SOT-23-5"/>
+<attribute name="PRICE_100PLUS" value="$0.2638"/>
+<attribute name="PRICE_10PLUS" value="$0.2986"/>
+<attribute name="PRICE_1PLUS" value="$0.3943"/>
+<attribute name="PRICE_30PLUS" value="$0.2812"/>
+<attribute name="PRICE_500PLUS" value="$0.2566"/>
+</part>
 <part name="GND61" library="Supply" deviceset="GND" device=""/>
 <part name="+3V18" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND62" library="Supply" deviceset="GND" device=""/>
@@ -28111,7 +28195,18 @@ General-purpose diode for high-speed switching</description>
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
-<part name="IC10" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4"/>
+<part name="IC10" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088022/1" value="INA180A4">
+<attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
+<attribute name="LCSC_ID" value="C133969"/>
+<attribute name="MF" value="TI"/>
+<attribute name="MF_ID" value="INA180A4IDBVT"/>
+<attribute name="PACKAGE" value="SOT-23-5"/>
+<attribute name="PRICE_100PLUS" value="$0.2638"/>
+<attribute name="PRICE_10PLUS" value="$0.2986"/>
+<attribute name="PRICE_1PLUS" value="$0.3943"/>
+<attribute name="PRICE_30PLUS" value="$0.2812"/>
+<attribute name="PRICE_500PLUS" value="$0.2566"/>
+</part>
 <part name="GND69" library="Supply" deviceset="GND" device=""/>
 <part name="+3V20" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND70" library="Supply" deviceset="GND" device=""/>
@@ -31521,13 +31616,33 @@ Jakub Streit
 <attribute name="DIELECTRIC" x="149.86" y="60.96" size="1.27" layer="96" rot="MR90" display="off"/>
 <attribute name="VOLTAGE" x="149.86" y="61.722" size="1.27" layer="96"/>
 </instance>
-<instance part="IC5" gate="A" x="157.48" y="53.34" smashed="yes" rot="MR0">
+<instance part="IC5" gate="A" x="157.48" y="53.34" smashed="yes" rot="MR0" grouprefs="OA-CURRENT">
 <attribute name="NAME" x="156.21" y="59.69" size="1.27" layer="95"/>
 <attribute name="VALUE" x="156.21" y="45.72" size="1.27" layer="96"/>
+<attribute name="MF_ID" x="157.48" y="53.34" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MF" x="157.48" y="53.34" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="LCSC_ID" x="157.48" y="53.34" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PACKAGE" x="157.48" y="53.34" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="DESCRIPTION" x="157.48" y="53.34" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_1PLUS" x="157.48" y="53.34" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_10PLUS" x="157.48" y="53.34" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_30PLUS" x="157.48" y="53.34" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_100PLUS" x="157.48" y="53.34" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_500PLUS" x="157.48" y="53.34" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
-<instance part="IC6" gate="A" x="193.04" y="53.34" smashed="yes">
+<instance part="IC6" gate="A" x="193.04" y="53.34" smashed="yes" grouprefs="OA-CURRENT">
 <attribute name="NAME" x="194.31" y="59.69" size="1.27" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="194.31" y="45.72" size="1.27" layer="96" rot="MR0"/>
+<attribute name="MF_ID" x="193.04" y="53.34" size="1.778" layer="96" display="off"/>
+<attribute name="MF" x="193.04" y="53.34" size="1.778" layer="96" display="off"/>
+<attribute name="LCSC_ID" x="193.04" y="53.34" size="1.778" layer="96" display="off"/>
+<attribute name="PACKAGE" x="193.04" y="53.34" size="1.778" layer="96" display="off"/>
+<attribute name="DESCRIPTION" x="193.04" y="53.34" size="1.778" layer="96" display="off"/>
+<attribute name="PRICE_1PLUS" x="193.04" y="53.34" size="1.778" layer="96" display="off"/>
+<attribute name="PRICE_10PLUS" x="193.04" y="53.34" size="1.778" layer="96" display="off"/>
+<attribute name="PRICE_30PLUS" x="193.04" y="53.34" size="1.778" layer="96" display="off"/>
+<attribute name="PRICE_100PLUS" x="193.04" y="53.34" size="1.778" layer="96" display="off"/>
+<attribute name="PRICE_500PLUS" x="193.04" y="53.34" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="C21" gate="G$1" x="200.66" y="60.96" smashed="yes" rot="R90">
 <attribute name="NAME" x="205.232" y="63.5" size="1.27" layer="95" rot="MR0"/>
@@ -31744,13 +31859,33 @@ Jakub Streit
 <attribute name="DIELECTRIC" x="149.86" y="165.1" size="1.27" layer="96" rot="MR90" display="off"/>
 <attribute name="VOLTAGE" x="149.86" y="165.862" size="1.27" layer="96"/>
 </instance>
-<instance part="IC2" gate="A" x="157.48" y="157.48" smashed="yes" rot="MR0">
+<instance part="IC2" gate="A" x="157.48" y="157.48" smashed="yes" rot="MR0" grouprefs="OA-CURRENT">
 <attribute name="NAME" x="156.21" y="163.83" size="1.27" layer="95"/>
 <attribute name="VALUE" x="156.21" y="149.86" size="1.27" layer="96"/>
+<attribute name="MF_ID" x="157.48" y="157.48" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MF" x="157.48" y="157.48" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="LCSC_ID" x="157.48" y="157.48" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PACKAGE" x="157.48" y="157.48" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="DESCRIPTION" x="157.48" y="157.48" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_1PLUS" x="157.48" y="157.48" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_10PLUS" x="157.48" y="157.48" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_30PLUS" x="157.48" y="157.48" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_100PLUS" x="157.48" y="157.48" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_500PLUS" x="157.48" y="157.48" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
-<instance part="IC3" gate="A" x="193.04" y="157.48" smashed="yes">
+<instance part="IC3" gate="A" x="193.04" y="157.48" smashed="yes" grouprefs="OA-CURRENT">
 <attribute name="NAME" x="194.31" y="163.83" size="1.27" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="194.31" y="149.86" size="1.27" layer="96" rot="MR0"/>
+<attribute name="MF_ID" x="193.04" y="157.48" size="1.778" layer="96" display="off"/>
+<attribute name="MF" x="193.04" y="157.48" size="1.778" layer="96" display="off"/>
+<attribute name="LCSC_ID" x="193.04" y="157.48" size="1.778" layer="96" display="off"/>
+<attribute name="PACKAGE" x="193.04" y="157.48" size="1.778" layer="96" display="off"/>
+<attribute name="DESCRIPTION" x="193.04" y="157.48" size="1.778" layer="96" display="off"/>
+<attribute name="PRICE_1PLUS" x="193.04" y="157.48" size="1.778" layer="96" display="off"/>
+<attribute name="PRICE_10PLUS" x="193.04" y="157.48" size="1.778" layer="96" display="off"/>
+<attribute name="PRICE_30PLUS" x="193.04" y="157.48" size="1.778" layer="96" display="off"/>
+<attribute name="PRICE_100PLUS" x="193.04" y="157.48" size="1.778" layer="96" display="off"/>
+<attribute name="PRICE_500PLUS" x="193.04" y="157.48" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="C28" gate="G$1" x="200.66" y="165.1" smashed="yes" rot="R90">
 <attribute name="NAME" x="205.232" y="167.64" size="1.27" layer="95" rot="MR0"/>
@@ -34253,9 +34388,19 @@ Jakub Streit
 <attribute name="DIELECTRIC" x="73.66" y="160.02" size="1.27" layer="96" rot="MR90" display="off"/>
 <attribute name="VOLTAGE" x="73.66" y="160.782" size="1.27" layer="96"/>
 </instance>
-<instance part="IC7" gate="A" x="81.28" y="152.4" smashed="yes" rot="MR0">
+<instance part="IC7" gate="A" x="81.28" y="152.4" smashed="yes" rot="MR0" grouprefs="OA-CURRENT">
 <attribute name="NAME" x="80.01" y="158.75" size="1.27" layer="95"/>
 <attribute name="VALUE" x="80.01" y="144.78" size="1.27" layer="96"/>
+<attribute name="LCSC_ID" x="81.28" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MF_ID" x="81.28" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="DESCRIPTION" x="81.28" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MF" x="81.28" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_1PLUS" x="81.28" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_10PLUS" x="81.28" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_30PLUS" x="81.28" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_100PLUS" x="81.28" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_500PLUS" x="81.28" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PACKAGE" x="81.28" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="GND46" gate="1" x="78.74" y="137.16" smashed="yes">
 <attribute name="VALUE" x="76.962" y="135.382" size="1.27" layer="96"/>
@@ -34345,9 +34490,19 @@ Jakub Streit
 <attribute name="DIELECTRIC" x="152.4" y="160.02" size="1.27" layer="96" rot="MR90" display="off"/>
 <attribute name="VOLTAGE" x="152.4" y="160.782" size="1.27" layer="96"/>
 </instance>
-<instance part="IC8" gate="A" x="160.02" y="152.4" smashed="yes" rot="MR0">
+<instance part="IC8" gate="A" x="160.02" y="152.4" smashed="yes" rot="MR0" grouprefs="OA-CURRENT">
 <attribute name="NAME" x="158.75" y="158.75" size="1.27" layer="95"/>
 <attribute name="VALUE" x="158.75" y="144.78" size="1.27" layer="96"/>
+<attribute name="LCSC_ID" x="160.02" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MF_ID" x="160.02" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="DESCRIPTION" x="160.02" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MF" x="160.02" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_1PLUS" x="160.02" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_10PLUS" x="160.02" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_30PLUS" x="160.02" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_100PLUS" x="160.02" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_500PLUS" x="160.02" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PACKAGE" x="160.02" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="GND53" gate="1" x="157.48" y="137.16" smashed="yes">
 <attribute name="VALUE" x="155.702" y="135.382" size="1.27" layer="96"/>
@@ -34437,9 +34592,19 @@ Jakub Streit
 <attribute name="DIELECTRIC" x="231.14" y="160.02" size="1.27" layer="96" rot="MR90" display="off"/>
 <attribute name="VOLTAGE" x="231.14" y="160.782" size="1.27" layer="96"/>
 </instance>
-<instance part="IC9" gate="A" x="238.76" y="152.4" smashed="yes" rot="MR0">
+<instance part="IC9" gate="A" x="238.76" y="152.4" smashed="yes" rot="MR0" grouprefs="OA-CURRENT">
 <attribute name="NAME" x="237.49" y="158.75" size="1.27" layer="95"/>
 <attribute name="VALUE" x="237.49" y="144.78" size="1.27" layer="96"/>
+<attribute name="LCSC_ID" x="238.76" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MF_ID" x="238.76" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="DESCRIPTION" x="238.76" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MF" x="238.76" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_1PLUS" x="238.76" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_10PLUS" x="238.76" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_30PLUS" x="238.76" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_100PLUS" x="238.76" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_500PLUS" x="238.76" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PACKAGE" x="238.76" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="GND61" gate="1" x="236.22" y="137.16" smashed="yes">
 <attribute name="VALUE" x="234.442" y="135.382" size="1.27" layer="96"/>
@@ -34529,9 +34694,19 @@ Jakub Streit
 <attribute name="DIELECTRIC" x="309.88" y="160.02" size="1.27" layer="96" rot="MR90" display="off"/>
 <attribute name="VOLTAGE" x="309.88" y="160.782" size="1.27" layer="96"/>
 </instance>
-<instance part="IC10" gate="A" x="317.5" y="152.4" smashed="yes" rot="MR0">
+<instance part="IC10" gate="A" x="317.5" y="152.4" smashed="yes" rot="MR0" grouprefs="OA-CURRENT">
 <attribute name="NAME" x="316.23" y="158.75" size="1.27" layer="95"/>
 <attribute name="VALUE" x="316.23" y="144.78" size="1.27" layer="96"/>
+<attribute name="LCSC_ID" x="317.5" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MF_ID" x="317.5" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="DESCRIPTION" x="317.5" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MF" x="317.5" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_1PLUS" x="317.5" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_10PLUS" x="317.5" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_30PLUS" x="317.5" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_100PLUS" x="317.5" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_500PLUS" x="317.5" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="PACKAGE" x="317.5" y="152.4" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="GND69" gate="1" x="314.96" y="137.16" smashed="yes">
 <attribute name="VALUE" x="313.182" y="135.382" size="1.27" layer="96"/>
@@ -41508,6 +41683,11 @@ will not be understood (or retained) with this version.
 Since Version 8.3, EAGLE supports the association of 3D packages
 with devices in libraries, schematics, and board files. Those 3D
 packages will not be understood (or retained) with this version.
+</note>
+<note version="9.5" severity="warning">
+Since Version 9.5, EAGLE supports persistent groups with
+schematics, and board files. Those persistent groups
+will not be understood (or retained) with this version.
 </note>
 <note version="8.4" severity="warning">
 Since Version 8.4, EAGLE supports properties for SPICE simulation. 
