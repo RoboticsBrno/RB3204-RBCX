@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.5.2">
+<eagle version="9.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -24799,6 +24799,7 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="JP39" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="usb_sbu1"/>
 <part name="JP40" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="sbu2"/>
 <part name="JP41" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="usb_cc2"/>
+<part name="SJ7" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -36059,7 +36060,7 @@ connection of
 display with
 SSD1306 driver.</text>
 <text x="17.78" y="246.38" size="2.54" layer="97">ULTRASONIC RANGEFINDERS</text>
-<text x="93.98" y="246.38" size="2.54" layer="97">PROGRAMMING AND DEBUG INTERFACES</text>
+<text x="93.98" y="246.38" size="2.54" layer="97">PROGRAM AND DEBUG INTERFACES</text>
 <text x="231.14" y="246.38" size="2.54" layer="97">BUSES</text>
 <text x="233.68" y="55.88" size="2.54" layer="97">ANALOG</text>
 <text x="93.98" y="121.92" size="2.54" layer="97">USB</text>
@@ -36142,15 +36143,15 @@ SSD1306 driver.</text>
 <attribute name="NAME" x="34.29" y="143.256" size="1.27" layer="95" rot="MR180"/>
 <attribute name="VALUE" x="38.862" y="143.256" size="1.27" layer="96" rot="MR180"/>
 </instance>
-<instance part="JP19" gate="A" x="147.32" y="226.06" smashed="yes">
-<attribute name="NAME" x="140.97" y="236.855" size="1.27" layer="95"/>
-<attribute name="VALUE" x="140.97" y="217.678" size="1.27" layer="96" rot="MR180"/>
+<instance part="JP19" gate="A" x="154.94" y="226.06" smashed="yes">
+<attribute name="NAME" x="148.59" y="236.855" size="1.27" layer="95"/>
+<attribute name="VALUE" x="148.59" y="217.678" size="1.27" layer="96" rot="MR180"/>
 </instance>
-<instance part="+3V25" gate="G$1" x="132.08" y="238.76" smashed="yes">
-<attribute name="VALUE" x="130.048" y="236.474" size="1.27" layer="96" rot="R90"/>
+<instance part="+3V25" gate="G$1" x="139.7" y="238.76" smashed="yes">
+<attribute name="VALUE" x="137.668" y="236.474" size="1.27" layer="96" rot="R90"/>
 </instance>
-<instance part="GND100" gate="1" x="132.08" y="215.9" smashed="yes">
-<attribute name="VALUE" x="130.302" y="214.122" size="1.27" layer="96"/>
+<instance part="GND100" gate="1" x="139.7" y="215.9" smashed="yes">
+<attribute name="VALUE" x="137.922" y="214.122" size="1.27" layer="96"/>
 </instance>
 <instance part="JP24" gate="A" x="261.62" y="73.66" smashed="yes">
 <attribute name="NAME" x="255.27" y="81.915" size="1.27" layer="95"/>
@@ -36162,21 +36163,21 @@ SSD1306 driver.</text>
 <instance part="GND101" gate="1" x="246.38" y="66.04" smashed="yes">
 <attribute name="VALUE" x="244.602" y="64.262" size="1.27" layer="96"/>
 </instance>
-<instance part="R69" gate="G$1" x="124.46" y="231.14" smashed="yes">
-<attribute name="NAME" x="120.65" y="232.664" size="1.27" layer="95"/>
-<attribute name="VALUE" x="125.222" y="232.664" size="1.27" layer="96"/>
+<instance part="R69" gate="G$1" x="119.38" y="231.14" smashed="yes">
+<attribute name="NAME" x="115.57" y="232.664" size="1.27" layer="95"/>
+<attribute name="VALUE" x="120.142" y="232.664" size="1.27" layer="96"/>
 </instance>
-<instance part="R70" gate="G$1" x="124.46" y="226.06" smashed="yes">
-<attribute name="NAME" x="120.65" y="217.932" size="1.27" layer="95"/>
-<attribute name="VALUE" x="125.222" y="217.932" size="1.27" layer="96"/>
+<instance part="R70" gate="G$1" x="119.38" y="226.06" smashed="yes">
+<attribute name="NAME" x="115.57" y="217.932" size="1.27" layer="95"/>
+<attribute name="VALUE" x="120.142" y="217.932" size="1.27" layer="96"/>
 </instance>
-<instance part="R71" gate="G$1" x="124.46" y="223.52" smashed="yes">
-<attribute name="NAME" x="120.65" y="216.154" size="1.27" layer="95"/>
-<attribute name="VALUE" x="125.222" y="216.154" size="1.27" layer="96"/>
+<instance part="R71" gate="G$1" x="119.38" y="223.52" smashed="yes">
+<attribute name="NAME" x="115.57" y="216.154" size="1.27" layer="95"/>
+<attribute name="VALUE" x="120.142" y="216.154" size="1.27" layer="96"/>
 </instance>
-<instance part="R72" gate="G$1" x="124.46" y="220.98" smashed="yes">
-<attribute name="NAME" x="120.65" y="214.376" size="1.27" layer="95"/>
-<attribute name="VALUE" x="125.222" y="214.376" size="1.27" layer="96"/>
+<instance part="R72" gate="G$1" x="119.38" y="220.98" smashed="yes">
+<attribute name="NAME" x="115.57" y="214.376" size="1.27" layer="95"/>
+<attribute name="VALUE" x="120.142" y="214.376" size="1.27" layer="96"/>
 </instance>
 <instance part="R73" gate="G$1" x="220.98" y="76.2" smashed="yes">
 <attribute name="NAME" x="217.17" y="77.724" size="1.27" layer="95"/>
@@ -36219,23 +36220,23 @@ SSD1306 driver.</text>
 <instance part="GND102" gate="1" x="241.3" y="109.22" smashed="yes">
 <attribute name="VALUE" x="239.522" y="107.442" size="1.27" layer="96"/>
 </instance>
-<instance part="JP32" gate="A" x="147.32" y="193.04" smashed="yes">
-<attribute name="NAME" x="140.97" y="201.295" size="1.27" layer="95"/>
-<attribute name="VALUE" x="140.97" y="187.198" size="1.27" layer="96" rot="MR180"/>
+<instance part="JP32" gate="A" x="154.94" y="193.04" smashed="yes">
+<attribute name="NAME" x="148.59" y="201.295" size="1.27" layer="95"/>
+<attribute name="VALUE" x="148.59" y="187.198" size="1.27" layer="96" rot="MR180"/>
 </instance>
-<instance part="GND103" gate="1" x="129.54" y="182.88" smashed="yes">
-<attribute name="VALUE" x="127.762" y="181.102" size="1.27" layer="96"/>
+<instance part="GND103" gate="1" x="137.16" y="182.88" smashed="yes">
+<attribute name="VALUE" x="135.382" y="181.102" size="1.27" layer="96"/>
 </instance>
-<instance part="+3V27" gate="G$1" x="129.54" y="203.2" smashed="yes">
-<attribute name="VALUE" x="127.508" y="200.914" size="1.27" layer="96" rot="R90"/>
+<instance part="+3V27" gate="G$1" x="137.16" y="203.2" smashed="yes">
+<attribute name="VALUE" x="135.128" y="200.914" size="1.27" layer="96" rot="R90"/>
 </instance>
-<instance part="R79" gate="G$1" x="121.92" y="193.04" smashed="yes">
-<attribute name="NAME" x="118.11" y="194.564" size="1.27" layer="95"/>
-<attribute name="VALUE" x="122.682" y="194.564" size="1.27" layer="96"/>
+<instance part="R79" gate="G$1" x="116.84" y="193.04" smashed="yes">
+<attribute name="NAME" x="113.03" y="194.564" size="1.27" layer="95"/>
+<attribute name="VALUE" x="117.602" y="194.564" size="1.27" layer="96"/>
 </instance>
-<instance part="R80" gate="G$1" x="121.92" y="190.5" smashed="yes" rot="MR180">
-<attribute name="NAME" x="118.11" y="188.976" size="1.27" layer="95" rot="MR180"/>
-<attribute name="VALUE" x="122.682" y="188.976" size="1.27" layer="96" rot="MR180"/>
+<instance part="R80" gate="G$1" x="116.84" y="190.5" smashed="yes" rot="MR180">
+<attribute name="NAME" x="113.03" y="188.976" size="1.27" layer="95" rot="MR180"/>
+<attribute name="VALUE" x="117.602" y="188.976" size="1.27" layer="96" rot="MR180"/>
 </instance>
 <instance part="JP33" gate="A" x="261.62" y="218.44" smashed="yes">
 <attribute name="NAME" x="255.27" y="229.235" size="1.27" layer="95"/>
@@ -36407,6 +36408,10 @@ SSD1306 driver.</text>
 <attribute name="NAME" x="156.464" y="46.482" size="1.27" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="151.384" y="46.482" size="1.27" layer="96" rot="MR0"/>
 </instance>
+<instance part="SJ7" gate="G$1" x="127" y="208.28" smashed="yes" rot="R180">
+<attribute name="NAME" x="125.095" y="206.756" size="1.27" layer="95" rot="R90"/>
+<attribute name="VALUE" x="124.46" y="210.185" size="1.778" layer="96" rot="R180"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -36443,9 +36448,9 @@ SSD1306 driver.</text>
 <segment>
 <pinref part="JP19" gate="A" pin="3"/>
 <pinref part="GND100" gate="1" pin="GND"/>
-<wire x1="144.78" y1="228.6" x2="132.08" y2="228.6" width="0.1524" layer="91"/>
-<wire x1="132.08" y1="228.6" x2="132.08" y2="218.44" width="0.1524" layer="91"/>
-<label x="140.208" y="229.108" size="1.27" layer="95" rot="MR0"/>
+<wire x1="152.4" y1="228.6" x2="139.7" y2="228.6" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="228.6" x2="139.7" y2="218.44" width="0.1524" layer="91"/>
+<label x="147.828" y="229.108" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
 <pinref part="JP24" gate="A" pin="4"/>
@@ -36464,9 +36469,9 @@ SSD1306 driver.</text>
 <segment>
 <pinref part="JP32" gate="A" pin="2"/>
 <pinref part="GND103" gate="1" pin="GND"/>
-<wire x1="144.78" y1="195.58" x2="129.54" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="195.58" x2="129.54" y2="185.42" width="0.1524" layer="91"/>
-<label x="140.208" y="196.088" size="1.27" layer="95" rot="MR0"/>
+<wire x1="152.4" y1="195.58" x2="137.16" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="195.58" x2="137.16" y2="185.42" width="0.1524" layer="91"/>
+<label x="147.828" y="196.088" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
 <pinref part="JP33" gate="A" pin="2"/>
@@ -36727,9 +36732,9 @@ SSD1306 driver.</text>
 <segment>
 <pinref part="JP19" gate="A" pin="1"/>
 <pinref part="+3V25" gate="G$1" pin="+3V3S"/>
-<wire x1="144.78" y1="233.68" x2="132.08" y2="233.68" width="0.1524" layer="91"/>
-<wire x1="132.08" y1="233.68" x2="132.08" y2="236.22" width="0.1524" layer="91"/>
-<label x="140.208" y="234.188" size="1.27" layer="95" rot="MR0"/>
+<wire x1="152.4" y1="233.68" x2="139.7" y2="233.68" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="233.68" x2="139.7" y2="236.22" width="0.1524" layer="91"/>
+<label x="147.828" y="234.188" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
 <pinref part="SJ3" gate="G$1" pin="1"/>
@@ -36740,9 +36745,9 @@ SSD1306 driver.</text>
 <segment>
 <pinref part="JP32" gate="A" pin="1"/>
 <pinref part="+3V27" gate="G$1" pin="+3V3S"/>
-<wire x1="144.78" y1="198.12" x2="129.54" y2="198.12" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="198.12" x2="129.54" y2="200.66" width="0.1524" layer="91"/>
-<label x="140.208" y="198.628" size="1.27" layer="95" rot="MR0"/>
+<wire x1="152.4" y1="198.12" x2="137.16" y2="198.12" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="198.12" x2="137.16" y2="200.66" width="0.1524" layer="91"/>
+<label x="147.828" y="198.628" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
 <pinref part="SJ4" gate="G$1" pin="1"/>
@@ -36765,62 +36770,54 @@ SSD1306 driver.</text>
 </net>
 <net name="SWCLK" class="0">
 <segment>
-<label x="114.3" y="231.14" size="1.27" layer="95" rot="R180" xref="yes"/>
-<wire x1="119.38" y1="231.14" x2="114.3" y2="231.14" width="0.1524" layer="91"/>
+<label x="109.22" y="231.14" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="114.3" y1="231.14" x2="109.22" y2="231.14" width="0.1524" layer="91"/>
 <pinref part="R69" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="SWDIO" class="0">
 <segment>
-<label x="114.3" y="226.06" size="1.27" layer="95" rot="R180" xref="yes"/>
-<wire x1="119.38" y1="226.06" x2="114.3" y2="226.06" width="0.1524" layer="91"/>
+<label x="109.22" y="226.06" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="114.3" y1="226.06" x2="109.22" y2="226.06" width="0.1524" layer="91"/>
 <pinref part="R70" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="NRST" class="0">
 <segment>
-<label x="114.3" y="223.52" size="1.27" layer="95" rot="R180" xref="yes"/>
-<wire x1="119.38" y1="223.52" x2="114.3" y2="223.52" width="0.1524" layer="91"/>
+<label x="109.22" y="223.52" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="114.3" y1="223.52" x2="109.22" y2="223.52" width="0.1524" layer="91"/>
 <pinref part="R71" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="ENC3B/SWO" class="0">
 <segment>
-<label x="114.3" y="220.98" size="1.27" layer="95" rot="R180" xref="yes"/>
-<wire x1="119.38" y1="220.98" x2="114.3" y2="220.98" width="0.1524" layer="91"/>
+<label x="109.22" y="220.98" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="114.3" y1="220.98" x2="109.22" y2="220.98" width="0.1524" layer="91"/>
 <pinref part="R72" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="SWCLK_" class="0">
 <segment>
 <pinref part="JP19" gate="A" pin="2"/>
-<wire x1="144.78" y1="231.14" x2="129.54" y2="231.14" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="231.14" x2="124.46" y2="231.14" width="0.1524" layer="91"/>
 <pinref part="R69" gate="G$1" pin="2"/>
-<label x="140.208" y="231.648" size="1.27" layer="95" rot="MR0"/>
+<label x="147.828" y="231.648" size="1.27" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="SWDIO_" class="0">
 <segment>
 <pinref part="JP19" gate="A" pin="4"/>
-<wire x1="144.78" y1="226.06" x2="129.54" y2="226.06" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="226.06" x2="124.46" y2="226.06" width="0.1524" layer="91"/>
 <pinref part="R70" gate="G$1" pin="2"/>
-<label x="140.208" y="226.568" size="1.27" layer="95" rot="MR0"/>
+<label x="147.828" y="226.568" size="1.27" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="NRST_" class="0">
 <segment>
 <pinref part="JP19" gate="A" pin="5"/>
-<wire x1="144.78" y1="223.52" x2="129.54" y2="223.52" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="223.52" x2="124.46" y2="223.52" width="0.1524" layer="91"/>
 <pinref part="R71" gate="G$1" pin="2"/>
-<label x="140.208" y="224.028" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="SWO_" class="0">
-<segment>
-<pinref part="JP19" gate="A" pin="6"/>
-<wire x1="144.78" y1="220.98" x2="129.54" y2="220.98" width="0.1524" layer="91"/>
-<pinref part="R72" gate="G$1" pin="2"/>
-<label x="140.208" y="221.488" size="1.27" layer="95" rot="MR0"/>
+<label x="147.828" y="224.028" size="1.27" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="STM_CAN_TX" class="0">
@@ -36912,31 +36909,36 @@ SSD1306 driver.</text>
 <net name="DEBUG_RX" class="0">
 <segment>
 <pinref part="R79" gate="G$1" pin="1"/>
-<wire x1="116.84" y1="193.04" x2="111.76" y2="193.04" width="0.1524" layer="91"/>
-<label x="111.76" y="193.04" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<wire x1="111.76" y1="193.04" x2="106.68" y2="193.04" width="0.1524" layer="91"/>
+<label x="106.68" y="193.04" size="1.27" layer="95" rot="MR0" xref="yes"/>
 </segment>
 </net>
 <net name="DEBUG_TX" class="0">
 <segment>
 <pinref part="R80" gate="G$1" pin="1"/>
-<wire x1="116.84" y1="190.5" x2="111.76" y2="190.5" width="0.1524" layer="91"/>
-<label x="111.76" y="190.5" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<wire x1="111.76" y1="190.5" x2="106.68" y2="190.5" width="0.1524" layer="91"/>
+<label x="106.68" y="190.5" size="1.27" layer="95" rot="MR0" xref="yes"/>
 </segment>
 </net>
 <net name="DEBUG-RX" class="0">
 <segment>
 <pinref part="R79" gate="G$1" pin="2"/>
 <pinref part="JP32" gate="A" pin="3"/>
-<wire x1="127" y1="193.04" x2="144.78" y2="193.04" width="0.1524" layer="91"/>
-<label x="140.208" y="193.548" size="1.27" layer="95" rot="MR0"/>
+<wire x1="121.92" y1="193.04" x2="152.4" y2="193.04" width="0.1524" layer="91"/>
+<label x="147.828" y="193.548" size="1.27" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="DEBUG-TX" class="0">
 <segment>
 <pinref part="R80" gate="G$1" pin="2"/>
 <pinref part="JP32" gate="A" pin="4"/>
-<wire x1="127" y1="190.5" x2="144.78" y2="190.5" width="0.1524" layer="91"/>
-<label x="140.208" y="191.008" size="1.27" layer="95" rot="MR0"/>
+<wire x1="121.92" y1="190.5" x2="127" y2="190.5" width="0.1524" layer="91"/>
+<label x="147.828" y="191.008" size="1.27" layer="95" rot="MR0"/>
+<pinref part="SJ7" gate="G$1" pin="1"/>
+<wire x1="127" y1="190.5" x2="152.4" y2="190.5" width="0.1524" layer="91"/>
+<wire x1="127" y1="203.2" x2="127" y2="190.5" width="0.1524" layer="91"/>
+<junction x="127" y="190.5"/>
+<label x="127.508" y="203.962" size="1.27" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="STM_USART_PWR" class="0">
@@ -37353,6 +37355,28 @@ SSD1306 driver.</text>
 <wire x1="114.3" y1="35.56" x2="152.4" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="JP40" gate="G$1" pin="1"/>
 <label x="117.602" y="36.068" size="1.27" layer="95"/>
+</segment>
+</net>
+<net name="ENC3-SWO" class="0">
+<segment>
+<pinref part="R72" gate="G$1" pin="2"/>
+<pinref part="SJ7" gate="G$1" pin="3"/>
+<wire x1="124.46" y1="220.98" x2="127" y2="220.98" width="0.1524" layer="91"/>
+<wire x1="127" y1="220.98" x2="127" y2="213.36" width="0.1524" layer="91"/>
+<label x="127.508" y="212.598" size="1.27" layer="95" rot="MR90"/>
+</segment>
+</net>
+<net name="SWO" class="0">
+<segment>
+<pinref part="SJ7" gate="G$1" pin="2"/>
+<wire x1="132.08" y1="208.28" x2="134.62" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="208.28" x2="134.62" y2="220.98" width="0.1524" layer="91"/>
+<pinref part="JP19" gate="A" pin="6"/>
+<wire x1="134.62" y1="220.98" x2="152.4" y2="220.98" width="0.1524" layer="91"/>
+<label x="134.112" y="208.788" size="1.27" layer="95" rot="R90"/>
+<label x="147.828" y="221.488" size="1.27" layer="95" rot="MR0"/>
+<label x="147.828" y="221.488" size="1.27" layer="95" rot="MR0"/>
+<label x="147.828" y="221.488" size="1.27" layer="95" rot="MR0"/>
 </segment>
 </net>
 </nets>
