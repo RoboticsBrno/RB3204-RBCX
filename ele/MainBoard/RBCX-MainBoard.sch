@@ -69,7 +69,7 @@
 <layer number="59" name="tCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="61" name="stand" color="7" fill="1" visible="no" active="no"/>
-<layer number="88" name="SimResults" color="9" fill="1" visible="no" active="yes"/>
+<layer number="88" name="SimResults" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="89" name="SimProbes" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
@@ -19426,41 +19426,36 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="P+32" library="Supply" deviceset="+5V" device=""/>
 <part name="D2" library="diode" deviceset="BAT60J" device="DO-214-AB" package3d_urn="urn:adsk.eagle:package:43453/2" value="SS34"/>
 <part name="R6" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="STM_CAN"/>
-<part name="P+33" library="Supply" deviceset="+5V0S" device=""/>
+<part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP-I2C-CAN-UART"/>
 <part name="R7" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R8" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="STM_I2C"/>
+<part name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C"/>
 <part name="SJ8" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
-<part name="P+34" library="Supply" deviceset="+5V0S" device=""/>
-<part name="+3V5" library="Supply" deviceset="+3V3S" device=""/>
 <part name="R9" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R10" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R22" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
 <part name="R23" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
-<part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X7" device="" package3d_urn="urn:adsk.eagle:package:22477/2" value="STM_USART"/>
+<part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X7" device="" package3d_urn="urn:adsk.eagle:package:22477/2" value="ESP_USART"/>
 <part name="SJ9" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
-<part name="P+35" library="Supply" deviceset="+5V0S" device=""/>
-<part name="+3V6" library="Supply" deviceset="+3V3S" device=""/>
 <part name="R94" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R95" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R96" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R97" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R98" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="SJ10" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
-<part name="P+36" library="Supply" deviceset="+5V0S" device=""/>
-<part name="+3V7" library="Supply" deviceset="+3V3S" device=""/>
 <part name="R99" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R100" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R101" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R102" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="JP5" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="STM_SPI"/>
+<part name="JP5" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ESP_SPI"/>
 <part name="SJ11" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="P+37" library="Supply" deviceset="+5V0S" device=""/>
 <part name="+3V31" library="Supply" deviceset="+3V3S" device=""/>
 <part name="JP7" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="STM_ANALOG"/>
 <part name="R103" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R104" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="GND115" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="GND117" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="GND116" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="GND118" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -31723,7 +31718,7 @@ SSD1306 driver.</text>
 <label x="210.82" y="167.64" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="STM-SPI_MOSI" class="0">
+<net name="STM-SPI-MOSI" class="0">
 <segment>
 <pinref part="R86" gate="G$1" pin="2"/>
 <wire x1="226.06" y1="175.26" x2="259.08" y2="175.26" width="0.1524" layer="91"/>
@@ -33456,11 +33451,6 @@ Jakub Streit
 <text x="157.48" y="186.182" size="1.27" layer="97" rot="MR180">Arduino default</text>
 <text x="157.48" y="183.642" size="1.27" layer="97" rot="MR180">Arduino default</text>
 <text x="157.48" y="181.102" size="1.27" layer="97" rot="MR180">Arduino default</text>
-<text x="281.94" y="132.08" size="1.27" layer="97" rot="MR180">Pinout for direct
-connection of
-0.91" I2C OLED
-display with
-SSD1306 driver.</text>
 <text x="251.46" y="63.5" size="2.54" layer="97">ANALOG</text>
 </plain>
 <instances>
@@ -33500,16 +33490,13 @@ SSD1306 driver.</text>
 <attribute name="NAME" x="273.05" y="89.535" size="1.27" layer="95"/>
 <attribute name="VALUE" x="273.05" y="75.438" size="1.27" layer="96" rot="MR180"/>
 </instance>
-<instance part="P+33" gate="G$1" x="264.16" y="91.44" smashed="yes">
-<attribute name="VALUE" x="262.128" y="88.9" size="1.27" layer="96" rot="R90"/>
+<instance part="R7" gate="G$1" x="238.76" y="81.28" smashed="yes">
+<attribute name="NAME" x="234.95" y="82.804" size="1.27" layer="95"/>
+<attribute name="VALUE" x="239.522" y="82.804" size="1.27" layer="96"/>
 </instance>
-<instance part="R7" gate="G$1" x="238.76" y="83.82" smashed="yes">
-<attribute name="NAME" x="234.95" y="85.344" size="1.27" layer="95"/>
-<attribute name="VALUE" x="239.522" y="85.344" size="1.27" layer="96"/>
-</instance>
-<instance part="R8" gate="G$1" x="238.76" y="81.28" smashed="yes" rot="MR180">
-<attribute name="NAME" x="234.95" y="79.756" size="1.27" layer="95" rot="MR180"/>
-<attribute name="VALUE" x="239.522" y="79.756" size="1.27" layer="96" rot="MR180"/>
+<instance part="R8" gate="G$1" x="238.76" y="78.74" smashed="yes" rot="MR180">
+<attribute name="NAME" x="234.95" y="77.216" size="1.27" layer="95" rot="MR180"/>
+<attribute name="VALUE" x="239.522" y="77.216" size="1.27" layer="96" rot="MR180"/>
 </instance>
 <instance part="JP2" gate="A" x="279.4" y="124.46" smashed="yes">
 <attribute name="NAME" x="273.05" y="132.715" size="1.27" layer="95"/>
@@ -33518,12 +33505,6 @@ SSD1306 driver.</text>
 <instance part="SJ8" gate="G$1" x="256.54" y="147.32" smashed="yes" rot="R90">
 <attribute name="NAME" x="255.016" y="149.225" size="1.27" layer="95"/>
 <attribute name="VALUE" x="258.445" y="149.86" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="P+34" gate="G$1" x="264.16" y="154.94" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="266.192" y="152.4" size="1.27" layer="96" rot="MR90"/>
-</instance>
-<instance part="+3V5" gate="G$1" x="248.92" y="154.94" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="250.952" y="152.654" size="1.27" layer="96" rot="MR90"/>
 </instance>
 <instance part="R9" gate="G$1" x="238.76" y="121.92" smashed="yes" rot="MR180">
 <attribute name="NAME" x="234.95" y="120.396" size="1.27" layer="95" rot="MR180"/>
@@ -33549,12 +33530,6 @@ SSD1306 driver.</text>
 <attribute name="NAME" x="252.476" y="243.205" size="1.27" layer="95"/>
 <attribute name="VALUE" x="255.905" y="243.84" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="P+35" gate="G$1" x="261.62" y="248.92" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="263.652" y="246.38" size="1.27" layer="96" rot="MR90"/>
-</instance>
-<instance part="+3V6" gate="G$1" x="246.38" y="248.92" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="248.412" y="246.634" size="1.27" layer="96" rot="MR90"/>
-</instance>
 <instance part="R94" gate="G$1" x="238.76" y="228.6" smashed="yes">
 <attribute name="NAME" x="234.95" y="237.236" size="1.27" layer="95"/>
 <attribute name="VALUE" x="239.522" y="237.236" size="1.27" layer="96"/>
@@ -33567,23 +33542,9 @@ SSD1306 driver.</text>
 <attribute name="NAME" x="234.95" y="233.68" size="1.27" layer="95"/>
 <attribute name="VALUE" x="239.522" y="233.68" size="1.27" layer="96"/>
 </instance>
-<instance part="R97" gate="G$1" x="238.76" y="220.98" smashed="yes">
-<attribute name="NAME" x="234.95" y="231.902" size="1.27" layer="95"/>
-<attribute name="VALUE" x="239.522" y="231.902" size="1.27" layer="96"/>
-</instance>
-<instance part="R98" gate="G$1" x="238.76" y="218.44" smashed="yes">
-<attribute name="NAME" x="234.95" y="230.124" size="1.27" layer="95"/>
-<attribute name="VALUE" x="239.522" y="230.124" size="1.27" layer="96"/>
-</instance>
 <instance part="SJ10" gate="G$1" x="254" y="195.58" smashed="yes" rot="R90">
 <attribute name="NAME" x="252.476" y="197.485" size="1.27" layer="95"/>
 <attribute name="VALUE" x="255.905" y="198.12" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="P+36" gate="G$1" x="261.62" y="203.2" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="263.652" y="200.66" size="1.27" layer="96" rot="MR90"/>
-</instance>
-<instance part="+3V7" gate="G$1" x="246.38" y="203.2" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="248.412" y="200.914" size="1.27" layer="96" rot="MR90"/>
 </instance>
 <instance part="R99" gate="G$1" x="238.76" y="182.88" smashed="yes">
 <attribute name="NAME" x="234.95" y="189.738" size="1.27" layer="95"/>
@@ -33627,6 +33588,18 @@ SSD1306 driver.</text>
 <attribute name="NAME" x="234.95" y="34.544" size="1.27" layer="95"/>
 <attribute name="VALUE" x="239.522" y="34.544" size="1.27" layer="96"/>
 </instance>
+<instance part="GND115" gate="1" x="256.54" y="114.3" smashed="yes">
+<attribute name="VALUE" x="258.572" y="113.792" size="1.27" layer="96" rot="R180"/>
+</instance>
+<instance part="GND117" gate="1" x="254" y="170.18" smashed="yes">
+<attribute name="VALUE" x="256.032" y="169.672" size="1.27" layer="96" rot="R180"/>
+</instance>
+<instance part="GND116" gate="1" x="254" y="213.36" smashed="yes">
+<attribute name="VALUE" x="256.032" y="212.852" size="1.27" layer="96" rot="R180"/>
+</instance>
+<instance part="GND118" gate="1" x="256.54" y="91.44" smashed="yes" rot="R180">
+<attribute name="VALUE" x="254.508" y="91.948" size="1.27" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -33636,6 +33609,33 @@ SSD1306 driver.</text>
 <pinref part="GND16" gate="1" pin="GND"/>
 <pinref part="IM6" gate="G$1" pin="GND"/>
 <wire x1="101.6" y1="144.78" x2="101.6" y2="147.32" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP2" gate="A" pin="2"/>
+<wire x1="276.86" y1="127" x2="256.54" y2="127" width="0.1524" layer="91"/>
+<wire x1="256.54" y1="127" x2="256.54" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="GND115" gate="1" pin="GND"/>
+</segment>
+<segment>
+<wire x1="276.86" y1="185.42" x2="254" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="254" y1="185.42" x2="254" y2="172.72" width="0.1524" layer="91"/>
+<pinref part="JP5" gate="A" pin="2"/>
+<label x="272.288" y="185.928" size="1.27" layer="95" rot="MR0"/>
+<pinref part="GND117" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="JP3" gate="A" pin="2"/>
+<wire x1="276.86" y1="231.14" x2="254" y2="231.14" width="0.1524" layer="91"/>
+<wire x1="254" y1="231.14" x2="254" y2="215.9" width="0.1524" layer="91"/>
+<label x="272.288" y="231.648" size="1.27" layer="95" rot="MR0"/>
+<pinref part="GND116" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="JP1" gate="A" pin="2"/>
+<wire x1="276.86" y1="83.82" x2="256.54" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="256.54" y1="83.82" x2="256.54" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="GND118" gate="1" pin="GND"/>
+<label x="272.288" y="84.328" size="1.27" layer="97" rot="MR0"/>
 </segment>
 </net>
 <net name="IO9_NC" class="0">
@@ -33770,12 +33770,22 @@ SSD1306 driver.</text>
 <wire x1="129.54" y1="193.04" x2="139.7" y2="193.04" width="0.1524" layer="91"/>
 <label x="139.7" y="193.04" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="R10" gate="G$1" pin="1"/>
+<wire x1="233.68" y1="124.46" x2="220.98" y2="124.46" width="0.1524" layer="91"/>
+<label x="231.14" y="124.968" size="1.27" layer="97" rot="MR0"/>
+</segment>
 </net>
 <net name="I2C_SCL" class="0">
 <segment>
 <pinref part="IM6" gate="G$1" pin="IO22"/>
 <wire x1="129.54" y1="205.74" x2="139.7" y2="205.74" width="0.1524" layer="91"/>
 <label x="139.7" y="205.74" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="R9" gate="G$1" pin="1"/>
+<wire x1="233.68" y1="121.92" x2="220.98" y2="121.92" width="0.1524" layer="91"/>
+<label x="231.14" y="122.428" size="1.27" layer="97" rot="MR0"/>
 </segment>
 </net>
 <net name="SPI_!SS1" class="0">
@@ -33791,6 +33801,11 @@ SSD1306 driver.</text>
 <wire x1="129.54" y1="208.28" x2="139.7" y2="208.28" width="0.1524" layer="91"/>
 <label x="139.7" y="208.28" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="R99" gate="G$1" pin="1"/>
+<wire x1="233.68" y1="182.88" x2="218.44" y2="182.88" width="0.1524" layer="91"/>
+<label x="231.14" y="183.388" size="1.27" layer="97" rot="MR0"/>
+</segment>
 </net>
 <net name="SPI_MISO" class="0">
 <segment>
@@ -33798,12 +33813,27 @@ SSD1306 driver.</text>
 <wire x1="129.54" y1="190.5" x2="139.7" y2="190.5" width="0.1524" layer="91"/>
 <label x="139.7" y="190.5" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="R100" gate="G$1" pin="1"/>
+<wire x1="233.68" y1="180.34" x2="218.44" y2="180.34" width="0.1524" layer="91"/>
+<label x="231.14" y="180.848" size="1.27" layer="97" rot="MR0"/>
+</segment>
 </net>
 <net name="SPI_SCK" class="0">
 <segment>
 <pinref part="IM6" gate="G$1" pin="IO18"/>
 <wire x1="129.54" y1="187.96" x2="139.7" y2="187.96" width="0.1524" layer="91"/>
 <label x="139.7" y="187.96" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="R101" gate="G$1" pin="1"/>
+<wire x1="233.68" y1="177.8" x2="218.44" y2="177.8" width="0.1524" layer="91"/>
+<label x="231.14" y="178.308" size="1.27" layer="97" rot="MR0"/>
+</segment>
+<segment>
+<pinref part="R102" gate="G$1" pin="1"/>
+<wire x1="233.68" y1="175.26" x2="218.44" y2="175.26" width="0.1524" layer="91"/>
+<label x="231.14" y="175.768" size="1.27" layer="97" rot="MR0"/>
 </segment>
 </net>
 <net name="I_LED" class="0">
@@ -33899,31 +33929,6 @@ SSD1306 driver.</text>
 </net>
 <net name="+5V0S" class="0">
 <segment>
-<pinref part="JP1" gate="A" pin="1"/>
-<pinref part="P+33" gate="G$1" pin="+5V0S"/>
-<wire x1="276.86" y1="86.36" x2="264.16" y2="86.36" width="0.1524" layer="91"/>
-<wire x1="264.16" y1="86.36" x2="264.16" y2="88.9" width="0.1524" layer="91"/>
-<label x="272.288" y="86.868" size="1.27" layer="95" rot="MR0"/>
-</segment>
-<segment>
-<pinref part="SJ8" gate="G$1" pin="3"/>
-<wire x1="264.16" y1="152.4" x2="264.16" y2="147.32" width="0.1524" layer="91"/>
-<wire x1="264.16" y1="147.32" x2="261.62" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="P+34" gate="G$1" pin="+5V0S"/>
-</segment>
-<segment>
-<pinref part="SJ9" gate="G$1" pin="3"/>
-<wire x1="261.62" y1="246.38" x2="261.62" y2="241.3" width="0.1524" layer="91"/>
-<wire x1="261.62" y1="241.3" x2="259.08" y2="241.3" width="0.1524" layer="91"/>
-<pinref part="P+35" gate="G$1" pin="+5V0S"/>
-</segment>
-<segment>
-<pinref part="SJ10" gate="G$1" pin="3"/>
-<wire x1="261.62" y1="200.66" x2="261.62" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="261.62" y1="195.58" x2="259.08" y2="195.58" width="0.1524" layer="91"/>
-<pinref part="P+36" gate="G$1" pin="+5V0S"/>
-</segment>
-<segment>
 <pinref part="SJ11" gate="G$1" pin="3"/>
 <wire x1="264.16" y1="50.8" x2="264.16" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="264.16" y1="45.72" x2="261.62" y2="45.72" width="0.1524" layer="91"/>
@@ -33932,176 +33937,10 @@ SSD1306 driver.</text>
 </net>
 <net name="+3V3S" class="0">
 <segment>
-<pinref part="SJ8" gate="G$1" pin="1"/>
-<wire x1="248.92" y1="152.4" x2="248.92" y2="147.32" width="0.1524" layer="91"/>
-<wire x1="248.92" y1="147.32" x2="251.46" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="+3V5" gate="G$1" pin="+3V3S"/>
-</segment>
-<segment>
-<pinref part="SJ9" gate="G$1" pin="1"/>
-<wire x1="246.38" y1="246.38" x2="246.38" y2="241.3" width="0.1524" layer="91"/>
-<wire x1="246.38" y1="241.3" x2="248.92" y2="241.3" width="0.1524" layer="91"/>
-<pinref part="+3V6" gate="G$1" pin="+3V3S"/>
-</segment>
-<segment>
-<pinref part="SJ10" gate="G$1" pin="1"/>
-<wire x1="246.38" y1="200.66" x2="246.38" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="246.38" y1="195.58" x2="248.92" y2="195.58" width="0.1524" layer="91"/>
-<pinref part="+3V7" gate="G$1" pin="+3V3S"/>
-</segment>
-<segment>
 <pinref part="SJ11" gate="G$1" pin="1"/>
 <wire x1="248.92" y1="50.8" x2="248.92" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="248.92" y1="45.72" x2="251.46" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="+3V31" gate="G$1" pin="+3V3S"/>
-</segment>
-</net>
-<net name="STM-CAN-TX" class="0">
-<segment>
-<pinref part="R7" gate="G$1" pin="2"/>
-<pinref part="JP1" gate="A" pin="2"/>
-<wire x1="243.84" y1="83.82" x2="276.86" y2="83.82" width="0.1524" layer="91"/>
-<label x="272.288" y="84.328" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM-CAN-RX" class="0">
-<segment>
-<pinref part="R8" gate="G$1" pin="2"/>
-<pinref part="JP1" gate="A" pin="3"/>
-<wire x1="243.84" y1="81.28" x2="276.86" y2="81.28" width="0.1524" layer="91"/>
-<label x="272.288" y="81.788" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM_I2C_PWR" class="0">
-<segment>
-<pinref part="SJ8" gate="G$1" pin="2"/>
-<pinref part="R23" gate="G$1" pin="2"/>
-<wire x1="256.54" y1="139.7" x2="256.54" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="251.46" y1="137.16" x2="251.46" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="251.46" y1="139.7" x2="256.54" y2="139.7" width="0.1524" layer="91"/>
-<pinref part="R22" gate="G$1" pin="2"/>
-<wire x1="248.92" y1="137.16" x2="248.92" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="248.92" y1="139.7" x2="251.46" y2="139.7" width="0.1524" layer="91"/>
-<junction x="251.46" y="139.7"/>
-<pinref part="JP2" gate="A" pin="2"/>
-<wire x1="276.86" y1="127" x2="256.54" y2="127" width="0.1524" layer="91"/>
-<wire x1="256.54" y1="127" x2="256.54" y2="139.7" width="0.1524" layer="91"/>
-<junction x="256.54" y="139.7"/>
-<label x="272.288" y="127.508" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM-I2C-SCL" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="3"/>
-<pinref part="R10" gate="G$1" pin="2"/>
-<wire x1="276.86" y1="124.46" x2="248.92" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="R22" gate="G$1" pin="1"/>
-<wire x1="248.92" y1="124.46" x2="243.84" y2="124.46" width="0.1524" layer="91"/>
-<wire x1="248.92" y1="127" x2="248.92" y2="124.46" width="0.1524" layer="91"/>
-<junction x="248.92" y="124.46"/>
-<label x="272.288" y="124.968" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM-I2C-SDA" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="4"/>
-<pinref part="R9" gate="G$1" pin="2"/>
-<wire x1="276.86" y1="121.92" x2="251.46" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="R23" gate="G$1" pin="1"/>
-<wire x1="251.46" y1="121.92" x2="243.84" y2="121.92" width="0.1524" layer="91"/>
-<wire x1="251.46" y1="127" x2="251.46" y2="121.92" width="0.1524" layer="91"/>
-<junction x="251.46" y="121.92"/>
-<label x="272.288" y="122.428" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM_USART_PWR" class="0">
-<segment>
-<pinref part="JP3" gate="A" pin="1"/>
-<pinref part="SJ9" gate="G$1" pin="2"/>
-<wire x1="276.86" y1="233.68" x2="254" y2="233.68" width="0.1524" layer="91"/>
-<wire x1="254" y1="233.68" x2="254" y2="236.22" width="0.1524" layer="91"/>
-<label x="272.288" y="234.188" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM-USART-RX" class="0">
-<segment>
-<pinref part="R94" gate="G$1" pin="2"/>
-<pinref part="JP3" gate="A" pin="3"/>
-<wire x1="243.84" y1="228.6" x2="276.86" y2="228.6" width="0.1524" layer="91"/>
-<label x="272.288" y="229.108" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM-USART-TX" class="0">
-<segment>
-<pinref part="R95" gate="G$1" pin="2"/>
-<pinref part="JP3" gate="A" pin="4"/>
-<wire x1="243.84" y1="226.06" x2="276.86" y2="226.06" width="0.1524" layer="91"/>
-<label x="272.288" y="226.568" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM-USART-CTS" class="0">
-<segment>
-<pinref part="JP3" gate="A" pin="5"/>
-<pinref part="R96" gate="G$1" pin="2"/>
-<wire x1="276.86" y1="223.52" x2="243.84" y2="223.52" width="0.1524" layer="91"/>
-<label x="272.288" y="224.028" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM-USART-RTS" class="0">
-<segment>
-<pinref part="JP3" gate="A" pin="6"/>
-<pinref part="R97" gate="G$1" pin="2"/>
-<wire x1="276.86" y1="220.98" x2="243.84" y2="220.98" width="0.1524" layer="91"/>
-<label x="272.288" y="221.488" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM-USART-CK" class="0">
-<segment>
-<pinref part="JP3" gate="A" pin="7"/>
-<pinref part="R98" gate="G$1" pin="2"/>
-<wire x1="276.86" y1="218.44" x2="243.84" y2="218.44" width="0.1524" layer="91"/>
-<label x="272.288" y="218.948" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM_USART_PWR1" class="0">
-<segment>
-<pinref part="SJ10" gate="G$1" pin="2"/>
-<wire x1="276.86" y1="187.96" x2="254" y2="187.96" width="0.1524" layer="91"/>
-<wire x1="254" y1="187.96" x2="254" y2="190.5" width="0.1524" layer="91"/>
-<pinref part="JP5" gate="A" pin="1"/>
-<label x="272.288" y="188.468" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="STM-SPI_MOSI" class="0">
-<segment>
-<pinref part="R99" gate="G$1" pin="2"/>
-<wire x1="243.84" y1="182.88" x2="276.86" y2="182.88" width="0.1524" layer="91"/>
-<label x="272.288" y="183.388" size="1.27" layer="95" rot="MR0"/>
-<pinref part="JP5" gate="A" pin="3"/>
-</segment>
-</net>
-<net name="STM-SPI-MISO" class="0">
-<segment>
-<pinref part="R100" gate="G$1" pin="2"/>
-<wire x1="243.84" y1="180.34" x2="276.86" y2="180.34" width="0.1524" layer="91"/>
-<label x="272.288" y="180.848" size="1.27" layer="95" rot="MR0"/>
-<pinref part="JP5" gate="A" pin="4"/>
-</segment>
-</net>
-<net name="STM-SPI-SCK" class="0">
-<segment>
-<pinref part="R101" gate="G$1" pin="2"/>
-<wire x1="276.86" y1="177.8" x2="243.84" y2="177.8" width="0.1524" layer="91"/>
-<label x="272.288" y="178.308" size="1.27" layer="95" rot="MR0"/>
-<pinref part="JP5" gate="A" pin="5"/>
-</segment>
-</net>
-<net name="STM-SPI-!CS" class="0">
-<segment>
-<pinref part="R102" gate="G$1" pin="2"/>
-<wire x1="276.86" y1="175.26" x2="243.84" y2="175.26" width="0.1524" layer="91"/>
-<label x="272.288" y="175.768" size="1.27" layer="95" rot="MR0"/>
-<pinref part="JP5" gate="A" pin="6"/>
 </segment>
 </net>
 <net name="STM-AIO1" class="0">
@@ -34129,44 +33968,206 @@ SSD1306 driver.</text>
 <label x="272.288" y="38.608" size="1.27" layer="95" rot="MR0"/>
 </segment>
 </net>
-<net name="N$2" class="0">
-<segment>
-<pinref part="JP3" gate="A" pin="2"/>
-<wire x1="276.86" y1="231.14" x2="254" y2="231.14" width="0.1524" layer="91"/>
-<wire x1="254" y1="231.14" x2="254" y2="215.9" width="0.1524" layer="91"/>
-<label x="272.288" y="231.648" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="N$3" class="0">
-<segment>
-<wire x1="276.86" y1="185.42" x2="254" y2="185.42" width="0.1524" layer="91"/>
-<wire x1="254" y1="185.42" x2="254" y2="172.72" width="0.1524" layer="91"/>
-<pinref part="JP5" gate="A" pin="2"/>
-<label x="272.288" y="185.928" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="N$4" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="1"/>
-<wire x1="276.86" y1="129.54" x2="259.08" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="259.08" y1="129.54" x2="259.08" y2="119.38" width="0.1524" layer="91"/>
-<label x="272.288" y="130.048" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="N$5" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="4"/>
-<wire x1="276.86" y1="78.74" x2="264.16" y2="78.74" width="0.1524" layer="91"/>
-<wire x1="264.16" y1="78.74" x2="264.16" y2="76.2" width="0.1524" layer="91"/>
-<label x="272.288" y="79.248" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
 <net name="N$6" class="0">
 <segment>
 <pinref part="JP7" gate="A" pin="2"/>
 <wire x1="276.86" y1="35.56" x2="256.54" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="256.54" y1="35.56" x2="256.54" y2="25.4" width="0.1524" layer="91"/>
 <label x="272.288" y="36.068" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="ESP-I2C-SDA" class="0">
+<segment>
+<pinref part="JP2" gate="A" pin="4"/>
+<pinref part="R9" gate="G$1" pin="2"/>
+<wire x1="276.86" y1="121.92" x2="251.46" y2="121.92" width="0.1524" layer="91"/>
+<pinref part="R23" gate="G$1" pin="1"/>
+<wire x1="251.46" y1="121.92" x2="243.84" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="251.46" y1="127" x2="251.46" y2="121.92" width="0.1524" layer="91"/>
+<junction x="251.46" y="121.92"/>
+<label x="272.288" y="122.428" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="ESP-I2C-SCL" class="0">
+<segment>
+<pinref part="JP2" gate="A" pin="3"/>
+<pinref part="R10" gate="G$1" pin="2"/>
+<wire x1="276.86" y1="124.46" x2="248.92" y2="124.46" width="0.1524" layer="91"/>
+<pinref part="R22" gate="G$1" pin="1"/>
+<wire x1="248.92" y1="124.46" x2="243.84" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="248.92" y1="127" x2="248.92" y2="124.46" width="0.1524" layer="91"/>
+<junction x="248.92" y="124.46"/>
+<label x="272.288" y="124.968" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="ESP_I2C_PWR" class="0">
+<segment>
+<pinref part="SJ8" gate="G$1" pin="2"/>
+<pinref part="R23" gate="G$1" pin="2"/>
+<wire x1="256.54" y1="139.7" x2="256.54" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="251.46" y1="137.16" x2="251.46" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="251.46" y1="139.7" x2="256.54" y2="139.7" width="0.1524" layer="91"/>
+<pinref part="R22" gate="G$1" pin="2"/>
+<wire x1="248.92" y1="137.16" x2="248.92" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="248.92" y1="139.7" x2="251.46" y2="139.7" width="0.1524" layer="91"/>
+<junction x="251.46" y="139.7"/>
+<pinref part="JP2" gate="A" pin="1"/>
+<wire x1="256.54" y1="139.7" x2="256.54" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="256.54" y1="129.54" x2="276.86" y2="129.54" width="0.1524" layer="91"/>
+<junction x="256.54" y="139.7"/>
+<label x="272.288" y="130.048" size="1.27" layer="97" rot="MR0"/>
+</segment>
+</net>
+<net name="ESP_USART_PWR1" class="0">
+<segment>
+<pinref part="SJ10" gate="G$1" pin="2"/>
+<wire x1="276.86" y1="187.96" x2="254" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="254" y1="187.96" x2="254" y2="190.5" width="0.1524" layer="91"/>
+<pinref part="JP5" gate="A" pin="1"/>
+<label x="272.288" y="188.468" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="ESP-SPI-MOSI" class="0">
+<segment>
+<pinref part="R99" gate="G$1" pin="2"/>
+<wire x1="243.84" y1="182.88" x2="276.86" y2="182.88" width="0.1524" layer="91"/>
+<label x="272.288" y="183.388" size="1.27" layer="95" rot="MR0"/>
+<pinref part="JP5" gate="A" pin="3"/>
+</segment>
+</net>
+<net name="ESP-SPI-MISO" class="0">
+<segment>
+<pinref part="R100" gate="G$1" pin="2"/>
+<wire x1="243.84" y1="180.34" x2="276.86" y2="180.34" width="0.1524" layer="91"/>
+<label x="272.288" y="180.848" size="1.27" layer="95" rot="MR0"/>
+<pinref part="JP5" gate="A" pin="4"/>
+</segment>
+</net>
+<net name="ESP-SPI-SCK" class="0">
+<segment>
+<pinref part="R101" gate="G$1" pin="2"/>
+<wire x1="276.86" y1="177.8" x2="243.84" y2="177.8" width="0.1524" layer="91"/>
+<label x="272.288" y="178.308" size="1.27" layer="95" rot="MR0"/>
+<pinref part="JP5" gate="A" pin="5"/>
+</segment>
+</net>
+<net name="ESP-SPI-!CS" class="0">
+<segment>
+<pinref part="R102" gate="G$1" pin="2"/>
+<wire x1="276.86" y1="175.26" x2="243.84" y2="175.26" width="0.1524" layer="91"/>
+<label x="272.288" y="175.768" size="1.27" layer="95" rot="MR0"/>
+<pinref part="JP5" gate="A" pin="6"/>
+</segment>
+</net>
+<net name="ESP_USART_PWR" class="0">
+<segment>
+<pinref part="JP3" gate="A" pin="1"/>
+<pinref part="SJ9" gate="G$1" pin="2"/>
+<wire x1="276.86" y1="233.68" x2="254" y2="233.68" width="0.1524" layer="91"/>
+<wire x1="254" y1="233.68" x2="254" y2="236.22" width="0.1524" layer="91"/>
+<label x="272.288" y="234.188" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="ESP-USART-RX" class="0">
+<segment>
+<pinref part="R94" gate="G$1" pin="2"/>
+<pinref part="JP3" gate="A" pin="3"/>
+<wire x1="243.84" y1="228.6" x2="276.86" y2="228.6" width="0.1524" layer="91"/>
+<label x="272.288" y="229.108" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="ESP-USART-TX" class="0">
+<segment>
+<pinref part="R95" gate="G$1" pin="2"/>
+<pinref part="JP3" gate="A" pin="4"/>
+<wire x1="243.84" y1="226.06" x2="276.86" y2="226.06" width="0.1524" layer="91"/>
+<label x="272.288" y="226.568" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="ESP-USART-DIR" class="0">
+<segment>
+<pinref part="JP3" gate="A" pin="5"/>
+<pinref part="R96" gate="G$1" pin="2"/>
+<wire x1="276.86" y1="223.52" x2="243.84" y2="223.52" width="0.1524" layer="91"/>
+<label x="272.288" y="224.028" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="ESP-I2C-SCL-CAN-UART-RX" class="0">
+<segment>
+<pinref part="JP1" gate="A" pin="3"/>
+<label x="272.288" y="81.788" size="1.27" layer="95" rot="MR0"/>
+<wire x1="243.84" y1="81.28" x2="276.86" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="R7" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="ESP-I2C-SDA-CAN-UART-TX" class="0">
+<segment>
+<pinref part="JP1" gate="A" pin="4"/>
+<label x="272.288" y="79.248" size="1.27" layer="95" rot="MR0"/>
+<wire x1="276.86" y1="78.74" x2="243.84" y2="78.74" width="0.1524" layer="91"/>
+<pinref part="R8" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="JP1" gate="A" pin="1"/>
+<wire x1="276.86" y1="86.36" x2="264.16" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="264.16" y1="86.36" x2="264.16" y2="88.9" width="0.1524" layer="91"/>
+<label x="272.288" y="86.868" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="N$3" class="0">
+<segment>
+<pinref part="SJ8" gate="G$1" pin="3"/>
+<wire x1="264.16" y1="152.4" x2="264.16" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="264.16" y1="147.32" x2="261.62" y2="147.32" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$4" class="0">
+<segment>
+<pinref part="SJ8" gate="G$1" pin="1"/>
+<wire x1="248.92" y1="152.4" x2="248.92" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="248.92" y1="147.32" x2="251.46" y2="147.32" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="SJ10" gate="G$1" pin="3"/>
+<wire x1="261.62" y1="200.66" x2="261.62" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="261.62" y1="195.58" x2="259.08" y2="195.58" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="SJ10" gate="G$1" pin="1"/>
+<wire x1="246.38" y1="200.66" x2="246.38" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="246.38" y1="195.58" x2="248.92" y2="195.58" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="SJ9" gate="G$1" pin="3"/>
+<wire x1="261.62" y1="246.38" x2="261.62" y2="241.3" width="0.1524" layer="91"/>
+<wire x1="261.62" y1="241.3" x2="259.08" y2="241.3" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$9" class="0">
+<segment>
+<pinref part="SJ9" gate="G$1" pin="1"/>
+<wire x1="246.38" y1="246.38" x2="246.38" y2="241.3" width="0.1524" layer="91"/>
+<wire x1="246.38" y1="241.3" x2="248.92" y2="241.3" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="R94" gate="G$1" pin="1"/>
+<wire x1="233.68" y1="228.6" x2="215.9" y2="228.6" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="R95" gate="G$1" pin="1"/>
+<wire x1="233.68" y1="226.06" x2="215.9" y2="226.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
