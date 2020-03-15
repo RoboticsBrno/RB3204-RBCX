@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.5.2">
+<eagle version="9.6.0">
 <designblock>
 <description></description>
 <attributes>
 <attribute name="AIRWIRES" value="YES"/>
-<attribute name="BOARDSIZE" value="204.6 x 100.4 mm"/>
-<attribute name="LAYERS" value="1: 1"/>
+<attribute name="BOARDSIZE" value="6.352 x 3.953 inch"/>
+<attribute name="LAYERS" value="2: 1, 16"/>
 </attributes>
 <drawings>
 <drawing>
@@ -14,7 +14,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
@@ -7003,7 +7003,6 @@ package type OT</description>
 <part name="JP6" library="pinhead" deviceset="PINHD-1X6" device="" value="M2"/>
 <part name="JP12" library="pinhead" deviceset="PINHD-1X6" device="" value="M1"/>
 <part name="SJ2" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
-<part name="R12" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="C6" library="rcl_upravena" deviceset="C-EU" device="C0805" value="2u2">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -7022,9 +7021,6 @@ package type OT</description>
 <part name="JP15" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2"/>
 <part name="GND17" library="Supply" deviceset="GND" device=""/>
 <part name="GND18" library="Supply" deviceset="GND" device=""/>
-<part name="R25" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
-<part name="R26" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
-<part name="R27" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="R28" library="rcl_upravena" deviceset="R-EU_" device="R1206S" value="8m"/>
 <part name="GND19" library="Supply" deviceset="GND" device=""/>
 <part name="R29" library="rcl_upravena" deviceset="R-EU_" device="R1206S" value="8m"/>
@@ -7088,20 +7084,8 @@ package type OT</description>
 <part name="GND26" library="Supply" deviceset="GND" device=""/>
 <part name="GND27" library="Supply" deviceset="GND" device=""/>
 <part name="GND28" library="Supply" deviceset="GND" device=""/>
-<part name="D4" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2">
-<attribute name="DESCRIPTION" value="40V 120mA 1V @ 40mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
-<attribute name="EXTENDED" value="Yes"/>
-<attribute name="LCSC_ID" value="C79199"/>
-<attribute name="MF" value="Leshan Radio"/>
-<attribute name="MF_ID" value="LBAS40-05LT1G"/>
-<attribute name="PACKAGE" value="SOT-23-3"/>
-<attribute name="PADS" value="3"/>
-<attribute name="PRICE_1PLUS" value="$0.0202"/>
-<attribute name="PRICE_200PLUS" value="$0.0093"/>
-</part>
 <part name="D5" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04">
-<attribute name="DESCRIPTION" value="	
-40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
+<attribute name="DESCRIPTION" value="  40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
 <attribute name="EXTENDED" value="Yes"/>
 <attribute name="LCSC_ID" value="C78600"/>
 <attribute name="MF" value="Leshan Radio"/>
@@ -7112,8 +7096,7 @@ package type OT</description>
 <attribute name="PRICE_200PLUS" value="$0.0106"/>
 </part>
 <part name="D7" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04">
-<attribute name="DESCRIPTION" value="	
-40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
+<attribute name="DESCRIPTION" value="  40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
 <attribute name="EXTENDED" value="Yes"/>
 <attribute name="LCSC_ID" value="C78600"/>
 <attribute name="MF" value="Leshan Radio"/>
@@ -7124,8 +7107,7 @@ package type OT</description>
 <attribute name="PRICE_200PLUS" value="$0.0106"/>
 </part>
 <part name="D8" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04">
-<attribute name="DESCRIPTION" value="	
-40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
+<attribute name="DESCRIPTION" value="  40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
 <attribute name="EXTENDED" value="Yes"/>
 <attribute name="LCSC_ID" value="C78600"/>
 <attribute name="MF" value="Leshan Radio"/>
@@ -7136,8 +7118,7 @@ package type OT</description>
 <attribute name="PRICE_200PLUS" value="$0.0106"/>
 </part>
 <part name="D9" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04">
-<attribute name="DESCRIPTION" value="	
-40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
+<attribute name="DESCRIPTION" value="  40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
 <attribute name="EXTENDED" value="Yes"/>
 <attribute name="LCSC_ID" value="C78600"/>
 <attribute name="MF" value="Leshan Radio"/>
@@ -7146,39 +7127,6 @@ package type OT</description>
 <attribute name="PADS" value="3"/>
 <attribute name="PRICE_1PLUS" value="$0.0221"/>
 <attribute name="PRICE_200PLUS" value="$0.0106"/>
-</part>
-<part name="D1" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2">
-<attribute name="DESCRIPTION" value="40V 120mA 1V @ 40mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
-<attribute name="EXTENDED" value="Yes"/>
-<attribute name="LCSC_ID" value="C79199"/>
-<attribute name="MF" value="Leshan Radio"/>
-<attribute name="MF_ID" value="LBAS40-05LT1G"/>
-<attribute name="PACKAGE" value="SOT-23-3"/>
-<attribute name="PADS" value="3"/>
-<attribute name="PRICE_1PLUS" value="$0.0202"/>
-<attribute name="PRICE_200PLUS" value="$0.0093"/>
-</part>
-<part name="D2" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2">
-<attribute name="DESCRIPTION" value="40V 120mA 1V @ 40mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
-<attribute name="EXTENDED" value="Yes"/>
-<attribute name="LCSC_ID" value="C79199"/>
-<attribute name="MF" value="Leshan Radio"/>
-<attribute name="MF_ID" value="LBAS40-05LT1G"/>
-<attribute name="PACKAGE" value="SOT-23-3"/>
-<attribute name="PADS" value="3"/>
-<attribute name="PRICE_1PLUS" value="$0.0202"/>
-<attribute name="PRICE_200PLUS" value="$0.0093"/>
-</part>
-<part name="D3" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2">
-<attribute name="DESCRIPTION" value="40V 120mA 1V @ 40mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS"/>
-<attribute name="EXTENDED" value="Yes"/>
-<attribute name="LCSC_ID" value="C79199"/>
-<attribute name="MF" value="Leshan Radio"/>
-<attribute name="MF_ID" value="LBAS40-05LT1G"/>
-<attribute name="PACKAGE" value="SOT-23-3"/>
-<attribute name="PADS" value="3"/>
-<attribute name="PRICE_1PLUS" value="$0.0202"/>
-<attribute name="PRICE_200PLUS" value="$0.0093"/>
 </part>
 </parts>
 <sheets>
@@ -7216,10 +7164,6 @@ package type OT</description>
 <attribute name="NAME" x="139.065" y="116.586" size="1.27" layer="95" rot="R90"/>
 <attribute name="VALUE" x="138.43" y="120.015" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="R12" gate="G$1" x="87.63" y="110.49" smashed="yes" rot="R90">
-<attribute name="NAME" x="86.106" y="106.68" size="1.27" layer="95" rot="R90"/>
-<attribute name="VALUE" x="86.106" y="111.252" size="1.27" layer="96" rot="R90"/>
-</instance>
 <instance part="C6" gate="G$1" x="90.17" y="82.55" smashed="yes" rot="MR90">
 <attribute name="NAME" x="85.598" y="85.09" size="1.27" layer="95"/>
 <attribute name="VALUE" x="90.17" y="85.09" size="1.27" layer="96"/>
@@ -7244,8 +7188,8 @@ package type OT</description>
 <instance part="GND14" gate="1" x="80.01" y="82.55" smashed="yes" rot="R270">
 <attribute name="VALUE" x="78.232" y="84.582" size="1.27" layer="96" rot="R270"/>
 </instance>
-<instance part="GND15" gate="1" x="67.31" y="123.19" smashed="yes" rot="R270">
-<attribute name="VALUE" x="65.532" y="125.222" size="1.27" layer="96" rot="R270"/>
+<instance part="GND15" gate="1" x="93.98" y="123.19" smashed="yes" rot="R270">
+<attribute name="VALUE" x="92.202" y="125.222" size="1.27" layer="96" rot="R270"/>
 </instance>
 <instance part="JP15" gate="G$1" x="158.75" y="90.17" smashed="yes">
 <attribute name="NAME" x="152.4" y="93.345" size="1.27" layer="95"/>
@@ -7256,18 +7200,6 @@ package type OT</description>
 </instance>
 <instance part="GND18" gate="1" x="224.79" y="120.65" smashed="yes">
 <attribute name="VALUE" x="223.012" y="118.872" size="1.27" layer="96"/>
-</instance>
-<instance part="R25" gate="G$1" x="82.55" y="110.49" smashed="yes" rot="R90">
-<attribute name="NAME" x="81.026" y="106.68" size="1.27" layer="95" rot="R90"/>
-<attribute name="VALUE" x="81.026" y="111.252" size="1.27" layer="96" rot="R90"/>
-</instance>
-<instance part="R26" gate="G$1" x="77.47" y="110.49" smashed="yes" rot="R90">
-<attribute name="NAME" x="75.946" y="106.68" size="1.27" layer="95" rot="R90"/>
-<attribute name="VALUE" x="75.946" y="111.252" size="1.27" layer="96" rot="R90"/>
-</instance>
-<instance part="R27" gate="G$1" x="72.39" y="110.49" smashed="yes" rot="R90">
-<attribute name="NAME" x="70.866" y="106.68" size="1.27" layer="95" rot="R90"/>
-<attribute name="VALUE" x="70.866" y="111.252" size="1.27" layer="96" rot="R90"/>
 </instance>
 <instance part="R28" gate="G$1" x="113.03" y="62.23" smashed="yes" rot="R90">
 <attribute name="NAME" x="111.506" y="58.42" size="1.27" layer="95" rot="R90"/>
@@ -7380,19 +7312,6 @@ package type OT</description>
 <instance part="GND28" gate="1" x="153.67" y="69.85" smashed="yes" rot="MR270">
 <attribute name="VALUE" x="155.448" y="71.628" size="1.27" layer="96" rot="MR270"/>
 </instance>
-<instance part="D4" gate="G$1" x="46.99" y="74.93" smashed="yes" rot="MR90">
-<attribute name="NAME" x="48.9966" y="75.692" size="1.27" layer="95" rot="MR90"/>
-<attribute name="VALUE" x="43.0276" y="70.612" size="1.27" layer="96" rot="MR90"/>
-<attribute name="DESCRIPTION" x="46.99" y="74.93" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="EXTENDED" x="46.99" y="74.93" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="LCSC_ID" x="46.99" y="74.93" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="MF" x="46.99" y="74.93" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="MF_ID" x="46.99" y="74.93" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PACKAGE" x="46.99" y="74.93" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PADS" x="46.99" y="74.93" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PRICE_1PLUS" x="46.99" y="74.93" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PRICE_200PLUS" x="46.99" y="74.93" size="1.778" layer="96" rot="MR90" display="off"/>
-</instance>
 <instance part="D5" gate="G$1" x="214.63" y="80.01" smashed="yes" rot="MR90">
 <attribute name="NAME" x="216.6366" y="80.772" size="1.27" layer="95" rot="MR90"/>
 <attribute name="VALUE" x="210.6676" y="75.692" size="1.27" layer="96" rot="MR90"/>
@@ -7444,45 +7363,6 @@ package type OT</description>
 <attribute name="PADS" x="189.23" y="80.01" size="1.778" layer="96" rot="MR270" display="off"/>
 <attribute name="PRICE_1PLUS" x="189.23" y="80.01" size="1.778" layer="96" rot="MR270" display="off"/>
 <attribute name="PRICE_200PLUS" x="189.23" y="80.01" size="1.778" layer="96" rot="MR270" display="off"/>
-</instance>
-<instance part="D1" gate="G$1" x="46.99" y="128.27" smashed="yes" rot="MR90">
-<attribute name="NAME" x="48.9966" y="129.032" size="1.27" layer="95" rot="MR90"/>
-<attribute name="VALUE" x="43.0276" y="123.952" size="1.27" layer="96" rot="MR90"/>
-<attribute name="DESCRIPTION" x="46.99" y="128.27" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="EXTENDED" x="46.99" y="128.27" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="LCSC_ID" x="46.99" y="128.27" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="MF" x="46.99" y="128.27" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="MF_ID" x="46.99" y="128.27" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PACKAGE" x="46.99" y="128.27" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PADS" x="46.99" y="128.27" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PRICE_1PLUS" x="46.99" y="128.27" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PRICE_200PLUS" x="46.99" y="128.27" size="1.778" layer="96" rot="MR90" display="off"/>
-</instance>
-<instance part="D2" gate="G$1" x="46.99" y="113.03" smashed="yes" rot="MR90">
-<attribute name="NAME" x="48.9966" y="113.792" size="1.27" layer="95" rot="MR90"/>
-<attribute name="VALUE" x="43.0276" y="108.712" size="1.27" layer="96" rot="MR90"/>
-<attribute name="DESCRIPTION" x="46.99" y="113.03" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="EXTENDED" x="46.99" y="113.03" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="LCSC_ID" x="46.99" y="113.03" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="MF" x="46.99" y="113.03" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="MF_ID" x="46.99" y="113.03" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PACKAGE" x="46.99" y="113.03" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PADS" x="46.99" y="113.03" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PRICE_1PLUS" x="46.99" y="113.03" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PRICE_200PLUS" x="46.99" y="113.03" size="1.778" layer="96" rot="MR90" display="off"/>
-</instance>
-<instance part="D3" gate="G$1" x="46.99" y="90.17" smashed="yes" rot="MR90">
-<attribute name="NAME" x="48.9966" y="90.932" size="1.27" layer="95" rot="MR90"/>
-<attribute name="VALUE" x="43.0276" y="85.852" size="1.27" layer="96" rot="MR90"/>
-<attribute name="DESCRIPTION" x="46.99" y="90.17" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="EXTENDED" x="46.99" y="90.17" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="LCSC_ID" x="46.99" y="90.17" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="MF" x="46.99" y="90.17" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="MF_ID" x="46.99" y="90.17" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PACKAGE" x="46.99" y="90.17" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PADS" x="46.99" y="90.17" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PRICE_1PLUS" x="46.99" y="90.17" size="1.778" layer="96" rot="MR90" display="off"/>
-<attribute name="PRICE_200PLUS" x="46.99" y="90.17" size="1.778" layer="96" rot="MR90" display="off"/>
 </instance>
 </instances>
 <busses>
@@ -7657,23 +7537,7 @@ package type OT</description>
 <segment>
 <pinref part="GND15" gate="1" pin="GND"/>
 <pinref part="C17" gate="G$1" pin="2"/>
-<wire x1="69.85" y1="123.19" x2="72.39" y2="123.19" width="0.1524" layer="91"/>
-<pinref part="R27" gate="G$1" pin="2"/>
-<wire x1="72.39" y1="123.19" x2="77.47" y2="123.19" width="0.1524" layer="91"/>
-<wire x1="77.47" y1="123.19" x2="82.55" y2="123.19" width="0.1524" layer="91"/>
-<wire x1="82.55" y1="123.19" x2="87.63" y2="123.19" width="0.1524" layer="91"/>
-<wire x1="87.63" y1="123.19" x2="100.33" y2="123.19" width="0.1524" layer="91"/>
-<wire x1="72.39" y1="115.57" x2="72.39" y2="123.19" width="0.1524" layer="91"/>
-<junction x="72.39" y="123.19"/>
-<pinref part="R26" gate="G$1" pin="2"/>
-<wire x1="77.47" y1="115.57" x2="77.47" y2="123.19" width="0.1524" layer="91"/>
-<junction x="77.47" y="123.19"/>
-<pinref part="R25" gate="G$1" pin="2"/>
-<wire x1="82.55" y1="115.57" x2="82.55" y2="123.19" width="0.1524" layer="91"/>
-<junction x="82.55" y="123.19"/>
-<pinref part="R12" gate="G$1" pin="2"/>
-<wire x1="87.63" y1="115.57" x2="87.63" y2="123.19" width="0.1524" layer="91"/>
-<junction x="87.63" y="123.19"/>
+<wire x1="96.52" y1="123.19" x2="100.33" y2="123.19" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="224.79" y1="123.19" x2="224.79" y2="133.35" width="0.1524" layer="91"/>
@@ -7759,114 +7623,36 @@ package type OT</description>
 <wire x1="92.71" y1="107.95" x2="95.25" y2="107.95" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="PWM1" class="0">
-<segment>
-<wire x1="46.99" y1="123.19" x2="46.99" y2="120.65" width="0.1524" layer="91"/>
-<wire x1="46.99" y1="120.65" x2="46.99" y2="118.11" width="0.1524" layer="91"/>
-<wire x1="46.99" y1="120.65" x2="36.83" y2="120.65" width="0.1524" layer="91"/>
-<junction x="46.99" y="120.65"/>
-<label x="36.83" y="120.65" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D1" gate="G$1" pin="A1"/>
-<pinref part="D2" gate="G$1" pin="A2"/>
-</segment>
-</net>
-<net name="PWM2" class="0">
-<segment>
-<wire x1="46.99" y1="85.09" x2="46.99" y2="82.55" width="0.1524" layer="91"/>
-<wire x1="46.99" y1="82.55" x2="46.99" y2="80.01" width="0.1524" layer="91"/>
-<wire x1="46.99" y1="82.55" x2="36.83" y2="82.55" width="0.1524" layer="91"/>
-<junction x="46.99" y="82.55"/>
-<label x="36.83" y="82.55" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D4" gate="G$1" pin="A2"/>
-<pinref part="D3" gate="G$1" pin="A1"/>
-</segment>
-</net>
-<net name="IN1A" class="0">
-<segment>
-<wire x1="46.99" y1="133.35" x2="46.99" y2="135.89" width="0.1524" layer="91"/>
-<wire x1="46.99" y1="135.89" x2="36.83" y2="135.89" width="0.1524" layer="91"/>
-<label x="36.83" y="135.89" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D1" gate="G$1" pin="A2"/>
-</segment>
-</net>
-<net name="IN1B" class="0">
-<segment>
-<wire x1="46.99" y1="107.95" x2="46.99" y2="105.41" width="0.1524" layer="91"/>
-<wire x1="46.99" y1="105.41" x2="36.83" y2="105.41" width="0.1524" layer="91"/>
-<label x="36.83" y="105.41" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D2" gate="G$1" pin="A1"/>
-</segment>
-</net>
-<net name="IN2A" class="0">
-<segment>
-<wire x1="46.99" y1="95.25" x2="46.99" y2="97.79" width="0.1524" layer="91"/>
-<wire x1="46.99" y1="97.79" x2="36.83" y2="97.79" width="0.1524" layer="91"/>
-<label x="36.83" y="97.79" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D3" gate="G$1" pin="A2"/>
-</segment>
-</net>
-<net name="IN2B" class="0">
-<segment>
-<wire x1="46.99" y1="69.85" x2="46.99" y2="67.31" width="0.1524" layer="91"/>
-<wire x1="46.99" y1="67.31" x2="36.83" y2="67.31" width="0.1524" layer="91"/>
-<label x="36.83" y="67.31" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D4" gate="G$1" pin="A1"/>
-</segment>
-</net>
 <net name="IN2_B" class="0">
 <segment>
 <pinref part="IC4" gate="G$1" pin="BIN2"/>
-<wire x1="95.25" y1="92.71" x2="72.39" y2="92.71" width="0.1524" layer="91"/>
-<wire x1="72.39" y1="92.71" x2="57.15" y2="92.71" width="0.1524" layer="91"/>
-<wire x1="57.15" y1="92.71" x2="57.15" y2="74.93" width="0.1524" layer="91"/>
-<wire x1="57.15" y1="74.93" x2="49.53" y2="74.93" width="0.1524" layer="91"/>
-<pinref part="R27" gate="G$1" pin="1"/>
-<wire x1="72.39" y1="105.41" x2="72.39" y2="92.71" width="0.1524" layer="91"/>
-<junction x="72.39" y="92.71"/>
+<wire x1="95.25" y1="92.71" x2="57.15" y2="92.71" width="0.1524" layer="91"/>
 <label x="62.23" y="93.472" size="1.27" layer="95"/>
-<pinref part="D4" gate="G$1" pin="C"/>
+<label x="57.15" y="92.71" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="IN2_A" class="0">
 <segment>
 <pinref part="IC4" gate="G$1" pin="BIN1"/>
-<wire x1="95.25" y1="95.25" x2="77.47" y2="95.25" width="0.1524" layer="91"/>
-<wire x1="77.47" y1="95.25" x2="54.61" y2="95.25" width="0.1524" layer="91"/>
-<wire x1="54.61" y1="95.25" x2="54.61" y2="90.17" width="0.1524" layer="91"/>
-<wire x1="54.61" y1="90.17" x2="49.53" y2="90.17" width="0.1524" layer="91"/>
-<pinref part="R26" gate="G$1" pin="1"/>
-<wire x1="77.47" y1="105.41" x2="77.47" y2="95.25" width="0.1524" layer="91"/>
-<junction x="77.47" y="95.25"/>
+<wire x1="95.25" y1="95.25" x2="57.15" y2="95.25" width="0.1524" layer="91"/>
 <label x="62.23" y="96.012" size="1.27" layer="95"/>
-<pinref part="D3" gate="G$1" pin="C"/>
+<label x="57.15" y="95.25" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="IN1_A" class="0">
 <segment>
 <pinref part="IC4" gate="G$1" pin="AIN1"/>
-<wire x1="95.25" y1="102.87" x2="87.63" y2="102.87" width="0.1524" layer="91"/>
-<wire x1="87.63" y1="102.87" x2="57.15" y2="102.87" width="0.1524" layer="91"/>
-<wire x1="57.15" y1="102.87" x2="57.15" y2="128.27" width="0.1524" layer="91"/>
-<wire x1="57.15" y1="128.27" x2="49.53" y2="128.27" width="0.1524" layer="91"/>
-<pinref part="R12" gate="G$1" pin="1"/>
-<wire x1="87.63" y1="105.41" x2="87.63" y2="102.87" width="0.1524" layer="91"/>
-<junction x="87.63" y="102.87"/>
+<wire x1="95.25" y1="102.87" x2="57.15" y2="102.87" width="0.1524" layer="91"/>
 <label x="62.23" y="103.632" size="1.27" layer="95"/>
-<pinref part="D1" gate="G$1" pin="C"/>
+<label x="57.15" y="102.87" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="IN1_B" class="0">
 <segment>
 <pinref part="IC4" gate="G$1" pin="AIN2"/>
-<wire x1="95.25" y1="100.33" x2="82.55" y2="100.33" width="0.1524" layer="91"/>
-<wire x1="82.55" y1="100.33" x2="54.61" y2="100.33" width="0.1524" layer="91"/>
-<wire x1="54.61" y1="100.33" x2="54.61" y2="113.03" width="0.1524" layer="91"/>
-<wire x1="54.61" y1="113.03" x2="49.53" y2="113.03" width="0.1524" layer="91"/>
-<pinref part="R25" gate="G$1" pin="1"/>
-<wire x1="82.55" y1="105.41" x2="82.55" y2="100.33" width="0.1524" layer="91"/>
-<junction x="82.55" y="100.33"/>
+<wire x1="95.25" y1="100.33" x2="57.15" y2="100.33" width="0.1524" layer="91"/>
 <label x="62.23" y="101.092" size="1.27" layer="95"/>
-<pinref part="D2" gate="G$1" pin="C"/>
+<label x="57.15" y="100.33" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="!M12_FAULT" class="0">
@@ -7960,8 +7746,6 @@ package type OT</description>
 <wire x1="95.25" y1="87.63" x2="82.55" y2="87.63" width="0.1524" layer="91"/>
 <label x="82.55" y="87.63" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
-</net>
-<net name="+5V" class="0">
 <segment>
 <wire x1="176.53" y1="87.63" x2="176.53" y2="85.09" width="0.1524" layer="91"/>
 <pinref part="D7" gate="G$1" pin="A2"/>
@@ -7982,6 +7766,8 @@ package type OT</description>
 <pinref part="D8" gate="G$1" pin="A1"/>
 <label x="227.33" y="87.63" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
+</net>
+<net name="+5V" class="0">
 <segment>
 <pinref part="SJ2" gate="G$1" pin="3"/>
 <wire x1="135.89" y1="125.73" x2="140.97" y2="125.73" width="0.1524" layer="91"/>
@@ -8014,7 +7800,7 @@ package type OT</description>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="25" unitdist="mil" unit="mm" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="25" unitdist="mil" unit="inch" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
@@ -8040,10 +7826,10 @@ package type OT</description>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -8178,8 +7964,8 @@ package type OT</description>
 <wire x1="160" y1="0" x2="160" y2="100" width="0" layer="20"/>
 <wire x1="160" y1="100" x2="0" y2="100" width="0" layer="20"/>
 <wire x1="0" y1="100" x2="0" y2="0" width="0" layer="20"/>
-<dimension x1="32.385" y1="100.33" x2="32.385" y2="43.18" x3="43.815" y3="71.755" textsize="1.778" layer="1"/>
-<dimension x1="32.385" y1="42.545" x2="0" y2="42.545" x3="16.1925" y3="36.83" textsize="1.778" layer="1"/>
+<dimension x1="24.765" y1="100.33" x2="24.765" y2="60.325" x3="31.75" y3="80.3275" textsize="1.778" layer="1"/>
+<dimension x1="24.765" y1="60.325" x2="0" y2="60.325" x3="12.3825" y3="55.88" textsize="1.778" layer="1"/>
 </plain>
 <libraries>
 <library name="rcl_upravena">
@@ -9617,7 +9403,7 @@ Grid 5.08 mm&lt;p&gt;
 <clearance class="0" value="0.2"/>
 </class>
 </classes>
-<designrules name="robotikabrno *">
+<designrules name="robotikabrno">
 <description language="de">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
 &lt;p&gt;
 Die Standard-Design-Rules sind so gewählt, dass sie für 
@@ -9633,19 +9419,28 @@ This DRC includes the common parameters for two-layer PCBs. Should be compatible
 &lt;li&gt;Gatema POOL Servis&lt;/li&gt;
 &lt;li&gt;JLCPCB (no extras)&lt;/li&gt;
 &lt;li&gt;AllPCB (no extras)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+UPDATES:
+&lt;p&gt;
+JarekParal (2020-03-14) 
+&lt;ul&gt;
+&lt;li&gt;Clearance - change clearance from 0.2 mm to 0.15 mm&lt;/li&gt;
+&lt;li&gt;Sizes - Minimum Width: from 0.2 to 0.15; Minimum Drill: from 0.35 to 0.3&lt;/li&gt;
+&lt;li&gt;Misc - activate 'Check angle'&lt;/li&gt;
 &lt;/ul&gt;</description>
 <param name="layerSetup" value="(1*16)"/>
 <param name="mtCopper" value="0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm"/>
 <param name="mtIsolate" value="1.5mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm"/>
 <param name="mdWireWire" value="0.15mm"/>
 <param name="mdWirePad" value="0.15mm"/>
-<param name="mdWireVia" value="0.2mm"/>
-<param name="mdPadPad" value="0.2mm"/>
-<param name="mdPadVia" value="0.2mm"/>
-<param name="mdViaVia" value="0.2mm"/>
-<param name="mdSmdPad" value="0.2mm"/>
-<param name="mdSmdVia" value="0.2mm"/>
-<param name="mdSmdSmd" value="0.2mm"/>
+<param name="mdWireVia" value="0.15mm"/>
+<param name="mdPadPad" value="0.15mm"/>
+<param name="mdPadVia" value="0.15mm"/>
+<param name="mdViaVia" value="0.15mm"/>
+<param name="mdSmdPad" value="0.15mm"/>
+<param name="mdSmdVia" value="0.15mm"/>
+<param name="mdSmdSmd" value="0.15mm"/>
 <param name="mdViaViaSameLayer" value="6mil"/>
 <param name="mnLayersViaInSmd" value="2"/>
 <param name="mdCopperDimension" value="0.5mm"/>
@@ -9695,7 +9490,7 @@ This DRC includes the common parameters for two-layer PCBs. Should be compatible
 <param name="slThermalsForVias" value="0"/>
 <param name="dpMaxLengthDifference" value="10mm"/>
 <param name="dpGapFactor" value="2.5"/>
-<param name="checkAngle" value="0"/>
+<param name="checkAngle" value="1"/>
 <param name="checkFont" value="1"/>
 <param name="checkRestrict" value="1"/>
 <param name="checkStop" value="0"/>
@@ -9803,35 +9598,35 @@ This DRC includes the common parameters for two-layer PCBs. Should be compatible
 </pass>
 </autorouter>
 <elements>
-<element name="C17" library="rcl_upravena" package="C0805" value="10u" x="-15.24" y="68.58" smashed="yes">
-<attribute name="DIELECTRIC" value="X5R" x="10.16" y="29.21" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="-16.51" y="69.85" size="1.27" layer="25"/>
-<attribute name="VALUE" x="-16.51" y="66.04" size="1.27" layer="27"/>
-<attribute name="VOLTAGE" value="25V" x="10.16" y="29.21" size="1.778" layer="27" display="off"/>
+<element name="C17" library="rcl_upravena" package="C0805" value="10u" x="11.049" y="66.294" smashed="yes">
+<attribute name="DIELECTRIC" value="X5R" x="36.449" y="26.924" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="9.779" y="67.564" size="1.27" layer="25"/>
+<attribute name="VALUE" x="9.779" y="63.754" size="1.27" layer="27"/>
+<attribute name="VOLTAGE" value="25V" x="36.449" y="26.924" size="1.778" layer="27" display="off"/>
 </element>
-<element name="C19" library="rcl_upravena" package="C0603" value="100n" x="-12.7" y="74.93" smashed="yes">
-<attribute name="DIELECTRIC" value="X5R" x="10.16" y="29.21" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="-13.335" y="75.565" size="1.27" layer="25"/>
-<attribute name="VALUE" x="-13.335" y="73.025" size="1.27" layer="27"/>
-<attribute name="VOLTAGE" value="16V" x="10.16" y="29.21" size="1.778" layer="27" display="off"/>
+<element name="C19" library="rcl_upravena" package="C0603" value="100n" x="4.445" y="71.12" smashed="yes" rot="R180">
+<attribute name="DIELECTRIC" value="X5R" x="-18.415" y="116.84" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="5.08" y="70.485" size="1.27" layer="25" rot="R180"/>
+<attribute name="VALUE" x="5.08" y="73.025" size="1.27" layer="27" rot="R180"/>
+<attribute name="VOLTAGE" value="16V" x="-18.415" y="116.84" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="C21" library="rcl_upravena" package="C0603" value="100n" x="-17.78" y="74.93" smashed="yes">
-<attribute name="DIELECTRIC" value="X5R" x="10.16" y="29.21" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="-18.415" y="75.565" size="1.27" layer="25"/>
-<attribute name="VALUE" x="-18.415" y="73.025" size="1.27" layer="27"/>
-<attribute name="VOLTAGE" value="16V" x="10.16" y="29.21" size="1.778" layer="27" display="off"/>
+<element name="C21" library="rcl_upravena" package="C0603" value="100n" x="18.415" y="71.12" smashed="yes" rot="R180">
+<attribute name="DIELECTRIC" value="X5R" x="-9.525" y="116.84" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="19.05" y="70.485" size="1.27" layer="25" rot="R180"/>
+<attribute name="VALUE" x="19.05" y="73.025" size="1.27" layer="27" rot="R180"/>
+<attribute name="VOLTAGE" value="16V" x="-9.525" y="116.84" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="C6" library="rcl_upravena" package="C0805" value="2u2" x="-20.32" y="68.58" smashed="yes">
-<attribute name="DIELECTRIC" value="X5R" x="10.16" y="29.21" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="-21.59" y="69.85" size="1.27" layer="25"/>
-<attribute name="VALUE" x="-21.59" y="66.04" size="1.27" layer="27"/>
-<attribute name="VOLTAGE" value="16V" x="10.16" y="29.21" size="1.778" layer="27" display="off"/>
+<element name="C6" library="rcl_upravena" package="C0805" value="2u2" x="14.605" y="67.945" smashed="yes">
+<attribute name="DIELECTRIC" value="X5R" x="45.085" y="28.575" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="13.335" y="69.215" size="1.27" layer="25"/>
+<attribute name="VALUE" x="13.335" y="65.405" size="1.27" layer="27"/>
+<attribute name="VOLTAGE" value="16V" x="45.085" y="28.575" size="1.778" layer="27" display="off"/>
 </element>
-<element name="C9" library="rcl_upravena" package="C0603" value="100n" x="-7.62" y="74.93" smashed="yes">
-<attribute name="DIELECTRIC" value="X5R" x="10.16" y="29.21" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="-8.255" y="75.565" size="1.27" layer="25"/>
-<attribute name="VALUE" x="-8.255" y="73.025" size="1.27" layer="27"/>
-<attribute name="VOLTAGE" value="25V" x="10.16" y="29.21" size="1.778" layer="27" display="off"/>
+<element name="C9" library="rcl_upravena" package="C0603" value="100n" x="9.144" y="68.326" smashed="yes">
+<attribute name="DIELECTRIC" value="X5R" x="26.924" y="22.606" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="8.509" y="68.961" size="1.27" layer="25"/>
+<attribute name="VALUE" x="8.509" y="66.421" size="1.27" layer="27"/>
+<attribute name="VOLTAGE" value="25V" x="26.924" y="22.606" size="1.778" layer="27" display="off"/>
 </element>
 <element name="D6" library="diode" package="DO214BA" package3d_urn="urn:adsk.eagle:package:43453/2" value="SS34" x="19.05" y="83.82" smashed="yes" rot="R90">
 <attribute name="DESCRIPTION" value="40V 3A 550mV @ 3A SMA(DO-214AC) Schottky Barrier Diodes (SBD) RoHS" x="19.05" y="83.82" size="1.778" layer="27" rot="R90" display="off"/>
@@ -9846,95 +9641,79 @@ This DRC includes the common parameters for two-layer PCBs. Should be compatible
 <attribute name="PRICE_1PLUS" value="$0.0335" x="19.05" y="83.82" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="22.106" y="81.18" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
-<element name="IC4" library="DRV8833" package="HTSSOP" value="DRV8833PWP" x="11.43" y="72.39" smashed="yes" rot="R270"/>
-<element name="IC5" library="INA180" package="SOT23-5L" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4" x="19.685" y="72.39" smashed="yes" rot="R270">
-<attribute name="DESCRIPTION" value=" PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS" x="-19.685" y="34.29" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="EXTENDED" value="Yes" x="19.685" y="72.39" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="LCSC_ID" value="C133969" x="-19.685" y="34.29" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MF" value="TI" x="-19.685" y="34.29" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="MF_ID" value="INA180A4IDBVT" x="-19.685" y="34.29" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="21.035" y="73.59" size="1.016" layer="25" rot="R270"/>
-<attribute name="PACKAGE" value="SOT-23-5" x="-19.685" y="34.29" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="PADS" value="5" x="19.685" y="72.39" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="PRICE_100PLUS" value="$0.2638" x="-19.685" y="34.29" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="PRICE_10PLUS" value="$0.2986" x="-19.685" y="34.29" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="PRICE_1PLUS" value="$0.3943" x="-19.685" y="34.29" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="PRICE_30PLUS" value="$0.2812" x="-19.685" y="34.29" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="PRICE_500PLUS" value="$0.2566" x="-19.685" y="34.29" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="VALUE" x="17.335" y="73.59" size="1.016" layer="27" rot="R270"/>
+<element name="IC4" library="DRV8833" package="HTSSOP" value="DRV8833PWP" x="11.43" y="74.295" smashed="yes" rot="R270"/>
+<element name="IC5" library="INA180" package="SOT23-5L" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4" x="18.415" y="74.295" smashed="yes" rot="R180">
+<attribute name="DESCRIPTION" value=" PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS" x="-19.685" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="EXTENDED" value="Yes" x="18.415" y="74.295" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="LCSC_ID" value="C133969" x="-19.685" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MF" value="TI" x="-19.685" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MF_ID" value="INA180A4IDBVT" x="-19.685" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="19.615" y="72.945" size="1.016" layer="25" rot="R180"/>
+<attribute name="PACKAGE" value="SOT-23-5" x="-19.685" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PADS" value="5" x="18.415" y="74.295" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PRICE_100PLUS" value="$0.2638" x="-19.685" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PRICE_10PLUS" value="$0.2986" x="-19.685" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.3943" x="-19.685" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PRICE_30PLUS" value="$0.2812" x="-19.685" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PRICE_500PLUS" value="$0.2566" x="-19.685" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="VALUE" x="19.615" y="76.645" size="1.016" layer="27" rot="R180"/>
 </element>
-<element name="IC6" library="INA180" package="SOT23-5L" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4" x="3.175" y="72.39" smashed="yes" rot="R90">
-<attribute name="DESCRIPTION" value=" PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS" x="42.545" y="118.11" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="EXTENDED" value="Yes" x="3.175" y="72.39" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="LCSC_ID" value="C133969" x="42.545" y="118.11" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MF" value="TI" x="42.545" y="118.11" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MF_ID" value="INA180A4IDBVT" x="42.545" y="118.11" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="1.825" y="71.19" size="1.016" layer="25" rot="R90"/>
-<attribute name="PACKAGE" value="SOT-23-5" x="42.545" y="118.11" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="PADS" value="5" x="3.175" y="72.39" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="PRICE_100PLUS" value="$0.2638" x="42.545" y="118.11" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="PRICE_10PLUS" value="$0.2986" x="42.545" y="118.11" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="PRICE_1PLUS" value="$0.3943" x="42.545" y="118.11" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="PRICE_30PLUS" value="$0.2812" x="42.545" y="118.11" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="PRICE_500PLUS" value="$0.2566" x="42.545" y="118.11" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="VALUE" x="5.525" y="71.19" size="1.016" layer="27" rot="R90"/>
+<element name="IC6" library="INA180" package="SOT23-5L" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4" x="4.445" y="74.295" smashed="yes" rot="R180">
+<attribute name="DESCRIPTION" value=" PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS" x="-41.275" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="EXTENDED" value="Yes" x="4.445" y="74.295" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="LCSC_ID" value="C133969" x="-41.275" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MF" value="TI" x="-41.275" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MF_ID" value="INA180A4IDBVT" x="-41.275" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="5.645" y="72.945" size="1.016" layer="25" rot="R180"/>
+<attribute name="PACKAGE" value="SOT-23-5" x="-41.275" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PADS" value="5" x="4.445" y="74.295" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PRICE_100PLUS" value="$0.2638" x="-41.275" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PRICE_10PLUS" value="$0.2986" x="-41.275" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.3943" x="-41.275" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PRICE_30PLUS" value="$0.2812" x="-41.275" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PRICE_500PLUS" value="$0.2566" x="-41.275" y="113.665" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="VALUE" x="5.645" y="76.645" size="1.016" layer="27" rot="R180"/>
 </element>
 <element name="JP12" library="pinhead" package="1X06" value="M1" x="8.89" y="85.09" smashed="yes">
 <attribute name="NAME" x="1.1938" y="86.9188" size="1.27" layer="25" ratio="10"/>
 <attribute name="VALUE" x="1.27" y="81.915" size="1.27" layer="27"/>
 </element>
-<element name="JP15" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X01" package3d_urn="urn:adsk.eagle:package:22485/2" value="" x="-40.64" y="66.04" smashed="yes">
-<attribute name="NAME" x="-41.9862" y="67.8688" size="1.27" layer="25" ratio="10"/>
-<attribute name="POPULARITY" value="64" x="10.16" y="29.21" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="-41.91" y="62.865" size="1.27" layer="27"/>
+<element name="JP15" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X01" package3d_urn="urn:adsk.eagle:package:22485/2" value="" x="6.985" y="78.105" smashed="yes">
+<attribute name="NAME" x="5.6388" y="79.9338" size="1.27" layer="25" ratio="10"/>
+<attribute name="POPULARITY" value="64" x="57.785" y="41.275" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="5.715" y="74.93" size="1.27" layer="27"/>
 </element>
 <element name="JP6" library="pinhead" package="1X06" value="M2" x="8.89" y="82.55" smashed="yes">
 <attribute name="NAME" x="1.1938" y="84.3788" size="1.27" layer="25" ratio="10"/>
 <attribute name="VALUE" x="1.27" y="79.375" size="1.27" layer="27"/>
 </element>
-<element name="R12" library="rcl_upravena" package="R0603" value="10k" x="3.81" y="51.435" smashed="yes" rot="R180">
-<attribute name="NAME" x="4.445" y="50.8" size="1.27" layer="25" rot="R180"/>
-<attribute name="VALUE" x="4.445" y="53.34" size="1.27" layer="27" rot="R180"/>
+<element name="R28" library="rcl_upravena" package="R1206S" value="8m" x="15.24" y="74.295" smashed="yes" rot="R90">
+<attribute name="NAME" x="13.97" y="73.025" size="1.27" layer="25" rot="R90"/>
+<attribute name="VALUE" x="17.78" y="73.025" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="R25" library="rcl_upravena" package="R0603" value="10k" x="7.62" y="52.705" smashed="yes" rot="R180">
-<attribute name="NAME" x="8.255" y="52.07" size="1.27" layer="25" rot="R180"/>
-<attribute name="VALUE" x="8.255" y="54.61" size="1.27" layer="27" rot="R180"/>
+<element name="R29" library="rcl_upravena" package="R1206S" value="8m" x="7.62" y="74.295" smashed="yes" rot="R90">
+<attribute name="NAME" x="6.35" y="73.025" size="1.27" layer="25" rot="R90"/>
+<attribute name="VALUE" x="10.16" y="73.025" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="R26" library="rcl_upravena" package="R0603" value="10k" x="11.43" y="53.975" smashed="yes" rot="R180">
-<attribute name="NAME" x="12.065" y="53.34" size="1.27" layer="25" rot="R180"/>
-<attribute name="VALUE" x="12.065" y="55.88" size="1.27" layer="27" rot="R180"/>
+<element name="R30" library="rcl_upravena" package="R0603" value="2k2" x="53.34" y="69.215" smashed="yes" rot="R90">
+<attribute name="NAME" x="52.705" y="68.58" size="1.27" layer="25" rot="R90"/>
+<attribute name="VALUE" x="55.245" y="68.58" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="R27" library="rcl_upravena" package="R0603" value="10k" x="15.24" y="51.435" smashed="yes" rot="R90">
-<attribute name="NAME" x="14.605" y="50.8" size="1.27" layer="25" rot="R90"/>
-<attribute name="VALUE" x="17.145" y="50.8" size="1.27" layer="27" rot="R90"/>
+<element name="R31" library="rcl_upravena" package="R0603" value="2k2" x="57.15" y="69.215" smashed="yes" rot="R90">
+<attribute name="NAME" x="56.515" y="68.58" size="1.27" layer="25" rot="R90"/>
+<attribute name="VALUE" x="59.055" y="68.58" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="R28" library="rcl_upravena" package="R1206S" value="8m" x="15.875" y="72.39" smashed="yes" rot="R90">
-<attribute name="NAME" x="14.605" y="71.12" size="1.27" layer="25" rot="R90"/>
-<attribute name="VALUE" x="18.415" y="71.12" size="1.27" layer="27" rot="R90"/>
+<element name="R32" library="rcl_upravena" package="R0603" value="2k2" x="60.96" y="69.215" smashed="yes" rot="R90">
+<attribute name="NAME" x="60.325" y="68.58" size="1.27" layer="25" rot="R90"/>
+<attribute name="VALUE" x="62.865" y="68.58" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="R29" library="rcl_upravena" package="R1206S" value="8m" x="6.985" y="72.39" smashed="yes" rot="R90">
-<attribute name="NAME" x="5.715" y="71.12" size="1.27" layer="25" rot="R90"/>
-<attribute name="VALUE" x="9.525" y="71.12" size="1.27" layer="27" rot="R90"/>
+<element name="R33" library="rcl_upravena" package="R0603" value="2k2" x="64.77" y="69.215" smashed="yes" rot="R90">
+<attribute name="NAME" x="64.135" y="68.58" size="1.27" layer="25" rot="R90"/>
+<attribute name="VALUE" x="66.675" y="68.58" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="R30" library="rcl_upravena" package="R0603" value="2k2" x="-43.18" y="74.93" smashed="yes">
-<attribute name="NAME" x="-43.815" y="75.565" size="1.27" layer="25"/>
-<attribute name="VALUE" x="-43.815" y="73.025" size="1.27" layer="27"/>
-</element>
-<element name="R31" library="rcl_upravena" package="R0603" value="2k2" x="-6.35" y="80.01" smashed="yes">
-<attribute name="NAME" x="-6.985" y="80.645" size="1.27" layer="25"/>
-<attribute name="VALUE" x="-6.985" y="78.105" size="1.27" layer="27"/>
-</element>
-<element name="R32" library="rcl_upravena" package="R0603" value="2k2" x="-11.43" y="80.01" smashed="yes">
-<attribute name="NAME" x="-12.065" y="80.645" size="1.27" layer="25"/>
-<attribute name="VALUE" x="-12.065" y="78.105" size="1.27" layer="27"/>
-</element>
-<element name="R33" library="rcl_upravena" package="R0603" value="2k2" x="-16.51" y="80.01" smashed="yes">
-<attribute name="NAME" x="-17.145" y="80.645" size="1.27" layer="25"/>
-<attribute name="VALUE" x="-17.145" y="78.105" size="1.27" layer="27"/>
-</element>
-<element name="SJ2" library="jumper" library_urn="urn:adsk.eagle:library:252" package="SJ_2" package3d_urn="urn:adsk.eagle:package:15474/1" value="" x="22.86" y="83.82" smashed="yes" rot="R270">
-<attribute name="NAME" x="24.13" y="86.233" size="1.27" layer="25" ratio="10" rot="R270"/>
-<attribute name="VALUE" x="22.86" y="83.9201" size="0.02" layer="27" rot="R270"/>
+<element name="SJ2" library="jumper" library_urn="urn:adsk.eagle:library:252" package="SJ_2" package3d_urn="urn:adsk.eagle:package:15474/1" value="" x="22.86" y="83.82" smashed="yes" rot="R90">
+<attribute name="NAME" x="21.59" y="81.407" size="1.27" layer="25" ratio="10" rot="R90"/>
+<attribute name="VALUE" x="22.86" y="83.7199" size="0.02" layer="27" rot="R90"/>
 </element>
 <element name="X1" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" package="W237-132" package3d_urn="urn:adsk.eagle:package:10734/1" value="M1" x="6.35" y="93.98" smashed="yes">
 <attribute name="MF" value="" x="25.4" y="86.36" size="1.778" layer="27" display="off"/>
@@ -9952,206 +9731,191 @@ This DRC includes the common parameters for two-layer PCBs. Should be compatible
 <attribute name="OC_NEWARK" value="unknown" x="46.99" y="86.36" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="12.7" y="86.995" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="D4" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-05" x="16.51" y="47.625" smashed="yes">
-<attribute name="DESCRIPTION" value="40V 120mA 1V @ 40mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="16.51" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="EXTENDED" value="Yes" x="16.51" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="LCSC_ID" value="C79199" x="16.51" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="Leshan Radio" x="16.51" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="MF_ID" value="LBAS40-05LT1G" x="16.51" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="14.605" y="49.53" size="1.27" layer="25"/>
-<attribute name="PACKAGE" value="SOT-23-3" x="16.51" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PADS" value="3" x="16.51" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="POPULARITY" value="2" x="16.51" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_1PLUS" value="$0.0202" x="16.51" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_200PLUS" value="$0.0093" x="16.51" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="14.605" y="44.45" size="1.27" layer="27"/>
+<element name="D5" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04" x="60.96" y="65.405" smashed="yes">
+<attribute name="DESCRIPTION" value="  40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="60.96" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="Yes" x="60.96" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C78600" x="60.96" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Leshan Radio" x="60.96" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="LBAS40-04LT1G" x="60.96" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="59.055" y="67.31" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="60.96" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="60.96" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="POPULARITY" value="2" x="60.96" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0221" x="60.96" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0106" x="60.96" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="59.055" y="62.23" size="1.27" layer="27"/>
 </element>
-<element name="D5" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04" x="25.4" y="74.93" smashed="yes">
-<attribute name="DESCRIPTION" value="	
-40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="25.4" y="74.93" size="1.778" layer="27" display="off"/>
-<attribute name="EXTENDED" value="Yes" x="25.4" y="74.93" size="1.778" layer="27" display="off"/>
-<attribute name="LCSC_ID" value="C78600" x="25.4" y="74.93" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="Leshan Radio" x="25.4" y="74.93" size="1.778" layer="27" display="off"/>
-<attribute name="MF_ID" value="LBAS40-04LT1G" x="25.4" y="74.93" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="23.495" y="76.835" size="1.27" layer="25"/>
-<attribute name="PACKAGE" value="SOT-23-3" x="25.4" y="74.93" size="1.778" layer="27" display="off"/>
-<attribute name="PADS" value="3" x="25.4" y="74.93" size="1.778" layer="27" display="off"/>
-<attribute name="POPULARITY" value="2" x="25.4" y="74.93" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_1PLUS" value="$0.0221" x="25.4" y="74.93" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_200PLUS" value="$0.0106" x="25.4" y="74.93" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="23.495" y="71.755" size="1.27" layer="27"/>
+<element name="D7" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04" x="53.34" y="65.405" smashed="yes">
+<attribute name="DESCRIPTION" value="  40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="53.34" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="Yes" x="53.34" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C78600" x="53.34" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Leshan Radio" x="53.34" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="LBAS40-04LT1G" x="53.34" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="51.435" y="67.31" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="53.34" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="53.34" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="POPULARITY" value="2" x="53.34" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0221" x="53.34" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0106" x="53.34" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="51.435" y="62.23" size="1.27" layer="27"/>
 </element>
-<element name="D7" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04" x="29.21" y="67.31" smashed="yes">
-<attribute name="DESCRIPTION" value="	
-40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="29.21" y="67.31" size="1.778" layer="27" display="off"/>
-<attribute name="EXTENDED" value="Yes" x="29.21" y="67.31" size="1.778" layer="27" display="off"/>
-<attribute name="LCSC_ID" value="C78600" x="29.21" y="67.31" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="Leshan Radio" x="29.21" y="67.31" size="1.778" layer="27" display="off"/>
-<attribute name="MF_ID" value="LBAS40-04LT1G" x="29.21" y="67.31" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="27.305" y="69.215" size="1.27" layer="25"/>
-<attribute name="PACKAGE" value="SOT-23-3" x="29.21" y="67.31" size="1.778" layer="27" display="off"/>
-<attribute name="PADS" value="3" x="29.21" y="67.31" size="1.778" layer="27" display="off"/>
-<attribute name="POPULARITY" value="2" x="29.21" y="67.31" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_1PLUS" value="$0.0221" x="29.21" y="67.31" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_200PLUS" value="$0.0106" x="29.21" y="67.31" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="27.305" y="64.135" size="1.27" layer="27"/>
+<element name="D8" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04" x="64.77" y="65.405" smashed="yes">
+<attribute name="DESCRIPTION" value="  40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="64.77" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="Yes" x="64.77" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C78600" x="64.77" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Leshan Radio" x="64.77" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="LBAS40-04LT1G" x="64.77" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="62.865" y="67.31" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="64.77" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="64.77" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="POPULARITY" value="2" x="64.77" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0221" x="64.77" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0106" x="64.77" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="62.865" y="62.23" size="1.27" layer="27"/>
 </element>
-<element name="D8" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04" x="29.21" y="59.69" smashed="yes">
-<attribute name="DESCRIPTION" value="	
-40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="29.21" y="59.69" size="1.778" layer="27" display="off"/>
-<attribute name="EXTENDED" value="Yes" x="29.21" y="59.69" size="1.778" layer="27" display="off"/>
-<attribute name="LCSC_ID" value="C78600" x="29.21" y="59.69" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="Leshan Radio" x="29.21" y="59.69" size="1.778" layer="27" display="off"/>
-<attribute name="MF_ID" value="LBAS40-04LT1G" x="29.21" y="59.69" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="27.305" y="61.595" size="1.27" layer="25"/>
-<attribute name="PACKAGE" value="SOT-23-3" x="29.21" y="59.69" size="1.778" layer="27" display="off"/>
-<attribute name="PADS" value="3" x="29.21" y="59.69" size="1.778" layer="27" display="off"/>
-<attribute name="POPULARITY" value="2" x="29.21" y="59.69" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_1PLUS" value="$0.0221" x="29.21" y="59.69" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_200PLUS" value="$0.0106" x="29.21" y="59.69" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="27.305" y="56.515" size="1.27" layer="27"/>
-</element>
-<element name="D9" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04" x="29.21" y="52.07" smashed="yes">
-<attribute name="DESCRIPTION" value="	
-40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="29.21" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="EXTENDED" value="Yes" x="29.21" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="LCSC_ID" value="C78600" x="29.21" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="Leshan Radio" x="29.21" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="MF_ID" value="LBAS40-04LT1G" x="29.21" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="27.305" y="53.975" size="1.27" layer="25"/>
-<attribute name="PACKAGE" value="SOT-23-3" x="29.21" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="PADS" value="3" x="29.21" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="POPULARITY" value="2" x="29.21" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_1PLUS" value="$0.0221" x="29.21" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_200PLUS" value="$0.0106" x="29.21" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="27.305" y="48.895" size="1.27" layer="27"/>
-</element>
-<element name="D1" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-05" x="5.08" y="47.625" smashed="yes">
-<attribute name="DESCRIPTION" value="40V 120mA 1V @ 40mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="5.08" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="EXTENDED" value="Yes" x="5.08" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="LCSC_ID" value="C79199" x="5.08" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="Leshan Radio" x="5.08" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="MF_ID" value="LBAS40-05LT1G" x="5.08" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="3.175" y="49.53" size="1.27" layer="25"/>
-<attribute name="PACKAGE" value="SOT-23-3" x="5.08" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PADS" value="3" x="5.08" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="POPULARITY" value="2" x="5.08" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_1PLUS" value="$0.0202" x="5.08" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_200PLUS" value="$0.0093" x="5.08" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="3.175" y="44.45" size="1.27" layer="27"/>
-</element>
-<element name="D2" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-05" x="8.89" y="47.625" smashed="yes">
-<attribute name="DESCRIPTION" value="40V 120mA 1V @ 40mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="8.89" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="EXTENDED" value="Yes" x="8.89" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="LCSC_ID" value="C79199" x="8.89" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="Leshan Radio" x="8.89" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="MF_ID" value="LBAS40-05LT1G" x="8.89" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="6.985" y="49.53" size="1.27" layer="25"/>
-<attribute name="PACKAGE" value="SOT-23-3" x="8.89" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PADS" value="3" x="8.89" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="POPULARITY" value="2" x="8.89" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_1PLUS" value="$0.0202" x="8.89" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_200PLUS" value="$0.0093" x="8.89" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="6.985" y="44.45" size="1.27" layer="27"/>
-</element>
-<element name="D3" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-05" x="12.7" y="47.625" smashed="yes">
-<attribute name="DESCRIPTION" value="40V 120mA 1V @ 40mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="12.7" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="EXTENDED" value="Yes" x="12.7" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="LCSC_ID" value="C79199" x="12.7" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="Leshan Radio" x="12.7" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="MF_ID" value="LBAS40-05LT1G" x="12.7" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="10.795" y="49.53" size="1.27" layer="25"/>
-<attribute name="PACKAGE" value="SOT-23-3" x="12.7" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PADS" value="3" x="12.7" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="POPULARITY" value="2" x="12.7" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_1PLUS" value="$0.0202" x="12.7" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="PRICE_200PLUS" value="$0.0093" x="12.7" y="47.625" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="10.795" y="44.45" size="1.27" layer="27"/>
+<element name="D9" library="diode" library_urn="urn:adsk.eagle:library:210" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04" x="57.15" y="65.405" smashed="yes">
+<attribute name="DESCRIPTION" value="  40V 120mA 400mV @ 1mA SOT-23(SOT-23-3) Schottky Barrier Diodes (SBD) RoHS" x="57.15" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="Yes" x="57.15" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C78600" x="57.15" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Leshan Radio" x="57.15" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="LBAS40-04LT1G" x="57.15" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="55.245" y="67.31" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="57.15" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="57.15" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="POPULARITY" value="2" x="57.15" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0221" x="57.15" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0106" x="57.15" y="65.405" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="55.245" y="62.23" size="1.27" layer="27"/>
 </element>
 </elements>
 <signals>
 <signal name="VINT34">
 <contactref element="IC4" pad="VINT"/>
 <contactref element="C6" pad="1"/>
-<wire x1="-21.42" y1="68.58" x2="12.283125" y2="69.09" width="0" layer="19" extent="1-1"/>
+<wire x1="12.283125" y1="70.995" x2="12.283125" y2="68.615875" width="0.35" layer="1"/>
+<wire x1="12.954" y1="67.945" x2="13.505" y2="67.945" width="0.35" layer="1"/>
+<wire x1="12.283125" y1="68.615875" x2="12.954" y2="67.945" width="0.35" layer="1"/>
 </signal>
 <signal name="M1A">
 <contactref element="IC4" pad="AOUT1"/>
 <contactref element="JP12" pad="1"/>
 <contactref element="X1" pad="1"/>
-<wire x1="2.54" y1="85.09" x2="12.851875" y2="75.69" width="0" layer="19" extent="1-1"/>
-<wire x1="3.81" y1="93.345" x2="2.54" y2="85.09" width="0" layer="19" extent="1-1"/>
+<wire x1="12.851875" y1="77.595" x2="12.861475" y2="77.6046" width="0.35" layer="1"/>
+<wire x1="12.861475" y1="77.6046" x2="12.861475" y2="78.79029375" width="0.35" layer="1"/>
+<wire x1="13.44618125" y1="79.375" x2="12.861475" y2="78.79029375" width="0.35" layer="1"/>
+<wire x1="17.145" y1="85.725" x2="17.145" y2="81.28" width="0.35" layer="1"/>
+<wire x1="17.145" y1="85.725" x2="16.51" y2="86.36" width="0.35" layer="1"/>
+<wire x1="16.51" y1="86.36" x2="3.81" y2="86.36" width="0.35" layer="1"/>
+<wire x1="3.81" y1="86.36" x2="2.54" y2="85.09" width="0.35" layer="1"/>
+<wire x1="17.145" y1="81.28" x2="15.24" y2="79.375" width="0.35" layer="1"/>
+<wire x1="15.24" y1="79.375" x2="13.44618125" y2="79.375" width="0.35" layer="1"/>
+<wire x1="2.54" y1="85.09" x2="2.54" y2="92.075" width="0.35" layer="16"/>
+<wire x1="2.54" y1="92.075" x2="3.81" y2="93.345" width="0.35" layer="16"/>
 </signal>
 <signal name="M1B">
 <contactref element="IC4" pad="AOUT2"/>
 <contactref element="JP12" pad="6"/>
 <contactref element="X1" pad="2"/>
-<wire x1="15.24" y1="85.09" x2="11.714375" y2="75.69" width="0" layer="19" extent="1-1"/>
-<wire x1="8.89" y1="93.345" x2="15.24" y2="85.09" width="0" layer="19" extent="1-1"/>
+<wire x1="11.714375" y1="77.595" x2="11.714375" y2="78.105" width="0.35" layer="1"/>
+<wire x1="11.714375" y1="77.595" x2="11.714375" y2="79.659375" width="0.35" layer="1"/>
+<wire x1="12.7" y1="80.645" x2="11.714375" y2="79.659375" width="0.35" layer="1"/>
+<wire x1="15.24" y1="85.09" x2="16.51" y2="83.82" width="0.35" layer="1"/>
+<wire x1="16.51" y1="83.82" x2="16.51" y2="81.915" width="0.35" layer="1"/>
+<wire x1="16.51" y1="81.915" x2="15.24" y2="80.645" width="0.35" layer="1"/>
+<wire x1="15.24" y1="80.645" x2="12.7" y2="80.645" width="0.35" layer="1"/>
+<wire x1="15.24" y1="85.09" x2="8.89" y2="91.44" width="0.35" layer="16"/>
+<wire x1="8.89" y1="91.44" x2="8.89" y2="93.345" width="0.35" layer="16"/>
 </signal>
 <signal name="M2A">
 <contactref element="IC4" pad="BOUT1"/>
 <contactref element="JP6" pad="1"/>
 <contactref element="X2" pad="2"/>
-<wire x1="2.54" y1="82.55" x2="19.05" y2="93.345" width="0" layer="19" extent="1-1"/>
-<wire x1="10.008125" y1="75.69" x2="2.54" y2="82.55" width="0" layer="19" extent="1-1"/>
+<wire x1="10.008125" y1="77.595" x2="9.923525" y2="77.6796" width="0.2" layer="1"/>
+<wire x1="10.008125" y1="77.595" x2="10.008125" y2="78.90769375" width="0.35" layer="1"/>
+<wire x1="8.90581875" y1="80.01" x2="3.81" y2="80.01" width="0.35" layer="1"/>
+<wire x1="3.81" y1="80.01" x2="2.54" y2="81.28" width="0.35" layer="1"/>
+<wire x1="2.54" y1="81.28" x2="2.54" y2="82.55" width="0.35" layer="1"/>
+<wire x1="10.008125" y1="78.90769375" x2="8.90581875" y2="80.01" width="0.35" layer="1"/>
+<wire x1="2.54" y1="82.55" x2="1.27" y2="83.82" width="0.35" layer="1"/>
+<wire x1="1.27" y1="83.82" x2="1.27" y2="86.995" width="0.35" layer="1"/>
+<wire x1="1.27" y1="86.995" x2="2.54" y2="88.265" width="0.35" layer="1"/>
+<wire x1="15.875" y1="88.265" x2="19.05" y2="91.44" width="0.35" layer="1"/>
+<wire x1="19.05" y1="91.44" x2="19.05" y2="93.345" width="0.35" layer="1"/>
+<wire x1="2.54" y1="88.265" x2="15.875" y2="88.265" width="0.35" layer="1"/>
 </signal>
 <signal name="M2B">
 <contactref element="IC4" pad="BOUT2"/>
 <contactref element="JP6" pad="6"/>
 <contactref element="X2" pad="1"/>
-<wire x1="15.24" y1="82.55" x2="13.97" y2="93.345" width="0" layer="19" extent="1-1"/>
-<wire x1="11.145625" y1="75.69" x2="15.24" y2="82.55" width="0" layer="19" extent="1-1"/>
+<wire x1="15.24" y1="82.55" x2="13.97" y2="81.28" width="0.35" layer="1"/>
+<wire x1="13.97" y1="81.28" x2="12.065" y2="81.28" width="0.35" layer="1"/>
+<wire x1="12.065" y1="81.28" x2="11.145625" y2="80.360625" width="0.35" layer="1"/>
+<wire x1="11.145625" y1="80.360625" x2="11.145625" y2="77.595" width="0.35" layer="1"/>
+<wire x1="15.24" y1="82.55" x2="15.24" y2="83.33835" width="0.35" layer="16"/>
+<wire x1="15.24" y1="83.33835" x2="16.4786" y2="84.57695" width="0.35" layer="16"/>
+<wire x1="16.4786" y1="84.57695" x2="16.4786" y2="90.8364" width="0.35" layer="16"/>
+<wire x1="16.4786" y1="90.8364" x2="13.97" y2="93.345" width="0.35" layer="16"/>
 </signal>
 <signal name="ENC12PWR">
 <contactref element="JP6" pad="2"/>
 <contactref element="JP12" pad="2"/>
 <contactref element="D6" pad="C"/>
-<wire x1="5.08" y1="85.09" x2="19.05" y2="81.77" width="0" layer="19" extent="1-1"/>
-<wire x1="5.08" y1="82.55" x2="5.08" y2="85.09" width="0" layer="19" extent="1-1"/>
+<wire x1="5.08" y1="82.55" x2="19.05" y2="81.77" width="0" layer="19" extent="1-1"/>
+<wire x1="5.08" y1="85.09" x2="5.08" y2="82.55" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ENC1A">
 <contactref element="R30" pad="1"/>
 <contactref element="D7" pad="3"/>
-<wire x1="-44.03" y1="74.93" x2="29.21" y2="68.41" width="0" layer="19" extent="1-1"/>
+<wire x1="53.34" y1="66.505" x2="53.34" y2="68.365" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ENC1B">
 <contactref element="R31" pad="1"/>
 <contactref element="D9" pad="3"/>
-<wire x1="-7.2" y1="80.01" x2="29.21" y2="53.17" width="0" layer="19" extent="1-1"/>
+<wire x1="57.15" y1="66.505" x2="57.15" y2="68.365" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ENC2A">
 <contactref element="R32" pad="1"/>
 <contactref element="D5" pad="3"/>
-<wire x1="-12.28" y1="80.01" x2="25.4" y2="76.03" width="0" layer="19" extent="1-1"/>
+<wire x1="60.96" y1="66.505" x2="60.96" y2="68.365" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ENC2B">
 <contactref element="R33" pad="1"/>
 <contactref element="D8" pad="3"/>
-<wire x1="-17.36" y1="80.01" x2="29.21" y2="60.79" width="0" layer="19" extent="1-1"/>
+<wire x1="64.77" y1="66.505" x2="64.77" y2="68.365" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="M1GND">
 <contactref element="IC4" pad="AISEN"/>
 <contactref element="R28" pad="2"/>
 <contactref element="IC5" pad="3"/>
-<wire x1="18.385" y1="71.44" x2="15.875" y2="73.94" width="0" layer="19" extent="1-1"/>
-<wire x1="12.283125" y1="75.69" x2="18.385" y2="71.44" width="0" layer="19" extent="1-1"/>
+<wire x1="12.283125" y1="77.595" x2="12.283125" y2="76.241875" width="0.35" layer="1"/>
+<wire x1="12.283125" y1="76.241875" x2="12.7" y2="75.825" width="0.35" layer="1"/>
+<wire x1="12.7" y1="75.825" x2="15.22" y2="75.825" width="0.35" layer="1"/>
+<wire x1="15.22" y1="75.825" x2="15.24" y2="75.845" width="0.35" layer="1"/>
+<wire x1="15.24" y1="75.845" x2="16.409" y2="75.845" width="0.35" layer="1"/>
+<wire x1="17.145" y1="76.581" x2="17.272" y2="76.581" width="0.35" layer="1"/>
+<wire x1="17.272" y1="76.581" x2="17.465" y2="76.388" width="0.35" layer="1"/>
+<wire x1="17.465" y1="76.388" x2="17.465" y2="75.595" width="0.35" layer="1"/>
+<wire x1="16.409" y1="75.845" x2="17.145" y2="76.581" width="0.35" layer="1"/>
 </signal>
 <signal name="M2GND">
 <contactref element="IC4" pad="BISEN"/>
 <contactref element="R29" pad="2"/>
 <contactref element="IC6" pad="3"/>
-<wire x1="10.576875" y1="75.69" x2="6.985" y2="73.94" width="0" layer="19" extent="1-1"/>
-<wire x1="4.475" y1="73.34" x2="10.576875" y2="75.69" width="0" layer="19" extent="1-1"/>
+<wire x1="10.059" y1="75.845" x2="10.576875" y2="76.362875" width="0.35" layer="1"/>
+<wire x1="10.576875" y1="76.362875" x2="10.576875" y2="77.595" width="0.35" layer="1"/>
+<wire x1="7.62" y1="75.845" x2="10.059" y2="75.845" width="0.35" layer="1"/>
+<wire x1="7.62" y1="75.845" x2="6.325" y2="75.845" width="0.35" layer="1"/>
+<wire x1="6.325" y1="75.845" x2="6.045" y2="75.565" width="0.35" layer="1"/>
+<wire x1="6.045" y1="75.565" x2="6.045" y2="74.83966875" width="0.35" layer="1"/>
+<wire x1="6.045" y1="74.83966875" x2="5.82533125" y2="74.62" width="0.35" layer="1"/>
+<wire x1="3.495" y1="74.737" x2="3.495" y2="75.595" width="0.35" layer="1"/>
+<wire x1="5.82533125" y1="74.62" x2="3.612" y2="74.62" width="0.35" layer="1"/>
+<wire x1="3.612" y1="74.62" x2="3.495" y2="74.737" width="0.35" layer="1"/>
 </signal>
 <signal name="GND">
 <contactref element="IC4" pad="GND"/>
 <contactref element="C6" pad="2"/>
 <contactref element="C17" pad="2"/>
-<contactref element="R27" pad="2"/>
-<contactref element="R26" pad="2"/>
-<contactref element="R25" pad="2"/>
-<contactref element="R12" pad="2"/>
 <contactref element="JP6" pad="5"/>
 <contactref element="JP12" pad="5"/>
 <contactref element="R29" pad="1"/>
@@ -10168,107 +9932,124 @@ This DRC includes the common parameters for two-layer PCBs. Should be compatible
 <contactref element="D5" pad="1"/>
 <polygon width="0.1524" layer="1">
 <vertex x="0" y="100.33"/>
-<vertex x="32.385" y="100.33"/>
-<vertex x="32.385" y="42.545"/>
-<vertex x="0" y="42.545"/>
+<vertex x="24.765" y="100.33"/>
+<vertex x="24.765" y="60.325"/>
+<vertex x="0" y="60.325"/>
 </polygon>
-<wire x1="28.26" y1="66.21" x2="24.45" y2="73.83" width="0" layer="19" extent="1-1"/>
-<wire x1="30.16" y1="58.59" x2="28.26" y2="66.21" width="0" layer="19" extent="1-1"/>
-<wire x1="30.16" y1="50.97" x2="30.16" y2="58.59" width="0" layer="19" extent="1-1"/>
-<wire x1="18.385" y1="72.39" x2="28.26" y2="66.21" width="0" layer="19" extent="1-1"/>
-<wire x1="20.985" y1="71.44" x2="18.385" y2="72.39" width="0" layer="19" extent="1-1"/>
-<wire x1="11.714375" y1="69.09" x2="18.385" y2="72.39" width="0" layer="19" extent="1-1"/>
-<wire x1="4.475" y1="72.39" x2="11.714375" y2="69.09" width="0" layer="19" extent="1-1"/>
-<wire x1="1.875" y1="73.34" x2="4.475" y2="72.39" width="0" layer="19" extent="1-1"/>
-<wire x1="12.7" y1="82.55" x2="11.714375" y2="69.09" width="0" layer="19" extent="1-1"/>
-<wire x1="12.7" y1="85.09" x2="12.7" y2="82.55" width="0" layer="19" extent="1-1"/>
-<wire x1="15.875" y1="70.84" x2="1.875" y2="73.34" width="0" layer="19" extent="1-1"/>
-<wire x1="6.985" y1="70.84" x2="15.875" y2="70.84" width="0" layer="19" extent="1-1"/>
-<wire x1="-14.19" y1="68.58" x2="6.985" y2="70.84" width="0" layer="19" extent="1-1"/>
-<wire x1="-19.27" y1="68.58" x2="-14.19" y2="68.58" width="0" layer="19" extent="1-1"/>
-<wire x1="-11.95" y1="74.93" x2="6.985" y2="70.84" width="0" layer="19" extent="1-1"/>
-<wire x1="-17.03" y1="74.93" x2="-11.95" y2="74.93" width="0" layer="19" extent="1-1"/>
-<wire x1="2.96" y1="51.435" x2="-17.03" y2="74.93" width="0" layer="19" extent="1-1"/>
-<wire x1="6.77" y1="52.705" x2="2.96" y2="51.435" width="0" layer="19" extent="1-1"/>
-<wire x1="10.58" y1="53.975" x2="6.77" y2="52.705" width="0" layer="19" extent="1-1"/>
-<wire x1="15.24" y1="52.285" x2="10.58" y2="53.975" width="0" layer="19" extent="1-1"/>
+<wire x1="11.714375" y1="70.995" x2="11.714375" y2="72.105625" width="0.35" layer="1"/>
+<wire x1="11.075" y1="72.745" x2="7.62" y2="72.745" width="0.35" layer="1"/>
+<wire x1="11.714375" y1="72.105625" x2="11.075" y2="72.745" width="0.35" layer="1"/>
+<wire x1="15.24" y1="72.745" x2="12.35375" y2="72.745" width="0.35" layer="1"/>
+<wire x1="12.35375" y1="72.745" x2="11.714375" y2="72.105625" width="0.35" layer="1"/>
+<wire x1="7.62" y1="72.745" x2="6.325" y2="72.745" width="0.35" layer="1"/>
+<wire x1="6.325" y1="72.745" x2="6.045" y2="73.025" width="0.35" layer="1"/>
+<wire x1="6.045" y1="73.025" x2="6.045" y2="73.75033125" width="0.35" layer="1"/>
+<wire x1="5.72533125" y1="74.07" x2="3.81" y2="74.07" width="0.35" layer="1"/>
+<wire x1="3.81" y1="74.07" x2="3.495" y2="73.755" width="0.35" layer="1"/>
+<wire x1="3.495" y1="73.755" x2="3.495" y2="72.995" width="0.35" layer="1"/>
+<wire x1="6.045" y1="73.75033125" x2="5.72533125" y2="74.07" width="0.35" layer="1"/>
+<wire x1="4.445" y1="75.595" x2="4.445" y2="76.454" width="0.35" layer="1"/>
+<wire x1="4.445" y1="76.454" x2="4.064" y2="76.835" width="0.35" layer="1"/>
+<wire x1="4.064" y1="76.835" x2="3.175" y2="76.835" width="0.35" layer="1"/>
+<wire x1="3.175" y1="76.835" x2="2.845" y2="76.505" width="0.35" layer="1"/>
+<wire x1="2.845" y1="74.405" x2="3.495" y2="73.755" width="0.35" layer="1"/>
+<wire x1="2.845" y1="76.505" x2="2.845" y2="74.405" width="0.35" layer="1"/>
+<wire x1="15.24" y1="72.745" x2="16.409" y2="72.745" width="0.35" layer="1"/>
+<wire x1="17.145" y1="72.009" x2="17.272" y2="72.009" width="0.35" layer="1"/>
+<wire x1="17.272" y1="72.009" x2="17.465" y2="72.202" width="0.35" layer="1"/>
+<wire x1="17.465" y1="72.202" x2="17.465" y2="72.995" width="0.35" layer="1"/>
+<wire x1="16.409" y1="72.745" x2="17.145" y2="72.009" width="0.35" layer="1"/>
+<wire x1="18.415" y1="75.595" x2="18.415" y2="74.803" width="0.35" layer="1"/>
+<wire x1="17.465" y1="73.853" x2="17.465" y2="72.995" width="0.35" layer="1"/>
+<wire x1="18.415" y1="74.803" x2="17.465" y2="73.853" width="0.35" layer="1"/>
+<wire x1="17.465" y1="72.202" x2="17.665" y2="72.002" width="0.35" layer="1"/>
+<wire x1="17.665" y1="72.002" x2="17.665" y2="71.12" width="0.35" layer="1"/>
+<via x="6.985" y="71.12" extent="1-16" drill="0.3"/>
+<wire x1="65.72" y1="64.305" x2="60.01" y2="64.305" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="VCP34">
 <contactref element="C9" pad="2"/>
 <contactref element="IC4" pad="VCP"/>
-<wire x1="10.576875" y1="69.09" x2="-6.87" y2="74.93" width="0" layer="19" extent="1-1"/>
+<wire x1="10.576875" y1="70.995" x2="10.576875" y2="68.488875" width="0.35" layer="1"/>
+<wire x1="10.576875" y1="68.488875" x2="10.414" y2="68.326" width="0.35" layer="1"/>
+<wire x1="10.414" y1="68.326" x2="9.894" y2="68.326" width="0.35" layer="1"/>
 </signal>
 <signal name="IN2_B">
 <contactref element="IC4" pad="BIN2"/>
-<contactref element="R27" pad="1"/>
-<contactref element="D4" pad="3"/>
-<wire x1="15.24" y1="50.585" x2="16.51" y2="48.725" width="0" layer="19" extent="1-1"/>
-<wire x1="10.008125" y1="69.09" x2="15.24" y2="50.585" width="0" layer="19" extent="1-1"/>
+<wire x1="9.49881875" y1="69.173" x2="8.255" y2="69.173" width="0.35" layer="1"/>
+<wire x1="10.008125" y1="70.995" x2="10.008125" y2="69.68230625" width="0.35" layer="1"/>
+<wire x1="10.008125" y1="69.68230625" x2="9.49881875" y2="69.173" width="0.35" layer="1"/>
 </signal>
 <signal name="IN2_A">
 <contactref element="IC4" pad="BIN1"/>
-<contactref element="R26" pad="1"/>
-<contactref element="D3" pad="3"/>
-<wire x1="12.28" y1="53.975" x2="12.7" y2="48.725" width="0" layer="19" extent="1-1"/>
-<wire x1="9.439375" y1="69.09" x2="12.28" y2="53.975" width="0" layer="19" extent="1-1"/>
+<wire x1="9.439375" y1="70.995" x2="9.439375" y2="69.891375" width="0.35" layer="1"/>
+<wire x1="9.439375" y1="69.891375" x2="9.271" y2="69.723" width="0.35" layer="1"/>
+<wire x1="9.271" y1="69.723" x2="6.858" y2="69.723" width="0.35" layer="1"/>
 </signal>
 <signal name="IN1_A">
 <contactref element="IC4" pad="AIN1"/>
-<contactref element="R12" pad="1"/>
-<contactref element="D1" pad="3"/>
-<wire x1="4.66" y1="51.435" x2="5.08" y2="48.725" width="0" layer="19" extent="1-1"/>
-<wire x1="13.420625" y1="69.09" x2="4.66" y2="51.435" width="0" layer="19" extent="1-1"/>
+<wire x1="13.420625" y1="70.995" x2="13.420625" y2="70.0168375" width="0.35" layer="1"/>
+<wire x1="13.420625" y1="70.0168375" x2="13.58823125" y2="69.84923125" width="0.35" layer="1"/>
+<wire x1="13.58823125" y1="69.84923125" x2="15.23923125" y2="69.84923125" width="0.35" layer="1"/>
+<wire x1="15.23923125" y1="69.84923125" x2="15.24" y2="69.85" width="0.35" layer="1"/>
 </signal>
 <signal name="IN1_B">
 <contactref element="IC4" pad="AIN2"/>
-<contactref element="R25" pad="1"/>
-<contactref element="D2" pad="3"/>
-<wire x1="8.47" y1="52.705" x2="8.89" y2="48.725" width="0" layer="19" extent="1-1"/>
-<wire x1="12.851875" y1="69.09" x2="8.47" y2="52.705" width="0" layer="19" extent="1-1"/>
+<wire x1="12.851875" y1="70.995" x2="12.861475" y2="70.9854" width="0.35" layer="1"/>
+<wire x1="13.3604125" y1="69.29923125" x2="14.52076875" y2="69.29923125" width="0.35" layer="1"/>
+<wire x1="14.52076875" y1="69.29923125" x2="14.605" y2="69.215" width="0.35" layer="1"/>
+<wire x1="12.861475" y1="70.9854" x2="12.861475" y2="69.79816875" width="0.35" layer="1"/>
+<wire x1="12.861475" y1="69.79816875" x2="13.3604125" y2="69.29923125" width="0.35" layer="1"/>
 </signal>
 <signal name="!M12_FAULT">
 <contactref element="IC4" pad="NFAULT"/>
 <contactref element="JP15" pad="1"/>
-<wire x1="9.439375" y1="75.69" x2="-40.64" y2="66.04" width="0" layer="19" extent="1-1"/>
+<wire x1="9.439375" y1="77.595" x2="9.439375" y2="78.698625" width="0.35" layer="1"/>
+<wire x1="9.439375" y1="78.698625" x2="9.017" y2="79.121" width="0.35" layer="1"/>
+<wire x1="9.017" y1="79.121" x2="7.366" y2="79.121" width="0.35" layer="1"/>
+<wire x1="7.366" y1="79.121" x2="6.985" y2="78.74" width="0.35" layer="1"/>
+<wire x1="6.985" y1="78.74" x2="6.985" y2="78.105" width="0.35" layer="1"/>
 </signal>
 <signal name="MI1">
 <contactref element="IC5" pad="1"/>
+<wire x1="19.365" y1="75.595" x2="19.365" y2="76.388" width="0.35" layer="1"/>
+<wire x1="19.365" y1="76.388" x2="19.558" y2="76.581" width="0.35" layer="1"/>
+<wire x1="19.558" y1="76.581" x2="19.939" y2="76.581" width="0.35" layer="1"/>
+<wire x1="19.939" y1="76.581" x2="20.32" y2="76.2" width="0.35" layer="1"/>
+<wire x1="20.32" y1="76.2" x2="20.32" y2="69.85" width="0.35" layer="1"/>
 </signal>
 <signal name="MI2">
 <contactref element="IC6" pad="1"/>
+<wire x1="5.395" y1="75.595" x2="5.395" y2="76.52" width="0.35" layer="1"/>
+<wire x1="5.395" y1="76.52" x2="4.445" y2="77.47" width="0.35" layer="1"/>
+<wire x1="4.445" y1="77.47" x2="2.54" y2="77.47" width="0.35" layer="1"/>
+<wire x1="2.54" y1="77.47" x2="1.905" y2="76.835" width="0.35" layer="1"/>
+<wire x1="1.905" y1="76.835" x2="1.905" y2="70.485" width="0.35" layer="1"/>
 </signal>
 <signal name="ENC12_PWR">
 <contactref element="SJ2" pad="2"/>
 <contactref element="D6" pad="A"/>
-<wire x1="22.86" y1="83.82" x2="19.05" y2="85.87" width="0" layer="19" extent="1-1"/>
+<wire x1="19.05" y1="85.87" x2="22.86" y2="83.82" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ENC_1A">
 <contactref element="JP12" pad="3"/>
 <contactref element="R30" pad="2"/>
-<wire x1="-42.33" y1="74.93" x2="7.62" y2="85.09" width="0" layer="19" extent="1-1"/>
+<wire x1="7.62" y1="85.09" x2="53.34" y2="70.065" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ENC_1B">
 <contactref element="JP12" pad="4"/>
 <contactref element="R31" pad="2"/>
-<wire x1="10.16" y1="85.09" x2="-5.5" y2="80.01" width="0" layer="19" extent="1-1"/>
+<wire x1="10.16" y1="85.09" x2="57.15" y2="70.065" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ENC_2A">
 <contactref element="JP6" pad="3"/>
 <contactref element="R32" pad="2"/>
-<wire x1="7.62" y1="82.55" x2="-10.58" y2="80.01" width="0" layer="19" extent="1-1"/>
+<wire x1="7.62" y1="82.55" x2="60.96" y2="70.065" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ENC_2B">
 <contactref element="JP6" pad="4"/>
 <contactref element="R33" pad="2"/>
-<wire x1="10.16" y1="82.55" x2="-15.66" y2="80.01" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="PWM2">
-<contactref element="D4" pad="2"/>
-<contactref element="D3" pad="1"/>
-<wire x1="17.46" y1="46.525" x2="11.75" y2="46.525" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="IN2B">
-<contactref element="D4" pad="1"/>
+<wire x1="10.16" y1="82.55" x2="64.77" y2="70.065" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="+3V3">
 <contactref element="IC5" pad="5"/>
@@ -10277,43 +10058,48 @@ This DRC includes the common parameters for two-layer PCBs. Should be compatible
 <contactref element="C21" pad="1"/>
 <contactref element="SJ2" pad="1"/>
 <contactref element="IC4" pad="NSLEEP"/>
-<wire x1="-18.53" y1="74.93" x2="-13.45" y2="74.93" width="0" layer="19" extent="1-1"/>
-<wire x1="13.420625" y1="75.69" x2="-18.53" y2="74.93" width="0" layer="19" extent="1-1"/>
-<wire x1="22.86" y1="85.344" x2="13.420625" y2="75.69" width="0" layer="19" extent="1-1"/>
-<wire x1="20.985" y1="73.34" x2="22.86" y2="85.344" width="0" layer="19" extent="1-1"/>
-<wire x1="1.875" y1="71.44" x2="20.985" y2="73.34" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="+5V">
+<wire x1="19.365" y1="72.995" x2="19.365" y2="72.197" width="0.35" layer="1"/>
+<wire x1="19.165" y1="71.997" x2="19.165" y2="71.12" width="0.35" layer="1"/>
+<wire x1="19.365" y1="72.197" x2="19.165" y2="71.997" width="0.35" layer="1"/>
 <contactref element="D7" pad="2"/>
 <contactref element="D9" pad="1"/>
 <contactref element="D5" pad="2"/>
 <contactref element="D8" pad="1"/>
+<wire x1="13.420625" y1="77.595" x2="13.420625" y2="78.571625" width="0.35" layer="1"/>
+<wire x1="13.420625" y1="78.571625" x2="13.589" y2="78.74" width="0.35" layer="1"/>
+<wire x1="13.589" y1="78.74" x2="14.605" y2="78.74" width="0.35" layer="1"/>
+<wire x1="14.605" y1="78.74" x2="22.86" y2="82.296" width="0" layer="19" extent="1-1"/>
+<wire x1="19.365" y1="72.995" x2="14.605" y2="78.74" width="0" layer="19" extent="1-1"/>
+<wire x1="5.395" y1="72.995" x2="13.420625" y2="77.595" width="0" layer="19" extent="1-1"/>
+<wire x1="5.195" y1="71.12" x2="5.395" y2="72.995" width="0" layer="19" extent="1-1"/>
+<wire x1="56.2" y1="64.305" x2="19.165" y2="71.12" width="0" layer="19" extent="1-1"/>
+<wire x1="54.29" y1="64.305" x2="56.2" y2="64.305" width="0" layer="19" extent="1-1"/>
+<wire x1="61.91" y1="64.305" x2="56.2" y2="64.305" width="0" layer="19" extent="1-1"/>
+<wire x1="63.82" y1="64.305" x2="61.91" y2="64.305" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="+5V">
 <contactref element="SJ2" pad="3"/>
-<wire x1="28.26" y1="58.59" x2="28.26" y2="50.97" width="0" layer="19" extent="1-1"/>
-<wire x1="30.16" y1="66.21" x2="28.26" y2="58.59" width="0" layer="19" extent="1-1"/>
-<wire x1="26.35" y1="73.83" x2="30.16" y2="66.21" width="0" layer="19" extent="1-1"/>
-<wire x1="22.86" y1="82.296" x2="26.35" y2="73.83" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="VCC">
 <contactref element="IC4" pad="VM"/>
 <contactref element="C17" pad="1"/>
 <contactref element="C9" pad="1"/>
-<wire x1="-16.34" y1="68.58" x2="-8.37" y2="74.93" width="0" layer="19" extent="1-1"/>
-<wire x1="11.145625" y1="69.09" x2="-16.34" y2="68.58" width="0" layer="19" extent="1-1"/>
+<wire x1="10.64181875" y1="67.776" x2="10.626" y2="67.776" width="0.35" layer="1"/>
+<wire x1="11.145625" y1="70.995" x2="11.145625" y2="68.27980625" width="0.35" layer="1"/>
+<wire x1="11.145625" y1="68.27980625" x2="10.64181875" y2="67.776" width="0.35" layer="1"/>
+<wire x1="9.949" y1="67.099" x2="9.949" y2="66.294" width="0.35" layer="1"/>
+<wire x1="10.626" y1="67.776" x2="9.949" y2="67.099" width="0.35" layer="1"/>
+<wire x1="8.394" y1="68.326" x2="8.001" y2="68.326" width="0.35" layer="1"/>
+<wire x1="8.001" y1="68.326" x2="7.62" y2="67.945" width="0.35" layer="1"/>
+<wire x1="7.62" y1="66.802" x2="8.128" y2="66.294" width="0.35" layer="1"/>
+<wire x1="8.128" y1="66.294" x2="9.949" y2="66.294" width="0.35" layer="1"/>
+<wire x1="7.62" y1="67.945" x2="7.62" y2="66.802" width="0.35" layer="1"/>
 </signal>
-<signal name="PWM1">
-<contactref element="D1" pad="1"/>
-<contactref element="D2" pad="2"/>
-<wire x1="4.13" y1="46.525" x2="9.84" y2="46.525" width="0" layer="19" extent="1-1"/>
+<signal name="N$2">
+<via x="8.255" y="71.12" extent="1-16" drill="0.32"/>
 </signal>
-<signal name="IN1A">
-<contactref element="D1" pad="2"/>
-</signal>
-<signal name="IN1B">
-<contactref element="D2" pad="1"/>
-</signal>
-<signal name="IN2A">
-<contactref element="D3" pad="2"/>
+<signal name="N$3">
+<via x="7.62" y="70.485" extent="1-16" drill="0.3"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
