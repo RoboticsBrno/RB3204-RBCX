@@ -2817,6 +2817,35 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 </package3d>
 </packages3d>
 </library>
+<library name="piezo">
+<packages>
+<package name="PIEZO">
+<wire x1="0.635" y1="7.62" x2="1.905" y2="7.62" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="0" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="0" y1="1.905" x2="0.635" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="2.54" x2="1.905" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="2.54" x2="2.54" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="0" x2="1.905" y2="0" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="0.635" y2="0" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="0" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="1.905" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="8.255" x2="0" y2="9.525" width="0.1524" layer="21"/>
+<wire x1="0" y1="9.525" x2="0.635" y2="10.16" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="10.16" x2="1.905" y2="10.16" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="10.16" x2="2.54" y2="9.525" width="0.1524" layer="21"/>
+<wire x1="0" y1="8.255" x2="0.635" y2="7.62" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="7.62" x2="2.54" y2="8.255" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="9.525" x2="2.54" y2="8.255" width="0.1524" layer="21"/>
+<pad name="-" x="1.27" y="1.27" drill="1.016" shape="long" rot="R180"/>
+<pad name="+" x="1.27" y="8.89" drill="1.016" shape="long" rot="R180"/>
+<text x="-0.5588" y="2.4638" size="1.27" layer="25" ratio="10" rot="R90">&gt;NAME</text>
+<rectangle x1="1.016" y1="1.016" x2="1.524" y2="1.524" layer="51" rot="R90"/>
+<rectangle x1="1.016" y1="8.636" x2="1.524" y2="9.144" layer="51" rot="R90"/>
+<circle x="1.27" y="5.08" radius="5.6796125" width="0.1524" layer="21"/>
+<circle x="1.27" y="8.89" radius="1.79605" width="0.1524" layer="21"/>
+</package>
+</packages>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -4695,6 +4724,35 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="-150.105" y="825.065" size="1.27" layer="27"/>
 <attribute name="VOLTAGE" value="16V" x="-158.75" y="-1521.46" size="1.778" layer="27" display="off"/>
 </element>
+<element name="U$1" library="piezo" package="PIEZO" value="PIEZO" x="-147.32" y="-1540.51" smashed="yes">
+<attribute name="NAME" x="-147.8788" y="-1538.0462" size="1.27" layer="25" ratio="10" rot="R90"/>
+</element>
+<element name="Q10" library="transistors" package="SOT323" value="CHOOSE_ME" x="-148.59" y="843.28" smashed="yes">
+<attribute name="NAME" x="-150.495" y="844.785" size="1.27" layer="25"/>
+<attribute name="VALUE" x="-150.495" y="840.505" size="1.27" layer="27"/>
+</element>
+<element name="R125" library="rcl_upravena" package="R0603" value="180R" x="-149.86" y="-1544.32" smashed="yes">
+<attribute name="NAME" x="-150.495" y="-1543.685" size="1.27" layer="25"/>
+<attribute name="VALUE" x="-150.495" y="-1546.225" size="1.27" layer="27"/>
+</element>
+<element name="R126" library="rcl_upravena" package="R0603" value="180R" x="-149.86" y="-1549.4" smashed="yes">
+<attribute name="NAME" x="-150.495" y="-1548.765" size="1.27" layer="25"/>
+<attribute name="VALUE" x="-150.495" y="-1551.305" size="1.27" layer="27"/>
+</element>
+<element name="D30" library="diode" package="SOD123" value="B5819W" x="-148.59" y="849.63" smashed="yes">
+<attribute name="DESCRIPTION" value="40V 1A 600mV @ 1A SOD-123 Schottky Barrier Diodes (SBD) RoHS" x="-148.59" y="-1555.75" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="NO" x="-148.59" y="-1555.75" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C305445" x="-148.59" y="-1555.75" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Foshan Blue Rocket Elec" x="-148.59" y="-1555.75" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="B5819W" x="-148.59" y="-1555.75" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="-149.69" y="850.63" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOD-123" x="-148.59" y="-1555.75" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="2" x="-148.59" y="-1555.75" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_100PLUS" value="$0.0176" x="-148.59" y="-1555.75" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0342" x="-148.59" y="-1555.75" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_DATE" value="17.03.2020" x="-148.59" y="-1555.75" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="-149.69" y="847.33" size="1.27" layer="27"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">
@@ -4957,6 +5015,8 @@ design rules under a new name.</description>
 <contactref element="C56" pad="-"/>
 <contactref element="C57" pad="-"/>
 <contactref element="C58" pad="-"/>
+<contactref element="Q10" pad="2"/>
+<contactref element="R125" pad="2"/>
 <wire x1="-134.62" y1="392.43" x2="-134.62" y2="384.81" width="0" layer="19" extent="1-1"/>
 <wire x1="-134.62" y1="372.11" x2="-134.62" y2="384.81" width="0" layer="19" extent="1-1"/>
 <wire x1="-134.62" y1="364.49" x2="-134.62" y2="372.11" width="0" layer="19" extent="1-1"/>
@@ -4991,6 +5051,7 @@ design rules under a new name.</description>
 <wire x1="-148.78" y1="801.37" x2="-148.78" y2="786.13" width="0" layer="19" extent="1-1"/>
 <wire x1="-148.78" y1="816.61" x2="-148.78" y2="801.37" width="0" layer="19" extent="1-1"/>
 <wire x1="-148.78" y1="831.85" x2="-148.78" y2="816.61" width="0" layer="19" extent="1-1"/>
+<wire x1="-147.94" y1="842.38" x2="-148.78" y2="831.85" width="0" layer="19" extent="1-1"/>
 <wire x1="-137.16" y1="205.22" x2="-134.62" y2="289.56" width="0" layer="19" extent="1-1"/>
 <wire x1="-137.16" y1="193.79" x2="-137.16" y2="205.22" width="0" layer="19" extent="1-1"/>
 <wire x1="-137.16" y1="182.36" x2="-137.16" y2="193.79" width="0" layer="19" extent="1-1"/>
@@ -5197,6 +5258,7 @@ design rules under a new name.</description>
 <wire x1="-134.62" y1="-1477.01" x2="-134.62" y2="-1459.23" width="0" layer="19" extent="1-1"/>
 <wire x1="-134.62" y1="-1489.71" x2="-134.62" y2="-1477.01" width="0" layer="19" extent="1-1"/>
 <wire x1="-150.89" y1="-1511.91" x2="-134.62" y2="-1489.71" width="0" layer="19" extent="1-1"/>
+<wire x1="-149.01" y1="-1544.32" x2="-150.89" y2="-1511.91" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="+3V3">
 <contactref element="D28" pad="2"/>
@@ -6376,11 +6438,14 @@ design rules under a new name.</description>
 <contactref element="C13" pad="+"/>
 <contactref element="LED6" pad="A"/>
 <contactref element="D29" pad="A"/>
+<contactref element="U$1" pad="+"/>
+<contactref element="D30" pad="C"/>
 <wire x1="-97.79" y1="-1035.05" x2="-137.16" y2="-1129.03" width="0" layer="19" extent="1-1"/>
 <wire x1="-80.29" y1="-941.07" x2="-97.79" y2="-1035.05" width="0" layer="19" extent="1-1"/>
 <wire x1="-49.276" y1="-783.59" x2="-80.29" y2="-941.07" width="0" layer="19" extent="1-1"/>
 <wire x1="-141.75" y1="-1502.41" x2="-137.16" y2="-1129.03" width="0" layer="19" extent="1-1"/>
 <wire x1="-146.54" y1="-1525.27" x2="-141.75" y2="-1502.41" width="0" layer="19" extent="1-1"/>
+<wire x1="-146.05" y1="-1531.62" x2="-146.54" y2="-1525.27" width="0" layer="19" extent="1-1"/>
 <wire x1="-21.336" y1="-325.12" x2="-49.276" y2="-783.59" width="0" layer="19" extent="1-1"/>
 <wire x1="-97.79" y1="121.92" x2="-21.336" y2="-325.12" width="0" layer="19" extent="1-1"/>
 <wire x1="-97.79" y1="137.16" x2="-97.79" y2="121.92" width="0" layer="19" extent="1-1"/>
@@ -6398,6 +6463,7 @@ design rules under a new name.</description>
 <wire x1="-139.7" y1="551.18" x2="-132.36" y2="505.46" width="0" layer="19" extent="1-1"/>
 <wire x1="-133.16" y1="584.2" x2="-139.7" y2="551.18" width="0" layer="19" extent="1-1"/>
 <wire x1="-140.22" y1="647.7" x2="-133.16" y2="584.2" width="0" layer="19" extent="1-1"/>
+<wire x1="-150.49" y1="849.63" x2="-140.22" y2="647.7" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ISERVO">
 <contactref element="R60" pad="2"/>
@@ -6471,6 +6537,8 @@ design rules under a new name.</description>
 </signal>
 <signal name="BUZZER">
 <contactref element="U1" pad="67"/>
+<contactref element="R126" pad="1"/>
+<wire x1="-82.49" y1="-955.58" x2="-150.71" y2="-1549.4" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="DEBUG_TX">
 <contactref element="U1" pad="68"/>
@@ -7401,6 +7469,20 @@ design rules under a new name.</description>
 <wire x1="-146.29" y1="-1511.91" x2="-150.64" y2="-1517.65" width="0" layer="19" extent="1-1"/>
 <wire x1="-148.81" y1="698.5" x2="-150.64" y2="-1525.27" width="0" layer="19" extent="1-1"/>
 <wire x1="-140.78" y1="687.07" x2="-148.81" y2="698.5" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="BUZZER-">
+<contactref element="U$1" pad="-"/>
+<contactref element="Q10" pad="3"/>
+<contactref element="D30" pad="A"/>
+<wire x1="-148.59" y1="844.18" x2="-146.69" y2="849.63" width="0" layer="19" extent="1-1"/>
+<wire x1="-146.05" y1="-1539.24" x2="-146.69" y2="849.63" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="BUZZER_GATE">
+<contactref element="R126" pad="2"/>
+<contactref element="Q10" pad="1"/>
+<contactref element="R125" pad="1"/>
+<wire x1="-149.01" y1="-1549.4" x2="-149.24" y2="842.38" width="0" layer="19" extent="1-1"/>
+<wire x1="-150.71" y1="-1544.32" x2="-149.01" y2="-1549.4" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <mfgpreviewcolors>

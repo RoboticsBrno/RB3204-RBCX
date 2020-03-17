@@ -19227,6 +19227,66 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="piezo">
+<packages>
+<package name="PIEZO">
+<wire x1="0.635" y1="7.62" x2="1.905" y2="7.62" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="0" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="0" y1="1.905" x2="0.635" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="2.54" x2="1.905" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="2.54" x2="2.54" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="0" x2="1.905" y2="0" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="0.635" y2="0" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="0" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="1.905" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="8.255" x2="0" y2="9.525" width="0.1524" layer="21"/>
+<wire x1="0" y1="9.525" x2="0.635" y2="10.16" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="10.16" x2="1.905" y2="10.16" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="10.16" x2="2.54" y2="9.525" width="0.1524" layer="21"/>
+<wire x1="0" y1="8.255" x2="0.635" y2="7.62" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="7.62" x2="2.54" y2="8.255" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="9.525" x2="2.54" y2="8.255" width="0.1524" layer="21"/>
+<pad name="-" x="1.27" y="1.27" drill="1.016" shape="long" rot="R180"/>
+<pad name="+" x="1.27" y="8.89" drill="1.016" shape="long" rot="R180"/>
+<text x="-0.5588" y="2.4638" size="1.27" layer="25" ratio="10" rot="R90">&gt;NAME</text>
+<rectangle x1="1.016" y1="1.016" x2="1.524" y2="1.524" layer="51" rot="R90"/>
+<rectangle x1="1.016" y1="8.636" x2="1.524" y2="9.144" layer="51" rot="R90"/>
+<circle x="1.27" y="5.08" radius="5.6796125" width="0.1524" layer="21"/>
+<circle x="1.27" y="8.89" radius="1.79605" width="0.1524" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="PIEZO">
+<wire x1="0" y1="0" x2="0" y2="7.62" width="0.1524" layer="94"/>
+<wire x1="0" y1="7.62" x2="2.54" y2="7.62" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="7.62" x2="2.54" y2="0" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="0" x2="0" y2="0" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="7.62" x2="5.08" y2="10.16" width="0.1524" layer="94"/>
+<wire x1="5.08" y1="10.16" x2="5.08" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="5.08" y1="-2.54" x2="2.54" y2="0" width="0.1524" layer="94"/>
+<pin name="+" x="-5.08" y="5.08" length="middle"/>
+<pin name="-" x="-5.08" y="2.54" length="middle"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="PIEZO">
+<gates>
+<gate name="G$1" symbol="PIEZO" x="5.08" y="2.54"/>
+</gates>
+<devices>
+<device name="" package="PIEZO">
+<connects>
+<connect gate="G$1" pin="+" pad="+"/>
+<connect gate="G$1" pin="-" pad="-"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -20128,6 +20188,24 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND155" library="Supply" deviceset="GND" device=""/>
+<part name="U$1" library="piezo" deviceset="PIEZO" device=""/>
+<part name="Q10" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
+<part name="GND156" library="Supply" deviceset="GND" device=""/>
+<part name="R125" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R126" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="P+37" library="Supply" deviceset="+5V" device=""/>
+<part name="D30" library="diode" deviceset="SHOTTKY" device="-SOD123" value="B5819W">
+<attribute name="DESCRIPTION" value="40V 1A 600mV @ 1A SOD-123 Schottky Barrier Diodes (SBD) RoHS"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C305445"/>
+<attribute name="MF" value="Foshan Blue Rocket Elec"/>
+<attribute name="MF_ID" value="B5819W"/>
+<attribute name="PACKAGE" value="SOD-123"/>
+<attribute name="PADS" value="2"/>
+<attribute name="PRICE_100PLUS" value="$0.0176"/>
+<attribute name="PRICE_1PLUS" value="$0.0342"/>
+<attribute name="PRICE_DATE" value="17.03.2020"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -29404,6 +29482,39 @@ Jakub Streit
 <attribute name="NAME" x="209.55" y="65.024" size="1.27" layer="95"/>
 <attribute name="VALUE" x="214.122" y="65.024" size="1.27" layer="96"/>
 </instance>
+<instance part="U$1" gate="G$1" x="236.22" y="142.24" smashed="yes"/>
+<instance part="Q10" gate="G$1" x="226.06" y="137.16" smashed="yes">
+<attribute name="VALUE" x="231.14" y="139.7" size="1.27" layer="96" rot="R270"/>
+<attribute name="NAME" x="233.172" y="139.7" size="1.27" layer="95" rot="R270"/>
+</instance>
+<instance part="GND156" gate="1" x="228.6" y="124.46" smashed="yes">
+<attribute name="VALUE" x="226.822" y="122.682" size="1.27" layer="96"/>
+</instance>
+<instance part="R125" gate="G$1" x="220.98" y="129.54" smashed="yes">
+<attribute name="NAME" x="217.17" y="131.064" size="1.27" layer="95"/>
+<attribute name="VALUE" x="221.742" y="131.064" size="1.27" layer="96"/>
+</instance>
+<instance part="R126" gate="G$1" x="205.74" y="134.62" smashed="yes">
+<attribute name="NAME" x="201.93" y="136.144" size="1.27" layer="95"/>
+<attribute name="VALUE" x="206.502" y="136.144" size="1.27" layer="96"/>
+</instance>
+<instance part="P+37" gate="1" x="228.6" y="162.56" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="230.378" y="163.576" size="1.27" layer="96" rot="R270"/>
+</instance>
+<instance part="D30" gate="G$1" x="223.52" y="149.86" smashed="yes" rot="R90">
+<attribute name="NAME" x="221.5134" y="147.32" size="1.27" layer="95" rot="R90"/>
+<attribute name="VALUE" x="226.5934" y="147.32" size="1.27" layer="96" rot="R90"/>
+<attribute name="EXTENDED" x="223.52" y="149.86" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="LCSC_ID" x="223.52" y="149.86" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="MF" x="223.52" y="149.86" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="MF_ID" x="223.52" y="149.86" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PACKAGE" x="223.52" y="149.86" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PADS" x="223.52" y="149.86" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PRICE_100PLUS" x="223.52" y="149.86" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PRICE_1PLUS" x="223.52" y="149.86" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PRICE_DATE" x="223.52" y="149.86" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="DESCRIPTION" x="223.52" y="149.86" size="1.27" layer="96" rot="R90" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -29715,6 +29826,15 @@ Jakub Streit
 <wire x1="236.22" y1="55.88" x2="243.84" y2="55.88" width="0.1524" layer="91"/>
 <junction x="243.84" y="55.88"/>
 </segment>
+<segment>
+<pinref part="Q10" gate="G$1" pin="S"/>
+<pinref part="GND156" gate="1" pin="GND"/>
+<wire x1="228.6" y1="132.08" x2="228.6" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="R125" gate="G$1" pin="2"/>
+<wire x1="228.6" y1="129.54" x2="228.6" y2="127" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="129.54" x2="228.6" y2="129.54" width="0.1524" layer="91"/>
+<junction x="228.6" y="129.54"/>
+</segment>
 </net>
 <net name="SERVO1" class="0">
 <segment>
@@ -29777,6 +29897,11 @@ Jakub Streit
 <wire x1="38.1" y1="180.34" x2="33.02" y2="180.34" width="0.1524" layer="91"/>
 <label x="33.02" y="180.34" size="1.27" layer="95" rot="MR0" xref="yes"/>
 <pinref part="U1" gate="G$1" pin="PA8"/>
+</segment>
+<segment>
+<pinref part="R126" gate="G$1" pin="1"/>
+<wire x1="200.66" y1="134.62" x2="195.58" y2="134.62" width="0.1524" layer="91"/>
+<label x="195.58" y="134.62" size="1.27" layer="95" rot="MR0" xref="yes"/>
 </segment>
 </net>
 <net name="DEBUG_TX" class="0">
@@ -30455,6 +30580,45 @@ Jakub Streit
 <wire x1="38.1" y1="185.42" x2="33.02" y2="185.42" width="0.1524" layer="91"/>
 <label x="33.02" y="185.42" size="1.27" layer="95" rot="MR0" xref="yes"/>
 <pinref part="U1" gate="G$1" pin="PA6"/>
+</segment>
+</net>
+<net name="BUZZER-" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="-"/>
+<wire x1="231.14" y1="144.78" x2="228.6" y2="144.78" width="0.1524" layer="91"/>
+<pinref part="Q10" gate="G$1" pin="D"/>
+<wire x1="228.6" y1="144.78" x2="228.6" y2="142.24" width="0.1524" layer="91"/>
+<pinref part="D30" gate="G$1" pin="A"/>
+<wire x1="223.52" y1="147.32" x2="223.52" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="144.78" x2="228.6" y2="144.78" width="0.1524" layer="91"/>
+<junction x="228.6" y="144.78"/>
+<label x="224.79" y="145.542" size="1.27" layer="95"/>
+</segment>
+</net>
+<net name="+5V" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="+"/>
+<pinref part="P+37" gate="1" pin="+5V"/>
+<wire x1="231.14" y1="147.32" x2="228.6" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="147.32" x2="228.6" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="D30" gate="G$1" pin="C"/>
+<wire x1="228.6" y1="154.94" x2="228.6" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="152.4" x2="223.52" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="154.94" x2="228.6" y2="154.94" width="0.1524" layer="91"/>
+<junction x="228.6" y="154.94"/>
+</segment>
+</net>
+<net name="BUZZER_GATE" class="0">
+<segment>
+<pinref part="R126" gate="G$1" pin="2"/>
+<pinref part="Q10" gate="G$1" pin="G"/>
+<wire x1="210.82" y1="134.62" x2="213.36" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="R125" gate="G$1" pin="1"/>
+<wire x1="213.36" y1="134.62" x2="223.52" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="129.54" x2="213.36" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="129.54" x2="213.36" y2="134.62" width="0.1524" layer="91"/>
+<junction x="213.36" y="134.62"/>
+<label x="211.582" y="135.382" size="1.27" layer="95"/>
 </segment>
 </net>
 </nets>
