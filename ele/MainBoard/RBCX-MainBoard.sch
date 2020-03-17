@@ -16554,6 +16554,88 @@ Source: www.st.com, BAT60J.pdf</description>
 <rectangle x1="0.8" y1="-0.15" x2="1.35" y2="0.15" layer="51"/>
 <rectangle x1="-0.85" y1="-0.55" x2="-0.05" y2="0.55" layer="51"/>
 </package>
+<package name="SOD128">
+<smd name="C" x="-2.25" y="0" dx="1.4" dy="2.1" layer="1" roundness="20"/>
+<smd name="A" x="2.25" y="0" dx="1.4" dy="2.1" layer="1" roundness="20"/>
+<wire x1="-2" y1="1.35" x2="-1" y2="1.35" width="0.127" layer="51"/>
+<wire x1="-1" y1="1.35" x2="2" y2="1.35" width="0.127" layer="51"/>
+<wire x1="2" y1="1.35" x2="2" y2="-1.35" width="0.127" layer="51"/>
+<wire x1="2" y1="-1.35" x2="-1" y2="-1.35" width="0.127" layer="51"/>
+<wire x1="-1" y1="-1.35" x2="-2" y2="-1.35" width="0.127" layer="51"/>
+<wire x1="-2" y1="-1.35" x2="-2" y2="1.35" width="0.127" layer="51"/>
+<wire x1="-1" y1="1.35" x2="-1" y2="-1.35" width="0.127" layer="51"/>
+<rectangle x1="-2.5" y1="-0.95" x2="-2" y2="0.95" layer="21"/>
+<rectangle x1="2" y1="-0.95" x2="2.5" y2="0.95" layer="21"/>
+<text x="-1.905" y="1.905" size="1" layer="25" font="vector" ratio="16">&gt;NAME</text>
+<text x="-2.54" y="-2.54" size="1" layer="27" font="vector" ratio="16">&gt;VALUE</text>
+</package>
+<package name="SOD1608(0603)">
+<smd name="C" x="-0.625" y="0" dx="1.05" dy="0.8" layer="1" roundness="20"/>
+<smd name="A" x="0.425" y="0" dx="0.65" dy="0.8" layer="1" roundness="20"/>
+<wire x1="-1.025" y1="0.425" x2="-0.5" y2="0.425" width="0.1" layer="21"/>
+<wire x1="-0.5" y1="0.425" x2="0.625" y2="0.425" width="0.1" layer="21"/>
+<wire x1="0.625" y1="0.425" x2="0.625" y2="-0.425" width="0.1" layer="21"/>
+<wire x1="0.625" y1="-0.425" x2="-0.5" y2="-0.425" width="0.1" layer="21"/>
+<wire x1="-0.5" y1="-0.425" x2="-1.025" y2="-0.425" width="0.1" layer="21"/>
+<wire x1="-1.025" y1="-0.425" x2="-1.025" y2="0.425" width="0.1" layer="21"/>
+<wire x1="-0.5" y1="0.425" x2="-0.5" y2="-0.425" width="0.1" layer="21"/>
+</package>
+<package name="SMA">
+<description>&lt;b&gt;SMA&lt;/b&gt; CASE 403D-02&lt;p&gt;
+Source: http://www.onsemi.com/pub_link/Collateral/MBRA340T3-D.PDF</description>
+<wire x1="-2.25" y1="1.825" x2="2.25" y2="1.825" width="0.254" layer="21"/>
+<wire x1="2.25" y1="-1.825" x2="-2.25" y2="-1.825" width="0.254" layer="21"/>
+<wire x1="-2.25" y1="1.825" x2="-2.25" y2="1.25" width="0.254" layer="21"/>
+<wire x1="2.25" y1="1.25" x2="2.25" y2="-1.25" width="0.254" layer="51"/>
+<wire x1="-2.25" y1="-1.825" x2="-2.25" y2="-1.25" width="0.254" layer="21"/>
+<wire x1="2.25" y1="-1.825" x2="2.25" y2="-1.25" width="0.254" layer="21" curve="-1.904406"/>
+<wire x1="2.25" y1="1.825" x2="2.25" y2="1.25" width="0.254" layer="21"/>
+<wire x1="-2.25" y1="-1.25" x2="-2.25" y2="1.25" width="0.254" layer="51"/>
+<smd name="C" x="-2" y="0" dx="2" dy="2" layer="1"/>
+<smd name="A" x="2" y="0" dx="2" dy="2" layer="1"/>
+<text x="-2.75" y="2" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-2.75" y="-3.5" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<rectangle x1="2.38" y1="-0.825" x2="2.8" y2="0.8" layer="51"/>
+<rectangle x1="-2.8" y1="-0.8" x2="-2.38" y2="0.8" layer="51"/>
+<rectangle x1="-1.5" y1="-1.75" x2="-0.75" y2="1.75" layer="51"/>
+<rectangle x1="-1.5" y1="1.25" x2="-0.75" y2="1.75" layer="21"/>
+<rectangle x1="-1.5" y1="-1.75" x2="-0.75" y2="-1.25" layer="21"/>
+</package>
+<package name="SMC">
+<description>&lt;b&gt;DIODE&lt;/b&gt;</description>
+<wire x1="-3.5606" y1="3.105" x2="3.5606" y2="3.105" width="0.1016" layer="21"/>
+<wire x1="-3.5606" y1="-3.105" x2="3.5606" y2="-3.105" width="0.1016" layer="21"/>
+<wire x1="-3.5606" y1="-3.105" x2="-3.5606" y2="3.105" width="0.1016" layer="51"/>
+<wire x1="3.5606" y1="-3.105" x2="3.5606" y2="3.105" width="0.1016" layer="51"/>
+<wire x1="0.543" y1="1" x2="-0.83" y2="0" width="0.2032" layer="21"/>
+<wire x1="-0.83" y1="0" x2="0.543" y2="-1" width="0.2032" layer="21"/>
+<wire x1="0.543" y1="-1" x2="0.543" y2="1" width="0.2032" layer="21"/>
+<smd name="C" x="-3.7" y="0" dx="2.8" dy="3.8" layer="1"/>
+<smd name="A" x="3.7" y="0" dx="2.8" dy="3.8" layer="1"/>
+<text x="-3.459" y="3.359" size="1.27" layer="25">&gt;NAME</text>
+<text x="-3.459" y="-4.629" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-4.094" y1="-1.0922" x2="-3.5606" y2="1.0922" layer="51"/>
+<rectangle x1="3.5606" y1="-1.0922" x2="4.094" y2="1.0922" layer="51"/>
+<rectangle x1="-2.1" y1="-3.1" x2="-0.85" y2="3.1" layer="21"/>
+</package>
+<package name="SMB">
+<smd name="C" x="2.895" y="0" dx="2.3" dy="1.52" layer="1" rot="R90"/>
+<smd name="A" x="-2.895" y="0" dx="2.3" dy="1.52" layer="1" rot="R90"/>
+</package>
+<package name="SOD123">
+<description>&lt;b&gt;Diode&lt;/b&gt;</description>
+<wire x1="-1.1" y1="0.7" x2="1.1" y2="0.7" width="0.254" layer="51"/>
+<wire x1="1.1" y1="0.7" x2="1.1" y2="-0.7" width="0.254" layer="51"/>
+<wire x1="1.1" y1="-0.7" x2="-1.1" y2="-0.7" width="0.254" layer="51"/>
+<wire x1="-1.1" y1="-0.7" x2="-1.1" y2="0.7" width="0.254" layer="51"/>
+<smd name="C" x="-1.9" y="0" dx="1.4" dy="1.4" layer="1"/>
+<smd name="A" x="1.9" y="0" dx="1.4" dy="1.4" layer="1"/>
+<text x="-1.1" y="1" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.1" y="-2.3" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-1.95" y1="-0.45" x2="-1.2" y2="0.4" layer="51"/>
+<rectangle x1="1.2" y1="-0.45" x2="1.95" y2="0.4" layer="51"/>
+<rectangle x1="-1.05" y1="-0.65" x2="-0.15" y2="0.7" layer="51"/>
+</package>
 </packages>
 <packages3d>
 <package3d name="DO214BA" urn="urn:adsk.eagle:package:43453/2" type="model">
@@ -16589,6 +16671,19 @@ Source: www.st.com, BAT60J.pdf</description>
 <pin name="A" x="-2.54" y="0" visible="off" length="point" direction="pas"/>
 <pin name="C" x="2.54" y="0" visible="off" length="point" direction="pas" rot="R180"/>
 </symbol>
+<symbol name="SHOTTKY">
+<wire x1="-1.27" y1="-1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="-1.27" y2="1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
+<text x="2.54" y="0.4826" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.54" y="-2.3114" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="A" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
+<pin name="C" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+<wire x1="1.27" y1="1.27" x2="0.762" y2="1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-1.27" x2="1.778" y2="-1.27" width="0.254" layer="94"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="BAT60J" prefix="D">
@@ -16620,6 +16715,67 @@ Source: www.st.com, BAT60J.pdf</description>
 <package3dinstances>
 <package3dinstance package3d_urn="urn:adsk.eagle:package:43453/2"/>
 </package3dinstances>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="SHOTTKY" prefix="D" uservalue="yes">
+<gates>
+<gate name="G$1" symbol="SHOTTKY" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOD128">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-SOD1608" package="SOD1608(0603)">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-SMA" package="SMA">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-SMC" package="SMC">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-SMB" package="SMB">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-SOD123" package="SOD123">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
 <technologies>
 <technology name=""/>
 </technologies>
@@ -18762,74 +18918,6 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 </deviceset>
 </devicesets>
 </library>
-<library name="SOD-123">
-<packages>
-<package name="SOD-123">
-<wire x1="-1.35" y1="0.8" x2="1.35" y2="0.8" width="0.2032" layer="51"/>
-<wire x1="1.35" y1="0.8" x2="1.35" y2="-0.8" width="0.2032" layer="51"/>
-<wire x1="1.35" y1="-0.8" x2="-1.35" y2="-0.8" width="0.2032" layer="51"/>
-<wire x1="-1.35" y1="-0.8" x2="-1.35" y2="0.8" width="0.2032" layer="51"/>
-<wire x1="-0.85" y1="0.8" x2="0.85" y2="0.8" width="0.2032" layer="21"/>
-<wire x1="0.85" y1="-0.8" x2="-0.85" y2="-0.8" width="0.2032" layer="21"/>
-<smd name="A" x="1.625" y="0" dx="0.91" dy="1.22" layer="1"/>
-<smd name="C" x="-1.625" y="0" dx="0.91" dy="1.22" layer="1" rot="R180"/>
-<text x="-2" y="1" size="1.27" layer="25">&gt;NAME</text>
-<text x="-2" y="-2.5" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-1.8" y1="-0.55" x2="-1.425" y2="0.55" layer="51"/>
-<rectangle x1="1.425" y1="-0.55" x2="1.8" y2="0.55" layer="51" rot="R180"/>
-<rectangle x1="-0.95" y1="-0.775" x2="-0.65" y2="0.8" layer="21"/>
-</package>
-</packages>
-<symbols>
-<symbol name="SCHOTTKY_DIODE">
-<wire x1="-1.27" y1="-1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
-<wire x1="1.27" y1="0" x2="-1.27" y2="1.27" width="0.254" layer="94"/>
-<wire x1="1.905" y1="1.27" x2="1.27" y2="1.27" width="0.254" layer="94"/>
-<wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
-<wire x1="-1.27" y1="1.27" x2="-1.27" y2="0" width="0.254" layer="94"/>
-<wire x1="-1.27" y1="0" x2="-1.27" y2="-1.27" width="0.254" layer="94"/>
-<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
-<wire x1="1.905" y1="1.27" x2="1.905" y2="1.016" width="0.254" layer="94"/>
-<wire x1="1.27" y1="-1.27" x2="0.635" y2="-1.27" width="0.254" layer="94"/>
-<wire x1="0.635" y1="-1.016" x2="0.635" y2="-1.27" width="0.254" layer="94"/>
-<wire x1="-1.27" y1="0" x2="-2.54" y2="0" width="0.254" layer="94"/>
-<wire x1="1.27" y1="0" x2="2.54" y2="0" width="0.254" layer="94"/>
-<text x="-2.286" y="1.905" size="1.27" layer="95">&gt;NAME</text>
-<text x="-2.286" y="-3.429" size="1.27" layer="96">&gt;VALUE</text>
-<pin name="A" x="-2.54" y="0" visible="off" length="point" direction="pas"/>
-<pin name="C" x="2.54" y="0" visible="off" length="point" direction="pas" rot="R180"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="B5819W">
-<description>40V 1A 600mV @ 1A SOD-123 Schottky Barrier Diodes (SBD) RoHS</description>
-<gates>
-<gate name="G$1" symbol="SCHOTTKY_DIODE" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="SOD-123">
-<connects>
-<connect gate="G$1" pin="A" pad="A"/>
-<connect gate="G$1" pin="C" pad="C"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="DESCRIPTION" value="40V 1A 600mV @ 1A SOD-123 Schottky Barrier Diodes (SBD) RoHS"/>
-<attribute name="EXTENDED" value="NO" constant="no"/>
-<attribute name="LCSC_ID" value="C305445"/>
-<attribute name="MF" value="Foshan Blue Rocket Elec"/>
-<attribute name="MF_ID" value="B5819W"/>
-<attribute name="PACKAGE" value="SOD-123"/>
-<attribute name="PADS" value="2"/>
-<attribute name="PRICE_100PLUS" value="$0.0176" constant="no"/>
-<attribute name="PRICE_1PLUS" value="$0.0342" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 </libraries>
 <attributes>
 </attributes>
@@ -19513,8 +19601,6 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="GND117" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND116" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND118" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="D15" library="SOD-123" deviceset="B5819W" device=""/>
-<part name="D3" library="SOD-123" deviceset="B5819W" device=""/>
 <part name="+3V7" library="Supply" deviceset="+3V3" device=""/>
 <part name="+3V32" library="Supply" deviceset="+3V3" device=""/>
 <part name="+3V33" library="Supply" deviceset="+3V3" device=""/>
@@ -19532,7 +19618,30 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="P+31" library="Supply" deviceset="+5V" device=""/>
 <part name="P+33" library="Supply" deviceset="+5V" device=""/>
 <part name="P+38" library="Supply" deviceset="+5V" device=""/>
-<part name="U$1" library="SOD-123" deviceset="B5819W" device=""/>
+<part name="D6" library="diode" deviceset="SHOTTKY" device="-SOD123" value="B5819W">
+<attribute name="DESCRIPTION" value="40V 1A 600mV @ 1A SOD-123 Schottky Barrier Diodes (SBD) RoHS"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C305445"/>
+<attribute name="MF" value="Foshan Blue Rocket Elec"/>
+<attribute name="MF_ID" value="B5819W"/>
+<attribute name="PACKAGE" value="SOD-123"/>
+<attribute name="PADS" value="2"/>
+<attribute name="PRICE_100PLUS" value="$0.0176"/>
+<attribute name="PRICE_1PLUS" value="$0.0342"/>
+<attribute name="PRICE_DATE" value="17.03.2020"/>
+</part>
+<part name="D3" library="diode" deviceset="SHOTTKY" device="-SOD123" value="B5819W">
+<attribute name="DESCRIPTION" value="40V 1A 600mV @ 1A SOD-123 Schottky Barrier Diodes (SBD) RoHS"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C305445"/>
+<attribute name="MF" value="Foshan Blue Rocket Elec"/>
+<attribute name="MF_ID" value="B5819W"/>
+<attribute name="PACKAGE" value="SOD-123"/>
+<attribute name="PADS" value="2"/>
+<attribute name="PRICE_100PLUS" value="$0.0176"/>
+<attribute name="PRICE_1PLUS" value="$0.0342"/>
+<attribute name="PRICE_DATE" value="17.03.2020"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -23228,17 +23337,33 @@ Jakub Streit
 <attribute name="NAME" x="209.55" y="84.455" size="1.27" layer="95"/>
 <attribute name="VALUE" x="209.55" y="78.232" size="1.27" layer="96" rot="MR180"/>
 </instance>
-<instance part="D15" gate="G$1" x="208.28" y="213.36" smashed="yes">
-<attribute name="NAME" x="205.994" y="215.265" size="1.778" layer="95"/>
-<attribute name="VALUE" x="205.994" y="209.931" size="1.778" layer="96"/>
+<instance part="D6" gate="G$1" x="208.28" y="213.36" smashed="yes">
+<attribute name="NAME" x="205.74" y="215.3666" size="1.27" layer="95"/>
+<attribute name="VALUE" x="205.74" y="210.2866" size="1.27" layer="96"/>
+<attribute name="EXTENDED" x="208.28" y="213.36" size="1.27" layer="96" display="off"/>
+<attribute name="LCSC_ID" x="208.28" y="213.36" size="1.27" layer="96" display="off"/>
+<attribute name="MF" x="208.28" y="213.36" size="1.27" layer="96" display="off"/>
+<attribute name="MF_ID" x="208.28" y="213.36" size="1.27" layer="96" display="off"/>
+<attribute name="PACKAGE" x="208.28" y="213.36" size="1.27" layer="96" display="off"/>
+<attribute name="PADS" x="208.28" y="213.36" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_100PLUS" x="208.28" y="213.36" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_1PLUS" x="208.28" y="213.36" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_DATE" x="208.28" y="213.36" size="1.27" layer="96" display="off"/>
+<attribute name="DESCRIPTION" x="208.28" y="213.36" size="1.27" layer="96" display="off"/>
 </instance>
 <instance part="D3" gate="G$1" x="208.28" y="109.22" smashed="yes">
-<attribute name="NAME" x="205.994" y="111.125" size="1.778" layer="95"/>
-<attribute name="VALUE" x="205.994" y="105.791" size="1.778" layer="96"/>
-</instance>
-<instance part="U$1" gate="G$1" x="208.28" y="220.98" smashed="yes">
-<attribute name="NAME" x="205.994" y="222.885" size="1.27" layer="95"/>
-<attribute name="VALUE" x="205.994" y="217.551" size="1.27" layer="96"/>
+<attribute name="NAME" x="205.74" y="111.2266" size="1.27" layer="95"/>
+<attribute name="VALUE" x="205.74" y="106.1466" size="1.27" layer="96"/>
+<attribute name="EXTENDED" x="208.28" y="109.22" size="1.27" layer="96" display="off"/>
+<attribute name="LCSC_ID" x="208.28" y="109.22" size="1.27" layer="96" display="off"/>
+<attribute name="MF" x="208.28" y="109.22" size="1.27" layer="96" display="off"/>
+<attribute name="MF_ID" x="208.28" y="109.22" size="1.27" layer="96" display="off"/>
+<attribute name="PACKAGE" x="208.28" y="109.22" size="1.27" layer="96" display="off"/>
+<attribute name="PADS" x="208.28" y="109.22" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_100PLUS" x="208.28" y="109.22" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_1PLUS" x="208.28" y="109.22" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_DATE" x="208.28" y="109.22" size="1.27" layer="96" display="off"/>
+<attribute name="DESCRIPTION" x="208.28" y="109.22" size="1.27" layer="96" display="off"/>
 </instance>
 </instances>
 <busses>
@@ -23923,7 +24048,7 @@ Jakub Streit
 <segment>
 <pinref part="SJ1" gate="G$1" pin="2"/>
 <wire x1="203.2" y1="213.36" x2="205.74" y2="213.36" width="0.1524" layer="91"/>
-<pinref part="D15" gate="G$1" pin="A"/>
+<pinref part="D6" gate="G$1" pin="A"/>
 </segment>
 </net>
 <net name="PWM1B" class="0">
@@ -23962,7 +24087,7 @@ Jakub Streit
 <label x="213.868" y="214.122" size="1.27" layer="95"/>
 <wire x1="210.82" y1="213.36" x2="236.22" y2="213.36" width="0.1524" layer="91"/>
 <label x="235.712" y="223.774" size="1.27" layer="95" rot="MR270"/>
-<pinref part="D15" gate="G$1" pin="C"/>
+<pinref part="D6" gate="G$1" pin="C"/>
 </segment>
 </net>
 <net name="M1A" class="0">
