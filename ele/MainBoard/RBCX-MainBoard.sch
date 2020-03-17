@@ -20206,6 +20206,14 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <attribute name="PRICE_1PLUS" value="$0.0342"/>
 <attribute name="PRICE_DATE" value="17.03.2020"/>
 </part>
+<part name="JP58" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_UART"/>
+<part name="GND157" library="Supply" deviceset="GND" device=""/>
+<part name="R127" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R128" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="JP59" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="EXPANDER_UART"/>
+<part name="GND158" library="Supply" deviceset="GND" device=""/>
+<part name="R129" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R130" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 </parts>
 <sheets>
 <sheet>
@@ -32030,6 +32038,7 @@ SSD1306 driver.</text>
 <text x="231.14" y="246.38" size="2.54" layer="97">BUSES</text>
 <text x="233.68" y="55.88" size="2.54" layer="97">ANALOG</text>
 <text x="93.98" y="121.92" size="2.54" layer="97">USB</text>
+<text x="345.44" y="246.38" size="2.54" layer="97">ESP UARTs</text>
 </plain>
 <instances>
 <instance part="FRAME7" gate="G$1" x="0" y="0" smashed="yes">
@@ -32378,6 +32387,36 @@ SSD1306 driver.</text>
 <instance part="P+38" gate="1" x="243.84" y="241.3" smashed="yes">
 <attribute name="VALUE" x="242.062" y="242.316" size="1.27" layer="96" rot="MR270"/>
 </instance>
+<instance part="JP58" gate="A" x="358.14" y="223.52" smashed="yes">
+<attribute name="NAME" x="351.79" y="229.235" size="1.27" layer="95"/>
+<attribute name="VALUE" x="351.79" y="217.678" size="1.27" layer="96" rot="MR180"/>
+</instance>
+<instance part="GND157" gate="1" x="345.44" y="213.36" smashed="yes">
+<attribute name="VALUE" x="343.662" y="211.582" size="1.27" layer="96"/>
+</instance>
+<instance part="R127" gate="G$1" x="325.12" y="226.06" smashed="yes">
+<attribute name="NAME" x="321.31" y="227.584" size="1.27" layer="95"/>
+<attribute name="VALUE" x="325.882" y="227.584" size="1.27" layer="96"/>
+</instance>
+<instance part="R128" gate="G$1" x="325.12" y="223.52" smashed="yes" rot="MR180">
+<attribute name="NAME" x="321.31" y="221.996" size="1.27" layer="95" rot="MR180"/>
+<attribute name="VALUE" x="325.882" y="221.996" size="1.27" layer="96" rot="MR180"/>
+</instance>
+<instance part="JP59" gate="A" x="358.14" y="195.58" smashed="yes">
+<attribute name="NAME" x="351.79" y="201.295" size="1.27" layer="95"/>
+<attribute name="VALUE" x="351.79" y="189.738" size="1.27" layer="96" rot="MR180"/>
+</instance>
+<instance part="GND158" gate="1" x="345.44" y="185.42" smashed="yes">
+<attribute name="VALUE" x="343.662" y="183.642" size="1.27" layer="96"/>
+</instance>
+<instance part="R129" gate="G$1" x="325.12" y="198.12" smashed="yes">
+<attribute name="NAME" x="321.31" y="199.644" size="1.27" layer="95"/>
+<attribute name="VALUE" x="325.882" y="199.644" size="1.27" layer="96"/>
+</instance>
+<instance part="R130" gate="G$1" x="325.12" y="195.58" smashed="yes" rot="MR180">
+<attribute name="NAME" x="321.31" y="194.056" size="1.27" layer="95" rot="MR180"/>
+<attribute name="VALUE" x="325.882" y="194.056" size="1.27" layer="96" rot="MR180"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -32511,6 +32550,20 @@ SSD1306 driver.</text>
 <pinref part="R93" gate="G$1" pin="1"/>
 <pinref part="GND113" gate="1" pin="GND"/>
 <wire x1="53.34" y1="55.88" x2="53.34" y2="58.42" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP58" gate="A" pin="3"/>
+<pinref part="GND157" gate="1" pin="GND"/>
+<wire x1="355.6" y1="220.98" x2="345.44" y2="220.98" width="0.1524" layer="91"/>
+<wire x1="345.44" y1="220.98" x2="345.44" y2="215.9" width="0.1524" layer="91"/>
+<label x="350.774" y="221.742" size="1.27" layer="95" rot="MR0"/>
+</segment>
+<segment>
+<pinref part="JP59" gate="A" pin="3"/>
+<pinref part="GND158" gate="1" pin="GND"/>
+<wire x1="355.6" y1="193.04" x2="345.44" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="345.44" y1="193.04" x2="345.44" y2="187.96" width="0.1524" layer="91"/>
+<label x="350.774" y="193.802" size="1.27" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="UTS1_TRIG" class="0">
@@ -33347,6 +33400,66 @@ SSD1306 driver.</text>
 <label x="53.34" y="233.68" size="1.27" layer="95" rot="MR0"/>
 <pinref part="P+25" gate="1" pin="+5V"/>
 <wire x1="45.72" y1="236.22" x2="45.72" y2="233.68" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="ESP-UART-RX" class="0">
+<segment>
+<pinref part="R127" gate="G$1" pin="2"/>
+<pinref part="JP58" gate="A" pin="1"/>
+<wire x1="330.2" y1="226.06" x2="355.6" y2="226.06" width="0.1524" layer="91"/>
+<label x="351.028" y="226.568" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="ESP-UART-TX" class="0">
+<segment>
+<pinref part="R128" gate="G$1" pin="2"/>
+<pinref part="JP58" gate="A" pin="2"/>
+<wire x1="330.2" y1="223.52" x2="355.6" y2="223.52" width="0.1524" layer="91"/>
+<label x="350.774" y="224.028" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="UART_TX" class="0">
+<segment>
+<pinref part="R128" gate="G$1" pin="1"/>
+<wire x1="320.04" y1="223.52" x2="312.42" y2="223.52" width="0.1524" layer="91"/>
+<label x="312.42" y="223.52" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="UART_RX" class="0">
+<segment>
+<pinref part="R127" gate="G$1" pin="1"/>
+<wire x1="320.04" y1="226.06" x2="312.42" y2="226.06" width="0.1524" layer="91"/>
+<label x="312.42" y="226.06" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="EXPANDER-UART-RX" class="0">
+<segment>
+<pinref part="R129" gate="G$1" pin="2"/>
+<pinref part="JP59" gate="A" pin="1"/>
+<wire x1="330.2" y1="198.12" x2="355.6" y2="198.12" width="0.1524" layer="91"/>
+<label x="351.028" y="198.628" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="EXPANDER-UART-TX" class="0">
+<segment>
+<pinref part="R130" gate="G$1" pin="2"/>
+<pinref part="JP59" gate="A" pin="2"/>
+<wire x1="330.2" y1="195.58" x2="355.6" y2="195.58" width="0.1524" layer="91"/>
+<label x="350.774" y="196.088" size="1.27" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="ESP_COM_RX" class="0">
+<segment>
+<pinref part="R129" gate="G$1" pin="1"/>
+<wire x1="320.04" y1="198.12" x2="312.42" y2="198.12" width="0.1524" layer="91"/>
+<label x="312.42" y="198.12" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="ESP_COM_TX" class="0">
+<segment>
+<pinref part="R130" gate="G$1" pin="1"/>
+<wire x1="320.04" y1="195.58" x2="312.42" y2="195.58" width="0.1524" layer="91"/>
+<label x="312.42" y="195.58" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
