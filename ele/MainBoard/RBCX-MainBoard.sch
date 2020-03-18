@@ -20993,7 +20993,7 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <part name="P+15" library="Supply" deviceset="VCC" device=""/>
 <part name="R130" library="rcl_upravena" deviceset="R-EU_" device="R1206S" value="0R"/>
 <part name="P+16" library="Supply" deviceset="+5V" device=""/>
-<part name="JP66" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_I2C_AUX2_5V"/>
+<part name="JP66" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ILED"/>
 <part name="Q11" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
 <part name="+3V54" library="Supply" deviceset="+3V3" device=""/>
 <part name="R134" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
