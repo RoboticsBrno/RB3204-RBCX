@@ -98,9 +98,10 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  LL_TIM_EnableARRPreload(TIM1);
+//  LL_TIM_EnableARRPreload(TIM1);
   LL_TIM_CC_EnableChannel(TIM1, LL_TIM_CHANNEL_CH1);
   LL_TIM_EnableCounter(TIM1);
+  LL_TIM_EnableAllOutputs(TIM1);
 
   /* USER CODE END 2 */
 
@@ -109,10 +110,10 @@ int main(void)
   uint8_t cnt = 0;
   while (1)
   {
-    /* USER CODE END WHILE */
 	  ++cnt;
 	  LL_TIM_OC_SetCompareCH1(TIM1, cnt);
 	  LL_mDelay(10);
+    /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
