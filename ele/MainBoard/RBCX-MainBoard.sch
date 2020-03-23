@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="dots" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="yes" active="no"/>
@@ -20483,7 +20483,7 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND50" library="Supply" deviceset="GND" device=""/>
-<part name="C27" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
+<part name="C27" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND51" library="Supply" deviceset="GND" device=""/>
@@ -20529,7 +20529,7 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND58" library="Supply" deviceset="GND" device=""/>
-<part name="C28" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
+<part name="C28" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND59" library="Supply" deviceset="GND" device=""/>
@@ -20575,7 +20575,7 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND66" library="Supply" deviceset="GND" device=""/>
-<part name="C29" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
+<part name="C29" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND67" library="Supply" deviceset="GND" device=""/>
@@ -20621,7 +20621,7 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND74" library="Supply" deviceset="GND" device=""/>
-<part name="C30" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
+<part name="C30" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND75" library="Supply" deviceset="GND" device=""/>
@@ -20987,11 +20987,6 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <part name="+3V52" library="Supply" deviceset="+3V3" device=""/>
 <part name="R131" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
 <part name="+3V53" library="Supply" deviceset="+3V3" device=""/>
-<part name="IM7" library="StepDown" deviceset="STEPDOWN" device=""/>
-<part name="JP65" library="pinhead" deviceset="PINHD-1X1" device="" value="IM5_EN"/>
-<part name="GND133" library="Supply" deviceset="GND" device=""/>
-<part name="P+15" library="Supply" deviceset="VCC" device=""/>
-<part name="R130" library="rcl_upravena" deviceset="R-EU_" device="R1206S" value="0R"/>
 <part name="P+16" library="Supply" deviceset="+5V" device=""/>
 <part name="JP66" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ILED"/>
 <part name="Q11" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
@@ -21012,24 +21007,16 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <part name="P+24" library="Supply" deviceset="+5V" device=""/>
 <part name="D3" library="diode" deviceset="BAT60J" device="DO-214-AB" package3d_urn="urn:adsk.eagle:package:43453/2" value="SS34"/>
 <part name="D1" library="diode" deviceset="BAT60J" device="DO-214-AB" package3d_urn="urn:adsk.eagle:package:43453/2" value="SS34"/>
-<part name="C6" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
-<attribute name="VOLTAGE" value="16V"/>
-</part>
-<part name="GND136" library="Supply" deviceset="GND" device=""/>
-<part name="C56" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
-<attribute name="VOLTAGE" value="16V"/>
-</part>
-<part name="GND137" library="Supply" deviceset="GND" device=""/>
 <part name="C57" library="rcl_upravena" deviceset="C-EU" device="C0805" value="10u">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND138" library="Supply" deviceset="GND" device=""/>
-<part name="C5" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
+<part name="C5" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND139" library="Supply" deviceset="GND" device=""/>
-<part name="C4" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
+<part name="C4" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND140" library="Supply" deviceset="GND" device=""/>
@@ -21048,10 +21035,6 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <part name="IC1" library="v-reg" library_urn="urn:adsk.eagle:library:409" deviceset="LM317?*" device="MSTT3" package3d_urn="urn:adsk.eagle:package:30370/1" value="AMS1117-3.3"/>
 <part name="D2" library="diode" deviceset="BAT60J" device="DO-214-AB" package3d_urn="urn:adsk.eagle:package:43453/2" value="SS34"/>
 <part name="D4" library="diode" deviceset="BAT60J" device="DO-214-AB" package3d_urn="urn:adsk.eagle:package:43453/2" value="SS34"/>
-<part name="C1" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
-<attribute name="VOLTAGE" value="16V"/>
-</part>
-<part name="GND144" library="Supply" deviceset="GND" device=""/>
 <part name="GND145" library="Supply" deviceset="GND" device=""/>
 <part name="C3" library="rcl_upravena" deviceset="C-EU" device="C0805" value="10u">
 <attribute name="DIELECTRIC" value="X5R"/>
@@ -21063,38 +21046,10 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 </part>
 <part name="GND147" library="Supply" deviceset="GND" device=""/>
 <part name="+3V57" library="Supply" deviceset="+3V3S" device=""/>
-<part name="C17" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
-<attribute name="VOLTAGE" value="16V"/>
-</part>
-<part name="GND148" library="Supply" deviceset="GND" device=""/>
-<part name="C11" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
-<attribute name="VOLTAGE" value="16V"/>
-</part>
-<part name="GND149" library="Supply" deviceset="GND" device=""/>
-<part name="C43" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
+<part name="C43" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND150" library="Supply" deviceset="GND" device=""/>
-<part name="C23" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
-<attribute name="VOLTAGE" value="16V"/>
-</part>
-<part name="GND151" library="Supply" deviceset="GND" device=""/>
-<part name="C24" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
-<attribute name="VOLTAGE" value="16V"/>
-</part>
-<part name="GND152" library="Supply" deviceset="GND" device=""/>
-<part name="C25" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
-<attribute name="VOLTAGE" value="16V"/>
-</part>
-<part name="GND153" library="Supply" deviceset="GND" device=""/>
-<part name="C26" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
-<attribute name="VOLTAGE" value="16V"/>
-</part>
-<part name="GND154" library="Supply" deviceset="GND" device=""/>
-<part name="C58" library="rcl_upravena" deviceset="CPOL-EU" device="153CLV-1010" value="220u">
-<attribute name="VOLTAGE" value="16V"/>
-</part>
-<part name="GND155" library="Supply" deviceset="GND" device=""/>
 <part name="B1" library="piezo" deviceset="PIEZO" device=""/>
 <part name="Q6" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
 <part name="GND156" library="Supply" deviceset="GND" device=""/>
@@ -22770,14 +22725,6 @@ Fmax = 20.2 Hz</text>
 <attribute name="NAME" x="266.954" y="197.485" size="1.27" layer="95"/>
 <attribute name="VALUE" x="266.954" y="193.421" size="1.27" layer="96" rot="MR180"/>
 </instance>
-<instance part="C6" gate="G$1" x="264.16" y="167.64" smashed="yes" rot="MR0">
-<attribute name="NAME" x="261.62" y="170.18" size="1.27" layer="95" rot="MR270"/>
-<attribute name="VALUE" x="261.62" y="164.592" size="1.27" layer="96" rot="MR270"/>
-<attribute name="VOLTAGE" x="263.398" y="164.592" size="1.27" layer="96" rot="MR270"/>
-</instance>
-<instance part="GND136" gate="1" x="264.16" y="157.48" smashed="yes">
-<attribute name="VALUE" x="262.382" y="155.702" size="1.27" layer="96"/>
-</instance>
 <instance part="C5" gate="G$1" x="218.44" y="167.64" smashed="yes" rot="MR0">
 <attribute name="NAME" x="215.9" y="170.18" size="1.27" layer="95" rot="MR270"/>
 <attribute name="VALUE" x="215.9" y="164.592" size="1.27" layer="96" rot="MR270"/>
@@ -22847,14 +22794,6 @@ Fmax = 20.2 Hz</text>
 <instance part="D4" gate="G$1" x="274.32" y="180.34" smashed="yes" rot="R90">
 <attribute name="NAME" x="272.415" y="178.054" size="1.27" layer="95" rot="R90"/>
 <attribute name="VALUE" x="276.479" y="178.054" size="1.27" layer="96" rot="MR90"/>
-</instance>
-<instance part="C1" gate="G$1" x="302.26" y="182.88" smashed="yes" rot="MR0">
-<attribute name="NAME" x="299.72" y="185.42" size="1.27" layer="95" rot="MR270"/>
-<attribute name="VALUE" x="299.72" y="179.832" size="1.27" layer="96" rot="MR270"/>
-<attribute name="VOLTAGE" x="301.498" y="179.832" size="1.27" layer="96" rot="MR270"/>
-</instance>
-<instance part="GND144" gate="1" x="302.26" y="172.72" smashed="yes">
-<attribute name="VALUE" x="300.482" y="170.942" size="1.27" layer="96"/>
 </instance>
 <instance part="GND145" gate="1" x="317.5" y="172.72" smashed="yes">
 <attribute name="VALUE" x="315.722" y="170.942" size="1.27" layer="96"/>
@@ -23050,11 +22989,6 @@ Fmax = 20.2 Hz</text>
 <wire x1="243.84" y1="160.02" x2="243.84" y2="157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C6" gate="G$1" pin="-"/>
-<pinref part="GND136" gate="1" pin="GND"/>
-<wire x1="264.16" y1="162.56" x2="264.16" y2="160.02" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="C5" gate="G$1" pin="-"/>
 <pinref part="GND139" gate="1" pin="GND"/>
 <wire x1="218.44" y1="162.56" x2="218.44" y2="160.02" width="0.1524" layer="91"/>
@@ -23078,11 +23012,6 @@ Fmax = 20.2 Hz</text>
 <pinref part="GND143" gate="1" pin="GND"/>
 <pinref part="R13" gate="G$1" pin="1"/>
 <wire x1="210.82" y1="53.34" x2="210.82" y2="55.88" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C1" gate="G$1" pin="-"/>
-<pinref part="GND144" gate="1" pin="GND"/>
-<wire x1="302.26" y1="177.8" x2="302.26" y2="175.26" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND146" gate="1" pin="GND"/>
@@ -23274,8 +23203,6 @@ Fmax = 20.2 Hz</text>
 <wire x1="264.16" y1="172.72" x2="256.54" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="264.16" y1="177.8" x2="264.16" y2="172.72" width="0.1524" layer="91"/>
 <junction x="264.16" y="172.72"/>
-<pinref part="C6" gate="G$1" pin="+"/>
-<wire x1="264.16" y1="170.18" x2="264.16" y2="172.72" width="0.1524" layer="91"/>
 <pinref part="D4" gate="G$1" pin="A"/>
 <wire x1="274.32" y1="177.8" x2="274.32" y2="172.72" width="0.1524" layer="91"/>
 <junction x="274.32" y="172.72"/>
@@ -23347,9 +23274,6 @@ Fmax = 20.2 Hz</text>
 <wire x1="274.32" y1="187.96" x2="271.78" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="274.32" y1="182.88" x2="274.32" y2="187.96" width="0.1524" layer="91"/>
 <junction x="274.32" y="187.96"/>
-<pinref part="C1" gate="G$1" pin="+"/>
-<wire x1="302.26" y1="185.42" x2="302.26" y2="187.96" width="0.1524" layer="91"/>
-<junction x="302.26" y="187.96"/>
 <pinref part="C3" gate="G$1" pin="2"/>
 <wire x1="307.34" y1="185.42" x2="307.34" y2="187.96" width="0.1524" layer="91"/>
 <junction x="307.34" y="187.96"/>
@@ -25228,22 +25152,6 @@ Jakub Streit
 <instance part="+3V35" gate="G$1" x="271.78" y="185.42" smashed="yes" rot="MR0">
 <attribute name="VALUE" x="273.812" y="183.134" size="1.27" layer="96" rot="MR90"/>
 </instance>
-<instance part="C17" gate="G$1" x="162.56" y="121.92" smashed="yes" rot="MR90">
-<attribute name="NAME" x="165.1" y="124.46" size="1.27" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="159.512" y="124.46" size="1.27" layer="96" rot="MR0"/>
-<attribute name="VOLTAGE" x="159.512" y="122.682" size="1.27" layer="96" rot="MR0"/>
-</instance>
-<instance part="GND148" gate="1" x="149.86" y="121.92" smashed="yes" rot="R270">
-<attribute name="VALUE" x="148.082" y="123.698" size="1.27" layer="96" rot="R270"/>
-</instance>
-<instance part="C11" gate="G$1" x="162.56" y="226.06" smashed="yes" rot="MR90">
-<attribute name="NAME" x="165.1" y="228.6" size="1.27" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="159.512" y="228.6" size="1.27" layer="96" rot="MR0"/>
-<attribute name="VOLTAGE" x="159.512" y="226.822" size="1.27" layer="96" rot="MR0"/>
-</instance>
-<instance part="GND149" gate="1" x="149.86" y="226.06" smashed="yes" rot="R270">
-<attribute name="VALUE" x="148.082" y="227.838" size="1.27" layer="96" rot="R270"/>
-</instance>
 </instances>
 <busses>
 </busses>
@@ -25388,9 +25296,6 @@ Jakub Streit
 <pinref part="C19" gate="G$1" pin="1"/>
 <wire x1="165.1" y1="109.22" x2="170.18" y2="109.22" width="0.1524" layer="91"/>
 <junction x="170.18" y="109.22"/>
-<pinref part="C17" gate="G$1" pin="+"/>
-<wire x1="165.1" y1="121.92" x2="170.18" y2="121.92" width="0.1524" layer="91"/>
-<junction x="170.18" y="121.92"/>
 </segment>
 <segment>
 <pinref part="IC2" gate="G$1" pin="VM_2.7-10.8V"/>
@@ -25405,9 +25310,6 @@ Jakub Streit
 <pinref part="C13" gate="G$1" pin="1"/>
 <wire x1="165.1" y1="213.36" x2="170.18" y2="213.36" width="0.1524" layer="91"/>
 <junction x="170.18" y="213.36"/>
-<pinref part="C11" gate="G$1" pin="+"/>
-<wire x1="165.1" y1="226.06" x2="170.18" y2="226.06" width="0.1524" layer="91"/>
-<junction x="170.18" y="226.06"/>
 </segment>
 </net>
 <net name="+3V3S" class="0">
@@ -25726,16 +25628,6 @@ Jakub Streit
 <pinref part="GND91" gate="1" pin="GND"/>
 <pinref part="R24" gate="G$1" pin="1"/>
 <wire x1="124.46" y1="68.58" x2="124.46" y2="71.12" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C17" gate="G$1" pin="-"/>
-<pinref part="GND148" gate="1" pin="GND"/>
-<wire x1="157.48" y1="121.92" x2="152.4" y2="121.92" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C11" gate="G$1" pin="-"/>
-<pinref part="GND149" gate="1" pin="GND"/>
-<wire x1="157.48" y1="226.06" x2="152.4" y2="226.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VCP34" class="0">
@@ -28028,38 +27920,6 @@ Jakub Streit
 <instance part="GND150" gate="1" x="66.04" y="68.58" smashed="yes" rot="R270">
 <attribute name="VALUE" x="64.262" y="70.358" size="1.27" layer="96" rot="R270"/>
 </instance>
-<instance part="C23" gate="G$1" x="104.14" y="210.82" smashed="yes" rot="MR0">
-<attribute name="NAME" x="101.6" y="213.36" size="1.27" layer="95" rot="MR270"/>
-<attribute name="VALUE" x="101.6" y="207.772" size="1.27" layer="96" rot="MR270"/>
-<attribute name="VOLTAGE" x="103.378" y="207.772" size="1.27" layer="96" rot="MR270"/>
-</instance>
-<instance part="GND151" gate="1" x="104.14" y="198.12" smashed="yes">
-<attribute name="VALUE" x="102.362" y="196.342" size="1.27" layer="96"/>
-</instance>
-<instance part="C24" gate="G$1" x="182.88" y="210.82" smashed="yes" rot="MR0">
-<attribute name="NAME" x="180.34" y="213.36" size="1.27" layer="95" rot="MR270"/>
-<attribute name="VALUE" x="180.34" y="207.772" size="1.27" layer="96" rot="MR270"/>
-<attribute name="VOLTAGE" x="182.118" y="207.772" size="1.27" layer="96" rot="MR270"/>
-</instance>
-<instance part="GND152" gate="1" x="182.88" y="198.12" smashed="yes">
-<attribute name="VALUE" x="181.102" y="196.342" size="1.27" layer="96"/>
-</instance>
-<instance part="C25" gate="G$1" x="261.62" y="210.82" smashed="yes" rot="MR0">
-<attribute name="NAME" x="259.08" y="213.36" size="1.27" layer="95" rot="MR270"/>
-<attribute name="VALUE" x="259.08" y="207.772" size="1.27" layer="96" rot="MR270"/>
-<attribute name="VOLTAGE" x="260.858" y="207.772" size="1.27" layer="96" rot="MR270"/>
-</instance>
-<instance part="GND153" gate="1" x="261.62" y="198.12" smashed="yes">
-<attribute name="VALUE" x="259.842" y="196.342" size="1.27" layer="96"/>
-</instance>
-<instance part="C26" gate="G$1" x="340.36" y="210.82" smashed="yes" rot="MR0">
-<attribute name="NAME" x="337.82" y="213.36" size="1.27" layer="95" rot="MR270"/>
-<attribute name="VALUE" x="337.82" y="207.772" size="1.27" layer="96" rot="MR270"/>
-<attribute name="VOLTAGE" x="339.598" y="207.772" size="1.27" layer="96" rot="MR270"/>
-</instance>
-<instance part="GND154" gate="1" x="340.36" y="198.12" smashed="yes">
-<attribute name="VALUE" x="338.582" y="196.342" size="1.27" layer="96"/>
-</instance>
 </instances>
 <busses>
 </busses>
@@ -28326,26 +28186,6 @@ Jakub Streit
 <pinref part="GND150" gate="1" pin="GND"/>
 <wire x1="73.66" y1="68.58" x2="68.58" y2="68.58" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="C23" gate="G$1" pin="-"/>
-<pinref part="GND151" gate="1" pin="GND"/>
-<wire x1="104.14" y1="205.74" x2="104.14" y2="200.66" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C24" gate="G$1" pin="-"/>
-<pinref part="GND152" gate="1" pin="GND"/>
-<wire x1="182.88" y1="205.74" x2="182.88" y2="200.66" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C25" gate="G$1" pin="-"/>
-<pinref part="GND153" gate="1" pin="GND"/>
-<wire x1="261.62" y1="205.74" x2="261.62" y2="200.66" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C26" gate="G$1" pin="-"/>
-<pinref part="GND154" gate="1" pin="GND"/>
-<wire x1="340.36" y1="205.74" x2="340.36" y2="200.66" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="SERVO1" class="0">
 <segment>
@@ -28393,41 +28233,25 @@ Jakub Streit
 <pinref part="P+18" gate="VCC" pin="VCC"/>
 <pinref part="IM2" gate="G$1" pin="IN"/>
 <wire x1="93.98" y1="220.98" x2="93.98" y2="218.44" width="0.1524" layer="91"/>
-<pinref part="C23" gate="G$1" pin="+"/>
 <wire x1="93.98" y1="218.44" x2="93.98" y2="213.36" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="213.36" x2="104.14" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="218.44" x2="93.98" y2="218.44" width="0.1524" layer="91"/>
-<junction x="93.98" y="218.44"/>
 </segment>
 <segment>
 <pinref part="P+17" gate="VCC" pin="VCC"/>
 <pinref part="IM3" gate="G$1" pin="IN"/>
 <wire x1="172.72" y1="220.98" x2="172.72" y2="218.44" width="0.1524" layer="91"/>
-<pinref part="C24" gate="G$1" pin="+"/>
 <wire x1="172.72" y1="218.44" x2="172.72" y2="213.36" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="213.36" x2="182.88" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="218.44" x2="172.72" y2="218.44" width="0.1524" layer="91"/>
-<junction x="172.72" y="218.44"/>
 </segment>
 <segment>
 <pinref part="P+19" gate="VCC" pin="VCC"/>
 <pinref part="IM4" gate="G$1" pin="IN"/>
 <wire x1="251.46" y1="220.98" x2="251.46" y2="218.44" width="0.1524" layer="91"/>
-<pinref part="C25" gate="G$1" pin="+"/>
 <wire x1="251.46" y1="218.44" x2="251.46" y2="213.36" width="0.1524" layer="91"/>
-<wire x1="261.62" y1="213.36" x2="261.62" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="261.62" y1="218.44" x2="251.46" y2="218.44" width="0.1524" layer="91"/>
-<junction x="251.46" y="218.44"/>
 </segment>
 <segment>
 <pinref part="P+20" gate="VCC" pin="VCC"/>
 <pinref part="IM5" gate="G$1" pin="IN"/>
 <wire x1="330.2" y1="220.98" x2="330.2" y2="218.44" width="0.1524" layer="91"/>
-<pinref part="C26" gate="G$1" pin="+"/>
 <wire x1="330.2" y1="218.44" x2="330.2" y2="213.36" width="0.1524" layer="91"/>
-<wire x1="340.36" y1="213.36" x2="340.36" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="340.36" y1="218.44" x2="330.2" y2="218.44" width="0.1524" layer="91"/>
-<junction x="330.2" y="218.44"/>
 </segment>
 <segment>
 <pinref part="JP19" gate="G$1" pin="2"/>
@@ -36291,14 +36115,6 @@ Jakub Streit
 <attribute name="NAME" x="176.53" y="75.184" size="1.27" layer="95"/>
 <attribute name="VALUE" x="181.102" y="75.184" size="1.27" layer="96"/>
 </instance>
-<instance part="C56" gate="G$1" x="205.74" y="114.3" smashed="yes">
-<attribute name="NAME" x="208.28" y="116.84" size="1.27" layer="95" rot="R270"/>
-<attribute name="VALUE" x="208.28" y="111.252" size="1.27" layer="96" rot="R270"/>
-<attribute name="VOLTAGE" x="206.502" y="111.252" size="1.27" layer="96" rot="R270"/>
-</instance>
-<instance part="GND137" gate="1" x="205.74" y="104.14" smashed="yes">
-<attribute name="VALUE" x="203.962" y="102.362" size="1.27" layer="96"/>
-</instance>
 <instance part="C57" gate="G$1" x="198.12" y="111.76" smashed="yes" rot="MR180">
 <attribute name="NAME" x="200.66" y="116.332" size="1.27" layer="95" rot="R270"/>
 <attribute name="VALUE" x="200.66" y="111.76" size="1.27" layer="96" rot="R270"/>
@@ -36317,11 +36133,6 @@ Jakub Streit
 <pinref part="GND16" gate="1" pin="GND"/>
 <pinref part="IM6" gate="G$1" pin="GND"/>
 <wire x1="175.26" y1="119.38" x2="175.26" y2="121.92" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C56" gate="G$1" pin="-"/>
-<pinref part="GND137" gate="1" pin="GND"/>
-<wire x1="205.74" y1="109.22" x2="205.74" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND138" gate="1" pin="GND"/>
@@ -36391,9 +36202,6 @@ Jakub Streit
 <wire x1="205.74" y1="119.38" x2="213.36" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="198.12" y1="116.84" x2="198.12" y2="119.38" width="0.1524" layer="91"/>
 <junction x="198.12" y="119.38"/>
-<pinref part="C56" gate="G$1" pin="+"/>
-<wire x1="205.74" y1="116.84" x2="205.74" y2="119.38" width="0.1524" layer="91"/>
-<junction x="205.74" y="119.38"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -38064,7 +37872,7 @@ Jakub Streit
 <text x="134.62" y="238.76" size="1.905" layer="97">5V</text>
 <text x="134.62" y="137.16" size="1.905" layer="97">3V3</text>
 <text x="342.9" y="185.42" size="2.54" layer="97">CAN</text>
-<text x="243.84" y="83.82" size="2.54" layer="97">ILED</text>
+<text x="231.14" y="63.5" size="2.54" layer="97">ILED</text>
 <text x="320.04" y="127" size="2.54" layer="97">POWER</text>
 </plain>
 <instances>
@@ -38423,41 +38231,23 @@ Jakub Streit
 <instance part="+3V53" gate="G$1" x="66.04" y="76.2" smashed="yes" rot="MR0">
 <attribute name="VALUE" x="67.818" y="73.66" size="1.27" layer="96" rot="MR90"/>
 </instance>
-<instance part="IM7" gate="G$1" x="210.82" y="58.42" smashed="yes">
-<attribute name="NAME" x="210.82" y="69.596" size="1.27" layer="95"/>
-<attribute name="VALUE" x="217.678" y="69.596" size="1.27" layer="95"/>
-</instance>
-<instance part="JP65" gate="G$1" x="203.2" y="53.34" smashed="yes" rot="R270">
-<attribute name="NAME" x="206.375" y="59.69" size="1.27" layer="95" rot="R270"/>
-<attribute name="VALUE" x="199.898" y="59.69" size="1.27" layer="96" rot="MR270"/>
-</instance>
-<instance part="GND133" gate="1" x="218.44" y="48.26" smashed="yes">
-<attribute name="VALUE" x="216.662" y="46.482" size="1.27" layer="96"/>
-</instance>
-<instance part="P+15" gate="VCC" x="182.88" y="66.04" smashed="yes" rot="MR270">
-<attribute name="VALUE" x="185.42" y="68.58" size="1.27" layer="96" rot="MR0"/>
-</instance>
-<instance part="R130" gate="G$1" x="233.68" y="73.66" smashed="yes" rot="R270">
-<attribute name="NAME" x="235.204" y="77.47" size="1.27" layer="95" rot="R270"/>
-<attribute name="VALUE" x="235.204" y="72.898" size="1.27" layer="96" rot="R270"/>
-</instance>
-<instance part="P+16" gate="1" x="233.68" y="83.82" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="235.458" y="84.836" size="1.27" layer="96" rot="R270"/>
+<instance part="P+16" gate="1" x="233.68" y="58.42" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="235.458" y="59.436" size="1.27" layer="96" rot="R270"/>
 </instance>
 <instance part="JP66" gate="A" x="251.46" y="38.1" smashed="yes">
 <attribute name="NAME" x="245.11" y="43.815" size="1.27" layer="95"/>
 <attribute name="VALUE" x="245.11" y="32.258" size="1.27" layer="96" rot="MR180"/>
 </instance>
-<instance part="Q11" gate="G$1" x="218.44" y="35.56" smashed="yes" rot="MR90">
-<attribute name="VALUE" x="217.932" y="35.052" size="1.27" layer="96" rot="MR270"/>
-<attribute name="NAME" x="219.964" y="35.052" size="1.27" layer="95" rot="MR270"/>
+<instance part="Q11" gate="G$1" x="218.44" y="40.64" smashed="yes" rot="R270">
+<attribute name="VALUE" x="217.932" y="41.148" size="1.27" layer="96" rot="R90"/>
+<attribute name="NAME" x="219.964" y="41.148" size="1.27" layer="95" rot="R90"/>
 </instance>
-<instance part="+3V54" gate="G$1" x="215.9" y="17.78" smashed="yes" rot="MR180">
-<attribute name="VALUE" x="214.122" y="20.32" size="1.27" layer="96" rot="MR270"/>
+<instance part="+3V54" gate="G$1" x="215.9" y="58.42" smashed="yes">
+<attribute name="VALUE" x="214.122" y="55.88" size="1.27" layer="96" rot="R90"/>
 </instance>
-<instance part="R134" gate="G$1" x="210.82" y="30.48" smashed="yes" rot="MR270">
-<attribute name="NAME" x="209.296" y="34.29" size="1.27" layer="95" rot="MR270"/>
-<attribute name="VALUE" x="209.296" y="29.718" size="1.27" layer="96" rot="MR270"/>
+<instance part="R134" gate="G$1" x="210.82" y="45.72" smashed="yes" rot="R90">
+<attribute name="NAME" x="209.296" y="41.91" size="1.27" layer="95" rot="R90"/>
+<attribute name="VALUE" x="209.296" y="46.482" size="1.27" layer="96" rot="R90"/>
 </instance>
 <instance part="R132" gate="G$1" x="228.6" y="45.72" smashed="yes" rot="R90">
 <attribute name="NAME" x="227.076" y="41.91" size="1.27" layer="95" rot="R90"/>
@@ -38466,17 +38256,9 @@ Jakub Streit
 <instance part="GND134" gate="1" x="241.3" y="27.94" smashed="yes">
 <attribute name="VALUE" x="239.522" y="26.162" size="1.27" layer="96"/>
 </instance>
-<instance part="R133" gate="G$1" x="200.66" y="38.1" smashed="yes">
-<attribute name="NAME" x="196.85" y="39.624" size="1.27" layer="95"/>
-<attribute name="VALUE" x="201.422" y="39.624" size="1.27" layer="96"/>
-</instance>
-<instance part="C58" gate="G$1" x="193.04" y="60.96" smashed="yes" rot="MR0">
-<attribute name="NAME" x="190.5" y="63.5" size="1.27" layer="95" rot="MR270"/>
-<attribute name="VALUE" x="190.5" y="57.912" size="1.27" layer="96" rot="MR270"/>
-<attribute name="VOLTAGE" x="192.278" y="57.912" size="1.27" layer="96" rot="MR270"/>
-</instance>
-<instance part="GND155" gate="1" x="193.04" y="48.26" smashed="yes">
-<attribute name="VALUE" x="191.262" y="46.482" size="1.27" layer="96"/>
+<instance part="R133" gate="G$1" x="200.66" y="38.1" smashed="yes" rot="MR180">
+<attribute name="NAME" x="196.85" y="36.576" size="1.27" layer="95" rot="MR180"/>
+<attribute name="VALUE" x="201.422" y="36.576" size="1.27" layer="96" rot="MR180"/>
 </instance>
 <instance part="JP58" gate="A" x="325.12" y="114.3" smashed="yes">
 <attribute name="NAME" x="318.77" y="122.555" size="1.27" layer="95"/>
@@ -38650,21 +38432,11 @@ Jakub Streit
 <label x="135.128" y="56.388" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="IM7" gate="G$1" pin="GND"/>
-<pinref part="GND133" gate="1" pin="GND"/>
-<wire x1="218.44" y1="53.34" x2="218.44" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="JP66" gate="A" pin="3"/>
 <wire x1="248.92" y1="35.56" x2="241.3" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="GND134" gate="1" pin="GND"/>
 <wire x1="241.3" y1="35.56" x2="241.3" y2="30.48" width="0.1524" layer="91"/>
 <label x="244.348" y="36.068" size="1.27" layer="95" rot="MR0"/>
-</segment>
-<segment>
-<pinref part="C58" gate="G$1" pin="-"/>
-<pinref part="GND155" gate="1" pin="GND"/>
-<wire x1="193.04" y1="55.88" x2="193.04" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="JP58" gate="A" pin="2"/>
@@ -38883,12 +38655,12 @@ Jakub Streit
 <segment>
 <pinref part="Q11" gate="G$1" pin="G"/>
 <pinref part="+3V54" gate="G$1" pin="+3V3"/>
-<wire x1="215.9" y1="33.02" x2="215.9" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="43.18" x2="215.9" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="R134" gate="G$1" pin="2"/>
-<wire x1="215.9" y1="22.86" x2="215.9" y2="20.32" width="0.1524" layer="91"/>
-<wire x1="210.82" y1="25.4" x2="210.82" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="210.82" y1="22.86" x2="215.9" y2="22.86" width="0.1524" layer="91"/>
-<junction x="215.9" y="22.86"/>
+<wire x1="215.9" y1="53.34" x2="215.9" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="210.82" y1="50.8" x2="210.82" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="210.82" y1="53.34" x2="215.9" y2="53.34" width="0.1524" layer="91"/>
+<junction x="215.9" y="53.34"/>
 </segment>
 <segment>
 <pinref part="JP60" gate="A" pin="1"/>
@@ -39083,11 +38855,6 @@ Jakub Streit
 <wire x1="127" y1="238.76" x2="127" y2="243.84" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="P+16" gate="1" pin="+5V"/>
-<pinref part="R130" gate="G$1" pin="1"/>
-<wire x1="233.68" y1="81.28" x2="233.68" y2="78.74" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="JP61" gate="A" pin="1"/>
 <wire x1="309.88" y1="83.82" x2="314.96" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="JP61" gate="A" pin="7"/>
@@ -39104,6 +38871,18 @@ Jakub Streit
 <wire x1="322.58" y1="78.74" x2="314.96" y2="78.74" width="0.1524" layer="91"/>
 <junction x="314.96" y="78.74"/>
 <pinref part="P+39" gate="1" pin="+5V"/>
+</segment>
+<segment>
+<pinref part="JP66" gate="A" pin="1"/>
+<wire x1="248.92" y1="40.64" x2="233.68" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="40.64" x2="233.68" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="53.34" x2="233.68" y2="55.88" width="0.1524" layer="91"/>
+<pinref part="R132" gate="G$1" pin="2"/>
+<wire x1="228.6" y1="50.8" x2="228.6" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="53.34" x2="233.68" y2="53.34" width="0.1524" layer="91"/>
+<junction x="233.68" y="53.34"/>
+<label x="244.348" y="41.148" size="1.27" layer="95" rot="MR0"/>
+<pinref part="P+16" gate="1" pin="+5V"/>
 </segment>
 </net>
 <net name="GPIO6" class="0">
@@ -39444,15 +39223,6 @@ Jakub Streit
 </net>
 <net name="VCC" class="0">
 <segment>
-<pinref part="P+15" gate="VCC" pin="VCC"/>
-<pinref part="IM7" gate="G$1" pin="IN"/>
-<wire x1="185.42" y1="66.04" x2="193.04" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="C58" gate="G$1" pin="+"/>
-<wire x1="193.04" y1="66.04" x2="205.74" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="193.04" y1="63.5" x2="193.04" y2="66.04" width="0.1524" layer="91"/>
-<junction x="193.04" y="66.04"/>
-</segment>
-<segment>
 <pinref part="JP63" gate="A" pin="1"/>
 <wire x1="309.88" y1="66.04" x2="314.96" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="JP63" gate="A" pin="7"/>
@@ -39476,29 +39246,11 @@ Jakub Streit
 <pinref part="Q11" gate="G$1" pin="S"/>
 <wire x1="213.36" y1="38.1" x2="210.82" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="R134" gate="G$1" pin="1"/>
-<wire x1="210.82" y1="35.56" x2="210.82" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="210.82" y1="40.64" x2="210.82" y2="38.1" width="0.1524" layer="91"/>
 <junction x="210.82" y="38.1"/>
 <wire x1="210.82" y1="38.1" x2="205.74" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="R133" gate="G$1" pin="2"/>
-<label x="207.772" y="39.116" size="1.27" layer="95"/>
-</segment>
-</net>
-<net name="ILED_PWR" class="0">
-<segment>
-<pinref part="JP66" gate="A" pin="1"/>
-<pinref part="R130" gate="G$1" pin="2"/>
-<wire x1="248.92" y1="40.64" x2="233.68" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="40.64" x2="233.68" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="IM7" gate="G$1" pin="OUT"/>
-<wire x1="233.68" y1="53.34" x2="233.68" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="66.04" x2="233.68" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="231.14" y1="66.04" x2="233.68" y2="66.04" width="0.1524" layer="91"/>
-<junction x="233.68" y="66.04"/>
-<pinref part="R132" gate="G$1" pin="2"/>
-<wire x1="228.6" y1="50.8" x2="228.6" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="228.6" y1="53.34" x2="233.68" y2="53.34" width="0.1524" layer="91"/>
-<junction x="233.68" y="53.34"/>
-<label x="244.348" y="41.148" size="1.27" layer="95" rot="MR0"/>
+<label x="207.772" y="37.084" size="1.27" layer="95" rot="MR180"/>
 </segment>
 </net>
 <net name="ILED-5V" class="0">
@@ -39518,15 +39270,6 @@ Jakub Streit
 <wire x1="195.58" y1="38.1" x2="187.96" y2="38.1" width="0.1524" layer="91"/>
 <label x="187.96" y="38.1" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="R133" gate="G$1" pin="1"/>
-</segment>
-</net>
-<net name="IM5_EN" class="0">
-<segment>
-<wire x1="203.2" y1="55.88" x2="203.2" y2="63.5" width="0.1524" layer="91"/>
-<wire x1="203.2" y1="63.5" x2="205.74" y2="63.5" width="0.1524" layer="91"/>
-<pinref part="IM7" gate="G$1" pin="EN"/>
-<pinref part="JP65" gate="G$1" pin="1"/>
-<label x="202.692" y="60.96" size="1.27" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="+3V3S" class="0">
