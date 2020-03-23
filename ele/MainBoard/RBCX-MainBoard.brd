@@ -105,26 +105,26 @@
 </layers>
 <board>
 <plain>
-<wire x1="5" y1="0" x2="95" y2="0" width="0" layer="20"/>
-<wire x1="95" y1="0" x2="100" y2="5" width="0" layer="20" curve="90"/>
-<wire x1="100" y1="5" x2="100" y2="95" width="0" layer="20"/>
-<wire x1="100" y1="95" x2="95" y2="100" width="0" layer="20" curve="90"/>
-<wire x1="95" y1="100" x2="5" y2="100" width="0" layer="20"/>
-<wire x1="5" y1="100" x2="0" y2="95" width="0" layer="20" curve="90"/>
-<wire x1="0" y1="95" x2="0" y2="5" width="0" layer="20"/>
-<wire x1="0" y1="5" x2="5" y2="0" width="0" layer="20" curve="90"/>
-<hole x="5" y="95" drill="3.2"/>
-<hole x="95" y="95" drill="3.2"/>
-<hole x="95" y="5" drill="3.2"/>
-<hole x="5" y="5" drill="3.2"/>
-<circle x="5" y="95" radius="4" width="0" layer="41"/>
-<circle x="95" y="95" radius="4" width="0" layer="41"/>
-<circle x="95" y="5" radius="4" width="0" layer="41"/>
-<circle x="5" y="5" radius="4" width="0" layer="41"/>
-<circle x="95" y="95" radius="4" width="0" layer="42"/>
-<circle x="5" y="5" radius="4" width="0" layer="42"/>
-<circle x="5" y="95" radius="4" width="0" layer="42"/>
-<circle x="95" y="5" radius="4" width="0" layer="42"/>
+<wire x1="4" y1="0" x2="96" y2="0" width="0" layer="20"/>
+<wire x1="96" y1="0" x2="100" y2="4" width="0" layer="20" curve="90"/>
+<wire x1="100" y1="4" x2="100" y2="96" width="0" layer="20"/>
+<wire x1="100" y1="96" x2="96" y2="100" width="0" layer="20" curve="90"/>
+<wire x1="96" y1="100" x2="4" y2="100" width="0" layer="20"/>
+<wire x1="4" y1="100" x2="0" y2="96" width="0" layer="20" curve="90"/>
+<wire x1="0" y1="96" x2="0" y2="4" width="0" layer="20"/>
+<wire x1="0" y1="4" x2="4" y2="0" width="0" layer="20" curve="90"/>
+<hole x="4" y="96" drill="3.2"/>
+<hole x="96" y="96" drill="3.2"/>
+<hole x="96" y="4" drill="3.2"/>
+<hole x="4" y="4" drill="3.2"/>
+<circle x="4" y="96" radius="4" width="0" layer="41"/>
+<circle x="96" y="96" radius="4" width="0" layer="41"/>
+<circle x="96" y="4" radius="4" width="0" layer="41"/>
+<circle x="4" y="4" radius="4" width="0" layer="41"/>
+<circle x="96" y="96" radius="4" width="0" layer="42"/>
+<circle x="4" y="4" radius="4" width="0" layer="42"/>
+<circle x="4" y="96" radius="4" width="0" layer="42"/>
+<circle x="96" y="4" radius="4" width="0" layer="42"/>
 </plain>
 <libraries>
 <library name="rcl_upravena">
