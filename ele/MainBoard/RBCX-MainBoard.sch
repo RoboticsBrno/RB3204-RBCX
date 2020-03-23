@@ -19697,8 +19697,6 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="BAT1" library="CR2032-circle" deviceset="CR2032" device="CR2032-BS-6-1" value="CR2032"/>
 <part name="Y2" library="SMD3215_2P" deviceset="3215_2P" device=""/>
 <part name="IC5" library="DRV8833" deviceset="DRV8833" device="PWP" value="DRV8833PWP"/>
-<part name="X5" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="M3B"/>
-<part name="X6" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="M4B"/>
 <part name="JP8" library="pinhead" deviceset="PINHD-1X6" device="" value="M4"/>
 <part name="JP7" library="pinhead" deviceset="PINHD-1X6" device="" value="M3"/>
 <part name="SJ2" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
@@ -19831,8 +19829,6 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND27" library="Supply" deviceset="GND" device=""/>
 <part name="GND28" library="Supply" deviceset="GND" device=""/>
 <part name="IC2" library="DRV8833" deviceset="DRV8833" device="PWP" value="DRV8833PWP"/>
-<part name="X3" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="M3B"/>
-<part name="X4" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="M4B"/>
 <part name="JP5" library="pinhead" deviceset="PINHD-1X6" device="" value="M2"/>
 <part name="JP4" library="pinhead" deviceset="PINHD-1X6" device="" value="M1"/>
 <part name="SJ1" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
@@ -24094,20 +24090,6 @@ Jakub Streit
 <attribute name="NAME" x="157.48" y="101.6" size="1.27" layer="95"/>
 <attribute name="VALUE" x="172.72" y="101.6" size="1.27" layer="96"/>
 </instance>
-<instance part="X5" gate="-1" x="226.06" y="124.46" smashed="yes" rot="R270">
-<attribute name="NAME" x="226.949" y="125.73" size="1.27" layer="95" rot="R90"/>
-</instance>
-<instance part="X5" gate="-2" x="254" y="124.46" smashed="yes" rot="R270">
-<attribute name="VALUE" x="256.54" y="124.46" size="1.27" layer="96" rot="R270"/>
-<attribute name="NAME" x="254.889" y="125.73" size="1.27" layer="95" rot="R90"/>
-</instance>
-<instance part="X6" gate="-1" x="292.1" y="124.46" smashed="yes" rot="R270">
-<attribute name="NAME" x="292.989" y="125.73" size="1.27" layer="95" rot="R90"/>
-</instance>
-<instance part="X6" gate="-2" x="264.16" y="124.46" smashed="yes" rot="R270">
-<attribute name="VALUE" x="294.64" y="124.46" size="1.27" layer="96" rot="R270"/>
-<attribute name="NAME" x="265.049" y="125.73" size="1.27" layer="95" rot="R90"/>
-</instance>
 <instance part="JP8" gate="A" x="279.4" y="127" smashed="yes" rot="R90">
 <attribute name="NAME" x="268.605" y="120.65" size="1.27" layer="95" rot="R90"/>
 <attribute name="VALUE" x="278.13" y="129.54" size="1.27" layer="96"/>
@@ -24305,20 +24287,6 @@ Jakub Streit
 <instance part="IC2" gate="G$1" x="170.18" y="190.5" smashed="yes">
 <attribute name="NAME" x="157.48" y="205.74" size="1.27" layer="95"/>
 <attribute name="VALUE" x="172.72" y="205.74" size="1.27" layer="96"/>
-</instance>
-<instance part="X3" gate="-1" x="226.06" y="228.6" smashed="yes" rot="R270">
-<attribute name="NAME" x="226.949" y="229.87" size="1.27" layer="95" rot="R90"/>
-</instance>
-<instance part="X3" gate="-2" x="254" y="228.6" smashed="yes" rot="R270">
-<attribute name="VALUE" x="256.54" y="228.6" size="1.27" layer="96" rot="R270"/>
-<attribute name="NAME" x="254.889" y="229.87" size="1.27" layer="95" rot="R90"/>
-</instance>
-<instance part="X4" gate="-1" x="292.1" y="228.6" smashed="yes" rot="R270">
-<attribute name="NAME" x="292.989" y="229.87" size="1.27" layer="95" rot="R90"/>
-</instance>
-<instance part="X4" gate="-2" x="264.16" y="228.6" smashed="yes" rot="R270">
-<attribute name="VALUE" x="294.64" y="228.6" size="1.27" layer="96" rot="R270"/>
-<attribute name="NAME" x="265.049" y="229.87" size="1.27" layer="95" rot="R90"/>
 </instance>
 <instance part="JP5" gate="A" x="279.4" y="231.14" smashed="yes" rot="R90">
 <attribute name="NAME" x="268.605" y="224.79" size="1.27" layer="95" rot="R90"/>
@@ -24574,14 +24542,10 @@ Jakub Streit
 <segment>
 <pinref part="IC5" gate="G$1" pin="AOUT1"/>
 <label x="195.58" y="97.282" size="1.27" layer="95"/>
-<wire x1="187.96" y1="96.52" x2="226.06" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="96.52" x2="233.68" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="JP7" gate="A" pin="1"/>
 <wire x1="233.68" y1="124.46" x2="233.68" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="114.3" x2="226.06" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="226.06" y1="114.3" x2="226.06" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="226.06" y1="114.3" x2="226.06" y2="96.52" width="0.1524" layer="91"/>
-<junction x="226.06" y="114.3"/>
-<pinref part="X5" gate="-1" pin="KL"/>
+<wire x1="233.68" y1="114.3" x2="233.68" y2="96.52" width="0.1524" layer="91"/>
 <label x="233.172" y="119.634" size="1.27" layer="95" rot="MR270"/>
 </segment>
 </net>
@@ -24589,14 +24553,10 @@ Jakub Streit
 <segment>
 <pinref part="IC5" gate="G$1" pin="AUOT2"/>
 <label x="195.58" y="94.742" size="1.27" layer="95"/>
-<wire x1="187.96" y1="93.98" x2="254" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="254" y1="114.3" x2="254" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="93.98" x2="246.38" y2="93.98" width="0.1524" layer="91"/>
 <pinref part="JP7" gate="A" pin="6"/>
 <wire x1="246.38" y1="124.46" x2="246.38" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="246.38" y1="114.3" x2="254" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="254" y1="114.3" x2="254" y2="93.98" width="0.1524" layer="91"/>
-<junction x="254" y="114.3"/>
-<pinref part="X5" gate="-2" pin="KL"/>
+<wire x1="246.38" y1="114.3" x2="246.38" y2="93.98" width="0.1524" layer="91"/>
 <label x="245.872" y="119.634" size="1.27" layer="95" rot="MR270"/>
 </segment>
 </net>
@@ -24604,14 +24564,10 @@ Jakub Streit
 <segment>
 <pinref part="IC5" gate="G$1" pin="BOUT1"/>
 <label x="195.58" y="89.662" size="1.27" layer="95"/>
-<wire x1="187.96" y1="88.9" x2="264.16" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="88.9" x2="271.78" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="JP8" gate="A" pin="1"/>
 <wire x1="271.78" y1="124.46" x2="271.78" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="114.3" x2="264.16" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="264.16" y1="114.3" x2="264.16" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="264.16" y1="114.3" x2="264.16" y2="88.9" width="0.1524" layer="91"/>
-<junction x="264.16" y="114.3"/>
-<pinref part="X6" gate="-2" pin="KL"/>
+<wire x1="271.78" y1="114.3" x2="271.78" y2="88.9" width="0.1524" layer="91"/>
 <label x="271.272" y="119.634" size="1.27" layer="95" rot="MR270"/>
 </segment>
 </net>
@@ -24619,14 +24575,10 @@ Jakub Streit
 <segment>
 <pinref part="IC5" gate="G$1" pin="BOUT2"/>
 <label x="195.58" y="87.122" size="1.27" layer="95"/>
-<wire x1="292.1" y1="86.36" x2="187.96" y2="86.36" width="0.1524" layer="91"/>
-<wire x1="292.1" y1="114.3" x2="292.1" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="284.48" y1="86.36" x2="187.96" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="JP8" gate="A" pin="6"/>
 <wire x1="284.48" y1="124.46" x2="284.48" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="284.48" y1="114.3" x2="292.1" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="292.1" y1="86.36" x2="292.1" y2="114.3" width="0.1524" layer="91"/>
-<junction x="292.1" y="114.3"/>
-<pinref part="X6" gate="-1" pin="KL"/>
+<wire x1="284.48" y1="86.36" x2="284.48" y2="114.3" width="0.1524" layer="91"/>
 <label x="283.972" y="119.634" size="1.27" layer="95" rot="MR270"/>
 </segment>
 </net>
@@ -25274,14 +25226,10 @@ Jakub Streit
 <segment>
 <pinref part="IC2" gate="G$1" pin="AOUT1"/>
 <label x="195.58" y="201.422" size="1.27" layer="95"/>
-<wire x1="187.96" y1="200.66" x2="226.06" y2="200.66" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="200.66" x2="233.68" y2="200.66" width="0.1524" layer="91"/>
 <pinref part="JP4" gate="A" pin="1"/>
 <wire x1="233.68" y1="228.6" x2="233.68" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="218.44" x2="226.06" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="226.06" y1="218.44" x2="226.06" y2="223.52" width="0.1524" layer="91"/>
-<wire x1="226.06" y1="218.44" x2="226.06" y2="200.66" width="0.1524" layer="91"/>
-<junction x="226.06" y="218.44"/>
-<pinref part="X3" gate="-1" pin="KL"/>
+<wire x1="233.68" y1="218.44" x2="233.68" y2="200.66" width="0.1524" layer="91"/>
 <label x="233.172" y="223.774" size="1.27" layer="95" rot="MR270"/>
 </segment>
 </net>
@@ -25289,14 +25237,10 @@ Jakub Streit
 <segment>
 <pinref part="IC2" gate="G$1" pin="AUOT2"/>
 <label x="195.58" y="198.882" size="1.27" layer="95"/>
-<wire x1="187.96" y1="198.12" x2="254" y2="198.12" width="0.1524" layer="91"/>
-<wire x1="254" y1="218.44" x2="254" y2="223.52" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="198.12" x2="246.38" y2="198.12" width="0.1524" layer="91"/>
 <pinref part="JP4" gate="A" pin="6"/>
 <wire x1="246.38" y1="228.6" x2="246.38" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="246.38" y1="218.44" x2="254" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="254" y1="218.44" x2="254" y2="198.12" width="0.1524" layer="91"/>
-<junction x="254" y="218.44"/>
-<pinref part="X3" gate="-2" pin="KL"/>
+<wire x1="246.38" y1="218.44" x2="246.38" y2="198.12" width="0.1524" layer="91"/>
 <label x="245.872" y="223.774" size="1.27" layer="95" rot="MR270"/>
 </segment>
 </net>
@@ -25304,14 +25248,10 @@ Jakub Streit
 <segment>
 <pinref part="IC2" gate="G$1" pin="BOUT1"/>
 <label x="195.58" y="193.802" size="1.27" layer="95"/>
-<wire x1="187.96" y1="193.04" x2="264.16" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="193.04" x2="271.78" y2="193.04" width="0.1524" layer="91"/>
 <pinref part="JP5" gate="A" pin="1"/>
 <wire x1="271.78" y1="228.6" x2="271.78" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="218.44" x2="264.16" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="264.16" y1="218.44" x2="264.16" y2="223.52" width="0.1524" layer="91"/>
-<wire x1="264.16" y1="218.44" x2="264.16" y2="193.04" width="0.1524" layer="91"/>
-<junction x="264.16" y="218.44"/>
-<pinref part="X4" gate="-2" pin="KL"/>
+<wire x1="271.78" y1="218.44" x2="271.78" y2="193.04" width="0.1524" layer="91"/>
 <label x="271.272" y="223.774" size="1.27" layer="95" rot="MR270"/>
 </segment>
 </net>
@@ -25319,14 +25259,10 @@ Jakub Streit
 <segment>
 <pinref part="IC2" gate="G$1" pin="BOUT2"/>
 <label x="195.58" y="191.262" size="1.27" layer="95"/>
-<wire x1="292.1" y1="190.5" x2="187.96" y2="190.5" width="0.1524" layer="91"/>
-<wire x1="292.1" y1="218.44" x2="292.1" y2="223.52" width="0.1524" layer="91"/>
+<wire x1="284.48" y1="190.5" x2="187.96" y2="190.5" width="0.1524" layer="91"/>
 <pinref part="JP5" gate="A" pin="6"/>
 <wire x1="284.48" y1="228.6" x2="284.48" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="284.48" y1="218.44" x2="292.1" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="292.1" y1="190.5" x2="292.1" y2="218.44" width="0.1524" layer="91"/>
-<junction x="292.1" y="218.44"/>
-<pinref part="X4" gate="-1" pin="KL"/>
+<wire x1="284.48" y1="190.5" x2="284.48" y2="218.44" width="0.1524" layer="91"/>
 <label x="283.972" y="223.774" size="1.27" layer="95" rot="MR270"/>
 </segment>
 </net>
