@@ -19691,9 +19691,12 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="D6" library="diode" deviceset="BAT60J" device="DO-214-AB" package3d_urn="urn:adsk.eagle:package:43453/2" value="SS34"/>
 <part name="Q1" library="transistors" deviceset="P-MOSFET" device="-MLP_HS" value="NCE20P45Q">
 <attribute name="DESCRIPTION" value="P MOSFET 19V 35A 7mΩ"/>
+<attribute name="EXTENDED" value="YES"/>
 <attribute name="LCSC_ID" value="C193354"/>
+<attribute name="MF" value="Wuxi NCE Power Semiconductor"/>
 <attribute name="MF_ID" value="NCE20P45Q"/>
 <attribute name="PACKAGE" value="DFN-8_EP_3.3x3.3x0.65P"/>
+<attribute name="PADS" value="8"/>
 <attribute name="PRICE_1000PLUS" value="$0.1218"/>
 <attribute name="PRICE_100PLUS" value="$0.1276"/>
 <attribute name="PRICE_10PLUS" value="$0.1450"/>
@@ -20520,9 +20523,12 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND104" library="Supply" deviceset="GND" device=""/>
 <part name="Q2" library="transistors" deviceset="P-MOSFET" device="-MLP_HS" value="NCE20P45Q">
 <attribute name="DESCRIPTION" value="P MOSFET 19V 35A 7mΩ"/>
+<attribute name="EXTENDED" value="YES"/>
 <attribute name="LCSC_ID" value="C193354"/>
+<attribute name="MF" value="Wuxi NCE Power Semiconductor"/>
 <attribute name="MF_ID" value="NCE20P45Q"/>
 <attribute name="PACKAGE" value="DFN-8_EP_3.3x3.3x0.65P"/>
+<attribute name="PADS" value="8"/>
 <attribute name="PRICE_1000PLUS" value="$0.1218"/>
 <attribute name="PRICE_100PLUS" value="$0.1276"/>
 <attribute name="PRICE_10PLUS" value="$0.1450"/>
@@ -22055,6 +22061,9 @@ makes filter together with gate capacitance</text>
 <attribute name="PRICE_1PLUS" x="73.66" y="172.72" size="1.27" layer="96" rot="MR90" display="off"/>
 <attribute name="PRICE_30PLUS" x="73.66" y="172.72" size="1.27" layer="96" rot="MR90" display="off"/>
 <attribute name="PRICE_500PLUS" x="73.66" y="172.72" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="EXTENDED" x="73.66" y="172.72" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="MF" x="73.66" y="172.72" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="PADS" x="73.66" y="172.72" size="1.27" layer="96" rot="MR90" display="off"/>
 </instance>
 <instance part="SW1" gate="1" x="83.82" y="157.48" smashed="yes" rot="MR180">
 <attribute name="NAME" x="86.36" y="157.48" size="1.27" layer="95" rot="R270" align="bottom-center"/>
@@ -22356,6 +22365,9 @@ makes filter together with gate capacitance</text>
 <attribute name="PRICE_1PLUS" x="109.22" y="172.72" size="1.27" layer="96" rot="R90" display="off"/>
 <attribute name="PRICE_30PLUS" x="109.22" y="172.72" size="1.27" layer="96" rot="R90" display="off"/>
 <attribute name="PRICE_500PLUS" x="109.22" y="172.72" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="EXTENDED" x="109.22" y="172.72" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="MF" x="109.22" y="172.72" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PADS" x="109.22" y="172.72" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="R66" gate="G$1" x="106.68" y="157.48" smashed="yes" rot="R90">
 <attribute name="NAME" x="105.156" y="153.924" size="1.27" layer="95" rot="R90"/>

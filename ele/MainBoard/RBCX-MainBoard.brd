@@ -3259,10 +3259,13 @@ design rules under a new name.</description>
 </element>
 <element name="Q1" library="transistors" package="MLP3.3X3.3_HS" value="NCE20P45Q" x="58.42" y="88.9" smashed="yes">
 <attribute name="DESCRIPTION" value="P MOSFET 19V 35A 7mΩ" x="58.42" y="88.9" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="YES" x="58.42" y="88.9" size="1.778" layer="27" display="off"/>
 <attribute name="LCSC_ID" value="C193354" x="58.42" y="88.9" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Wuxi NCE Power Semiconductor" x="58.42" y="88.9" size="1.778" layer="27" display="off"/>
 <attribute name="MF_ID" value="NCE20P45Q" x="58.42" y="88.9" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="55.32" y="91.5" size="1.27" layer="25" font="vector" ratio="16"/>
 <attribute name="PACKAGE" value="DFN-8_EP_3.3x3.3x0.65P" x="58.42" y="88.9" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="8" x="58.42" y="88.9" size="1.778" layer="27" display="off"/>
 <attribute name="PRICE_1000PLUS" value="$0.1218" x="58.42" y="88.9" size="1.778" layer="27" display="off"/>
 <attribute name="PRICE_100PLUS" value="$0.1276" x="58.42" y="88.9" size="1.778" layer="27" display="off"/>
 <attribute name="PRICE_10PLUS" value="$0.1450" x="58.42" y="88.9" size="1.778" layer="27" display="off"/>
@@ -4788,10 +4791,13 @@ design rules under a new name.</description>
 </element>
 <element name="Q2" library="transistors" package="MLP3.3X3.3_HS" value="NCE20P45Q" x="54.61" y="88.9" smashed="yes" rot="R180">
 <attribute name="DESCRIPTION" value="P MOSFET 19V 35A 7mΩ" x="54.61" y="88.9" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="EXTENDED" value="YES" x="54.61" y="88.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="LCSC_ID" value="C193354" x="54.61" y="88.9" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MF" value="Wuxi NCE Power Semiconductor" x="54.61" y="88.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MF_ID" value="NCE20P45Q" x="54.61" y="88.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="57.71" y="86.3" size="1.27" layer="25" font="vector" ratio="16" rot="R180"/>
 <attribute name="PACKAGE" value="DFN-8_EP_3.3x3.3x0.65P" x="54.61" y="88.9" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PADS" value="8" x="54.61" y="88.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="PRICE_1000PLUS" value="$0.1218" x="54.61" y="88.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="PRICE_100PLUS" value="$0.1276" x="54.61" y="88.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="PRICE_10PLUS" value="$0.1450" x="54.61" y="88.9" size="1.778" layer="27" rot="R180" display="off"/>
