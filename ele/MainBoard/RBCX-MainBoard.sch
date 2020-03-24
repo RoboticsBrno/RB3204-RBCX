@@ -8,34 +8,34 @@
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
-<layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
-<layer number="3" name="Route3" color="17" fill="1" visible="no" active="no"/>
-<layer number="4" name="Route4" color="18" fill="1" visible="no" active="no"/>
-<layer number="5" name="Route5" color="19" fill="1" visible="no" active="no"/>
-<layer number="6" name="Route6" color="25" fill="1" visible="no" active="no"/>
-<layer number="7" name="Route7" color="26" fill="1" visible="no" active="no"/>
-<layer number="8" name="Route8" color="27" fill="1" visible="no" active="no"/>
-<layer number="9" name="Route9" color="28" fill="1" visible="no" active="no"/>
-<layer number="10" name="Route10" color="29" fill="1" visible="no" active="no"/>
-<layer number="11" name="Route11" color="30" fill="1" visible="no" active="no"/>
-<layer number="12" name="Route12" color="20" fill="1" visible="no" active="no"/>
-<layer number="13" name="Route13" color="21" fill="1" visible="no" active="no"/>
-<layer number="14" name="Route14" color="22" fill="1" visible="no" active="no"/>
-<layer number="15" name="Route15" color="23" fill="1" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="no"/>
-<layer number="20" name="Dimension" color="24" fill="1" visible="no" active="no"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="no"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="no"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="no"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="no"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="no"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="no"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="no"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="no"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
+<layer number="2" name="Route2" color="16" fill="1" visible="yes" active="no"/>
+<layer number="3" name="Route3" color="17" fill="1" visible="yes" active="no"/>
+<layer number="4" name="Route4" color="18" fill="1" visible="yes" active="no"/>
+<layer number="5" name="Route5" color="19" fill="1" visible="yes" active="no"/>
+<layer number="6" name="Route6" color="25" fill="1" visible="yes" active="no"/>
+<layer number="7" name="Route7" color="26" fill="1" visible="yes" active="no"/>
+<layer number="8" name="Route8" color="27" fill="1" visible="yes" active="no"/>
+<layer number="9" name="Route9" color="28" fill="1" visible="yes" active="no"/>
+<layer number="10" name="Route10" color="29" fill="1" visible="yes" active="no"/>
+<layer number="11" name="Route11" color="30" fill="1" visible="yes" active="no"/>
+<layer number="12" name="Route12" color="20" fill="1" visible="yes" active="no"/>
+<layer number="13" name="Route13" color="21" fill="1" visible="yes" active="no"/>
+<layer number="14" name="Route14" color="22" fill="1" visible="yes" active="no"/>
+<layer number="15" name="Route15" color="23" fill="1" visible="yes" active="no"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="no"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="no"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="no"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="no"/>
+<layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="no"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="no"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="no"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="no"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="no"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="no"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="no"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="no"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="no"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="no"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="no"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="no"/>
@@ -44,8 +44,8 @@
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="no"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="no"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="no"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="no"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="no" active="no"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="no"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="no"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="no"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="no"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="no"/>
@@ -53,22 +53,22 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="no"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="no"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="no"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="no"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="no"/>
-<layer number="48" name="Document" color="7" fill="1" visible="no" active="no"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="no"/>
-<layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="no"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="no"/>
-<layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
-<layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
-<layer number="55" name="tPotisk" color="7" fill="1" visible="no" active="no"/>
-<layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
-<layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
-<layer number="58" name="bNC" color="7" fill="1" visible="no" active="no"/>
-<layer number="59" name="tCarbon" color="7" fill="1" visible="no" active="no"/>
-<layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
-<layer number="61" name="stand" color="7" fill="1" visible="no" active="no"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="no"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="no"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="no"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="no"/>
+<layer number="50" name="dxf" color="7" fill="1" visible="yes" active="no"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="53" name="tGND_GNDA" color="7" fill="9" visible="yes" active="no"/>
+<layer number="54" name="bGND_GNDA" color="1" fill="9" visible="yes" active="no"/>
+<layer number="55" name="tPotisk" color="7" fill="1" visible="yes" active="no"/>
+<layer number="56" name="wert" color="7" fill="1" visible="yes" active="no"/>
+<layer number="57" name="tCAD" color="7" fill="1" visible="yes" active="no"/>
+<layer number="58" name="bNC" color="7" fill="1" visible="yes" active="no"/>
+<layer number="59" name="tCarbon" color="7" fill="1" visible="yes" active="no"/>
+<layer number="60" name="bCarbon" color="7" fill="1" visible="yes" active="no"/>
+<layer number="61" name="stand" color="7" fill="1" visible="yes" active="no"/>
 <layer number="88" name="SimResults" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="89" name="SimProbes" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
@@ -19678,7 +19678,6 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="X2" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="POWER_IN"/>
 <part name="R1" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="100k"/>
-<part name="Q5" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
 <part name="NC1" library="NC" deviceset="NC" device=""/>
 <part name="NC2" library="NC" deviceset="NC" device=""/>
 <part name="NC3" library="NC" deviceset="NC" device=""/>
@@ -19725,8 +19724,17 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND5" library="Supply" deviceset="GND" device=""/>
 <part name="P+1" library="Supply" deviceset="VCC" device=""/>
 <part name="+3V2" library="Supply" deviceset="+3V3S" device=""/>
-<part name="Q4" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
-<part name="Q3" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
+<part name="Q3" library="transistors" deviceset="N-MOSFET" device="-SOT23-GSD" value="2N7002">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C8545"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)"/>
+<attribute name="MF_ID" value="2N7002"/>
+<attribute name="PACKAGE" value="SOT-23-3"/>
+<attribute name="PADS" value="3"/>
+<attribute name="PRICE_1PLUS" value="$0.0236"/>
+<attribute name="PRICE_200PLUS" value="$0.0113"/>
+</part>
 <part name="GND6" library="Supply" deviceset="GND" device=""/>
 <part name="GND7" library="Supply" deviceset="GND" device=""/>
 <part name="GND8" library="Supply" deviceset="GND" device=""/>
@@ -20339,8 +20347,6 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="+3V44" library="Supply" deviceset="+3V3" device=""/>
 <part name="R126" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="100k"/>
 <part name="+3V45" library="Supply" deviceset="+3V3" device=""/>
-<part name="Q8" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
-<part name="Q9" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
 <part name="+3V31" library="Supply" deviceset="+3V3" device=""/>
 <part name="+3V46" library="Supply" deviceset="+3V3" device=""/>
 <part name="R116" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
@@ -20354,7 +20360,6 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND118" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R111" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R118" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="Q10" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
 <part name="+3V7" library="Supply" deviceset="+3V3" device=""/>
 <part name="R119" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
 <part name="R120" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
@@ -20395,7 +20400,6 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="+3V53" library="Supply" deviceset="+3V3" device=""/>
 <part name="P+16" library="Supply" deviceset="+5V" device=""/>
 <part name="JP66" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ILED"/>
-<part name="Q11" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
 <part name="+3V54" library="Supply" deviceset="+3V3" device=""/>
 <part name="R134" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
 <part name="R132" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
@@ -20457,7 +20461,6 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 </part>
 <part name="GND150" library="Supply" deviceset="GND" device=""/>
 <part name="B1" library="piezo" deviceset="PIEZO" device=""/>
-<part name="Q6" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
 <part name="GND156" library="Supply" deviceset="GND" device=""/>
 <part name="R51" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R50" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
@@ -20496,7 +20499,6 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="+3V60" library="Supply" deviceset="+3V3S" device=""/>
 <part name="R60" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="100k"/>
 <part name="GND164" library="Supply" deviceset="GND" device=""/>
-<part name="Q7" library="transistors" deviceset="N-MOSFET" device="-SOT323-GSD" value="CHOOSE_ME"/>
 <part name="GND165" library="Supply" deviceset="GND" device=""/>
 <part name="R61" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="100k"/>
 <part name="R93" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
@@ -20530,6 +20532,94 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 </part>
 <part name="R66" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="R68" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="Q4" library="transistors" deviceset="N-MOSFET" device="-SOT23-GSD" value="2N7002">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C8545"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)"/>
+<attribute name="MF_ID" value="2N7002"/>
+<attribute name="PACKAGE" value="SOT-23-3"/>
+<attribute name="PADS" value="3"/>
+<attribute name="PRICE_1PLUS" value="$0.0236"/>
+<attribute name="PRICE_200PLUS" value="$0.0113"/>
+</part>
+<part name="Q5" library="transistors" deviceset="N-MOSFET" device="-SOT23-GSD" value="2N7002">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C8545"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)"/>
+<attribute name="MF_ID" value="2N7002"/>
+<attribute name="PACKAGE" value="SOT-23-3"/>
+<attribute name="PADS" value="3"/>
+<attribute name="PRICE_1PLUS" value="$0.0236"/>
+<attribute name="PRICE_200PLUS" value="$0.0113"/>
+</part>
+<part name="Q6" library="transistors" deviceset="N-MOSFET" device="-SOT23-GSD" value="2N7002">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C8545"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)"/>
+<attribute name="MF_ID" value="2N7002"/>
+<attribute name="PACKAGE" value="SOT-23-3"/>
+<attribute name="PADS" value="3"/>
+<attribute name="PRICE_1PLUS" value="$0.0236"/>
+<attribute name="PRICE_200PLUS" value="$0.0113"/>
+</part>
+<part name="Q7" library="transistors" deviceset="N-MOSFET" device="-SOT23-GSD" value="2N7002">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C8545"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)"/>
+<attribute name="MF_ID" value="2N7002"/>
+<attribute name="PACKAGE" value="SOT-23-3"/>
+<attribute name="PADS" value="3"/>
+<attribute name="PRICE_1PLUS" value="$0.0236"/>
+<attribute name="PRICE_200PLUS" value="$0.0113"/>
+</part>
+<part name="Q8" library="transistors" deviceset="N-MOSFET" device="-SOT23-GSD" value="2N7002">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C8545"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)"/>
+<attribute name="MF_ID" value="2N7002"/>
+<attribute name="PACKAGE" value="SOT-23-3"/>
+<attribute name="PADS" value="3"/>
+<attribute name="PRICE_1PLUS" value="$0.0236"/>
+<attribute name="PRICE_200PLUS" value="$0.0113"/>
+</part>
+<part name="Q9" library="transistors" deviceset="N-MOSFET" device="-SOT23-GSD" value="2N7002">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C8545"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)"/>
+<attribute name="MF_ID" value="2N7002"/>
+<attribute name="PACKAGE" value="SOT-23-3"/>
+<attribute name="PADS" value="3"/>
+<attribute name="PRICE_1PLUS" value="$0.0236"/>
+<attribute name="PRICE_200PLUS" value="$0.0113"/>
+</part>
+<part name="Q10" library="transistors" deviceset="N-MOSFET" device="-SOT23-GSD" value="2N7002">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C8545"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)"/>
+<attribute name="MF_ID" value="2N7002"/>
+<attribute name="PACKAGE" value="SOT-23-3"/>
+<attribute name="PADS" value="3"/>
+<attribute name="PRICE_1PLUS" value="$0.0236"/>
+<attribute name="PRICE_200PLUS" value="$0.0113"/>
+</part>
+<part name="Q11" library="transistors" deviceset="N-MOSFET" device="-SOT23-GSD" value="2N7002">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C8545"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)"/>
+<attribute name="MF_ID" value="2N7002"/>
+<attribute name="PACKAGE" value="SOT-23-3"/>
+<attribute name="PADS" value="3"/>
+<attribute name="PRICE_1PLUS" value="$0.0236"/>
+<attribute name="PRICE_200PLUS" value="$0.0113"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -21952,10 +22042,6 @@ makes filter together with gate capacitance</text>
 <attribute name="NAME" x="95.504" y="169.164" size="1.27" layer="95"/>
 <attribute name="VALUE" x="99.822" y="169.164" size="1.27" layer="96"/>
 </instance>
-<instance part="Q5" gate="G$1" x="109.22" y="134.62" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="104.14" y="137.16" size="1.27" layer="96" rot="MR270"/>
-<attribute name="NAME" x="102.108" y="137.16" size="1.27" layer="95" rot="MR270"/>
-</instance>
 <instance part="Q1" gate="G$1" x="73.66" y="172.72" smashed="yes" rot="MR90">
 <attribute name="VALUE" x="68.58" y="177.8" size="1.27" layer="96"/>
 <attribute name="NAME" x="68.58" y="179.832" size="1.27" layer="95"/>
@@ -21994,13 +22080,18 @@ makes filter together with gate capacitance</text>
 <instance part="+3V2" gate="G$1" x="124.46" y="149.86" smashed="yes">
 <attribute name="VALUE" x="121.92" y="147.32" size="1.27" layer="96" rot="R90"/>
 </instance>
-<instance part="Q4" gate="G$1" x="88.9" y="134.62" smashed="yes">
-<attribute name="VALUE" x="88.138" y="132.842" size="1.27" layer="96" rot="R90"/>
-<attribute name="NAME" x="86.106" y="132.842" size="1.27" layer="95" rot="R90"/>
-</instance>
 <instance part="Q3" gate="G$1" x="78.74" y="134.62" smashed="yes" rot="MR0">
 <attribute name="VALUE" x="73.66" y="137.16" size="1.27" layer="96" rot="MR270"/>
 <attribute name="NAME" x="71.628" y="137.16" size="1.27" layer="95" rot="MR270"/>
+<attribute name="DESCRIPTION" x="78.74" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="LCSC_ID" x="78.74" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="MF_ID" x="78.74" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="PACKAGE" x="78.74" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_1PLUS" x="78.74" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_200PLUS" x="78.74" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="EXTENDED" x="78.74" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="MF" x="78.74" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="PADS" x="78.74" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="GND6" gate="1" x="83.82" y="114.3" smashed="yes">
 <attribute name="VALUE" x="82.042" y="112.522" size="1.27" layer="96"/>
@@ -22274,6 +22365,32 @@ makes filter together with gate capacitance</text>
 <attribute name="NAME" x="74.676" y="159.004" size="1.27" layer="95" rot="R90"/>
 <attribute name="VALUE" x="74.676" y="163.322" size="1.27" layer="96" rot="R90"/>
 </instance>
+<instance part="Q4" gate="G$1" x="88.9" y="134.62" smashed="yes">
+<attribute name="VALUE" x="93.98" y="137.16" size="1.27" layer="96" rot="R270"/>
+<attribute name="NAME" x="96.012" y="137.16" size="1.27" layer="95" rot="R270"/>
+<attribute name="DESCRIPTION" x="88.9" y="134.62" size="1.27" layer="96" display="off"/>
+<attribute name="LCSC_ID" x="88.9" y="134.62" size="1.27" layer="96" display="off"/>
+<attribute name="MF_ID" x="88.9" y="134.62" size="1.27" layer="96" display="off"/>
+<attribute name="PACKAGE" x="88.9" y="134.62" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_1PLUS" x="88.9" y="134.62" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_200PLUS" x="88.9" y="134.62" size="1.27" layer="96" display="off"/>
+<attribute name="EXTENDED" x="88.9" y="134.62" size="1.27" layer="96" display="off"/>
+<attribute name="MF" x="88.9" y="134.62" size="1.27" layer="96" display="off"/>
+<attribute name="PADS" x="88.9" y="134.62" size="1.27" layer="96" display="off"/>
+</instance>
+<instance part="Q5" gate="G$1" x="109.22" y="134.62" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="104.14" y="137.16" size="1.27" layer="96" rot="MR270"/>
+<attribute name="NAME" x="102.108" y="137.16" size="1.27" layer="95" rot="MR270"/>
+<attribute name="DESCRIPTION" x="109.22" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="LCSC_ID" x="109.22" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="MF_ID" x="109.22" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="PACKAGE" x="109.22" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_1PLUS" x="109.22" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="PRICE_200PLUS" x="109.22" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="EXTENDED" x="109.22" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="MF" x="109.22" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<attribute name="PADS" x="109.22" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -22315,7 +22432,6 @@ makes filter together with gate capacitance</text>
 </net>
 <net name="PWRSW" class="0">
 <segment>
-<pinref part="Q5" gate="G$1" pin="D"/>
 <wire x1="106.68" y1="139.7" x2="106.68" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="142.24" x2="106.68" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="147.32" x2="106.68" y2="147.32" width="0.1524" layer="91"/>
@@ -22327,6 +22443,7 @@ makes filter together with gate capacitance</text>
 <pinref part="C7" gate="G$1" pin="1"/>
 <wire x1="106.68" y1="147.32" x2="106.68" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="R66" gate="G$1" pin="1"/>
+<pinref part="Q5" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="+3V3S" class="0">
@@ -22364,9 +22481,9 @@ makes filter together with gate capacitance</text>
 <pinref part="R68" gate="G$1" pin="1"/>
 </segment>
 <segment>
-<pinref part="Q5" gate="G$1" pin="S"/>
 <wire x1="106.68" y1="116.84" x2="106.68" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="GND3" gate="1" pin="GND"/>
+<pinref part="Q5" gate="G$1" pin="S"/>
 </segment>
 <segment>
 <wire x1="114.3" y1="119.38" x2="114.3" y2="116.84" width="0.1524" layer="91"/>
@@ -22380,8 +22497,8 @@ makes filter together with gate capacitance</text>
 </segment>
 <segment>
 <pinref part="GND8" gate="1" pin="GND"/>
-<pinref part="Q4" gate="G$1" pin="S"/>
 <wire x1="91.44" y1="116.84" x2="91.44" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="Q4" gate="G$1" pin="S"/>
 </segment>
 <segment>
 <pinref part="GND6" gate="1" pin="GND"/>
@@ -22517,7 +22634,6 @@ makes filter together with gate capacitance</text>
 </net>
 <net name="N$11" class="0">
 <segment>
-<pinref part="Q4" gate="G$1" pin="D"/>
 <wire x1="93.98" y1="142.24" x2="91.44" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="142.24" x2="91.44" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="147.32" x2="91.44" y2="147.32" width="0.1524" layer="91"/>
@@ -22525,6 +22641,7 @@ makes filter together with gate capacitance</text>
 <junction x="91.44" y="142.24"/>
 <pinref part="R2" gate="G$1" pin="1"/>
 <pinref part="C7" gate="G$1" pin="2"/>
+<pinref part="Q4" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="PWR_BTN" class="0">
@@ -22536,7 +22653,6 @@ makes filter together with gate capacitance</text>
 <wire x1="83.82" y1="132.08" x2="83.82" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="132.08" x2="83.82" y2="132.08" width="0.1524" layer="91"/>
 <junction x="83.82" y="132.08"/>
-<pinref part="Q4" gate="G$1" pin="G"/>
 <wire x1="86.36" y1="132.08" x2="83.82" y2="132.08" width="0.1524" layer="91"/>
 <label x="82.55" y="133.35" size="1.27" layer="95" rot="R90"/>
 <pinref part="R4" gate="G$1" pin="2"/>
@@ -22549,6 +22665,7 @@ makes filter together with gate capacitance</text>
 <wire x1="86.36" y1="149.86" x2="83.82" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="152.4" x2="86.36" y2="149.86" width="0.1524" layer="91"/>
 <junction x="86.36" y="149.86"/>
+<pinref part="Q4" gate="G$1" pin="G"/>
 </segment>
 </net>
 <net name="BUTTON_ON" class="0">
@@ -22561,7 +22678,6 @@ makes filter together with gate capacitance</text>
 </net>
 <net name="POWER" class="0">
 <segment>
-<pinref part="Q5" gate="G$1" pin="G"/>
 <wire x1="111.76" y1="132.08" x2="114.3" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="132.08" x2="124.46" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="132.08" x2="124.46" y2="134.62" width="0.1524" layer="91"/>
@@ -22575,6 +22691,7 @@ makes filter together with gate capacitance</text>
 <pinref part="R3" gate="G$1" pin="1"/>
 <pinref part="C8" gate="G$1" pin="1"/>
 <label x="129.54" y="132.08" size="1.27" layer="95" xref="yes"/>
+<pinref part="Q5" gate="G$1" pin="G"/>
 </segment>
 </net>
 <net name="PWRLED_VCC" class="0">
@@ -29684,10 +29801,6 @@ Jakub Streit
 <attribute name="NAME" x="342.9" y="210.82" size="1.27" layer="95"/>
 <attribute name="VALUE" x="342.9" y="209.042" size="1.27" layer="96"/>
 </instance>
-<instance part="Q6" gate="G$1" x="335.28" y="195.58" smashed="yes">
-<attribute name="VALUE" x="340.36" y="198.12" size="1.27" layer="96" rot="R270"/>
-<attribute name="NAME" x="342.392" y="198.12" size="1.27" layer="95" rot="R270"/>
-</instance>
 <instance part="GND156" gate="1" x="337.82" y="182.88" smashed="yes">
 <attribute name="VALUE" x="336.042" y="181.102" size="1.27" layer="96"/>
 </instance>
@@ -29733,10 +29846,6 @@ Jakub Streit
 <instance part="GND164" gate="1" x="182.88" y="15.24" smashed="yes">
 <attribute name="VALUE" x="181.102" y="13.462" size="1.27" layer="96"/>
 </instance>
-<instance part="Q7" gate="G$1" x="170.18" y="25.4" smashed="yes">
-<attribute name="VALUE" x="175.26" y="27.94" size="1.27" layer="96" rot="R270"/>
-<attribute name="NAME" x="177.292" y="27.94" size="1.27" layer="95" rot="R270"/>
-</instance>
 <instance part="GND165" gate="1" x="172.72" y="15.24" smashed="yes">
 <attribute name="VALUE" x="170.942" y="13.462" size="1.27" layer="96"/>
 </instance>
@@ -29747,6 +29856,32 @@ Jakub Streit
 <instance part="JP26" gate="G$1" x="198.12" y="50.8" smashed="yes">
 <attribute name="NAME" x="191.77" y="56.515" size="1.27" layer="95"/>
 <attribute name="VALUE" x="191.77" y="47.752" size="1.27" layer="96" rot="MR180"/>
+</instance>
+<instance part="Q6" gate="G$1" x="335.28" y="195.58" smashed="yes">
+<attribute name="VALUE" x="340.36" y="198.12" size="1.27" layer="96" rot="R270"/>
+<attribute name="NAME" x="342.392" y="198.12" size="1.27" layer="95" rot="R270"/>
+<attribute name="DESCRIPTION" x="335.28" y="195.58" size="1.27" layer="96" display="off"/>
+<attribute name="LCSC_ID" x="335.28" y="195.58" size="1.27" layer="96" display="off"/>
+<attribute name="MF_ID" x="335.28" y="195.58" size="1.27" layer="96" display="off"/>
+<attribute name="PACKAGE" x="335.28" y="195.58" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_1PLUS" x="335.28" y="195.58" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_200PLUS" x="335.28" y="195.58" size="1.27" layer="96" display="off"/>
+<attribute name="EXTENDED" x="335.28" y="195.58" size="1.27" layer="96" display="off"/>
+<attribute name="MF" x="335.28" y="195.58" size="1.27" layer="96" display="off"/>
+<attribute name="PADS" x="335.28" y="195.58" size="1.27" layer="96" display="off"/>
+</instance>
+<instance part="Q7" gate="G$1" x="170.18" y="25.4" smashed="yes">
+<attribute name="VALUE" x="175.26" y="27.94" size="1.27" layer="96" rot="R270"/>
+<attribute name="NAME" x="177.292" y="27.94" size="1.27" layer="95" rot="R270"/>
+<attribute name="DESCRIPTION" x="170.18" y="25.4" size="1.27" layer="96" display="off"/>
+<attribute name="LCSC_ID" x="170.18" y="25.4" size="1.27" layer="96" display="off"/>
+<attribute name="MF_ID" x="170.18" y="25.4" size="1.27" layer="96" display="off"/>
+<attribute name="PACKAGE" x="170.18" y="25.4" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_1PLUS" x="170.18" y="25.4" size="1.27" layer="96" display="off"/>
+<attribute name="PRICE_200PLUS" x="170.18" y="25.4" size="1.27" layer="96" display="off"/>
+<attribute name="EXTENDED" x="170.18" y="25.4" size="1.27" layer="96" display="off"/>
+<attribute name="MF" x="170.18" y="25.4" size="1.27" layer="96" display="off"/>
+<attribute name="PADS" x="170.18" y="25.4" size="1.27" layer="96" display="off"/>
 </instance>
 </instances>
 <busses>
@@ -30092,13 +30227,13 @@ Jakub Streit
 <junction x="264.16" y="93.98"/>
 </segment>
 <segment>
-<pinref part="Q6" gate="G$1" pin="S"/>
 <pinref part="GND156" gate="1" pin="GND"/>
 <wire x1="337.82" y1="190.5" x2="337.82" y2="187.96" width="0.1524" layer="91"/>
 <pinref part="R51" gate="G$1" pin="2"/>
 <wire x1="337.82" y1="187.96" x2="337.82" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="335.28" y1="187.96" x2="337.82" y2="187.96" width="0.1524" layer="91"/>
 <junction x="337.82" y="187.96"/>
+<pinref part="Q6" gate="G$1" pin="S"/>
 </segment>
 <segment>
 <pinref part="R60" gate="G$1" pin="2"/>
@@ -30106,9 +30241,9 @@ Jakub Streit
 <wire x1="182.88" y1="33.02" x2="182.88" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="Q7" gate="G$1" pin="S"/>
 <wire x1="172.72" y1="20.32" x2="172.72" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="GND165" gate="1" pin="GND"/>
+<pinref part="Q7" gate="G$1" pin="S"/>
 </segment>
 </net>
 <net name="SERVO1" class="0">
@@ -30650,12 +30785,12 @@ Jakub Streit
 <wire x1="165.1" y1="50.8" x2="160.02" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="43.18" x2="182.88" y2="50.8" width="0.1524" layer="91"/>
 <junction x="182.88" y="50.8"/>
-<pinref part="Q7" gate="G$1" pin="G"/>
 <wire x1="167.64" y1="22.86" x2="165.1" y2="22.86" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="22.86" x2="165.1" y2="50.8" width="0.1524" layer="91"/>
 <junction x="165.1" y="50.8"/>
 <label x="191.008" y="51.308" size="1.27" layer="95" rot="MR0"/>
 <pinref part="JP26" gate="G$1" pin="2"/>
+<pinref part="Q7" gate="G$1" pin="G"/>
 </segment>
 </net>
 <net name="NRST" class="0">
@@ -30907,13 +31042,13 @@ Jakub Streit
 <segment>
 <pinref part="B1" gate="G$1" pin="-"/>
 <wire x1="340.36" y1="203.2" x2="337.82" y2="203.2" width="0.1524" layer="91"/>
-<pinref part="Q6" gate="G$1" pin="D"/>
 <wire x1="337.82" y1="203.2" x2="337.82" y2="200.66" width="0.1524" layer="91"/>
 <pinref part="D28" gate="G$1" pin="A"/>
 <wire x1="332.74" y1="205.74" x2="332.74" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="203.2" x2="337.82" y2="203.2" width="0.1524" layer="91"/>
 <junction x="337.82" y="203.2"/>
 <label x="334.01" y="203.962" size="1.27" layer="95"/>
+<pinref part="Q6" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="+5V" class="0">
@@ -30932,7 +31067,6 @@ Jakub Streit
 <net name="BUZZER-GATE" class="0">
 <segment>
 <pinref part="R50" gate="G$1" pin="2"/>
-<pinref part="Q6" gate="G$1" pin="G"/>
 <wire x1="320.04" y1="193.04" x2="322.58" y2="193.04" width="0.1524" layer="91"/>
 <pinref part="R51" gate="G$1" pin="1"/>
 <wire x1="322.58" y1="193.04" x2="332.74" y2="193.04" width="0.1524" layer="91"/>
@@ -30940,6 +31074,7 @@ Jakub Streit
 <wire x1="322.58" y1="187.96" x2="322.58" y2="193.04" width="0.1524" layer="91"/>
 <junction x="322.58" y="193.04"/>
 <label x="320.802" y="193.802" size="1.27" layer="95"/>
+<pinref part="Q6" gate="G$1" pin="G"/>
 </segment>
 </net>
 <net name="BUTTON-OFF" class="0">
@@ -30963,8 +31098,8 @@ Jakub Streit
 <net name="BOOT1_PULL-DOWN" class="0">
 <segment>
 <pinref part="R61" gate="G$1" pin="1"/>
-<pinref part="Q7" gate="G$1" pin="D"/>
 <wire x1="172.72" y1="33.02" x2="172.72" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="Q7" gate="G$1" pin="D"/>
 </segment>
 </net>
 </nets>
@@ -36883,14 +37018,6 @@ Jakub Streit
 <instance part="+3V45" gate="G$1" x="210.82" y="144.78" smashed="yes" rot="MR180">
 <attribute name="VALUE" x="209.042" y="147.32" size="1.27" layer="96" rot="MR270"/>
 </instance>
-<instance part="Q8" gate="G$1" x="91.44" y="223.52" smashed="yes" rot="R270">
-<attribute name="VALUE" x="90.932" y="224.028" size="1.27" layer="96" rot="R90"/>
-<attribute name="NAME" x="92.964" y="224.028" size="1.27" layer="95" rot="R90"/>
-</instance>
-<instance part="Q9" gate="G$1" x="91.44" y="198.12" smashed="yes" rot="R270">
-<attribute name="VALUE" x="90.932" y="198.628" size="1.27" layer="96" rot="R90"/>
-<attribute name="NAME" x="92.964" y="198.628" size="1.27" layer="95" rot="R90"/>
-</instance>
 <instance part="+3V31" gate="G$1" x="88.9" y="241.3" smashed="yes">
 <attribute name="VALUE" x="87.122" y="238.76" size="1.27" layer="96" rot="R90"/>
 </instance>
@@ -36937,10 +37064,6 @@ Jakub Streit
 <instance part="R118" gate="G$1" x="53.34" y="195.58" smashed="yes">
 <attribute name="NAME" x="49.53" y="197.104" size="1.27" layer="95"/>
 <attribute name="VALUE" x="54.102" y="197.104" size="1.27" layer="96"/>
-</instance>
-<instance part="Q10" gate="G$1" x="91.44" y="172.72" smashed="yes" rot="R270">
-<attribute name="VALUE" x="90.932" y="173.228" size="1.27" layer="96" rot="R90"/>
-<attribute name="NAME" x="92.964" y="173.228" size="1.27" layer="95" rot="R90"/>
 </instance>
 <instance part="+3V7" gate="G$1" x="88.9" y="190.5" smashed="yes">
 <attribute name="VALUE" x="87.122" y="187.96" size="1.27" layer="96" rot="R90"/>
@@ -37053,10 +37176,6 @@ Jakub Streit
 <attribute name="NAME" x="245.11" y="43.815" size="1.27" layer="95"/>
 <attribute name="VALUE" x="245.11" y="32.258" size="1.27" layer="96" rot="MR180"/>
 </instance>
-<instance part="Q11" gate="G$1" x="218.44" y="40.64" smashed="yes" rot="R270">
-<attribute name="VALUE" x="217.932" y="41.148" size="1.27" layer="96" rot="R90"/>
-<attribute name="NAME" x="219.964" y="41.148" size="1.27" layer="95" rot="R90"/>
-</instance>
 <instance part="+3V54" gate="G$1" x="215.9" y="58.42" smashed="yes">
 <attribute name="VALUE" x="214.122" y="55.88" size="1.27" layer="96" rot="R90"/>
 </instance>
@@ -37114,6 +37233,58 @@ Jakub Streit
 </instance>
 <instance part="P+40" gate="VCC" x="307.34" y="66.04" smashed="yes" rot="MR270">
 <attribute name="VALUE" x="309.88" y="68.58" size="1.27" layer="96" rot="MR0"/>
+</instance>
+<instance part="Q8" gate="G$1" x="91.44" y="223.52" smashed="yes" rot="R270">
+<attribute name="VALUE" x="90.932" y="224.282" size="1.27" layer="96" rot="R90"/>
+<attribute name="NAME" x="92.71" y="224.282" size="1.27" layer="95" rot="R90"/>
+<attribute name="DESCRIPTION" x="91.44" y="223.52" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="LCSC_ID" x="91.44" y="223.52" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="MF_ID" x="91.44" y="223.52" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PACKAGE" x="91.44" y="223.52" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PRICE_1PLUS" x="91.44" y="223.52" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PRICE_200PLUS" x="91.44" y="223.52" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="EXTENDED" x="91.44" y="223.52" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="MF" x="91.44" y="223.52" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PADS" x="91.44" y="223.52" size="1.27" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="Q9" gate="G$1" x="91.44" y="198.12" smashed="yes" rot="R270">
+<attribute name="VALUE" x="90.932" y="198.882" size="1.27" layer="96" rot="R90"/>
+<attribute name="NAME" x="92.71" y="198.882" size="1.27" layer="95" rot="R90"/>
+<attribute name="DESCRIPTION" x="91.44" y="198.12" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="LCSC_ID" x="91.44" y="198.12" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="MF_ID" x="91.44" y="198.12" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PACKAGE" x="91.44" y="198.12" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PRICE_1PLUS" x="91.44" y="198.12" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PRICE_200PLUS" x="91.44" y="198.12" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="EXTENDED" x="91.44" y="198.12" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="MF" x="91.44" y="198.12" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PADS" x="91.44" y="198.12" size="1.27" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="Q10" gate="G$1" x="91.44" y="172.72" smashed="yes" rot="R270">
+<attribute name="VALUE" x="90.932" y="173.482" size="1.27" layer="96" rot="R90"/>
+<attribute name="NAME" x="92.71" y="173.482" size="1.27" layer="95" rot="R90"/>
+<attribute name="DESCRIPTION" x="91.44" y="172.72" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="LCSC_ID" x="91.44" y="172.72" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="MF_ID" x="91.44" y="172.72" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PACKAGE" x="91.44" y="172.72" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PRICE_1PLUS" x="91.44" y="172.72" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PRICE_200PLUS" x="91.44" y="172.72" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="EXTENDED" x="91.44" y="172.72" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="MF" x="91.44" y="172.72" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PADS" x="91.44" y="172.72" size="1.27" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="Q11" gate="G$1" x="218.44" y="40.64" smashed="yes" rot="R270">
+<attribute name="VALUE" x="217.932" y="41.402" size="1.27" layer="96" rot="R90"/>
+<attribute name="NAME" x="219.71" y="41.402" size="1.27" layer="95" rot="R90"/>
+<attribute name="DESCRIPTION" x="218.44" y="40.64" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="LCSC_ID" x="218.44" y="40.64" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="MF_ID" x="218.44" y="40.64" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PACKAGE" x="218.44" y="40.64" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PRICE_1PLUS" x="218.44" y="40.64" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PRICE_200PLUS" x="218.44" y="40.64" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="EXTENDED" x="218.44" y="40.64" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="MF" x="218.44" y="40.64" size="1.27" layer="96" rot="R270" display="off"/>
+<attribute name="PADS" x="218.44" y="40.64" size="1.27" layer="96" rot="R270" display="off"/>
 </instance>
 </instances>
 <busses>
@@ -37405,16 +37576,15 @@ Jakub Streit
 </segment>
 <segment>
 <pinref part="+3V31" gate="G$1" pin="+3V3"/>
-<pinref part="Q8" gate="G$1" pin="G"/>
 <wire x1="88.9" y1="238.76" x2="88.9" y2="236.22" width="0.1524" layer="91"/>
 <pinref part="R105" gate="G$1" pin="2"/>
 <wire x1="88.9" y1="236.22" x2="88.9" y2="226.06" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="233.68" x2="83.82" y2="236.22" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="236.22" x2="88.9" y2="236.22" width="0.1524" layer="91"/>
 <junction x="88.9" y="236.22"/>
+<pinref part="Q8" gate="G$1" pin="G"/>
 </segment>
 <segment>
-<pinref part="Q9" gate="G$1" pin="G"/>
 <pinref part="+3V46" gate="G$1" pin="+3V3"/>
 <wire x1="88.9" y1="200.66" x2="88.9" y2="210.82" width="0.1524" layer="91"/>
 <pinref part="R116" gate="G$1" pin="2"/>
@@ -37422,9 +37592,9 @@ Jakub Streit
 <wire x1="83.82" y1="208.28" x2="83.82" y2="210.82" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="210.82" x2="88.9" y2="210.82" width="0.1524" layer="91"/>
 <junction x="88.9" y="210.82"/>
+<pinref part="Q9" gate="G$1" pin="G"/>
 </segment>
 <segment>
-<pinref part="Q10" gate="G$1" pin="G"/>
 <pinref part="+3V7" gate="G$1" pin="+3V3"/>
 <wire x1="88.9" y1="175.26" x2="88.9" y2="185.42" width="0.1524" layer="91"/>
 <pinref part="R119" gate="G$1" pin="2"/>
@@ -37432,6 +37602,7 @@ Jakub Streit
 <wire x1="83.82" y1="182.88" x2="83.82" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="185.42" x2="88.9" y2="185.42" width="0.1524" layer="91"/>
 <junction x="88.9" y="185.42"/>
+<pinref part="Q10" gate="G$1" pin="G"/>
 </segment>
 <segment>
 <pinref part="+3V48" gate="G$1" pin="+3V3"/>
@@ -37468,7 +37639,6 @@ Jakub Streit
 <wire x1="66.04" y1="73.66" x2="66.04" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="Q11" gate="G$1" pin="G"/>
 <pinref part="+3V54" gate="G$1" pin="+3V3"/>
 <wire x1="215.9" y1="43.18" x2="215.9" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="R134" gate="G$1" pin="2"/>
@@ -37476,6 +37646,7 @@ Jakub Streit
 <wire x1="210.82" y1="50.8" x2="210.82" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="210.82" y1="53.34" x2="215.9" y2="53.34" width="0.1524" layer="91"/>
 <junction x="215.9" y="53.34"/>
+<pinref part="Q11" gate="G$1" pin="G"/>
 </segment>
 <segment>
 <pinref part="JP60" gate="A" pin="1"/>
@@ -37873,7 +38044,6 @@ Jakub Streit
 </net>
 <net name="ESP-I2C-SCL-5V" class="0">
 <segment>
-<pinref part="Q8" gate="G$1" pin="D"/>
 <wire x1="96.52" y1="220.98" x2="99.06" y2="220.98" width="0.1524" layer="91"/>
 <pinref part="R106" gate="G$1" pin="1"/>
 <wire x1="99.06" y1="223.52" x2="99.06" y2="220.98" width="0.1524" layer="91"/>
@@ -37887,11 +38057,11 @@ Jakub Streit
 <wire x1="111.76" y1="180.34" x2="111.76" y2="220.98" width="0.1524" layer="91"/>
 <junction x="111.76" y="220.98"/>
 <label x="135.128" y="180.848" size="1.27" layer="95" rot="MR0"/>
+<pinref part="Q8" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="ESP-I2C-SDA-5V" class="0">
 <segment>
-<pinref part="Q9" gate="G$1" pin="D"/>
 <wire x1="96.52" y1="195.58" x2="99.06" y2="195.58" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="195.58" x2="109.22" y2="195.58" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="195.58" x2="109.22" y2="218.44" width="0.1524" layer="91"/>
@@ -37906,6 +38076,7 @@ Jakub Streit
 <wire x1="109.22" y1="177.8" x2="109.22" y2="195.58" width="0.1524" layer="91"/>
 <junction x="109.22" y="195.58"/>
 <label x="135.128" y="178.308" size="1.27" layer="95" rot="MR0"/>
+<pinref part="Q9" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="IN3-5V" class="0">
@@ -37925,7 +38096,6 @@ Jakub Streit
 </net>
 <net name="GPIO-4-5V" class="0">
 <segment>
-<pinref part="Q10" gate="G$1" pin="D"/>
 <wire x1="96.52" y1="170.18" x2="99.06" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="170.18" x2="114.3" y2="170.18" width="0.1524" layer="91"/>
 <pinref part="R120" gate="G$1" pin="1"/>
@@ -37935,6 +38105,7 @@ Jakub Streit
 <wire x1="139.7" y1="208.28" x2="114.3" y2="208.28" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="208.28" x2="114.3" y2="170.18" width="0.1524" layer="91"/>
 <label x="135.128" y="208.788" size="1.27" layer="95" rot="MR0"/>
+<pinref part="Q10" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="IN2" class="0">
@@ -37955,7 +38126,6 @@ Jakub Streit
 <label x="135.128" y="117.348" size="1.27" layer="95" rot="MR0"/>
 <pinref part="JP62" gate="A" pin="3"/>
 <label x="135.128" y="76.708" size="1.27" layer="95" rot="MR0"/>
-<pinref part="Q8" gate="G$1" pin="S"/>
 <wire x1="86.36" y1="220.98" x2="83.82" y2="220.98" width="0.1524" layer="91"/>
 <pinref part="R105" gate="G$1" pin="1"/>
 <wire x1="83.82" y1="220.98" x2="76.2" y2="220.98" width="0.1524" layer="91"/>
@@ -37970,6 +38140,7 @@ Jakub Streit
 <wire x1="139.7" y1="76.2" x2="76.2" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="76.2" x2="76.2" y2="116.84" width="0.1524" layer="91"/>
 <junction x="76.2" y="116.84"/>
+<pinref part="Q8" gate="G$1" pin="S"/>
 </segment>
 </net>
 <net name="ESP-I2C-SDA" class="0">
@@ -37978,7 +38149,6 @@ Jakub Streit
 <label x="135.128" y="114.554" size="1.27" layer="95" rot="MR0"/>
 <pinref part="JP62" gate="A" pin="4"/>
 <label x="135.128" y="74.168" size="1.27" layer="95" rot="MR0"/>
-<pinref part="Q9" gate="G$1" pin="S"/>
 <wire x1="86.36" y1="195.58" x2="83.82" y2="195.58" width="0.1524" layer="91"/>
 <pinref part="R116" gate="G$1" pin="1"/>
 <wire x1="83.82" y1="195.58" x2="73.66" y2="195.58" width="0.1524" layer="91"/>
@@ -37993,13 +38163,13 @@ Jakub Streit
 <wire x1="139.7" y1="73.66" x2="73.66" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="73.66" x2="73.66" y2="114.3" width="0.1524" layer="91"/>
 <junction x="73.66" y="114.3"/>
+<pinref part="Q9" gate="G$1" pin="S"/>
 </segment>
 </net>
 <net name="GPIO-4" class="0">
 <segment>
 <pinref part="JP59" gate="A" pin="1"/>
 <label x="135.128" y="104.648" size="1.27" layer="95" rot="MR0"/>
-<pinref part="Q10" gate="G$1" pin="S"/>
 <wire x1="86.36" y1="170.18" x2="83.82" y2="170.18" width="0.1524" layer="91"/>
 <pinref part="R119" gate="G$1" pin="1"/>
 <wire x1="83.82" y1="170.18" x2="71.12" y2="170.18" width="0.1524" layer="91"/>
@@ -38011,6 +38181,7 @@ Jakub Streit
 <wire x1="139.7" y1="104.14" x2="71.12" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="104.14" x2="71.12" y2="170.18" width="0.1524" layer="91"/>
 <junction x="71.12" y="170.18"/>
+<pinref part="Q10" gate="G$1" pin="S"/>
 </segment>
 </net>
 <net name="IN3" class="0">
@@ -38058,7 +38229,6 @@ Jakub Streit
 </net>
 <net name="ILED" class="0">
 <segment>
-<pinref part="Q11" gate="G$1" pin="S"/>
 <wire x1="213.36" y1="38.1" x2="210.82" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="R134" gate="G$1" pin="1"/>
 <wire x1="210.82" y1="40.64" x2="210.82" y2="38.1" width="0.1524" layer="91"/>
@@ -38066,11 +38236,11 @@ Jakub Streit
 <wire x1="210.82" y1="38.1" x2="205.74" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="R133" gate="G$1" pin="2"/>
 <label x="207.772" y="37.084" size="1.27" layer="95" rot="MR180"/>
+<pinref part="Q11" gate="G$1" pin="S"/>
 </segment>
 </net>
 <net name="ILED-5V" class="0">
 <segment>
-<pinref part="Q11" gate="G$1" pin="D"/>
 <wire x1="223.52" y1="38.1" x2="228.6" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="R132" gate="G$1" pin="1"/>
 <wire x1="228.6" y1="40.64" x2="228.6" y2="38.1" width="0.1524" layer="91"/>
@@ -38078,6 +38248,7 @@ Jakub Streit
 <wire x1="248.92" y1="38.1" x2="228.6" y2="38.1" width="0.1524" layer="91"/>
 <junction x="228.6" y="38.1"/>
 <label x="244.348" y="38.608" size="1.27" layer="95" rot="MR0"/>
+<pinref part="Q11" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="ESP_BOOT/I_LED" class="0">

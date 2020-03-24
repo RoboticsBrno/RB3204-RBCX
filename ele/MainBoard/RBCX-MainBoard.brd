@@ -82,13 +82,64 @@
 <layer number="98" name="Guide" color="6" fill="1" visible="no" active="no"/>
 <layer number="99" name="SpiceOrder" color="7" fill="1" visible="no" active="no"/>
 <layer number="100" name="Muster" color="7" fill="1" visible="no" active="no"/>
+<layer number="101" name="Patch_Top" color="12" fill="4" visible="yes" active="yes"/>
+<layer number="102" name="Vscore" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="103" name="fp3" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="104" name="Name" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="105" name="Beschreib" color="9" fill="1" visible="yes" active="yes"/>
+<layer number="106" name="BGA-Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="107" name="BD-Top" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="108" name="fp8" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="109" name="fp9" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="110" name="fp0" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="111" name="LPC17xx" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="112" name="tSilk" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="113" name="ReferenceLS" color="7" fill="1" visible="no" active="no"/>
+<layer number="114" name="Senzor_teploty" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="115" name="podporaDPS" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="116" name="Patch_BOT" color="9" fill="4" visible="yes" active="yes"/>
+<layer number="117" name="stredy" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="118" name="Rect_Pads" color="7" fill="1" visible="no" active="no"/>
+<layer number="119" name="osy" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="120" name="_velikost1/2AA" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="121" name="_tsilk" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="122" name="_bsilk" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="123" name="tTestmark" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="124" name="bTestmark" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="125" name="_tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="126" name="_bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="127" name="_tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="128" name="_bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="129" name="Mask" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="130" name="SMDSTROOK" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="131" name="tAdjust" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="132" name="bAdjust" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="133" name="bottom_silk" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="144" name="Drill_legend" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="150" name="Notes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="151" name="HeatSink" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="152" name="_bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="153" name="FabDoc1" color="6" fill="1" visible="no" active="no"/>
 <layer number="154" name="FabDoc2" color="2" fill="1" visible="no" active="no"/>
 <layer number="155" name="FabDoc3" color="7" fill="15" visible="no" active="no"/>
+<layer number="199" name="Contour" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="200" name="200bmp" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="201" name="201bmp" color="2" fill="1" visible="no" active="no"/>
 <layer number="202" name="202bmp" color="3" fill="1" visible="no" active="no"/>
+<layer number="203" name="203bmp" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="204" name="204bmp" color="5" fill="10" visible="yes" active="yes"/>
+<layer number="205" name="205bmp" color="6" fill="10" visible="yes" active="yes"/>
+<layer number="206" name="206bmp" color="7" fill="10" visible="yes" active="yes"/>
+<layer number="207" name="207bmp" color="8" fill="10" visible="yes" active="yes"/>
+<layer number="208" name="208bmp" color="9" fill="10" visible="yes" active="yes"/>
+<layer number="209" name="209bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="210" name="210bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="211" name="211bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="212" name="212bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="213" name="213bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="214" name="214bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="215" name="215bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="216" name="216bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="217" name="217bmp" color="18" fill="1" visible="no" active="no"/>
 <layer number="218" name="218bmp" color="19" fill="1" visible="no" active="no"/>
 <layer number="219" name="219bmp" color="20" fill="1" visible="no" active="no"/>
@@ -97,11 +148,21 @@
 <layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
+<layer number="225" name="225bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="226" name="226bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="227" name="227bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="228" name="228bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="229" name="229bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="230" name="230bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="231" name="Eagle3D_PG1" color="7" fill="1" visible="no" active="no"/>
 <layer number="232" name="Eagle3D_PG2" color="7" fill="1" visible="no" active="no"/>
 <layer number="233" name="Eagle3D_PG3" color="7" fill="1" visible="no" active="no"/>
+<layer number="248" name="Housing" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="249" name="Edge" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="250" name="Descript" color="7" fill="1" visible="no" active="no"/>
 <layer number="251" name="SMDround" color="7" fill="1" visible="no" active="no"/>
+<layer number="254" name="cooling" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <board>
 <plain>
@@ -1838,20 +1899,24 @@ Source: http://www.osram.convergy.de/ ... Lb_q993.pdf</description>
 </library>
 <library name="transistors">
 <packages>
-<package name="SOT323">
-<description>SOT323 Philips</description>
-<wire x1="0.9224" y1="0.4604" x2="0.9224" y2="-0.4604" width="0.127" layer="51"/>
-<wire x1="0.9224" y1="-0.4604" x2="-0.9224" y2="-0.4604" width="0.127" layer="51"/>
-<wire x1="-0.9224" y1="-0.4604" x2="-0.9224" y2="0.4604" width="0.127" layer="51"/>
-<wire x1="-0.9224" y1="0.4604" x2="0.9224" y2="0.4604" width="0.127" layer="51"/>
-<smd name="3" x="0" y="0.9" dx="0.6" dy="1" layer="1"/>
-<smd name="1" x="-0.65" y="-0.9" dx="0.6" dy="1" layer="1"/>
-<smd name="2" x="0.65" y="-0.9" dx="0.6" dy="1" layer="1"/>
-<text x="-1.905" y="1.505" size="1.27" layer="25">&gt;NAME</text>
-<text x="-1.905" y="-2.775" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.8" y1="-1.1" x2="-0.5" y2="-0.5" layer="51"/>
-<rectangle x1="0.5" y1="-1.1" x2="0.8" y2="-0.5" layer="51"/>
-<rectangle x1="-0.15" y1="0.5" x2="0.15" y2="1.1" layer="51"/>
+<package name="SOT23">
+<description>&lt;b&gt;SOT-23&lt;/b&gt;</description>
+<wire x1="1.4224" y1="0.6604" x2="1.4224" y2="-0.6604" width="0.1524" layer="51"/>
+<wire x1="1.4224" y1="-0.6604" x2="-1.4224" y2="-0.6604" width="0.1524" layer="51"/>
+<wire x1="-1.4224" y1="-0.6604" x2="-1.4224" y2="0.6604" width="0.1524" layer="51"/>
+<wire x1="-1.4224" y1="0.6604" x2="1.4224" y2="0.6604" width="0.1524" layer="51"/>
+<wire x1="-1.4224" y1="-0.1854" x2="-1.4224" y2="0.6604" width="0.1524" layer="21"/>
+<wire x1="-1.4224" y1="0.6604" x2="-0.6576" y2="0.6604" width="0.1524" layer="21"/>
+<wire x1="1.4224" y1="0.6604" x2="1.4224" y2="-0.1854" width="0.1524" layer="21"/>
+<wire x1="0.6326" y1="0.6604" x2="1.4224" y2="0.6604" width="0.1524" layer="21"/>
+<smd name="3" x="0" y="1.1" dx="1" dy="1.4" layer="1"/>
+<smd name="2" x="0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
+<smd name="1" x="-0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
+<text x="-1.905" y="1.905" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.905" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.2286" y1="0.7112" x2="0.2286" y2="1.2954" layer="51"/>
+<rectangle x1="0.7112" y1="-1.2954" x2="1.1684" y2="-0.7112" layer="51"/>
+<rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
 </package>
 <package name="MLP3.3X3.3_HS">
 <smd name="1" x="-0.975" y="-1.7" dx="1.3" dy="0.4" layer="1" rot="R90"/>
@@ -3206,10 +3271,6 @@ design rules under a new name.</description>
 <attribute name="PRICE_500PLUS" value="$0.1232" x="58.42" y="88.9" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="55.32" y="85" size="1.27" layer="27" font="vector" ratio="16"/>
 </element>
-<element name="Q5" library="transistors" package="SOT323" value="CHOOSE_ME" x="59.055" y="83.82" smashed="yes" rot="R270">
-<attribute name="NAME" x="60.56" y="85.725" size="1.27" layer="25" rot="R270"/>
-<attribute name="VALUE" x="56.28" y="85.725" size="1.27" layer="27" rot="R270"/>
-</element>
 <element name="R1" library="rcl_upravena" package="R0603" value="100k" x="52.07" y="88.9" smashed="yes" rot="R270">
 <attribute name="NAME" x="52.705" y="89.535" size="1.27" layer="25" rot="R270"/>
 <attribute name="VALUE" x="50.165" y="89.535" size="1.27" layer="27" rot="R270"/>
@@ -3301,12 +3362,17 @@ design rules under a new name.</description>
 <attribute name="POPULARITY" value="72" x="9.2075" y="22.5425" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="4.1275" y="26.3525" size="1.778" layer="27" rot="R270"/>
 </element>
-<element name="Q4" library="transistors" package="SOT323" value="CHOOSE_ME" x="110.49" y="3.175" smashed="yes">
-<attribute name="NAME" x="108.585" y="4.68" size="1.27" layer="25"/>
-<attribute name="VALUE" x="108.585" y="0.4" size="1.27" layer="27"/>
-</element>
-<element name="Q3" library="transistors" package="SOT323" value="CHOOSE_ME" x="57.785" y="80.645" smashed="yes">
+<element name="Q3" library="transistors" package="SOT23" value="2N7002" x="57.785" y="80.645" smashed="yes">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω" x="57.785" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="NO" x="57.785" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C8545" x="57.785" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)" x="57.785" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="2N7002" x="57.785" y="80.645" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="55.88" y="82.15" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="57.785" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="57.785" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0236" x="57.785" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0113" x="57.785" y="80.645" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="55.88" y="77.87" size="1.27" layer="27"/>
 </element>
 <element name="R2" library="rcl_upravena" package="R0603" value="2M" x="54.61" y="83.82" smashed="yes" rot="R90">
@@ -4382,14 +4448,6 @@ design rules under a new name.</description>
 <attribute name="NAME" x="113.03" y="16.51" size="1.27" layer="25" rot="R180"/>
 <attribute name="VALUE" x="113.03" y="19.05" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="Q8" library="transistors" package="SOT323" value="CHOOSE_ME" x="113.03" y="3.175" smashed="yes">
-<attribute name="NAME" x="111.125" y="4.68" size="1.27" layer="25"/>
-<attribute name="VALUE" x="111.125" y="0.4" size="1.27" layer="27"/>
-</element>
-<element name="Q9" library="transistors" package="SOT323" value="CHOOSE_ME" x="107.95" y="3.175" smashed="yes">
-<attribute name="NAME" x="106.045" y="4.68" size="1.27" layer="25"/>
-<attribute name="VALUE" x="106.045" y="0.4" size="1.27" layer="27"/>
-</element>
 <element name="R116" library="rcl_upravena" package="R0603" value="4k7" x="102.87" y="15.875" smashed="yes" rot="R180">
 <attribute name="NAME" x="103.505" y="15.24" size="1.27" layer="25" rot="R180"/>
 <attribute name="VALUE" x="103.505" y="17.78" size="1.27" layer="27" rot="R180"/>
@@ -4422,10 +4480,6 @@ design rules under a new name.</description>
 <element name="R118" library="rcl_upravena" package="R0603" value="180R" x="112.395" y="14.605" smashed="yes">
 <attribute name="NAME" x="111.76" y="15.24" size="1.27" layer="25"/>
 <attribute name="VALUE" x="111.76" y="12.7" size="1.27" layer="27"/>
-</element>
-<element name="Q10" library="transistors" package="SOT323" value="CHOOSE_ME" x="105.41" y="3.175" smashed="yes">
-<attribute name="NAME" x="103.505" y="4.68" size="1.27" layer="25"/>
-<attribute name="VALUE" x="103.505" y="0.4" size="1.27" layer="27"/>
 </element>
 <element name="R119" library="rcl_upravena" package="R0603" value="4k7" x="102.87" y="24.765" smashed="yes">
 <attribute name="NAME" x="102.235" y="25.4" size="1.27" layer="25"/>
@@ -4500,10 +4554,6 @@ design rules under a new name.</description>
 <attribute name="NAME" x="91.3638" y="10.2362" size="1.27" layer="26" ratio="10" rot="MR180"/>
 <attribute name="POPULARITY" value="92" x="95.25" y="12.065" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="VALUE" x="91.44" y="15.24" size="1.27" layer="28" rot="MR180"/>
-</element>
-<element name="Q11" library="transistors" package="SOT323" value="CHOOSE_ME" x="83.185" y="2.54" smashed="yes" rot="R90">
-<attribute name="NAME" x="81.68" y="0.635" size="1.27" layer="25" rot="R90"/>
-<attribute name="VALUE" x="85.96" y="0.635" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R134" library="rcl_upravena" package="R0603" value="4k7" x="86.36" y="1.905" smashed="yes" rot="R180">
 <attribute name="NAME" x="86.995" y="1.27" size="1.27" layer="25" rot="R180"/>
@@ -4628,10 +4678,6 @@ design rules under a new name.</description>
 <element name="B1" library="piezo" package="PIEZO" value="PIEZO" x="7.62" y="42.545" smashed="yes" rot="MR0">
 <attribute name="NAME" x="8.1788" y="45.0088" size="1.27" layer="26" ratio="10" rot="MR90"/>
 </element>
-<element name="Q6" library="transistors" package="SOT323" value="CHOOSE_ME" x="102.87" y="3.175" smashed="yes">
-<attribute name="NAME" x="100.965" y="4.68" size="1.27" layer="25"/>
-<attribute name="VALUE" x="100.965" y="0.4" size="1.27" layer="27"/>
-</element>
 <element name="R51" library="rcl_upravena" package="R0603" value="180R" x="112.395" y="8.255" smashed="yes">
 <attribute name="NAME" x="111.76" y="8.89" size="1.27" layer="25"/>
 <attribute name="VALUE" x="111.76" y="6.35" size="1.27" layer="27"/>
@@ -4709,10 +4755,6 @@ design rules under a new name.</description>
 <attribute name="NAME" x="105.41" y="12.7" size="1.27" layer="25"/>
 <attribute name="VALUE" x="105.41" y="10.16" size="1.27" layer="27"/>
 </element>
-<element name="Q7" library="transistors" package="SOT323" value="CHOOSE_ME" x="55.245" y="80.645" smashed="yes">
-<attribute name="NAME" x="53.34" y="82.15" size="1.27" layer="25"/>
-<attribute name="VALUE" x="53.34" y="77.87" size="1.27" layer="27"/>
-</element>
 <element name="R61" library="rcl_upravena" package="R0603" value="100k" x="106.045" y="13.335" smashed="yes">
 <attribute name="NAME" x="105.41" y="13.97" size="1.27" layer="25"/>
 <attribute name="VALUE" x="105.41" y="11.43" size="1.27" layer="27"/>
@@ -4766,6 +4808,110 @@ design rules under a new name.</description>
 <attribute name="NAME" x="58.42" y="86.36" size="1.27" layer="25"/>
 <attribute name="VALUE" x="58.42" y="83.82" size="1.27" layer="27"/>
 </element>
+<element name="Q4" library="transistors" package="SOT23" value="2N7002" x="55.245" y="80.645" smashed="yes">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω" x="55.245" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="NO" x="55.245" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C8545" x="55.245" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)" x="55.245" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="2N7002" x="55.245" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="53.34" y="82.55" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="55.245" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="55.245" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0236" x="55.245" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0113" x="55.245" y="80.645" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="53.34" y="77.47" size="1.27" layer="27"/>
+</element>
+<element name="Q5" library="transistors" package="SOT23" value="2N7002" x="58.42" y="82.55" smashed="yes">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω" x="58.42" y="82.55" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="NO" x="58.42" y="82.55" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C8545" x="58.42" y="82.55" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)" x="58.42" y="82.55" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="2N7002" x="58.42" y="82.55" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="56.515" y="84.455" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="58.42" y="82.55" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="58.42" y="82.55" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0236" x="58.42" y="82.55" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0113" x="58.42" y="82.55" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="56.515" y="79.375" size="1.27" layer="27"/>
+</element>
+<element name="Q6" library="transistors" package="SOT23" value="2N7002" x="64.135" y="85.725" smashed="yes">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω" x="64.135" y="85.725" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="NO" x="64.135" y="85.725" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C8545" x="64.135" y="85.725" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)" x="64.135" y="85.725" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="2N7002" x="64.135" y="85.725" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="62.23" y="87.63" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="64.135" y="85.725" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="64.135" y="85.725" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0236" x="64.135" y="85.725" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0113" x="64.135" y="85.725" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="62.23" y="82.55" size="1.27" layer="27"/>
+</element>
+<element name="Q7" library="transistors" package="SOT23" value="2N7002" x="113.03" y="11.43" smashed="yes">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω" x="113.03" y="11.43" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="NO" x="113.03" y="11.43" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C8545" x="113.03" y="11.43" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)" x="113.03" y="11.43" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="2N7002" x="113.03" y="11.43" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="111.125" y="13.335" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="113.03" y="11.43" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="113.03" y="11.43" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0236" x="113.03" y="11.43" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0113" x="113.03" y="11.43" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="111.125" y="8.255" size="1.27" layer="27"/>
+</element>
+<element name="Q8" library="transistors" package="SOT23" value="2N7002" x="117.475" y="12.7" smashed="yes">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω" x="117.475" y="12.7" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="NO" x="117.475" y="12.7" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C8545" x="117.475" y="12.7" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)" x="117.475" y="12.7" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="2N7002" x="117.475" y="12.7" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="115.57" y="14.605" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="117.475" y="12.7" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="117.475" y="12.7" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0236" x="117.475" y="12.7" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0113" x="117.475" y="12.7" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="115.57" y="9.525" size="1.27" layer="27"/>
+</element>
+<element name="Q9" library="transistors" package="SOT23" value="2N7002" x="119.38" y="8.89" smashed="yes">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω" x="119.38" y="8.89" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="NO" x="119.38" y="8.89" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C8545" x="119.38" y="8.89" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)" x="119.38" y="8.89" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="2N7002" x="119.38" y="8.89" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="117.475" y="10.795" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="119.38" y="8.89" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="119.38" y="8.89" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0236" x="119.38" y="8.89" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0113" x="119.38" y="8.89" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="117.475" y="5.715" size="1.27" layer="27"/>
+</element>
+<element name="Q10" library="transistors" package="SOT23" value="2N7002" x="120.015" y="5.08" smashed="yes">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω" x="120.015" y="5.08" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="NO" x="120.015" y="5.08" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C8545" x="120.015" y="5.08" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)" x="120.015" y="5.08" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="2N7002" x="120.015" y="5.08" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="118.11" y="6.985" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="120.015" y="5.08" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="120.015" y="5.08" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0236" x="120.015" y="5.08" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0113" x="120.015" y="5.08" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="118.11" y="1.905" size="1.27" layer="27"/>
+</element>
+<element name="Q11" library="transistors" package="SOT23" value="2N7002" x="119.38" y="0.635" smashed="yes">
+<attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω" x="119.38" y="0.635" size="1.778" layer="27" display="off"/>
+<attribute name="EXTENDED" value="NO" x="119.38" y="0.635" size="1.778" layer="27" display="off"/>
+<attribute name="LCSC_ID" value="C8545" x="119.38" y="0.635" size="1.778" layer="27" display="off"/>
+<attribute name="MF" value="Changjiang Electronics Tech (CJ)" x="119.38" y="0.635" size="1.778" layer="27" display="off"/>
+<attribute name="MF_ID" value="2N7002" x="119.38" y="0.635" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="117.475" y="2.54" size="1.27" layer="25"/>
+<attribute name="PACKAGE" value="SOT-23-3" x="119.38" y="0.635" size="1.778" layer="27" display="off"/>
+<attribute name="PADS" value="3" x="119.38" y="0.635" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0236" x="119.38" y="0.635" size="1.778" layer="27" display="off"/>
+<attribute name="PRICE_200PLUS" value="$0.0113" x="119.38" y="0.635" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="117.475" y="-2.54" size="1.27" layer="27"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">
@@ -4773,8 +4919,6 @@ design rules under a new name.</description>
 <contactref element="IM6" pad="32"/>
 <contactref element="IM6" pad="38"/>
 <contactref element="X2" pad="1"/>
-<contactref element="Q5" pad="2"/>
-<contactref element="Q4" pad="2"/>
 <contactref element="Q3" pad="2"/>
 <contactref element="R4" pad="1"/>
 <contactref element="R5" pad="1"/>
@@ -4930,7 +5074,6 @@ design rules under a new name.</description>
 <contactref element="IC1" pad="1"/>
 <contactref element="C2" pad="-"/>
 <contactref element="C43" pad="-"/>
-<contactref element="Q6" pad="2"/>
 <contactref element="R51" pad="2"/>
 <contactref element="JP28" pad="3"/>
 <contactref element="JP58" pad="2"/>
@@ -4952,7 +5095,6 @@ design rules under a new name.</description>
 <contactref element="SW6" pad="3"/>
 <contactref element="JP20" pad="10"/>
 <contactref element="R60" pad="2"/>
-<contactref element="Q7" pad="2"/>
 <contactref element="X10" pad="5"/>
 <contactref element="X10" pad="27"/>
 <contactref element="X11" pad="4"/>
@@ -4963,6 +5105,10 @@ design rules under a new name.</description>
 <contactref element="SW3" pad="4"/>
 <contactref element="SW2" pad="4"/>
 <contactref element="R68" pad="1"/>
+<contactref element="Q4" pad="2"/>
+<contactref element="Q5" pad="2"/>
+<contactref element="Q6" pad="2"/>
+<contactref element="Q7" pad="2"/>
 <wire x1="97.155" y1="88.265" x2="104.775" y2="89.535" width="0" layer="19" extent="1-1"/>
 <wire x1="97.155" y1="85.725" x2="97.155" y2="88.265" width="0" layer="19" extent="1-1"/>
 <wire x1="97.155" y1="83.185" x2="97.155" y2="85.725" width="0" layer="19" extent="1-1"/>
@@ -4988,11 +5134,10 @@ design rules under a new name.</description>
 <wire x1="65.085" y1="81.945" x2="64.135" y2="79.345" width="0" layer="19" extent="1-1"/>
 <wire x1="64.885" y1="83.185" x2="65.085" y2="81.945" width="0" layer="19" extent="1-1"/>
 <wire x1="60.325" y1="81.695" x2="64.135" y2="79.345" width="0" layer="19" extent="1-1"/>
-<wire x1="58.155" y1="83.17" x2="60.325" y2="81.695" width="0" layer="19" extent="1-1"/>
-<wire x1="58.435" y1="79.745" x2="60.325" y2="81.695" width="0" layer="19" extent="1-1"/>
-<wire x1="59.27" y1="78.105" x2="58.435" y2="79.745" width="0" layer="19" extent="1-1"/>
-<wire x1="55.895" y1="79.745" x2="58.435" y2="79.745" width="0" layer="19" extent="1-1"/>
-<wire x1="56.095" y1="78.105" x2="55.895" y2="79.745" width="0" layer="19" extent="1-1"/>
+<wire x1="58.735" y1="79.545" x2="60.325" y2="81.695" width="0" layer="19" extent="1-1"/>
+<wire x1="59.27" y1="78.105" x2="58.735" y2="79.545" width="0" layer="19" extent="1-1"/>
+<wire x1="56.095" y1="78.105" x2="58.735" y2="79.545" width="0" layer="19" extent="1-1"/>
+<wire x1="58.205" y1="85.725" x2="60.325" y2="81.695" width="0" layer="19" extent="1-1"/>
 <wire x1="66.04" y1="87.63" x2="64.885" y2="83.185" width="0" layer="19" extent="1-1"/>
 <wire x1="66.04" y1="90.17" x2="66.04" y2="87.63" width="0" layer="19" extent="1-1"/>
 <wire x1="51.435" y1="77.89" x2="56.095" y2="78.105" width="0" layer="19" extent="1-1"/>
@@ -5003,7 +5148,7 @@ design rules under a new name.</description>
 <wire x1="47.625" y1="73.025" x2="47.625" y2="75.565" width="0" layer="19" extent="1-1"/>
 <wire x1="47.625" y1="70.485" x2="47.625" y2="73.025" width="0" layer="19" extent="1-1"/>
 <wire x1="47.625" y1="67.945" x2="47.625" y2="70.485" width="0" layer="19" extent="1-1"/>
-<wire x1="52.07" y1="85.87" x2="58.155" y2="83.17" width="0" layer="19" extent="1-1"/>
+<wire x1="52.07" y1="85.87" x2="58.205" y2="85.725" width="0" layer="19" extent="1-1"/>
 <wire x1="83.185" y1="74.93" x2="84.285" y2="82.235" width="0" layer="19" extent="1-1"/>
 <wire x1="40.005" y1="67.945" x2="47.625" y2="67.945" width="0" layer="19" extent="1-1"/>
 <wire x1="40.005" y1="65.405" x2="40.005" y2="67.945" width="0" layer="19" extent="1-1"/>
@@ -5093,8 +5238,6 @@ design rules under a new name.</description>
 <wire x1="106.895" y1="12.065" x2="97.79" y2="12.065" width="0" layer="19" extent="1-1"/>
 <wire x1="113.245" y1="8.255" x2="106.895" y2="12.065" width="0" layer="19" extent="1-1"/>
 <wire x1="115.105" y1="3.175" x2="113.245" y2="8.255" width="0" layer="19" extent="1-1"/>
-<wire x1="111.14" y1="2.275" x2="115.105" y2="3.175" width="0" layer="19" extent="1-1"/>
-<wire x1="103.52" y1="2.275" x2="111.14" y2="2.275" width="0" layer="19" extent="1-1"/>
 <wire x1="73.025" y1="57.785" x2="83.185" y2="61.595" width="0" layer="19" extent="1-1"/>
 <wire x1="73.025" y1="45.085" x2="83.185" y2="48.895" width="0" layer="19" extent="1-1"/>
 <wire x1="73.025" y1="32.385" x2="83.185" y2="36.195" width="0" layer="19" extent="1-1"/>
@@ -5155,7 +5298,10 @@ design rules under a new name.</description>
 <wire x1="10.795" y1="8.255" x2="13.335" y2="8.255" width="0" layer="19" extent="1-1"/>
 <wire x1="17.145" y1="34.29" x2="14.8463" y2="27.5844" width="0" layer="19" extent="1-1"/>
 <wire x1="46.885" y1="47.625" x2="52.705" y2="39.37" width="0" layer="19" extent="16-16"/>
-<wire x1="58.205" y1="85.725" x2="10.795" y2="8.255" width="0" layer="19" extent="1-1"/>
+<wire x1="56.195" y1="79.545" x2="10.795" y2="8.255" width="0" layer="19" extent="1-1"/>
+<wire x1="59.37" y1="81.45" x2="56.195" y2="79.545" width="0" layer="19" extent="1-1"/>
+<wire x1="65.085" y1="84.625" x2="59.37" y2="81.45" width="0" layer="19" extent="1-1"/>
+<wire x1="113.98" y1="10.33" x2="65.085" y2="84.625" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="+3V3">
 <contactref element="D27" pad="2"/>
@@ -5173,11 +5319,8 @@ design rules under a new name.</description>
 <contactref element="R129" pad="1"/>
 <contactref element="R126" pad="1"/>
 <contactref element="SJ8" pad="1"/>
-<contactref element="Q8" pad="1"/>
 <contactref element="R105" pad="2"/>
-<contactref element="Q9" pad="1"/>
 <contactref element="R116" pad="2"/>
-<contactref element="Q10" pad="1"/>
 <contactref element="R119" pad="2"/>
 <contactref element="R125" pad="1"/>
 <contactref element="JP56" pad="1"/>
@@ -5185,13 +5328,16 @@ design rules under a new name.</description>
 <contactref element="JP62" pad="1"/>
 <contactref element="JP64" pad="3"/>
 <contactref element="R131" pad="1"/>
-<contactref element="Q11" pad="1"/>
 <contactref element="R134" pad="2"/>
 <contactref element="LED4" pad="A"/>
 <contactref element="JP60" pad="1"/>
 <contactref element="JP60" pad="7"/>
 <contactref element="JP60" pad="3"/>
 <contactref element="JP60" pad="5"/>
+<contactref element="Q8" pad="1"/>
+<contactref element="Q9" pad="1"/>
+<contactref element="Q10" pad="1"/>
+<contactref element="Q11" pad="1"/>
 <wire x1="71.87" y1="70.485" x2="76.515" y2="71.925" width="0" layer="19" extent="1-1"/>
 <wire x1="42.545" y1="67.945" x2="71.87" y2="70.485" width="0" layer="19" extent="1-1"/>
 <wire x1="42.545" y1="65.405" x2="42.545" y2="67.945" width="0" layer="19" extent="1-1"/>
@@ -5220,11 +5366,11 @@ design rules under a new name.</description>
 <wire x1="118.11" y1="17.526" x2="115.57" y2="17.526" width="0" layer="19" extent="1-1"/>
 <wire x1="118.11" y1="23.241" x2="118.11" y2="17.526" width="0" layer="19" extent="1-1"/>
 <wire x1="115.57" y1="23.241" x2="118.11" y2="23.241" width="0" layer="19" extent="1-1"/>
-<wire x1="104.76" y1="2.275" x2="105.195" y2="10.795" width="0" layer="19" extent="1-1"/>
-<wire x1="107.3" y1="2.275" x2="104.76" y2="2.275" width="0" layer="19" extent="1-1"/>
-<wire x1="112.38" y1="2.275" x2="107.3" y2="2.275" width="0" layer="19" extent="1-1"/>
-<wire x1="85.51" y1="1.905" x2="104.76" y2="2.275" width="0" layer="19" extent="1-1"/>
-<wire x1="84.085" y1="1.89" x2="85.51" y2="1.905" width="0" layer="19" extent="1-1"/>
+<wire x1="85.51" y1="1.905" x2="105.195" y2="10.795" width="0" layer="19" extent="1-1"/>
+<wire x1="116.525" y1="11.6" x2="1.905" y2="59.69" width="0" layer="19" extent="1-1"/>
+<wire x1="118.43" y1="7.79" x2="116.525" y2="11.6" width="0" layer="19" extent="1-1"/>
+<wire x1="119.065" y1="3.98" x2="118.43" y2="7.79" width="0" layer="19" extent="1-1"/>
+<wire x1="118.43" y1="-0.465" x2="119.065" y2="3.98" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IO9_NC">
 <contactref element="IM6" pad="16"/>
@@ -5546,13 +5692,13 @@ design rules under a new name.</description>
 <wire x1="73.025" y1="24.765" x2="76.2" y2="17.145" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="PWRSW">
-<contactref element="Q5" pad="3"/>
 <contactref element="R2" pad="2"/>
 <contactref element="C7" pad="1"/>
 <contactref element="R66" pad="1"/>
-<wire x1="56.515" y1="82.72" x2="59.955" y2="83.82" width="0" layer="19" extent="1-1"/>
-<wire x1="54.61" y1="84.67" x2="56.515" y2="82.72" width="0" layer="19" extent="1-1"/>
-<wire x1="54.395" y1="86.36" x2="56.515" y2="82.72" width="0" layer="19" extent="1-1"/>
+<contactref element="Q5" pad="3"/>
+<wire x1="54.61" y1="84.67" x2="54.395" y2="86.36" width="0" layer="19" extent="1-1"/>
+<wire x1="56.515" y1="82.72" x2="54.61" y2="84.67" width="0" layer="19" extent="1-1"/>
+<wire x1="58.42" y1="83.65" x2="56.515" y2="82.72" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="M3GND">
 <contactref element="IC5" pad="AISEN"/>
@@ -5578,37 +5724,37 @@ design rules under a new name.</description>
 <wire x1="24.13" y1="27.16" x2="47.625" y2="59.69" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$11">
-<contactref element="Q4" pad="3"/>
 <contactref element="R2" pad="1"/>
 <contactref element="C7" pad="2"/>
+<contactref element="Q4" pad="3"/>
 <wire x1="54.61" y1="82.97" x2="56.515" y2="84.87" width="0" layer="19" extent="1-1"/>
-<wire x1="110.49" y1="4.075" x2="54.61" y2="82.97" width="0" layer="19" extent="1-1"/>
+<wire x1="55.245" y1="81.745" x2="54.61" y2="82.97" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="PWR_BTN">
 <contactref element="SW1" pad="1"/>
 <contactref element="Q3" pad="1"/>
-<contactref element="Q4" pad="1"/>
 <contactref element="R4" pad="2"/>
 <contactref element="JP2" pad="2"/>
 <contactref element="X10" pad="1"/>
 <contactref element="SW1" pad="2"/>
-<wire x1="54.395" y1="78.105" x2="57.135" y2="79.745" width="0" layer="19" extent="1-1"/>
+<contactref element="Q4" pad="1"/>
+<wire x1="54.395" y1="78.105" x2="56.835" y2="79.545" width="0" layer="19" extent="1-1"/>
 <wire x1="11.4681" y1="25.7937" x2="54.395" y2="78.105" width="0" layer="19" extent="1-1"/>
 <wire x1="11.4681" y1="19.2913" x2="11.4681" y2="25.7937" width="0" layer="19" extent="1-1"/>
 <wire x1="33.655" y1="10.795" x2="11.4681" y2="19.2913" width="0" layer="19" extent="1-1"/>
 <wire x1="39.74" y1="6.31" x2="33.655" y2="10.795" width="0" layer="19" extent="1-1"/>
-<wire x1="109.84" y1="2.275" x2="39.74" y2="6.31" width="0" layer="19" extent="1-1"/>
+<wire x1="54.295" y1="79.545" x2="11.4681" y2="19.2913" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="POWER">
-<contactref element="Q5" pad="1"/>
 <contactref element="R5" pad="2"/>
 <contactref element="R3" pad="1"/>
 <contactref element="C8" pad="1"/>
 <contactref element="U1" pad="5"/>
-<wire x1="61.595" y1="82.97" x2="60.325" y2="79.545" width="0" layer="19" extent="1-1"/>
-<wire x1="57.57" y1="78.105" x2="61.595" y2="82.97" width="0" layer="19" extent="1-1"/>
+<contactref element="Q5" pad="1"/>
+<wire x1="60.325" y1="79.545" x2="61.595" y2="82.97" width="0" layer="19" extent="1-1"/>
+<wire x1="57.57" y1="78.105" x2="60.325" y2="79.545" width="0" layer="19" extent="1-1"/>
 <wire x1="34.865" y1="26.225" x2="57.57" y2="78.105" width="0" layer="19" extent="1-1"/>
-<wire x1="58.155" y1="84.47" x2="34.865" y2="26.225" width="0" layer="19" extent="1-1"/>
+<wire x1="57.47" y1="81.45" x2="34.865" y2="26.225" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="+3V3S">
 <contactref element="R3" pad="2"/>
@@ -6249,7 +6395,7 @@ design rules under a new name.</description>
 <signal name="BUTTON_ON">
 <contactref element="U1" pad="7"/>
 <contactref element="Q3" pad="3"/>
-<wire x1="57.785" y1="81.545" x2="34.865" y2="25.225" width="0" layer="19" extent="1-1"/>
+<wire x1="34.865" y1="25.225" x2="57.785" y2="81.745" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ESP_COM_TX">
 <contactref element="U1" pad="78"/>
@@ -6273,13 +6419,13 @@ design rules under a new name.</description>
 <signal name="BOOT0">
 <contactref element="U1" pad="94"/>
 <contactref element="R60" pad="1"/>
-<contactref element="Q7" pad="1"/>
 <contactref element="JP26" pad="2"/>
 <contactref element="X10" pad="23"/>
-<wire x1="55.245" y1="31.75" x2="54.595" y2="79.745" width="0" layer="19" extent="1-1"/>
+<contactref element="Q7" pad="1"/>
+<wire x1="55.245" y1="31.75" x2="105.195" y2="12.065" width="0" layer="19" extent="1-1"/>
 <wire x1="39.545" y1="29.905" x2="55.245" y2="31.75" width="0" layer="19" extent="1-1"/>
 <wire x1="50.74" y1="6.31" x2="55.245" y2="31.75" width="0" layer="19" extent="1-1"/>
-<wire x1="105.195" y1="12.065" x2="55.245" y2="31.75" width="0" layer="19" extent="1-1"/>
+<wire x1="112.08" y1="10.33" x2="50.74" y2="6.31" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="NRST">
 <contactref element="U1" pad="14"/>
@@ -6743,26 +6889,26 @@ design rules under a new name.</description>
 <signal name="ESP-I2C-SDA">
 <contactref element="JP56" pad="4"/>
 <contactref element="JP62" pad="4"/>
-<contactref element="Q9" pad="2"/>
 <contactref element="R116" pad="1"/>
 <contactref element="R118" pad="2"/>
 <contactref element="X10" pad="19"/>
+<contactref element="Q9" pad="2"/>
 <wire x1="103.72" y1="15.875" x2="113.245" y2="14.605" width="0" layer="19" extent="1-1"/>
-<wire x1="108.6" y1="2.275" x2="113.245" y2="14.605" width="0" layer="19" extent="1-1"/>
 <wire x1="48.74" y1="6.31" x2="103.72" y2="15.875" width="0" layer="19" extent="1-1"/>
+<wire x1="120.33" y1="7.79" x2="48.74" y2="6.31" width="0" layer="19" extent="1-1"/>
 <wire x1="9.525" y1="74.93" x2="48.74" y2="6.31" width="0" layer="19" extent="1-1"/>
 <wire x1="9.525" y1="77.47" x2="9.525" y2="74.93" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ESP-I2C-SCL">
 <contactref element="JP56" pad="3"/>
 <contactref element="JP62" pad="3"/>
-<contactref element="Q8" pad="2"/>
 <contactref element="R105" pad="1"/>
 <contactref element="R111" pad="2"/>
 <contactref element="X10" pad="18"/>
+<contactref element="Q8" pad="2"/>
 <wire x1="113.245" y1="13.335" x2="113.245" y2="15.875" width="0" layer="19" extent="1-1"/>
-<wire x1="113.68" y1="2.275" x2="113.245" y2="13.335" width="0" layer="19" extent="1-1"/>
 <wire x1="48.24" y1="6.31" x2="113.245" y2="13.335" width="0" layer="19" extent="1-1"/>
+<wire x1="118.425" y1="11.6" x2="48.24" y2="6.31" width="0" layer="19" extent="1-1"/>
 <wire x1="6.985" y1="74.93" x2="48.24" y2="6.31" width="0" layer="19" extent="1-1"/>
 <wire x1="6.985" y1="77.47" x2="6.985" y2="74.93" width="0" layer="19" extent="1-1"/>
 </signal>
@@ -6893,33 +7039,33 @@ design rules under a new name.</description>
 <wire x1="1.905" y1="69.85" x2="1.905" y2="72.39" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ESP-I2C-SCL-5V">
-<contactref element="Q8" pad="3"/>
 <contactref element="R106" pad="1"/>
 <contactref element="JP45" pad="3"/>
 <contactref element="JP49" pad="3"/>
-<wire x1="113.03" y1="4.075" x2="110.07" y2="15.875" width="0" layer="19" extent="1-1"/>
+<contactref element="Q8" pad="3"/>
 <wire x1="6.985" y1="69.85" x2="110.07" y2="15.875" width="0" layer="19" extent="1-1"/>
 <wire x1="6.985" y1="72.39" x2="6.985" y2="69.85" width="0" layer="19" extent="1-1"/>
+<wire x1="117.475" y1="13.8" x2="6.985" y2="69.85" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ESP-I2C-SDA-5V">
-<contactref element="Q9" pad="3"/>
 <contactref element="JP45" pad="4"/>
 <contactref element="R117" pad="1"/>
 <contactref element="JP49" pad="4"/>
-<wire x1="107.95" y1="4.075" x2="106.895" y2="15.875" width="0" layer="19" extent="1-1"/>
+<contactref element="Q9" pad="3"/>
 <wire x1="9.525" y1="69.85" x2="106.895" y2="15.875" width="0" layer="19" extent="1-1"/>
 <wire x1="9.525" y1="72.39" x2="9.525" y2="69.85" width="0" layer="19" extent="1-1"/>
+<wire x1="119.38" y1="9.99" x2="9.525" y2="69.85" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="GPIO-4">
 <contactref element="JP59" pad="1"/>
-<contactref element="Q10" pad="2"/>
 <contactref element="R119" pad="1"/>
 <contactref element="R122" pad="2"/>
 <contactref element="X10" pad="20"/>
+<contactref element="Q10" pad="2"/>
 <wire x1="102.02" y1="24.765" x2="106.895" y2="24.765" width="0" layer="19" extent="1-1"/>
-<wire x1="106.06" y1="2.275" x2="106.895" y2="24.765" width="0" layer="19" extent="1-1"/>
 <wire x1="49.24" y1="6.31" x2="102.02" y2="24.765" width="0" layer="19" extent="1-1"/>
 <wire x1="12.065" y1="74.93" x2="49.24" y2="6.31" width="0" layer="19" extent="1-1"/>
+<wire x1="120.965" y1="3.98" x2="49.24" y2="6.31" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IN3-5V">
 <contactref element="JP52" pad="1"/>
@@ -6927,27 +7073,27 @@ design rules under a new name.</description>
 <wire x1="12.065" y1="72.39" x2="106.675" y2="0.635" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="GPIO-4-5V">
-<contactref element="Q10" pad="3"/>
 <contactref element="R120" pad="1"/>
 <contactref element="JP47" pad="1"/>
-<wire x1="105.41" y1="4.075" x2="105.195" y2="23.495" width="0" layer="19" extent="1-1"/>
+<contactref element="Q10" pad="3"/>
 <wire x1="12.065" y1="69.85" x2="105.195" y2="23.495" width="0" layer="19" extent="1-1"/>
+<wire x1="120.015" y1="6.18" x2="12.065" y2="69.85" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ILED">
-<contactref element="Q11" pad="2"/>
 <contactref element="R134" pad="1"/>
 <contactref element="R133" pad="2"/>
-<wire x1="84.085" y1="3.19" x2="87.21" y2="1.905" width="0" layer="19" extent="1-1"/>
+<contactref element="Q11" pad="2"/>
 <wire x1="79.16" y1="1.905" x2="87.21" y2="1.905" width="0" layer="19" extent="1-1"/>
+<wire x1="120.33" y1="-0.465" x2="79.16" y2="1.905" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ILED-5V">
-<contactref element="Q11" pad="3"/>
 <contactref element="R132" pad="1"/>
 <contactref element="JP66" pad="2"/>
 <contactref element="X10" pad="17"/>
+<contactref element="Q11" pad="3"/>
 <wire x1="95.25" y1="12.065" x2="105.195" y2="26.035" width="0" layer="19" extent="1-1"/>
-<wire x1="82.285" y1="2.54" x2="95.25" y2="12.065" width="0" layer="19" extent="1-1"/>
-<wire x1="47.74" y1="6.31" x2="82.285" y2="2.54" width="0" layer="19" extent="1-1"/>
+<wire x1="47.74" y1="6.31" x2="95.25" y2="12.065" width="0" layer="19" extent="1-1"/>
+<wire x1="119.38" y1="1.735" x2="47.74" y2="6.31" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IM7_EN">
 <contactref element="IM1" pad="EN"/>
@@ -6987,10 +7133,10 @@ design rules under a new name.</description>
 </signal>
 <signal name="BUZZER-">
 <contactref element="B1" pad="-"/>
-<contactref element="Q6" pad="3"/>
 <contactref element="D28" pad="A"/>
-<wire x1="102.87" y1="4.075" x2="109.225" y2="0.635" width="0" layer="19" extent="1-1"/>
-<wire x1="6.35" y1="43.815" x2="102.87" y2="4.075" width="0" layer="19" extent="1-1"/>
+<contactref element="Q6" pad="3"/>
+<wire x1="6.35" y1="43.815" x2="109.225" y2="0.635" width="0" layer="19" extent="1-1"/>
+<wire x1="64.135" y1="86.825" x2="6.35" y2="43.815" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="EXPANDER-UART-RX">
 <contactref element="R77" pad="2"/>
@@ -7016,16 +7162,16 @@ design rules under a new name.</description>
 <signal name="BOOT1_PULL-DOWN">
 <contactref element="R61" pad="1"/>
 <contactref element="Q7" pad="3"/>
-<wire x1="55.245" y1="81.545" x2="105.195" y2="13.335" width="0" layer="19" extent="1-1"/>
+<wire x1="113.03" y1="12.53" x2="105.195" y2="13.335" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="BUZZER-GATE">
 <contactref element="R50" pad="2"/>
-<contactref element="Q6" pad="1"/>
 <contactref element="R51" pad="1"/>
 <contactref element="X10" pad="16"/>
+<contactref element="Q6" pad="1"/>
 <wire x1="111.545" y1="8.255" x2="113.245" y2="6.985" width="0" layer="19" extent="1-1"/>
-<wire x1="102.22" y1="2.275" x2="111.545" y2="8.255" width="0" layer="19" extent="1-1"/>
-<wire x1="47.24" y1="6.31" x2="102.22" y2="2.275" width="0" layer="19" extent="1-1"/>
+<wire x1="47.24" y1="6.31" x2="111.545" y2="8.255" width="0" layer="19" extent="1-1"/>
+<wire x1="63.185" y1="84.625" x2="47.24" y2="6.31" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ESP-EN">
 <contactref element="R93" pad="2"/>
