@@ -19690,8 +19690,18 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <attribute name="PACKAGE" value="292161-3"/>
 </part>
 <part name="D6" library="diode" deviceset="BAT60J" device="DO-214-AB" package3d_urn="urn:adsk.eagle:package:43453/2" value="SS34"/>
-<part name="Q1" library="transistors" deviceset="P-MOSFET" device="-MLP_HS" value="CHOOSE_ME"/>
-<part name="Q2" library="transistors" deviceset="P-MOSFET" device="-MLP_HS" value="CHOOSE_ME"/>
+<part name="Q1" library="transistors" deviceset="P-MOSFET" device="-MLP_HS" value="NCE20P45Q">
+<attribute name="DESCRIPTION" value="P MOSFET 19V 35A 7mΩ"/>
+<attribute name="LCSC_ID" value="C193354"/>
+<attribute name="MF_ID" value="NCE20P45Q"/>
+<attribute name="PACKAGE" value="DFN-8_EP_3.3x3.3x0.65P"/>
+<attribute name="PRICE_1000PLUS" value="$0.1218"/>
+<attribute name="PRICE_100PLUS" value="$0.1276"/>
+<attribute name="PRICE_10PLUS" value="$0.1450"/>
+<attribute name="PRICE_1PLUS" value="$0.1928"/>
+<attribute name="PRICE_30PLUS" value="$0.1363"/>
+<attribute name="PRICE_500PLUS" value="$0.1232"/>
+</part>
 <part name="LED1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="SML0603" package3d_urn="urn:adsk.eagle:package:15832/1" value="GREEN"/>
 <part name="Y1" library="SMD5032_2P" deviceset="5032/2P" device=""/>
 <part name="BAT1" library="CR2032-circle" deviceset="CR2032" device="CR2032-BS-6-1" value="CR2032"/>
@@ -20506,6 +20516,18 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="P+31" library="Supply" deviceset="+5V" device=""/>
 <part name="+3V26" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND104" library="Supply" deviceset="GND" device=""/>
+<part name="Q2" library="transistors" deviceset="P-MOSFET" device="-MLP_HS" value="NCE20P45Q">
+<attribute name="DESCRIPTION" value="P MOSFET 19V 35A 7mΩ"/>
+<attribute name="LCSC_ID" value="C193354"/>
+<attribute name="MF_ID" value="NCE20P45Q"/>
+<attribute name="PACKAGE" value="DFN-8_EP_3.3x3.3x0.65P"/>
+<attribute name="PRICE_1000PLUS" value="$0.1218"/>
+<attribute name="PRICE_100PLUS" value="$0.1276"/>
+<attribute name="PRICE_10PLUS" value="$0.1450"/>
+<attribute name="PRICE_1PLUS" value="$0.1928"/>
+<attribute name="PRICE_30PLUS" value="$0.1363"/>
+<attribute name="PRICE_500PLUS" value="$0.1232"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -21930,10 +21952,16 @@ Fmax = 20.2 Hz</text>
 <instance part="Q1" gate="G$1" x="73.66" y="170.18" smashed="yes" rot="MR90">
 <attribute name="VALUE" x="68.58" y="175.26" size="1.27" layer="96"/>
 <attribute name="NAME" x="68.58" y="177.292" size="1.27" layer="95"/>
-</instance>
-<instance part="Q2" gate="G$1" x="109.22" y="170.18" smashed="yes" rot="R90">
-<attribute name="VALUE" x="104.14" y="175.26" size="1.27" layer="96"/>
-<attribute name="NAME" x="104.14" y="177.292" size="1.27" layer="95"/>
+<attribute name="DESCRIPTION" x="73.66" y="170.18" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="LCSC_ID" x="73.66" y="170.18" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="MF_ID" x="73.66" y="170.18" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="PACKAGE" x="73.66" y="170.18" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="PRICE_1000PLUS" x="73.66" y="170.18" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="PRICE_100PLUS" x="73.66" y="170.18" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="PRICE_10PLUS" x="73.66" y="170.18" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="PRICE_1PLUS" x="73.66" y="170.18" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="PRICE_30PLUS" x="73.66" y="170.18" size="1.27" layer="96" rot="MR90" display="off"/>
+<attribute name="PRICE_500PLUS" x="73.66" y="170.18" size="1.27" layer="96" rot="MR90" display="off"/>
 </instance>
 <instance part="SW1" gate="1" x="83.82" y="152.4" smashed="yes" rot="R180">
 <attribute name="NAME" x="78.74" y="152.4" size="1.27" layer="95" rot="MR270" align="bottom-center"/>
@@ -22217,6 +22245,20 @@ Fmax = 20.2 Hz</text>
 <attribute name="NAME" x="57.15" y="158.115" size="1.27" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="57.15" y="149.352" size="1.27" layer="96" rot="R180"/>
 </instance>
+<instance part="Q2" gate="G$1" x="109.22" y="170.18" smashed="yes" rot="R90">
+<attribute name="VALUE" x="104.14" y="175.26" size="1.27" layer="96"/>
+<attribute name="NAME" x="104.14" y="177.292" size="1.27" layer="95"/>
+<attribute name="DESCRIPTION" x="109.22" y="170.18" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="LCSC_ID" x="109.22" y="170.18" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="MF_ID" x="109.22" y="170.18" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PACKAGE" x="109.22" y="170.18" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PRICE_1000PLUS" x="109.22" y="170.18" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PRICE_100PLUS" x="109.22" y="170.18" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PRICE_10PLUS" x="109.22" y="170.18" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PRICE_1PLUS" x="109.22" y="170.18" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PRICE_30PLUS" x="109.22" y="170.18" size="1.27" layer="96" rot="R90" display="off"/>
+<attribute name="PRICE_500PLUS" x="109.22" y="170.18" size="1.27" layer="96" rot="R90" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -22228,7 +22270,6 @@ Fmax = 20.2 Hz</text>
 <wire x1="91.44" y1="172.72" x2="104.14" y2="172.72" width="0.1524" layer="91"/>
 <label x="81.28" y="173.99" size="1.27" layer="95"/>
 <pinref part="Q1" gate="G$1" pin="S"/>
-<pinref part="Q2" gate="G$1" pin="S"/>
 <pinref part="R1" gate="G$1" pin="1"/>
 <wire x1="93.98" y1="165.1" x2="91.44" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="165.1" x2="91.44" y2="172.72" width="0.1524" layer="91"/>
@@ -22247,6 +22288,7 @@ Fmax = 20.2 Hz</text>
 <wire x1="81.28" y1="160.02" x2="83.82" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="157.48" x2="81.28" y2="160.02" width="0.1524" layer="91"/>
 <junction x="81.28" y="160.02"/>
+<pinref part="Q2" gate="G$1" pin="S"/>
 </segment>
 </net>
 <net name="BAT+" class="0">
@@ -22261,7 +22303,6 @@ Fmax = 20.2 Hz</text>
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="104.14" y1="165.1" x2="106.68" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="Q2" gate="G$1" pin="G"/>
 <wire x1="106.68" y1="165.1" x2="106.68" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="Q5" gate="G$1" pin="D"/>
 <wire x1="106.68" y1="139.7" x2="106.68" y2="142.24" width="0.1524" layer="91"/>
@@ -22275,6 +22316,7 @@ Fmax = 20.2 Hz</text>
 <label x="107.95" y="152.4" size="1.27" layer="95" rot="R270"/>
 <pinref part="R2" gate="G$1" pin="2"/>
 <pinref part="C7" gate="G$1" pin="1"/>
+<pinref part="Q2" gate="G$1" pin="G"/>
 </segment>
 </net>
 <net name="+3V3S" class="0">
@@ -22431,7 +22473,6 @@ Fmax = 20.2 Hz</text>
 <net name="VCC" class="0">
 <segment>
 <wire x1="114.3" y1="172.72" x2="116.84" y2="172.72" width="0.1524" layer="91"/>
-<pinref part="Q2" gate="G$1" pin="D"/>
 <pinref part="P+1" gate="VCC" pin="VCC"/>
 <pinref part="D6" gate="G$1" pin="C"/>
 <wire x1="116.84" y1="172.72" x2="129.54" y2="172.72" width="0.1524" layer="91"/>
@@ -22441,6 +22482,7 @@ Fmax = 20.2 Hz</text>
 <pinref part="C4" gate="G$1" pin="+"/>
 <wire x1="129.54" y1="170.18" x2="129.54" y2="172.72" width="0.1524" layer="91"/>
 <junction x="129.54" y="172.72"/>
+<pinref part="Q2" gate="G$1" pin="D"/>
 </segment>
 <segment>
 <pinref part="LED1" gate="G$1" pin="A"/>
