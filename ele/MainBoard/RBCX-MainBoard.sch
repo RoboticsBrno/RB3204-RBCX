@@ -19677,7 +19677,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="IM6" library="esp32" deviceset="DEVKITC" device=""/>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="X2" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="POWER_IN"/>
-<part name="R1" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="100k"/>
+<part name="R1" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="100k"/>
 <part name="NC1" library="NC" deviceset="NC" device=""/>
 <part name="NC2" library="NC" deviceset="NC" device=""/>
 <part name="NC3" library="NC" deviceset="NC" device=""/>
@@ -19741,10 +19741,10 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND6" library="Supply" deviceset="GND" device=""/>
 <part name="GND7" library="Supply" deviceset="GND" device=""/>
 <part name="GND8" library="Supply" deviceset="GND" device=""/>
-<part name="R2" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2M"/>
-<part name="R4" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="100k"/>
-<part name="R5" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2M"/>
-<part name="R3" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="R2" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2M"/>
+<part name="R4" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="100k"/>
+<part name="R5" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2M"/>
+<part name="R3" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="10k"/>
 <part name="C8" library="rcl_upravena" deviceset="C-EU" device="C0805" value="10u">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -19754,12 +19754,12 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <attribute name="VOLTAGE" value="25V"/>
 </part>
 <part name="GND9" library="Supply" deviceset="GND" device=""/>
-<part name="R10" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="R10" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="GND10" library="Supply" deviceset="GND" device=""/>
 <part name="P+2" library="Supply" deviceset="VCC" device=""/>
 <part name="GND11" library="Supply" deviceset="GND" device=""/>
-<part name="R8" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
-<part name="R6" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="24k"/>
+<part name="R8" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="10k"/>
+<part name="R6" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="24k"/>
 <part name="P+3" library="Supply" deviceset="VCC" device=""/>
 <part name="C9" library="rcl_upravena" deviceset="C-EU" device="C0603" value="1u">
 <attribute name="DIELECTRIC" value="X5R"/>
@@ -19768,7 +19768,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="X1" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="POWER_OUT"/>
 <part name="P+4" library="Supply" deviceset="VCC" device=""/>
 <part name="GND12" library="Supply" deviceset="GND" device=""/>
-<part name="R25" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="R25" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="10k"/>
 <part name="C20" library="rcl_upravena" deviceset="C-EU" device="C0805" value="2u2">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -19795,10 +19795,10 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND19" library="Supply" deviceset="GND" device=""/>
 <part name="R27" library="rcl_upravena" deviceset="R-EU_" device="R1206S" value="8m"/>
 <part name="GND20" library="Supply" deviceset="GND" device=""/>
-<part name="R20" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
-<part name="R21" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
-<part name="R22" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
-<part name="R23" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
+<part name="R20" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
+<part name="R21" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
+<part name="R22" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
+<part name="R23" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="D14" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="D15" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="D16" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
@@ -19877,10 +19877,10 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND35" library="Supply" deviceset="GND" device=""/>
 <part name="R19" library="rcl_upravena" deviceset="R-EU_" device="R1206S" value="8m"/>
 <part name="GND36" library="Supply" deviceset="GND" device=""/>
-<part name="R14" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
-<part name="R15" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
-<part name="R16" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
-<part name="R17" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
+<part name="R14" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
+<part name="R15" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
+<part name="R16" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
+<part name="R17" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="D8" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="D9" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="D10" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
@@ -19953,7 +19953,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND46" library="Supply" deviceset="GND" device=""/>
 <part name="+3V14" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND47" library="Supply" deviceset="GND" device=""/>
-<part name="R40" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
+<part name="R40" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="D23" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="GND48" library="Supply" deviceset="GND" device=""/>
 <part name="+3V15" library="Supply" deviceset="+3V3S" device=""/>
@@ -19970,7 +19970,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND51" library="Supply" deviceset="GND" device=""/>
-<part name="R32" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="1k"/>
+<part name="R32" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
 <part name="C35" library="rcl_upravena" deviceset="C-EU" device="C0603" value="1u">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -19999,7 +19999,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND53" library="Supply" deviceset="GND" device=""/>
 <part name="+3V16" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND54" library="Supply" deviceset="GND" device=""/>
-<part name="R41" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
+<part name="R41" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="D24" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="GND55" library="Supply" deviceset="GND" device=""/>
 <part name="+3V17" library="Supply" deviceset="+3V3S" device=""/>
@@ -20016,7 +20016,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND59" library="Supply" deviceset="GND" device=""/>
-<part name="R34" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="1k"/>
+<part name="R34" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
 <part name="C36" library="rcl_upravena" deviceset="C-EU" device="C0603" value="1u">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -20045,7 +20045,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND61" library="Supply" deviceset="GND" device=""/>
 <part name="+3V18" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND62" library="Supply" deviceset="GND" device=""/>
-<part name="R42" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
+<part name="R42" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="D25" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="GND63" library="Supply" deviceset="GND" device=""/>
 <part name="+3V19" library="Supply" deviceset="+3V3S" device=""/>
@@ -20062,7 +20062,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND67" library="Supply" deviceset="GND" device=""/>
-<part name="R36" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="1k"/>
+<part name="R36" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
 <part name="C37" library="rcl_upravena" deviceset="C-EU" device="C0603" value="1u">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -20091,7 +20091,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND69" library="Supply" deviceset="GND" device=""/>
 <part name="+3V20" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND70" library="Supply" deviceset="GND" device=""/>
-<part name="R43" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="2k2"/>
+<part name="R43" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="D26" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="GND71" library="Supply" deviceset="GND" device=""/>
 <part name="+3V21" library="Supply" deviceset="+3V3S" device=""/>
@@ -20108,7 +20108,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND75" library="Supply" deviceset="GND" device=""/>
-<part name="R38" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="1k"/>
+<part name="R38" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
 <part name="C38" library="rcl_upravena" deviceset="C-EU" device="C0603" value="1u">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -20173,12 +20173,12 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND88" library="Supply" deviceset="GND" device=""/>
 <part name="GND89" library="Supply" deviceset="GND" device=""/>
 <part name="GND90" library="Supply" deviceset="GND" device=""/>
-<part name="R24" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="R24" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="10k"/>
 <part name="GND91" library="Supply" deviceset="GND" device=""/>
 <part name="GND92" library="Supply" deviceset="GND" device=""/>
 <part name="GND93" library="Supply" deviceset="GND" device=""/>
-<part name="R9" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
-<part name="R7" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="5k6"/>
+<part name="R9" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="10k"/>
+<part name="R7" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="5k6"/>
 <part name="C10" library="rcl_upravena" deviceset="C-EU" device="C0603" value="2u2">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -20203,56 +20203,56 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <attribute name="DIELECTRIC" value="np0"/>
 <attribute name="VOLTAGE" value="50V"/>
 </part>
-<part name="R62" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R64" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R62" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R64" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="JP27" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="UTS2"/>
 <part name="GND95" library="Supply" deviceset="GND" device=""/>
-<part name="R75" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R76" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R75" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R76" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="JP30" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="UTS3"/>
 <part name="GND96" library="Supply" deviceset="GND" device=""/>
-<part name="R81" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R83" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R81" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R83" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="JP32" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="UTS4"/>
 <part name="GND97" library="Supply" deviceset="GND" device=""/>
-<part name="R87" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R88" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R87" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R88" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="SW2" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="CHOOSE_ME"/>
 <part name="SW3" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="CHOOSE_ME"/>
 <part name="SW4" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="CHOOSE_ME"/>
 <part name="SW5" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="CHOOSE_ME"/>
-<part name="R45" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R46" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R47" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R48" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R45" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R46" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R47" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R48" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="GND98" library="Supply" deviceset="GND" device=""/>
 <part name="LED5" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="green"/>
-<part name="R52" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="330R"/>
+<part name="R52" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="LED6" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="yellow"/>
-<part name="R53" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="330R"/>
+<part name="R53" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="LED7" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="red"/>
-<part name="R54" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="330R"/>
+<part name="R54" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="LED8" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="blue"/>
-<part name="R55" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="330R"/>
+<part name="R55" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="JP21" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="LEDS"/>
 <part name="GND99" library="Supply" deviceset="GND" device=""/>
-<part name="R56" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="330R"/>
-<part name="R57" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="330R"/>
-<part name="R58" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="330R"/>
-<part name="R59" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="330R"/>
+<part name="R56" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
+<part name="R57" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
+<part name="R58" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
+<part name="R59" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="FRAME7" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A3L-LOC" device=""/>
 <part name="JP24" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="SWD"/>
 <part name="+3V25" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND100" library="Supply" deviceset="GND" device=""/>
-<part name="R63" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R65" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R67" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R69" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R63" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R65" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R67" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R69" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="JP29" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="DEBUG"/>
 <part name="GND103" library="Supply" deviceset="GND" device=""/>
 <part name="+3V27" library="Supply" deviceset="+3V3S" device=""/>
-<part name="R79" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R80" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R79" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R80" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="J1" library="Wurth_Connectors_WR-USB" library_urn="urn:adsk.eagle:library:16513831" deviceset="614105150621" device="" package3d_urn="urn:adsk.eagle:package:16513904/2"/>
 <part name="GND112" library="Supply" deviceset="GND" device=""/>
 <part name="NC8" library="NC" deviceset="NC" device=""/>
@@ -20261,13 +20261,13 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="SJ4" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="+3V1" library="Supply" deviceset="+3V3" device=""/>
 <part name="D29" library="diode" deviceset="BAT60J" device="DO-214-AB" package3d_urn="urn:adsk.eagle:package:43453/2" value="SS34"/>
-<part name="R100" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R100" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="SJ10" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="SJ9" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
-<part name="R107" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R109" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R112" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R113" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R107" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R109" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R112" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R113" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="JP44" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ESP_SPI1"/>
 <part name="GND117" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND116" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -20310,28 +20310,28 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="+3V6" library="Supply" deviceset="+3V3S" device=""/>
 <part name="+3V34" library="Supply" deviceset="+3V3S" device=""/>
 <part name="+3V35" library="Supply" deviceset="+3V3S" device=""/>
-<part name="R108" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R110" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R108" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R110" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="JP43" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_UART"/>
 <part name="JP46" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_UART_AUX"/>
 <part name="GND120" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V36" library="Supply" deviceset="+3V3" device=""/>
-<part name="R114" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R114" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="SJ11" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="GND121" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V37" library="Supply" deviceset="+3V3" device=""/>
 <part name="P+13" library="Supply" deviceset="+5V" device=""/>
-<part name="R123" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R124" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R123" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R124" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="JP51" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_UCOM"/>
 <part name="JP54" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_UCOM_AUX"/>
 <part name="GND122" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V38" library="Supply" deviceset="+3V3" device=""/>
-<part name="R127" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R127" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="JP48" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_SPI_AUX1"/>
 <part name="GND123" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V39" library="Supply" deviceset="+3V3" device=""/>
-<part name="R115" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R115" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="JP50" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ESP_SPI2"/>
 <part name="GND124" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="JP53" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_SPI_AUX2"/>
@@ -20344,29 +20344,29 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="+3V41" library="Supply" deviceset="+3V3" device=""/>
 <part name="+3V42" library="Supply" deviceset="+3V3" device=""/>
 <part name="+3V43" library="Supply" deviceset="+3V3" device=""/>
-<part name="R121" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R128" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R129" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="100k"/>
+<part name="R121" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R128" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R129" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="100k"/>
 <part name="+3V44" library="Supply" deviceset="+3V3" device=""/>
-<part name="R126" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="100k"/>
+<part name="R126" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="100k"/>
 <part name="+3V45" library="Supply" deviceset="+3V3" device=""/>
 <part name="+3V31" library="Supply" deviceset="+3V3" device=""/>
 <part name="+3V46" library="Supply" deviceset="+3V3" device=""/>
-<part name="R116" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
-<part name="R117" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
-<part name="R106" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
-<part name="R105" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="R116" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
+<part name="R117" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
+<part name="R106" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
+<part name="R105" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="JP45" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C1_5V"/>
 <part name="SJ8" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="+3V47" library="Supply" deviceset="+3V3" device=""/>
 <part name="P+14" library="Supply" deviceset="+5V" device=""/>
 <part name="GND118" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R111" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R118" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R111" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R118" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="+3V7" library="Supply" deviceset="+3V3" device=""/>
-<part name="R119" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
-<part name="R120" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
-<part name="R122" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R119" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
+<part name="R120" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
+<part name="R122" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="JP47" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_I2C_AUX1_5V"/>
 <part name="GND115" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="JP49" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C2_5V"/>
@@ -20385,7 +20385,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <attribute name="PRICE_1PLUS" value="$0.0342"/>
 <attribute name="PRICE_DATE" value="17.03.2020"/>
 </part>
-<part name="R125" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="R125" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="+3V48" library="Supply" deviceset="+3V3" device=""/>
 <part name="JP56" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C1"/>
 <part name="GND129" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -20399,19 +20399,19 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="+3V50" library="Supply" deviceset="+3V3" device=""/>
 <part name="+3V51" library="Supply" deviceset="+3V3" device=""/>
 <part name="+3V52" library="Supply" deviceset="+3V3" device=""/>
-<part name="R131" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="R131" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="+3V53" library="Supply" deviceset="+3V3" device=""/>
 <part name="P+16" library="Supply" deviceset="+5V" device=""/>
 <part name="JP66" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ILED"/>
 <part name="+3V54" library="Supply" deviceset="+3V3" device=""/>
-<part name="R134" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
-<part name="R132" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="R134" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
+<part name="R132" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="GND134" library="Supply" deviceset="GND" device=""/>
-<part name="R133" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R101" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R102" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R103" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R104" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R133" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R101" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R102" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R103" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R104" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="IM1" library="StepDown" deviceset="STEPDOWN" device=""/>
 <part name="JP1" library="pinhead" deviceset="PINHD-1X1" device="" value="IM7_EN"/>
 <part name="GND135" library="Supply" deviceset="GND" device=""/>
@@ -20434,15 +20434,15 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 </part>
 <part name="GND140" library="Supply" deviceset="GND" device=""/>
 <part name="LED2" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="SML0603" package3d_urn="urn:adsk.eagle:package:15832/1" value="GREEN"/>
-<part name="R11" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="R11" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="GND141" library="Supply" deviceset="GND" device=""/>
 <part name="LED3" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="SML0603" package3d_urn="urn:adsk.eagle:package:15832/1" value="GREEN"/>
-<part name="R12" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="R12" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="GND142" library="Supply" deviceset="GND" device=""/>
 <part name="+3V55" library="Supply" deviceset="+3V3S" device=""/>
 <part name="P+36" library="Supply" deviceset="+5V" device=""/>
 <part name="LED4" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="SML0603" package3d_urn="urn:adsk.eagle:package:15832/1" value="GREEN"/>
-<part name="R13" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="4k7"/>
+<part name="R13" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="GND143" library="Supply" deviceset="GND" device=""/>
 <part name="+3V56" library="Supply" deviceset="+3V3" device=""/>
 <part name="IC1" library="v-reg" library_urn="urn:adsk.eagle:library:409" deviceset="LM317?*" device="MSTT3" package3d_urn="urn:adsk.eagle:package:30370/1" value="AMS1117-3.3"/>
@@ -20465,8 +20465,8 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="GND150" library="Supply" deviceset="GND" device=""/>
 <part name="B1" library="piezo" deviceset="PIEZO" device=""/>
 <part name="GND156" library="Supply" deviceset="GND" device=""/>
-<part name="R51" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R50" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R51" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R50" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="P+37" library="Supply" deviceset="+5V" device=""/>
 <part name="D28" library="diode" deviceset="SHOTTKY" device="-SOD123" value="B5819W">
 <attribute name="DESCRIPTION" value="40V 1A 600mV @ 1A SOD-123 Schottky Barrier Diodes (SBD) RoHS"/>
@@ -20482,8 +20482,8 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 </part>
 <part name="JP28" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="EXPANDER_UART"/>
 <part name="GND158" library="Supply" deviceset="GND" device=""/>
-<part name="R77" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
-<part name="R78" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R77" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
+<part name="R78" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="JP58" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="+3V3STM"/>
 <part name="GND159" library="Supply" deviceset="GND" device=""/>
 <part name="+3V58" library="Supply" deviceset="+3V3S" device=""/>
@@ -20496,15 +20496,15 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="+3V59" library="Supply" deviceset="+3V3" device=""/>
 <part name="P+39" library="Supply" deviceset="+5V" device=""/>
 <part name="P+40" library="Supply" deviceset="VCC" device=""/>
-<part name="R49" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R49" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="SW6" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="CHOOSE_ME"/>
 <part name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="ON_SW"/>
 <part name="+3V60" library="Supply" deviceset="+3V3S" device=""/>
-<part name="R60" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="100k"/>
+<part name="R60" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="100k"/>
 <part name="GND164" library="Supply" deviceset="GND" device=""/>
 <part name="GND165" library="Supply" deviceset="GND" device=""/>
-<part name="R61" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="100k"/>
-<part name="R93" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R61" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="100k"/>
+<part name="R93" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="180R"/>
 <part name="P+41" library="Supply" deviceset="+5V" device=""/>
 <part name="+3V61" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND166" library="Supply" deviceset="GND" device=""/>
@@ -20537,7 +20537,7 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <attribute name="PRICE_500PLUS" value="$0.1232"/>
 </part>
 <part name="R66" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
-<part name="R68" library="rcl_upravena" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="R68" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="10k"/>
 <part name="Q4" library="transistors" deviceset="N-MOSFET" device="-SOT23-GSD" value="2N7002">
 <attribute name="DESCRIPTION" value="N MOSFET 60V 115mA 7Ω"/>
 <attribute name="EXTENDED" value="NO"/>
