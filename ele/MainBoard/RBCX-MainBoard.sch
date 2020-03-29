@@ -20632,6 +20632,10 @@ Source: http://www.molex.com/product/ffc/52745.html</description>
 <part name="LED6" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="red"/>
 <part name="LED7" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="red"/>
 <part name="LED8" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="red"/>
+<part name="X6" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="M1"/>
+<part name="X7" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="M2"/>
+<part name="X8" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="M3"/>
+<part name="X9" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="M4"/>
 </parts>
 <sheets>
 <sheet>
@@ -24376,8 +24380,8 @@ Jakub Streit
 <instance part="GND17" gate="1" x="243.84" y="114.3" smashed="yes">
 <attribute name="VALUE" x="242.062" y="112.522" size="1.27" layer="96"/>
 </instance>
-<instance part="GND18" gate="1" x="281.94" y="111.76" smashed="yes">
-<attribute name="VALUE" x="280.162" y="109.982" size="1.27" layer="96"/>
+<instance part="GND18" gate="1" x="281.94" y="114.3" smashed="yes">
+<attribute name="VALUE" x="280.162" y="112.522" size="1.27" layer="96"/>
 </instance>
 <instance part="R28" gate="G$1" x="170.18" y="53.34" smashed="yes" rot="R90">
 <attribute name="NAME" x="168.656" y="49.53" size="1.27" layer="95" rot="R90"/>
@@ -24562,8 +24566,8 @@ Jakub Streit
 <instance part="GND33" gate="1" x="243.84" y="218.44" smashed="yes">
 <attribute name="VALUE" x="242.062" y="216.662" size="1.27" layer="96"/>
 </instance>
-<instance part="GND34" gate="1" x="281.94" y="215.9" smashed="yes">
-<attribute name="VALUE" x="280.162" y="214.122" size="1.27" layer="96"/>
+<instance part="GND34" gate="1" x="281.94" y="218.44" smashed="yes">
+<attribute name="VALUE" x="280.162" y="216.662" size="1.27" layer="96"/>
 </instance>
 <instance part="R20" gate="G$1" x="170.18" y="157.48" smashed="yes" rot="R90">
 <attribute name="NAME" x="168.656" y="153.67" size="1.27" layer="95" rot="R90"/>
@@ -24750,6 +24754,30 @@ Jakub Streit
 <instance part="+3V35" gate="G$1" x="271.78" y="185.42" smashed="yes" rot="MR0">
 <attribute name="VALUE" x="273.812" y="183.134" size="1.27" layer="96" rot="MR90"/>
 </instance>
+<instance part="X6" gate="-1" x="226.06" y="231.14" smashed="yes" rot="MR270">
+<attribute name="NAME" x="225.171" y="232.41" size="1.27" layer="95" rot="MR90"/>
+</instance>
+<instance part="X6" gate="-2" x="254" y="231.14" smashed="yes" rot="MR270">
+<attribute name="NAME" x="253.111" y="232.41" size="1.27" layer="95" rot="MR90"/>
+</instance>
+<instance part="X7" gate="-1" x="264.16" y="231.14" smashed="yes" rot="MR270">
+<attribute name="NAME" x="263.271" y="232.41" size="1.27" layer="95" rot="MR90"/>
+</instance>
+<instance part="X7" gate="-2" x="292.1" y="231.14" smashed="yes" rot="MR270">
+<attribute name="NAME" x="291.211" y="232.41" size="1.27" layer="95" rot="MR90"/>
+</instance>
+<instance part="X8" gate="-1" x="226.06" y="127" smashed="yes" rot="MR270">
+<attribute name="NAME" x="225.171" y="128.27" size="1.27" layer="95" rot="MR90"/>
+</instance>
+<instance part="X8" gate="-2" x="254" y="127" smashed="yes" rot="MR270">
+<attribute name="NAME" x="253.111" y="128.27" size="1.27" layer="95" rot="MR90"/>
+</instance>
+<instance part="X9" gate="-1" x="264.16" y="127" smashed="yes" rot="MR270">
+<attribute name="NAME" x="263.271" y="128.27" size="1.27" layer="95" rot="MR90"/>
+</instance>
+<instance part="X9" gate="-2" x="292.1" y="127" smashed="yes" rot="MR270">
+<attribute name="NAME" x="291.211" y="128.27" size="1.27" layer="95" rot="MR90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -24767,9 +24795,13 @@ Jakub Streit
 <label x="195.58" y="97.282" size="1.27" layer="95"/>
 <wire x1="187.96" y1="96.52" x2="233.68" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="JP7" gate="A" pin="1"/>
-<wire x1="233.68" y1="124.46" x2="233.68" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="114.3" x2="233.68" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="124.46" x2="233.68" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="111.76" x2="233.68" y2="96.52" width="0.1524" layer="91"/>
 <label x="233.172" y="119.634" size="1.27" layer="95" rot="MR270"/>
+<pinref part="X8" gate="-1" pin="KL"/>
+<wire x1="226.06" y1="121.92" x2="226.06" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="111.76" x2="233.68" y2="111.76" width="0.1524" layer="91"/>
+<junction x="233.68" y="111.76"/>
 </segment>
 </net>
 <net name="M3B" class="0">
@@ -24778,9 +24810,13 @@ Jakub Streit
 <label x="195.58" y="94.742" size="1.27" layer="95"/>
 <wire x1="187.96" y1="93.98" x2="246.38" y2="93.98" width="0.1524" layer="91"/>
 <pinref part="JP7" gate="A" pin="6"/>
-<wire x1="246.38" y1="124.46" x2="246.38" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="246.38" y1="114.3" x2="246.38" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="246.38" y1="124.46" x2="246.38" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="246.38" y1="111.76" x2="246.38" y2="93.98" width="0.1524" layer="91"/>
 <label x="245.872" y="119.634" size="1.27" layer="95" rot="MR270"/>
+<pinref part="X8" gate="-2" pin="KL"/>
+<wire x1="254" y1="121.92" x2="254" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="254" y1="111.76" x2="246.38" y2="111.76" width="0.1524" layer="91"/>
+<junction x="246.38" y="111.76"/>
 </segment>
 </net>
 <net name="M4A" class="0">
@@ -24789,9 +24825,13 @@ Jakub Streit
 <label x="195.58" y="89.662" size="1.27" layer="95"/>
 <wire x1="187.96" y1="88.9" x2="271.78" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="JP8" gate="A" pin="1"/>
-<wire x1="271.78" y1="124.46" x2="271.78" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="114.3" x2="271.78" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="271.78" y1="124.46" x2="271.78" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="271.78" y1="111.76" x2="271.78" y2="88.9" width="0.1524" layer="91"/>
 <label x="271.272" y="119.634" size="1.27" layer="95" rot="MR270"/>
+<pinref part="X9" gate="-1" pin="KL"/>
+<wire x1="264.16" y1="121.92" x2="264.16" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="264.16" y1="111.76" x2="271.78" y2="111.76" width="0.1524" layer="91"/>
+<junction x="271.78" y="111.76"/>
 </segment>
 </net>
 <net name="M4B" class="0">
@@ -24800,9 +24840,13 @@ Jakub Streit
 <label x="195.58" y="87.122" size="1.27" layer="95"/>
 <wire x1="284.48" y1="86.36" x2="187.96" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="JP8" gate="A" pin="6"/>
-<wire x1="284.48" y1="124.46" x2="284.48" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="284.48" y1="86.36" x2="284.48" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="284.48" y1="124.46" x2="284.48" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="284.48" y1="86.36" x2="284.48" y2="111.76" width="0.1524" layer="91"/>
 <label x="283.972" y="119.634" size="1.27" layer="95" rot="MR270"/>
+<pinref part="X9" gate="-2" pin="KL"/>
+<wire x1="292.1" y1="121.92" x2="292.1" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="292.1" y1="111.76" x2="284.48" y2="111.76" width="0.1524" layer="91"/>
+<junction x="284.48" y="111.76"/>
 </segment>
 </net>
 <net name="ENC34PWR" class="0">
@@ -25034,7 +25078,7 @@ Jakub Streit
 <wire x1="137.16" y1="73.66" x2="139.7" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="281.94" y1="114.3" x2="281.94" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="281.94" y1="116.84" x2="281.94" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="JP8" gate="A" pin="5"/>
 <pinref part="GND18" gate="1" pin="GND"/>
 <label x="281.432" y="119.634" size="1.27" layer="95" rot="MR270"/>
@@ -25123,7 +25167,7 @@ Jakub Streit
 <wire x1="152.4" y1="218.44" x2="157.48" y2="218.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="281.94" y1="218.44" x2="281.94" y2="228.6" width="0.1524" layer="91"/>
+<wire x1="281.94" y1="220.98" x2="281.94" y2="228.6" width="0.1524" layer="91"/>
 <pinref part="JP5" gate="A" pin="5"/>
 <pinref part="GND34" gate="1" pin="GND"/>
 <label x="281.432" y="223.774" size="1.27" layer="95" rot="MR270"/>
@@ -25451,9 +25495,13 @@ Jakub Streit
 <label x="195.58" y="201.422" size="1.27" layer="95"/>
 <wire x1="187.96" y1="200.66" x2="233.68" y2="200.66" width="0.1524" layer="91"/>
 <pinref part="JP4" gate="A" pin="1"/>
-<wire x1="233.68" y1="228.6" x2="233.68" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="218.44" x2="233.68" y2="200.66" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="228.6" x2="233.68" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="215.9" x2="233.68" y2="200.66" width="0.1524" layer="91"/>
 <label x="233.172" y="223.774" size="1.27" layer="95" rot="MR270"/>
+<pinref part="X6" gate="-1" pin="KL"/>
+<wire x1="226.06" y1="226.06" x2="226.06" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="215.9" x2="233.68" y2="215.9" width="0.1524" layer="91"/>
+<junction x="233.68" y="215.9"/>
 </segment>
 </net>
 <net name="M1B" class="0">
@@ -25462,9 +25510,13 @@ Jakub Streit
 <label x="195.58" y="198.882" size="1.27" layer="95"/>
 <wire x1="187.96" y1="198.12" x2="246.38" y2="198.12" width="0.1524" layer="91"/>
 <pinref part="JP4" gate="A" pin="6"/>
-<wire x1="246.38" y1="228.6" x2="246.38" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="246.38" y1="218.44" x2="246.38" y2="198.12" width="0.1524" layer="91"/>
+<wire x1="246.38" y1="228.6" x2="246.38" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="246.38" y1="215.9" x2="246.38" y2="198.12" width="0.1524" layer="91"/>
 <label x="245.872" y="223.774" size="1.27" layer="95" rot="MR270"/>
+<pinref part="X6" gate="-2" pin="KL"/>
+<wire x1="254" y1="226.06" x2="254" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="254" y1="215.9" x2="246.38" y2="215.9" width="0.1524" layer="91"/>
+<junction x="246.38" y="215.9"/>
 </segment>
 </net>
 <net name="M2A" class="0">
@@ -25473,9 +25525,13 @@ Jakub Streit
 <label x="195.58" y="193.802" size="1.27" layer="95"/>
 <wire x1="187.96" y1="193.04" x2="271.78" y2="193.04" width="0.1524" layer="91"/>
 <pinref part="JP5" gate="A" pin="1"/>
-<wire x1="271.78" y1="228.6" x2="271.78" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="218.44" x2="271.78" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="271.78" y1="228.6" x2="271.78" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="271.78" y1="215.9" x2="271.78" y2="193.04" width="0.1524" layer="91"/>
 <label x="271.272" y="223.774" size="1.27" layer="95" rot="MR270"/>
+<pinref part="X7" gate="-1" pin="KL"/>
+<wire x1="264.16" y1="226.06" x2="264.16" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="264.16" y1="215.9" x2="271.78" y2="215.9" width="0.1524" layer="91"/>
+<junction x="271.78" y="215.9"/>
 </segment>
 </net>
 <net name="M2B" class="0">
@@ -25484,9 +25540,13 @@ Jakub Streit
 <label x="195.58" y="191.262" size="1.27" layer="95"/>
 <wire x1="284.48" y1="190.5" x2="187.96" y2="190.5" width="0.1524" layer="91"/>
 <pinref part="JP5" gate="A" pin="6"/>
-<wire x1="284.48" y1="228.6" x2="284.48" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="284.48" y1="190.5" x2="284.48" y2="218.44" width="0.1524" layer="91"/>
+<wire x1="284.48" y1="228.6" x2="284.48" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="284.48" y1="190.5" x2="284.48" y2="215.9" width="0.1524" layer="91"/>
 <label x="283.972" y="223.774" size="1.27" layer="95" rot="MR270"/>
+<pinref part="X7" gate="-2" pin="KL"/>
+<wire x1="292.1" y1="226.06" x2="292.1" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="292.1" y1="215.9" x2="284.48" y2="215.9" width="0.1524" layer="91"/>
+<junction x="284.48" y="215.9"/>
 </segment>
 </net>
 <net name="!M12_FAULT" class="0">
