@@ -4,7 +4,6 @@
 #include "stm32.h"
 #include "usb.h"
 #include "usb_cdc.h"
-#include "usb_hid.h"
 
 #include "usb_cdc_link.h"
 
