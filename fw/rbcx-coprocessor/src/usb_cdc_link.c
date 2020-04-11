@@ -50,11 +50,7 @@ static const struct cdc_config config_desc = {
         .bLength                = sizeof(struct usb_config_descriptor),
         .bDescriptorType        = USB_DTYPE_CONFIGURATION,
         .wTotalLength           = sizeof(struct cdc_config),
-#ifdef ENABLE_HID_COMBO
-        .bNumInterfaces         = 3,
-#else
         .bNumInterfaces         = 2,
-#endif //ENABLE_HID_COMBO
         .bConfigurationValue    = 1,
         .iConfiguration         = NO_DESCRIPTOR,
         .bmAttributes           = USB_CFG_ATTR_RESERVED | USB_CFG_ATTR_SELFPOWERED,
