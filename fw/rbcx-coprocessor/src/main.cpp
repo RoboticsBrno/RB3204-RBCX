@@ -1,6 +1,7 @@
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_gpio.h"
 
+#include "bsp.hpp"
 #include "usb_cdc_link.h"
 
 void SystemClock_Config();
@@ -61,19 +62,12 @@ void pins_init()
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
-  auto init = GPIO_InitTypeDef{0};
-  init.Pin = GPIO_PIN_13;
-  init.Mode = GPIO_MODE_OUTPUT_PP;
-  init.Pull = GPIO_NOPULL;
-  init.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOC, &init);
+  // LED
+  pin_init(GPIOC, GPIO_PIN_13, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
   HAL_GPIO_WritePin(GPIOC, 13, GPIO_PIN_SET);
 
-  init.Pin = GPIO_PIN_11 | GPIO_PIN_12;
-  init.Mode = GPIO_MODE_AF_PP;
-  init.Pull = GPIO_NOPULL;
-  init.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(GPIOA, &init);
+  // USB
+  pin_init(GPIOA, GPIO_PIN_11 | GPIO_PIN_12, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
 }
 
 extern "C" void Error_Handler()
