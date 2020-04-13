@@ -17,6 +17,13 @@ int main()
   cdc_link_init();
   while (true)
   {
+    uint8_t *rxData;
+    size_t rxLen = tunnel_usart_rx(&rxData);
+    if (rxLen > 0)
+    {
+      tunnel_usart_poll();
+    }
+
     const char* bytes = "ahoy\n";
     if (tunnel_usart_poll())
     {
