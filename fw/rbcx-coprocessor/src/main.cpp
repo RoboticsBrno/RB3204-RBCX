@@ -18,8 +18,12 @@ int main()
   while (true)
   {
     const char* bytes = "ahoy\n";
-    HAL_USART_Transmit(&TunnelUsartHandle, const_cast<uint8_t*>((const uint8_t *)bytes), 5, 50);
-    HAL_Delay(500);
+    if (tunnel_usart_poll())
+    {
+      tunnel_usart_tx(const_cast<uint8_t*>((const uint8_t*)bytes), 5);
+    }
+    HAL_Delay(20);
+    
     cdc_link_poll();
   }
 }
