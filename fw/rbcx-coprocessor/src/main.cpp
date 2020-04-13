@@ -12,10 +12,14 @@ int main()
 {
   SystemClock_Config();
   HAL_Init();
+  tunnel_usart_init();
   pins_init();
   cdc_link_init();
   while (true)
   {
+    const char* bytes = "ahoy\n";
+    HAL_USART_Transmit(&TunnelUsartHandle, const_cast<uint8_t*>((const uint8_t *)bytes), 5, 50);
+    HAL_Delay(500);
     cdc_link_poll();
   }
 }
