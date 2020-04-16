@@ -4,10 +4,25 @@
 #include <algorithm>
 #include <stdint.h>
 
+template<int Size>
 class ByteFifo
 {
-    std::array<uint8_t, 16> m_fifo;
+    std::array<uint8_t, Size> m_fifo;
     int m_head, m_tail;
+
+    int static adjust(int index, int delta)
+    {
+        index += delta;
+        if (index >= Size)
+        {
+            index -= Size;
+        }
+        if (index < 0)
+        {
+            index += Size;
+        }
+        return index;
+    }
 
 public:
     ByteFifo(): m_head(0), m_tail(0) {}
@@ -24,29 +39,22 @@ public:
     
     std::pair<uint8_t *, size_t> writeable_range() const
     {
-        return m_head >= m_tail
-            ? std::make_pair(data() + m_head, int(size()) - m_head)
-            : std::make_pair(data() + m_head, m_tail - m_head);
+        int preTail = adjust(m_tail, -1);
+        return m_head >= preTail
+            ? std::make_pair(data() + m_head, std::max(0, int(size()) - m_head))
+            : std::make_pair(data() + m_head, std::max(0, preTail - m_head));
     }
 
     void set_head(int newHead) { m_head = newHead; }
 
     void notify_written(size_t len)
     {
-        m_head += len;
-        if (m_head >= int(size()))
-        {
-            m_head -= size();
-        }
+        m_head = adjust(m_head, len);
     }
 
     void notify_read(size_t len)
     {
-        m_tail += len;
-        if (m_tail >= int(size()))
-        {
-            m_tail -= size();
-        }
+        m_tail = adjust(m_tail, len);
     }
 
     void write_range(uint8_t *data, size_t len)
