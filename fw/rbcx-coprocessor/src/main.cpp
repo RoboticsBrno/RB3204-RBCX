@@ -2,11 +2,14 @@
 #include "stm32f1xx_hal_gpio.h"
 
 #include "bsp.hpp"
+#include "byte_fifo.hpp"
 #include "usb_cdc_link.h"
 
 void SystemClock_Config();
 void pins_init();
 extern "C" void Error_Handler();
+
+ByteFifo<4> loopback;
 
 int main()
 {
@@ -17,19 +20,18 @@ int main()
   cdc_link_init();
   while (true)
   {
-    uint8_t *rxData;
-    size_t rxLen = tunnel_usart_rx(&rxData);
-    if (rxLen > 0)
+    auto rxRange = loopback.writeable_range();
+    size_t received = tunnel_usart_rx(rxRange.first, rxRange.second);
+    if (received)
     {
-      tunnel_usart_poll();
+      loopback.notify_written(received);
     }
-
-    const char* bytes = "ahoy\n";
-    if (tunnel_usart_poll())
+    auto txRange = loopback.readable_range();
+    if (txRange.second > 0 && tunnel_usart_tx_done())
     {
-      tunnel_usart_tx(const_cast<uint8_t*>((const uint8_t*)bytes), 5);
+      tunnel_usart_tx(txRange.first, txRange.second);
+      loopback.notify_read(txRange.second);
     }
-    HAL_Delay(20);
     
     cdc_link_poll();
   }

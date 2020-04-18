@@ -1,15 +1,18 @@
 #pragma once
 
 #include <array>
+#include <algorithm>
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_gpio.h"
 #include "stm32f1xx_hal_dma.h"
 #include "stm32f1xx_ll_usart.h"
+#include <cassert>
+#include "byte_fifo.hpp"
 
 DMA_HandleTypeDef TunnelDmaRxHandle;
 DMA_HandleTypeDef TunnelDmaTxHandle;
-std::array<uint8_t, 512> TunnelRxFifo;
-int TunnelRxLastRead = 0;
+ByteFifo<512> TunnelRxFifo;
+std::array<uint8_t, 512> TunnelTxBuf;
 
 inline void pin_init(GPIO_TypeDef *port, uint16_t pinMask, uint32_t mode, uint32_t pull, uint32_t speed)
 {
@@ -65,31 +68,24 @@ inline void tunnel_usart_init()
     pin_init(GPIOA, GPIO_PIN_10, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
 
-inline size_t tunnel_usart_rx(uint8_t **data)
+inline size_t tunnel_usart_rx(uint8_t *data, size_t maxLen)
 {
-    int rxIndex = TunnelRxFifo.size() - __HAL_DMA_GET_COUNTER(&TunnelDmaRxHandle);
-    size_t len = 0;
-    if (rxIndex > TunnelRxLastRead)
-    {
-        *data = TunnelRxFifo.data() + TunnelRxLastRead;
-        len = rxIndex - TunnelRxLastRead;
-        TunnelRxLastRead = rxIndex;
-    }
-    else if (rxIndex < TunnelRxLastRead)
-    {
-        *data = TunnelRxFifo.data();
-        len = rxIndex + 1;
-        TunnelRxLastRead = 0;
-    }
+    int rxHead = TunnelRxFifo.size() - __HAL_DMA_GET_COUNTER(&TunnelDmaRxHandle);
+    TunnelRxFifo.set_head(rxHead);
+    size_t len = std::min(TunnelRxFifo.readable_range().second, maxLen);
+    TunnelRxFifo.read_range(data, len);
+
     return len;
 }
 
 inline void tunnel_usart_tx(uint8_t *data, size_t len)
 {
+    assert(len <= TunnelTxBuf.size());
+    std::copy_n(data, len, TunnelTxBuf.data());
     HAL_DMA_Start(&TunnelDmaTxHandle, uint32_t(data), uint32_t(&USART1->DR), len);
 }
 
-inline bool tunnel_usart_poll()
+inline bool tunnel_usart_tx_done()
 {
     HAL_DMA_PollForTransfer(&TunnelDmaTxHandle, HAL_DMA_FULL_TRANSFER, 0);
     bool txBusy = TunnelDmaTxHandle.State == HAL_DMA_STATE_BUSY;

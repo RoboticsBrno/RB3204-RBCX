@@ -45,7 +45,10 @@ public:
             : std::make_pair(data() + m_head, std::max(0, preTail - m_head));
     }
 
-    void set_head(int newHead) { m_head = newHead; }
+    void set_head(int newHead) {
+    {
+        _head = newHead;
+    }
 
     void notify_written(size_t len)
     {

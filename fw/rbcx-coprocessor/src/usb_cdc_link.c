@@ -143,7 +143,7 @@ static const struct cdc_config config_desc = {
 
 static const struct usb_string_descriptor lang_desc     = USB_ARRAY_DESC(USB_LANGID_ENG_US);
 static const struct usb_string_descriptor manuf_desc_en = USB_STRING_DESC("Open source USB stack for STM32");
-static const struct usb_string_descriptor prod_desc_en  = USB_STRING_DESC("CDC Loopback demo");
+static const struct usb_string_descriptor prod_desc_en  = USB_STRING_DESC("RBCX Serial");
 static const struct usb_string_descriptor *const dtable[] = {
     &lang_desc,
     &manuf_desc_en,
@@ -151,18 +151,18 @@ static const struct usb_string_descriptor *const dtable[] = {
 };
 
 usbd_device udev;
-uint32_t	ubuf[0x20];
+uint32_t    ubuf[0x20];
 uint8_t     fifo[0x200];
 uint32_t    fpos = 0;
 
 static struct usb_cdc_line_coding cdc_line = {
-    .dwDTERate          = 38400,
+    .dwDTERate          = 115200,
     .bCharFormat        = USB_CDC_1_STOP_BITS,
     .bParityType        = USB_CDC_NO_PARITY,
     .bDataBits          = 8,
 };
 
-static usbd_respond cdc_getdesc (usbd_ctlreq *req, void **address, uint16_t *length) {
+static usbd_respond cdc_getdesc(usbd_ctlreq *req, void **address, uint16_t *length) {
     const uint8_t dtype = req->wValue >> 8;
     const uint8_t dnumber = req->wValue & 0xFF;
     const void* desc;
@@ -213,20 +213,13 @@ static usbd_respond cdc_control(usbd_device *dev, usbd_ctlreq *req, usbd_rqc_cal
     return usbd_fail;
 }
 
-static void cdc_loopback(usbd_device *dev, uint8_t event, uint8_t ep) {
-    int _t;
-    if (fpos < (sizeof(fifo) - CDC_DATA_SZ)) {
-        _t = usbd_ep_read(dev, CDC_RXD_EP, &fifo[fpos], CDC_DATA_SZ);
-        if (_t > 0) {
-            fpos += _t;
-        }
+static void cdc_callback(usbd_device *dev, uint8_t event, uint8_t ep) {
+    if (ep == CDC_RXD_EP) {
+        int32_t bytes = usbd_ep_read(dev, ep, fifo, CDC_DATA_SZ);
+        
     }
-    if (fpos > 0) {
-        _t = usbd_ep_write(dev, CDC_TXD_EP, &fifo[0], (fpos < CDC_DATA_SZ) ? fpos : CDC_DATA_SZ);
-        if (_t > 0) {
-            memmove(&fifo[0], &fifo[_t], fpos - _t);
-            fpos -= _t;
-        }
+    else if (ep == CDC_TXD_EP) {
+        usbd_ep_write(dev, ep, fifo, 0);
     }
 }
 
@@ -245,13 +238,8 @@ static usbd_respond cdc_setconf(usbd_device *dev, uint8_t cfg) {
         usbd_ep_config(dev, CDC_RXD_EP, USB_EPTYPE_BULK /*| USB_EPTYPE_DBLBUF*/, CDC_DATA_SZ);
         usbd_ep_config(dev, CDC_TXD_EP, USB_EPTYPE_BULK /*| USB_EPTYPE_DBLBUF*/, CDC_DATA_SZ);
         usbd_ep_config(dev, CDC_NTF_EP, USB_EPTYPE_INTERRUPT, CDC_NTF_SZ);
-#if defined(CDC_LOOPBACK)
-        usbd_reg_endpoint(dev, CDC_RXD_EP, cdc_loopback);
-        usbd_reg_endpoint(dev, CDC_TXD_EP, cdc_loopback);
-#else
-        usbd_reg_endpoint(dev, CDC_RXD_EP, cdc_rxonly);
-        usbd_reg_endpoint(dev, CDC_TXD_EP, cdc_txonly);
-#endif
+        usbd_reg_endpoint(dev, CDC_RXD_EP, cdc_callback);
+        usbd_reg_endpoint(dev, CDC_TXD_EP, cdc_callback);
         usbd_ep_write(dev, CDC_TXD_EP, 0, 0);
         return usbd_ack;
     default:
@@ -284,10 +272,12 @@ void cdc_link_poll()
 
 void USB_HP_CAN1_TX_IRQHandler()
 {
-  while (true);
+    __BKPT();
+    while (true);
 }
 
 void USB_LP_CAN1_RX0_IRQHandler()
 {
-  while (true);
+    __BKPT();
+    while (true);
 }
