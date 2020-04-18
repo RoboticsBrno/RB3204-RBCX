@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.1">
+<eagle version="9.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -31650,13 +31650,6 @@ Jakub Streit
 <pinref part="R73" gate="G$1" pin="1"/>
 <wire x1="320.04" y1="195.58" x2="312.42" y2="195.58" width="0.1524" layer="91"/>
 <label x="312.42" y="195.58" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="BAT+_PROTECTED" class="0">
-<segment>
-<wire x1="340.36" y1="142.24" x2="332.74" y2="142.24" width="0.1524" layer="91"/>
-<label x="332.74" y="142.24" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="X3" gate="-2" pin="S"/>
 </segment>
 </net>
 <net name="PWR_BTN" class="0">
