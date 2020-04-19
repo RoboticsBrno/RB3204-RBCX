@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <stdint.h>
 
-template<int Size>
+template <int Size>
 class ByteFifo
 {
     std::array<uint8_t, Size> m_fifo;
@@ -45,9 +45,9 @@ public:
             : std::make_pair(data() + m_head, std::max(0, preTail - m_head));
     }
 
-    void set_head(int newHead) {
+    void set_head(int newHead)
     {
-        _head = newHead;
+        m_head = newHead;
     }
 
     void notify_written(size_t len)

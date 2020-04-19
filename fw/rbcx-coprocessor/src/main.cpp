@@ -6,33 +6,17 @@
 #include "usb_cdc_link.h"
 
 void SystemClock_Config();
-void pins_init();
 extern "C" void Error_Handler();
-
-ByteFifo<4> loopback;
 
 int main()
 {
   SystemClock_Config();
   HAL_Init();
-  tunnel_usart_init();
+  tunnel_uart_init();
   pins_init();
   cdc_link_init();
   while (true)
   {
-    auto rxRange = loopback.writeable_range();
-    size_t received = tunnel_usart_rx(rxRange.first, rxRange.second);
-    if (received)
-    {
-      loopback.notify_written(received);
-    }
-    auto txRange = loopback.readable_range();
-    if (txRange.second > 0 && tunnel_usart_tx_done())
-    {
-      tunnel_usart_tx(txRange.first, txRange.second);
-      loopback.notify_read(txRange.second);
-    }
-    
     cdc_link_poll();
   }
 }
@@ -71,20 +55,6 @@ void SystemClock_Config()
   {
     Error_Handler();
   }
-}
-
-void pins_init()
-{
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOD_CLK_ENABLE();
-
-  // LED
-  pin_init(GPIOC, GPIO_PIN_13, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
-  HAL_GPIO_WritePin(GPIOC, 13, GPIO_PIN_SET);
-
-  // USB
-  pin_init(GPIOA, GPIO_PIN_11 | GPIO_PIN_12, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
 }
 
 extern "C" void Error_Handler()

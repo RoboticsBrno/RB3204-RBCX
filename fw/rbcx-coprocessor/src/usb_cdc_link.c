@@ -215,11 +215,10 @@ static usbd_respond cdc_control(usbd_device *dev, usbd_ctlreq *req, usbd_rqc_cal
 
 static void cdc_callback(usbd_device *dev, uint8_t event, uint8_t ep) {
     if (ep == CDC_RXD_EP) {
-        int32_t bytes = usbd_ep_read(dev, ep, fifo, CDC_DATA_SZ);
-        
+        cdc_link_rx_handler(dev, ep);
     }
     else if (ep == CDC_TXD_EP) {
-        usbd_ep_write(dev, ep, fifo, 0);
+        cdc_link_tx_handler(dev, ep);
     }
 }
 
