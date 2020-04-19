@@ -1,5 +1,5 @@
 description[de] = <b>EAGLE Design Rules</b>\n<p>\nDie Standard-Design-Rules sind so gewählt, dass sie für \ndie meisten Anwendungen passen. Sollte ihre Platine \nbesondere Anforderungen haben, treffen Sie die erforderlichen\nEinstellungen hier und speichern die Design Rules unter \neinem neuen Namen ab.
-description[en] = <b>RobotikaBrno DRC - 4 layers</b>\n\n<p>\nThis DRC includes the common parameters for two-layer PCBs. Should be compatible with:\n<ul>\n<li>Gatema POOL Servis</li>\n<li>JLCPCB (no extras)</li>\n<li>AllPCB (no extras)</li>\n</ul>\n<p>\nUPDATES:\n<p>\nJarekParal (2020-03-14) \n<ul>\n<li>Clearance - change clearance from 0.2 mm to 0.15 mm</li>\n<li>Sizes - Minimum Width: from 0.2 to 0.15; Minimum Drill: from 0.35 to 0.3</li>\n<li>Misc - activate 'Check angle'</li>\n</ul>\nJarekParal (2020-04-14) \n<ul>\n<li>Change layer stack for 4 layers according to Gatema document.\n<li>Sizes - Minimum Drill: from 0.3 to 0.25\n<li>Annual Ring - minimum: from 0.16 mm to 0.13 mm\n</ul>
+description[en] = <b>RobotikaBrno DRC - 4 layers</b>\n\n<p>\nThis DRC includes the common parameters for two-layer PCBs. Should be compatible with:\n<ul>\n<li>Gatema POOL Servis</li>\n<li>JLCPCB (no extras)</li>\n<li>AllPCB (no extras)</li>\n</ul>\n<p>\nUPDATES:\n<p>\nJarekParal (2020-03-14) \n<ul>\n<li>Clearance - change clearance from 0.2 mm to 0.15 mm</li>\n<li>Sizes - Minimum Width: from 0.2 to 0.15; Minimum Drill: from 0.35 to 0.3</li>\n<li>Misc - activate 'Check angle'</li>\n</ul>\nJarekParal (2020-04-14) \n<ul>\n<li>Change layer stack for 4 layers according to Gatema document.\n<li>Annual Ring - minimum: from 0.16 mm to 0.13 mm\n</ul>
 layerSetup = (1+2*15+16)
 mtCopper = 0.035mm 0.018mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.018mm 0.035mm
 mtIsolate = 0.13mm 1.2mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.13mm
@@ -18,7 +18,7 @@ mdCopperDimension = 0.4mm
 mdDrill = 0.5mm
 mdSmdStop = 0mil
 msWidth = 0.15mm
-msDrill = 0.25mm
+msDrill = 0.3mm
 msMicroVia = 9.99mm
 msBlindViaRatio = 0.500000
 rvPadTop = 0.350000
