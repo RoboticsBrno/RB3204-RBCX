@@ -30,6 +30,11 @@ public:
     uint8_t *data() const { return (uint8_t*)m_fifo.data(); }
     size_t size() const { return m_fifo.size(); }
 
+    void set_head(int newHead)
+    {
+        m_head = newHead;
+    }
+
     std::pair<uint8_t *, size_t> readable_range() const
     {
         return m_head >= m_tail
@@ -43,11 +48,6 @@ public:
         return m_head >= preTail
             ? std::make_pair(data() + m_head, std::max(0, int(size()) - m_head))
             : std::make_pair(data() + m_head, std::max(0, preTail - m_head));
-    }
-
-    void set_head(int newHead)
-    {
-        m_head = newHead;
     }
 
     void notify_written(size_t len)

@@ -8,7 +8,7 @@
 DMA_HandleTypeDef TunnelDmaRxHandle;
 DMA_HandleTypeDef TunnelDmaTxHandle;
 ByteFifo<512> TunnelRxFifo;
-std::array<uint8_t, 512> TunnelTxBuf;
+std::array<uint8_t, CDC_DATA_SZ> TunnelTxBuf;
 
 void tunnel_uart_init()
 {
@@ -54,22 +54,16 @@ void tunnel_uart_init()
     pin_init(GPIOA, GPIO_PIN_10, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
 
-size_t tunnel_uart_rx(uint8_t *data, size_t maxLen)
+void tunnel_uart_rx_poll()
 {
     int rxHead = TunnelRxFifo.size() - __HAL_DMA_GET_COUNTER(&TunnelDmaRxHandle);
     TunnelRxFifo.set_head(rxHead);
-    size_t len = std::min(TunnelRxFifo.readable_range().second, maxLen);
-    TunnelRxFifo.read_range(data, len);
-
-    return len;
 }
 
 void tunnel_uart_tx(uint8_t *data, size_t len)
 {
-    assert(len <= TunnelTxBuf.size());
     if (len > 0)
     {
-        std::copy_n(data, len, TunnelTxBuf.data());
         HAL_DMA_Start(&TunnelDmaTxHandle, uint32_t(data), uint32_t(&USART1->DR), len);
     }
 }
@@ -87,19 +81,21 @@ extern "C" void cdc_link_rx_handler(usbd_device *dev, uint8_t ep)
     if (tunnel_uart_tx_done())
     {
         int received = usbd_ep_read(dev, ep, TunnelTxBuf.data(), TunnelTxBuf.size());
+        if (received < 0)
+        {
+            __BKPT();
+        }
         tunnel_uart_tx(TunnelTxBuf.data(), received);
-    }
-    else
-    {
-        usbd_ep_read(dev, ep, nullptr, 0);
     }
 }
 
 extern "C" void cdc_link_tx_handler(usbd_device *dev, uint8_t ep)
 {
-    int rxHead = TunnelRxFifo.size() - __HAL_DMA_GET_COUNTER(&TunnelDmaRxHandle);
-    TunnelRxFifo.set_head(rxHead);
+    tunnel_uart_rx_poll();
     auto readable = TunnelRxFifo.readable_range();
-    int transferred = usbd_ep_write(dev, ep, readable.first, readable.second);
-    TunnelRxFifo.notify_read(transferred);
+    if (readable.second > 0)
+    {
+        int transferred = usbd_ep_write(dev, ep, readable.first, std::min(readable.second, size_t(CDC_DATA_SZ)));
+        TunnelRxFifo.notify_read(transferred);
+    }
 }

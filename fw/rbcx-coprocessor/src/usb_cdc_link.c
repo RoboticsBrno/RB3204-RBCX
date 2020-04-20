@@ -7,13 +7,6 @@
 
 #include "usb_cdc_link.h"
 
-#define CDC_EP0_SIZE    0x08
-#define CDC_RXD_EP      0x01
-#define CDC_TXD_EP      0x81
-#define CDC_DATA_SZ     0x40
-#define CDC_NTF_EP      0x82
-#define CDC_NTF_SZ      0x08
-
 struct cdc_config {
     struct usb_config_descriptor        config;
     struct usb_iad_descriptor           comm_iad;
@@ -152,8 +145,6 @@ static const struct usb_string_descriptor *const dtable[] = {
 
 usbd_device udev;
 uint32_t    ubuf[0x20];
-uint8_t     fifo[0x200];
-uint32_t    fpos = 0;
 
 static struct usb_cdc_line_coding cdc_line = {
     .dwDTERate          = 115200,
@@ -200,7 +191,7 @@ static usbd_respond cdc_control(usbd_device *dev, usbd_ctlreq *req, usbd_rqc_cal
         case USB_CDC_SET_CONTROL_LINE_STATE:
             return usbd_ack;
         case USB_CDC_SET_LINE_CODING:
-            memcpy( req->data, &cdc_line, sizeof(cdc_line));
+            memcpy(req->data, &cdc_line, sizeof(cdc_line));
             return usbd_ack;
         case USB_CDC_GET_LINE_CODING:
             dev->status.data_ptr = &cdc_line;
