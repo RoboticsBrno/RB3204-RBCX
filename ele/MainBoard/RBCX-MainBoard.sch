@@ -18799,7 +18799,6 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 <part name="GND100" library="Supply" deviceset="GND" device=""/>
 <part name="R105" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R107" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="R108" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R109" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="JP50" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="DEBUG"/>
 <part name="GND103" library="Supply" deviceset="GND" device=""/>
@@ -18954,7 +18953,6 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 <part name="R101" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="+3V53" library="Supply" deviceset="+3V3" device=""/>
 <part name="JP47" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ILED"/>
-<part name="+3V54" library="Supply" deviceset="+3V3" device=""/>
 <part name="R103" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="GND134" library="Supply" deviceset="GND" device=""/>
 <part name="R104" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
@@ -19393,6 +19391,7 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 <part name="TP53" library="test_points" deviceset="TP" device="_06MM"/>
 <part name="R5" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="FRAME8" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A3L-LOC" device=""/>
+<part name="+3V54" library="Supply" deviceset="+3V3S" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -31443,9 +31442,6 @@ Jakub Streit
 <attribute name="NAME" x="207.01" y="31.115" size="1.27" layer="95"/>
 <attribute name="VALUE" x="207.01" y="19.558" size="1.27" layer="96" rot="MR180"/>
 </instance>
-<instance part="+3V54" gate="G$1" x="177.8" y="48.26" smashed="yes">
-<attribute name="VALUE" x="176.022" y="45.72" size="1.27" layer="96" rot="R90"/>
-</instance>
 <instance part="R103" gate="G$1" x="190.5" y="35.56" smashed="yes" rot="R90">
 <attribute name="NAME" x="188.976" y="31.75" size="1.27" layer="95" rot="R90"/>
 <attribute name="VALUE" x="188.976" y="36.322" size="1.27" layer="96" rot="R90"/>
@@ -31668,6 +31664,9 @@ Jakub Streit
 <instance part="R100" gate="G$1" x="327.66" y="73.66" smashed="yes">
 <attribute name="NAME" x="323.85" y="75.184" size="1.27" layer="95"/>
 <attribute name="VALUE" x="328.422" y="75.184" size="1.27" layer="96"/>
+</instance>
+<instance part="+3V54" gate="G$1" x="177.8" y="45.72" smashed="yes">
+<attribute name="VALUE" x="175.768" y="43.434" size="1.27" layer="96" rot="R90"/>
 </instance>
 </instances>
 <busses>
@@ -32001,12 +32000,6 @@ Jakub Streit
 <pinref part="+3V53" gate="G$1" pin="+3V3"/>
 <pinref part="R101" gate="G$1" pin="1"/>
 <wire x1="38.1" y1="73.66" x2="38.1" y2="71.12" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="+3V54" gate="G$1" pin="+3V3"/>
-<wire x1="177.8" y1="33.02" x2="177.8" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="43.18" x2="177.8" y2="45.72" width="0.1524" layer="91"/>
-<pinref part="Q9" gate="G$1" pin="G"/>
 </segment>
 </net>
 <net name="I2C_SDA" class="0">
@@ -32785,6 +32778,11 @@ Jakub Streit
 <pinref part="+3V63" gate="G$1" pin="+3V3S"/>
 <pinref part="JP45" gate="A" pin="6"/>
 <wire x1="317.5" y1="68.58" x2="304.8" y2="68.58" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<wire x1="177.8" y1="33.02" x2="177.8" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="Q9" gate="G$1" pin="G"/>
+<pinref part="+3V54" gate="G$1" pin="+3V3S"/>
 </segment>
 </net>
 <net name="STM_UART_PWR" class="0">
@@ -34291,10 +34289,6 @@ Jakub Streit
 <attribute name="NAME" x="194.31" y="212.852" size="1.27" layer="95"/>
 <attribute name="VALUE" x="198.882" y="212.852" size="1.27" layer="96"/>
 </instance>
-<instance part="R108" gate="G$1" x="198.12" y="218.44" smashed="yes">
-<attribute name="NAME" x="194.31" y="211.074" size="1.27" layer="95"/>
-<attribute name="VALUE" x="198.882" y="211.074" size="1.27" layer="96"/>
-</instance>
 <instance part="R109" gate="G$1" x="198.12" y="215.9" smashed="yes">
 <attribute name="NAME" x="194.31" y="209.296" size="1.27" layer="95"/>
 <attribute name="VALUE" x="198.882" y="209.296" size="1.27" layer="96"/>
@@ -34865,7 +34859,10 @@ Jakub Streit
 <segment>
 <label x="187.96" y="218.44" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="193.04" y1="218.44" x2="187.96" y2="218.44" width="0.1524" layer="91"/>
-<pinref part="R108" gate="G$1" pin="1"/>
+<pinref part="JP49" gate="A" pin="5"/>
+<wire x1="231.14" y1="218.44" x2="203.2" y2="218.44" width="0.1524" layer="91"/>
+<label x="226.568" y="218.948" size="1.27" layer="95" rot="MR0"/>
+<wire x1="193.04" y1="218.44" x2="203.2" y2="218.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="309.88" y1="198.12" x2="317.5" y2="198.12" width="0.1524" layer="91"/>
@@ -34887,14 +34884,6 @@ Jakub Streit
 <wire x1="231.14" y1="220.98" x2="203.2" y2="220.98" width="0.1524" layer="91"/>
 <pinref part="R107" gate="G$1" pin="2"/>
 <label x="226.568" y="221.488" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="NRST_" class="0">
-<segment>
-<pinref part="JP49" gate="A" pin="5"/>
-<wire x1="231.14" y1="218.44" x2="203.2" y2="218.44" width="0.1524" layer="91"/>
-<pinref part="R108" gate="G$1" pin="2"/>
-<label x="226.568" y="218.948" size="1.27" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="ESP-I2C-SCL" class="0">
@@ -38080,9 +38069,9 @@ Jakub Streit
 <label x="243.84" y="200.66" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="JP57" gate="A" pin="4"/>
-<wire x1="289.56" y1="116.84" x2="279.4" y2="116.84" width="0.1524" layer="91"/>
-<label x="279.4" y="116.84" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="JP57" gate="A" pin="2"/>
+<wire x1="289.56" y1="119.38" x2="279.4" y2="119.38" width="0.1524" layer="91"/>
+<label x="279.4" y="119.38" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="STM-I2C-SCL" class="0">
@@ -38102,9 +38091,9 @@ Jakub Streit
 <label x="243.84" y="203.2" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="JP57" gate="A" pin="2"/>
-<wire x1="289.56" y1="119.38" x2="279.4" y2="119.38" width="0.1524" layer="91"/>
-<label x="279.4" y="119.38" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="JP57" gate="A" pin="4"/>
+<wire x1="289.56" y1="116.84" x2="279.4" y2="116.84" width="0.1524" layer="91"/>
+<label x="279.4" y="116.84" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="REGOUT" class="0">
@@ -38163,18 +38152,11 @@ Jakub Streit
 <label x="243.84" y="182.88" size="1.27" layer="95" rot="MR0" xref="yes"/>
 </segment>
 </net>
-<net name="ESP-I2C-SCL" class="0">
+<net name="ESP-I2C-SDA" class="0">
 <segment>
 <pinref part="JP57" gate="A" pin="1"/>
 <wire x1="297.18" y1="119.38" x2="307.34" y2="119.38" width="0.1524" layer="91"/>
 <label x="307.34" y="119.38" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="ESP-I2C-SDA" class="0">
-<segment>
-<pinref part="JP57" gate="A" pin="3"/>
-<wire x1="297.18" y1="116.84" x2="307.34" y2="116.84" width="0.1524" layer="91"/>
-<label x="307.34" y="116.84" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="ENC3B" class="0">
@@ -38217,6 +38199,13 @@ Jakub Streit
 <wire x1="73.66" y1="124.46" x2="68.58" y2="124.46" width="0.1524" layer="91"/>
 <label x="68.58" y="124.46" size="1.27" layer="95" rot="MR0" xref="yes"/>
 <pinref part="IC13" gate="G$1" pin="PB5"/>
+</segment>
+</net>
+<net name="ESP-I2C-SCL" class="0">
+<segment>
+<pinref part="JP57" gate="A" pin="3"/>
+<wire x1="297.18" y1="116.84" x2="307.34" y2="116.84" width="0.1524" layer="91"/>
+<label x="307.34" y="116.84" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
