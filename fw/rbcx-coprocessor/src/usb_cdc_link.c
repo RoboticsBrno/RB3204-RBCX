@@ -204,12 +204,6 @@ static usbd_respond cdc_control(usbd_device *dev, usbd_ctlreq *req, usbd_rqc_cal
     return usbd_fail;
 }
 
-static void cdc_callback(usbd_device *dev, uint8_t event, uint8_t ep) {
-    if (ep == CDC_RXD_EP) {
-        tunnel_downstream_handler(dev, ep);
-    }
-}
-
 static usbd_respond cdc_setconf(usbd_device *dev, uint8_t cfg) {
     switch (cfg) {
     case 0:
