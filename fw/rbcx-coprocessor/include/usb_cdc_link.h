@@ -11,9 +11,6 @@
 
 extern usbd_device udev;
 
-void tunnel_uart_init();
-void tunnel_poll();
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -21,10 +18,6 @@ extern "C" {
 void cdc_link_init();
 void cdc_link_poll();
 
-void cdc_link_rx_handler();
-void cdc_link_tx_handler();
-
 #ifdef __cplusplus
 }
-
 #endif

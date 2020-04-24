@@ -3,6 +3,7 @@
 
 #include "bsp.hpp"
 #include "byte_fifo.hpp"
+#include "cdc_uart_tunnel.hpp"
 #include "usb_cdc_link.h"
 
 void SystemClock_Config();
@@ -12,7 +13,7 @@ int main()
 {
   SystemClock_Config();
   HAL_Init();
-  tunnel_uart_init();
+  primary_uart_init();
   pins_init();
   cdc_link_init();
   while (true)
