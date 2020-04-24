@@ -7,7 +7,7 @@
 
 DMA_HandleTypeDef TunnelDmaRxHandle;
 DMA_HandleTypeDef TunnelDmaTxHandle;
-ByteFifo<512> TunnelRxFifo;
+ByteFifo<128> TunnelRxFifo;
 std::array<uint8_t, CDC_DATA_SZ> TunnelTxBuf;
 
 void tunnel_uart_init()
@@ -60,6 +60,20 @@ void tunnel_uart_rx_poll()
     TunnelRxFifo.set_head(rxHead);
 }
 
+bool tunnel_uart_rx_available()
+{
+    tunnel_uart_rx_poll();
+    return TunnelRxFifo.readable_range().second != 0;
+}
+
+void tunnel_poll()
+{
+    if (tunnel_uart_rx_available())
+    {
+        cdc_link_tx_handler();
+    }
+}
+
 void tunnel_uart_tx(uint8_t *data, size_t len)
 {
     if (len > 0)
@@ -68,34 +82,41 @@ void tunnel_uart_tx(uint8_t *data, size_t len)
     }
 }
 
-bool tunnel_uart_tx_done()
+bool tunnel_uart_tx_ready()
 {
     HAL_DMA_PollForTransfer(&TunnelDmaTxHandle, HAL_DMA_FULL_TRANSFER, 0);
-    bool txBusy = TunnelDmaTxHandle.State == HAL_DMA_STATE_BUSY;
-
-    return !txBusy;
+    return TunnelDmaTxHandle.State == HAL_DMA_STATE_READY;
 }
 
-extern "C" void cdc_link_rx_handler(usbd_device *dev, uint8_t ep)
+extern "C" void cdc_link_rx_handler()
 {
-    if (tunnel_uart_tx_done())
+    if (tunnel_uart_tx_ready())
     {
-        int received = usbd_ep_read(dev, ep, TunnelTxBuf.data(), TunnelTxBuf.size());
-        if (received < 0)
+        int received = usbd_ep_read(&udev, CDC_RXD_EP, TunnelTxBuf.data(), TunnelTxBuf.size());
+        if (received > 0)
+        {
+            tunnel_uart_tx(TunnelTxBuf.data(), received);
+        }
+        else
         {
             __BKPT();
         }
-        tunnel_uart_tx(TunnelTxBuf.data(), received);
     }
 }
 
-extern "C" void cdc_link_tx_handler(usbd_device *dev, uint8_t ep)
+extern "C" void cdc_link_tx_handler()
 {
     tunnel_uart_rx_poll();
     auto readable = TunnelRxFifo.readable_range();
     if (readable.second > 0)
     {
-        int transferred = usbd_ep_write(dev, ep, readable.first, std::min(readable.second, size_t(CDC_DATA_SZ)));
-        TunnelRxFifo.notify_read(transferred);
+        int transferred = usbd_ep_write(&udev, CDC_TXD_EP, readable.first, std::min(readable.second, size_t(CDC_DATA_SZ)));
+        if (transferred > 0)
+        {
+            TunnelRxFifo.notify_read(transferred);
+        }
+        else
+        {
+        }
     }
 }

@@ -18,6 +18,7 @@ int main()
   while (true)
   {
     cdc_link_poll();
+    tunnel_poll();
   }
 }
 

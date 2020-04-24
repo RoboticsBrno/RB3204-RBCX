@@ -208,9 +208,6 @@ static void cdc_callback(usbd_device *dev, uint8_t event, uint8_t ep) {
     if (ep == CDC_RXD_EP) {
         cdc_link_rx_handler(dev, ep);
     }
-    else if (ep == CDC_TXD_EP) {
-        cdc_link_tx_handler(dev, ep);
-    }
 }
 
 static usbd_respond cdc_setconf(usbd_device *dev, uint8_t cfg) {
@@ -221,7 +218,6 @@ static usbd_respond cdc_setconf(usbd_device *dev, uint8_t cfg) {
         usbd_ep_deconfig(dev, CDC_TXD_EP);
         usbd_ep_deconfig(dev, CDC_RXD_EP);
         usbd_reg_endpoint(dev, CDC_RXD_EP, 0);
-        usbd_reg_endpoint(dev, CDC_TXD_EP, 0);
         return usbd_ack;
     case 1:
         /* configuring device */
@@ -229,8 +225,6 @@ static usbd_respond cdc_setconf(usbd_device *dev, uint8_t cfg) {
         usbd_ep_config(dev, CDC_TXD_EP, USB_EPTYPE_BULK /*| USB_EPTYPE_DBLBUF*/, CDC_DATA_SZ);
         usbd_ep_config(dev, CDC_NTF_EP, USB_EPTYPE_INTERRUPT, CDC_NTF_SZ);
         usbd_reg_endpoint(dev, CDC_RXD_EP, cdc_callback);
-        usbd_reg_endpoint(dev, CDC_TXD_EP, cdc_callback);
-        usbd_ep_write(dev, CDC_TXD_EP, 0, 0);
         return usbd_ack;
     default:
         return usbd_fail;

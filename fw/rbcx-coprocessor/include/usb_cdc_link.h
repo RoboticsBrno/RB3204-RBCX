@@ -9,7 +9,10 @@
 #define CDC_NTF_EP      0x82
 #define CDC_NTF_SZ      0x08
 
+extern usbd_device udev;
+
 void tunnel_uart_init();
+void tunnel_poll();
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,8 +21,8 @@ extern "C" {
 void cdc_link_init();
 void cdc_link_poll();
 
-void cdc_link_rx_handler(usbd_device *dev, uint8_t ep);
-void cdc_link_tx_handler(usbd_device *dev, uint8_t ep);
+void cdc_link_rx_handler();
+void cdc_link_tx_handler();
 
 #ifdef __cplusplus
 }
