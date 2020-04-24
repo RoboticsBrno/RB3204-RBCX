@@ -9,7 +9,7 @@
 
 DMA_HandleTypeDef PrimaryUartDmaRxHandle;
 DMA_HandleTypeDef PrimaryUartDmaTxHandle;
-ByteFifo<128> PrimaryRxFifo;
+ByteFifo<512> PrimaryRxFifo;
 std::array<uint8_t, CDC_DATA_SZ> PrimaryTxBuf;
 
 void primary_uart_init()
