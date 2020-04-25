@@ -1,19 +1,18 @@
 /// Implements passthrough between the "primary" UART and USB CDC.
 
-#include "stm32f1xx_ll_usart.h"
+#include "bsp.hpp"
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_dma.h"
+#include "stm32f1xx_ll_usart.h"
 #include "usb.h"
 #include "usb_cdc_link.h"
-#include "bsp.hpp"
 
 DMA_HandleTypeDef PrimaryUartDmaRxHandle;
 DMA_HandleTypeDef PrimaryUartDmaTxHandle;
 ByteFifo<512> PrimaryRxFifo;
 std::array<uint8_t, CDC_DATA_SZ> PrimaryTxBuf;
 
-void primary_uart_init()
-{
+void primary_uart_init() {
     __HAL_RCC_USART1_CLK_ENABLE();
     __HAL_RCC_DMA1_CLK_ENABLE();
 
@@ -58,51 +57,41 @@ void primary_uart_init()
     pin_init(GPIOA, GPIO_PIN_10, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
 
-void primary_uart_rx_poll()
-{
+void primary_uart_rx_poll() {
     int rxHead = PrimaryRxFifo.size() - __HAL_DMA_GET_COUNTER(&PrimaryUartDmaRxHandle);
     PrimaryRxFifo.set_head(rxHead);
 }
 
-void primary_uart_tx(uint8_t *data, size_t len)
-{
+void primary_uart_tx(uint8_t* data, size_t len) {
     HAL_DMA_Start(&PrimaryUartDmaTxHandle, uint32_t(data), uint32_t(&USART1->DR), len);
 }
 
-bool primary_uart_tx_ready()
-{
+bool primary_uart_tx_ready() {
     HAL_DMA_PollForTransfer(&PrimaryUartDmaTxHandle, HAL_DMA_FULL_TRANSFER, 0);
     return PrimaryUartDmaTxHandle.State == HAL_DMA_STATE_READY;
 }
 
-void tunnel_downstream_handler()
-{
-    if (primary_uart_tx_ready())
-    {
+void tunnel_downstream_handler() {
+    if (primary_uart_tx_ready()) {
         int transferred = usbd_ep_read(&udev, CDC_RXD_EP, PrimaryTxBuf.data(), PrimaryTxBuf.size());
-        if (transferred > 0)
-        {
+        if (transferred > 0) {
             primary_uart_tx(PrimaryTxBuf.data(), transferred);
         }
     }
 }
 
-void tunnel_upstream_handler()
-{
+void tunnel_upstream_handler() {
     primary_uart_rx_poll();
     auto readable = PrimaryRxFifo.readable_range();
-    if (readable.second > 0)
-    {
+    if (readable.second > 0) {
         int transferred = usbd_ep_write(&udev, CDC_TXD_EP, readable.first, std::min(readable.second, size_t(CDC_DATA_SZ)));
-        if (transferred > 0)
-        {
+        if (transferred > 0) {
             PrimaryRxFifo.notify_read(transferred);
         }
     }
 }
 
-void tunnel_poll()
-{
+void tunnel_poll() {
     tunnel_upstream_handler();
     tunnel_downstream_handler();
 }
