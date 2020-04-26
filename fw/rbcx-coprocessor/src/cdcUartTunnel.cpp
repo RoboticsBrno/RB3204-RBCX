@@ -5,8 +5,9 @@
 #include "stm32f1xx_ll_usart.h"
 
 #include "bsp.hpp"
-#include "byte_fifo.hpp"
-#include "usb_cdc_link.h"
+#include "byteFifo.hpp"
+#include "cdcUartTunnel.hpp"
+#include "usbCdcLink.h"
 
 DMA_HandleTypeDef PrimaryUartDmaRxHandle;
 DMA_HandleTypeDef PrimaryUartDmaTxHandle;

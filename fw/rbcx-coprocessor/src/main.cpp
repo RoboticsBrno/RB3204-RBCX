@@ -2,9 +2,8 @@
 #include "stm32f1xx_hal_gpio.h"
 
 #include "bsp.hpp"
-#include "byte_fifo.hpp"
-#include "cdc_uart_tunnel.hpp"
-#include "usb_cdc_link.h"
+#include "cdcUartTunnel.hpp"
+#include "usbCdcLink.h"
 
 void SystemClock_Config();
 extern "C" void Error_Handler();
