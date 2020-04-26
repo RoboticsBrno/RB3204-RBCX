@@ -111,7 +111,7 @@ static const struct cdc_config config_desc = {
         .bInterfaceClass = USB_CLASS_CDC_DATA,
         .bInterfaceSubClass = USB_SUBCLASS_NONE,
         .bInterfaceProtocol = USB_PROTO_NONE,
-        .iInterface = NO_DESCRIPTOR,
+        .iInterface = 3,
     },
     .data_eprx = {
         .bLength = sizeof(struct usb_endpoint_descriptor),
@@ -132,12 +132,14 @@ static const struct cdc_config config_desc = {
 };
 
 static const struct usb_string_descriptor lang_desc = USB_ARRAY_DESC(USB_LANGID_ENG_US);
-static const struct usb_string_descriptor manuf_desc_en = USB_STRING_DESC("Open source USB stack for STM32");
-static const struct usb_string_descriptor prod_desc_en = USB_STRING_DESC("RBCX Serial");
+static const struct usb_string_descriptor manuf_desc_en = USB_STRING_DESC("robotikabrno.cz");
+static const struct usb_string_descriptor prod_desc_en = USB_STRING_DESC("RBCX");
+static const struct usb_string_descriptor cdc_iface_desc_en = USB_STRING_DESC("RBCX Serial");
 static const struct usb_string_descriptor* const dtable[] = {
     &lang_desc,
     &manuf_desc_en,
     &prod_desc_en,
+    &cdc_iface_desc_en,
 };
 
 usbd_device udev;
@@ -164,7 +166,7 @@ static usbd_respond cdc_getdesc(usbd_ctlreq* req, void** address, uint16_t* leng
         len = sizeof(config_desc);
         break;
     case USB_DTYPE_STRING:
-        if (dnumber < 3) {
+        if (dnumber < 4) {
             desc = dtable[dnumber];
         } else {
             return usbd_fail;
