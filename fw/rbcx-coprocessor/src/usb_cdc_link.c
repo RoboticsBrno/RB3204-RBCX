@@ -1,6 +1,4 @@
 #include "usb_cdc_link.h"
-#include "stm32.h"
-#include "usb.h"
 #include "usb_cdc.h"
 #include <stdbool.h>
 #include <stdint.h>

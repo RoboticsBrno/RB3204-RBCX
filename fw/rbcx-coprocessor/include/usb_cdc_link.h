@@ -1,5 +1,6 @@
 #pragma once
 
+#include "stm32.h"
 #include "usb.h"
 
 #define CDC_EP0_SIZE 0x08

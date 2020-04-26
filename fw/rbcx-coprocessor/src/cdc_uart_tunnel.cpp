@@ -1,10 +1,11 @@
 /// Implements passthrough between the "primary" UART and USB CDC.
 
-#include "bsp.hpp"
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_dma.h"
 #include "stm32f1xx_ll_usart.h"
-#include "usb.h"
+
+#include "bsp.hpp"
+#include "byte_fifo.hpp"
 #include "usb_cdc_link.h"
 
 DMA_HandleTypeDef PrimaryUartDmaRxHandle;

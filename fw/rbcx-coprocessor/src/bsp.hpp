@@ -1,9 +1,7 @@
 #pragma once
 
-#include "byte_fifo.hpp"
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_gpio.h"
-#include "usb.h"
 #include <algorithm>
 #include <array>
 #include <cassert>
