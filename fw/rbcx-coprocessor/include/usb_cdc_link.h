@@ -16,7 +16,7 @@ extern usbd_device udev;
 extern "C" {
 #endif
 
-void cdc_link_init();
+void cdcLinkInit();
 void cdc_link_poll();
 
 #ifdef __cplusplus
