@@ -28,38 +28,38 @@ public:
     uint8_t* data() const { return (uint8_t*)m_fifo.data(); }
     size_t size() const { return m_fifo.size(); }
 
-    void set_head(int newHead) {
+    void setHead(int newHead) {
         m_head = newHead;
     }
 
-    std::pair<uint8_t*, size_t> readable_range() const {
+    std::pair<uint8_t*, size_t> readableRange() const {
         return m_head >= m_tail
             ? std::make_pair(data() + m_tail, m_head - m_tail)
             : std::make_pair(data() + m_tail, int(size()) - m_tail);
     }
 
-    std::pair<uint8_t*, size_t> writeable_range() const {
+    std::pair<uint8_t*, size_t> writeableRange() const {
         int preTail = adjust(m_tail, -1);
         return m_head >= preTail
             ? std::make_pair(data() + m_head, std::max(0, int(size()) - m_head))
             : std::make_pair(data() + m_head, std::max(0, preTail - m_head));
     }
 
-    void notify_written(size_t len) {
+    void notifyWritten(size_t len) {
         m_head = adjust(m_head, len);
     }
 
-    void notify_read(size_t len) {
+    void notifyRead(size_t len) {
         m_tail = adjust(m_tail, len);
     }
 
-    void write_range(uint8_t* data, size_t len) {
+    void writeRange(uint8_t* data, size_t len) {
         std::copy_n(data, len, this->data() + m_head);
-        notify_written(len);
+        notifyWritten(len);
     }
 
-    void read_range(uint8_t* data, size_t len) {
+    void readRange(uint8_t* data, size_t len) {
         std::copy_n(this->data() + m_tail, len, data);
-        notify_read(len);
+        notifyRead(len);
     }
 };

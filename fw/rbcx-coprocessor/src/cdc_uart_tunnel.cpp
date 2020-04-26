@@ -60,7 +60,7 @@ void primary_uart_init() {
 
 void primary_uart_rx_poll() {
     int rxHead = PrimaryRxFifo.size() - __HAL_DMA_GET_COUNTER(&PrimaryUartDmaRxHandle);
-    PrimaryRxFifo.set_head(rxHead);
+    PrimaryRxFifo.setHead(rxHead);
 }
 
 void primary_uart_tx(uint8_t* data, size_t len) {
@@ -83,11 +83,11 @@ void tunnel_downstream_handler() {
 
 void tunnel_upstream_handler() {
     primary_uart_rx_poll();
-    auto readable = PrimaryRxFifo.readable_range();
+    auto readable = PrimaryRxFifo.readableRange();
     if (readable.second > 0) {
         int transferred = usbd_ep_write(&udev, CDC_TXD_EP, readable.first, std::min(readable.second, size_t(CDC_DATA_SZ)));
         if (transferred > 0) {
-            PrimaryRxFifo.notify_read(transferred);
+            PrimaryRxFifo.notifyRead(transferred);
         }
     }
 }
