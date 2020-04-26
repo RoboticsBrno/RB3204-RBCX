@@ -1,8 +1,9 @@
-#include "usb_cdc_link.h"
-#include "usb_cdc.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
+
+#include "UsbCdcLink.h"
+#include "usb_cdc.h"
 
 struct cdc_config {
     struct usb_config_descriptor config;
