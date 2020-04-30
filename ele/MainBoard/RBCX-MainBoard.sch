@@ -29051,9 +29051,9 @@ Jakub Streit
 <instance part="GND111" gate="1" x="167.64" y="137.16" smashed="yes">
 <attribute name="VALUE" x="165.862" y="135.382" size="1.27" layer="96"/>
 </instance>
-<instance part="R60" gate="G$1" x="78.74" y="149.86" smashed="yes">
-<attribute name="NAME" x="74.93" y="151.384" size="1.27" layer="95"/>
-<attribute name="VALUE" x="79.502" y="151.384" size="1.27" layer="96"/>
+<instance part="R60" gate="G$1" x="81.28" y="149.86" smashed="yes">
+<attribute name="NAME" x="77.978" y="150.368" size="1.27" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="84.582" y="150.368" size="1.27" layer="96"/>
 </instance>
 <instance part="IM7" gate="G$1" x="147.32" y="66.04" smashed="yes">
 <attribute name="NAME" x="121.92" y="76.2" size="1.27" layer="95"/>
@@ -29555,10 +29555,10 @@ Jakub Streit
 <wire x1="91.44" y1="187.96" x2="127" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="127" y1="187.96" x2="149.86" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="187.96" x2="152.4" y2="187.96" width="0.1524" layer="91"/>
-<wire x1="149.86" y1="152.4" x2="127" y2="152.4" width="0.1524" layer="91"/>
-<wire x1="127" y1="152.4" x2="127" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="154.94" x2="127" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="127" y1="154.94" x2="127" y2="187.96" width="0.1524" layer="91"/>
 <junction x="127" y="187.96"/>
-<label x="147.828" y="152.908" size="1.27" layer="95" rot="MR0"/>
+<label x="147.828" y="155.448" size="1.27" layer="95" rot="MR0"/>
 <pinref part="S6" gate="1" pin="S1"/>
 <wire x1="152.4" y1="185.42" x2="149.86" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="185.42" x2="149.86" y2="187.96" width="0.1524" layer="91"/>
@@ -29566,23 +29566,23 @@ Jakub Streit
 <pinref part="C37" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="185.42" x2="91.44" y2="187.96" width="0.1524" layer="91"/>
 <junction x="91.44" y="187.96"/>
-<pinref part="JP21" gate="A" pin="3"/>
-<wire x1="152.4" y1="152.4" x2="149.86" y2="152.4" width="0.1524" layer="91"/>
+<pinref part="JP21" gate="A" pin="1"/>
+<wire x1="152.4" y1="154.94" x2="149.86" y2="154.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="BUTTON-ON" class="0">
 <segment>
-<wire x1="149.86" y1="154.94" x2="71.12" y2="154.94" width="0.1524" layer="91"/>
-<label x="71.12" y="154.94" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<label x="147.828" y="155.448" size="1.27" layer="95" rot="MR0"/>
-<pinref part="JP21" gate="A" pin="1"/>
-<wire x1="152.4" y1="154.94" x2="149.86" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="152.4" x2="71.12" y2="152.4" width="0.1524" layer="91"/>
+<label x="71.12" y="152.4" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<label x="147.828" y="152.908" size="1.27" layer="95" rot="MR0"/>
+<pinref part="JP21" gate="A" pin="3"/>
+<wire x1="152.4" y1="152.4" x2="149.86" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ESP-EN" class="0">
 <segment>
 <pinref part="R60" gate="G$1" pin="2"/>
-<wire x1="83.82" y1="149.86" x2="147.32" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="149.86" x2="147.32" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="JP21" gate="A" pin="5"/>
 <wire x1="147.32" y1="149.86" x2="152.4" y2="149.86" width="0.1524" layer="91"/>
 <label x="147.828" y="150.368" size="1.27" layer="95" rot="MR0"/>
@@ -29601,7 +29601,7 @@ Jakub Streit
 <net name="ESP_EN" class="0">
 <segment>
 <pinref part="R60" gate="G$1" pin="1"/>
-<wire x1="73.66" y1="149.86" x2="71.12" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="149.86" x2="71.12" y2="149.86" width="0.1524" layer="91"/>
 <label x="71.12" y="149.86" size="1.27" layer="95" rot="MR0" xref="yes"/>
 </segment>
 </net>
@@ -32540,27 +32540,12 @@ Jakub Streit
 </net>
 <net name="GPIO7/TCK" class="0">
 <segment>
-<wire x1="160.02" y1="208.28" x2="149.86" y2="208.28" width="0.1524" layer="91"/>
-<label x="149.86" y="208.28" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="R75" gate="G$1" pin="1"/>
-</segment>
-</net>
-<net name="GPIO-7" class="0">
-<segment>
-<pinref part="JP28" gate="A" pin="1"/>
-<wire x1="210.82" y1="208.28" x2="170.18" y2="208.28" width="0.1524" layer="91"/>
-<pinref part="R75" gate="G$1" pin="2"/>
-<label x="206.248" y="208.788" size="1.27" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="GPIO1" class="0">
-<segment>
 <pinref part="R85" gate="G$1" pin="1"/>
 <wire x1="27.94" y1="170.18" x2="25.4" y2="170.18" width="0.1524" layer="91"/>
 <label x="25.4" y="170.18" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="GPIO-1" class="0">
+<net name="GPIO-7" class="0">
 <segment>
 <wire x1="60.96" y1="170.18" x2="58.42" y2="170.18" width="0.1524" layer="91"/>
 <pinref part="R81" gate="G$1" pin="1"/>
@@ -32850,6 +32835,21 @@ Jakub Streit
 <pinref part="R99" gate="G$1" pin="1"/>
 <wire x1="269.24" y1="73.66" x2="264.16" y2="73.66" width="0.1524" layer="91"/>
 <label x="264.16" y="73.66" size="1.27" layer="95" rot="MR0" xref="yes"/>
+</segment>
+</net>
+<net name="GPIO1" class="0">
+<segment>
+<wire x1="160.02" y1="208.28" x2="149.86" y2="208.28" width="0.1524" layer="91"/>
+<label x="149.86" y="208.28" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="R75" gate="G$1" pin="1"/>
+</segment>
+</net>
+<net name="GPIO-1" class="0">
+<segment>
+<pinref part="JP28" gate="A" pin="1"/>
+<wire x1="210.82" y1="208.28" x2="170.18" y2="208.28" width="0.1524" layer="91"/>
+<pinref part="R75" gate="G$1" pin="2"/>
+<label x="206.248" y="208.788" size="1.27" layer="95" rot="MR0"/>
 </segment>
 </net>
 </nets>
@@ -34888,16 +34888,16 @@ Jakub Streit
 </net>
 <net name="ESP-I2C-SCL" class="0">
 <segment>
-<wire x1="317.5" y1="172.72" x2="309.88" y2="172.72" width="0.1524" layer="91"/>
-<label x="309.88" y="172.72" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="X3" gate="-24" pin="S"/>
+<wire x1="317.5" y1="170.18" x2="309.88" y2="170.18" width="0.1524" layer="91"/>
+<label x="309.88" y="170.18" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="X3" gate="-25" pin="S"/>
 </segment>
 </net>
 <net name="ESP-I2C-SDA" class="0">
 <segment>
-<wire x1="317.5" y1="170.18" x2="309.88" y2="170.18" width="0.1524" layer="91"/>
-<label x="309.88" y="170.18" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="X3" gate="-25" pin="S"/>
+<wire x1="317.5" y1="172.72" x2="309.88" y2="172.72" width="0.1524" layer="91"/>
+<label x="309.88" y="172.72" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="X3" gate="-24" pin="S"/>
 </segment>
 </net>
 <net name="DEBUG_RX" class="0">
@@ -37598,16 +37598,16 @@ Jakub Streit
 </net>
 <net name="UTS1_TRIG" class="0">
 <segment>
-<label x="68.58" y="121.92" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="IC13" gate="G$1" pin="PB6"/>
-<wire x1="73.66" y1="121.92" x2="68.58" y2="121.92" width="0.1524" layer="91"/>
+<label x="124.46" y="116.84" size="1.27" layer="95" rot="MR180" xref="yes"/>
+<wire x1="119.38" y1="116.84" x2="124.46" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="IC13" gate="G$1" pin="PE0"/>
 </segment>
 </net>
 <net name="UTS1_ECHO" class="0">
 <segment>
-<label x="68.58" y="119.38" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="IC13" gate="G$1" pin="PB7"/>
-<wire x1="73.66" y1="119.38" x2="68.58" y2="119.38" width="0.1524" layer="91"/>
+<label x="124.46" y="114.3" size="1.27" layer="95" rot="MR180" xref="yes"/>
+<wire x1="119.38" y1="114.3" x2="124.46" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="IC13" gate="G$1" pin="PE1"/>
 </segment>
 </net>
 <net name="BUTTON3" class="0">
@@ -37703,44 +37703,44 @@ Jakub Streit
 </net>
 <net name="UTS2_TRIG" class="0">
 <segment>
-<wire x1="119.38" y1="116.84" x2="124.46" y2="116.84" width="0.1524" layer="91"/>
-<label x="124.46" y="116.84" size="1.27" layer="95" xref="yes"/>
-<pinref part="IC13" gate="G$1" pin="PE0"/>
-</segment>
-</net>
-<net name="UTS2_ECHO" class="0">
-<segment>
-<wire x1="119.38" y1="114.3" x2="124.46" y2="114.3" width="0.1524" layer="91"/>
-<label x="124.46" y="114.3" size="1.27" layer="95" xref="yes"/>
-<pinref part="IC13" gate="G$1" pin="PE1"/>
-</segment>
-</net>
-<net name="UTS3_TRIG" class="0">
-<segment>
 <wire x1="119.38" y1="111.76" x2="124.46" y2="111.76" width="0.1524" layer="91"/>
 <label x="124.46" y="111.76" size="1.27" layer="95" xref="yes"/>
 <pinref part="IC13" gate="G$1" pin="PE2"/>
 </segment>
 </net>
-<net name="UTS3_ECHO" class="0">
+<net name="UTS2_ECHO" class="0">
 <segment>
 <wire x1="119.38" y1="109.22" x2="124.46" y2="109.22" width="0.1524" layer="91"/>
 <label x="124.46" y="109.22" size="1.27" layer="95" xref="yes"/>
 <pinref part="IC13" gate="G$1" pin="PE3"/>
 </segment>
 </net>
-<net name="UTS4_TRIG" class="0">
+<net name="UTS3_TRIG" class="0">
 <segment>
 <wire x1="119.38" y1="106.68" x2="124.46" y2="106.68" width="0.1524" layer="91"/>
 <label x="124.46" y="106.68" size="1.27" layer="95" xref="yes"/>
 <pinref part="IC13" gate="G$1" pin="PE4"/>
 </segment>
 </net>
-<net name="UTS4_ECHO" class="0">
+<net name="UTS3_ECHO" class="0">
 <segment>
 <wire x1="119.38" y1="104.14" x2="124.46" y2="104.14" width="0.1524" layer="91"/>
 <label x="124.46" y="104.14" size="1.27" layer="95" xref="yes"/>
 <pinref part="IC13" gate="G$1" pin="PE5"/>
+</segment>
+</net>
+<net name="UTS4_TRIG" class="0">
+<segment>
+<wire x1="119.38" y1="101.6" x2="124.46" y2="101.6" width="0.1524" layer="91"/>
+<label x="124.46" y="101.6" size="1.27" layer="95" xref="yes"/>
+<pinref part="IC13" gate="G$1" pin="PE6"/>
+</segment>
+</net>
+<net name="UTS4_ECHO" class="0">
+<segment>
+<wire x1="119.38" y1="99.06" x2="124.46" y2="99.06" width="0.1524" layer="91"/>
+<label x="124.46" y="99.06" size="1.27" layer="95" xref="yes"/>
+<pinref part="IC13" gate="G$1" pin="PE7"/>
 </segment>
 </net>
 <net name="POWER" class="0">
@@ -38012,9 +38012,9 @@ Jakub Streit
 </net>
 <net name="BUTTON1" class="0">
 <segment>
-<label x="124.46" y="99.06" size="1.27" layer="95" xref="yes"/>
-<pinref part="IC13" gate="G$1" pin="PE7"/>
-<wire x1="119.38" y1="99.06" x2="124.46" y2="99.06" width="0.1524" layer="91"/>
+<label x="68.58" y="121.92" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="73.66" y1="121.92" x2="68.58" y2="121.92" width="0.1524" layer="91"/>
+<pinref part="IC13" gate="G$1" pin="PB6"/>
 </segment>
 </net>
 <net name="V_BAT" class="0">
@@ -38114,9 +38114,9 @@ Jakub Streit
 </net>
 <net name="MPU_INT" class="0">
 <segment>
-<pinref part="IC13" gate="G$1" pin="PE6"/>
-<wire x1="119.38" y1="101.6" x2="124.46" y2="101.6" width="0.1524" layer="91"/>
-<label x="124.46" y="101.6" size="1.27" layer="95" xref="yes"/>
+<wire x1="73.66" y1="119.38" x2="68.58" y2="119.38" width="0.1524" layer="91"/>
+<label x="68.58" y="119.38" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="IC13" gate="G$1" pin="PB7"/>
 </segment>
 <segment>
 <pinref part="R130" gate="G$1" pin="1"/>
