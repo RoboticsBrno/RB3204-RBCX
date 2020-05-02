@@ -6,7 +6,7 @@
 #include <array>
 #include <cassert>
 
-inline void pin_init(GPIO_TypeDef* port, uint16_t pinMask, uint32_t mode, uint32_t pull, uint32_t speed) {
+inline void pinInit(GPIO_TypeDef* port, uint16_t pinMask, uint32_t mode, uint32_t pull, uint32_t speed) {
     GPIO_InitTypeDef init;
     init.Pin = pinMask;
     init.Mode = mode;
@@ -15,15 +15,15 @@ inline void pin_init(GPIO_TypeDef* port, uint16_t pinMask, uint32_t mode, uint32
     HAL_GPIO_Init(port, &init);
 }
 
-inline void pins_init() {
+inline void pinsInit() {
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
 
     // LED
-    pin_init(GPIOC, GPIO_PIN_13, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    pinInit(GPIOC, GPIO_PIN_13, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
     HAL_GPIO_WritePin(GPIOC, 13, GPIO_PIN_SET);
 
     // USB
-    pin_init(GPIOA, GPIO_PIN_11 | GPIO_PIN_12, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(GPIOA, GPIO_PIN_11 | GPIO_PIN_12, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
 }

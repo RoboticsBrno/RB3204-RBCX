@@ -13,7 +13,7 @@ DMA_HandleTypeDef PrimaryUartDmaTxHandle;
 ByteFifo<512> PrimaryRxFifo;
 std::array<uint8_t, CDC_DATA_SZ> PrimaryTxBuf;
 
-void primary_uart_init() {
+void primaryUartInit() {
     __HAL_RCC_USART1_CLK_ENABLE();
     __HAL_RCC_DMA1_CLK_ENABLE();
 
@@ -58,41 +58,40 @@ void primary_uart_init() {
     pin_init(GPIOA, GPIO_PIN_10, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
 
-void primary_uart_rx_poll() {
+void primaryUartRxPoll() {
     int rxHead = PrimaryRxFifo.size() - __HAL_DMA_GET_COUNTER(&PrimaryUartDmaRxHandle);
-    PrimaryRxFifo.set_head(rxHead);
+    PrimaryRxFifo.setHead(rxHead);
 }
 
-void primary_uart_tx(uint8_t* data, size_t len) {
+void primaryUartTx(uint8_t* data, size_t len) {
     HAL_DMA_Start(&PrimaryUartDmaTxHandle, uint32_t(data), uint32_t(&USART1->DR), len);
 }
 
-bool primary_uart_tx_ready() {
+bool primaryUartTxReady() {
     HAL_DMA_PollForTransfer(&PrimaryUartDmaTxHandle, HAL_DMA_FULL_TRANSFER, 0);
     return PrimaryUartDmaTxHandle.State == HAL_DMA_STATE_READY;
 }
 
-void tunnel_downstream_handler() {
-    if (primary_uart_tx_ready()) {
+void tunnelDownstreamHandler() {
+    if (primaryUartTxReady()) {
         int transferred = usbd_ep_read(&udev, CDC_RXD_EP, PrimaryTxBuf.data(), PrimaryTxBuf.size());
         if (transferred > 0) {
-            primary_uart_tx(PrimaryTxBuf.data(), transferred);
+            primaryUartTx(PrimaryTxBuf.data(), transferred);
         }
     }
 }
 
-void tunnel_upstream_handler() {
-    primary_uart_rx_poll();
-    auto readable = PrimaryRxFifo.readable_range();
+void tunnelUpstreamHandler() {
+    auto readable = PrimaryRxFifo.readableRange();
     if (readable.second > 0) {
         int transferred = usbd_ep_write(&udev, CDC_TXD_EP, readable.first, std::min(readable.second, size_t(CDC_DATA_SZ)));
         if (transferred > 0) {
-            PrimaryRxFifo.notify_read(transferred);
+            PrimaryRxFifo.notifyRead(transferred);
         }
     }
 }
 
-void tunnel_poll() {
-    tunnel_upstream_handler();
-    tunnel_downstream_handler();
+void tunnelPoll() {
+    tunnelUpstreamHandler();
+    tunnelDownstreamHandler();
 }

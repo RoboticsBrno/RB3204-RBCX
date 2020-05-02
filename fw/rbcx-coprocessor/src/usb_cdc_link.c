@@ -222,7 +222,7 @@ static usbd_respond cdc_setconf(usbd_device* dev, uint8_t cfg) {
     }
 }
 
-void cdc_link_init() {
+void cdcLinkInit() {
     __HAL_RCC_USB_CLK_ENABLE();
 
     usbd_init(&udev, &usbd_hw, CDC_EP0_SIZE, ubuf, sizeof(ubuf));
@@ -240,7 +240,7 @@ void cdc_link_init() {
     //HAL_NVIC_EnableIRQ(USBWakeUp_IRQn);
 }
 
-void cdc_link_poll() {
+void cdcLinkPoll() {
     usbd_poll(&udev);
 }
 
