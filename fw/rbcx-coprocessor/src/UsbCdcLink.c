@@ -1,3 +1,5 @@
+/// Implements USB CDC using libusb_stm
+
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
