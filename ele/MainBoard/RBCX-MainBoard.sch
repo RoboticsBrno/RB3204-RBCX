@@ -16600,95 +16600,12 @@ Copyright: Würth Elektronik</description>
 <vertex x="-4" y="1.475"/>
 </polygon>
 </package>
-<package name="632722110112" urn="urn:adsk.eagle:footprint:16513872/1" library_version="2">
-<description>&lt;B&gt;WR-COM &lt;/B&gt;&lt;BR&gt;USB 3.1 Type C Receptacle Vertical SMT 1.0 mm</description>
-<smd name="A1" x="-2.75" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="A2" x="-2.25" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="A3" x="-1.75" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="A4" x="-1.25" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="A5" x="-0.75" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="A6" x="-0.25" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="A7" x="0.25" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="A8" x="0.75" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="A9" x="1.25" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="A10" x="1.75" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="A11" x="2.25" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="A12" x="2.75" y="0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B1" x="2.75" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B2" x="2.25" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B3" x="1.75" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B4" x="1.25" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B5" x="0.75" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B6" x="0.25" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B7" x="-0.25" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B8" x="-0.75" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B9" x="-1.25" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B10" x="-1.75" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B11" x="-2.25" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<smd name="B12" x="-2.75" y="-0.83" dx="0.3" dy="0.85" layer="1" rot="R180"/>
-<text x="-4.1" y="0.5" size="0.6096" layer="21">A1</text>
-<text x="3.4" y="-1.2" size="0.6096" layer="21">B1</text>
-<text x="3.45" y="-0.14" size="0.127" layer="46">pcb cut
-out area</text>
-<text x="5.4" y="1.5" size="0.8128" layer="25">&gt;NAME</text>
-<text x="5.5" y="0.1" size="0.8128" layer="27">&gt;VALUE</text>
-<pad name="S1" x="-2.4" y="2.15" drill="0.7" diameter="1.2"/>
-<pad name="S2" x="2.4" y="2.15" drill="0.7" diameter="1.2"/>
-<pad name="S3" x="-2.4" y="-2.15" drill="0.7" diameter="1.2"/>
-<pad name="S4" x="2.4" y="-2.15" drill="0.7" diameter="1.2"/>
-<hole x="-3.75" y="0" drill="0.66"/>
-<hole x="3.75" y="0" drill="0.58"/>
-<wire x1="3.54" y1="0.29" x2="3.96" y2="0.29" width="0.01" layer="46" style="shortdash"/>
-<wire x1="3.96" y1="-0.29" x2="3.54" y2="-0.29" width="0.01" layer="46" style="shortdash"/>
-<wire x1="3.96" y1="0.29" x2="3.96" y2="-0.29" width="0.01" layer="46" curve="-180"/>
-<wire x1="3.54" y1="-0.29" x2="3.54" y2="0.29" width="0.01" layer="46" curve="-180"/>
-<wire x1="-4.52" y1="2.3" x2="4.52" y2="2.3" width="0.1" layer="51"/>
-<wire x1="4.52" y1="2.3" x2="4.52" y2="-2.3" width="0.1" layer="51"/>
-<wire x1="4.52" y1="-2.3" x2="-4.52" y2="-2.3" width="0.1" layer="51"/>
-<wire x1="-4.52" y1="-2.3" x2="-4.52" y2="2.3" width="0.1" layer="51"/>
-<wire x1="-3.3" y1="2.4" x2="-4.62" y2="2.4" width="0.2" layer="21"/>
-<wire x1="-4.62" y1="2.4" x2="-4.62" y2="-2.4" width="0.2" layer="21"/>
-<wire x1="-4.62" y1="-2.4" x2="-3.3" y2="-2.4" width="0.2" layer="21"/>
-<wire x1="-1.5" y1="2.4" x2="1.5" y2="2.4" width="0.2" layer="21"/>
-<wire x1="-1.5" y1="-2.4" x2="1.5" y2="-2.4" width="0.2" layer="21"/>
-<wire x1="3.3" y1="2.4" x2="4.62" y2="2.4" width="0.2" layer="21"/>
-<wire x1="4.62" y1="2.4" x2="4.62" y2="-2.4" width="0.2" layer="21"/>
-<wire x1="4.62" y1="-2.4" x2="3.3" y2="-2.4" width="0.2" layer="21"/>
-<polygon width="0.1" layer="39">
-<vertex x="-4.82" y="2.6"/>
-<vertex x="-3.1" y="2.6"/>
-<vertex x="-3.1" y="2.95"/>
-<vertex x="-1.7" y="2.95"/>
-<vertex x="-1.7" y="2.6"/>
-<vertex x="1.7" y="2.6"/>
-<vertex x="1.7" y="2.95"/>
-<vertex x="3.1" y="2.95"/>
-<vertex x="3.1" y="2.6"/>
-<vertex x="4.82" y="2.6"/>
-<vertex x="4.82" y="-2.6"/>
-<vertex x="3.1" y="-2.6"/>
-<vertex x="3.1" y="-2.95"/>
-<vertex x="1.7" y="-2.95"/>
-<vertex x="1.7" y="-2.6"/>
-<vertex x="-1.7" y="-2.6"/>
-<vertex x="-1.7" y="-2.95"/>
-<vertex x="-3.1" y="-2.95"/>
-<vertex x="-3.1" y="-2.6"/>
-<vertex x="-4.82" y="-2.6"/>
-</polygon>
-</package>
 </packages>
 <packages3d>
 <package3d name="614105150621" urn="urn:adsk.eagle:package:16513904/2" type="model" library_version="2">
 <description>&lt;b&gt;WR-COM&lt;/B&gt;&lt;BR&gt; Micro USB 2.0 Type AB Vertical 5 Contacts</description>
 <packageinstances>
 <packageinstance name="614105150621"/>
-</packageinstances>
-</package3d>
-<package3d name="632722110112" urn="urn:adsk.eagle:package:16513890/2" type="model" library_version="2">
-<description>&lt;B&gt;WR-COM &lt;/B&gt;&lt;BR&gt;USB 3.1 Type C Receptacle Vertical SMT 1.0 mm</description>
-<packageinstances>
-<packageinstance name="632722110112"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -16711,47 +16628,6 @@ out area</text>
 <text x="-0.12" y="8.43" size="1.778" layer="95" align="bottom-center">&gt;NAME</text>
 <text x="-5.05" y="-10.21" size="1.778" layer="96">&gt;VALUE</text>
 <text x="6.51" y="-0.83" size="1.016" layer="94" rot="R90">shield</text>
-</symbol>
-<symbol name="USB3.1_TYPEC" urn="urn:adsk.eagle:symbol:16513856/1" library_version="2">
-<description>USB 3.1 Type C</description>
-<wire x1="-10.16" y1="15.24" x2="12.7" y2="15.24" width="0.254" layer="94"/>
-<wire x1="12.7" y1="15.24" x2="12.7" y2="-17.78" width="0.254" layer="94"/>
-<wire x1="12.7" y1="-17.78" x2="-10.16" y2="-17.78" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="-17.78" x2="-10.16" y2="15.24" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="-17.78" x2="-10.795" y2="-17.78" width="0.254" layer="94" style="shortdash"/>
-<wire x1="-10.795" y1="-17.78" x2="-10.795" y2="15.875" width="0.254" layer="94" style="shortdash"/>
-<wire x1="-10.795" y1="15.875" x2="13.335" y2="15.875" width="0.254" layer="94" style="shortdash"/>
-<wire x1="13.335" y1="15.875" x2="13.335" y2="-17.78" width="0.254" layer="94" style="shortdash"/>
-<wire x1="13.335" y1="-17.78" x2="15.24" y2="-17.78" width="0.254" layer="94" style="shortdash"/>
-<text x="0.03" y="17.41" size="1.6764" layer="95" align="bottom-center">&gt;NAME</text>
-<text x="-4.61" y="-20.295" size="1.6764" layer="96">&gt;VALUE</text>
-<text x="6.6" y="16.9" size="1.27" layer="94">Shield</text>
-<pin name="GND" x="-15.24" y="12.7" length="middle"/>
-<pin name="SSTXP1" x="-15.24" y="10.16" length="middle"/>
-<pin name="SSTXN1" x="-15.24" y="7.62" length="middle"/>
-<pin name="VBUS" x="-15.24" y="5.08" length="middle"/>
-<pin name="CC1" x="-15.24" y="2.54" length="middle"/>
-<pin name="DP1" x="-15.24" y="0" length="middle"/>
-<pin name="DN1" x="-15.24" y="-2.54" length="middle"/>
-<pin name="SBU1" x="-15.24" y="-5.08" length="middle"/>
-<pin name="VBUS1" x="-15.24" y="-7.62" length="middle"/>
-<pin name="SSRXN2" x="-15.24" y="-10.16" length="middle"/>
-<pin name="SSRXP2" x="-15.24" y="-12.7" length="middle"/>
-<pin name="GND1" x="-15.24" y="-15.24" length="middle"/>
-<pin name="GND2" x="17.78" y="12.7" length="middle" rot="R180"/>
-<pin name="SSRXP1" x="17.78" y="-12.7" length="middle" rot="R180"/>
-<pin name="SSRXN1" x="17.78" y="-10.16" length="middle" rot="R180"/>
-<pin name="VBUS2" x="17.78" y="5.08" length="middle" rot="R180"/>
-<pin name="SBU2" x="17.78" y="-5.08" length="middle" rot="R180"/>
-<pin name="VCONN" x="17.78" y="2.54" length="middle" rot="R180"/>
-<pin name="VBUS3" x="17.78" y="-7.62" length="middle" rot="R180"/>
-<pin name="SSTXN2" x="17.78" y="7.62" length="middle" rot="R180"/>
-<pin name="SSTXP2" x="17.78" y="10.16" length="middle" rot="R180"/>
-<pin name="GND3" x="17.78" y="-15.24" length="middle" rot="R180"/>
-<pin name="SHIELD" x="-15.24" y="-17.78" visible="pad" length="short"/>
-<pin name="SHIELD1" x="17.78" y="-17.78" visible="pad" length="short" rot="R180"/>
-<pin name="DP2" x="17.78" y="0" length="middle" rot="R180"/>
-<pin name="DN2" x="17.78" y="-2.54" length="middle" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -16819,93 +16695,6 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <attribute name="PINS" value=" 5 " constant="no"/>
 <attribute name="TYPE" value="Vertical" constant="no"/>
 <attribute name="WORKING-VOLTAGE" value="30V(AC)" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="632722110112" urn="urn:adsk.eagle:component:16513937/2" locally_modified="yes" prefix="X" uservalue="yes">
-<description>&lt;B&gt;WR-COM USB 3.1 Type C Receptacle Vertical SMT 1.0 mm 
-&lt;/B&gt;&lt;BR&gt;&lt;BR&gt;
-&lt;b&gt;Kind Properties&lt;/b&gt;
-&lt;BR&gt;Durability:10 000 Mating cycles
-&lt;BR&gt;Gender:Receptacle
-&lt;BR&gt;Type:Vertical
-&lt;BR&gt;&lt;BR&gt;
-&lt;b&gt;General Information&lt;/b&gt;
-&lt;BR&gt;Operating Temperature:-40up to +85 °C
-&lt;BR&gt;Compliance:Lead free / RoHS
-&lt;BR&gt;&lt;BR&gt;
-&lt;b&gt;Electrical Properties&lt;/b&gt;
-&lt;BR&gt;IR 1:5A
-&lt;BR&gt;Working Voltage:20V (DC)
-&lt;BR&gt;Withstanding Voltage:100V (AC)
-&lt;BR&gt;Contact Resistance:40 mΩ&lt;BR&gt;&lt;BR&gt;
-&lt;b&gt;Material Properties
-&lt;/b&gt;&lt;BR&gt;Insulator Material:LCP
-&lt;BR&gt;Insulator Flammability Rating:UL94 V-0
-&lt;BR&gt;Color:Black
-&lt;BR&gt;Contact Material:Copper Alloy
-&lt;BR&gt;Contact Plating:Gold over Nickel
-&lt;BR&gt;Contact Type:Stamped
-&lt;BR&gt;Shielding Material:Stainless Steel
-&lt;BR&gt;Shielding Plating:Nickel
-&lt;BR&gt;
-&lt;br&gt;&lt;a href="https://www.we-online.com/catalog/media/o77237v209%20Family_WR-USB31_632722110112.jpg" title="Enlarge picture"&gt;
-&lt;img src="https://www.we-online.com/catalog/media/o77237v209%20Family_WR-USB31_632722110112.jpg" width="320"&gt;&lt;/a&gt;&lt;p&gt;
-Details see: &lt;a href="https://www.we-online.com/catalog/en/COM_3_1_SMT_TYPE_C_RECEPTACLE_HORIZONTAL_1_0MM/"&gt;https://www.we-online.com/catalog/en/COM_3_1_SMT_TYPE_C_RECEPTACLE_HORIZONTAL_1_0MM/&lt;/a&gt;&lt;p&gt;
-
-Updated by Yingchun, Shan 2020-01-17&lt;br&gt;
-2020 (C) Würth Elektronik</description>
-<gates>
-<gate name="G$1" symbol="USB3.1_TYPEC" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="632722110112">
-<connects>
-<connect gate="G$1" pin="CC1" pad="A5"/>
-<connect gate="G$1" pin="DN1" pad="A7"/>
-<connect gate="G$1" pin="DN2" pad="B7"/>
-<connect gate="G$1" pin="DP1" pad="A6"/>
-<connect gate="G$1" pin="DP2" pad="B6"/>
-<connect gate="G$1" pin="GND" pad="A1"/>
-<connect gate="G$1" pin="GND1" pad="A12"/>
-<connect gate="G$1" pin="GND2" pad="B1"/>
-<connect gate="G$1" pin="GND3" pad="B12"/>
-<connect gate="G$1" pin="SBU1" pad="A8"/>
-<connect gate="G$1" pin="SBU2" pad="B8"/>
-<connect gate="G$1" pin="SHIELD" pad="S1 S2"/>
-<connect gate="G$1" pin="SHIELD1" pad="S3 S4"/>
-<connect gate="G$1" pin="SSRXN1" pad="B10"/>
-<connect gate="G$1" pin="SSRXN2" pad="A10"/>
-<connect gate="G$1" pin="SSRXP1" pad="B11"/>
-<connect gate="G$1" pin="SSRXP2" pad="A11"/>
-<connect gate="G$1" pin="SSTXN1" pad="A3"/>
-<connect gate="G$1" pin="SSTXN2" pad="B3"/>
-<connect gate="G$1" pin="SSTXP1" pad="A2"/>
-<connect gate="G$1" pin="SSTXP2" pad="B2"/>
-<connect gate="G$1" pin="VBUS" pad="A4"/>
-<connect gate="G$1" pin="VBUS1" pad="A9"/>
-<connect gate="G$1" pin="VBUS2" pad="B4"/>
-<connect gate="G$1" pin="VBUS3" pad="B9"/>
-<connect gate="G$1" pin="VCONN" pad="B5"/>
-</connects>
-<package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:16513890/2"/>
-</package3dinstances>
-<technologies>
-<technology name="">
-<attribute name="APPLICATION" value="USB 3.1" constant="no"/>
-<attribute name="DATASHEET-URL" value="https://www.we-online.com/catalog/datasheet/632722110112.pdf" constant="no"/>
-<attribute name="GERDER" value="Receptacle" constant="no"/>
-<attribute name="INTERFACE-TYPE" value="Type C" constant="no"/>
-<attribute name="IR1" value="5A" constant="no"/>
-<attribute name="MOUNT" value="SMT" constant="no"/>
-<attribute name="PACKAGING" value="Tape and Reel" constant="no"/>
-<attribute name="PART-NUMBER" value="632722110112" constant="no"/>
-<attribute name="PINS" value=" 24 " constant="no"/>
-<attribute name="TYPE" value="Vertical" constant="no"/>
-<attribute name="WORKING-VOLTAGE" value="20V(DC)" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -19106,7 +18895,6 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 <part name="S7" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="CHOOSE_ME"/>
 <part name="GND151" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="JP57" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X2" device="" package3d_urn="urn:adsk.eagle:package:22455/2" value="I2C_INTERCONNECT"/>
-<part name="X6" library="Wurth_Connectors_WR-USB" deviceset="632722110112" device="" package3d_urn="urn:adsk.eagle:package:16513890/2" value="USB_C"/>
 <part name="GND152" library="Supply" deviceset="GND" device=""/>
 <part name="GND153" library="Supply" deviceset="GND" device=""/>
 <part name="GND154" library="Supply" deviceset="GND" device=""/>
@@ -19433,6 +19221,8 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 <part name="R157" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
 <part name="LED23" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
 <part name="LED24" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
+<part name="X6" library="Wurth_Connectors_WR-USB" deviceset="614105150621" device="" package3d_urn="urn:adsk.eagle:package:16513904/2" value="uUSB"/>
+<part name="X7" library="Wurth_Connectors_WR-USB" deviceset="614105150621" device="" package3d_urn="urn:adsk.eagle:package:16513904/2" value="uUSB"/>
 </parts>
 <sheets>
 <sheet>
@@ -24129,40 +23919,40 @@ Jakub Streit
 <segment>
 <pinref part="IC5" gate="G$1" pin="AOUT1"/>
 <label x="195.58" y="92.202" size="1.27" layer="95"/>
-<wire x1="187.96" y1="91.44" x2="233.68" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="119.38" x2="233.68" y2="91.44" width="0.1524" layer="91"/>
-<label x="233.172" y="114.554" size="1.27" layer="95" rot="MR270"/>
-<pinref part="P3" gate="A" pin="6"/>
+<wire x1="187.96" y1="91.44" x2="246.38" y2="91.44" width="0.1524" layer="91"/>
+<label x="245.872" y="114.554" size="1.27" layer="95" rot="MR270"/>
+<pinref part="P3" gate="A" pin="1"/>
+<wire x1="246.38" y1="91.44" x2="246.38" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="M3B" class="0">
 <segment>
 <pinref part="IC5" gate="G$1" pin="AUOT2"/>
 <label x="195.58" y="89.662" size="1.27" layer="95"/>
-<wire x1="187.96" y1="88.9" x2="246.38" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="246.38" y1="119.38" x2="246.38" y2="88.9" width="0.1524" layer="91"/>
-<label x="245.872" y="114.554" size="1.27" layer="95" rot="MR270"/>
-<pinref part="P3" gate="A" pin="1"/>
+<wire x1="187.96" y1="88.9" x2="233.68" y2="88.9" width="0.1524" layer="91"/>
+<label x="233.172" y="114.554" size="1.27" layer="95" rot="MR270"/>
+<pinref part="P3" gate="A" pin="6"/>
+<wire x1="233.68" y1="88.9" x2="233.68" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="M4A" class="0">
 <segment>
 <pinref part="IC5" gate="G$1" pin="BOUT1"/>
 <label x="195.58" y="84.582" size="1.27" layer="95"/>
-<wire x1="187.96" y1="83.82" x2="271.78" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="119.38" x2="271.78" y2="83.82" width="0.1524" layer="91"/>
-<label x="271.272" y="114.554" size="1.27" layer="95" rot="MR270"/>
-<pinref part="P4" gate="A" pin="6"/>
+<wire x1="187.96" y1="83.82" x2="284.48" y2="83.82" width="0.1524" layer="91"/>
+<label x="283.972" y="114.554" size="1.27" layer="95" rot="MR270"/>
+<pinref part="P4" gate="A" pin="1"/>
+<wire x1="284.48" y1="83.82" x2="284.48" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="M4B" class="0">
 <segment>
 <pinref part="IC5" gate="G$1" pin="BOUT2"/>
 <label x="195.58" y="82.042" size="1.27" layer="95"/>
-<wire x1="284.48" y1="81.28" x2="187.96" y2="81.28" width="0.1524" layer="91"/>
-<wire x1="284.48" y1="81.28" x2="284.48" y2="119.38" width="0.1524" layer="91"/>
-<label x="283.972" y="114.554" size="1.27" layer="95" rot="MR270"/>
-<pinref part="P4" gate="A" pin="1"/>
+<wire x1="271.78" y1="81.28" x2="187.96" y2="81.28" width="0.1524" layer="91"/>
+<label x="271.272" y="114.554" size="1.27" layer="95" rot="MR270"/>
+<pinref part="P4" gate="A" pin="6"/>
+<wire x1="271.78" y1="81.28" x2="271.78" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ENC34PWR" class="0">
@@ -34727,6 +34517,7 @@ Jakub Streit
 <text x="201.422" y="150.368" size="1.27" layer="95">BOOT1</text>
 <text x="83.82" y="109.22" size="2.54" layer="97">CONTROL INTERFACE</text>
 <text x="289.56" y="121.92" size="2.54" layer="97">MPU AUXILIARY I2C</text>
+<text x="76.2" y="167.64" size="1.778" layer="94">Placeholder for USB C</text>
 </plain>
 <instances>
 <instance part="FRAME7" gate="G$1" x="0" y="0" smashed="yes">
@@ -34987,10 +34778,6 @@ Jakub Streit
 <attribute name="NAME" x="107.315" y="81.534" size="1.27" layer="95" rot="R90"/>
 <attribute name="VALUE" x="111.379" y="81.534" size="1.27" layer="96" rot="MR90"/>
 </instance>
-<instance part="X6" gate="G$1" x="86.36" y="147.32" smashed="yes">
-<attribute name="NAME" x="86.39" y="164.73" size="1.6764" layer="95" align="bottom-center"/>
-<attribute name="VALUE" x="81.75" y="127.025" size="1.6764" layer="96"/>
-</instance>
 <instance part="GND152" gate="1" x="45.72" y="124.46" smashed="yes">
 <attribute name="VALUE" x="43.942" y="122.682" size="1.27" layer="96"/>
 </instance>
@@ -35124,6 +34911,14 @@ Jakub Streit
 </instance>
 <instance part="NC21" gate="G$1" x="81.28" y="185.42" smashed="yes" rot="R180"/>
 <instance part="NC22" gate="G$1" x="81.28" y="180.34" smashed="yes" rot="R180"/>
+<instance part="X6" gate="G$1" x="88.9" y="154.94" smashed="yes">
+<attribute name="NAME" x="88.78" y="163.37" size="1.778" layer="95" align="bottom-center"/>
+<attribute name="VALUE" x="83.85" y="144.73" size="1.778" layer="96"/>
+</instance>
+<instance part="X7" gate="G$1" x="88.9" y="132.08" smashed="yes">
+<attribute name="NAME" x="88.78" y="140.51" size="1.778" layer="95" align="bottom-center"/>
+<attribute name="VALUE" x="83.85" y="121.87" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -35191,28 +34986,24 @@ Jakub Streit
 <label x="127.508" y="33.528" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="GND"/>
 <wire x1="71.12" y1="160.02" x2="63.5" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="GND155" gate="1" pin="GND"/>
 <wire x1="63.5" y1="160.02" x2="63.5" y2="165.1" width="0.1524" layer="91"/>
 <label x="68.072" y="160.528" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="GND2"/>
 <wire x1="104.14" y1="160.02" x2="111.76" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="GND154" gate="1" pin="GND"/>
 <wire x1="111.76" y1="160.02" x2="111.76" y2="165.1" width="0.1524" layer="91"/>
 <label x="107.442" y="160.528" size="1.27" layer="95"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="GND3"/>
 <wire x1="104.14" y1="132.08" x2="129.54" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="GND153" gate="1" pin="GND"/>
 <wire x1="129.54" y1="132.08" x2="129.54" y2="127" width="0.1524" layer="91"/>
 <label x="107.442" y="132.588" size="1.27" layer="95"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="GND1"/>
 <wire x1="71.12" y1="132.08" x2="45.72" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="GND152" gate="1" pin="GND"/>
 <wire x1="45.72" y1="132.08" x2="45.72" y2="127" width="0.1524" layer="91"/>
@@ -35448,25 +35239,21 @@ Jakub Streit
 <pinref part="X3" gate="-30" pin="S"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="VBUS"/>
 <wire x1="71.12" y1="152.4" x2="55.88" y2="152.4" width="0.1524" layer="91"/>
 <label x="55.88" y="152.4" size="1.27" layer="95" rot="R180" xref="yes"/>
 <label x="68.072" y="152.908" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="VBUS1"/>
 <wire x1="71.12" y1="139.7" x2="55.88" y2="139.7" width="0.1524" layer="91"/>
 <label x="55.88" y="139.7" size="1.27" layer="95" rot="R180" xref="yes"/>
 <label x="68.072" y="140.208" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="VBUS2"/>
 <wire x1="104.14" y1="152.4" x2="119.38" y2="152.4" width="0.1524" layer="91"/>
 <label x="119.38" y="152.4" size="1.27" layer="95" xref="yes"/>
 <label x="107.442" y="152.908" size="1.27" layer="95"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="VBUS3"/>
 <wire x1="104.14" y1="139.7" x2="119.38" y2="139.7" width="0.1524" layer="91"/>
 <label x="119.38" y="139.7" size="1.27" layer="95" xref="yes"/>
 <label x="107.442" y="140.208" size="1.27" layer="95"/>
@@ -35499,13 +35286,11 @@ Jakub Streit
 <pinref part="X3" gate="-28" pin="S"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="DN1"/>
 <wire x1="71.12" y1="144.78" x2="55.88" y2="144.78" width="0.1524" layer="91"/>
 <label x="55.88" y="144.78" size="1.27" layer="95" rot="R180" xref="yes"/>
 <label x="68.072" y="145.288" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="DN2"/>
 <wire x1="104.14" y1="144.78" x2="119.38" y2="144.78" width="0.1524" layer="91"/>
 <label x="119.38" y="144.78" size="1.27" layer="95" xref="yes"/>
 <label x="107.442" y="145.288" size="1.27" layer="95"/>
@@ -35541,13 +35326,11 @@ Jakub Streit
 <pinref part="X3" gate="-27" pin="S"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="DP1"/>
 <wire x1="71.12" y1="147.32" x2="55.88" y2="147.32" width="0.1524" layer="91"/>
 <label x="55.88" y="147.32" size="1.27" layer="95" rot="R180" xref="yes"/>
 <label x="68.072" y="147.828" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="DP2"/>
 <wire x1="104.14" y1="147.32" x2="119.38" y2="147.32" width="0.1524" layer="91"/>
 <label x="119.38" y="147.32" size="1.27" layer="95" xref="yes"/>
 <label x="107.442" y="147.828" size="1.27" layer="95"/>
@@ -35929,7 +35712,6 @@ Jakub Streit
 </net>
 <net name="SSTXP1" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="SSTXP1"/>
 <pinref part="NC9" gate="G$1" pin="NC"/>
 <wire x1="71.12" y1="157.48" x2="55.88" y2="157.48" width="0.1524" layer="91"/>
 <label x="68.072" y="157.988" size="1.27" layer="95" rot="MR0"/>
@@ -35937,7 +35719,6 @@ Jakub Streit
 </net>
 <net name="SSTXP2" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="SSTXP2"/>
 <pinref part="NC18" gate="G$1" pin="NC"/>
 <wire x1="104.14" y1="157.48" x2="119.38" y2="157.48" width="0.1524" layer="91"/>
 <label x="107.442" y="157.988" size="1.27" layer="95"/>
@@ -35945,7 +35726,6 @@ Jakub Streit
 </net>
 <net name="SSTXN2" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="SSTXN2"/>
 <pinref part="NC17" gate="G$1" pin="NC"/>
 <wire x1="104.14" y1="154.94" x2="119.38" y2="154.94" width="0.1524" layer="91"/>
 <label x="107.442" y="155.448" size="1.27" layer="95"/>
@@ -35953,7 +35733,6 @@ Jakub Streit
 </net>
 <net name="SSTXN1" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="SSTXN1"/>
 <pinref part="NC10" gate="G$1" pin="NC"/>
 <wire x1="71.12" y1="154.94" x2="55.88" y2="154.94" width="0.1524" layer="91"/>
 <label x="68.072" y="155.448" size="1.27" layer="95" rot="MR0"/>
@@ -35961,13 +35740,11 @@ Jakub Streit
 </net>
 <net name="USBC_SHIELD" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="SHIELD"/>
 <pinref part="NC13" gate="G$1" pin="NC"/>
 <wire x1="71.12" y1="129.54" x2="55.88" y2="129.54" width="0.1524" layer="91"/>
 <label x="68.072" y="130.048" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="X6" gate="G$1" pin="SHIELD1"/>
 <pinref part="NC14" gate="G$1" pin="NC"/>
 <wire x1="104.14" y1="129.54" x2="119.38" y2="129.54" width="0.1524" layer="91"/>
 <label x="107.442" y="130.048" size="1.27" layer="95"/>
@@ -35975,7 +35752,6 @@ Jakub Streit
 </net>
 <net name="SSRXN1" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="SSRXN1"/>
 <pinref part="NC16" gate="G$1" pin="NC"/>
 <wire x1="104.14" y1="137.16" x2="119.38" y2="137.16" width="0.1524" layer="91"/>
 <label x="107.442" y="137.668" size="1.27" layer="95"/>
@@ -35983,7 +35759,6 @@ Jakub Streit
 </net>
 <net name="SSRXN2" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="SSRXN2"/>
 <pinref part="NC11" gate="G$1" pin="NC"/>
 <wire x1="71.12" y1="137.16" x2="55.88" y2="137.16" width="0.1524" layer="91"/>
 <label x="68.072" y="137.668" size="1.27" layer="95" rot="MR0"/>
@@ -35991,7 +35766,6 @@ Jakub Streit
 </net>
 <net name="SSRXP2" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="SSRXP2"/>
 <pinref part="NC12" gate="G$1" pin="NC"/>
 <wire x1="71.12" y1="134.62" x2="55.88" y2="134.62" width="0.1524" layer="91"/>
 <label x="68.072" y="135.128" size="1.27" layer="95" rot="MR0"/>
@@ -35999,7 +35773,6 @@ Jakub Streit
 </net>
 <net name="SSRXP1" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="SSRXP1"/>
 <pinref part="NC15" gate="G$1" pin="NC"/>
 <wire x1="104.14" y1="134.62" x2="119.38" y2="134.62" width="0.1524" layer="91"/>
 <label x="107.442" y="135.128" size="1.27" layer="95"/>
@@ -36007,7 +35780,6 @@ Jakub Streit
 </net>
 <net name="USB_CC1" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="CC1"/>
 <wire x1="71.12" y1="149.86" x2="43.18" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="149.86" x2="43.18" y2="152.4" width="0.1524" layer="91"/>
 <label x="68.072" y="150.368" size="1.27" layer="95" rot="MR0"/>
@@ -36016,7 +35788,6 @@ Jakub Streit
 </net>
 <net name="USB_CC2" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="VCONN"/>
 <wire x1="104.14" y1="149.86" x2="132.08" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="149.86" x2="132.08" y2="152.4" width="0.1524" layer="91"/>
 <label x="107.442" y="150.368" size="1.27" layer="95"/>
@@ -36025,7 +35796,6 @@ Jakub Streit
 </net>
 <net name="USB_SBU1" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="SBU1"/>
 <wire x1="71.12" y1="142.24" x2="55.88" y2="142.24" width="0.1524" layer="91"/>
 <label x="68.072" y="142.748" size="1.27" layer="95" rot="MR0"/>
 <pinref part="NC19" gate="G$1" pin="NC"/>
@@ -36033,7 +35803,6 @@ Jakub Streit
 </net>
 <net name="USB_SBU2" class="0">
 <segment>
-<pinref part="X6" gate="G$1" pin="SBU2"/>
 <wire x1="104.14" y1="142.24" x2="119.38" y2="142.24" width="0.1524" layer="91"/>
 <label x="107.442" y="142.748" size="1.27" layer="95"/>
 <pinref part="NC20" gate="G$1" pin="NC"/>
