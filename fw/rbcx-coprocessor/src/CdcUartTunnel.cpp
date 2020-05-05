@@ -1,4 +1,5 @@
 /// Implements passthrough between the "primary" UART and USB CDC.
+/// Primary UART leads to ESP32 main UART.
 
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_dma.h"
