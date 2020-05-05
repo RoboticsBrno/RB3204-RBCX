@@ -32,13 +32,12 @@ public:
         m_head = newHead;
     }
 
-    std::pair<uint8_t*, size_t> readableRange() const {
-        return m_head >= m_tail
-            ? std::make_pair(data() + m_tail, m_head - m_tail)
-            : std::make_pair(data() + m_tail, int(size()) - m_tail);
+    void writeSpan(uint8_t* data, size_t len) {
+        std::copy_n(data, len, this->data() + m_head);
+        notifyWritten(len);
     }
 
-    std::pair<uint8_t*, size_t> writeableRange() const {
+    std::pair<uint8_t*, size_t> writeableSpan() const {
         int preTail = adjust(m_tail, -1);
         return m_head >= preTail
             ? std::make_pair(data() + m_head, std::max(0, int(size()) - m_head))
@@ -49,17 +48,18 @@ public:
         m_head = adjust(m_head, len);
     }
 
-    void notifyRead(size_t len) {
-        m_tail = adjust(m_tail, len);
-    }
-
-    void writeRange(uint8_t* data, size_t len) {
-        std::copy_n(data, len, this->data() + m_head);
-        notifyWritten(len);
-    }
-
-    void readRange(uint8_t* data, size_t len) {
+    void readSpan(uint8_t* data, size_t len) {
         std::copy_n(this->data() + m_tail, len, data);
         notifyRead(len);
+    }
+
+    std::pair<uint8_t*, size_t> readableSpan() const {
+        return m_head >= m_tail
+            ? std::make_pair(data() + m_tail, m_head - m_tail)
+            : std::make_pair(data() + m_tail, int(size()) - m_tail);
+    }
+
+    void notifyRead(size_t len) {
+        m_tail = adjust(m_tail, len);
     }
 };

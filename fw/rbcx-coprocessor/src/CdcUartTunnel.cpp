@@ -84,7 +84,7 @@ void tunnelDownstreamHandler() {
 
 void tunnelUpstreamHandler() {
     primaryUartRxPoll();
-    auto readable = primaryUartRxFifo.readableRange();
+    auto readable = primaryUartRxFifo.readableSpan();
     if (readable.second > 0) {
         int transferred = usbd_ep_write(&udev, CDC_TXD_EP, readable.first, std::min(readable.second, size_t(CDC_DATA_SZ)));
         if (transferred > 0) {
