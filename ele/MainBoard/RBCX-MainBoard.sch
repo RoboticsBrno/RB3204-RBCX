@@ -19017,11 +19017,6 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="25V"/>
 </part>
-<part name="C5" library="rcl_upravena" deviceset="C-EU" device="C0805" value="10u">
-<attribute name="DIELECTRIC" value="X5R"/>
-<attribute name="VOLTAGE" value="25V"/>
-</part>
-<part name="GND105" library="Supply" deviceset="GND" device=""/>
 <part name="LED1" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
 <part name="LED3" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
 <part name="LED5" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
@@ -21156,8 +21151,8 @@ makes filter together with gate capacitance</text>
 <instance part="GND147" gate="1" x="327.66" y="172.72" smashed="yes">
 <attribute name="VALUE" x="325.882" y="170.942" size="1.27" layer="96"/>
 </instance>
-<instance part="+3V57" gate="G$1" x="345.44" y="187.96" smashed="yes" rot="R270">
-<attribute name="VALUE" x="343.154" y="189.992" size="1.27" layer="96"/>
+<instance part="+3V57" gate="G$1" x="340.36" y="187.96" smashed="yes" rot="R270">
+<attribute name="VALUE" x="338.074" y="189.992" size="1.27" layer="96"/>
 </instance>
 <instance part="Q2" gate="G$1" x="106.68" y="205.74" smashed="yes" rot="R90">
 <attribute name="VALUE" x="101.6" y="210.82" size="1.27" layer="96"/>
@@ -21202,15 +21197,6 @@ makes filter together with gate capacitance</text>
 <attribute name="VALUE" x="330.2" y="180.34" size="1.27" layer="96" rot="R270"/>
 <attribute name="DIELECTRIC" x="327.66" y="180.34" size="1.27" layer="96" rot="MR180" display="off"/>
 <attribute name="VOLTAGE" x="328.422" y="180.34" size="1.27" layer="96" rot="R270"/>
-</instance>
-<instance part="C5" gate="G$1" x="332.74" y="180.34" smashed="yes" rot="MR180">
-<attribute name="NAME" x="335.28" y="184.912" size="1.27" layer="95" rot="R270"/>
-<attribute name="VALUE" x="335.28" y="180.34" size="1.27" layer="96" rot="R270"/>
-<attribute name="DIELECTRIC" x="332.74" y="180.34" size="1.27" layer="96" rot="MR180" display="off"/>
-<attribute name="VOLTAGE" x="333.502" y="180.34" size="1.27" layer="96" rot="R270"/>
-</instance>
-<instance part="GND105" gate="1" x="332.74" y="172.72" smashed="yes">
-<attribute name="VALUE" x="330.962" y="170.942" size="1.27" layer="96"/>
 </instance>
 <instance part="LED1" gate="G$1" x="157.48" y="73.66" smashed="yes">
 <attribute name="NAME" x="159.512" y="76.2" size="1.27" layer="95" rot="R270"/>
@@ -21481,14 +21467,10 @@ makes filter together with gate capacitance</text>
 <pinref part="IC1" gate="A" pin="OUT"/>
 <pinref part="+3V57" gate="G$1" pin="+3V3S"/>
 <wire x1="325.12" y1="187.96" x2="327.66" y2="187.96" width="0.1524" layer="91"/>
-<wire x1="327.66" y1="187.96" x2="332.74" y2="187.96" width="0.1524" layer="91"/>
-<wire x1="332.74" y1="187.96" x2="342.9" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="327.66" y1="187.96" x2="337.82" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="327.66" y1="185.42" x2="327.66" y2="187.96" width="0.1524" layer="91"/>
 <junction x="327.66" y="187.96"/>
 <pinref part="C4" gate="G$1" pin="2"/>
-<pinref part="C5" gate="G$1" pin="2"/>
-<wire x1="332.74" y1="185.42" x2="332.74" y2="187.96" width="0.1524" layer="91"/>
-<junction x="332.74" y="187.96"/>
 </segment>
 <segment>
 <pinref part="+3V68" gate="G$1" pin="+3V3S"/>
@@ -21652,11 +21634,6 @@ makes filter together with gate capacitance</text>
 <pinref part="GND147" gate="1" pin="GND"/>
 <wire x1="327.66" y1="177.8" x2="327.66" y2="175.26" width="0.1524" layer="91"/>
 <pinref part="C4" gate="G$1" pin="1"/>
-</segment>
-<segment>
-<pinref part="C5" gate="G$1" pin="1"/>
-<pinref part="GND105" gate="1" pin="GND"/>
-<wire x1="332.74" y1="177.8" x2="332.74" y2="175.26" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="91.44" y1="152.4" x2="88.9" y2="152.4" width="0.1524" layer="91"/>
