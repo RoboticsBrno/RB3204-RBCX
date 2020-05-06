@@ -19221,8 +19221,6 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 <part name="R157" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
 <part name="LED23" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
 <part name="LED24" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="X6" library="Wurth_Connectors_WR-USB" deviceset="614105150621" device="" package3d_urn="urn:adsk.eagle:package:16513904/2" value="uUSB"/>
-<part name="X7" library="Wurth_Connectors_WR-USB" deviceset="614105150621" device="" package3d_urn="urn:adsk.eagle:package:16513904/2" value="uUSB"/>
 <part name="TP62" library="test_points" deviceset="TP" device="_06MM"/>
 </parts>
 <sheets>
@@ -34918,14 +34916,6 @@ Jakub Streit
 </instance>
 <instance part="NC21" gate="G$1" x="81.28" y="185.42" smashed="yes" rot="R180"/>
 <instance part="NC22" gate="G$1" x="81.28" y="180.34" smashed="yes" rot="R180"/>
-<instance part="X6" gate="G$1" x="88.9" y="154.94" smashed="yes">
-<attribute name="NAME" x="88.78" y="163.37" size="1.778" layer="95" align="bottom-center"/>
-<attribute name="VALUE" x="83.85" y="144.73" size="1.778" layer="96"/>
-</instance>
-<instance part="X7" gate="G$1" x="88.9" y="132.08" smashed="yes">
-<attribute name="NAME" x="88.78" y="140.51" size="1.778" layer="95" align="bottom-center"/>
-<attribute name="VALUE" x="83.85" y="121.87" size="1.778" layer="96"/>
-</instance>
 </instances>
 <busses>
 </busses>
