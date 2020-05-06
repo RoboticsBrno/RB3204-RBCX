@@ -38237,9 +38237,9 @@ Jakub Streit
 </net>
 <net name="BUTTON_ON" class="0">
 <segment>
-<label x="68.58" y="60.96" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="IC13" gate="G$1" pin="PC13-TAMPER-RTC"/>
-<wire x1="73.66" y1="60.96" x2="68.58" y2="60.96" width="0.1524" layer="91"/>
+<label x="68.58" y="71.12" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<wire x1="73.66" y1="71.12" x2="68.58" y2="71.12" width="0.1524" layer="91"/>
+<pinref part="IC13" gate="G$1" pin="PC9"/>
 </segment>
 </net>
 <net name="SI1" class="0">
@@ -38448,9 +38448,9 @@ Jakub Streit
 </net>
 <net name="VUSB_DET" class="0">
 <segment>
-<label x="68.58" y="71.12" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="IC13" gate="G$1" pin="PC9"/>
-<wire x1="73.66" y1="71.12" x2="68.58" y2="71.12" width="0.1524" layer="91"/>
+<label x="68.58" y="60.96" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<wire x1="73.66" y1="60.96" x2="68.58" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="IC13" gate="G$1" pin="PC13-TAMPER-RTC"/>
 </segment>
 </net>
 <net name="INTELLIGENT_SERVO" class="0">
