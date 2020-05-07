@@ -18042,14 +18042,6 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 <wire x1="-3.7" y1="-1.175" x2="3.7" y2="-1.175" width="0.1" layer="51"/>
 <wire x1="-3.7" y1="1.175" x2="3.7" y2="1.175" width="0.1" layer="51"/>
 <wire x1="3.7" y1="-1.175" x2="3.7" y2="1.175" width="0.1" layer="51"/>
-<wire x1="3.4" y1="0.405" x2="3.4" y2="-0.595" width="0.01" layer="46"/>
-<wire x1="3.75" y1="0.405" x2="3.75" y2="-0.595" width="0.01" layer="46"/>
-<wire x1="3.4" y1="0.405" x2="3.75" y2="0.405" width="0.01" layer="46" curve="-180"/>
-<wire x1="3.4" y1="-0.595" x2="3.75" y2="-0.595" width="0.01" layer="46" curve="180"/>
-<wire x1="-3.75" y1="0.405" x2="-3.75" y2="-0.595" width="0.01" layer="46"/>
-<wire x1="-3.4" y1="0.405" x2="-3.4" y2="-0.595" width="0.01" layer="46"/>
-<wire x1="-3.75" y1="0.405" x2="-3.4" y2="0.405" width="0.01" layer="46" curve="-180"/>
-<wire x1="-3.75" y1="-0.595" x2="-3.4" y2="-0.595" width="0.01" layer="46" curve="180"/>
 <wire x1="-3.8" y1="1.14" x2="-3.8" y2="1.275" width="0.2" layer="21"/>
 <wire x1="-3.8" y1="1.275" x2="3.8" y2="1.275" width="0.2" layer="21"/>
 <wire x1="3.8" y1="1.275" x2="3.8" y2="1.14" width="0.2" layer="21"/>
@@ -18086,14 +18078,6 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 <wire x1="-4.17" y1="-1.28" x2="4.17" y2="-1.28" width="0.1" layer="51"/>
 <wire x1="-4.17" y1="1.28" x2="4.17" y2="1.28" width="0.1" layer="51"/>
 <wire x1="4.17" y1="-1.28" x2="4.17" y2="1.28" width="0.1" layer="51"/>
-<wire x1="3.4" y1="0.405" x2="3.4" y2="-0.595" width="0.01" layer="46"/>
-<wire x1="3.75" y1="0.405" x2="3.75" y2="-0.595" width="0.01" layer="46"/>
-<wire x1="3.4" y1="0.405" x2="3.75" y2="0.405" width="0.01" layer="46" curve="-180"/>
-<wire x1="3.4" y1="-0.595" x2="3.75" y2="-0.595" width="0.01" layer="46" curve="180"/>
-<wire x1="-3.75" y1="0.405" x2="-3.75" y2="-0.595" width="0.01" layer="46"/>
-<wire x1="-3.4" y1="0.405" x2="-3.4" y2="-0.595" width="0.01" layer="46"/>
-<wire x1="-3.75" y1="0.405" x2="-3.4" y2="0.405" width="0.01" layer="46" curve="-180"/>
-<wire x1="-3.75" y1="-0.595" x2="-3.4" y2="-0.595" width="0.01" layer="46" curve="180"/>
 <pad name="A1" x="-3.85" y="0.4" locked="yes" drill="0.35" diameter="0.55" rot="R270"/>
 <text x="-4" y="1.5" size="0.6096" layer="25" ratio="13" rot="SR0">&gt;NAME</text>
 <text x="-4" y="-2" size="0.6096" layer="27" ratio="13" rot="SR0">&gt;VALUE</text>
