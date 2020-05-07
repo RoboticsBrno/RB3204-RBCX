@@ -35129,8 +35129,7 @@ Jakub Streit
 <segment>
 <pinref part="X4" gate="G$1" pin="GND"/>
 <pinref part="GND112" gate="1" pin="GND"/>
-<wire x1="119.38" y1="205.74" x2="93.98" y2="205.74" width="0.1524" layer="91"/>
-<wire x1="93.98" y1="205.74" x2="88.9" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="205.74" x2="88.9" y2="205.74" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="205.74" x2="88.9" y2="200.66" width="0.1524" layer="91"/>
 <label x="116.84" y="206.248" size="1.27" layer="95" rot="MR0"/>
 <pinref part="JP48" gate="A" pin="5"/>
@@ -35394,11 +35393,10 @@ Jakub Streit
 <net name="VUSB" class="0">
 <segment>
 <pinref part="X4" gate="G$1" pin="VBUS"/>
-<wire x1="119.38" y1="215.9" x2="101.6" y2="215.9" width="0.1524" layer="91"/>
 <label x="60.96" y="215.9" size="1.27" layer="95" rot="R180" xref="yes"/>
 <label x="116.84" y="216.408" size="1.27" layer="95" rot="MR0"/>
 <pinref part="R117" gate="G$1" pin="2"/>
-<wire x1="101.6" y1="215.9" x2="78.74" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="215.9" x2="78.74" y2="215.9" width="0.1524" layer="91"/>
 <wire x1="78.74" y1="215.9" x2="68.58" y2="215.9" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="215.9" x2="60.96" y2="215.9" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="208.28" x2="68.58" y2="215.9" width="0.1524" layer="91"/>
@@ -35445,13 +35443,10 @@ Jakub Streit
 <net name="USB_DM" class="0">
 <segment>
 <pinref part="X4" gate="G$1" pin="D+"/>
-<wire x1="119.38" y1="210.82" x2="101.6" y2="210.82" width="0.1524" layer="91"/>
 <label x="60.96" y="210.82" size="1.27" layer="95" rot="R180" xref="yes"/>
 <label x="116.84" y="211.328" size="1.27" layer="95" rot="MR0"/>
-<wire x1="101.6" y1="210.82" x2="96.52" y2="210.82" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="210.82" x2="81.28" y2="210.82" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="210.82" x2="78.74" y2="210.82" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="210.82" x2="60.96" y2="210.82" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="210.82" x2="81.28" y2="210.82" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="210.82" x2="60.96" y2="210.82" width="0.1524" layer="91"/>
 <pinref part="JP48" gate="A" pin="2"/>
 <wire x1="81.28" y1="223.52" x2="81.28" y2="210.82" width="0.1524" layer="91"/>
 <junction x="81.28" y="210.82"/>
@@ -35477,11 +35472,9 @@ Jakub Streit
 <net name="USB_DP" class="0">
 <segment>
 <pinref part="X4" gate="G$1" pin="D-"/>
-<wire x1="119.38" y1="213.36" x2="99.06" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="213.36" x2="83.82" y2="213.36" width="0.1524" layer="91"/>
 <label x="60.96" y="213.36" size="1.27" layer="95" rot="R180" xref="yes"/>
 <label x="116.84" y="213.868" size="1.27" layer="95" rot="MR0"/>
-<wire x1="99.06" y1="213.36" x2="88.9" y2="213.36" width="0.1524" layer="91"/>
-<wire x1="88.9" y1="213.36" x2="83.82" y2="213.36" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="213.36" x2="71.12" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="R114" gate="G$1" pin="2"/>
 <wire x1="71.12" y1="213.36" x2="60.96" y2="213.36" width="0.1524" layer="91"/>
@@ -35986,9 +35979,8 @@ Jakub Streit
 <net name="USB_ID" class="0">
 <segment>
 <pinref part="X4" gate="G$1" pin="ID"/>
-<wire x1="119.38" y1="208.28" x2="93.98" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="208.28" x2="86.36" y2="208.28" width="0.1524" layer="91"/>
 <label x="116.84" y="208.788" size="1.27" layer="95" rot="MR0"/>
-<wire x1="93.98" y1="208.28" x2="86.36" y2="208.28" width="0.1524" layer="91"/>
 <pinref part="JP48" gate="A" pin="4"/>
 <wire x1="86.36" y1="223.52" x2="86.36" y2="208.28" width="0.1524" layer="91"/>
 </segment>
@@ -40483,47 +40475,6 @@ Jakub Streit
 </sheet>
 </sheets>
 <errors>
-<approved hash="104,8,182.88,121.92,IM6,3V3,+3V3,,,"/>
-<approved hash="104,8,190.5,121.92,IM6,5V,ESP_+5V,,,"/>
-<approved hash="104,1,256.54,58.42,BAT_HOLDER,VSS,GND,,,"/>
-<approved hash="104,2,170.18,106.68,IC4,VM_2.7-10.8V,VCC,,,"/>
-<approved hash="104,3,93.98,187.96,IM1,OUT,SERVO1PWR,,,"/>
-<approved hash="104,3,93.98,213.36,IM1,IN,VCC,,,"/>
-<approved hash="104,2,154.94,58.42,IC5,VCC,+3V3S,,,"/>
-<approved hash="104,2,195.58,58.42,IC6,VCC,+3V3S,,,"/>
-<approved hash="104,2,170.18,210.82,IC1,VM_2.7-10.8V,VCC,,,"/>
-<approved hash="104,2,154.94,162.56,IC2,VCC,+3V3S,,,"/>
-<approved hash="104,2,195.58,162.56,IC3,VCC,+3V3S,,,"/>
-<approved hash="104,3,78.74,157.48,IC7,VCC,+3V3S,,,"/>
-<approved hash="104,3,172.72,187.96,IM2,OUT,SERVO2PWR,,,"/>
-<approved hash="104,3,172.72,213.36,IM2,IN,VCC,,,"/>
-<approved hash="104,3,157.48,157.48,IC8,VCC,+3V3S,,,"/>
-<approved hash="104,3,251.46,187.96,IM3,OUT,SERVO3PWR,,,"/>
-<approved hash="104,3,251.46,213.36,IM3,IN,VCC,,,"/>
-<approved hash="104,3,236.22,157.48,IC9,VCC,+3V3S,,,"/>
-<approved hash="104,3,330.2,187.96,IM4,OUT,SERVO4PWR,,,"/>
-<approved hash="104,3,330.2,213.36,IM4,IN,VCC,,,"/>
-<approved hash="104,3,314.96,157.48,IC10,VCC,+3V3S,,,"/>
-<approved hash="104,7,104.14,96.52,U1,VSS,GND,,,"/>
-<approved hash="104,7,104.14,190.5,U1,VREF-,GND,,,"/>
-<approved hash="104,7,104.14,215.9,U1,VDD,+3V3S,,,"/>
-<approved hash="104,7,104.14,81.28,U1,VSSA,GND,,,"/>
-<approved hash="104,7,104.14,193.04,U1,VREF+,+3V3S,,,"/>
-<approved hash="104,7,104.14,198.12,U1,VDDA,+3V3S,,,"/>
-<approved hash="104,7,104.14,86.36,U1,VSS,GND,,,"/>
-<approved hash="104,7,104.14,213.36,U1,VDD,+3V3S,,,"/>
-<approved hash="104,7,104.14,210.82,U1,VDD,+3V3S,,,"/>
-<approved hash="104,7,104.14,88.9,U1,VSS,GND,,,"/>
-<approved hash="104,7,104.14,208.28,U1,VDD,+3V3S,,,"/>
-<approved hash="104,7,104.14,205.74,U1,VDD,+3V3S,,,"/>
-<approved hash="104,7,104.14,93.98,U1,VSS,GND,,,"/>
-<approved hash="104,7,104.14,91.44,U1,VSS,GND,,,"/>
-<approved hash="104,5,231.14,66.04,IM5,OUT,ILED_PWR,,,"/>
-<approved hash="104,5,205.74,66.04,IM5,IN,VCC,,,"/>
-<approved hash="104,1,256.54,172.72,IM7,OUT,+5V,,,"/>
-<approved hash="104,1,231.14,172.72,IM7,IN,5V_IN,,,"/>
-<approved hash="113,2,200.952,109.22,SJ2,,,,,"/>
-<approved hash="113,2,200.952,213.36,SJ1,,,,,"/>
 <approved hash="113,1,193.571,130.071,FRAME3,,,,,"/>
 <approved hash="113,2,193.571,130.071,FRAME2,,,,,"/>
 <approved hash="113,3,193.571,130.071,FRAME5,,,,,"/>
@@ -40531,17 +40482,7 @@ Jakub Streit
 <approved hash="113,8,193.571,130.071,FRAME1,,,,,"/>
 <approved hash="113,5,193.571,130.071,FRAME6,,,,,"/>
 <approved hash="113,6,193.571,130.071,FRAME7,,,,,"/>
-<approved hash="113,6,238.76,136.868,SJ3,,,,,"/>
-<approved hash="113,6,236.22,230.848,SJ4,,,,,"/>
-<approved hash="113,6,236.22,185.128,SJ5,,,,,"/>
-<approved hash="113,6,238.76,35.2679,SJ6,,,,,"/>
-<approved hash="113,6,97.79,40.7222,J1,,,,,"/>
-<approved hash="113,6,92.79,82.0254,J2,,,,,"/>
-<approved hash="113,6,129.832,208.28,SJ7,,,,,"/>
-<approved hash="113,5,325.12,235.928,SJ9,,,,,"/>
-<approved hash="113,5,226.06,235.928,SJ10,,,,,"/>
-<approved hash="113,5,325.12,177.508,SJ12,,,,,"/>
-<approved hash="113,5,119.38,235.928,SJ11,,,,,"/>
+<approved hash="113,4,193.571,130.071,FRAME8,,,,,"/>
 </errors>
 </schematic>
 </drawing>
