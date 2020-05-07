@@ -27466,14 +27466,14 @@ Jakub Streit
 </net>
 <net name="USB_DM" class="0">
 <segment>
-<pinref part="X4" gate="G$1" pin="D+"/>
-<label x="60.96" y="210.82" size="1.27" layer="95" rot="R180" xref="yes"/>
-<label x="116.84" y="211.328" size="1.27" layer="95" rot="MR0"/>
-<wire x1="119.38" y1="210.82" x2="81.28" y2="210.82" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="210.82" x2="60.96" y2="210.82" width="0.1524" layer="91"/>
+<label x="60.96" y="213.36" size="1.27" layer="95" rot="R180" xref="yes"/>
+<label x="116.84" y="213.868" size="1.27" layer="95" rot="MR0"/>
+<wire x1="81.28" y1="213.36" x2="60.96" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="JP33" gate="A" pin="2"/>
-<wire x1="81.28" y1="223.52" x2="81.28" y2="210.82" width="0.1524" layer="91"/>
-<junction x="81.28" y="210.82"/>
+<wire x1="81.28" y1="223.52" x2="81.28" y2="213.36" width="0.1524" layer="91"/>
+<pinref part="X4" gate="G$1" pin="D-"/>
+<wire x1="81.28" y1="213.36" x2="119.38" y2="213.36" width="0.1524" layer="91"/>
+<junction x="81.28" y="213.36"/>
 </segment>
 <segment>
 <wire x1="317.5" y1="162.56" x2="309.88" y2="162.56" width="0.1524" layer="91"/>
@@ -27495,18 +27495,18 @@ Jakub Streit
 </net>
 <net name="USB_DP" class="0">
 <segment>
-<pinref part="X4" gate="G$1" pin="D-"/>
-<wire x1="119.38" y1="213.36" x2="83.82" y2="213.36" width="0.1524" layer="91"/>
-<label x="60.96" y="213.36" size="1.27" layer="95" rot="R180" xref="yes"/>
-<label x="116.84" y="213.868" size="1.27" layer="95" rot="MR0"/>
-<wire x1="83.82" y1="213.36" x2="71.12" y2="213.36" width="0.1524" layer="91"/>
+<label x="60.96" y="210.82" size="1.27" layer="95" rot="R180" xref="yes"/>
+<label x="116.84" y="211.328" size="1.27" layer="95" rot="MR0"/>
+<wire x1="83.82" y1="210.82" x2="71.12" y2="210.82" width="0.1524" layer="91"/>
 <pinref part="R67" gate="G$1" pin="2"/>
-<wire x1="71.12" y1="213.36" x2="60.96" y2="213.36" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="218.44" x2="71.12" y2="213.36" width="0.1524" layer="91"/>
-<junction x="71.12" y="213.36"/>
+<wire x1="71.12" y1="210.82" x2="60.96" y2="210.82" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="218.44" x2="71.12" y2="210.82" width="0.1524" layer="91"/>
+<junction x="71.12" y="210.82"/>
 <pinref part="JP33" gate="A" pin="3"/>
-<wire x1="83.82" y1="223.52" x2="83.82" y2="213.36" width="0.1524" layer="91"/>
-<junction x="83.82" y="213.36"/>
+<wire x1="83.82" y1="223.52" x2="83.82" y2="210.82" width="0.1524" layer="91"/>
+<pinref part="X4" gate="G$1" pin="D+"/>
+<wire x1="83.82" y1="210.82" x2="119.38" y2="210.82" width="0.1524" layer="91"/>
+<junction x="83.82" y="210.82"/>
 </segment>
 <segment>
 <wire x1="317.5" y1="165.1" x2="309.88" y2="165.1" width="0.1524" layer="91"/>
