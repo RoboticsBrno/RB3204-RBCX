@@ -9,7 +9,7 @@
 <grid distance="25" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="6.25" altunitdist="mil" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
-<layer number="2" name="Layer2-Sig" color="16" fill="1" visible="yes" active="yes"/>
+<layer number="2" name="Layer2-Sig" color="16" fill="1" visible="no" active="yes"/>
 <layer number="3" name="Route3" color="17" fill="1" visible="no" active="no"/>
 <layer number="4" name="Route4" color="18" fill="1" visible="no" active="no"/>
 <layer number="5" name="Route5" color="19" fill="1" visible="no" active="no"/>
@@ -5214,9 +5214,9 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="57.7088" y="77.5462" size="1.27" layer="26" ratio="10" rot="MR180"/>
 <attribute name="VALUE" x="57.4675" y="82.55" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="JP47" library="pinhead" package="1X01" value="SERVO1_EN" x="69.215" y="79.375" smashed="yes" rot="R270">
-<attribute name="NAME" x="71.0438" y="80.7212" size="1.27" layer="25" ratio="10" rot="R270"/>
-<attribute name="VALUE" x="66.04" y="80.645" size="1.27" layer="27" rot="R270"/>
+<element name="JP47" library="pinhead" package="1X01" value="SERVO1_EN" x="69.215" y="79.375" smashed="yes" rot="MR270">
+<attribute name="NAME" x="67.3862" y="80.7212" size="1.27" layer="26" ratio="10" rot="MR270"/>
+<attribute name="VALUE" x="72.39" y="80.645" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="JP51" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X03" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO1" x="64.135" y="98.425" smashed="yes" rot="MR0">
 <attribute name="NAME" x="68.0212" y="100.2538" size="1.27" layer="26" ratio="10" rot="MR0"/>
@@ -5297,9 +5297,9 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="45.0088" y="77.5462" size="1.27" layer="26" ratio="10" rot="MR180"/>
 <attribute name="VALUE" x="44.7675" y="82.55" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="JP48" library="pinhead" package="1X01" value="SERVO2_EN" x="56.515" y="79.375" smashed="yes" rot="R270">
-<attribute name="NAME" x="58.3438" y="80.7212" size="1.27" layer="25" ratio="10" rot="R270"/>
-<attribute name="VALUE" x="53.34" y="80.645" size="1.27" layer="27" rot="R270"/>
+<element name="JP48" library="pinhead" package="1X01" value="SERVO2_EN" x="56.515" y="79.375" smashed="yes" rot="MR270">
+<attribute name="NAME" x="54.6862" y="80.7212" size="1.27" layer="26" ratio="10" rot="MR270"/>
+<attribute name="VALUE" x="59.69" y="80.645" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="JP52" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X03" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO2" x="51.435" y="98.425" smashed="yes" rot="MR0">
 <attribute name="NAME" x="55.3212" y="100.2538" size="1.27" layer="26" ratio="10" rot="MR0"/>
@@ -5380,9 +5380,9 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="32.3088" y="77.5462" size="1.27" layer="26" ratio="10" rot="MR180"/>
 <attribute name="VALUE" x="32.0675" y="82.55" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="JP49" library="pinhead" package="1X01" value="SERVO3_EN" x="43.815" y="79.375" smashed="yes" rot="R270">
-<attribute name="NAME" x="45.6438" y="80.7212" size="1.27" layer="25" ratio="10" rot="R270"/>
-<attribute name="VALUE" x="40.64" y="80.645" size="1.27" layer="27" rot="R270"/>
+<element name="JP49" library="pinhead" package="1X01" value="SERVO3_EN" x="43.815" y="79.375" smashed="yes" rot="MR270">
+<attribute name="NAME" x="41.9862" y="80.7212" size="1.27" layer="26" ratio="10" rot="MR270"/>
+<attribute name="VALUE" x="46.99" y="80.645" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="JP53" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X03" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO3" x="38.735" y="98.425" smashed="yes" rot="MR0">
 <attribute name="NAME" x="42.6212" y="100.2538" size="1.27" layer="26" ratio="10" rot="MR0"/>
@@ -5463,9 +5463,9 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="19.6088" y="77.5462" size="1.27" layer="26" ratio="10" rot="MR180"/>
 <attribute name="VALUE" x="19.3675" y="82.55" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="JP50" library="pinhead" package="1X01" value="SERVO4_EN" x="31.115" y="79.375" smashed="yes" rot="R270">
-<attribute name="NAME" x="32.9438" y="80.7212" size="1.27" layer="25" ratio="10" rot="R270"/>
-<attribute name="VALUE" x="27.94" y="80.645" size="1.27" layer="27" rot="R270"/>
+<element name="JP50" library="pinhead" package="1X01" value="SERVO4_EN" x="31.115" y="79.375" smashed="yes" rot="MR270">
+<attribute name="NAME" x="29.2862" y="80.7212" size="1.27" layer="26" ratio="10" rot="MR270"/>
+<attribute name="VALUE" x="34.29" y="80.645" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="JP54" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X03" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO4" x="26.035" y="98.425" smashed="yes" rot="MR0">
 <attribute name="NAME" x="29.9212" y="100.2538" size="1.27" layer="26" ratio="10" rot="MR0"/>
@@ -11853,7 +11853,7 @@ JarekParal (2020-04-14)
 <signal name="SERVO1_EN">
 <contactref element="IM5" pad="EN"/>
 <contactref element="JP47" pad="1"/>
-<wire x1="66.675" y1="79.375" x2="69.215" y2="79.375" width="0.1524" layer="1"/>
+<wire x1="66.675" y1="79.375" x2="69.215" y2="79.375" width="0.1524" layer="16"/>
 </signal>
 <signal name="SERVO_1_PWR">
 <contactref element="R133" pad="1"/>
@@ -11935,7 +11935,7 @@ JarekParal (2020-04-14)
 <signal name="SERVO2_EN">
 <contactref element="IM6" pad="EN"/>
 <contactref element="JP48" pad="1"/>
-<wire x1="53.975" y1="79.375" x2="56.515" y2="79.375" width="0.1524" layer="1"/>
+<wire x1="53.975" y1="79.375" x2="56.515" y2="79.375" width="0.1524" layer="16"/>
 </signal>
 <signal name="SERVO_2_PWR">
 <contactref element="R135" pad="1"/>
@@ -12017,7 +12017,7 @@ JarekParal (2020-04-14)
 <signal name="SERVO3_EN">
 <contactref element="IM7" pad="EN"/>
 <contactref element="JP49" pad="1"/>
-<wire x1="41.275" y1="79.375" x2="43.815" y2="79.375" width="0.1524" layer="1"/>
+<wire x1="41.275" y1="79.375" x2="43.815" y2="79.375" width="0.1524" layer="16"/>
 </signal>
 <signal name="SERVO_3_PWR">
 <contactref element="R137" pad="1"/>
@@ -12099,7 +12099,7 @@ JarekParal (2020-04-14)
 <signal name="SERVO4_EN">
 <contactref element="IM8" pad="EN"/>
 <contactref element="JP50" pad="1"/>
-<wire x1="28.575" y1="79.375" x2="31.115" y2="79.375" width="0.1524" layer="1"/>
+<wire x1="28.575" y1="79.375" x2="31.115" y2="79.375" width="0.1524" layer="16"/>
 </signal>
 <signal name="SERVO_4_PWR">
 <contactref element="R139" pad="1"/>
