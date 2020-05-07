@@ -17993,7 +17993,10 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 <packages>
 <package name="TP_06">
 <pad name="P$1" x="0" y="0" drill="0.6" thermals="no"/>
-<text x="-1.905" y="0.635" size="1" layer="25" font="vector" ratio="16">&gt;NAME</text>
+<text x="-1.905" y="-1.905" size="1" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<text x="-1.905" y="0.905" size="1" layer="25" font="vector" ratio="20" rot="SR0">&gt;NAME</text>
+<circle x="0" y="0" radius="0.762" width="0.127" layer="101"/>
+<circle x="0" y="0" radius="0.762" width="0.127" layer="102"/>
 </package>
 <package name="TP_08">
 <pad name="P$1" x="0" y="0" drill="0.8" thermals="no"/>
