@@ -24838,7 +24838,7 @@ Jakub Streit
 <wire x1="76.2" y1="157.48" x2="76.2" y2="185.42" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="ESP-I2C-SCL-5V" class="0">
+<net name="ESP-I2C-SCL-VSEL" class="0">
 <segment>
 <wire x1="71.12" y1="220.98" x2="73.66" y2="220.98" width="0.1524" layer="91"/>
 <pinref part="R25" gate="G$1" pin="1"/>
@@ -24856,7 +24856,7 @@ Jakub Streit
 <pinref part="Q5" gate="G$1" pin="D"/>
 </segment>
 </net>
-<net name="ESP-I2C-SDA-5V" class="0">
+<net name="ESP-I2C-SDA-VSEL" class="0">
 <segment>
 <wire x1="71.12" y1="195.58" x2="73.66" y2="195.58" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="195.58" x2="83.82" y2="195.58" width="0.1524" layer="91"/>
@@ -24883,7 +24883,7 @@ Jakub Streit
 <pinref part="D7" gate="G$1" pin="C"/>
 </segment>
 </net>
-<net name="GPIO-1-5V" class="0">
+<net name="GPIO-1-VSEL" class="0">
 <segment>
 <wire x1="71.12" y1="170.18" x2="73.66" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="170.18" x2="88.9" y2="170.18" width="0.1524" layer="91"/>
