@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.1">
+<eagle version="9.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -9,7 +9,7 @@
 <grid distance="25" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="6.25" altunitdist="mil" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="Layer2-Sig" color="16" fill="1" visible="yes" active="yes"/>
+<layer number="2" name="Layer2-Sig" color="16" fill="1" visible="no" active="yes"/>
 <layer number="3" name="Route3" color="17" fill="1" visible="no" active="no"/>
 <layer number="4" name="Route4" color="18" fill="1" visible="no" active="no"/>
 <layer number="5" name="Route5" color="19" fill="1" visible="no" active="no"/>
@@ -22,16 +22,16 @@
 <layer number="12" name="Route12" color="20" fill="1" visible="no" active="no"/>
 <layer number="13" name="Route13" color="21" fill="1" visible="no" active="no"/>
 <layer number="14" name="Route14" color="22" fill="1" visible="no" active="no"/>
-<layer number="15" name="Layer3-GND" color="23" fill="1" visible="yes" active="yes"/>
+<layer number="15" name="Layer3-GND" color="23" fill="1" visible="no" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
-<layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
+<layer number="20" name="Dimension" color="24" fill="1" visible="no" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
@@ -46,19 +46,19 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
@@ -148,8 +148,8 @@ ESCAPE</text>
 <text x="2.8575" y="47.625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">L2</text>
 <text x="2.8575" y="42.545" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">L3</text>
 <text x="2.8575" y="37.465" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">L4</text>
-<text x="4.28625" y="16.66875" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">RESET</text>
-<text x="2.8575" y="69.69125" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">PWR</text>
+<text x="4.28625" y="15.39875" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">RESET</text>
+<text x="3.01625" y="69.37375" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">PWR</text>
 <text x="0.9525" y="63.02375" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">ON</text>
 <text x="72.7075" y="86.995" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="top-left">VCC</text>
 <text x="74.295" y="73.66" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">5V</text>
@@ -157,7 +157,7 @@ ESCAPE</text>
 <text x="86.6775" y="82.70875" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">M1B</text>
 <text x="90.805" y="89.535" size="1" layer="101" font="vector" ratio="20" rot="SR0">VUSB</text>
 <text x="79.375" y="74.93" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="bottom-right">ENC12PWR</text>
-<text x="95.25" y="89.535" size="1" layer="101" font="vector" ratio="20" rot="SR0">5V ESP</text>
+<text x="95.09125" y="89.535" size="1" layer="101" font="vector" ratio="20" rot="SR0">5V_ESP</text>
 <text x="99.695" y="85.4075" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-left">GND</text>
 <text x="74.295" y="89.535" size="1" layer="101" font="vector" ratio="20" rot="SR270">-</text>
 <text x="71.755" y="89.535" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-left">+</text>
@@ -172,7 +172,7 @@ ESCAPE</text>
 <text x="92.71" y="82.70875" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">E1A</text>
 <text x="94.77375" y="82.70875" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">E1-</text>
 <text x="96.8375" y="82.70875" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">M1A</text>
-<text x="97.155" y="57.785" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">B+</text>
+<text x="98.58375" y="57.785" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">B+</text>
 <text x="88.74125" y="76.35875" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">E2-</text>
 <text x="90.805" y="76.35875" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">E2A</text>
 <text x="92.71" y="76.35875" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">E2B</text>
@@ -197,10 +197,10 @@ ESCAPE</text>
 <text x="84.455" y="10.16" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">TRIG</text>
 <text x="86.6775" y="10.16" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">ECHO</text>
 <text x="88.5825" y="11.43" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">GND</text>
-<text x="80.645" y="8.89" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-center">U4</text>
-<text x="80.645" y="6.35" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-center">U3</text>
-<text x="80.645" y="3.81" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-center">U2</text>
-<text x="80.645" y="1.27" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-center">U1</text>
+<text x="80.3275" y="8.89" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-center">U4</text>
+<text x="80.3275" y="6.35" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-center">U3</text>
+<text x="80.3275" y="3.81" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-center">U2</text>
+<text x="80.3275" y="1.27" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-center">U1</text>
 <text x="74.295" y="10.4775" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">GND</text>
 <text x="71.755" y="10.4775" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">AUX</text>
 <text x="69.215" y="10.4775" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">!CS</text>
@@ -210,8 +210,8 @@ ESCAPE</text>
 <text x="59.055" y="10.4775" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">GND</text>
 <text x="57.785" y="10.4775" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">3V3</text>
 <text x="81.915" y="10.16" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">5V</text>
-<text x="53.975" y="8.89" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">3V3</text>
-<text x="53.975" y="2.2225" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">5V</text>
+<text x="53.975" y="0.3175" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">3V3</text>
+<text x="53.975" y="10.4775" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">5V</text>
 <text x="71.12" y="14.9225" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-right">IO1 IN1 IN2
 !CS1! !CS2! !CS3!</text>
 <wire x1="73.025" y1="14.605" x2="72.0725" y2="13.6525" width="0.2" layer="101"/>
@@ -245,20 +245,20 @@ ESCAPE</text>
 <text x="14.76375" y="97.155" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">iLED</text>
 <text x="13.335" y="97.155" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">+</text>
 <text x="10.795" y="97.155" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">-</text>
-<text x="97.155" y="52.705" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">B-</text>
-<text x="97.155" y="47.625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">GND</text>
-<text x="97.155" y="42.545" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">VCC</text>
-<text x="94.9325" y="63.5" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-left">Bmid</text>
+<text x="98.425" y="52.705" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">B-</text>
+<text x="98.425" y="47.625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">GND</text>
+<text x="98.425" y="42.545" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">VCC</text>
+<text x="94.2975" y="63.5" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="top-left">Bmid</text>
 <text x="77.94625" y="70.8025" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="top-right">!M12FAULT</text>
 <text x="80.3275" y="27.94" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">5V</text>
 <text x="34.29" y="62.23" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">SDA</text>
-<text x="80.645" y="29.21" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="bottom-right">ENC34PWR</text>
-<text x="83.82" y="20.6375" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="top-left">ENC34PWR</text>
+<text x="86.995" y="29.21" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="bottom-right">ENC34PWR</text>
+<text x="85.88375" y="20.47875" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="top-left">ENC34PWR</text>
 <text x="77.7875" y="86.995" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="top-left">5V</text>
 <text x="82.8675" y="86.995" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="top-left">3V3S</text>
 <text x="87.9475" y="86.995" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="top-left">3V3</text>
-<text x="74.295" y="38.735" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">DBG</text>
-<text x="74.295" y="36.195" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">JTAG</text>
+<text x="74.93" y="38.735" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">DEBUG</text>
+<text x="74.93" y="36.195" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">JTAG</text>
 <text x="71.755" y="34.925" size="1" layer="101" font="vector" ratio="20" rot="SR270">+ + -
 C B +
 - + O
@@ -272,7 +272,7 @@ O T M</text>
 <text x="46.355" y="10.00125" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">G</text>
 <text x="48.895" y="10.00125" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">-</text>
 <text x="51.435" y="10.00125" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">+</text>
-<text x="33.655" y="2.2225" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">5V</text>
+<text x="33.655" y="2.69875" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">3V3</text>
 <text x="8.89" y="13.6525" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">5V</text>
 <text x="12.065" y="13.6525" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">3V3</text>
 <wire x1="10.4775" y1="5.08" x2="11.1125" y2="4.445" width="0.1524" layer="101"/>
@@ -283,13 +283,13 @@ O T M</text>
 <wire x1="13.97" y1="8.255" x2="15.08125" y2="7.14375" width="0.1524" layer="101"/>
 <wire x1="10.4775" y1="1.27" x2="10.63625" y2="1.11125" width="0.1524" layer="101"/>
 <wire x1="10.63625" y1="1.11125" x2="14.605" y2="1.11125" width="0.1524" layer="101"/>
-<text x="15.875" y="11.27125" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">+</text>
-<text x="18.415" y="11.27125" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">-</text>
-<text x="20.955" y="11.27125" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">T</text>
-<text x="23.495" y="11.27125" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">R</text>
-<text x="26.035" y="4.92125" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">G</text>
-<text x="28.575" y="4.92125" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">-</text>
-<text x="31.115" y="4.92125" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">+</text>
+<text x="15.875" y="10.63625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">+</text>
+<text x="18.415" y="10.63625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">-</text>
+<text x="20.955" y="10.63625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">T</text>
+<text x="23.495" y="10.63625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">R</text>
+<text x="26.035" y="5.55625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">G</text>
+<text x="28.575" y="5.55625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">-</text>
+<text x="31.115" y="5.55625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-right">+</text>
 <text x="22.225" y="14.44625" size="1" layer="101" font="vector" ratio="20" rot="SR0">ESP UART0
 STM UART
 IO 3 4 6
@@ -304,35 +304,593 @@ IN4</text>
 <text x="34.29" y="59.69" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">SCL</text>
 <text x="34.29" y="57.15" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">3V3S</text>
 <text x="34.29" y="54.61" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">GND</text>
-<text x="34.29" y="36.83" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">SDA</text>
-<text x="36.83" y="36.83" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">SCL</text>
-<text x="39.37" y="36.83" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">3V3S</text>
-<text x="41.91" y="36.83" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">GND</text>
-<text x="3.81" y="32.385" size="1" layer="101" font="vector" ratio="20" rot="SR270">INT INT
-DIR DIR
-SCL RXD
-SDA TXD
-GND GND
-PWR PWR</text>
-<text x="44.45" y="72.39" size="1" layer="101" font="vector" ratio="20" rot="SR0">OFF  ON   RST  NRST
+<text x="35.56" y="36.83" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">SDA</text>
+<text x="38.1" y="36.83" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">SCL</text>
+<text x="40.64" y="36.83" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">3V3S</text>
+<text x="42.545" y="36.83" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">GND</text>
+<text x="1.27" y="33.02" size="1" layer="101" font="vector" ratio="20" rot="SR270">INT         INT
+DIR         DIR
+SCL         RXD
+SDA        TXD
+GND        GND
+PWR        PWR
+CAN/I2C  STM-UART</text>
+<text x="44.45" y="72.39" size="1" layer="101" font="vector" ratio="20" rot="SR0">OFF    ON     RST  NRST
 BTN1 BTN2 BTN3 BTN4
-LED1 LED2 LED3 LED4
-AIO  GND  +3V3 +5V</text>
+LED1 LED2  LED3 LED4
+AIO    GND  +3V3 +5V</text>
 <text x="10.795" y="90.17" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">P</text>
 <text x="10.795" y="87.63" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">-</text>
-<text x="10.795" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">G</text>
+<text x="10.795" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">B</text>
 <text x="10.795" y="82.55" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">-</text>
 <text x="10.795" y="80.01" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">L</text>
 <text x="10.795" y="77.47" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">-</text>
 <text x="10.795" y="74.93" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">1</text>
 <text x="10.795" y="72.39" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">2</text>
-<text x="14.605" y="22.70125" size="1" layer="101" font="vector" ratio="20" rot="SR0">Released under the Creative Commons Attribution-ShareAlike 4.0 License
+<text x="14.44625" y="22.5425" size="1" layer="101" font="vector" ratio="20" rot="SR0">License: Creative Commons Attribution-ShareAlike 4.0 License
 https://creativecommons.org/licenses/by-sa/4.0/
 Designed by: Jaroslav Paral, Jakub Streit
-v1.0 3/2020
+v1.0 5/2020
 
 RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
+<text x="86.6775" y="76.35875" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">M2A</text>
+<text x="96.8375" y="23.65375" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">M3B</text>
+<text x="66.04" y="43.18" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">GND</text>
+<text x="86.995" y="27.94" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">3V3S</text>
+<wire x1="35.56" y1="37.465" x2="35.56" y2="39.37" width="0.2" layer="101"/>
+<wire x1="35.56" y1="39.37" x2="34.925" y2="40.005" width="0.2" layer="101"/>
+<wire x1="38.1" y1="37.465" x2="38.1" y2="39.37" width="0.2" layer="101"/>
+<wire x1="38.1" y1="39.37" x2="37.465" y2="40.005" width="0.2" layer="101"/>
+<wire x1="40.64" y1="37.465" x2="40.64" y2="39.37" width="0.2" layer="101"/>
+<wire x1="40.64" y1="39.37" x2="40.005" y2="40.005" width="0.2" layer="101"/>
+<wire x1="43.18" y1="37.465" x2="43.18" y2="39.37" width="0.2" layer="101"/>
+<wire x1="43.18" y1="39.37" x2="42.545" y2="40.005" width="0.2" layer="101"/>
+<wire x1="43.18" y1="37.465" x2="42.8625" y2="37.1475" width="0.2" layer="101"/>
+<wire x1="10.16" y1="42.545" x2="6.35" y2="38.735" width="0.1524" layer="101"/>
+<wire x1="6.35" y1="38.735" x2="6.35" y2="33.655" width="0.1524" layer="101"/>
+<wire x1="6.35" y1="33.655" x2="1.27" y2="33.655" width="0.1524" layer="101"/>
+<wire x1="1.27" y1="33.655" x2="0.635" y2="33.02" width="0.1524" layer="101"/>
+<wire x1="0.635" y1="33.02" x2="0.635" y2="19.685" width="0.1524" layer="101"/>
+<wire x1="0.635" y1="19.685" x2="1.27" y2="19.05" width="0.1524" layer="101"/>
+<wire x1="1.27" y1="19.05" x2="2.54" y2="19.05" width="0.1524" layer="101"/>
+<wire x1="2.54" y1="19.05" x2="3.175" y2="19.685" width="0.1524" layer="101"/>
+<wire x1="3.175" y1="19.685" x2="3.175" y2="22.86" width="0.1524" layer="101"/>
+<wire x1="3.175" y1="22.86" x2="3.81" y2="23.495" width="0.1524" layer="101"/>
+<wire x1="3.81" y1="23.495" x2="11.43" y2="23.495" width="0.1524" layer="101"/>
+<wire x1="11.43" y1="23.495" x2="12.065" y2="24.13" width="0.1524" layer="101"/>
+<wire x1="12.065" y1="24.13" x2="12.065" y2="33.02" width="0.1524" layer="101"/>
+<wire x1="12.065" y1="33.02" x2="11.43" y2="33.655" width="0.1524" layer="101"/>
+<wire x1="11.43" y1="33.655" x2="6.35" y2="33.655" width="0.1524" layer="101"/>
+<text x="27.6225" y="46.51375" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="top-center">I2C JUMPER</text>
+<text x="65.405" y="46.355" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">ID</text>
+<text x="65.405" y="48.895" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">D-</text>
+<text x="65.405" y="51.435" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">D+</text>
+<text x="65.405" y="52.705" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">VUSB</text>
+<text x="63.5" y="43.18" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">GND</text>
+<text x="64.77" y="51.435" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">D+</text>
+<text x="62.865" y="52.705" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">VUSB</text>
+<text x="74.93" y="41.275" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">SWD</text>
+<wire x1="10.16" y1="42.545" x2="10.16" y2="44.45" width="0.1524" layer="101"/>
+<wire x1="10.16" y1="44.45" x2="10.795" y2="45.085" width="0.1524" layer="101"/>
+<wire x1="10.795" y1="45.085" x2="24.765" y2="45.085" width="0.1524" layer="101"/>
+<wire x1="24.765" y1="45.085" x2="25.4" y2="44.45" width="0.1524" layer="101"/>
+<wire x1="25.4" y1="44.45" x2="25.4" y2="40.64" width="0.1524" layer="101"/>
+<wire x1="25.4" y1="40.64" x2="24.765" y2="40.005" width="0.1524" layer="101"/>
+<wire x1="24.765" y1="40.005" x2="10.795" y2="40.005" width="0.1524" layer="101"/>
+<wire x1="10.795" y1="40.005" x2="10.16" y2="40.64" width="0.1524" layer="101"/>
+<wire x1="10.16" y1="40.64" x2="10.16" y2="42.545" width="0.1524" layer="101"/>
+<wire x1="0.635" y1="90.805" x2="1.27" y2="91.44" width="0.1524" layer="101"/>
+<wire x1="1.27" y1="91.44" x2="11.43" y2="91.44" width="0.1524" layer="101"/>
+<wire x1="11.43" y1="91.44" x2="12.065" y2="90.805" width="0.1524" layer="101"/>
+<wire x1="12.065" y1="90.805" x2="12.065" y2="75.565" width="0.1524" layer="101"/>
+<wire x1="12.065" y1="75.565" x2="12.065" y2="71.755" width="0.1524" layer="101"/>
+<wire x1="12.065" y1="71.755" x2="11.43" y2="71.12" width="0.1524" layer="101"/>
+<wire x1="11.43" y1="71.12" x2="1.27" y2="71.12" width="0.1524" layer="101"/>
+<wire x1="1.27" y1="71.12" x2="0.635" y2="71.755" width="0.1524" layer="101"/>
+<wire x1="0.635" y1="71.755" x2="0.635" y2="90.805" width="0.1524" layer="101"/>
+<wire x1="12.065" y1="75.565" x2="43.815" y2="75.565" width="0.1524" layer="101"/>
+<wire x1="43.815" y1="75.565" x2="43.815" y2="77.47" width="0.1524" layer="101"/>
+<wire x1="43.815" y1="77.47" x2="44.45" y2="78.105" width="0.1524" layer="101"/>
+<wire x1="44.45" y1="78.105" x2="59.69" y2="78.105" width="0.1524" layer="101"/>
+<wire x1="59.69" y1="78.105" x2="60.325" y2="77.47" width="0.1524" layer="101"/>
+<wire x1="60.325" y1="77.47" x2="60.325" y2="72.39" width="0.1524" layer="101"/>
+<wire x1="60.325" y1="72.39" x2="59.69" y2="71.755" width="0.1524" layer="101"/>
+<wire x1="59.69" y1="71.755" x2="44.45" y2="71.755" width="0.1524" layer="101"/>
+<wire x1="44.45" y1="71.755" x2="43.815" y2="72.39" width="0.1524" layer="101"/>
+<wire x1="43.815" y1="72.39" x2="43.815" y2="75.565" width="0.1524" layer="101"/>
+<wire x1="8.255" y1="13.335" x2="7.62" y2="12.7" width="0.2" layer="101"/>
+<wire x1="7.62" y1="12.7" x2="7.62" y2="10.795" width="0.2" layer="101"/>
+<wire x1="7.62" y1="10.795" x2="7.62" y2="6.985" width="0.2" layer="101"/>
+<wire x1="7.62" y1="6.985" x2="7.62" y2="3.175" width="0.2" layer="101"/>
+<wire x1="7.62" y1="3.175" x2="8.255" y2="2.54" width="0.2" layer="101"/>
+<wire x1="7.62" y1="6.985" x2="8.255" y2="6.35" width="0.2" layer="101"/>
+<wire x1="7.62" y1="10.795" x2="8.255" y2="10.16" width="0.2" layer="101"/>
+<wire x1="12.065" y1="13.335" x2="12.7" y2="12.7" width="0.2" layer="101"/>
+<wire x1="12.7" y1="12.7" x2="12.7" y2="10.795" width="0.2" layer="101"/>
+<text x="59.055" y="17.4625" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">iS</text>
+<text x="59.055" y="19.3675" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">ENC4B</text>
+<text x="59.055" y="21.2725" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">ENC4A</text>
+<text x="59.055" y="23.1775" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">ENC3B</text>
+<text x="59.055" y="25.0825" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">ENC3A</text>
+<text x="59.055" y="26.9875" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">IN4B</text>
+<text x="59.055" y="28.8925" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">PWM4</text>
+<text x="59.055" y="30.7975" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">IN4A</text>
+<text x="71.755" y="27.94" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">IN4_B</text>
+<text x="71.755" y="29.845" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-left">IN4_A</text>
+<text x="82.55" y="40.005" size="1" layer="101" font="vector" ratio="20" rot="SR90" align="center-left">MI3</text>
+<text x="85.09" y="40.005" size="1" layer="101" font="vector" ratio="20" rot="SR90" align="center-left">PWM3A</text>
+<text x="86.995" y="40.005" size="1" layer="101" font="vector" ratio="20" rot="SR90" align="center-left">PWM3B</text>
+<text x="82.8675" y="57.15" size="1" layer="101" font="vector" ratio="20" rot="SR90" align="center-left">PWRSW_GATE</text>
+<text x="84.455" y="58.1025" size="1" layer="101" font="vector" ratio="20" rot="SR90" align="center-left">PROTECTED</text>
+<text x="92.23375" y="59.21375" size="1" layer="101" font="vector" ratio="20" rot="SR90" align="center-left">POWER</text>
+<wire x1="85.09" y1="59.69" x2="85.725" y2="59.69" width="0.1524" layer="101"/>
+<wire x1="91.44" y1="60.325" x2="90.805" y2="60.325" width="0.1524" layer="101"/>
+<wire x1="85.4075" y1="60.0075" x2="85.725" y2="59.69" width="0.1524" layer="101"/>
+<wire x1="85.725" y1="59.69" x2="85.4075" y2="59.3725" width="0.1524" layer="101"/>
+<wire x1="91.1225" y1="60.6425" x2="90.805" y2="60.325" width="0.1524" layer="101"/>
+<wire x1="90.805" y1="60.325" x2="91.1225" y2="60.0075" width="0.1524" layer="101"/>
+<wire x1="82.8675" y1="56.8325" x2="82.8675" y2="56.03875" width="0.1524" layer="101"/>
+<wire x1="82.8675" y1="56.03875" x2="83.02625" y2="55.88" width="0.1524" layer="101"/>
+<wire x1="83.02625" y1="55.88" x2="83.5025" y2="55.88" width="0.1524" layer="101"/>
+<wire x1="83.185" y1="56.1975" x2="83.5025" y2="55.88" width="0.1524" layer="101"/>
+<wire x1="83.5025" y1="55.88" x2="83.185" y2="55.5625" width="0.1524" layer="101"/>
+<text x="45.72" y="67.945" size="1" layer="101" font="vector" ratio="20" rot="SR0">PWM2A PWM2B MI2
+PWM1A PWM1B MI1</text>
+<wire x1="45.085" y1="70.485" x2="45.72" y2="71.12" width="0.1524" layer="101"/>
+<wire x1="45.72" y1="71.12" x2="58.7375" y2="71.12" width="0.1524" layer="101"/>
+<wire x1="58.7375" y1="71.12" x2="59.3725" y2="70.485" width="0.1524" layer="101"/>
+<wire x1="59.3725" y1="70.485" x2="59.3725" y2="68.58" width="0.1524" layer="101"/>
+<wire x1="59.3725" y1="68.58" x2="59.3725" y2="67.78625" width="0.1524" layer="101"/>
+<wire x1="59.3725" y1="67.78625" x2="58.89625" y2="67.31" width="0.1524" layer="101"/>
+<wire x1="58.89625" y1="67.31" x2="45.72" y2="67.31" width="0.1524" layer="101"/>
+<wire x1="45.72" y1="67.31" x2="45.085" y2="67.945" width="0.1524" layer="101"/>
+<wire x1="45.085" y1="67.945" x2="45.085" y2="70.485" width="0.1524" layer="101"/>
+<wire x1="60.325" y1="69.215" x2="65.405" y2="69.215" width="0.1524" layer="101"/>
+<wire x1="65.405" y1="69.215" x2="65.7225" y2="68.8975" width="0.1524" layer="101"/>
+<wire x1="65.7225" y1="68.8975" x2="65.7225" y2="65.7225" width="0.1524" layer="101"/>
+<wire x1="65.7225" y1="65.7225" x2="65.405" y2="65.405" width="0.1524" layer="101"/>
+<wire x1="65.405" y1="65.405" x2="60.325" y2="65.405" width="0.1524" layer="101"/>
+<wire x1="60.325" y1="65.405" x2="60.0075" y2="65.7225" width="0.1524" layer="101"/>
+<wire x1="60.0075" y1="65.7225" x2="60.0075" y2="68.58" width="0.1524" layer="101"/>
+<wire x1="60.0075" y1="68.58" x2="60.0075" y2="68.8975" width="0.1524" layer="101"/>
+<wire x1="60.0075" y1="68.8975" x2="60.325" y2="69.215" width="0.1524" layer="101"/>
+<wire x1="59.3725" y1="68.58" x2="60.0075" y2="68.58" width="0.1524" layer="101"/>
+<text x="74.295" y="83.82" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">ENC1B</text>
+<text x="74.295" y="81.915" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">ENC1B</text>
+<text x="74.295" y="80.01" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">ENC2B</text>
+<text x="74.295" y="78.105" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">ENC2A</text>
+<wire x1="95.25" y1="88.9" x2="95.25" y2="87.63" width="0.1524" layer="101"/>
+<wire x1="95.25" y1="87.63" x2="95.5675" y2="87.3125" width="0.1524" layer="101"/>
+<wire x1="95.5675" y1="87.3125" x2="95.5675" y2="87.63" width="0.1524" layer="101"/>
+<wire x1="95.5675" y1="87.3125" x2="95.25" y2="87.3125" width="0.1524" layer="101"/>
+<wire x1="90.805" y1="89.535" x2="90.4875" y2="89.2175" width="0.1524" layer="101"/>
+<wire x1="90.4875" y1="89.2175" x2="90.4875" y2="87.47125" width="0.1524" layer="101"/>
+<wire x1="90.4875" y1="87.47125" x2="90.805" y2="87.15375" width="0.1524" layer="101"/>
+<wire x1="90.805" y1="87.15375" x2="90.805" y2="87.47125" width="0.1524" layer="101"/>
+<wire x1="90.805" y1="87.15375" x2="90.4875" y2="87.15375" width="0.1524" layer="101"/>
+<text x="21.43125" y="74.77125" size="1" layer="101" font="vector" ratio="20" rot="SR0" align="center-right">3V3_IN</text>
+<text x="66.04" y="96.99625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">S1</text>
+<text x="53.34" y="96.99625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">S2</text>
+<text x="40.64" y="96.99625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">S3</text>
+<text x="27.94" y="96.99625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">S4</text>
+<text x="73.025" y="55.245" size="1" layer="101" font="vector" ratio="20" rot="SR90" align="center-left">5V_IN</text>
+<text x="11.1125" y="59.055" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">ON
+ENTER</text>
+<text x="20.6375" y="68.58" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">OFF
+ESCAPE</text>
+<text x="20.6375" y="59.055" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">B1</text>
+<text x="1.5875" y="59.055" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">B2</text>
+<text x="11.1125" y="68.58" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">B3</text>
+<text x="11.1125" y="49.53" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">B4</text>
+<text x="1.42875" y="55.40375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">L1</text>
+<text x="1.42875" y="50.32375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">L2</text>
+<text x="1.42875" y="45.24375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">L3</text>
+<text x="1.42875" y="40.16375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">L4</text>
+<text x="4.28625" y="15.39875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">RESET</text>
+<text x="3.01625" y="69.37375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="top-center">PWR</text>
+<text x="0.9525" y="63.02375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">ON</text>
+<text x="72.7075" y="86.995" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="top-right">VCC</text>
+<text x="86.6775" y="82.70875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">M1B</text>
+<text x="90.805" y="89.535" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="bottom-right">VUSB</text>
+<text x="95.09125" y="89.535" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="bottom-right">5V_ESP</text>
+<text x="99.695" y="85.4075" size="1" layer="102" font="vector" ratio="20" rot="SMR270">GND</text>
+<text x="74.295" y="89.535" size="1" layer="102" font="vector" ratio="20" rot="SR270">-</text>
+<text x="71.755" y="89.535" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="top-left">+</text>
+<text x="79.375" y="89.535" size="1" layer="102" font="vector" ratio="20" rot="SR270">-</text>
+<text x="76.835" y="89.535" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="top-left">+</text>
+<text x="84.455" y="89.535" size="1" layer="102" font="vector" ratio="20" rot="SR270">-</text>
+<text x="81.915" y="89.535" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="top-left">+</text>
+<text x="89.535" y="89.535" size="1" layer="102" font="vector" ratio="20" rot="SR270">-</text>
+<text x="86.995" y="89.535" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="top-left">+</text>
+<text x="88.74125" y="82.70875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E1+</text>
+<text x="90.805" y="82.70875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E1B</text>
+<text x="92.71" y="82.70875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E1A</text>
+<text x="94.77375" y="82.70875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E1-</text>
+<text x="96.8375" y="82.70875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">M1A</text>
+<text x="98.58375" y="57.785" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="bottom-center">B+</text>
+<text x="88.74125" y="76.35875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E2-</text>
+<text x="90.805" y="76.35875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E2A</text>
+<text x="92.71" y="76.35875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E2B</text>
+<text x="94.77375" y="76.35875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E2+</text>
+<text x="96.8375" y="76.35875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">M2B</text>
+<text x="86.6775" y="23.65375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">M3A</text>
+<text x="88.74125" y="23.65375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E3+</text>
+<text x="90.805" y="23.65375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E3A</text>
+<text x="92.71" y="23.65375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E3B</text>
+<text x="94.77375" y="23.65375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E3-</text>
+<text x="95.40875" y="29.21" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">!M34FAULT</text>
+<text x="86.6775" y="17.30375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">M4B</text>
+<text x="88.74125" y="17.30375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E4-</text>
+<text x="90.805" y="17.30375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E4B</text>
+<text x="92.71" y="17.30375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E4A</text>
+<text x="94.77375" y="17.30375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">E4+</text>
+<text x="96.8375" y="17.30375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">M4A</text>
+<text x="92.075" y="13.97" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">GND</text>
+<text x="92.075" y="12.22375" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">VCC</text>
+<text x="92.075" y="10.795" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">iSERVO</text>
+<text x="76.835" y="8.5725" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">3V3</text>
+<text x="84.455" y="10.31875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">TRIG</text>
+<text x="86.6775" y="10.31875" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="center-right">ECHO</text>
+<text x="88.74125" y="11.7475" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">GND</text>
+<text x="80.3275" y="8.89" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">U4</text>
+<text x="80.3275" y="6.35" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">U3</text>
+<text x="80.3275" y="3.81" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">U2</text>
+<text x="80.3275" y="1.27" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">U1</text>
+<text x="74.295" y="8.5725" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">GND</text>
+<text x="71.755" y="8.5725" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">AUX</text>
+<text x="69.215" y="8.5725" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">!CS</text>
+<text x="66.675" y="8.5725" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">SCK</text>
+<text x="64.135" y="8.5725" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">MISO</text>
+<text x="61.595" y="8.5725" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">MOSI</text>
+<text x="59.055" y="8.5725" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">GND</text>
+<text x="56.515" y="8.5725" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">VCC</text>
+<text x="81.915" y="10.31875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">5V</text>
+<text x="71.12" y="13.0175" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="top-right">!CS1! !CS2! !CS3!
+IO1 IN1 IN2</text>
+<wire x1="73.025" y1="12.7" x2="72.0725" y2="11.7475" width="0.2" layer="102"/>
+<wire x1="71.755" y1="12.7" x2="69.5325" y2="10.4775" width="0.2" layer="102"/>
+<text x="53.975" y="5.3975" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">SEL</text>
+<text x="17.93875" y="99.3775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">iLED</text>
+<text x="13.49375" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="center-left">+</text>
+<text x="10.795" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="center-left">-</text>
+<text x="98.425" y="52.705" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="bottom-center">B-</text>
+<text x="98.425" y="47.625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="top-center">GND</text>
+<text x="98.425" y="42.545" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="top-center">VCC</text>
+<text x="94.2975" y="63.5" size="1" layer="102" font="vector" ratio="20" rot="SMR270">Bmid</text>
+<text x="77.94625" y="70.8025" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="top-left">!M12FAULT</text>
+<text x="34.29" y="62.23" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">SDA</text>
+<text x="85.88375" y="20.47875" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="top-right">ENC34PWR</text>
+<text x="77.7875" y="86.995" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="top-right">5V</text>
+<text x="82.8675" y="86.995" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="top-right">3V3S</text>
+<text x="87.9475" y="86.995" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="top-right">3V3</text>
+<text x="74.93" y="38.735" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">DEBUG</text>
+<text x="74.93" y="36.195" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">JTAG</text>
+<text x="71.755" y="34.925" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="top-left">O T M
+R R I
+D - C
+- + O
+C B +
++ + -
+</text>
+<text x="36.195" y="10.4775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">+</text>
+<text x="38.735" y="10.4775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">-</text>
+<text x="41.275" y="10.4775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">C</text>
+<text x="43.815" y="10.4775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">D</text>
+<text x="46.355" y="10.4775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">G</text>
+<text x="48.895" y="10.4775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">-</text>
+<text x="51.435" y="10.4775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">+</text>
+<text x="13.0175" y="1.27" size="1" layer="102" font="vector" ratio="20" rot="SMR180" align="center-right">SEL</text>
+<text x="16.03375" y="10.4775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">+</text>
+<text x="18.57375" y="10.4775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">-</text>
+<text x="21.11375" y="10.4775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">T</text>
+<text x="23.65375" y="10.4775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">R</text>
+<text x="26.035" y="5.55625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">G</text>
+<text x="28.575" y="5.55625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">-</text>
+<text x="31.115" y="5.55625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">+</text>
+<text x="31.75" y="16.35125" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="bottom-right">ESP UART0
+STM UART
+6 4 3 IO
+ESP UART2 IO5</text>
+<wire x1="33.02" y1="5.08" x2="52.07" y2="5.08" width="0.1524" layer="102"/>
+<text x="47.46625" y="16.1925" size="1" layer="102" font="vector" ratio="20" rot="SMR0">IO1
+IN3
+IO2
+IN4</text>
+<text x="34.29" y="59.69" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">SCL</text>
+<text x="34.29" y="57.15" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">3V3S</text>
+<text x="34.29" y="54.61" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">GND</text>
+<text x="35.56" y="36.83" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">SDA</text>
+<text x="38.1" y="36.83" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">SCL</text>
+<text x="40.64" y="36.83" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">3V3S</text>
+<text x="42.545" y="36.83" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">GND</text>
+<text x="1.27" y="33.02" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="top-left">CAN/I2C  STM-UART
+PWR        PWR
+GND        GND
+SDA        TXD
+SCL         RXD
+DIR         DIR
+INT         INT</text>
+<text x="44.45" y="72.39" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="bottom-right">NRST  RST     ON    OFF
+BTN4 BTN3 BTN2 BTN1
+LED4 LED3  LED2 LED1
++5V  +3V3  GND    AIO</text>
+<text x="10.795" y="90.17" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">P</text>
+<text x="10.795" y="87.63" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">-</text>
+<text x="10.795" y="85.09" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">B</text>
+<text x="10.795" y="82.55" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">-</text>
+<text x="10.795" y="80.01" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">L</text>
+<text x="10.795" y="77.47" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">-</text>
+<text x="10.795" y="74.93" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">1</text>
+<text x="10.795" y="72.39" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">2</text>
+<text x="52.3875" y="65.56375" size="1" layer="102" font="vector" ratio="20" rot="SMR270">RB3204-RBCX
+v1.0 5/2020
+https://github.com/
+RoboticsBrno/RB3204-RBCX
+CC-SA 4.0 </text>
+<text x="86.6775" y="76.35875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">M2A</text>
+<text x="96.8375" y="23.65375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">M3B</text>
+<wire x1="35.56" y1="37.465" x2="35.56" y2="39.37" width="0.2" layer="102"/>
+<wire x1="35.56" y1="39.37" x2="34.925" y2="40.005" width="0.2" layer="102"/>
+<wire x1="38.1" y1="37.465" x2="38.1" y2="39.37" width="0.2" layer="102"/>
+<wire x1="38.1" y1="39.37" x2="37.465" y2="40.005" width="0.2" layer="102"/>
+<wire x1="40.64" y1="37.465" x2="40.64" y2="39.37" width="0.2" layer="102"/>
+<wire x1="40.64" y1="39.37" x2="40.005" y2="40.005" width="0.2" layer="102"/>
+<wire x1="43.18" y1="37.465" x2="43.18" y2="39.37" width="0.2" layer="102"/>
+<wire x1="43.18" y1="39.37" x2="42.545" y2="40.005" width="0.2" layer="102"/>
+<wire x1="43.18" y1="37.465" x2="42.8625" y2="37.1475" width="0.2" layer="102"/>
+<wire x1="10.16" y1="42.545" x2="6.35" y2="38.735" width="0.1524" layer="102"/>
+<wire x1="6.35" y1="38.735" x2="6.35" y2="33.655" width="0.1524" layer="102"/>
+<wire x1="6.35" y1="33.655" x2="1.27" y2="33.655" width="0.1524" layer="102"/>
+<wire x1="1.27" y1="33.655" x2="0.635" y2="33.02" width="0.1524" layer="102"/>
+<wire x1="0.635" y1="33.02" x2="0.635" y2="19.685" width="0.1524" layer="102"/>
+<wire x1="0.635" y1="19.685" x2="1.27" y2="19.05" width="0.1524" layer="102"/>
+<wire x1="1.27" y1="19.05" x2="2.54" y2="19.05" width="0.1524" layer="102"/>
+<wire x1="2.54" y1="19.05" x2="3.175" y2="19.685" width="0.1524" layer="102"/>
+<wire x1="3.175" y1="19.685" x2="3.175" y2="22.86" width="0.1524" layer="102"/>
+<wire x1="3.175" y1="22.86" x2="3.81" y2="23.495" width="0.1524" layer="102"/>
+<wire x1="3.81" y1="23.495" x2="11.43" y2="23.495" width="0.1524" layer="102"/>
+<wire x1="11.43" y1="23.495" x2="12.065" y2="24.13" width="0.1524" layer="102"/>
+<wire x1="12.065" y1="24.13" x2="12.065" y2="33.02" width="0.1524" layer="102"/>
+<wire x1="12.065" y1="33.02" x2="11.43" y2="33.655" width="0.1524" layer="102"/>
+<wire x1="11.43" y1="33.655" x2="6.35" y2="33.655" width="0.1524" layer="102"/>
+<text x="27.6225" y="46.51375" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="top-center">I2C JUMPER</text>
+<text x="74.93" y="41.275" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">SWD</text>
+<wire x1="10.16" y1="42.545" x2="10.16" y2="44.45" width="0.1524" layer="102"/>
+<wire x1="10.16" y1="44.45" x2="10.795" y2="45.085" width="0.1524" layer="102"/>
+<wire x1="10.795" y1="45.085" x2="24.765" y2="45.085" width="0.1524" layer="102"/>
+<wire x1="24.765" y1="45.085" x2="25.4" y2="44.45" width="0.1524" layer="102"/>
+<wire x1="25.4" y1="44.45" x2="25.4" y2="40.64" width="0.1524" layer="102"/>
+<wire x1="25.4" y1="40.64" x2="24.765" y2="40.005" width="0.1524" layer="102"/>
+<wire x1="24.765" y1="40.005" x2="10.795" y2="40.005" width="0.1524" layer="102"/>
+<wire x1="10.795" y1="40.005" x2="10.16" y2="40.64" width="0.1524" layer="102"/>
+<wire x1="10.16" y1="40.64" x2="10.16" y2="42.545" width="0.1524" layer="102"/>
+<wire x1="0.635" y1="90.805" x2="1.27" y2="91.44" width="0.1524" layer="102"/>
+<wire x1="1.27" y1="91.44" x2="11.43" y2="91.44" width="0.1524" layer="102"/>
+<wire x1="11.43" y1="91.44" x2="12.065" y2="90.805" width="0.1524" layer="102"/>
+<wire x1="12.065" y1="90.805" x2="12.065" y2="75.565" width="0.1524" layer="102"/>
+<wire x1="12.065" y1="75.565" x2="12.065" y2="71.755" width="0.1524" layer="102"/>
+<wire x1="12.065" y1="71.755" x2="11.43" y2="71.12" width="0.1524" layer="102"/>
+<wire x1="11.43" y1="71.12" x2="1.27" y2="71.12" width="0.1524" layer="102"/>
+<wire x1="1.27" y1="71.12" x2="0.635" y2="71.755" width="0.1524" layer="102"/>
+<wire x1="0.635" y1="71.755" x2="0.635" y2="90.805" width="0.1524" layer="102"/>
+<wire x1="12.065" y1="75.565" x2="43.815" y2="75.565" width="0.1524" layer="102"/>
+<wire x1="43.815" y1="75.565" x2="43.815" y2="77.47" width="0.1524" layer="102"/>
+<wire x1="43.815" y1="77.47" x2="44.45" y2="78.105" width="0.1524" layer="102"/>
+<wire x1="44.45" y1="78.105" x2="45.085" y2="78.105" width="0.1524" layer="102"/>
+<wire x1="45.085" y1="78.105" x2="59.69" y2="78.105" width="0.1524" layer="102"/>
+<wire x1="59.69" y1="78.105" x2="60.325" y2="77.47" width="0.1524" layer="102"/>
+<wire x1="60.325" y1="77.47" x2="60.325" y2="72.39" width="0.1524" layer="102"/>
+<wire x1="60.325" y1="72.39" x2="59.69" y2="71.755" width="0.1524" layer="102"/>
+<wire x1="59.69" y1="71.755" x2="44.45" y2="71.755" width="0.1524" layer="102"/>
+<wire x1="44.45" y1="71.755" x2="43.815" y2="72.39" width="0.1524" layer="102"/>
+<wire x1="43.815" y1="72.39" x2="43.815" y2="75.565" width="0.1524" layer="102"/>
+<text x="59.055" y="17.4625" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">iS</text>
+<text x="59.055" y="19.3675" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">ENC4B</text>
+<text x="59.055" y="21.2725" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">ENC4A</text>
+<text x="59.055" y="23.1775" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">ENC3B</text>
+<text x="59.055" y="25.0825" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">ENC3A</text>
+<text x="59.055" y="26.9875" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">IN4B</text>
+<text x="59.055" y="28.8925" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">PWM4</text>
+<text x="59.055" y="30.7975" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">IN4A</text>
+<text x="71.755" y="27.94" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">IN4_B</text>
+<text x="71.755" y="29.845" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-right">IN4_A</text>
+<text x="82.55" y="40.005" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">MI3</text>
+<text x="85.09" y="40.005" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">PWM3A</text>
+<text x="86.995" y="40.005" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">PWM3B</text>
+<text x="82.8675" y="57.15" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">PWRSW_GATE</text>
+<text x="84.455" y="58.1025" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">PROTECTED</text>
+<text x="92.23375" y="59.21375" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">POWER</text>
+<wire x1="85.09" y1="59.69" x2="85.725" y2="59.69" width="0.1524" layer="102"/>
+<wire x1="91.44" y1="60.325" x2="90.805" y2="60.325" width="0.1524" layer="102"/>
+<wire x1="85.4075" y1="60.0075" x2="85.725" y2="59.69" width="0.1524" layer="102"/>
+<wire x1="85.725" y1="59.69" x2="85.4075" y2="59.3725" width="0.1524" layer="102"/>
+<wire x1="91.1225" y1="60.6425" x2="90.805" y2="60.325" width="0.1524" layer="102"/>
+<wire x1="90.805" y1="60.325" x2="91.1225" y2="60.0075" width="0.1524" layer="102"/>
+<wire x1="82.8675" y1="56.8325" x2="82.8675" y2="56.03875" width="0.1524" layer="102"/>
+<wire x1="82.8675" y1="56.03875" x2="83.02625" y2="55.88" width="0.1524" layer="102"/>
+<wire x1="83.02625" y1="55.88" x2="83.5025" y2="55.88" width="0.1524" layer="102"/>
+<wire x1="83.185" y1="56.1975" x2="83.5025" y2="55.88" width="0.1524" layer="102"/>
+<wire x1="83.5025" y1="55.88" x2="83.185" y2="55.5625" width="0.1524" layer="102"/>
+<text x="45.72" y="67.945" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="bottom-right">MI2 PWM2B PWM2A
+MI1 PWM1B PWM1A</text>
+<wire x1="45.085" y1="70.485" x2="45.72" y2="71.12" width="0.1524" layer="102"/>
+<wire x1="45.72" y1="71.12" x2="58.7375" y2="71.12" width="0.1524" layer="102"/>
+<wire x1="58.7375" y1="71.12" x2="59.3725" y2="70.485" width="0.1524" layer="102"/>
+<wire x1="59.3725" y1="70.485" x2="59.3725" y2="68.58" width="0.1524" layer="102"/>
+<wire x1="59.3725" y1="68.58" x2="59.3725" y2="67.78625" width="0.1524" layer="102"/>
+<wire x1="59.3725" y1="67.78625" x2="58.89625" y2="67.31" width="0.1524" layer="102"/>
+<wire x1="58.89625" y1="67.31" x2="45.72" y2="67.31" width="0.1524" layer="102"/>
+<wire x1="45.72" y1="67.31" x2="45.085" y2="67.945" width="0.1524" layer="102"/>
+<wire x1="45.085" y1="67.945" x2="45.085" y2="70.485" width="0.1524" layer="102"/>
+<wire x1="60.325" y1="69.215" x2="65.405" y2="69.215" width="0.1524" layer="102"/>
+<wire x1="65.405" y1="69.215" x2="65.7225" y2="68.8975" width="0.1524" layer="102"/>
+<wire x1="65.7225" y1="68.8975" x2="65.7225" y2="65.7225" width="0.1524" layer="102"/>
+<wire x1="65.7225" y1="65.7225" x2="65.405" y2="65.405" width="0.1524" layer="102"/>
+<wire x1="65.405" y1="65.405" x2="60.325" y2="65.405" width="0.1524" layer="102"/>
+<wire x1="60.325" y1="65.405" x2="60.0075" y2="65.7225" width="0.1524" layer="102"/>
+<wire x1="60.0075" y1="65.7225" x2="60.0075" y2="68.58" width="0.1524" layer="102"/>
+<wire x1="60.0075" y1="68.58" x2="60.0075" y2="68.8975" width="0.1524" layer="102"/>
+<wire x1="60.0075" y1="68.8975" x2="60.325" y2="69.215" width="0.1524" layer="102"/>
+<wire x1="59.3725" y1="68.58" x2="60.0075" y2="68.58" width="0.1524" layer="102"/>
+<text x="74.295" y="83.82" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">ENC1B</text>
+<text x="74.295" y="81.915" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">ENC1B</text>
+<text x="74.295" y="80.01" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">ENC2B</text>
+<text x="74.295" y="78.105" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">ENC2A</text>
+<wire x1="95.25" y1="88.9" x2="95.25" y2="87.63" width="0.1524" layer="102"/>
+<wire x1="95.25" y1="87.63" x2="95.5675" y2="87.3125" width="0.1524" layer="102"/>
+<wire x1="95.5675" y1="87.3125" x2="95.5675" y2="87.63" width="0.1524" layer="102"/>
+<wire x1="95.5675" y1="87.3125" x2="95.25" y2="87.3125" width="0.1524" layer="102"/>
+<wire x1="90.805" y1="89.535" x2="90.4875" y2="89.2175" width="0.1524" layer="102"/>
+<wire x1="90.4875" y1="89.2175" x2="90.4875" y2="87.47125" width="0.1524" layer="102"/>
+<wire x1="90.4875" y1="87.47125" x2="90.805" y2="87.15375" width="0.1524" layer="102"/>
+<wire x1="90.805" y1="87.15375" x2="90.805" y2="87.47125" width="0.1524" layer="102"/>
+<wire x1="90.805" y1="87.15375" x2="90.4875" y2="87.15375" width="0.1524" layer="102"/>
+<text x="21.43125" y="74.77125" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">3V3_IN</text>
+<text x="66.675" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">S1</text>
+<text x="53.975" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">S2</text>
+<text x="41.275" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">S3</text>
+<text x="28.575" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">S4</text>
+<text x="73.025" y="55.245" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">5V_IN</text>
+<text x="98.7425" y="61.595" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="bottom-center">B+</text>
+<text x="98.26625" y="38.57625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="top-center">VCC</text>
+<wire x1="97.79" y1="38.735" x2="96.52" y2="38.735" width="0.1524" layer="102"/>
+<wire x1="96.52" y1="38.735" x2="95.885" y2="39.37" width="0.1524" layer="102"/>
+<wire x1="96.52" y1="39.37" x2="95.885" y2="39.37" width="0.1524" layer="102"/>
+<wire x1="95.885" y1="39.37" x2="95.885" y2="38.735" width="0.1524" layer="102"/>
+<wire x1="98.425" y1="61.595" x2="97.155" y2="61.595" width="0.1524" layer="102"/>
+<wire x1="97.155" y1="61.595" x2="96.52" y2="60.96" width="0.1524" layer="102"/>
+<wire x1="96.52" y1="61.595" x2="96.52" y2="60.96" width="0.1524" layer="102"/>
+<wire x1="96.52" y1="60.96" x2="97.155" y2="60.96" width="0.1524" layer="102"/>
+<wire x1="95.885" y1="29.21" x2="96.8375" y2="29.21" width="0.1524" layer="102"/>
+<wire x1="96.52" y1="29.5275" x2="96.8375" y2="29.21" width="0.1524" layer="102"/>
+<wire x1="96.8375" y1="29.21" x2="96.52" y2="28.8925" width="0.1524" layer="102"/>
+<wire x1="85.56625" y1="20.0025" x2="84.29625" y2="20.0025" width="0.1524" layer="102"/>
+<wire x1="84.29625" y1="20.0025" x2="83.97875" y2="20.32" width="0.1524" layer="102"/>
+<wire x1="83.97875" y1="20.32" x2="84.455" y2="20.32" width="0.1524" layer="102"/>
+<wire x1="83.97875" y1="20.32" x2="83.97875" y2="19.84375" width="0.1524" layer="102"/>
+<wire x1="85.56625" y1="20.0025" x2="84.29625" y2="20.0025" width="0.1524" layer="101"/>
+<wire x1="84.29625" y1="20.0025" x2="83.97875" y2="20.32" width="0.1524" layer="101"/>
+<wire x1="84.455" y1="20.32" x2="83.97875" y2="20.32" width="0.1524" layer="101"/>
+<wire x1="83.97875" y1="20.32" x2="83.97875" y2="19.84375" width="0.1524" layer="101"/>
+<text x="8.5725" y="35.56" size="1" layer="102" font="vector" ratio="20" rot="SMR180" align="center-left">5V</text>
+<text x="15.5575" y="35.56" size="1" layer="102" font="vector" ratio="20" rot="SMR180" align="center-left">3V3</text>
+<text x="65.7225" y="13.97" size="1.4224" layer="102" font="vector" ratio="20" rot="SMR180" align="center-right">SPI</text>
+<wire x1="60.325" y1="15.875" x2="69.215" y2="15.875" width="0.1524" layer="102"/>
+<wire x1="69.215" y1="15.875" x2="69.85" y2="16.51" width="0.1524" layer="102"/>
+<wire x1="69.85" y1="16.51" x2="69.85" y2="21.59" width="0.1524" layer="102"/>
+<wire x1="69.85" y1="21.59" x2="70.485" y2="22.225" width="0.1524" layer="102"/>
+<wire x1="70.485" y1="22.225" x2="73.66" y2="22.225" width="0.1524" layer="102"/>
+<wire x1="73.66" y1="22.225" x2="74.295" y2="21.59" width="0.1524" layer="102"/>
+<wire x1="74.295" y1="21.59" x2="74.295" y2="12.7" width="0.1524" layer="102"/>
+<wire x1="74.295" y1="12.7" x2="75.565" y2="11.43" width="0.1524" layer="102"/>
+<wire x1="75.565" y1="11.43" x2="77.47" y2="11.43" width="0.1524" layer="102"/>
+<wire x1="77.47" y1="11.43" x2="78.74" y2="10.16" width="0.1524" layer="102"/>
+<wire x1="78.74" y1="10.16" x2="78.74" y2="0.635" width="0.1524" layer="102"/>
+<text x="34.6075" y="10.4775" size="1.4224" layer="102" font="vector" ratio="20" rot="SMR180" align="center-right">I2C</text>
+<text x="30.32125" y="10.4775" size="1.4224" layer="102" font="vector" ratio="20" rot="SMR180" align="center-right">UART</text>
+<wire x1="32.7025" y1="0.3175" x2="32.7025" y2="6.0325" width="0.1524" layer="102"/>
+<wire x1="32.7025" y1="6.0325" x2="31.115" y2="7.62" width="0.1524" layer="102"/>
+<wire x1="31.115" y1="7.62" x2="31.115" y2="11.43" width="0.1524" layer="102"/>
+<wire x1="60.325" y1="15.875" x2="53.0225" y2="8.5725" width="0.1524" layer="102"/>
+<wire x1="53.0225" y1="8.5725" x2="53.0225" y2="5.08" width="0.1524" layer="102"/>
+<text x="53.975" y="1.5875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">3V3</text>
+<wire x1="53.0225" y1="5.08" x2="53.0225" y2="0.635" width="0.1524" layer="102"/>
+<wire x1="53.0225" y1="5.08" x2="55.245" y2="5.08" width="0.1524" layer="102"/>
+<wire x1="54.9275" y1="3.4925" x2="54.61" y2="3.175" width="0.1524" layer="102"/>
+<wire x1="54.61" y1="1.905" x2="54.9275" y2="1.5875" width="0.1524" layer="102"/>
+<wire x1="54.9275" y1="3.4925" x2="54.61" y2="3.4925" width="0.1524" layer="102"/>
+<wire x1="54.9275" y1="3.4925" x2="54.9275" y2="3.175" width="0.1524" layer="102"/>
+<wire x1="54.9275" y1="1.5875" x2="54.9275" y2="1.905" width="0.1524" layer="102"/>
+<wire x1="54.9275" y1="1.5875" x2="54.61" y2="1.5875" width="0.1524" layer="102"/>
+<wire x1="54.61" y1="6.50875" x2="55.08625" y2="6.50875" width="0.1524" layer="102"/>
+<wire x1="55.08625" y1="6.50875" x2="54.76875" y2="6.19125" width="0.1524" layer="102"/>
+<wire x1="55.08625" y1="6.50875" x2="54.76875" y2="6.82625" width="0.1524" layer="102"/>
+<wire x1="13.335" y1="1.27" x2="13.97" y2="1.27" width="0.1524" layer="102"/>
+<wire x1="13.97" y1="1.27" x2="13.6525" y2="1.5875" width="0.1524" layer="102"/>
+<wire x1="13.97" y1="1.27" x2="13.6525" y2="0.9525" width="0.1524" layer="102"/>
+<text x="13.0175" y="8.89" size="1" layer="102" font="vector" ratio="20" rot="SMR180" align="center-right">3V3</text>
+<wire x1="13.335" y1="8.89" x2="13.97" y2="8.89" width="0.1524" layer="102"/>
+<wire x1="13.97" y1="8.89" x2="13.6525" y2="9.2075" width="0.1524" layer="102"/>
+<wire x1="13.97" y1="8.89" x2="13.6525" y2="8.5725" width="0.1524" layer="102"/>
+<text x="13.0175" y="6.35" size="1" layer="102" font="vector" ratio="20" rot="SMR180" align="center-right">SEL</text>
+<wire x1="13.335" y1="6.35" x2="13.97" y2="6.35" width="0.1524" layer="102"/>
+<wire x1="13.97" y1="6.35" x2="13.6525" y2="6.6675" width="0.1524" layer="102"/>
+<wire x1="13.97" y1="6.35" x2="13.6525" y2="6.0325" width="0.1524" layer="102"/>
+<text x="13.0175" y="3.81" size="1" layer="102" font="vector" ratio="20" rot="SMR180" align="center-right">SEL</text>
+<wire x1="13.335" y1="3.81" x2="13.97" y2="3.81" width="0.1524" layer="102"/>
+<wire x1="13.97" y1="3.81" x2="13.6525" y2="4.1275" width="0.1524" layer="102"/>
+<wire x1="13.97" y1="3.81" x2="13.6525" y2="3.4925" width="0.1524" layer="102"/>
+<wire x1="10.16" y1="0.635" x2="10.16" y2="11.43" width="0.1524" layer="102"/>
+<text x="33.655" y="1.5875" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">3V3</text>
+<wire x1="34.6075" y1="3.4925" x2="34.29" y2="3.175" width="0.1524" layer="102"/>
+<wire x1="34.29" y1="1.905" x2="34.6075" y2="1.5875" width="0.1524" layer="102"/>
+<wire x1="34.6075" y1="3.4925" x2="34.29" y2="3.4925" width="0.1524" layer="102"/>
+<wire x1="34.6075" y1="3.4925" x2="34.6075" y2="3.175" width="0.1524" layer="102"/>
+<wire x1="34.6075" y1="1.5875" x2="34.6075" y2="1.905" width="0.1524" layer="102"/>
+<wire x1="34.6075" y1="1.5875" x2="34.29" y2="1.5875" width="0.1524" layer="102"/>
+<text x="33.655" y="6.6675" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">SEL</text>
+<wire x1="34.6075" y1="8.5725" x2="34.29" y2="8.255" width="0.1524" layer="102"/>
+<wire x1="34.29" y1="6.985" x2="34.6075" y2="6.6675" width="0.1524" layer="102"/>
+<wire x1="34.6075" y1="8.5725" x2="34.29" y2="8.5725" width="0.1524" layer="102"/>
+<wire x1="34.6075" y1="8.5725" x2="34.6075" y2="8.255" width="0.1524" layer="102"/>
+<wire x1="34.6075" y1="6.6675" x2="34.6075" y2="6.985" width="0.1524" layer="102"/>
+<wire x1="34.6075" y1="6.6675" x2="34.29" y2="6.6675" width="0.1524" layer="102"/>
+<text x="64.135" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">VCC</text>
+<text x="61.595" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">GND</text>
+<text x="51.435" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">VCC</text>
+<text x="48.895" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">GND</text>
+<text x="38.735" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">VCC</text>
+<text x="36.195" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">GND</text>
+<text x="26.035" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">VCC</text>
+<text x="23.495" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">GND</text>
+<text x="64.135" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">IN</text>
+<text x="66.675" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">EN</text>
+<text x="61.595" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">GND</text>
+<text x="59.055" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">OUT</text>
+<text x="69.215" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">EN</text>
+<text x="51.435" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">IN</text>
+<text x="53.975" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">EN</text>
+<text x="48.895" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">GND</text>
+<text x="46.355" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">OUT</text>
+<text x="56.515" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">EN</text>
+<text x="38.735" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">IN</text>
+<text x="41.275" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">EN</text>
+<text x="36.195" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">GND</text>
+<text x="33.655" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">OUT</text>
+<text x="43.815" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">EN</text>
+<text x="26.035" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">IN</text>
+<text x="28.575" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">EN</text>
+<text x="23.495" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">GND</text>
+<text x="20.955" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">OUT</text>
+<text x="31.115" y="81.28" size="1" layer="102" font="vector" ratio="20" rot="SMR90" align="center-left">EN</text>
+<text x="15.24" y="89.535" size="1" layer="102" font="vector" ratio="20" rot="SMR180" align="center-left">IN</text>
+<text x="15.24" y="86.995" size="1" layer="102" font="vector" ratio="20" rot="SMR180" align="center-left">EN</text>
+<text x="15.24" y="92.075" size="1" layer="102" font="vector" ratio="20" rot="SMR180" align="center-left">GND</text>
+<text x="15.24" y="94.615" size="1" layer="102" font="vector" ratio="20" rot="SMR180" align="center-left">OUT</text>
+<text x="15.24" y="84.455" size="1" layer="102" font="vector" ratio="20" rot="SMR180" align="center-left">EN</text>
+<wire x1="19.05" y1="99.06" x2="19.05" y2="78.105" width="0.1524" layer="102"/>
+<wire x1="32.385" y1="99.695" x2="32.385" y2="78.105" width="0.1524" layer="102"/>
+<wire x1="45.085" y1="99.695" x2="45.085" y2="78.105" width="0.1524" layer="102"/>
+<wire x1="57.785" y1="99.695" x2="57.785" y2="78.74" width="0.1524" layer="102"/>
+<wire x1="70.1675" y1="97.31375" x2="70.00875" y2="97.155" width="0.1524" layer="102"/>
+<wire x1="70.00875" y1="97.155" x2="70.00875" y2="81.28" width="0.1524" layer="102"/>
+<wire x1="70.1675" y1="97.31375" x2="70.1675" y2="99.695" width="0.1524" layer="102"/>
+<text x="9.36625" y="46.6725" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">UI BOARD CONNECTOR</text>
+<text x="64.77" y="59.055" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">IN</text>
+<text x="62.23" y="59.055" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">EN</text>
+<text x="67.31" y="59.055" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">GND</text>
+<text x="69.85" y="59.055" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">OUT</text>
+<text x="24.92375" y="49.05375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">ESP</text>
+<text x="31.90875" y="49.05375" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="bottom-center">STM</text>
+<wire x1="45.72" y1="15.24" x2="45.72" y2="12.065" width="0.1524" layer="102"/>
+<wire x1="45.72" y1="12.065" x2="46.355" y2="11.43" width="0.1524" layer="102"/>
+<wire x1="46.355" y1="11.43" x2="46.355" y2="12.065" width="0.1524" layer="102"/>
+<wire x1="46.355" y1="11.43" x2="45.72" y2="11.43" width="0.1524" layer="102"/>
+<wire x1="48.26" y1="13.335" x2="48.26" y2="11.43" width="0.1524" layer="101"/>
+<wire x1="48.26" y1="11.43" x2="47.625" y2="10.795" width="0.1524" layer="101"/>
+<wire x1="47.625" y1="10.795" x2="47.625" y2="11.43" width="0.1524" layer="101"/>
+<wire x1="47.625" y1="10.795" x2="48.26" y2="10.795" width="0.1524" layer="101"/>
 </plain>
 <libraries>
 <library name="rcl_upravena">
@@ -4969,9 +5527,9 @@ JarekParal (2020-04-14)
 <attribute name="VALUE" x="53.975" y="29.68625" size="1.27" layer="27" rot="R180"/>
 <attribute name="VOLTAGE" value="16V" x="53.34" y="27.78125" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="R153" library="rcl_upravena" package="R0402" value="330R" x="55.245" y="22.38375" smashed="yes" rot="R270">
-<attribute name="NAME" x="55.88" y="23.01875" size="1.27" layer="25" rot="R270"/>
-<attribute name="VALUE" x="53.34" y="23.01875" size="1.27" layer="27" rot="R270"/>
+<element name="R153" library="rcl_upravena" package="R0402" value="330R" x="54.61" y="30.00375" smashed="yes" rot="R270">
+<attribute name="NAME" x="55.245" y="30.63875" size="1.27" layer="25" rot="R270"/>
+<attribute name="VALUE" x="52.705" y="30.63875" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R81" library="rcl_upravena" package="R0402" value="330R" x="47.9425" y="23.65375" smashed="yes">
 <attribute name="NAME" x="47.3075" y="24.28875" size="1.27" layer="25"/>
@@ -5088,43 +5646,43 @@ JarekParal (2020-04-14)
 <element name="TP62" library="test_points" package="TP_06" value="" x="53.34" y="21.59" smashed="yes">
 <attribute name="NAME" x="51.435" y="22.495" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="51.435" y="22.495" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="51.435" y="19.685" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="51.435" y="19.685" size="1" layer="27" font="vector" ratio="20"/>
+<attribute name="VALUE" x="51.435" y="19.685" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="51.435" y="19.685" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP13" library="test_points" package="TP_06" value="" x="64.77" y="64.4525" smashed="yes" rot="R270">
 <attribute name="NAME" x="65.675" y="66.3575" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="65.675" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP14" library="test_points" package="TP_06" value="" x="99.06" y="66.675" smashed="yes" rot="R270">
 <attribute name="NAME" x="99.965" y="68.58" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="99.965" y="68.58" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="97.155" y="68.58" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="97.155" y="68.58" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="97.155" y="68.58" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="97.155" y="68.58" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP6" library="test_points" package="TP_06" value="" x="89.8525" y="60.325" smashed="yes" rot="R270">
 <attribute name="NAME" x="90.7575" y="62.23" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="90.7575" y="62.23" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP2" library="test_points" package="TP_06" value="" x="86.83625" y="59.69" smashed="yes" rot="R270">
 <attribute name="NAME" x="87.74125" y="61.595" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="87.74125" y="61.595" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP3" library="test_points" package="TP_06" value="" x="84.455" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="85.36" y="57.785" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="85.36" y="57.785" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="82.55" y="57.785" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="82.55" y="57.785" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="82.55" y="57.785" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="82.55" y="57.785" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP7" library="test_points" package="TP_06" value="" x="71.755" y="86.36" smashed="yes">
@@ -5145,169 +5703,169 @@ JarekParal (2020-04-14)
 <element name="TP12" library="test_points" package="TP_06" value="" x="61.595" y="46.355" smashed="yes" rot="R270">
 <attribute name="NAME" x="62.5" y="48.26" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="62.5" y="48.26" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="59.69" y="48.26" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="59.69" y="48.26" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="59.69" y="48.26" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="59.69" y="48.26" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP31" library="test_points" package="TP_06" value="" x="64.77" y="66.3575" smashed="yes">
 <attribute name="NAME" x="62.865" y="67.2625" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="62.865" y="67.2625" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
+<attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP32" library="test_points" package="TP_06" value="" x="64.77" y="68.2625" smashed="yes">
 <attribute name="NAME" x="62.865" y="69.1675" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="62.865" y="69.1675" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
+<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP46" library="test_points" package="TP_06" value="" x="96.67875" y="30.63875" smashed="yes" rot="R270">
 <attribute name="NAME" x="97.58375" y="32.54375" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="97.58375" y="32.54375" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP45" library="test_points" package="TP_06" value="" x="82.55" y="39.0525" smashed="yes" rot="R270">
 <attribute name="NAME" x="83.455" y="40.9575" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="83.455" y="40.9575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP23" library="test_points" package="TP_06" value="" x="60.96" y="66.3575" smashed="yes">
 <attribute name="NAME" x="59.055" y="67.2625" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="59.055" y="67.2625" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
+<attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP24" library="test_points" package="TP_06" value="" x="62.865" y="66.3575" smashed="yes">
 <attribute name="NAME" x="60.96" y="67.2625" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="60.96" y="67.2625" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
+<attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP25" library="test_points" package="TP_06" value="" x="60.96" y="68.2625" smashed="yes">
 <attribute name="NAME" x="59.055" y="69.1675" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="59.055" y="69.1675" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
+<attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP26" library="test_points" package="TP_06" value="" x="62.865" y="68.2625" smashed="yes">
 <attribute name="NAME" x="60.96" y="69.1675" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="60.96" y="69.1675" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
+<attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP34" library="test_points" package="TP_06" value="" x="85.09" y="37.465" smashed="yes" rot="R270">
 <attribute name="NAME" x="85.995" y="39.37" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="85.995" y="39.37" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="83.185" y="39.37" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="83.185" y="39.37" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="83.185" y="39.37" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="83.185" y="39.37" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP35" library="test_points" package="TP_06" value="" x="86.995" y="38.1" smashed="yes" rot="R270">
 <attribute name="NAME" x="87.9" y="40.005" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="87.9" y="40.005" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="85.09" y="40.005" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="85.09" y="40.005" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="85.09" y="40.005" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="85.09" y="40.005" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP36" library="test_points" package="TP_06" value="" x="60.325" y="30.7975" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="32.7025" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="32.7025" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP37" library="test_points" package="TP_06" value="" x="60.325" y="28.8925" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="30.7975" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="30.7975" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP38" library="test_points" package="TP_06" value="" x="60.325" y="26.9875" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="28.8925" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="28.8925" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP39" library="test_points" package="TP_06" value="" x="70.485" y="29.845" smashed="yes" rot="R270">
 <attribute name="NAME" x="71.39" y="31.75" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="71.39" y="31.75" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="68.58" y="31.75" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="68.58" y="31.75" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="68.58" y="31.75" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="68.58" y="31.75" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP40" library="test_points" package="TP_06" value="" x="70.485" y="27.94" smashed="yes" rot="R270">
 <attribute name="NAME" x="71.39" y="29.845" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="71.39" y="29.845" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="68.58" y="29.845" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="68.58" y="29.845" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="68.58" y="29.845" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="68.58" y="29.845" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP28" library="test_points" package="TP_06" value="" x="75.2475" y="83.82" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="85.725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="85.725" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP27" library="test_points" package="TP_06" value="" x="75.2475" y="81.915" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="83.82" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="83.82" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP30" library="test_points" package="TP_06" value="" x="75.2475" y="78.105" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="80.01" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="80.01" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP29" library="test_points" package="TP_06" value="" x="75.2475" y="80.01" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="81.915" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="81.915" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP41" library="test_points" package="TP_06" value="" x="60.325" y="25.0825" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="26.9875" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="26.9875" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP42" library="test_points" package="TP_06" value="" x="60.325" y="23.1775" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="25.0825" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="25.0825" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP43" library="test_points" package="TP_06" value="" x="60.325" y="21.2725" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="23.1775" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="23.1775" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP44" library="test_points" package="TP_06" value="" x="60.325" y="19.3675" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="21.2725" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="21.2725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP22" library="test_points" package="TP_06" value="" x="93.345" y="86.36" smashed="yes" rot="R270">
@@ -5319,15 +5877,15 @@ JarekParal (2020-04-14)
 <element name="TP59" library="test_points" package="TP_06" value="" x="60.325" y="17.4625" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="19.3675" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="19.3675" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP19" library="test_points" package="TP_06" value="" x="70.485" y="33.3375" smashed="yes">
 <attribute name="NAME" x="68.58" y="34.2425" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="68.58" y="34.2425" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="27" font="vector" ratio="20"/>
+<attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP21" library="test_points" package="TP_06" value="" x="31.75" y="41.275" smashed="yes">
@@ -5336,8 +5894,8 @@ JarekParal (2020-04-14)
 <element name="TP60" library="test_points" package="TP_06" value="" x="9.36625" y="92.71" smashed="yes">
 <attribute name="NAME" x="7.46125" y="93.615" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="7.46125" y="93.615" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="27" font="vector" ratio="20"/>
+<attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP61" library="test_points" package="TP_06" value="" x="95.885" y="86.36" smashed="yes">
@@ -5349,36 +5907,36 @@ JarekParal (2020-04-14)
 <element name="TP4" library="test_points" package="TP_06" value="" x="19.3675" y="73.3425" smashed="yes" rot="R90">
 <attribute name="NAME" x="18.4625" y="71.4375" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="18.4625" y="71.4375" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP1" library="test_points" package="TP_06" value="" x="73.025" y="53.975" smashed="yes" rot="R270">
 <attribute name="NAME" x="73.93" y="55.88" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="73.93" y="55.88" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="71.12" y="55.88" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="71.12" y="55.88" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="71.12" y="55.88" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="71.12" y="55.88" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP17" library="test_points" package="TP_06" value="" x="60.0075" y="48.5775" smashed="yes" rot="R180">
 <attribute name="NAME" x="61.9125" y="47.6725" size="1" layer="25" font="vector" ratio="20" rot="SR180"/>
 <attribute name="NAME" x="61.9125" y="47.6725" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
-<attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
 <attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
 <attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="101" font="vector" ratio="20" rot="SMR180" align="bottom-right"/>
 </element>
 <element name="TP18" library="test_points" package="TP_06" value="" x="63.8175" y="53.975" smashed="yes" rot="R180">
 <attribute name="NAME" x="65.7225" y="53.07" size="1" layer="25" font="vector" ratio="20" rot="SR180"/>
 <attribute name="NAME" x="65.7225" y="53.07" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
-<attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
 <attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="27" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
 <attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="101" font="vector" ratio="20" rot="SMR180" align="bottom-right"/>
 </element>
 <element name="TP20" library="test_points" package="TP_06" value="" x="1.27" y="35.2425" smashed="yes">
 <attribute name="NAME" x="-0.635" y="36.1475" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="-0.635" y="36.1475" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="27" font="vector" ratio="20"/>
+<attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
 <attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="IM2" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="12.065" y="95.885" smashed="yes" rot="MR180">
@@ -5549,22 +6107,22 @@ JarekParal (2020-04-14)
 <element name="TP55" library="test_points" package="TP_06" value="" x="69.215" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="68.31" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="68.31" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="71.12" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="71.12" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="71.12" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="71.12" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP47" library="test_points" package="TP_06" value="" x="58.7375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="57.8325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="57.8325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP51" library="test_points" package="TP_06" value="" x="59.055" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="58.15" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="58.15" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="60.96" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="60.96" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="60.96" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="60.96" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="IM6" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="45.085" y="78.105" smashed="yes" rot="MR90">
@@ -5644,22 +6202,22 @@ JarekParal (2020-04-14)
 <element name="TP56" library="test_points" package="TP_06" value="" x="56.515" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="55.61" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="55.61" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="58.42" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="58.42" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="58.42" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="58.42" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP48" library="test_points" package="TP_06" value="" x="46.0375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="45.1325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="45.1325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP52" library="test_points" package="TP_06" value="" x="46.355" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="45.45" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="45.45" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="48.26" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="48.26" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="48.26" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="48.26" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="IM7" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="32.385" y="78.105" smashed="yes" rot="MR90">
@@ -5739,22 +6297,22 @@ JarekParal (2020-04-14)
 <element name="TP57" library="test_points" package="TP_06" value="" x="43.815" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="42.91" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="42.91" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="45.72" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="45.72" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="45.72" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="45.72" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP49" library="test_points" package="TP_06" value="" x="33.3375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="32.4325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="32.4325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP53" library="test_points" package="TP_06" value="" x="33.655" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="32.75" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="32.75" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="35.56" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="35.56" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="35.56" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="35.56" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="IM8" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="19.685" y="78.105" smashed="yes" rot="MR90">
@@ -5834,22 +6392,22 @@ JarekParal (2020-04-14)
 <element name="TP58" library="test_points" package="TP_06" value="" x="31.115" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="30.21" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="30.21" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="33.02" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="33.02" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="33.02" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="33.02" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP50" library="test_points" package="TP_06" value="" x="20.6375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="19.7325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="19.7325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP54" library="test_points" package="TP_06" value="" x="20.955" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="20.05" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="20.05" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="22.86" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="22.86" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="22.86" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
 <attribute name="VALUE" x="22.86" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="R110" library="rcl_upravena" package="R0402" value="4k7" x="2.06375" y="64.61125" smashed="yes" rot="R90">
@@ -11766,9 +12324,11 @@ JarekParal (2020-04-14)
 <wire x1="51.1175" y1="43.18" x2="54.61" y2="43.18" width="0.1524" layer="1"/>
 <wire x1="50.4425" y1="47.615" x2="50.4425" y2="43.855" width="0.1524" layer="1"/>
 <wire x1="50.4425" y1="43.855" x2="51.1175" y2="43.18" width="0.1524" layer="1"/>
-<wire x1="55.88" y1="23.97125" x2="55.245" y2="23.33625" width="0.1524" layer="1"/>
-<wire x1="55.245" y1="23.33625" x2="55.245" y2="22.84875" width="0.1524" layer="1"/>
-<wire x1="55.88" y1="41.91" x2="55.88" y2="23.97125" width="0.1524" layer="1"/>
+<wire x1="55.88" y1="41.91" x2="55.88" y2="33.02" width="0.1524" layer="1"/>
+<wire x1="55.88" y1="33.02" x2="55.88" y2="32.86125" width="0.1524" layer="1"/>
+<wire x1="55.88" y1="32.86125" x2="55.88" y2="32.385" width="0.1524" layer="1"/>
+<wire x1="55.88" y1="32.385" x2="54.61" y2="31.115" width="0.1524" layer="1"/>
+<wire x1="54.61" y1="31.115" x2="54.61" y2="30.46875" width="0.1524" layer="1"/>
 </signal>
 <signal name="MPU-INT">
 <contactref element="R153" pad="2"/>
@@ -11776,10 +12336,11 @@ JarekParal (2020-04-14)
 <contactref element="TP62" pad="P$1"/>
 <wire x1="52.685" y1="22.855" x2="52.685" y2="22.245" width="0.1524" layer="1"/>
 <wire x1="52.685" y1="22.245" x2="53.34" y2="21.59" width="0.1524" layer="1"/>
-<wire x1="55.245" y1="21.43125" x2="55.245" y2="21.91875" width="0.1524" layer="1"/>
-<wire x1="53.34" y1="21.59" x2="53.81625" y2="21.11375" width="0.1524" layer="1"/>
-<wire x1="53.81625" y1="21.11375" x2="54.9275" y2="21.11375" width="0.1524" layer="1"/>
-<wire x1="54.9275" y1="21.11375" x2="55.245" y2="21.43125" width="0.1524" layer="1"/>
+<wire x1="54.61" y1="29.53875" x2="54.61" y2="28.575" width="0.1524" layer="1"/>
+<wire x1="55.8951" y1="22.2401" x2="55.245" y2="21.59" width="0.1524" layer="1"/>
+<wire x1="55.245" y1="21.59" x2="53.34" y2="21.59" width="0.1524" layer="1"/>
+<wire x1="54.61" y1="28.575" x2="55.8951" y2="27.2899" width="0.1524" layer="1"/>
+<wire x1="55.8951" y1="27.2899" x2="55.8951" y2="22.2401" width="0.1524" layer="1"/>
 </signal>
 <signal name="MPU_SDA">
 <contactref element="IC12" pad="6"/>
