@@ -14,3 +14,11 @@ DIY Modules for Arduino, Raspberry Pi, CubieBoard etc.
 License: [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA)](http://creativecommons.org/licenses/by-sa/4.0/)
 
 - `STM32F103VCT6.lbr` 
+
+## [RoboticsBrno/eagle_libraries](https://github.com/RoboticsBrno/eagle_libraries)
+
+- `diode.lbr`
+- `esp32.lbr`
+- `rcl_upravena.lbr`
+- `test_points.lbr`
+- `transistors.lbr`
