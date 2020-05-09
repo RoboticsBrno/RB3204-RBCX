@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="50" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="yes"/>
@@ -175,22 +175,22 @@
 </package>
 <package name="SMD-BAT-CR2032-BS-6-1">
 <circle x="0" y="0" radius="10" width="0.05" layer="21"/>
-<wire x1="-14.5" y1="3.5" x2="-14.5" y2="-3.5" width="0.4" layer="21"/>
-<wire x1="-14.5" y1="-3.5" x2="-11" y2="-3.5" width="0.4" layer="21"/>
-<wire x1="-11" y1="-3.5" x2="-11" y2="-8" width="0.4" layer="21"/>
-<wire x1="-11" y1="-8" x2="11" y2="-8" width="0.4" layer="21"/>
-<wire x1="11" y1="-8" x2="11" y2="-3.5" width="0.4" layer="21"/>
-<wire x1="11" y1="-3.5" x2="14.5" y2="-3.5" width="0.4" layer="21"/>
-<wire x1="14.5" y1="-3.5" x2="14.5" y2="3.5" width="0.4" layer="21"/>
-<wire x1="14.5" y1="3.5" x2="11" y2="3.5" width="0.4" layer="21"/>
-<wire x1="11" y1="3.5" x2="11" y2="6" width="0.4" layer="21"/>
-<wire x1="9" y1="8" x2="-11" y2="8" width="0.4" layer="21"/>
-<wire x1="-11" y1="8" x2="-11" y2="3.5" width="0.4" layer="21"/>
-<wire x1="-11" y1="3.5" x2="-14.5" y2="3.5" width="0.4" layer="21"/>
-<wire x1="9" y1="8" x2="11" y2="6" width="0.4" layer="21"/>
+<wire x1="-14.5" y1="3.5" x2="-14.5" y2="-3.5" width="0.1" layer="21"/>
+<wire x1="-14.5" y1="-3.5" x2="-11" y2="-3.5" width="0.1" layer="21"/>
+<wire x1="-11" y1="-3.5" x2="-11" y2="-8" width="0.1" layer="21"/>
+<wire x1="-11" y1="-8" x2="11" y2="-8" width="0.1" layer="21"/>
+<wire x1="11" y1="-8" x2="11" y2="-3.5" width="0.1" layer="21"/>
+<wire x1="11" y1="-3.5" x2="14.5" y2="-3.5" width="0.1" layer="21"/>
+<wire x1="14.5" y1="-3.5" x2="14.5" y2="3.5" width="0.1" layer="21"/>
+<wire x1="14.5" y1="3.5" x2="11" y2="3.5" width="0.1" layer="21"/>
+<wire x1="11" y1="3.5" x2="11" y2="6" width="0.1" layer="21"/>
+<wire x1="9" y1="8" x2="-11" y2="8" width="0.1" layer="21"/>
+<wire x1="-11" y1="8" x2="-11" y2="3.5" width="0.1" layer="21"/>
+<wire x1="-11" y1="3.5" x2="-14.5" y2="3.5" width="0.1" layer="21"/>
+<wire x1="9" y1="8" x2="11" y2="6" width="0.1" layer="21"/>
 <smd name="VBAT" x="14.5" y="0" dx="3.2" dy="4.2" layer="1"/>
 <smd name="VSS" x="-14.5" y="0" dx="3.2" dy="4.2" layer="1"/>
-<text x="10.5422" y="-10.918" size="1.2721" layer="21">CR2032</text>
+<text x="12.7012" y="-5.457" size="1.2721" layer="21">CR2032</text>
 <text x="-9.5" y="-1.5" size="2.54" layer="21" font="vector">-</text>
 <text x="7" y="-1.5" size="2.54" layer="21" font="vector">+</text>
 </package>
