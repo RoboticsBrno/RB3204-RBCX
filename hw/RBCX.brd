@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.0">
+<eagle version="9.6.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="25" unitdist="mil" unit="inch" style="lines" multiple="1" display="yes" altdistance="6.25" altunitdist="mil" altunit="mm"/>
+<grid distance="25" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="6.25" altunitdist="mil" altunit="mm"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="Layer2-Sig" color="16" fill="1" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="2" name="Layer2-Sig" color="16" fill="1" visible="yes" active="yes"/>
 <layer number="3" name="Route3" color="17" fill="1" visible="no" active="no"/>
 <layer number="4" name="Route4" color="18" fill="1" visible="no" active="no"/>
 <layer number="5" name="Route5" color="19" fill="1" visible="no" active="no"/>
@@ -22,7 +22,7 @@
 <layer number="12" name="Route12" color="20" fill="1" visible="no" active="no"/>
 <layer number="13" name="Route13" color="21" fill="1" visible="no" active="no"/>
 <layer number="14" name="Route14" color="22" fill="1" visible="no" active="no"/>
-<layer number="15" name="Layer3-GND" color="23" fill="1" visible="no" active="yes"/>
+<layer number="15" name="Layer3-GND" color="23" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
@@ -52,7 +52,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
@@ -1103,6 +1103,15 @@ M I  C O + -
 <text x="36.35375" y="97.4725" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">-</text>
 <text x="49.05375" y="97.4725" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">-</text>
 <text x="61.75375" y="97.4725" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">-</text>
+<hole x="92.23375" y="92.075" drill="1.152"/>
+<hole x="9.36625" y="94.9325" drill="1.152"/>
+<hole x="91.91625" y="7.46125" drill="1.152"/>
+<circle x="9.36625" y="94.9325" radius="1" width="0" layer="41"/>
+<circle x="92.23375" y="92.075" radius="1" width="0" layer="41"/>
+<circle x="91.91625" y="7.46125" radius="1" width="0" layer="41"/>
+<circle x="91.91625" y="7.46125" radius="1" width="0" layer="42"/>
+<circle x="9.36625" y="94.9325" radius="1" width="0" layer="42"/>
+<circle x="92.23375" y="92.075" radius="1" width="0" layer="42"/>
 </plain>
 <libraries>
 <library name="rcl_upravena">
@@ -5876,43 +5885,43 @@ JarekParal (2020-04-14)
 <element name="TP62" library="test_points" package="TP_06" value="" x="53.34" y="21.59" smashed="yes">
 <attribute name="NAME" x="51.435" y="22.495" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="51.435" y="22.495" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="51.435" y="19.685" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="51.435" y="19.685" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="51.435" y="19.685" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="51.435" y="19.685" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP13" library="test_points" package="TP_06" value="" x="64.77" y="64.4525" smashed="yes" rot="R270">
 <attribute name="NAME" x="65.675" y="66.3575" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="65.675" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP14" library="test_points" package="TP_06" value="" x="99.06" y="66.675" smashed="yes" rot="R270">
 <attribute name="NAME" x="99.965" y="68.58" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="99.965" y="68.58" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="97.155" y="68.58" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="97.155" y="68.58" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="97.155" y="68.58" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="97.155" y="68.58" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP6" library="test_points" package="TP_06" value="" x="89.8525" y="60.325" smashed="yes" rot="R270">
 <attribute name="NAME" x="90.7575" y="62.23" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="90.7575" y="62.23" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP2" library="test_points" package="TP_06" value="" x="86.83625" y="59.69" smashed="yes" rot="R270">
 <attribute name="NAME" x="87.74125" y="61.595" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="87.74125" y="61.595" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP3" library="test_points" package="TP_06" value="" x="84.455" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="85.36" y="57.785" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="85.36" y="57.785" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="82.55" y="57.785" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="82.55" y="57.785" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="82.55" y="57.785" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="82.55" y="57.785" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP7" library="test_points" package="TP_06" value="" x="71.755" y="86.36" smashed="yes">
@@ -5933,169 +5942,169 @@ JarekParal (2020-04-14)
 <element name="TP12" library="test_points" package="TP_06" value="" x="61.595" y="46.355" smashed="yes" rot="R270">
 <attribute name="NAME" x="62.5" y="48.26" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="62.5" y="48.26" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="59.69" y="48.26" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="59.69" y="48.26" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="59.69" y="48.26" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="59.69" y="48.26" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP31" library="test_points" package="TP_06" value="" x="64.77" y="66.3575" smashed="yes">
 <attribute name="NAME" x="62.865" y="67.2625" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="62.865" y="67.2625" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP32" library="test_points" package="TP_06" value="" x="64.77" y="68.2625" smashed="yes">
 <attribute name="NAME" x="62.865" y="69.1675" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="62.865" y="69.1675" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP46" library="test_points" package="TP_06" value="" x="96.67875" y="30.63875" smashed="yes" rot="R270">
 <attribute name="NAME" x="97.58375" y="32.54375" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="97.58375" y="32.54375" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP45" library="test_points" package="TP_06" value="" x="82.55" y="39.0525" smashed="yes" rot="R270">
 <attribute name="NAME" x="83.455" y="40.9575" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="83.455" y="40.9575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP23" library="test_points" package="TP_06" value="" x="60.96" y="66.3575" smashed="yes">
 <attribute name="NAME" x="59.055" y="67.2625" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="59.055" y="67.2625" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP24" library="test_points" package="TP_06" value="" x="62.865" y="66.3575" smashed="yes">
 <attribute name="NAME" x="60.96" y="67.2625" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="60.96" y="67.2625" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP25" library="test_points" package="TP_06" value="" x="60.96" y="68.2625" smashed="yes">
 <attribute name="NAME" x="59.055" y="69.1675" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="59.055" y="69.1675" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP26" library="test_points" package="TP_06" value="" x="62.865" y="68.2625" smashed="yes">
 <attribute name="NAME" x="60.96" y="69.1675" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="60.96" y="69.1675" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP34" library="test_points" package="TP_06" value="" x="85.09" y="37.465" smashed="yes" rot="R270">
 <attribute name="NAME" x="85.995" y="39.37" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="85.995" y="39.37" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="83.185" y="39.37" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="83.185" y="39.37" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="83.185" y="39.37" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="83.185" y="39.37" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP35" library="test_points" package="TP_06" value="" x="86.995" y="38.1" smashed="yes" rot="R270">
 <attribute name="NAME" x="87.9" y="40.005" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="87.9" y="40.005" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="85.09" y="40.005" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="85.09" y="40.005" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="85.09" y="40.005" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="85.09" y="40.005" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP36" library="test_points" package="TP_06" value="" x="60.325" y="30.7975" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="32.7025" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="32.7025" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP37" library="test_points" package="TP_06" value="" x="60.325" y="28.8925" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="30.7975" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="30.7975" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP38" library="test_points" package="TP_06" value="" x="60.325" y="26.9875" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="28.8925" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="28.8925" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP39" library="test_points" package="TP_06" value="" x="70.485" y="29.845" smashed="yes" rot="R270">
 <attribute name="NAME" x="71.39" y="31.75" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="71.39" y="31.75" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="68.58" y="31.75" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="68.58" y="31.75" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="68.58" y="31.75" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="68.58" y="31.75" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP40" library="test_points" package="TP_06" value="" x="70.485" y="27.94" smashed="yes" rot="R270">
 <attribute name="NAME" x="71.39" y="29.845" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="71.39" y="29.845" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="68.58" y="29.845" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="68.58" y="29.845" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="68.58" y="29.845" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="68.58" y="29.845" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP28" library="test_points" package="TP_06" value="" x="75.2475" y="83.82" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="85.725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="85.725" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP27" library="test_points" package="TP_06" value="" x="75.2475" y="81.915" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="83.82" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="83.82" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP30" library="test_points" package="TP_06" value="" x="75.2475" y="78.105" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="80.01" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="80.01" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP29" library="test_points" package="TP_06" value="" x="75.2475" y="80.01" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="81.915" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="81.915" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP41" library="test_points" package="TP_06" value="" x="60.325" y="25.0825" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="26.9875" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="26.9875" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP42" library="test_points" package="TP_06" value="" x="60.325" y="23.1775" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="25.0825" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="25.0825" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP43" library="test_points" package="TP_06" value="" x="60.325" y="21.2725" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="23.1775" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="23.1775" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP44" library="test_points" package="TP_06" value="" x="60.325" y="19.3675" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="21.2725" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="21.2725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP22" library="test_points" package="TP_06" value="" x="93.345" y="86.36" smashed="yes" rot="R270">
@@ -6107,15 +6116,15 @@ JarekParal (2020-04-14)
 <element name="TP59" library="test_points" package="TP_06" value="" x="60.325" y="17.4625" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="19.3675" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="19.3675" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP19" library="test_points" package="TP_06" value="" x="70.485" y="33.3375" smashed="yes">
 <attribute name="NAME" x="68.58" y="34.2425" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="68.58" y="34.2425" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP21" library="test_points" package="TP_06" value="" x="31.75" y="41.275" smashed="yes">
@@ -6124,8 +6133,8 @@ JarekParal (2020-04-14)
 <element name="TP60" library="test_points" package="TP_06" value="" x="9.36625" y="92.71" smashed="yes">
 <attribute name="NAME" x="7.46125" y="93.615" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="7.46125" y="93.615" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP61" library="test_points" package="TP_06" value="" x="95.885" y="86.36" smashed="yes">
@@ -6137,36 +6146,36 @@ JarekParal (2020-04-14)
 <element name="TP4" library="test_points" package="TP_06" value="" x="19.3675" y="73.3425" smashed="yes" rot="R90">
 <attribute name="NAME" x="18.4625" y="71.4375" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="18.4625" y="71.4375" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP1" library="test_points" package="TP_06" value="" x="73.025" y="53.975" smashed="yes" rot="R270">
 <attribute name="NAME" x="73.93" y="55.88" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="73.93" y="55.88" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="71.12" y="55.88" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="71.12" y="55.88" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="71.12" y="55.88" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="71.12" y="55.88" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP17" library="test_points" package="TP_06" value="" x="60.0075" y="48.5775" smashed="yes" rot="R180">
 <attribute name="NAME" x="61.9125" y="47.6725" size="1" layer="25" font="vector" ratio="20" rot="SR180"/>
 <attribute name="NAME" x="61.9125" y="47.6725" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
-<attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="27" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
+<attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="27" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="101" font="vector" ratio="20" rot="SMR180" align="bottom-right"/>
 </element>
 <element name="TP18" library="test_points" package="TP_06" value="" x="63.8175" y="53.975" smashed="yes" rot="R180">
 <attribute name="NAME" x="65.7225" y="53.07" size="1" layer="25" font="vector" ratio="20" rot="SR180"/>
 <attribute name="NAME" x="65.7225" y="53.07" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
-<attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="27" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
+<attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="27" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="101" font="vector" ratio="20" rot="SMR180" align="bottom-right"/>
 </element>
 <element name="TP20" library="test_points" package="TP_06" value="" x="1.27" y="35.2425" smashed="yes">
 <attribute name="NAME" x="-0.635" y="36.1475" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="-0.635" y="36.1475" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="IM2" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="12.065" y="95.885" smashed="yes" rot="MR180">
@@ -6337,22 +6346,22 @@ JarekParal (2020-04-14)
 <element name="TP55" library="test_points" package="TP_06" value="" x="69.215" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="68.31" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="68.31" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="71.12" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="71.12" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="71.12" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="71.12" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP47" library="test_points" package="TP_06" value="" x="58.7375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="57.8325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="57.8325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP51" library="test_points" package="TP_06" value="" x="59.055" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="58.15" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="58.15" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="60.96" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="60.96" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="60.96" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="60.96" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="IM6" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="45.085" y="78.105" smashed="yes" rot="MR90">
@@ -6432,22 +6441,22 @@ JarekParal (2020-04-14)
 <element name="TP56" library="test_points" package="TP_06" value="" x="56.515" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="55.61" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="55.61" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="58.42" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="58.42" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="58.42" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="58.42" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP48" library="test_points" package="TP_06" value="" x="46.0375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="45.1325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="45.1325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP52" library="test_points" package="TP_06" value="" x="46.355" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="45.45" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="45.45" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="48.26" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="48.26" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="48.26" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="48.26" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="IM7" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="32.385" y="78.105" smashed="yes" rot="MR90">
@@ -6527,22 +6536,22 @@ JarekParal (2020-04-14)
 <element name="TP57" library="test_points" package="TP_06" value="" x="43.815" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="42.91" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="42.91" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="45.72" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="45.72" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="45.72" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="45.72" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP49" library="test_points" package="TP_06" value="" x="33.3375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="32.4325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="32.4325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP53" library="test_points" package="TP_06" value="" x="33.655" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="32.75" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="32.75" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="35.56" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="35.56" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="35.56" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="35.56" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="IM8" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="19.685" y="78.105" smashed="yes" rot="MR90">
@@ -6622,22 +6631,22 @@ JarekParal (2020-04-14)
 <element name="TP58" library="test_points" package="TP_06" value="" x="31.115" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="30.21" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="30.21" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="33.02" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="33.02" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="33.02" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="33.02" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP50" library="test_points" package="TP_06" value="" x="20.6375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="19.7325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="19.7325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP54" library="test_points" package="TP_06" value="" x="20.955" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="20.05" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="20.05" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="22.86" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="22.86" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="22.86" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="22.86" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="R115" library="rcl_upravena" package="R0402" value="4k7" x="2.06375" y="64.61125" smashed="yes" rot="R90">
@@ -11998,9 +12007,9 @@ JarekParal (2020-04-14)
 <via x="8.09625" y="70.32625" extent="1-16" drill="0.3"/>
 <wire x1="8.09625" y1="90.805" x2="8.09625" y2="70.32625" width="0.1524" layer="16"/>
 <wire x1="8.09625" y1="90.805" x2="8.73125" y2="91.44" width="0.1524" layer="16"/>
-<wire x1="10.16" y1="91.44" x2="10.795" y2="92.075" width="0.1524" layer="16"/>
-<wire x1="10.795" y1="92.075" x2="10.795" y2="96.52" width="0.1524" layer="16"/>
-<wire x1="10.795" y1="96.52" x2="11.43" y2="97.155" width="0.1524" layer="16"/>
+<wire x1="10.16" y1="91.44" x2="10.95375" y2="92.23375" width="0.1524" layer="16"/>
+<wire x1="10.95375" y1="92.23375" x2="10.95375" y2="96.67875" width="0.1524" layer="16"/>
+<wire x1="10.95375" y1="96.67875" x2="11.43" y2="97.155" width="0.1524" layer="16"/>
 <wire x1="11.43" y1="97.155" x2="14.605" y2="97.155" width="0.1524" layer="16"/>
 <wire x1="14.605" y1="97.155" x2="15.875" y2="98.425" width="0.1524" layer="16"/>
 <wire x1="8.73125" y1="91.44" x2="10.16" y2="91.44" width="0.1524" layer="16"/>
@@ -12857,14 +12866,17 @@ JarekParal (2020-04-14)
 <contactref element="IM2" pad="OUT"/>
 <contactref element="R68" pad="1"/>
 <contactref element="TP15" pad="P$1"/>
-<wire x1="13.335" y1="94.615" x2="13.335" y2="98.425" width="2" layer="1"/>
+<wire x1="13.335" y1="94.615" x2="13.335" y2="96.8375" width="2" layer="1"/>
+<wire x1="13.335" y1="96.8375" x2="13.335" y2="98.425" width="2" layer="1"/>
 <wire x1="16.0025" y1="93.6625" x2="14.605" y2="93.6625" width="2" layer="1"/>
 <wire x1="14.605" y1="93.6625" x2="13.6525" y2="94.615" width="2" layer="1"/>
 <wire x1="13.6525" y1="94.615" x2="13.335" y2="94.615" width="2" layer="1"/>
 <wire x1="15.875" y1="95.42" x2="15.875" y2="93.79" width="0.1524" layer="1"/>
 <wire x1="15.875" y1="93.79" x2="16.0025" y2="93.6625" width="0.1524" layer="1"/>
-<wire x1="8.255" y1="98.425" x2="12.065" y2="94.615" width="1.016" layer="1"/>
-<wire x1="12.065" y1="94.615" x2="13.6525" y2="94.615" width="1.016" layer="1"/>
+<wire x1="8.255" y1="98.425" x2="9.8395" y2="96.8405" width="1.016" layer="1"/>
+<wire x1="9.8395" y1="96.8405" x2="10.156575" y2="96.8405" width="1.016" layer="1"/>
+<wire x1="10.156575" y1="96.8405" x2="10.159575" y2="96.8375" width="1.016" layer="1"/>
+<wire x1="10.159575" y1="96.8375" x2="13.335" y2="96.8375" width="1.016" layer="1"/>
 </signal>
 <signal name="BUTTON-ON-LV">
 <contactref element="Q3" pad="3"/>
