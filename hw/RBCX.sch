@@ -40137,18 +40137,11 @@ Jakub Streit
 <pinref part="IC13" gate="G$1" pin="PE11"/>
 </segment>
 </net>
-<net name="PWM3A" class="0">
+<net name="PWM3B" class="0">
 <segment>
 <wire x1="119.38" y1="86.36" x2="124.46" y2="86.36" width="0.1524" layer="91"/>
 <label x="124.46" y="86.36" size="1.27" layer="95" xref="yes"/>
 <pinref part="IC13" gate="G$1" pin="PE12"/>
-</segment>
-</net>
-<net name="PWM3B" class="0">
-<segment>
-<wire x1="119.38" y1="83.82" x2="124.46" y2="83.82" width="0.1524" layer="91"/>
-<label x="124.46" y="83.82" size="1.27" layer="95" xref="yes"/>
-<pinref part="IC13" gate="G$1" pin="PE13"/>
 </segment>
 </net>
 <net name="PWM4" class="0">
@@ -40558,6 +40551,13 @@ Jakub Streit
 <label x="124.46" y="157.48" size="1.27" layer="95" xref="yes"/>
 <pinref part="IC13" gate="G$1" pin="PD1"/>
 <wire x1="119.38" y1="157.48" x2="124.46" y2="157.48" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="PWM3A" class="0">
+<segment>
+<wire x1="119.38" y1="83.82" x2="124.46" y2="83.82" width="0.1524" layer="91"/>
+<label x="124.46" y="83.82" size="1.27" layer="95" xref="yes"/>
+<pinref part="IC13" gate="G$1" pin="PE13"/>
 </segment>
 </net>
 </nets>
