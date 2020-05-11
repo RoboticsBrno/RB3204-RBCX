@@ -8,7 +8,7 @@
 </settings>
 <grid distance="25" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="6.25" altunitdist="mil" altunit="mm"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Layer2-Sig" color="16" fill="1" visible="yes" active="yes"/>
 <layer number="3" name="Route3" color="17" fill="1" visible="no" active="no"/>
 <layer number="4" name="Route4" color="18" fill="1" visible="no" active="no"/>
@@ -1112,6 +1112,7 @@ M I  C O + -
 <circle x="91.91625" y="7.46125" radius="1" width="0" layer="42"/>
 <circle x="9.36625" y="94.9325" radius="1" width="0" layer="42"/>
 <circle x="92.23375" y="92.075" radius="1" width="0" layer="42"/>
+<text x="24.765" y="20.6375" size="0.9" layer="101" font="vector" ratio="20">JLCJLCJLCJLC</text>
 </plain>
 <libraries>
 <library name="rcl_upravena">
