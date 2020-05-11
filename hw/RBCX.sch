@@ -15572,7 +15572,7 @@ General-purpose diode for high-speed switching</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="jumper" urn="urn:adsk.eagle:library:252">
+<library name="jumper">
 <description>&lt;b&gt;Jumpers&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
@@ -15599,7 +15599,7 @@ General-purpose diode for high-speed switching</description>
 <text x="-0.1001" y="0" size="0.02" layer="27">&gt;VALUE</text>
 <rectangle x1="-0.508" y1="-0.762" x2="0.508" y2="0.762" layer="51"/>
 </package>
-<package name="SJ_2" urn="urn:adsk.eagle:footprint:15439/1" library_version="1">
+<package name="SJ_2" urn="urn:adsk.eagle:footprint:15439/1" locally_modified="yes">
 <description>&lt;b&gt;Solder jumper&lt;/b&gt;</description>
 <wire x1="2.159" y1="-1.016" x2="-2.159" y2="-1.016" width="0.1524" layer="21"/>
 <wire x1="2.159" y1="1.016" x2="2.413" y2="0.762" width="0.1524" layer="21" curve="-90"/>
@@ -15615,9 +15615,9 @@ General-purpose diode for high-speed switching</description>
 <wire x1="0" y1="-1.016" x2="0" y2="-0.762" width="0.1524" layer="51"/>
 <wire x1="1.016" y1="0.127" x2="1.016" y2="-0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
 <wire x1="-1.016" y1="-0.127" x2="-1.016" y2="0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
-<smd name="1" x="-1.524" y="0" dx="1.1684" dy="1.6002" layer="1"/>
-<smd name="2" x="0" y="0" dx="1.1684" dy="1.6002" layer="1"/>
-<smd name="3" x="1.524" y="0" dx="1.1684" dy="1.6002" layer="1"/>
+<smd name="1" x="-1.524" y="0" dx="1.1684" dy="1.6002" layer="1" cream="no"/>
+<smd name="2" x="0" y="0" dx="1.1684" dy="1.6002" layer="1" cream="no"/>
+<smd name="3" x="1.524" y="0" dx="1.1684" dy="1.6002" layer="1" cream="no"/>
 <text x="-2.413" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-0.1001" y="0" size="0.02" layer="27">&gt;VALUE</text>
 <rectangle x1="-0.508" y1="-0.762" x2="0.508" y2="0.762" layer="51"/>
@@ -15630,7 +15630,7 @@ General-purpose diode for high-speed switching</description>
 <packageinstance name="SJ_2W"/>
 </packageinstances>
 </package3d>
-<package3d name="SJ_2" urn="urn:adsk.eagle:package:15474/1" type="box" library_version="1">
+<package3d name="SJ_2" urn="urn:adsk.eagle:package:15474/1" type="box">
 <description>Solder jumper</description>
 <packageinstances>
 <packageinstance name="SJ_2"/>
@@ -15638,7 +15638,7 @@ General-purpose diode for high-speed switching</description>
 </package3d>
 </packages3d>
 <symbols>
-<symbol name="SJ_2" urn="urn:adsk.eagle:symbol:15437/1" library_version="1">
+<symbol name="SJ_2">
 <wire x1="-0.635" y1="-1.397" x2="0.635" y2="-1.397" width="1.27" layer="94" curve="180" cap="flat"/>
 <wire x1="-0.635" y1="1.397" x2="0.635" y2="1.397" width="1.27" layer="94" curve="-180" cap="flat"/>
 <wire x1="1.27" y1="-0.635" x2="-1.27" y2="-0.635" width="0.1524" layer="94"/>
@@ -15656,7 +15656,7 @@ General-purpose diode for high-speed switching</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="SJ2W" urn="urn:adsk.eagle:component:15505/1" prefix="SJ" uservalue="yes" library_version="1">
+<deviceset name="SJ2W" prefix="SJ" uservalue="yes">
 <description>SMD solder &lt;b&gt;JUMPER&lt;/b&gt;</description>
 <gates>
 <gate name="G$1" symbol="SJ_2" x="0" y="0"/>
@@ -15672,7 +15672,9 @@ General-purpose diode for high-speed switching</description>
 <package3dinstance package3d_urn="urn:adsk.eagle:package:15476/1"/>
 </package3dinstances>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="POPULARITY" value="1" constant="no"/>
+</technology>
 </technologies>
 </device>
 <device name="" package="SJ_2">
@@ -15685,7 +15687,9 @@ General-purpose diode for high-speed switching</description>
 <package3dinstance package3d_urn="urn:adsk.eagle:package:15474/1"/>
 </package3dinstances>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="POPULARITY" value="7" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -18301,7 +18305,7 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="BAT1" library="CR2032-circle" deviceset="CR2032" device="CR2032-BS-6-1" value="CR2032"/>
 <part name="Y2" library="SMD3215_2P" deviceset="3215_2P" device=""/>
 <part name="IC5" library="DRV8833" deviceset="DRV8833" device="PWP" value="DRV8833PWP"/>
-<part name="SJ9" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
+<part name="SJ9" library="jumper" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="JP56" library="iServo_connector" deviceset="292161-3" device="" value="INTELIGENT_SERVO2">
 <attribute name="DESCRIPTION" value="Connector for inteligent servo LewanSoul (e.g. LX-15D)"/>
 <attribute name="PACKAGE" value="292161-3"/>
@@ -18434,7 +18438,7 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="GND27" library="Supply" deviceset="GND" device=""/>
 <part name="GND28" library="Supply" deviceset="GND" device=""/>
 <part name="IC2" library="DRV8833" deviceset="DRV8833" device="PWP" value="DRV8833PWP"/>
-<part name="SJ8" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
+<part name="SJ8" library="jumper" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="C16" library="rcl_upravena" deviceset="C-EU" device="C0603" value="2u2">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -18643,11 +18647,11 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="NC8" library="NC" deviceset="NC" device=""/>
 <part name="JP45" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="M12FAULT"/>
 <part name="JP46" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="M34FAULT"/>
-<part name="SJ6" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
+<part name="SJ6" library="jumper" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="+3V1" library="Supply" deviceset="+3V3" device=""/>
 <part name="D31" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
-<part name="SJ3" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
-<part name="SJ1" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
+<part name="SJ3" library="jumper" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
+<part name="SJ1" library="jumper" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="R31" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R33" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R35" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
@@ -18701,7 +18705,7 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="GND120" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V36" library="Supply" deviceset="+3V3" device=""/>
 <part name="R38" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="SJ5" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
+<part name="SJ5" library="jumper" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="GND121" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V37" library="Supply" deviceset="+3V3" device=""/>
 <part name="P+13" library="Supply" deviceset="+5V" device=""/>
@@ -18741,7 +18745,7 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="R28" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="R27" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="JP8" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C1_VSEL"/>
-<part name="SJ2" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
+<part name="SJ2" library="jumper" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="+3V47" library="Supply" deviceset="+3V3" device=""/>
 <part name="P+14" library="Supply" deviceset="+5V" device=""/>
 <part name="GND118" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -19102,7 +19106,7 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="R66" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R89" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R90" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="SJ7" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
+<part name="SJ7" library="jumper" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="P+31" library="Supply" deviceset="+5V" device=""/>
 <part name="+3V66" library="Supply" deviceset="+3V3S" device=""/>
 <part name="JP40" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_PROG_UART"/>
@@ -19115,7 +19119,7 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="R52" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="GND149" library="Supply" deviceset="GND" device=""/>
 <part name="JP19" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="STM_UART"/>
-<part name="SJ4" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
+<part name="SJ4" library="jumper" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1"/>
 <part name="P+33" library="Supply" deviceset="+5V" device=""/>
 <part name="+3V69" library="Supply" deviceset="+3V3S" device=""/>
 <part name="D8" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
