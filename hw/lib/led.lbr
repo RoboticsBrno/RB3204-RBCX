@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.0">
+<eagle version="9.6.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="Route2" color="16" fill="1" visible="no" active="yes"/>
-<layer number="3" name="Route3" color="17" fill="1" visible="no" active="yes"/>
-<layer number="4" name="Route4" color="18" fill="1" visible="no" active="yes"/>
-<layer number="5" name="Route5" color="19" fill="1" visible="no" active="yes"/>
-<layer number="6" name="Route6" color="25" fill="1" visible="no" active="yes"/>
-<layer number="7" name="Route7" color="26" fill="1" visible="no" active="yes"/>
-<layer number="8" name="Route8" color="27" fill="1" visible="no" active="yes"/>
-<layer number="9" name="Route9" color="28" fill="1" visible="no" active="yes"/>
-<layer number="10" name="Route10" color="29" fill="1" visible="no" active="yes"/>
-<layer number="11" name="Route11" color="30" fill="1" visible="no" active="yes"/>
-<layer number="12" name="Route12" color="20" fill="1" visible="no" active="yes"/>
-<layer number="13" name="Route13" color="21" fill="1" visible="no" active="yes"/>
-<layer number="14" name="Route14" color="22" fill="1" visible="no" active="yes"/>
-<layer number="15" name="Route15" color="23" fill="1" visible="no" active="yes"/>
+<layer number="2" name="Route2" color="16" fill="1" visible="yes" active="yes"/>
+<layer number="3" name="Route3" color="17" fill="1" visible="yes" active="yes"/>
+<layer number="4" name="Route4" color="18" fill="1" visible="yes" active="yes"/>
+<layer number="5" name="Route5" color="19" fill="1" visible="yes" active="yes"/>
+<layer number="6" name="Route6" color="25" fill="1" visible="yes" active="yes"/>
+<layer number="7" name="Route7" color="26" fill="1" visible="yes" active="yes"/>
+<layer number="8" name="Route8" color="27" fill="1" visible="yes" active="yes"/>
+<layer number="9" name="Route9" color="28" fill="1" visible="yes" active="yes"/>
+<layer number="10" name="Route10" color="29" fill="1" visible="yes" active="yes"/>
+<layer number="11" name="Route11" color="30" fill="1" visible="yes" active="yes"/>
+<layer number="12" name="Route12" color="20" fill="1" visible="yes" active="yes"/>
+<layer number="13" name="Route13" color="21" fill="1" visible="yes" active="yes"/>
+<layer number="14" name="Route14" color="22" fill="1" visible="yes" active="yes"/>
+<layer number="15" name="Route15" color="23" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
@@ -36,25 +36,25 @@
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
-<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
-<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
-<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
-<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
-<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
-<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="yes" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="yes" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
-<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
@@ -143,86 +143,86 @@ IR transmitter Siemens</description>
 <package name="CHIPLED_0805" urn="urn:adsk.eagle:footprint:15674/1" locally_modified="yes">
 <description>&lt;b&gt;CHIPLED&lt;/b&gt;&lt;p&gt;
 Source: http://www.osram.convergy.de/ ... LG_R971.pdf</description>
-<wire x1="-0.35" y1="0.925" x2="0.35" y2="0.925" width="0.1016" layer="51" curve="162.394521"/>
-<wire x1="-0.35" y1="-0.925" x2="0.35" y2="-0.925" width="0.1016" layer="51" curve="-162.394521"/>
-<wire x1="0.575" y1="0.525" x2="0.575" y2="-0.525" width="0.1016" layer="51"/>
-<wire x1="-0.575" y1="-0.5" x2="-0.575" y2="0.925" width="0.1016" layer="51"/>
-<circle x="-0.45" y="0.85" radius="0.103" width="0.1016" layer="51"/>
-<smd name="C" x="0" y="1.05" dx="1.2" dy="1.2" layer="1" roundness="50"/>
-<smd name="A" x="0" y="-1.05" dx="1.2" dy="1.2" layer="1" roundness="50"/>
-<text x="-1.27" y="-1.27" size="1.27" layer="25" rot="R90">&gt;NAME</text>
-<text x="2.54" y="-1.27" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
-<rectangle x1="0.3" y1="0.5" x2="0.625" y2="1" layer="51"/>
-<rectangle x1="-0.325" y1="0.5" x2="-0.175" y2="0.75" layer="51"/>
-<rectangle x1="0.175" y1="0.5" x2="0.325" y2="0.75" layer="51"/>
-<rectangle x1="-0.2" y1="0.5" x2="0.2" y2="0.675" layer="51"/>
-<rectangle x1="0.3" y1="-1" x2="0.625" y2="-0.5" layer="51"/>
-<rectangle x1="-0.625" y1="-1" x2="-0.3" y2="-0.5" layer="51"/>
-<rectangle x1="0.175" y1="-0.75" x2="0.325" y2="-0.5" layer="51"/>
-<rectangle x1="-0.325" y1="-0.75" x2="-0.175" y2="-0.5" layer="51"/>
-<rectangle x1="-0.2" y1="-0.675" x2="0.2" y2="-0.5" layer="51"/>
-<rectangle x1="-0.1" y1="0" x2="0.1" y2="0.2" layer="21"/>
-<rectangle x1="-0.6" y1="0.5" x2="-0.3" y2="0.8" layer="51"/>
-<rectangle x1="-0.625" y1="0.925" x2="-0.3" y2="1" layer="51"/>
-<wire x1="-0.8" y1="1.85" x2="-0.8" y2="-1.85" width="0.05" layer="39"/>
-<wire x1="-0.8" y1="-1.85" x2="0.8" y2="-1.85" width="0.05" layer="39"/>
-<wire x1="0.8" y1="-1.85" x2="0.8" y2="1.85" width="0.05" layer="39"/>
-<wire x1="0.8" y1="1.85" x2="-0.8" y2="1.85" width="0.05" layer="39"/>
+<wire x1="-0.925" y1="-0.35" x2="-0.925" y2="0.35" width="0.1016" layer="51" curve="162.394521"/>
+<wire x1="0.925" y1="-0.35" x2="0.925" y2="0.35" width="0.1016" layer="51" curve="-162.394521"/>
+<wire x1="-0.525" y1="0.575" x2="0.525" y2="0.575" width="0.1016" layer="51"/>
+<wire x1="0.5" y1="-0.575" x2="-0.925" y2="-0.575" width="0.1016" layer="51"/>
+<circle x="-0.85" y="-0.45" radius="0.103" width="0.1016" layer="51"/>
+<smd name="C" x="-1.05" y="0" dx="1.2" dy="1.2" layer="1" roundness="50" rot="R90"/>
+<smd name="A" x="1.05" y="0" dx="1.2" dy="1.2" layer="1" roundness="50" rot="R90"/>
+<text x="1.27" y="-1.27" size="1.27" layer="25" rot="R180">&gt;NAME</text>
+<text x="1.27" y="2.54" size="1.27" layer="27" rot="R180">&gt;VALUE</text>
+<rectangle x1="-0.9125" y1="0.2125" x2="-0.5875" y2="0.7125" layer="51" rot="R90"/>
+<rectangle x1="-0.7" y1="-0.375" x2="-0.55" y2="-0.125" layer="51" rot="R90"/>
+<rectangle x1="-0.7" y1="0.125" x2="-0.55" y2="0.375" layer="51" rot="R90"/>
+<rectangle x1="-0.7875" y1="-0.0875" x2="-0.3875" y2="0.0875" layer="51" rot="R90"/>
+<rectangle x1="0.5875" y1="0.2125" x2="0.9125" y2="0.7125" layer="51" rot="R90"/>
+<rectangle x1="0.5875" y1="-0.7125" x2="0.9125" y2="-0.2125" layer="51" rot="R90"/>
+<rectangle x1="0.55" y1="0.125" x2="0.7" y2="0.375" layer="51" rot="R90"/>
+<rectangle x1="0.55" y1="-0.375" x2="0.7" y2="-0.125" layer="51" rot="R90"/>
+<rectangle x1="0.3875" y1="-0.0875" x2="0.7875" y2="0.0875" layer="51" rot="R90"/>
+<rectangle x1="-0.2" y1="-0.1" x2="0" y2="0.1" layer="21" rot="R90"/>
+<rectangle x1="-0.8" y1="-0.6" x2="-0.5" y2="-0.3" layer="51" rot="R90"/>
+<rectangle x1="-1.125" y1="-0.5" x2="-0.8" y2="-0.425" layer="51" rot="R90"/>
+<wire x1="-1.85" y1="-0.8" x2="1.85" y2="-0.8" width="0.05" layer="39"/>
+<wire x1="1.85" y1="-0.8" x2="1.85" y2="0.8" width="0.05" layer="39"/>
+<wire x1="1.85" y1="0.8" x2="-1.85" y2="0.8" width="0.05" layer="39"/>
+<wire x1="-1.85" y1="0.8" x2="-1.85" y2="-0.8" width="0.05" layer="39"/>
 </package>
 <package name="CHIPLED_1206" urn="urn:adsk.eagle:footprint:15675/1" locally_modified="yes">
 <description>&lt;b&gt;CHIPLED&lt;/b&gt;&lt;p&gt;
 Source: http://www.osram.convergy.de/ ... LG_LY N971.pdf</description>
-<wire x1="-0.4" y1="1.6" x2="0.4" y2="1.6" width="0.1016" layer="51" curve="172.619069"/>
-<wire x1="-0.8" y1="-0.95" x2="-0.8" y2="0.95" width="0.1016" layer="51"/>
-<wire x1="0.8" y1="0.95" x2="0.8" y2="-0.95" width="0.1016" layer="51"/>
-<circle x="-0.55" y="1.425" radius="0.1" width="0.1016" layer="51"/>
-<smd name="C" x="0" y="1.75" dx="1.5" dy="1.5" layer="1" roundness="50"/>
-<smd name="A" x="0" y="-1.75" dx="1.5" dy="1.5" layer="1" roundness="50"/>
-<text x="-1.27" y="-1.27" size="1.27" layer="25" rot="R90">&gt;NAME</text>
-<text x="2.54" y="-1.27" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
-<rectangle x1="-0.85" y1="1.525" x2="-0.35" y2="1.65" layer="51"/>
-<rectangle x1="-0.85" y1="1.225" x2="-0.625" y2="1.55" layer="51"/>
-<rectangle x1="-0.45" y1="1.225" x2="-0.325" y2="1.45" layer="51"/>
-<rectangle x1="-0.65" y1="1.225" x2="-0.225" y2="1.35" layer="51"/>
-<rectangle x1="0.35" y1="1.3" x2="0.85" y2="1.65" layer="51"/>
-<rectangle x1="0.25" y1="1.225" x2="0.85" y2="1.35" layer="51"/>
-<rectangle x1="-0.85" y1="0.95" x2="0.85" y2="1.25" layer="51"/>
-<rectangle x1="-0.85" y1="-1.65" x2="0.85" y2="-0.95" layer="51"/>
-<rectangle x1="-0.85" y1="0.35" x2="-0.525" y2="0.775" layer="21"/>
-<rectangle x1="0.525" y1="0.35" x2="0.85" y2="0.775" layer="21"/>
-<rectangle x1="-0.175" y1="0" x2="0.175" y2="0.35" layer="21"/>
-<wire x1="-0.95" y1="-2.7" x2="-0.95" y2="2.7" width="0.05" layer="39"/>
-<wire x1="-0.95" y1="2.7" x2="0.95" y2="2.7" width="0.05" layer="39"/>
-<wire x1="0.95" y1="2.7" x2="0.95" y2="-2.7" width="0.05" layer="39"/>
-<wire x1="0.95" y1="-2.7" x2="-0.95" y2="-2.7" width="0.05" layer="39"/>
+<wire x1="-1.6" y1="-0.4" x2="-1.6" y2="0.4" width="0.1016" layer="51" curve="172.619069"/>
+<wire x1="0.95" y1="-0.8" x2="-0.95" y2="-0.8" width="0.1016" layer="51"/>
+<wire x1="-0.95" y1="0.8" x2="0.95" y2="0.8" width="0.1016" layer="51"/>
+<circle x="-1.425" y="-0.55" radius="0.1" width="0.1016" layer="51"/>
+<smd name="C" x="-1.75" y="0" dx="1.5" dy="1.5" layer="1" roundness="50" rot="R90"/>
+<smd name="A" x="1.75" y="0" dx="1.5" dy="1.5" layer="1" roundness="50" rot="R90"/>
+<text x="1.27" y="-1.27" size="1.27" layer="25" rot="R180">&gt;NAME</text>
+<text x="1.27" y="2.54" size="1.27" layer="27" rot="R180">&gt;VALUE</text>
+<rectangle x1="-1.8375" y1="-0.6625" x2="-1.3375" y2="-0.5375" layer="51" rot="R90"/>
+<rectangle x1="-1.5" y1="-0.9" x2="-1.275" y2="-0.575" layer="51" rot="R90"/>
+<rectangle x1="-1.4" y1="-0.5" x2="-1.275" y2="-0.275" layer="51" rot="R90"/>
+<rectangle x1="-1.5" y1="-0.5" x2="-1.075" y2="-0.375" layer="51" rot="R90"/>
+<rectangle x1="-1.725" y1="0.425" x2="-1.225" y2="0.775" layer="51" rot="R90"/>
+<rectangle x1="-1.5875" y1="0.4875" x2="-0.9875" y2="0.6125" layer="51" rot="R90"/>
+<rectangle x1="-1.95" y1="-0.15" x2="-0.25" y2="0.15" layer="51" rot="R90"/>
+<rectangle x1="0.45" y1="-0.35" x2="2.15" y2="0.35" layer="51" rot="R90"/>
+<rectangle x1="-0.725" y1="-0.9" x2="-0.4" y2="-0.475" layer="21" rot="R90"/>
+<rectangle x1="-0.725" y1="0.475" x2="-0.4" y2="0.9" layer="21" rot="R90"/>
+<rectangle x1="-0.35" y1="-0.175" x2="0" y2="0.175" layer="21" rot="R90"/>
+<wire x1="2.7" y1="-0.95" x2="-2.7" y2="-0.95" width="0.05" layer="39"/>
+<wire x1="-2.7" y1="-0.95" x2="-2.7" y2="0.95" width="0.05" layer="39"/>
+<wire x1="-2.7" y1="0.95" x2="2.7" y2="0.95" width="0.05" layer="39"/>
+<wire x1="2.7" y1="0.95" x2="2.7" y2="-0.95" width="0.05" layer="39"/>
 </package>
 <package name="CHIPLED_0603" urn="urn:adsk.eagle:footprint:15676/1" locally_modified="yes">
 <description>&lt;b&gt;CHIPLED&lt;/b&gt;&lt;p&gt;
 Source: http://www.osram.convergy.de/ ... LG_LY Q971.pdf</description>
-<wire x1="-0.3" y1="0.8" x2="0.3" y2="0.8" width="0.1016" layer="51" curve="170.055574"/>
-<wire x1="-0.275" y1="-0.825" x2="0.275" y2="-0.825" width="0.0508" layer="51" curve="-180"/>
-<wire x1="-0.4" y1="0.375" x2="-0.4" y2="-0.35" width="0.1016" layer="51"/>
-<wire x1="0.4" y1="0.35" x2="0.4" y2="-0.35" width="0.1016" layer="51"/>
-<circle x="-0.35" y="0.625" radius="0.075" width="0.0508" layer="51"/>
-<smd name="C" x="0" y="0.75" dx="0.8" dy="0.8" layer="1" roundness="50"/>
-<smd name="A" x="0" y="-0.75" dx="0.8" dy="0.8" layer="1" roundness="50"/>
-<text x="-0.635" y="-1.27" size="1.27" layer="25" rot="R90">&gt;NAME</text>
-<text x="1.905" y="-1.27" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
-<rectangle x1="-0.45" y1="0.7" x2="-0.25" y2="0.85" layer="51"/>
-<rectangle x1="-0.275" y1="0.55" x2="-0.225" y2="0.6" layer="51"/>
-<rectangle x1="-0.45" y1="0.35" x2="-0.4" y2="0.725" layer="51"/>
-<rectangle x1="0.25" y1="0.55" x2="0.45" y2="0.85" layer="51"/>
-<rectangle x1="-0.45" y1="0.35" x2="0.45" y2="0.575" layer="51"/>
-<rectangle x1="-0.45" y1="-0.85" x2="-0.25" y2="-0.35" layer="51"/>
-<rectangle x1="0.25" y1="-0.85" x2="0.45" y2="-0.35" layer="51"/>
-<rectangle x1="-0.275" y1="-0.575" x2="0.275" y2="-0.35" layer="51"/>
-<rectangle x1="-0.275" y1="-0.65" x2="-0.175" y2="-0.55" layer="51"/>
-<rectangle x1="0.175" y1="-0.65" x2="0.275" y2="-0.55" layer="51"/>
-<rectangle x1="-0.125" y1="0" x2="0.125" y2="0.25" layer="21"/>
-<wire x1="-0.6" y1="1.35" x2="0.6" y2="1.35" width="0.05" layer="39"/>
-<wire x1="0.6" y1="1.35" x2="0.6" y2="-1.35" width="0.05" layer="39"/>
-<wire x1="0.6" y1="-1.35" x2="-0.6" y2="-1.35" width="0.05" layer="39"/>
-<wire x1="-0.6" y1="-1.35" x2="-0.6" y2="1.35" width="0.05" layer="39"/>
+<wire x1="-0.8" y1="-0.3" x2="-0.8" y2="0.3" width="0.1016" layer="51" curve="170.055574"/>
+<wire x1="0.825" y1="-0.275" x2="0.825" y2="0.275" width="0.0508" layer="51" curve="-180"/>
+<wire x1="-0.375" y1="-0.4" x2="0.35" y2="-0.4" width="0.1016" layer="51"/>
+<wire x1="-0.35" y1="0.4" x2="0.35" y2="0.4" width="0.1016" layer="51"/>
+<circle x="-0.625" y="-0.35" radius="0.075" width="0.0508" layer="51"/>
+<smd name="C" x="-0.75" y="0" dx="0.8" dy="0.8" layer="1" roundness="50" rot="R90"/>
+<smd name="A" x="0.75" y="0" dx="0.8" dy="0.8" layer="1" roundness="50" rot="R90"/>
+<text x="1.27" y="-0.635" size="1.27" layer="25" rot="R180">&gt;NAME</text>
+<text x="1.27" y="1.905" size="1.27" layer="27" rot="R180">&gt;VALUE</text>
+<rectangle x1="-0.875" y1="-0.425" x2="-0.675" y2="-0.275" layer="51" rot="R90"/>
+<rectangle x1="-0.6" y1="-0.275" x2="-0.55" y2="-0.225" layer="51" rot="R90"/>
+<rectangle x1="-0.5625" y1="-0.6125" x2="-0.5125" y2="-0.2375" layer="51" rot="R90"/>
+<rectangle x1="-0.8" y1="0.2" x2="-0.6" y2="0.5" layer="51" rot="R90"/>
+<rectangle x1="-0.9125" y1="-0.1125" x2="-0.0125" y2="0.1125" layer="51" rot="R90"/>
+<rectangle x1="0.5" y1="-0.6" x2="0.7" y2="-0.1" layer="51" rot="R90"/>
+<rectangle x1="0.5" y1="0.1" x2="0.7" y2="0.6" layer="51" rot="R90"/>
+<rectangle x1="0.1875" y1="-0.1125" x2="0.7375" y2="0.1125" layer="51" rot="R90"/>
+<rectangle x1="0.55" y1="-0.275" x2="0.65" y2="-0.175" layer="51" rot="R90"/>
+<rectangle x1="0.55" y1="0.175" x2="0.65" y2="0.275" layer="51" rot="R90"/>
+<rectangle x1="-0.25" y1="-0.125" x2="0" y2="0.125" layer="21" rot="R180"/>
+<wire x1="-1.35" y1="-0.6" x2="-1.35" y2="0.6" width="0.05" layer="39"/>
+<wire x1="-1.35" y1="0.6" x2="1.35" y2="0.6" width="0.05" layer="39"/>
+<wire x1="1.35" y1="0.6" x2="1.35" y2="-0.6" width="0.05" layer="39"/>
+<wire x1="1.35" y1="-0.6" x2="-1.35" y2="-0.6" width="0.05" layer="39"/>
 </package>
 <package name="LED10MM" urn="urn:adsk.eagle:footprint:15681/1">
 <description>&lt;B&gt;LED&lt;/B&gt;&lt;p&gt;
