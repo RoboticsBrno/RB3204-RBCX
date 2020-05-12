@@ -56,21 +56,21 @@ void primaryUartInit() {
     pinInit(primaryRx, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
 
-void primaryUartRxPoll() {
+static void primaryUartRxPoll() {
     int rxHead = primaryUartRxFifo.size() - __HAL_DMA_GET_COUNTER(&primaryUartDmaRxHandle);
     primaryUartRxFifo.setHead(rxHead);
 }
 
-void primaryUartTx(uint8_t* data, size_t len) {
+static void primaryUartTx(uint8_t* data, size_t len) {
     HAL_DMA_Start(&primaryUartDmaTxHandle, uint32_t(data), uint32_t(&USART1->DR), len);
 }
 
-bool primaryUartTxReady() {
+static bool primaryUartTxReady() {
     HAL_DMA_PollForTransfer(&primaryUartDmaTxHandle, HAL_DMA_FULL_TRANSFER, 0);
     return primaryUartDmaTxHandle.State == HAL_DMA_STATE_READY;
 }
 
-void tunnelDownstreamHandler() {
+static void tunnelDownstreamHandler() {
     if (primaryUartTxReady()) {
         int transferred = usbd_ep_read(&udev, CDC_RXD_EP, primaryUartTxBuf.data(), primaryUartTxBuf.size());
         if (transferred > 0) {
@@ -79,7 +79,7 @@ void tunnelDownstreamHandler() {
     }
 }
 
-void tunnelUpstreamHandler() {
+static void tunnelUpstreamHandler() {
     primaryUartRxPoll();
     auto readable = primaryUartRxFifo.readableSpan();
     if (readable.second > 0) {
