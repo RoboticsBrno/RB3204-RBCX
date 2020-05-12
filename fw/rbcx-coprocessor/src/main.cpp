@@ -6,8 +6,7 @@
 #include "UsbCdcLink.h"
 
 int main() {
-    systemClocksInit();
-    peripheralClocksInit();
+    clocksInit();
     HAL_Init();
     primaryUartInit();
     pinsInit();

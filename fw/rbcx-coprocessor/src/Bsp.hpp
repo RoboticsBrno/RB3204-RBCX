@@ -19,7 +19,7 @@ inline DMA_Channel_TypeDef * const primaryTxDmaChannel = DMA1_Channel4;
 inline DMA_Channel_TypeDef * const primaryRxDmaChannel = DMA1_Channel5;
 inline USART_TypeDef * const primaryUsart = USART1;
 
-inline void systemClocksInit() {
+inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
     RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
     RCC_PeriphCLKInitTypeDef PeriphClkInit = { 0 };
@@ -50,9 +50,7 @@ inline void systemClocksInit() {
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
         assert(false);
     }
-}
 
-inline void peripheralClocksInit() {
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
