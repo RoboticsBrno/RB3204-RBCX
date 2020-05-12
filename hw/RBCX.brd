@@ -6695,9 +6695,9 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="11.90625" y="1.905" size="1.27" layer="25" rot="R180"/>
 <attribute name="VALUE" x="11.90625" y="4.445" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="R47" library="rcl_upravena" package="R0603" value="0R" x="9.68375" y="10.00125" smashed="yes" rot="R180">
-<attribute name="NAME" x="10.31875" y="9.36625" size="1.27" layer="25" rot="R180"/>
-<attribute name="VALUE" x="10.31875" y="11.90625" size="1.27" layer="27" rot="R180"/>
+<element name="R47" library="rcl_upravena" package="R0603" value="0R" x="9.68375" y="10.16" smashed="yes" rot="R180">
+<attribute name="NAME" x="10.31875" y="9.525" size="1.27" layer="25" rot="R180"/>
+<attribute name="VALUE" x="10.31875" y="12.065" size="1.27" layer="27" rot="R180"/>
 </element>
 <element name="R25" library="rcl_upravena" package="R0603" value="0R" x="33.655" y="5.87375" smashed="yes" rot="R90">
 <attribute name="NAME" x="33.02" y="5.23875" size="1.27" layer="25" rot="R90"/>
@@ -9976,11 +9976,10 @@ JarekParal (2020-04-14)
 <contactref element="R47" pad="2"/>
 <contactref element="SJ4" pad="3"/>
 <wire x1="53.975" y1="6.604" x2="53.975" y2="6.59375" width="0.1524" layer="1"/>
-<wire x1="8.96375" y1="10.00125" x2="8.89" y2="10.075" width="0.1524" layer="1"/>
-<wire x1="8.89" y1="10.075" x2="8.89" y2="10.0965" width="0.1524" layer="1"/>
+<wire x1="8.96375" y1="10.16" x2="8.90025" y2="10.0965" width="0.1524" layer="1"/>
+<wire x1="8.89" y1="10.0965" x2="8.90025" y2="10.0965" width="0.1524" layer="1"/>
 <wire x1="33.655" y1="6.604" x2="33.655" y2="6.59375" width="0.1524" layer="1"/>
-<wire x1="8.96375" y1="10.00125" x2="8.9535" y2="10.0115" width="0.1524" layer="1"/>
-<wire x1="8.9535" y1="10.0115" x2="8.9535" y2="10.16" width="0.1524" layer="1"/>
+<wire x1="8.9535" y1="10.16" x2="8.96375" y2="10.16" width="0.1524" layer="1"/>
 </signal>
 <signal name="ISERVO">
 <contactref element="R151" pad="2"/>
@@ -12746,8 +12745,7 @@ JarekParal (2020-04-14)
 <wire x1="11.1125" y1="8.255" x2="13.97" y2="8.255" width="1.016" layer="1"/>
 <wire x1="13.97" y1="8.255" x2="15.875" y2="6.35" width="1.016" layer="1"/>
 <contactref element="R47" pad="1"/>
-<wire x1="10.40375" y1="10.00125" x2="10.40375" y2="10.08625" width="0.1524" layer="1"/>
-<wire x1="10.40375" y1="10.08625" x2="10.4775" y2="10.16" width="0.1524" layer="1"/>
+<wire x1="10.40375" y1="10.16" x2="10.4775" y2="10.16" width="0.1524" layer="1"/>
 </signal>
 <signal name="STM_UART_TX">
 <contactref element="R52" pad="1"/>
