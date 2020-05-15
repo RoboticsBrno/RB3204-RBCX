@@ -12,12 +12,17 @@ using PinDef = std::pair<GPIO_TypeDef*, uint16_t>;
 inline const PinDef led1Pin = std::make_pair(GPIOC, 13);
 inline const PinDef usbDp = std::make_pair(GPIOA, 12);
 inline const PinDef usbDn = std::make_pair(GPIOA, 11);
+
 inline const PinDef primaryTx = std::make_pair(GPIOA, 9);
 inline const PinDef primaryRx = std::make_pair(GPIOA, 10);
-
+inline const PinDef secondaryTx = std::make_pair(GPIOA, 2);
+inline const PinDef secondaryRx = std::make_pair(GPIOA, 3);
 inline DMA_Channel_TypeDef * const primaryTxDmaChannel = DMA1_Channel4;
 inline DMA_Channel_TypeDef * const primaryRxDmaChannel = DMA1_Channel5;
 inline USART_TypeDef * const primaryUsart = USART1;
+inline DMA_Channel_TypeDef * const secondaryTxDmaChannel = DMA1_Channel7;
+inline DMA_Channel_TypeDef * const secondaryRxDmaChannel = DMA1_Channel6;
+inline USART_TypeDef * const secondaryUsart = USART2;
 
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
@@ -55,6 +60,7 @@ inline void clocksInit() {
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
     __HAL_RCC_USART1_CLK_ENABLE();
+    __HAL_RCC_USART2_CLK_ENABLE();
     __HAL_RCC_DMA1_CLK_ENABLE();
 }
 
