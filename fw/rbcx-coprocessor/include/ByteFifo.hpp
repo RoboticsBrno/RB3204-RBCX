@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <array>
+#include <optional>
 #include <stdint.h>
 
 /// A DMA-ready byte ring buffer with contiguous I/O API
@@ -35,6 +36,9 @@ public:
     /// Total capacity
     size_t size() const { return m_fifo.size(); }
 
+    /// True if some data is ready for reading.
+    bool hasData() const { return m_head != m_tail; }
+
     /// Override the write index aka. head
     void setHead(int newHead) {
         m_head = newHead;
@@ -59,6 +63,13 @@ public:
     /// Move the write index (head), indicating len bytes have been written.
     void notifyWritten(size_t len) {
         m_head = adjust(m_head, len);
+    }
+
+    /// Reads one byte, must be available.
+    uint8_t pop() {
+        auto value = m_fifo[m_tail];
+        m_tail = adjust(m_tail, 1);
+        return value;
     }
 
     /// Read len contiguous bytes into buffer starting at data.
