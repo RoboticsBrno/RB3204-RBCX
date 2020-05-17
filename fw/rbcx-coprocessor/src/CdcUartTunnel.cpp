@@ -10,10 +10,10 @@
 #include "CdcUartTunnel.hpp"
 #include "UsbCdcLink.h"
 
-DMA_HandleTypeDef primaryUartDmaRxHandle;
-DMA_HandleTypeDef primaryUartDmaTxHandle;
-ByteFifo<512> primaryUartRxFifo;
-std::array<uint8_t, CDC_DATA_SZ> primaryUartTxBuf;
+static DMA_HandleTypeDef dmaRxHandle;
+static DMA_HandleTypeDef dmaTxHandle;
+static ByteFifo<512> rxFifo;
+static std::array<uint8_t, CDC_DATA_SZ> txBuf;
 
 void primaryUartInit() {
     LL_USART_InitTypeDef init;
@@ -28,28 +28,28 @@ void primaryUartInit() {
     LL_USART_Enable(primaryUsart);
 
     // UART RX runs indefinitely in circular mode
-    primaryUartDmaRxHandle.Instance = primaryRxDmaChannel;
-    primaryUartDmaRxHandle.Init.Direction = DMA_PERIPH_TO_MEMORY;
-    primaryUartDmaRxHandle.Init.Mode = DMA_CIRCULAR;
-    primaryUartDmaRxHandle.Init.MemInc = DMA_MINC_ENABLE;
-    primaryUartDmaRxHandle.Init.PeriphInc = DMA_PINC_DISABLE;
-    primaryUartDmaRxHandle.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
-    primaryUartDmaRxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
-    primaryUartDmaRxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
-    HAL_DMA_Init(&primaryUartDmaRxHandle);
-    HAL_DMA_Start(&primaryUartDmaRxHandle, uint32_t(&(primaryUsart->DR)), uint32_t(primaryUartRxFifo.data()), primaryUartRxFifo.size());
+    dmaRxHandle.Instance = primaryRxDmaChannel;
+    dmaRxHandle.Init.Direction = DMA_PERIPH_TO_MEMORY;
+    dmaRxHandle.Init.Mode = DMA_CIRCULAR;
+    dmaRxHandle.Init.MemInc = DMA_MINC_ENABLE;
+    dmaRxHandle.Init.PeriphInc = DMA_PINC_DISABLE;
+    dmaRxHandle.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    dmaRxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    dmaRxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
+    HAL_DMA_Init(&dmaRxHandle);
+    HAL_DMA_Start(&dmaRxHandle, uint32_t(&(primaryUsart->DR)), uint32_t(rxFifo.data()), rxFifo.size());
     LL_USART_EnableDMAReq_RX(primaryUsart);
 
     // UART TX burst is started ad hoc each time
-    primaryUartDmaTxHandle.Instance = primaryTxDmaChannel;
-    primaryUartDmaTxHandle.Init.Direction = DMA_MEMORY_TO_PERIPH;
-    primaryUartDmaTxHandle.Init.Mode = DMA_NORMAL;
-    primaryUartDmaTxHandle.Init.MemInc = DMA_MINC_ENABLE;
-    primaryUartDmaTxHandle.Init.PeriphInc = DMA_PINC_DISABLE;
-    primaryUartDmaTxHandle.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
-    primaryUartDmaTxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
-    primaryUartDmaTxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
-    HAL_DMA_Init(&primaryUartDmaTxHandle);
+    dmaTxHandle.Instance = primaryTxDmaChannel;
+    dmaTxHandle.Init.Direction = DMA_MEMORY_TO_PERIPH;
+    dmaTxHandle.Init.Mode = DMA_NORMAL;
+    dmaTxHandle.Init.MemInc = DMA_MINC_ENABLE;
+    dmaTxHandle.Init.PeriphInc = DMA_PINC_DISABLE;
+    dmaTxHandle.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    dmaTxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    dmaTxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
+    HAL_DMA_Init(&dmaTxHandle);
     LL_USART_EnableDMAReq_TX(primaryUsart);
 
     pinInit(primaryTx, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
@@ -57,35 +57,35 @@ void primaryUartInit() {
 }
 
 static void primaryUartRxPoll() {
-    int rxHead = primaryUartRxFifo.size() - __HAL_DMA_GET_COUNTER(&primaryUartDmaRxHandle);
-    primaryUartRxFifo.setHead(rxHead);
+    int rxHead = rxFifo.size() - __HAL_DMA_GET_COUNTER(&dmaRxHandle);
+    rxFifo.setHead(rxHead);
 }
 
 static void primaryUartTx(uint8_t* data, size_t len) {
-    HAL_DMA_Start(&primaryUartDmaTxHandle, uint32_t(data), uint32_t(&USART1->DR), len);
+    HAL_DMA_Start(&dmaTxHandle, uint32_t(data), uint32_t(&primaryUsart->DR), len);
 }
 
 static bool primaryUartTxReady() {
-    HAL_DMA_PollForTransfer(&primaryUartDmaTxHandle, HAL_DMA_FULL_TRANSFER, 0);
-    return primaryUartDmaTxHandle.State == HAL_DMA_STATE_READY;
+    HAL_DMA_PollForTransfer(&dmaTxHandle, HAL_DMA_FULL_TRANSFER, 0);
+    return dmaTxHandle.State == HAL_DMA_STATE_READY;
 }
 
 static void tunnelDownstreamHandler() {
     if (primaryUartTxReady()) {
-        int transferred = usbd_ep_read(&udev, CDC_RXD_EP, primaryUartTxBuf.data(), primaryUartTxBuf.size());
+        int transferred = usbd_ep_read(&udev, CDC_RXD_EP, txBuf.data(), txBuf.size());
         if (transferred > 0) {
-            primaryUartTx(primaryUartTxBuf.data(), transferred);
+            primaryUartTx(txBuf.data(), transferred);
         }
     }
 }
 
 static void tunnelUpstreamHandler() {
     primaryUartRxPoll();
-    auto readable = primaryUartRxFifo.readableSpan();
+    auto readable = rxFifo.readableSpan();
     if (readable.second > 0) {
         int transferred = usbd_ep_write(&udev, CDC_TXD_EP, readable.first, std::min(readable.second, size_t(CDC_DATA_SZ)));
         if (transferred > 0) {
-            primaryUartRxFifo.notifyRead(transferred);
+            rxFifo.notifyRead(transferred);
         }
     }
 }
