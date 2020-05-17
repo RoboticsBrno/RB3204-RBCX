@@ -16,15 +16,15 @@ enum class RxState {
     AwaitingStart,
     AwaitingLength,
     ReceivingFrame,
-} rxState;
+} static rxState;
 
-DMA_HandleTypeDef dmaRxHandle;
-DMA_HandleTypeDef dmaTxHandle;
-ByteFifo<512> rxFifo;
-int rxFrameLength = 0;
-int rxFrameIndex = 0;
-std::array<uint8_t, 256> rxFrameBuf;
-std::array<uint8_t, 256> txFrameBuf;
+static DMA_HandleTypeDef dmaRxHandle;
+static DMA_HandleTypeDef dmaTxHandle;
+static ByteFifo<512> rxFifo;
+static int rxFrameLength = 0;
+static int rxFrameIndex = 0;
+static std::array<uint8_t, 255> rxFrameBuf;
+static std::array<uint8_t, 257> txFrameBuf;
 
 void secondaryUartInit() {
     LL_USART_InitTypeDef init;
@@ -87,7 +87,7 @@ size_t controlLinkRxFrame(uint8_t* data, size_t len) {
     while (rxFifo.hasData()) {
         uint8_t byte = rxFifo.pop();
 
-        // Zero always initiates new frame start
+        // Zero always starts new frame
         if (byte == 0) {
             rxState = RxState::AwaitingLength;
         } else if (rxState == RxState::AwaitingLength) {
