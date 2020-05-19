@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.1">
+<eagle version="9.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -19457,7 +19457,7 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <text x="53.34" y="76.2" size="1.27" layer="97">÷3.4 -&gt; VCC max = 11.22 V
 Fmax = 22.5 Hz</text>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.0</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -22182,7 +22182,7 @@ makes filter together with gate capacitance</text>
 <description>Connectors</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.0</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -25414,7 +25414,7 @@ Jakub Streit
 <description>Auxiliary connectors</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.0</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -28098,7 +28098,7 @@ Jakub Streit
 <description>User interface</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.0</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -30506,7 +30506,7 @@ Jakub Streit
 <description>Motors</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.0</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -33421,7 +33421,7 @@ Jakub Streit
 <description>Servos</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.0</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -36100,7 +36100,7 @@ Jakub Streit
 <plain>
 <text x="132.08" y="148.082" size="1.778" layer="94" rot="R180">THE TDI SIGNAL MUST BE HERE!</text>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.0</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -37987,7 +37987,7 @@ Jakub Streit
 <description>Coprocessor</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.0</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
