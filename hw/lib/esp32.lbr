@@ -134,6 +134,12 @@
 
 &lt;p&gt;This library includes package footprints for modules derived from &lt;a href="http://www.espressif.com/en/products/hardware/esp32/overview"&gt;Espressif Systems ESP32 SoC&lt;/a&gt;.&lt;/p&gt;
 
+&lt;p&gt; Modified by &lt;a href="https://github.com/RoboticsBrno"&gt;RoboticsBrno&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;add device ESP-WROOM-32
+&lt;/ul&gt;
+
+
 &lt;hr /&gt;
 &lt;br /&gt;
 

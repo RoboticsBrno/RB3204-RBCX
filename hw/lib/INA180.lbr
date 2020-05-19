@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.1">
+<eagle version="9.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -72,6 +72,20 @@
 <layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
 </layers>
 <library>
+<description>INA180
+&lt;p&gt;
+
+Footprint create according &lt;a href="https://www.ipc.org/TOC/IPC-7351.pdf"&gt;IPC-7351&lt;/a&gt; (using &lt;a href="https://www.pcblibraries.com/forum/library-expert-2019-07-released_topic2571.html"&gt;Library Expert Pro 2019.7&lt;/a&gt;).
+&lt;p&gt;
+
+&lt;b&gt;Author: &lt;/b&gt;
+&lt;a href="https://www.github.com/cednik/"&gt;Jakub Streit (cednik)&lt;/a&gt;
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+&lt;b&gt;License: &lt;/b&gt;
+&lt;a href="https://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International&lt;/a&gt;</description>
 <packages>
 <package name="SOT23-5L" urn="urn:adsk.eagle:footprint:8084629/1" locally_modified="yes">
 <description>&lt;b&gt;Small Outline Transistor&lt;/b&gt;&lt;p&gt;

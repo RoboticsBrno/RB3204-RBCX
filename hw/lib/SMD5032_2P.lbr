@@ -57,6 +57,22 @@
 <layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
 </layers>
 <library>
+<description>SMD crystal SMD5032_2P
+&lt;p&gt;
+
+&lt;b&gt;Modified by RoboticsBrno&lt;/b&gt;
+&lt;p&gt;
+Change footprint according &lt;a href="https://www.ipc.org/TOC/IPC-7351.pdf"&gt;IPC-7351&lt;/a&gt; (using &lt;a href="https://www.pcblibraries.com/forum/library-expert-2019-07-released_topic2571.html"&gt;Library Expert Pro 2019.7&lt;/a&gt;):  
+&lt;p&gt;
+
+&lt;b&gt;Author: &lt;/b&gt;
+&lt;a href="https://www.snapeda.com/"&gt;snapeda.com&lt;/a&gt;
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+&lt;b&gt;License: &lt;/b&gt;
+&lt;a href="https://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International&lt;/a&gt;</description>
 <packages>
 <package name="OSCCC500X320X135">
 <wire x1="-2.5" y1="1.4" x2="-2.3" y2="1.6" width="0.127" layer="21" curve="90"/>

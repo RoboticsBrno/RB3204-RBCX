@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.1">
+<eagle version="9.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -165,6 +165,22 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <library>
+<description>&lt;b&gt;DRV8833&lt;/b&gt;
+&lt;p&gt;
+HTSSOP footprint created according &lt;a href="https://www.ipc.org/TOC/IPC-7351.pdf"&gt;IPC-7351&lt;/a&gt; (using &lt;a href="https://www.pcblibraries.com/forum/library-expert-2019-07-released_topic2571.html"&gt;Library Expert Pro 2019.7&lt;/a&gt;).
+&lt;p&gt;
+
+&lt;hr /&gt;
+&lt;br /&gt;
+
+&lt;b&gt;Author: &lt;/b&gt;
+&lt;a href="https://github.com/TVavrinec"&gt;Tomáš Vavřinec&lt;/a&gt;
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+&lt;b&gt;License: &lt;/b&gt;
+&lt;a href="https://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International&lt;/a&gt;</description>
 <packages>
 <package name="HTSSOP">
 <circle x="-1.9" y="-1.6" radius="0.179603125" width="0.1524" layer="21"/>

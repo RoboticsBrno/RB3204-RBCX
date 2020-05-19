@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.1">
+<eagle version="9.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -73,6 +73,19 @@
 <layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
 </layers>
 <library>
+<description>USB
+&lt;p&gt;
+
+
+&lt;b&gt;Author: &lt;/b&gt; Wurtzel
+&lt;p&gt;&lt;b&gt;Modified by:&lt;/b&gt;
+&lt;a href="https://github.com/cednik"&gt;Jakub Streit (cednik)&lt;/a&gt;
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+&lt;b&gt;License: &lt;/b&gt;
+&lt;a href="https://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International&lt;/a&gt;</description>
 <packages>
 <package name="614105150621" urn="urn:adsk.eagle:footprint:16513836/1" locally_modified="yes">
 <description>&lt;b&gt;WR-COM&lt;/B&gt;&lt;BR&gt; Micro USB 2.0 Type AB Vertical 5 Contacts</description>
