@@ -9,20 +9,31 @@
 
 using PinDef = std::pair<GPIO_TypeDef*, uint16_t>;
 
-inline const PinDef led1Pin = std::make_pair(GPIOC, 13);
+inline const PinDef led1Pin = std::make_pair(GPIOD, 10);
 inline const PinDef usbDp = std::make_pair(GPIOA, 12);
 inline const PinDef usbDn = std::make_pair(GPIOA, 11);
 
-inline const PinDef primaryTx = std::make_pair(GPIOA, 9);
-inline const PinDef primaryRx = std::make_pair(GPIOA, 10);
-inline const PinDef secondaryTx = std::make_pair(GPIOA, 2);
-inline const PinDef secondaryRx = std::make_pair(GPIOA, 3);
-inline DMA_Channel_TypeDef * const primaryTxDmaChannel = DMA1_Channel4;
-inline DMA_Channel_TypeDef * const primaryRxDmaChannel = DMA1_Channel5;
-inline USART_TypeDef * const primaryUsart = USART1;
-inline DMA_Channel_TypeDef * const secondaryTxDmaChannel = DMA1_Channel7;
-inline DMA_Channel_TypeDef * const secondaryRxDmaChannel = DMA1_Channel6;
-inline USART_TypeDef * const secondaryUsart = USART2;
+inline const PinDef   debugUartTxPin = std::make_pair(GPIOA,  9);
+inline const PinDef   debugUartRxPin = std::make_pair(GPIOA, 10);
+inline const PinDef    userUartTxPin = std::make_pair(GPIOD,  5);
+inline const PinDef    userUartRxPin = std::make_pair(GPIOD,  6);
+inline const PinDef   servoUartTxPin = std::make_pair(GPIOD,  8); // RX is the same pin - half-duplex communication
+inline const PinDef controlUartTxPin = std::make_pair(GPIOC, 10);
+inline const PinDef controlUartRxPin = std::make_pair(GPIOC, 11);
+inline const PinDef   tunelUartTxPin = std::make_pair(GPIOC, 12);
+inline const PinDef   tunelUartRxPin = std::make_pair(GPIOD,  2);
+
+inline USART_TypeDef * const   debugUart = USART1;
+inline USART_TypeDef * const    userUart = USART2;
+inline USART_TypeDef * const   servoUart = USART3;
+inline USART_TypeDef * const controlUart = UART4;
+inline USART_TypeDef * const   tunelUart = UART5;
+
+inline DMA_Channel_TypeDef * const   tunelUartTxDmaChannel = DMA1_Channel4;
+inline DMA_Channel_TypeDef * const   tunelUartRxDmaChannel = DMA1_Channel5;
+
+inline DMA_Channel_TypeDef * const controlUartTxDmaChannel = DMA1_Channel7;
+inline DMA_Channel_TypeDef * const controlUartRxDmaChannel = DMA1_Channel6;
 
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
@@ -36,25 +47,18 @@ inline void clocksInit() {
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
     RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;
-    if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
-        assert(false);
-    }
+    assert(HAL_RCC_OscConfig(&RCC_OscInitStruct) == HAL_OK);
 
     RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
     RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-
-    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK) {
-        assert(false);
-    }
+    assert(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) == HAL_OK);
 
     PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
     PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL;
-    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
-        assert(false);
-    }
+    assert(HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) == HAL_OK);
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOC_CLK_ENABLE();
