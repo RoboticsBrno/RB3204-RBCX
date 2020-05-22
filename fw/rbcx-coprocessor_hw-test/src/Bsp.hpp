@@ -9,19 +9,25 @@
 
 using PinDef = std::pair<GPIO_TypeDef*, uint16_t>;
 
-inline const PinDef led1Pin = std::make_pair(GPIOD, 10);
-inline const PinDef usbDp = std::make_pair(GPIOA, 12);
-inline const PinDef usbDn = std::make_pair(GPIOA, 11);
+inline const PinDef led1Pin = std::make_pair(GPIOD, GPIO_PIN_10);
+inline const PinDef led2Pin = std::make_pair(GPIOD, GPIO_PIN_11);
+inline const PinDef led3Pin = std::make_pair(GPIOD, GPIO_PIN_14);
+inline const PinDef led4Pin = std::make_pair(GPIOD, GPIO_PIN_15);
 
-inline const PinDef   debugUartTxPin = std::make_pair(GPIOA,  9);
-inline const PinDef   debugUartRxPin = std::make_pair(GPIOA, 10);
-inline const PinDef    userUartTxPin = std::make_pair(GPIOD,  5);
-inline const PinDef    userUartRxPin = std::make_pair(GPIOD,  6);
-inline const PinDef   servoUartTxPin = std::make_pair(GPIOD,  8); // RX is the same pin - half-duplex communication
-inline const PinDef controlUartTxPin = std::make_pair(GPIOC, 10);
-inline const PinDef controlUartRxPin = std::make_pair(GPIOC, 11);
-inline const PinDef   tunelUartTxPin = std::make_pair(GPIOC, 12);
-inline const PinDef   tunelUartRxPin = std::make_pair(GPIOD,  2);
+inline const std::array<PinDef, 4> ledPin = { led1Pin, led2Pin, led3Pin, led4Pin };
+
+inline const PinDef usbDp = std::make_pair(GPIOA, GPIO_PIN_12);
+inline const PinDef usbDn = std::make_pair(GPIOA, GPIO_PIN_11);
+
+inline const PinDef   debugUartTxPin = std::make_pair(GPIOA, GPIO_PIN_9);
+inline const PinDef   debugUartRxPin = std::make_pair(GPIOA, GPIO_PIN_10);
+inline const PinDef    userUartTxPin = std::make_pair(GPIOD, GPIO_PIN_5);
+inline const PinDef    userUartRxPin = std::make_pair(GPIOD, GPIO_PIN_6);
+inline const PinDef   servoUartTxPin = std::make_pair(GPIOD, GPIO_PIN_8); // RX is the same pin - half-duplex communication
+inline const PinDef controlUartTxPin = std::make_pair(GPIOC, GPIO_PIN_10);
+inline const PinDef controlUartRxPin = std::make_pair(GPIOC, GPIO_PIN_11);
+inline const PinDef   tunelUartTxPin = std::make_pair(GPIOC, GPIO_PIN_12);
+inline const PinDef   tunelUartRxPin = std::make_pair(GPIOD, GPIO_PIN_2);
 
 inline USART_TypeDef * const   debugUart = USART1;
 inline USART_TypeDef * const    userUart = USART2;
@@ -61,14 +67,19 @@ inline void clocksInit() {
     assert(HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) == HAL_OK);
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOE_CLK_ENABLE();
     __HAL_RCC_USART1_CLK_ENABLE();
     __HAL_RCC_USART2_CLK_ENABLE();
+    __HAL_RCC_USART3_CLK_ENABLE();
+    __HAL_RCC_UART4_CLK_ENABLE();
+    __HAL_RCC_UART5_CLK_ENABLE();
     __HAL_RCC_DMA1_CLK_ENABLE();
 }
 
-inline void pinInit(GPIO_TypeDef* port, uint16_t pinMask, uint32_t mode, uint32_t pull, uint32_t speed) {
+inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode, uint32_t pull, uint32_t speed) {
     GPIO_InitTypeDef init;
     init.Pin = pinMask;
     init.Mode = mode;
@@ -78,12 +89,27 @@ inline void pinInit(GPIO_TypeDef* port, uint16_t pinMask, uint32_t mode, uint32_
 }
 
 inline void pinInit(PinDef pin, uint32_t mode, uint32_t pull, uint32_t speed) {
-    pinInit(pin.first, 1 << pin.second, mode, pull, speed);
+    pinInit(pin.first, pin.second, mode, pull, speed);
+}
+
+inline bool pinRead(PinDef pin) {
+    return HAL_GPIO_ReadPin(pin.first, pin.second) == GPIO_PIN_SET;
+}
+
+inline void pinWrite(PinDef pin, bool value) {
+    HAL_GPIO_WritePin(pin.first, pin.second, value ? GPIO_PIN_SET : GPIO_PIN_RESET);
+}
+
+inline void pinToggle(PinDef pin) {
+    HAL_GPIO_TogglePin(pin.first, pin.second);
 }
 
 inline void pinsInit() {
-    pinInit(led1Pin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
-    HAL_GPIO_WritePin(led1Pin.first, led1Pin.second, GPIO_PIN_SET);
+
+    for (auto led: ledPin)
+        pinInit(led, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+
+    // HAL_GPIO_WritePin(led1Pin.first, led1Pin.second, GPIO_PIN_SET);
 
     // USB
     pinInit(usbDp, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
