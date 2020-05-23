@@ -68,10 +68,8 @@ bool controlLinkTxReady() {
 }
 
 void controlLinkTx(const StmMessage &outgoing) {
-     txFrameBuf[0] = 0x00;
-     auto encodeResult = codec.encode(&StmMessage_msg, &outgoing, txFrameBuf.data() + 2, txFrameBuf.size() - 2);
-     txFrameBuf[1] = (uint8_t)encodeResult;
-     HAL_DMA_Start(&dmaTxHandle, uint32_t(txFrameBuf.data()), uint32_t(&secondaryUsart->DR), encodeResult + 2);
+     auto encodedSize = codec.encodeWithHeader(&StmMessage_msg, &outgoing, txFrameBuf.data(), txFrameBuf.size());
+     HAL_DMA_Start(&dmaTxHandle, uint32_t(txFrameBuf.data()), uint32_t(&secondaryUsart->DR), encodedSize);
 }
 
 bool controlLinkRx(EspMessage &incoming) {
