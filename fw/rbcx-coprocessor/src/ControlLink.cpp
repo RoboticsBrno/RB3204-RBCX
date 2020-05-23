@@ -48,7 +48,8 @@ void secondaryUartInit() {
     dmaRxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
     dmaRxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
     HAL_DMA_Init(&dmaRxHandle);
-    HAL_DMA_Start(&dmaRxHandle, uint32_t(&(secondaryUsart->DR)), uint32_t(rxFifo.data()), rxFifo.size());
+    HAL_DMA_Start(&dmaRxHandle, uint32_t(&(secondaryUsart->DR)),
+        uint32_t(rxFifo.data()), rxFifo.size());
     LL_USART_EnableDMAReq_RX(secondaryUsart);
 
     // UART TX burst is started ad hoc each time
@@ -75,9 +76,11 @@ bool controlLinkTxReady() {
 void controlLinkTxFrame(uint8_t* data, size_t len) {
     assert(len <= txFrameBuf.size() - 2);
     txFrameBuf[0] = 0x00;
-    auto encodeResult = cobs_encode(txFrameBuf.data() + 2, txFrameBuf.size() - 2, data, len);
+    auto encodeResult
+        = cobs_encode(txFrameBuf.data() + 2, txFrameBuf.size() - 2, data, len);
     txFrameBuf[1] = (uint8_t)encodeResult.out_len;
-    HAL_DMA_Start(&dmaTxHandle, uint32_t(txFrameBuf.data()), uint32_t(&secondaryUsart->DR), encodeResult.out_len + 2);
+    HAL_DMA_Start(&dmaTxHandle, uint32_t(txFrameBuf.data()),
+        uint32_t(&secondaryUsart->DR), encodeResult.out_len + 2);
 }
 
 size_t controlLinkRxFrame(uint8_t* data, size_t len) {
@@ -98,7 +101,8 @@ size_t controlLinkRxFrame(uint8_t* data, size_t len) {
             rxFrameBuf[rxFrameIndex++] = byte;
             if (rxFrameIndex == rxFrameLength) {
                 rxState = RxState::AwaitingStart;
-                auto decodeResult = cobs_decode(data, len, rxFrameBuf.data(), rxFrameLength);
+                auto decodeResult
+                    = cobs_decode(data, len, rxFrameBuf.data(), rxFrameLength);
                 return decodeResult.out_len;
             }
         }

@@ -9,8 +9,7 @@
 /// Allows direct read/write access using:
 /// readableSpan() -> read-out -> notifyRead()
 /// writeableSpan() -> write-in -> notifyWritten()
-template <int Size>
-class ByteFifo {
+template <int Size> class ByteFifo {
     std::array<uint8_t, Size> m_fifo;
     int m_head, m_tail;
 
@@ -40,9 +39,7 @@ public:
     bool hasData() const { return m_head != m_tail; }
 
     /// Override the write index aka. head
-    void setHead(int newHead) {
-        m_head = newHead;
-    }
+    void setHead(int newHead) { m_head = newHead; }
 
     /// Write len bytes into buffer starting at data.
     void writeSpan(uint8_t* data, size_t len) {
@@ -61,9 +58,7 @@ public:
     }
 
     /// Move the write index (head), indicating len bytes have been written.
-    void notifyWritten(size_t len) {
-        m_head = adjust(m_head, len);
-    }
+    void notifyWritten(size_t len) { m_head = adjust(m_head, len); }
 
     /// Reads one byte, must be available.
     uint8_t pop() {
@@ -88,7 +83,5 @@ public:
     }
 
     /// Move the read index (tail), indicating len bytes have been read out.
-    void notifyRead(size_t len) {
-        m_tail = adjust(m_tail, len);
-    }
+    void notifyRead(size_t len) { m_tail = adjust(m_tail, len); }
 };
