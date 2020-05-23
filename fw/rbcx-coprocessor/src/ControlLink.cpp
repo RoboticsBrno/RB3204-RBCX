@@ -16,10 +16,10 @@
 
 static DMA_HandleTypeDef dmaRxHandle;
 static DMA_HandleTypeDef dmaTxHandle;
-static ByteFifo<512> rxFifo;
-static std::array<uint8_t, 257> txFrameBuf;
 static rb::CoprocCodec codec;
 static rb::CoprocLinkParser<EspMessage, &EspMessage_msg, &codec> parser;
+static ByteFifo<512> rxFifo;
+static std::array<uint8_t, codec.MaxFrameSize> txFrameBuf;
 
 void secondaryUartInit() {
     LL_USART_InitTypeDef init;
