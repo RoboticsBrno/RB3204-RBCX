@@ -13,8 +13,21 @@ inline const PinDef led1Pin = std::make_pair(GPIOD, GPIO_PIN_10);
 inline const PinDef led2Pin = std::make_pair(GPIOD, GPIO_PIN_11);
 inline const PinDef led3Pin = std::make_pair(GPIOD, GPIO_PIN_14);
 inline const PinDef led4Pin = std::make_pair(GPIOD, GPIO_PIN_15);
+inline const PinDef ledPins = std::make_pair(GPIOD, led1Pin.second
+                                                  | led2Pin.second
+                                                  | led3Pin.second
+                                                  | led4Pin.second );
+inline const std::array<PinDef, 5> ledPin = { ledPins, led1Pin, led2Pin, led3Pin, led4Pin };
 
-inline const std::array<PinDef, 4> ledPin = { led1Pin, led2Pin, led3Pin, led4Pin };
+inline const PinDef powerPin = std::make_pair(GPIOD, GPIO_PIN_9);
+
+inline const PinDef buttonOffPin = std::make_pair(GPIOE, GPIO_PIN_15);
+inline const PinDef button1Pin   = std::make_pair(GPIOB, GPIO_PIN_6);
+inline const PinDef button2Pin   = std::make_pair(GPIOD, GPIO_PIN_3);
+inline const PinDef button3Pin   = std::make_pair(GPIOB, GPIO_PIN_2);
+inline const PinDef button4Pin   = std::make_pair(GPIOD, GPIO_PIN_4);
+inline const PinDef buttonOnPin  = std::make_pair(GPIOC, GPIO_PIN_9);
+inline const std::array<PinDef, 6> buttonPin = { buttonOffPin, button1Pin, button2Pin, button3Pin, button4Pin, buttonOnPin };
 
 inline const PinDef usbDp = std::make_pair(GPIOA, GPIO_PIN_12);
 inline const PinDef usbDn = std::make_pair(GPIOA, GPIO_PIN_11);
@@ -106,12 +119,21 @@ inline void pinToggle(PinDef pin) {
 
 inline void pinsInit() {
 
-    for (auto led: ledPin)
-        pinInit(led, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    //for (auto led: ledPin)
+    //    pinInit(led, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    pinInit(ledPins, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 
-    // HAL_GPIO_WritePin(led1Pin.first, led1Pin.second, GPIO_PIN_SET);
+    pinWrite(powerPin, 1);
+    pinInit(powerPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+
+    for (auto button: buttonPin)
+       pinInit(button, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_LOW);
 
     // USB
     pinInit(usbDp, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
     pinInit(usbDn, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+}
+
+inline bool isPressed(PinDef button) {
+    return button == buttonOnPin ? pinRead(button) : !pinRead(button);
 }

@@ -17,16 +17,33 @@ int main() {
     uint8_t leds = 0x01;
     const uint32_t ledPeriod = 500;
     uint32_t nextLedTime = ledPeriod;
+    bool ledTest = true;
     while (true) {
-        if (HAL_GetTick() >= nextLedTime) {
-            for (uint8_t i = 0; i != ledPin.size(); ++i)
-                pinWrite(ledPin[i], leds & (1<<i));
+        if (ledTest && HAL_GetTick() >= nextLedTime) {
             switch (leds) {
             case 0x01: leds = 0x03; break;
             case 0x30: leds = 0x01; break;
             default: leds <<= 1; break;
             }
+            for (uint8_t i = 0; i != ledPin.size()-1; ++i)
+                pinWrite(ledPin[i+1], leds & (1<<i));
             nextLedTime += ledPeriod;
+        }
+        if (isPressed(buttonOffPin)) {
+            pinWrite(powerPin, 0);
+            pinWrite(ledPins, 0);
+            ledTest = false;
+        } else if (isPressed(buttonOnPin)) {
+            pinWrite(powerPin, 1);
+            ledTest = true;
+        }
+        for (uint8_t i = 1; i != 5; ++i) {
+            if (isPressed(buttonPin[i])) {
+                ledTest = false;
+                pinWrite(ledPin[i], 1);
+            } else if (!ledTest) {
+                pinWrite(ledPin[i], 0);
+            }
         }
         cdcLinkPoll();
         tunnelPoll();
