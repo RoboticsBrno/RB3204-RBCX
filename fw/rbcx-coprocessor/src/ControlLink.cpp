@@ -9,22 +9,17 @@
 
 #include "Bsp.hpp"
 #include "ByteFifo.hpp"
-#include "cobs.h"
+#include "coproc_codec.h"
+#include "coproc_link_parser.h"
+#include "rbcx.pb.h"
 #include <array>
-
-enum class RxState {
-    AwaitingStart,
-    AwaitingLength,
-    ReceivingFrame,
-} static rxState;
 
 static DMA_HandleTypeDef dmaRxHandle;
 static DMA_HandleTypeDef dmaTxHandle;
 static ByteFifo<512> rxFifo;
-static int rxFrameLength = 0;
-static int rxFrameIndex = 0;
-static std::array<uint8_t, 255> rxFrameBuf;
 static std::array<uint8_t, 257> txFrameBuf;
+static rb::CoprocCodec codec;
+static rb::CoprocLinkParser<EspMessage, &EspMessage_msg, &codec> parser;
 
 void secondaryUartInit() {
     LL_USART_InitTypeDef init;
@@ -72,36 +67,22 @@ bool controlLinkTxReady() {
     return dmaTxHandle.State == HAL_DMA_STATE_READY;
 }
 
-void controlLinkTxFrame(uint8_t* data, size_t len) {
-    assert(len <= txFrameBuf.size() - 2);
-    txFrameBuf[0] = 0x00;
-    auto encodeResult = cobs_encode(txFrameBuf.data() + 2, txFrameBuf.size() - 2, data, len);
-    txFrameBuf[1] = (uint8_t)encodeResult.out_len;
-    HAL_DMA_Start(&dmaTxHandle, uint32_t(txFrameBuf.data()), uint32_t(&secondaryUsart->DR), encodeResult.out_len + 2);
+void controlLinkTx(const StmMessage &outgoing) {
+     txFrameBuf[0] = 0x00;
+     auto encodeResult = codec.encode(&StmMessage_msg, &outgoing, txFrameBuf.data() + 2, txFrameBuf.size() - 2);
+     txFrameBuf[1] = (uint8_t)encodeResult;
+     HAL_DMA_Start(&dmaTxHandle, uint32_t(txFrameBuf.data()), uint32_t(&secondaryUsart->DR), encodeResult + 2);
 }
 
-size_t controlLinkRxFrame(uint8_t* data, size_t len) {
+bool controlLinkRx(EspMessage &incoming) {
     int rxHead = rxFifo.size() - __HAL_DMA_GET_COUNTER(&dmaRxHandle);
     rxFifo.setHead(rxHead);
 
     while (rxFifo.hasData()) {
-        uint8_t byte = rxFifo.pop();
-
-        // Zero always starts new frame
-        if (byte == 0) {
-            rxState = RxState::AwaitingLength;
-        } else if (rxState == RxState::AwaitingLength) {
-            rxState = RxState::ReceivingFrame;
-            rxFrameLength = byte;
-            rxFrameIndex = 0;
-        } else if (rxState == RxState::ReceivingFrame) {
-            rxFrameBuf[rxFrameIndex++] = byte;
-            if (rxFrameIndex == rxFrameLength) {
-                rxState = RxState::AwaitingStart;
-                auto decodeResult = cobs_decode(data, len, rxFrameBuf.data(), rxFrameLength);
-                return decodeResult.out_len;
-            }
+        if (parser.add(rxFifo.pop())) {
+            incoming = parser.lastMessage();
+            return true;
         }
     }
-    return 0;
+    return false;
 }
