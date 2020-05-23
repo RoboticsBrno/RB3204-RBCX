@@ -17,10 +17,10 @@ int main() {
     while (true) {
         cdcLinkPoll();
         tunnelPoll();
-        std::array<uint8_t, 255> loopback;
-        auto len = controlLinkRxFrame(loopback.data(), loopback.size());
-        if (len && controlLinkTxReady()) {
-            controlLinkTxFrame(loopback.data(), len);
+        EspMessage incoming = EspMessage_init_default;
+        StmMessage outgoing = StmMessage_init_default;
+        if (controlLinkRx(incoming) && controlLinkTxReady()) {
+            controlLinkTx(outgoing);
         }
     }
 }
