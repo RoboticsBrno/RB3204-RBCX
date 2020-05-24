@@ -39,17 +39,17 @@ inline const PinDef    userUartRxPin = std::make_pair(GPIOD, GPIO_PIN_6);
 inline const PinDef   servoUartTxPin = std::make_pair(GPIOD, GPIO_PIN_8); // RX is the same pin - half-duplex communication
 inline const PinDef controlUartTxPin = std::make_pair(GPIOC, GPIO_PIN_10);
 inline const PinDef controlUartRxPin = std::make_pair(GPIOC, GPIO_PIN_11);
-inline const PinDef   tunelUartTxPin = std::make_pair(GPIOC, GPIO_PIN_12);
-inline const PinDef   tunelUartRxPin = std::make_pair(GPIOD, GPIO_PIN_2);
+inline const PinDef   tunnelUartTxPin = std::make_pair(GPIOC, GPIO_PIN_12);
+inline const PinDef   tunnelUartRxPin = std::make_pair(GPIOD, GPIO_PIN_2);
 
 inline USART_TypeDef * const   debugUart = USART1;
 inline USART_TypeDef * const    userUart = USART2;
 inline USART_TypeDef * const   servoUart = USART3;
 inline USART_TypeDef * const controlUart = UART4;
-inline USART_TypeDef * const   tunelUart = UART5;
+inline USART_TypeDef * const   tunnelUart = UART5;
 
-inline DMA_Channel_TypeDef * const   tunelUartTxDmaChannel = DMA1_Channel4;
-inline DMA_Channel_TypeDef * const   tunelUartRxDmaChannel = DMA1_Channel5;
+inline DMA_Channel_TypeDef * const   tunnelUartTxDmaChannel = DMA1_Channel4;
+inline DMA_Channel_TypeDef * const   tunnelUartRxDmaChannel = DMA1_Channel5;
 
 inline DMA_Channel_TypeDef * const controlUartTxDmaChannel = DMA1_Channel7;
 inline DMA_Channel_TypeDef * const controlUartRxDmaChannel = DMA1_Channel6;

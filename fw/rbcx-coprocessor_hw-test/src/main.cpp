@@ -10,7 +10,7 @@
 int main() {
     clocksInit();
     HAL_Init();
-    tunelUartInit();
+    tunnelUartInit();
     controlUartInit();
     pinsInit();
     cdcLinkInit();
