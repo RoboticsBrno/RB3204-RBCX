@@ -61,7 +61,7 @@ static void tunnelUartRxPoll() {
     rxFifo.setHead(rxHead);
 }
 
-static void tunnelUartTx(uint8_t* data, size_t len) {
+void tunnelUartTx(const uint8_t* data, size_t len) {
     HAL_DMA_Start(&dmaTxHandle, uint32_t(data), uint32_t(&tunnelUart->DR), len);
 }
 

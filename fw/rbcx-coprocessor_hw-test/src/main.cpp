@@ -6,18 +6,24 @@
 #include "CdcUartTunnel.hpp"
 #include "UsbCdcLink.h"
 #include "ControlUart.hpp"
+#include <cstring>
+
+void sendDebugStr(const char* str) {
+    tunnelUartTx(reinterpret_cast<const uint8_t*>(str), strlen(str));
+}
 
 int main() {
     clocksInit();
     HAL_Init();
-    tunnelUartInit();
-    controlUartInit();
     pinsInit();
+    tunnelUartInit();
+    controlUartInit();    
     cdcLinkInit();
     uint8_t leds = 0x01;
     const uint32_t ledPeriod = 500;
     uint32_t nextLedTime = ledPeriod;
     bool ledTest = true;
+    bool usbConnected = false;
     while (true) {
         if (ledTest && HAL_GetTick() >= nextLedTime) {
             switch (leds) {
@@ -43,6 +49,15 @@ int main() {
                 pinWrite(ledPin[i], 1);
             } else if (!ledTest) {
                 pinWrite(ledPin[i], 0);
+            }
+        }
+        bool v = pinRead(usbBusDetectionPin);
+        if (v != usbConnected) {
+            usbConnected = v;
+            if (usbConnected) {
+                sendDebugStr("USB connected\n");
+            } else {
+                sendDebugStr("USB disconnected\n");
             }
         }
         cdcLinkPoll();
