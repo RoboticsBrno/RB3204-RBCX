@@ -43,7 +43,8 @@ void secondaryUartInit() {
     dmaRxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
     dmaRxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
     HAL_DMA_Init(&dmaRxHandle);
-    HAL_DMA_Start(&dmaRxHandle, uint32_t(&(secondaryUsart->DR)), uint32_t(rxFifo.data()), rxFifo.size());
+    HAL_DMA_Start(&dmaRxHandle, uint32_t(&(secondaryUsart->DR)),
+        uint32_t(rxFifo.data()), rxFifo.size());
     LL_USART_EnableDMAReq_RX(secondaryUsart);
 
     // UART TX burst is started ad hoc each time
@@ -67,12 +68,14 @@ bool controlLinkTxReady() {
     return dmaTxHandle.State == HAL_DMA_STATE_READY;
 }
 
-void controlLinkTx(const StmMessage &outgoing) {
-     auto encodedSize = codec.encodeWithHeader(&StmMessage_msg, &outgoing, txFrameBuf.data(), txFrameBuf.size());
-     HAL_DMA_Start(&dmaTxHandle, uint32_t(txFrameBuf.data()), uint32_t(&secondaryUsart->DR), encodedSize);
+void controlLinkTx(const StmMessage& outgoing) {
+    auto encodedSize = codec.encodeWithHeader(
+        &StmMessage_msg, &outgoing, txFrameBuf.data(), txFrameBuf.size());
+    HAL_DMA_Start(&dmaTxHandle, uint32_t(txFrameBuf.data()),
+        uint32_t(&secondaryUsart->DR), encodedSize);
 }
 
-bool controlLinkRx(EspMessage &incoming) {
+bool controlLinkRx(EspMessage& incoming) {
     int rxHead = rxFifo.size() - __HAL_DMA_GET_COUNTER(&dmaRxHandle);
     rxFifo.setHead(rxHead);
 

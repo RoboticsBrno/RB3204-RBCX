@@ -1,11 +1,11 @@
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_gpio.h"
 
-#include <array>
 #include "Bsp.hpp"
 #include "CdcUartTunnel.hpp"
-#include "UsbCdcLink.h"
 #include "ControlLink.hpp"
+#include "UsbCdcLink.h"
+#include <array>
 
 int main() {
     clocksInit();
@@ -25,6 +25,4 @@ int main() {
     }
 }
 
-extern "C" void SysTick_Handler() {
-    HAL_IncTick();
-}
+extern "C" void SysTick_Handler() { HAL_IncTick(); }
