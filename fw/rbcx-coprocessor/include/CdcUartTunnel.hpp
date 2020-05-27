@@ -1,4 +1,4 @@
 #pragma once
 
-void primaryUartInit();
+void tunnelUartInit();
 void tunnelPoll();

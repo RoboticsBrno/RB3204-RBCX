@@ -9,20 +9,55 @@
 
 using PinDef = std::pair<GPIO_TypeDef*, uint16_t>;
 
-inline const PinDef led1Pin = std::make_pair(GPIOC, 13);
-inline const PinDef usbDp = std::make_pair(GPIOA, 12);
-inline const PinDef usbDn = std::make_pair(GPIOA, 11);
+inline const PinDef led1Pin = std::make_pair(GPIOD, GPIO_PIN_10);
+inline const PinDef led2Pin = std::make_pair(GPIOD, GPIO_PIN_11);
+inline const PinDef led3Pin = std::make_pair(GPIOD, GPIO_PIN_14);
+inline const PinDef led4Pin = std::make_pair(GPIOD, GPIO_PIN_15);
+inline const PinDef ledPins = std::make_pair(GPIOD, led1Pin.second
+                                                  | led2Pin.second
+                                                  | led3Pin.second
+                                                  | led4Pin.second );
+inline const std::array<PinDef, 5> ledPin = { ledPins, led1Pin, led2Pin, led3Pin, led4Pin };
 
-inline const PinDef primaryTx = std::make_pair(GPIOA, 9);
-inline const PinDef primaryRx = std::make_pair(GPIOA, 10);
-inline const PinDef secondaryTx = std::make_pair(GPIOA, 2);
-inline const PinDef secondaryRx = std::make_pair(GPIOA, 3);
-inline DMA_Channel_TypeDef * const primaryTxDmaChannel = DMA1_Channel4;
-inline DMA_Channel_TypeDef * const primaryRxDmaChannel = DMA1_Channel5;
-inline USART_TypeDef * const primaryUsart = USART1;
-inline DMA_Channel_TypeDef * const secondaryTxDmaChannel = DMA1_Channel7;
-inline DMA_Channel_TypeDef * const secondaryRxDmaChannel = DMA1_Channel6;
-inline USART_TypeDef * const secondaryUsart = USART2;
+inline const PinDef powerPin = std::make_pair(GPIOD, GPIO_PIN_9);
+
+inline const PinDef buttonOffPin = std::make_pair(GPIOE, GPIO_PIN_15);
+inline const PinDef button1Pin   = std::make_pair(GPIOB, GPIO_PIN_6);
+inline const PinDef button2Pin   = std::make_pair(GPIOD, GPIO_PIN_3);
+inline const PinDef button3Pin   = std::make_pair(GPIOB, GPIO_PIN_2);
+inline const PinDef button4Pin   = std::make_pair(GPIOD, GPIO_PIN_4);
+inline const PinDef buttonOnPin  = std::make_pair(GPIOC, GPIO_PIN_9);
+inline const std::array<PinDef, 6> buttonPin = { buttonOffPin, button1Pin, button2Pin, button3Pin, button4Pin, buttonOnPin };
+
+inline const PinDef usbDnPin = std::make_pair(GPIOA, GPIO_PIN_11);
+inline const PinDef usbDpPin = std::make_pair(GPIOA, GPIO_PIN_12);
+// defined in platformio.ini, because used by STM USB C library:
+inline const PinDef usbDpPullUpPin = std::make_pair(USBD_DP_PORT, 1<<USBD_DP_PIN);
+inline const PinDef usbBusDetectionPin = std::make_pair(GPIOC, GPIO_PIN_13);
+
+inline const PinDef   debugUartTxPin = std::make_pair(GPIOA, GPIO_PIN_9);
+inline const PinDef   debugUartRxPin = std::make_pair(GPIOA, GPIO_PIN_10);
+inline const PinDef    userUartTxPin = std::make_pair(GPIOD, GPIO_PIN_5);
+inline const PinDef    userUartRxPin = std::make_pair(GPIOD, GPIO_PIN_6);
+inline const PinDef servoUartTxRxPin = std::make_pair(GPIOD, GPIO_PIN_8);
+inline const PinDef controlUartTxPin = std::make_pair(GPIOC, GPIO_PIN_10);
+inline const PinDef controlUartRxPin = std::make_pair(GPIOC, GPIO_PIN_11);
+// inline const PinDef   tunnelUartTxPin = std::make_pair(GPIOC, GPIO_PIN_12);
+// inline const PinDef   tunnelUartRxPin = std::make_pair(GPIOD, GPIO_PIN_2);
+inline const PinDef   tunnelUartTxPin = std::make_pair(GPIOA, GPIO_PIN_9);
+inline const PinDef   tunnelUartRxPin = std::make_pair(GPIOA, GPIO_PIN_10);
+
+inline USART_TypeDef * const   debugUart = USART1;
+inline USART_TypeDef * const    userUart = USART2;
+inline USART_TypeDef * const   servoUart = USART3;
+inline USART_TypeDef * const controlUart = UART4;
+inline USART_TypeDef * const   tunnelUart = USART1;//UART5;
+
+inline DMA_Channel_TypeDef * const   tunnelUartTxDmaChannel = DMA1_Channel4;
+inline DMA_Channel_TypeDef * const   tunnelUartRxDmaChannel = DMA1_Channel5;
+
+inline DMA_Channel_TypeDef * const controlUartTxDmaChannel = DMA2_Channel5;
+inline DMA_Channel_TypeDef * const controlUartRxDmaChannel = DMA2_Channel3;
 
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
@@ -45,7 +80,6 @@ inline void clocksInit() {
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK) {
         assert(false);
     }
@@ -57,14 +91,20 @@ inline void clocksInit() {
     }
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOE_CLK_ENABLE();
     __HAL_RCC_USART1_CLK_ENABLE();
     __HAL_RCC_USART2_CLK_ENABLE();
+    __HAL_RCC_USART3_CLK_ENABLE();
+    __HAL_RCC_UART4_CLK_ENABLE();
+    __HAL_RCC_UART5_CLK_ENABLE();
     __HAL_RCC_DMA1_CLK_ENABLE();
+    __HAL_RCC_DMA2_CLK_ENABLE();
 }
 
-inline void pinInit(GPIO_TypeDef* port, uint16_t pinMask, uint32_t mode, uint32_t pull, uint32_t speed) {
+inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode, uint32_t pull, uint32_t speed) {
     GPIO_InitTypeDef init;
     init.Pin = pinMask;
     init.Mode = mode;
@@ -74,14 +114,37 @@ inline void pinInit(GPIO_TypeDef* port, uint16_t pinMask, uint32_t mode, uint32_
 }
 
 inline void pinInit(PinDef pin, uint32_t mode, uint32_t pull, uint32_t speed) {
-    pinInit(pin.first, 1 << pin.second, mode, pull, speed);
+    pinInit(pin.first, pin.second, mode, pull, speed);
+}
+
+inline bool pinRead(PinDef pin) {
+    return HAL_GPIO_ReadPin(pin.first, pin.second) == GPIO_PIN_SET;
+}
+
+inline void pinWrite(PinDef pin, bool value) {
+    HAL_GPIO_WritePin(pin.first, pin.second, value ? GPIO_PIN_SET : GPIO_PIN_RESET);
+}
+
+inline void pinToggle(PinDef pin) {
+    HAL_GPIO_TogglePin(pin.first, pin.second);
 }
 
 inline void pinsInit() {
-    pinInit(led1Pin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
-    HAL_GPIO_WritePin(led1Pin.first, led1Pin.second, GPIO_PIN_SET);
+    pinInit(ledPins, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+
+    pinWrite(powerPin, 1);
+    pinInit(powerPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+
+    for (auto button: buttonPin)
+       pinInit(button, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_LOW);
 
     // USB
-    pinInit(usbDp, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
-    pinInit(usbDn, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(usbDnPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(usbDpPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(usbDpPullUpPin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    pinInit(usbBusDetectionPin, GPIO_MODE_INPUT, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+}
+
+inline bool isPressed(PinDef button) {
+    return button == buttonOnPin ? pinRead(button) : !pinRead(button);
 }

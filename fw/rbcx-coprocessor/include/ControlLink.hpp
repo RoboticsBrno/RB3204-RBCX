@@ -6,7 +6,7 @@
 #include "rbcx.pb.h"
 
 
-void secondaryUartInit();
+void controlUartInit();
 bool controlLinkTxReady();
 void controlLinkTx(const StmMessage &outgoing);
 bool controlLinkRx(EspMessage &incoming);

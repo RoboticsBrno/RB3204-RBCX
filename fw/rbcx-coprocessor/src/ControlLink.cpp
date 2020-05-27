@@ -21,7 +21,7 @@ static rb::CoprocLinkParser<EspMessage, &EspMessage_msg, &codec> parser;
 static ByteFifo<512> rxFifo;
 static std::array<uint8_t, codec.MaxFrameSize> txFrameBuf;
 
-void secondaryUartInit() {
+void controlUartInit() {
     LL_USART_InitTypeDef init;
     LL_USART_StructInit(&init);
     init.BaudRate = 115200;
@@ -30,11 +30,11 @@ void secondaryUartInit() {
     init.Parity = LL_USART_PARITY_NONE;
     init.StopBits = LL_USART_STOPBITS_1;
     init.TransferDirection = LL_USART_DIRECTION_TX_RX;
-    LL_USART_Init(secondaryUsart, &init);
-    LL_USART_Enable(secondaryUsart);
+    LL_USART_Init(controlUart, &init);
+    LL_USART_Enable(controlUart);
 
     // UART RX runs indefinitely in circular mode
-    dmaRxHandle.Instance = secondaryRxDmaChannel;
+    dmaRxHandle.Instance = controlUartRxDmaChannel;
     dmaRxHandle.Init.Direction = DMA_PERIPH_TO_MEMORY;
     dmaRxHandle.Init.Mode = DMA_CIRCULAR;
     dmaRxHandle.Init.MemInc = DMA_MINC_ENABLE;
@@ -43,11 +43,11 @@ void secondaryUartInit() {
     dmaRxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
     dmaRxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
     HAL_DMA_Init(&dmaRxHandle);
-    HAL_DMA_Start(&dmaRxHandle, uint32_t(&(secondaryUsart->DR)), uint32_t(rxFifo.data()), rxFifo.size());
-    LL_USART_EnableDMAReq_RX(secondaryUsart);
+    HAL_DMA_Start(&dmaRxHandle, uint32_t(&(controlUart->DR)), uint32_t(rxFifo.data()), rxFifo.size());
+    LL_USART_EnableDMAReq_RX(controlUart);
 
     // UART TX burst is started ad hoc each time
-    dmaTxHandle.Instance = secondaryTxDmaChannel;
+    dmaTxHandle.Instance = controlUartTxDmaChannel;
     dmaTxHandle.Init.Direction = DMA_MEMORY_TO_PERIPH;
     dmaTxHandle.Init.Mode = DMA_NORMAL;
     dmaTxHandle.Init.MemInc = DMA_MINC_ENABLE;
@@ -56,10 +56,10 @@ void secondaryUartInit() {
     dmaTxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
     dmaTxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
     HAL_DMA_Init(&dmaTxHandle);
-    LL_USART_EnableDMAReq_TX(secondaryUsart);
+    LL_USART_EnableDMAReq_TX(controlUart);
 
-    pinInit(secondaryTx, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
-    pinInit(secondaryRx, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
+    pinInit(controlUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
+    pinInit(controlUartRxPin, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
 
 bool controlLinkTxReady() {
@@ -69,7 +69,7 @@ bool controlLinkTxReady() {
 
 void controlLinkTx(const StmMessage &outgoing) {
      auto encodedSize = codec.encodeWithHeader(&StmMessage_msg, &outgoing, txFrameBuf.data(), txFrameBuf.size());
-     HAL_DMA_Start(&dmaTxHandle, uint32_t(txFrameBuf.data()), uint32_t(&secondaryUsart->DR), encodedSize);
+     HAL_DMA_Start(&dmaTxHandle, uint32_t(txFrameBuf.data()), uint32_t(&controlUart->DR), encodedSize);
 }
 
 bool controlLinkRx(EspMessage &incoming) {

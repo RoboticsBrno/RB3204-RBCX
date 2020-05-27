@@ -10,8 +10,8 @@
 int main() {
     clocksInit();
     HAL_Init();
-    primaryUartInit();
-    secondaryUartInit();
+    tunnelUartInit();
+    controlUartInit();
     pinsInit();
     cdcLinkInit();
     while (true) {
