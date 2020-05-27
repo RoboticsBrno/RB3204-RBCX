@@ -134,10 +134,14 @@ static const struct cdc_config config_desc = {
     },
 };
 
-static const struct usb_string_descriptor lang_desc = USB_ARRAY_DESC(USB_LANGID_ENG_US);
-static const struct usb_string_descriptor manuf_desc_en = USB_STRING_DESC("robotikabrno.cz");
-static const struct usb_string_descriptor prod_desc_en = USB_STRING_DESC("RBCX");
-static const struct usb_string_descriptor cdc_iface_desc_en = USB_STRING_DESC("RBCX Serial");
+static const struct usb_string_descriptor lang_desc
+    = USB_ARRAY_DESC(USB_LANGID_ENG_US);
+static const struct usb_string_descriptor manuf_desc_en
+    = USB_STRING_DESC("robotikabrno.cz");
+static const struct usb_string_descriptor prod_desc_en
+    = USB_STRING_DESC("RBCX");
+static const struct usb_string_descriptor cdc_iface_desc_en
+    = USB_STRING_DESC("RBCX Serial");
 static const struct usb_string_descriptor* const dtable[] = {
     &lang_desc,
     &manuf_desc_en,
@@ -155,7 +159,8 @@ static struct usb_cdc_line_coding cdc_line = {
     .bDataBits = 8,
 };
 
-static usbd_respond cdc_getdesc(usbd_ctlreq* req, void** address, uint16_t* length) {
+static usbd_respond cdc_getdesc(
+    usbd_ctlreq* req, void** address, uint16_t* length) {
     const uint8_t dtype = req->wValue >> 8;
     const uint8_t dnumber = req->wValue & 0xFF;
     const void* desc;
@@ -186,8 +191,10 @@ static usbd_respond cdc_getdesc(usbd_ctlreq* req, void** address, uint16_t* leng
     return usbd_ack;
 };
 
-static usbd_respond cdc_control(usbd_device* dev, usbd_ctlreq* req, usbd_rqc_callback* callback) {
-    if (((USB_REQ_RECIPIENT | USB_REQ_TYPE) & req->bmRequestType) == (USB_REQ_INTERFACE | USB_REQ_CLASS)
+static usbd_respond cdc_control(
+    usbd_device* dev, usbd_ctlreq* req, usbd_rqc_callback* callback) {
+    if (((USB_REQ_RECIPIENT | USB_REQ_TYPE) & req->bmRequestType)
+            == (USB_REQ_INTERFACE | USB_REQ_CLASS)
         && req->wIndex == 0) {
         switch (req->bRequest) {
         case USB_CDC_SET_CONTROL_LINE_STATE:
@@ -216,8 +223,10 @@ static usbd_respond cdc_setconf(usbd_device* dev, uint8_t cfg) {
         return usbd_ack;
     case 1:
         /* configuring device */
-        usbd_ep_config(dev, CDC_RXD_EP, USB_EPTYPE_BULK /*| USB_EPTYPE_DBLBUF*/, CDC_DATA_SZ);
-        usbd_ep_config(dev, CDC_TXD_EP, USB_EPTYPE_BULK /*| USB_EPTYPE_DBLBUF*/, CDC_DATA_SZ);
+        usbd_ep_config(dev, CDC_RXD_EP, USB_EPTYPE_BULK /*| USB_EPTYPE_DBLBUF*/,
+            CDC_DATA_SZ);
+        usbd_ep_config(dev, CDC_TXD_EP, USB_EPTYPE_BULK /*| USB_EPTYPE_DBLBUF*/,
+            CDC_DATA_SZ);
         usbd_ep_config(dev, CDC_NTF_EP, USB_EPTYPE_INTERRUPT, CDC_NTF_SZ);
         return usbd_ack;
     default:
@@ -243,9 +252,7 @@ void cdcLinkInit() {
     //HAL_NVIC_EnableIRQ(USBWakeUp_IRQn);
 }
 
-void cdcLinkPoll() {
-    usbd_poll(&udev);
-}
+void cdcLinkPoll() { usbd_poll(&udev); }
 
 void USB_HP_CAN1_TX_IRQHandler() {
     __BKPT();

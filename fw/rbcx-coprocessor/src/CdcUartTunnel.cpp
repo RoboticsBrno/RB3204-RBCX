@@ -37,7 +37,8 @@ void tunnelUartInit() {
     dmaRxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
     dmaRxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
     HAL_DMA_Init(&dmaRxHandle);
-    HAL_DMA_Start(&dmaRxHandle, uint32_t(&(tunnelUart->DR)), uint32_t(rxFifo.data()), rxFifo.size());
+    HAL_DMA_Start(&dmaRxHandle, uint32_t(&(tunnelUart->DR)),
+        uint32_t(rxFifo.data()), rxFifo.size());
     LL_USART_EnableDMAReq_RX(tunnelUart);
 
     // UART TX burst is started ad hoc each time
@@ -52,8 +53,10 @@ void tunnelUartInit() {
     HAL_DMA_Init(&dmaTxHandle);
     LL_USART_EnableDMAReq_TX(tunnelUart);
 
-    pinInit(tunnelUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
-    pinInit(tunnelUartRxPin, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
+    pinInit(
+        tunnelUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
+    pinInit(
+        tunnelUartRxPin, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
 
 static void primaryUartRxPoll() {
@@ -72,7 +75,8 @@ static bool primaryUartTxReady() {
 
 static void tunnelDownstreamHandler() {
     if (primaryUartTxReady()) {
-        int transferred = usbd_ep_read(&udev, CDC_RXD_EP, txBuf.data(), txBuf.size());
+        int transferred
+            = usbd_ep_read(&udev, CDC_RXD_EP, txBuf.data(), txBuf.size());
         if (transferred > 0) {
             primaryUartTx(txBuf.data(), transferred);
         }
@@ -83,7 +87,8 @@ static void tunnelUpstreamHandler() {
     primaryUartRxPoll();
     auto readable = rxFifo.readableSpan();
     if (readable.second > 0) {
-        int transferred = usbd_ep_write(&udev, CDC_TXD_EP, readable.first, std::min(readable.second, size_t(CDC_DATA_SZ)));
+        int transferred = usbd_ep_write(&udev, CDC_TXD_EP, readable.first,
+            std::min(readable.second, size_t(CDC_DATA_SZ)));
         if (transferred > 0) {
             rxFifo.notifyRead(transferred);
         }
