@@ -96,6 +96,8 @@ inline void clocksInit() {
     __HAL_RCC_UART4_CLK_ENABLE();
     __HAL_RCC_UART5_CLK_ENABLE();
     __HAL_RCC_DMA1_CLK_ENABLE();
+    __HAL_RCC_PWR_CLK_ENABLE();
+    __HAL_RCC_BKP_CLK_ENABLE();
 }
 
 inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode, uint32_t pull, uint32_t speed) {

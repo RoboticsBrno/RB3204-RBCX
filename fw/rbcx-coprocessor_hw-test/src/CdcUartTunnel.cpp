@@ -61,13 +61,14 @@ static void tunnelUartRxPoll() {
     rxFifo.setHead(rxHead);
 }
 
-void tunnelUartTx(const uint8_t* data, size_t len) {
-    HAL_DMA_Start(&dmaTxHandle, uint32_t(data), uint32_t(&tunnelUart->DR), len);
-}
-
 static bool tunnelUartTxReady() {
     HAL_DMA_PollForTransfer(&dmaTxHandle, HAL_DMA_FULL_TRANSFER, 0);
     return dmaTxHandle.State == HAL_DMA_STATE_READY;
+}
+
+void tunnelUartTx(const uint8_t* data, size_t len) {
+    while (!tunnelUartTxReady()) {}
+    HAL_DMA_Start(&dmaTxHandle, uint32_t(data), uint32_t(&tunnelUart->DR), len);
 }
 
 static void tunnelDownstreamHandler() {
