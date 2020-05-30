@@ -21,6 +21,8 @@ inline const std::array<PinDef, 5> ledPin = { ledPins, led1Pin, led2Pin, led3Pin
 
 inline const PinDef powerPin = std::make_pair(GPIOD, GPIO_PIN_9);
 
+inline const PinDef buzzerPin = std::make_pair(GPIOD, GPIO_PIN_7);
+
 inline const PinDef buttonOffPin = std::make_pair(GPIOE, GPIO_PIN_15);
 inline const PinDef button1Pin   = std::make_pair(GPIOB, GPIO_PIN_6);
 inline const PinDef button2Pin   = std::make_pair(GPIOD, GPIO_PIN_3);
@@ -126,6 +128,8 @@ inline void pinsInit() {
 
     pinWrite(powerPin, 1);
     pinInit(powerPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+
+    pinInit(buzzerPin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 
     for (auto button: buttonPin)
        pinInit(button, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_LOW);

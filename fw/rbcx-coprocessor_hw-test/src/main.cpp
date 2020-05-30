@@ -51,6 +51,7 @@ int main() {
                 pinWrite(ledPin[i], 0);
             }
         }
+        pinWrite(buzzerPin, isPressed(button4Pin) && isPressed(button3Pin));
         bool v = pinRead(usbBusDetectionPin);
         if (v != usbConnected) {
             usbConnected = v;
