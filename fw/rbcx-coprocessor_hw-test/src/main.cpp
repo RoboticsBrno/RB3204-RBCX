@@ -50,7 +50,7 @@ int main() {
         }
         LL_RTC_TIME_Set(RTC, UNIX_TIMESTAMP);
         LL_RTC_SetAsynchPrescaler(RTC, 32767);
-        LL_RTC_SetOutputSource(BKP, LL_RTC_CALIB_OUTPUT_SECOND);
+        //LL_RTC_SetOutputSource(BKP, LL_RTC_CALIB_OUTPUT_SECOND);
         LL_RTC_EnableWriteProtection(RTC);
         timeout = HAL_GetTick();
         while (!LL_RTC_IsActiveFlag_RTOF(RTC)) {
@@ -117,6 +117,7 @@ int main() {
         }
         if (LL_RTC_IsActiveFlag_SEC(RTC)) {
             LL_RTC_ClearFlag_SEC(RTC);
+            HAL_Delay(1);
             snprintf(debugBuffer, debugBufferSize, "Time %lu\n", LL_RTC_TIME_Get(RTC));
             sendDebugStr(debugBuffer);
         }
