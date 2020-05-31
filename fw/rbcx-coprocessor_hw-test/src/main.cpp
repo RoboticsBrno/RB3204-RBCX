@@ -14,12 +14,16 @@
 
 #include <cstring>
 #include <ctime>
+#include <cstdio>
 
-void sendDebugStr(const char* str) {
-    const size_t len = strlen(str);
-    tunnelUartTx(reinterpret_cast<const uint8_t*>(str), len);
+// from fw-putc-replace branch
+extern "C" int _write(int file, const char* data, size_t len) {
+    // We should check that file is equal to stdin
+    tunnelUartTx(reinterpret_cast<const uint8_t*>(data), len);
     HAL_Delay(1 + len / 11);
+    return len;
 }
+
 
 int main() {
     clocksInit();
@@ -29,33 +33,28 @@ int main() {
     controlUartInit();    
     cdcLinkInit();
     HAL_Delay(1000);
-    constexpr size_t debugBufferSize = 128;
-    char debugBuffer[debugBufferSize] = { 0 };
-    sendDebugStr("RBCX v1.0 HW test\n\t" __DATE__ " " __TIME__ "\n");
+    printf("RBCX v1.0 HW test\n\t" __DATE__ " " __TIME__ "\n");
     HAL_PWR_EnableBkUpAccess();
     uint32_t isRtcValid = LL_RTC_BKP_GetRegister(BKP, LL_RTC_BKP_DR1);
-    snprintf(debugBuffer, debugBufferSize, "isRtcValid %lu\n", isRtcValid);
-    sendDebugStr(debugBuffer);
+    printf("isRtcValid %lu\n", isRtcValid);
     if (isRtcValid == 0) {
         while (!LL_RTC_IsActiveFlag_RTOF(RTC));
         LL_RTC_DisableWriteProtection(RTC);
-        //LL_PWR_EnableBkUpAccess();
         LL_RCC_LSE_Enable();
         uint32_t timeout = HAL_GetTick();
         while (!LL_RCC_LSE_IsReady()) {
             if ((HAL_GetTick() - timeout) > 1000) {
-                sendDebugStr("Could not initialize 32.768 kHz Quartz.");
+                printf("Could not initialize 32.768 kHz Quartz.");
                 break;
             }
         }
         LL_RTC_TIME_Set(RTC, UNIX_TIMESTAMP);
         LL_RTC_SetAsynchPrescaler(RTC, 32767);
-        //LL_RTC_SetOutputSource(BKP, LL_RTC_CALIB_OUTPUT_SECOND);
         LL_RTC_EnableWriteProtection(RTC);
         timeout = HAL_GetTick();
         while (!LL_RTC_IsActiveFlag_RTOF(RTC)) {
             if ((HAL_GetTick() - timeout) > 1000) {
-                sendDebugStr("RTC synchronization timeout.");
+                printf("RTC synchronization timeout.");
                 break;
             }
         }
@@ -63,8 +62,7 @@ int main() {
         LL_RCC_EnableRTC();
         isRtcValid = 1;
         LL_RTC_BKP_SetRegister(BKP, LL_RTC_BKP_DR1, isRtcValid);
-        snprintf(debugBuffer, debugBufferSize, "RTC updated by current compilation time %lu.\n", UNIX_TIMESTAMP);
-        sendDebugStr(debugBuffer);
+        printf("RTC updated by current compilation time %lu.\n", UNIX_TIMESTAMP);
     }
     LL_RTC_WaitForSynchro(RTC);
     uint8_t leds = 0x01;
@@ -89,9 +87,9 @@ int main() {
             ledTest = false;
             if (isPressed(button4Pin) && isPressed(button2Pin)) {
                 LL_RCC_ForceBackupDomainReset();
-                sendDebugStr("Force BACKUP reset.\n");
+                printf("Force BACKUP reset.\n");
             }
-            sendDebugStr("Shutting down...\n");
+            printf("Shutting down...\n");
             for(;;);
         } else if (isPressed(buttonOnPin)) {
             pinWrite(powerPin, 1);
@@ -110,16 +108,17 @@ int main() {
         if (v != usbConnected) {
             usbConnected = v;
             if (usbConnected) {
-                sendDebugStr("USB connected\n");
+                printf("USB connected\n");
             } else {
-                sendDebugStr("USB disconnected\n");
+                printf("USB disconnected\n");
             }
         }
         if (LL_RTC_IsActiveFlag_SEC(RTC)) {
             LL_RTC_ClearFlag_SEC(RTC);
-            HAL_Delay(1);
-            snprintf(debugBuffer, debugBufferSize, "Time %lu\n", LL_RTC_TIME_Get(RTC));
-            sendDebugStr(debugBuffer);
+            if (isPressed(button4Pin) && isPressed(button2Pin)) {
+                HAL_Delay(1);
+                printf("Time %lu\n", LL_RTC_TIME_Get(RTC));
+            }
         }
         cdcLinkPoll();
         tunnelPoll();
