@@ -3,6 +3,9 @@
 
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_gpio.h"
+#include "stm32f1xx_ll_tim.h"
+#include "stm32f1xx_ll_gpio.h"
+
 #include <algorithm>
 #include <array>
 #include <cassert>
@@ -60,6 +63,35 @@ inline DMA_Channel_TypeDef * const   tunnelUartRxDmaChannel = DMA1_Channel5;
 inline DMA_Channel_TypeDef * const controlUartTxDmaChannel = DMA1_Channel7;
 inline DMA_Channel_TypeDef * const controlUartRxDmaChannel = DMA1_Channel6;
 
+inline const PinDef pwm1bPin = std::make_pair(GPIOE, GPIO_PIN_8);
+inline const PinDef pwm1aPin = std::make_pair(GPIOE, GPIO_PIN_9);
+inline const PinDef pwm2bPin = std::make_pair(GPIOE, GPIO_PIN_10);
+inline const PinDef pwm2aPin = std::make_pair(GPIOE, GPIO_PIN_11);
+inline const PinDef pwm3bPin = std::make_pair(GPIOE, GPIO_PIN_12);
+inline const PinDef pwm3aPin = std::make_pair(GPIOE, GPIO_PIN_13);
+inline const PinDef pwm4Pin  = std::make_pair(GPIOE, GPIO_PIN_14);
+inline const PinDef in4bPin  = std::make_pair(GPIOD, GPIO_PIN_0);
+inline const PinDef in4aPin  = std::make_pair(GPIOD, GPIO_PIN_1);
+
+inline TIM_TypeDef * const pwmTimer = TIM1;
+inline static constexpr uint32_t timerIndex2channel[4] = {
+    LL_TIM_CHANNEL_CH1,
+    LL_TIM_CHANNEL_CH2,
+    LL_TIM_CHANNEL_CH3,
+    LL_TIM_CHANNEL_CH4
+};
+inline static constexpr uint32_t timerIndex2negativeChannel[3] = {
+    LL_TIM_CHANNEL_CH1N,
+    LL_TIM_CHANNEL_CH2N,
+    LL_TIM_CHANNEL_CH3N
+};
+inline static void (* const LL_TIM_OC_SetCompareCH[4])(TIM_TypeDef *TIMx, uint32_t CompareValue) = {
+    LL_TIM_OC_SetCompareCH1,
+    LL_TIM_OC_SetCompareCH2,
+    LL_TIM_OC_SetCompareCH3,
+    LL_TIM_OC_SetCompareCH4
+};
+
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
     RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
@@ -71,7 +103,7 @@ inline void clocksInit() {
     RCC_OscInitStruct.HSIState = RCC_HSI_ON;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-    RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;
+    RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
     assert(HAL_RCC_OscConfig(&RCC_OscInitStruct) == HAL_OK);
 
     RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
@@ -82,7 +114,7 @@ inline void clocksInit() {
     assert(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) == HAL_OK);
 
     PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
-    PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL;
+    PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
     assert(HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) == HAL_OK);
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -90,6 +122,7 @@ inline void clocksInit() {
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
     __HAL_RCC_GPIOE_CLK_ENABLE();
+    __HAL_RCC_AFIO_CLK_ENABLE();
     __HAL_RCC_USART1_CLK_ENABLE();
     __HAL_RCC_USART2_CLK_ENABLE();
     __HAL_RCC_USART3_CLK_ENABLE();
@@ -98,6 +131,7 @@ inline void clocksInit() {
     __HAL_RCC_DMA1_CLK_ENABLE();
     __HAL_RCC_PWR_CLK_ENABLE();
     __HAL_RCC_BKP_CLK_ENABLE();
+    __HAL_RCC_TIM1_CLK_ENABLE();
 }
 
 inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode, uint32_t pull, uint32_t speed) {
@@ -135,6 +169,17 @@ inline void pinsInit() {
 
     for (auto button: buttonPin)
        pinInit(button, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_LOW);
+
+    pinInit(pwm1bPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm1aPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm2bPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm2aPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm3bPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm3aPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm4Pin , GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(in4bPin , GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    pinInit(in4aPin , GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    LL_GPIO_AF_EnableRemap_TIM1();
 
     // USB
     pinInit(usbDnPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
