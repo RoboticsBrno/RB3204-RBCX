@@ -154,9 +154,10 @@ inline bool isPressed(PinDef button) {
 }
 
 inline uint32_t getButtons() {
-    uint32_t buttons;
+    uint32_t buttons = 0;
     for (size_t i = 0; i < buttonPin.size(); ++i) {
-        buttons |= isPressed(buttonPin[i]) << i;
+        buttons |= isPressed(buttonPin[i]);
+        buttons <<= 1;
     }
     return buttons;
 }
