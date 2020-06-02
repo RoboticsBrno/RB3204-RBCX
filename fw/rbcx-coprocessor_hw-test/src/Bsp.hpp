@@ -73,10 +73,21 @@ inline const PinDef pwm2aPin = std::make_pair(GPIOE, GPIO_PIN_11);
 inline const PinDef pwm3bPin = std::make_pair(GPIOE, GPIO_PIN_12);
 inline const PinDef pwm3aPin = std::make_pair(GPIOE, GPIO_PIN_13);
 inline const PinDef pwm4Pin  = std::make_pair(GPIOE, GPIO_PIN_14);
-inline const PinDef in4bPin  = std::make_pair(in4Port, in4bMask);
-inline const PinDef in4aPin  = std::make_pair(in4Port, in4aMask);
+inline const PinDef in4bPin  = std::make_pair(IN4PORT, IN4BMASK);
+inline const PinDef in4aPin  = std::make_pair(IN4PORT, IN4AMASK);
 
 inline TIM_TypeDef * const pwmTimer = TIM1;
+
+inline const PinDef encoder1aPin = std::make_pair(GPIOA, GPIO_PIN_15);
+inline const PinDef encoder1bPin = std::make_pair(GPIOB, GPIO_PIN_3);
+inline const PinDef encoder2aPin = std::make_pair(GPIOB, GPIO_PIN_4);
+inline const PinDef encoder2bPin = std::make_pair(GPIOB, GPIO_PIN_5);
+inline const PinDef encoder3aPin = std::make_pair(GPIOD, GPIO_PIN_12);
+inline const PinDef encoder3bPin = std::make_pair(GPIOD, GPIO_PIN_13);
+inline const PinDef encoder4aPin = std::make_pair(GPIOC, GPIO_PIN_6);
+inline const PinDef encoder4bPin = std::make_pair(GPIOC, GPIO_PIN_7);
+
+inline TIM_TypeDef * const encoderTimer[4] = { TIM2, TIM3, TIM4, TIM8 };
 
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
@@ -118,6 +129,10 @@ inline void clocksInit() {
     __HAL_RCC_PWR_CLK_ENABLE();
     __HAL_RCC_BKP_CLK_ENABLE();
     __HAL_RCC_TIM1_CLK_ENABLE();
+    __HAL_RCC_TIM2_CLK_ENABLE();
+    __HAL_RCC_TIM3_CLK_ENABLE();
+    __HAL_RCC_TIM4_CLK_ENABLE();
+    __HAL_RCC_TIM8_CLK_ENABLE();
 }
 
 inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode, uint32_t pull, uint32_t speed) {
@@ -166,6 +181,19 @@ inline void pinsInit() {
     pinInit(in4bPin , GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
     pinInit(in4aPin , GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
     LL_GPIO_AF_EnableRemap_TIM1();
+
+    pinInit(encoder1aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder1bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder2aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder2bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder3aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder3bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder4aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder4bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    LL_GPIO_AF_RemapPartial1_TIM2();
+    LL_GPIO_AF_RemapPartial_TIM3();
+    LL_GPIO_AF_EnableRemap_TIM4();
+    LL_GPIO_AF_Remap_SWJ_NOJTAG();
 
     // USB
     pinInit(usbDnPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);

@@ -29,7 +29,7 @@ extern "C" int _write(int file, const char* data, size_t len) {
 static constexpr uint16_t maxPwm = 2000;
 
 void setPwmValue(TIM_TypeDef * timer, uint8_t channel, uint16_t value) {
-    reinterpret_cast<__IO uint16_t*>(&pwmTimer->CCR1)[motorID<<1] = pwm; // output channel comparsion value
+    reinterpret_cast<__IO uint16_t*>(&timer->CCR1)[channel<<1] = value; // output channel comparsion value
 }
 
 void setMotorPower(uint8_t motorID, float power, bool brake = false) {
@@ -129,7 +129,7 @@ int main() {
     printf("RTC time is %lu\n", LL_RTC_TIME_Get(RTC));
 
     // PWM
-    LL_TIM_InitTypeDef TIM_Init = {
+    LL_TIM_InitTypeDef TIM_PWM_Init = {
         .Prescaler = 0,
         .CounterMode = LL_TIM_COUNTERMODE_CENTER_DOWN, // this sets interrupts flag when counter reachs TOP
         .Autoreload = maxPwm,
@@ -146,7 +146,7 @@ int main() {
         .OCIdleState = LL_TIM_OCIDLESTATE_HIGH,
         .OCNIdleState = LL_TIM_OCIDLESTATE_HIGH
     };
-    LL_TIM_Init(pwmTimer, &TIM_Init);
+    LL_TIM_Init(pwmTimer, &TIM_PWM_Init);
     for (uint16_t channel = LL_TIM_CHANNEL_CH1; channel != 0; channel <<= 4)
     {
         LL_TIM_OC_Init(pwmTimer, channel, &TIM_OC_Init);
@@ -156,6 +156,50 @@ int main() {
     LL_TIM_GenerateEvent_UPDATE(pwmTimer);
     LL_TIM_EnableAllOutputs(pwmTimer);
     LL_TIM_EnableCounter(pwmTimer);
+
+    // Encoders
+    LL_TIM_ENCODER_InitTypeDef TIM_Encoder_Init = {
+        .EncoderMode = LL_TIM_ENCODERMODE_X4_TI12,
+        .IC1Polarity = LL_TIM_IC_POLARITY_RISING,
+        .IC1ActiveInput = LL_TIM_ACTIVEINPUT_DIRECTTI,
+        .IC1Prescaler = LL_TIM_ICPSC_DIV1,
+        .IC1Filter = LL_TIM_IC_FILTER_FDIV1,
+        .IC2Polarity = LL_TIM_IC_POLARITY_RISING,
+        .IC2ActiveInput = LL_TIM_ACTIVEINPUT_DIRECTTI,
+        .IC2Prescaler = LL_TIM_ICPSC_DIV1,
+        .IC2Filter = LL_TIM_IC_FILTER_FDIV1
+    };
+    for (auto timer: encoderTimer) {
+        LL_TIM_ENCODER_Init(timer, &TIM_Encoder_Init);
+        LL_TIM_EnableCounter(timer);
+    }
+
+/*    const char* regName[20] = {
+        "CR1  ",
+        "CR2  ",
+        "SMCR ",
+        "DIER ",
+        "SR   ",
+        "EGR  ",
+        "CCMR1",
+        "CCMR2",
+        "CCER ",
+        "CNT  ",
+        "PSC  ",
+        "AAR  ",
+        "RCR  ",
+        "CCR1 ",
+        "CCR2 ",
+        "CCR3 ",
+        "CCR4 ",
+        "BDTR ",
+        "DCR  ",
+        "DMAR "
+    };
+    for (uint8_t i = 0; i != 20; ++i) {
+        uint16_t v = reinterpret_cast<uint16_t*>(encoderTimer[0])[2*i];
+        printf("%s: %04X\n", regName[i], v);
+    }*/
 
     // main loop
     uint8_t leds = 0x01;
@@ -167,6 +211,9 @@ int main() {
     float powerIncrement = 0.1;
     const uint32_t powerPeriod = 1000;
     uint32_t nextPowerTime = 0;
+    const uint32_t encoderPeriod = 1000;
+    uint32_t nextEncoderTime = 0;
+    bool sendNewLine = false;
     while (true) {
         if (ledTest && HAL_GetTick() >= nextLedTime) {
             switch (leds) {
@@ -219,8 +266,11 @@ int main() {
         }
         if (HAL_GetTick() >= nextPowerTime) {
             nextPowerTime += powerPeriod;
-            //printf("Power %9.4f\n", power);
-            printf("Power %5d\n", int(power * maxPwm));
+            if (sendNewLine)
+                printf("\t");
+            //printf("Power %9.4f", power);
+            printf("Power %5d", int(power * maxPwm));
+            sendNewLine = true;
             for(uint8_t i = 0; i != 4; ++i)
                 setMotorPower(i, power, isPressed(button1Pin));
             power += powerIncrement;
@@ -228,6 +278,20 @@ int main() {
                 power = copysignf(1, power);
                 powerIncrement = -powerIncrement;
             }
+        }
+        if (HAL_GetTick() >= nextEncoderTime) {
+            nextEncoderTime += encoderPeriod;
+            if (sendNewLine)
+                printf("\t");
+            printf("Encoders");
+            for(uint8_t i = 0; i != 4; ++i) {
+                printf("%6d", encoderTimer[i]->CNT);
+            }
+            sendNewLine = true;
+        }
+        if (sendNewLine) {
+            sendNewLine = false;
+            printf("\n");
         }
         cdcLinkPoll();
         tunnelPoll();
