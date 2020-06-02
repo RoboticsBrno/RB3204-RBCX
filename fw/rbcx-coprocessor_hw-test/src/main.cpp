@@ -32,44 +32,44 @@ void setMotorPower(uint8_t motorID, float power, bool brake = false) {
     assert(motorID < 4);
     if (power > 1 || power < -1) {
         //printf("Warning: motor[%u] power out of range <-1; 1> (%9.4f).\n", uint32_t(motorID), power);
-
-        printf("Warning: motor[%u] power out of range <-1; 1> (%dE-3).\n", uint32_t(motorID), int(power*1000));
+        printf("Warning: motor[%d] power out of range <-1; 1> (%dE-3).\n", int(motorID), int(power*1000));
         power = copysignf(1, power);
     }
     uint16_t pwm = fabsf(power) * maxPwm;
-    LL_TIM_OC_SetCompareCH[motorID](pwmTimer, pwm);
-    if (brake || pwm == 0) {
+    reinterpret_cast<__IO uint16_t*>(&pwmTimer->CCR1)[motorID<<1] = pwm;
+    if (pwm == 0 || brake) {
         switch (motorID) {
         case 3:
-            pinWrite(in4aPin, 0);
-            pinWrite(in4bPin, 0);
-            LL_TIM_OC_SetPolarity(pwmTimer, timerIndex2channel[motorID], LL_TIM_OCPOLARITY_LOW);
+            in4Port->BRR = in4aMask | in4bMask;
+            pwmTimer->CCER |= TIM_CCER_CC4P;
             break;
         default:
-            LL_TIM_OC_SetPolarity(pwmTimer, timerIndex2channel[motorID], LL_TIM_OCPOLARITY_LOW);
-            LL_TIM_OC_SetPolarity(pwmTimer, timerIndex2negativeChannel[motorID], LL_TIM_OCPOLARITY_HIGH);
-            LL_TIM_CC_EnableChannel(pwmTimer, timerIndex2channel[motorID]
-                                            | timerIndex2negativeChannel[motorID]);
+            pwmTimer->CCER = (pwmTimer->CCER & ~(TIM_CCER_CC1NP  << (motorID<<2)))
+                | (TIM_CCER_CC1E  << (motorID<<2))
+                | (TIM_CCER_CC1NE << (motorID<<2))
+                | (TIM_CCER_CC1P  << (motorID<<2));
             break;
         }
     } else {
         switch (motorID) {
         case 3:
-            pinWrite(in4aPin, power < 0);
-            pinWrite(in4bPin, power > 0);
-            LL_TIM_OC_SetPolarity(pwmTimer, timerIndex2channel[motorID], LL_TIM_OCPOLARITY_HIGH);
+            in4Port->BSRR = power < 0 ? in4aMask | (in4bMask<<16)
+                                      : in4bMask | (in4aMask<<16);
+            pwmTimer->CCER &= ~TIM_CCER_CC4P;
             break;
         default:
             if (power > 0) {
-                LL_TIM_OC_SetPolarity(pwmTimer, timerIndex2channel[motorID], LL_TIM_OCPOLARITY_HIGH);
-                LL_TIM_OC_SetPolarity(pwmTimer, timerIndex2negativeChannel[motorID], LL_TIM_OCPOLARITY_LOW);
-                LL_TIM_CC_EnableChannel(pwmTimer, timerIndex2channel[motorID]);
-                LL_TIM_CC_DisableChannel(pwmTimer, timerIndex2negativeChannel[motorID]);
+                pwmTimer->CCER = 
+                    (pwmTimer->CCER & ~((TIM_CCER_CC1P  << (motorID<<2))
+                                      | (TIM_CCER_CC1NE << (motorID<<2))))
+                    | (TIM_CCER_CC1NP << (motorID<<2))
+                    | (TIM_CCER_CC1E  << (motorID<<2));
             } else {
-                LL_TIM_OC_SetPolarity(pwmTimer, timerIndex2channel[motorID], LL_TIM_OCPOLARITY_LOW);
-                LL_TIM_OC_SetPolarity(pwmTimer, timerIndex2negativeChannel[motorID], LL_TIM_OCPOLARITY_HIGH);
-                LL_TIM_CC_EnableChannel(pwmTimer, timerIndex2negativeChannel[motorID]);
-                LL_TIM_CC_DisableChannel(pwmTimer, timerIndex2channel[motorID]);
+                pwmTimer->CCER = 
+                    (pwmTimer->CCER & ~((TIM_CCER_CC1E  << (motorID<<2))
+                                      | (TIM_CCER_CC1NP << (motorID<<2))))
+                    | (TIM_CCER_CC1NE << (motorID<<2))
+                    | (TIM_CCER_CC1P  << (motorID<<2));
             }
             break;
         }
@@ -140,7 +140,7 @@ int main() {
         .OCNIdleState = LL_TIM_OCIDLESTATE_HIGH
     };
     LL_TIM_Init(pwmTimer, &TIM_Init);
-    for (uint32_t channel: timerIndex2channel)
+    for (uint16_t channel = LL_TIM_CHANNEL_CH1; channel != 0; channel <<= 4)
     {
         LL_TIM_OC_Init(pwmTimer, channel, &TIM_OC_Init);
         LL_TIM_OC_EnablePreload(pwmTimer, channel);

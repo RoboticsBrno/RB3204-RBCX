@@ -63,6 +63,9 @@ inline DMA_Channel_TypeDef * const   tunnelUartRxDmaChannel = DMA1_Channel5;
 inline DMA_Channel_TypeDef * const controlUartTxDmaChannel = DMA1_Channel7;
 inline DMA_Channel_TypeDef * const controlUartRxDmaChannel = DMA1_Channel6;
 
+#define in4Port GPIOD
+#define in4aMask GPIO_PIN_1
+#define in4bMask GPIO_PIN_0
 inline const PinDef pwm1bPin = std::make_pair(GPIOE, GPIO_PIN_8);
 inline const PinDef pwm1aPin = std::make_pair(GPIOE, GPIO_PIN_9);
 inline const PinDef pwm2bPin = std::make_pair(GPIOE, GPIO_PIN_10);
@@ -70,27 +73,10 @@ inline const PinDef pwm2aPin = std::make_pair(GPIOE, GPIO_PIN_11);
 inline const PinDef pwm3bPin = std::make_pair(GPIOE, GPIO_PIN_12);
 inline const PinDef pwm3aPin = std::make_pair(GPIOE, GPIO_PIN_13);
 inline const PinDef pwm4Pin  = std::make_pair(GPIOE, GPIO_PIN_14);
-inline const PinDef in4bPin  = std::make_pair(GPIOD, GPIO_PIN_0);
-inline const PinDef in4aPin  = std::make_pair(GPIOD, GPIO_PIN_1);
+inline const PinDef in4bPin  = std::make_pair(in4Port, in4bMask);
+inline const PinDef in4aPin  = std::make_pair(in4Port, in4aMask);
 
 inline TIM_TypeDef * const pwmTimer = TIM1;
-inline static constexpr uint32_t timerIndex2channel[4] = {
-    LL_TIM_CHANNEL_CH1,
-    LL_TIM_CHANNEL_CH2,
-    LL_TIM_CHANNEL_CH3,
-    LL_TIM_CHANNEL_CH4
-};
-inline static constexpr uint32_t timerIndex2negativeChannel[3] = {
-    LL_TIM_CHANNEL_CH1N,
-    LL_TIM_CHANNEL_CH2N,
-    LL_TIM_CHANNEL_CH3N
-};
-inline static void (* const LL_TIM_OC_SetCompareCH[4])(TIM_TypeDef *TIMx, uint32_t CompareValue) = {
-    LL_TIM_OC_SetCompareCH1,
-    LL_TIM_OC_SetCompareCH2,
-    LL_TIM_OC_SetCompareCH3,
-    LL_TIM_OC_SetCompareCH4
-};
 
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
