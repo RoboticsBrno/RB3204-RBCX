@@ -28,6 +28,10 @@ extern "C" int _write(int file, const char* data, size_t len) {
 
 static constexpr uint16_t maxPwm = 2000;
 
+void setPwmValue(TIM_TypeDef * timer, uint8_t channel, uint16_t value) {
+    reinterpret_cast<__IO uint16_t*>(&pwmTimer->CCR1)[motorID<<1] = pwm; // output channel comparsion value
+}
+
 void setMotorPower(uint8_t motorID, float power, bool brake = false) {
     assert(motorID < 4);
     if (power > 1 || power < -1) {
@@ -36,14 +40,15 @@ void setMotorPower(uint8_t motorID, float power, bool brake = false) {
         power = copysignf(1, power);
     }
     uint16_t pwm = fabsf(power) * maxPwm;
-    reinterpret_cast<__IO uint16_t*>(&pwmTimer->CCR1)[motorID<<1] = pwm;
+    setPwmValue(pwmTimer, motorID, pwm);
     if (pwm == 0 || brake) {
         switch (motorID) {
         case 3:
-            in4Port->BRR = in4aMask | in4bMask;
-            pwmTimer->CCER |= TIM_CCER_CC4P;
+            IN4PORT->BRR = IN4AMASK | IN4BMASK; // set LOW on IN4A and IN4B
+            pwmTimer->CCER |= TIM_CCER_CC4P; // invert channel 4
             break;
         default:
+            // set PWM on both channels and invert positive channel
             pwmTimer->CCER = (pwmTimer->CCER & ~(TIM_CCER_CC1NP  << (motorID<<2)))
                 | (TIM_CCER_CC1E  << (motorID<<2))
                 | (TIM_CCER_CC1NE << (motorID<<2))
@@ -53,18 +58,20 @@ void setMotorPower(uint8_t motorID, float power, bool brake = false) {
     } else {
         switch (motorID) {
         case 3:
-            in4Port->BSRR = power < 0 ? in4aMask | (in4bMask<<16)
-                                      : in4bMask | (in4aMask<<16);
-            pwmTimer->CCER &= ~TIM_CCER_CC4P;
+            IN4PORT->BSRR = power < 0 ? IN4AMASK | (IN4BMASK<<16)   // pinWrite(in4aPin, power < 0);
+                                      : IN4BMASK | (IN4AMASK<<16);  // pinWrite(in4bPin, power > 0);
+            pwmTimer->CCER &= ~TIM_CCER_CC4P; // make channel 4 non-inverted
             break;
         default:
             if (power > 0) {
+                // set HIGH on positive channel and inverted PWM on negative channel
                 pwmTimer->CCER = 
                     (pwmTimer->CCER & ~((TIM_CCER_CC1P  << (motorID<<2))
                                       | (TIM_CCER_CC1NE << (motorID<<2))))
                     | (TIM_CCER_CC1NP << (motorID<<2))
                     | (TIM_CCER_CC1E  << (motorID<<2));
             } else {
+                // set HIGH on negative channel and inverted PWM on positive channel
                 pwmTimer->CCER = 
                     (pwmTimer->CCER & ~((TIM_CCER_CC1E  << (motorID<<2))
                                       | (TIM_CCER_CC1NP << (motorID<<2))))

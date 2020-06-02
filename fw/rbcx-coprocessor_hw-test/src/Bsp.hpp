@@ -63,9 +63,9 @@ inline DMA_Channel_TypeDef * const   tunnelUartRxDmaChannel = DMA1_Channel5;
 inline DMA_Channel_TypeDef * const controlUartTxDmaChannel = DMA1_Channel7;
 inline DMA_Channel_TypeDef * const controlUartRxDmaChannel = DMA1_Channel6;
 
-#define in4Port GPIOD
-#define in4aMask GPIO_PIN_1
-#define in4bMask GPIO_PIN_0
+#define IN4PORT  GPIOD
+#define IN4AMASK GPIO_PIN_1
+#define IN4BMASK GPIO_PIN_0
 inline const PinDef pwm1bPin = std::make_pair(GPIOE, GPIO_PIN_8);
 inline const PinDef pwm1aPin = std::make_pair(GPIOE, GPIO_PIN_9);
 inline const PinDef pwm2bPin = std::make_pair(GPIOE, GPIO_PIN_10);
