@@ -89,6 +89,17 @@ inline const PinDef encoder4bPin = std::make_pair(GPIOC, GPIO_PIN_7);
 
 inline TIM_TypeDef * const encoderTimer[4] = { TIM2, TIM3, TIM4, TIM8 };
 
+inline const PinDef servo1Pin = std::make_pair(GPIOA, GPIO_PIN_0);
+inline const PinDef servo2Pin = std::make_pair(GPIOA, GPIO_PIN_1);
+inline const PinDef servo3Pin = std::make_pair(GPIOA, GPIO_PIN_2);
+inline const PinDef servo4Pin = std::make_pair(GPIOA, GPIO_PIN_3);
+inline const PinDef servoPins = std::make_pair(GPIOA, servo1Pin.second
+                                                    | servo2Pin.second
+                                                    | servo3Pin.second
+                                                    | servo4Pin.second );
+
+inline TIM_TypeDef * const servoTimer = TIM5;
+
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
     RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
@@ -132,6 +143,7 @@ inline void clocksInit() {
     __HAL_RCC_TIM2_CLK_ENABLE();
     __HAL_RCC_TIM3_CLK_ENABLE();
     __HAL_RCC_TIM4_CLK_ENABLE();
+    __HAL_RCC_TIM5_CLK_ENABLE();
     __HAL_RCC_TIM8_CLK_ENABLE();
 }
 
@@ -194,6 +206,10 @@ inline void pinsInit() {
     LL_GPIO_AF_RemapPartial_TIM3();
     LL_GPIO_AF_EnableRemap_TIM4();
     LL_GPIO_AF_Remap_SWJ_NOJTAG();
+
+    pinInit(servoPins, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_MEDIUM);
+
+    LL_GPIO_AF_EnableRemap_USART2();
 
     // USB
     pinInit(usbDnPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);

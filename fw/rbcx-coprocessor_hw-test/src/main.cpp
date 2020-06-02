@@ -174,6 +174,30 @@ int main() {
         LL_TIM_EnableCounter(timer);
     }
 
+    // Servos
+    LL_TIM_StructInit(&TIM_PWM_Init);
+    TIM_PWM_Init.Prescaler = 24/2-1; // should be computed based on PCLK1 frequency
+    TIM_PWM_Init.CounterMode = LL_TIM_COUNTERMODE_UP;
+    TIM_PWM_Init.Autoreload = 60000; // should be computed based on PCLK1 frequency
+    TIM_PWM_Init.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
+    TIM_PWM_Init.RepetitionCounter = 0;
+    LL_TIM_OC_StructInit(&TIM_OC_Init);
+    TIM_OC_Init.OCMode = LL_TIM_OCMODE_PWM1;
+    TIM_OC_Init.OCState = LL_TIM_OCSTATE_ENABLE;
+    TIM_OC_Init.CompareValue = 9000; // should be computed based on PCLK1 frequency
+    TIM_OC_Init.OCPolarity = LL_TIM_OCPOLARITY_HIGH;
+    TIM_OC_Init.OCIdleState = LL_TIM_OCIDLESTATE_LOW;
+    LL_TIM_Init(servoTimer, &TIM_PWM_Init);
+    for (uint16_t channel = LL_TIM_CHANNEL_CH1; channel != 0; channel <<= 4)
+    {
+        LL_TIM_OC_Init(servoTimer, channel, &TIM_OC_Init);
+        LL_TIM_OC_EnablePreload(servoTimer, channel);
+    }
+    LL_TIM_SetOffStates(servoTimer, LL_TIM_OSSI_DISABLE, LL_TIM_OSSR_ENABLE);
+    LL_TIM_GenerateEvent_UPDATE(servoTimer);
+    LL_TIM_EnableAllOutputs(servoTimer);
+    LL_TIM_EnableCounter(servoTimer);
+
 /*    const char* regName[20] = {
         "CR1  ",
         "CR2  ",
