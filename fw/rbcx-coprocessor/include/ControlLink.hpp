@@ -7,5 +7,5 @@
 
 void controlUartInit();
 bool controlLinkTxReady();
-void controlLinkTx(const StmMessage& outgoing);
-bool controlLinkRx(EspMessage& incoming);
+void controlLinkTx(const CoprocStat& outgoing);
+bool controlLinkRx(CoprocReq& incoming);

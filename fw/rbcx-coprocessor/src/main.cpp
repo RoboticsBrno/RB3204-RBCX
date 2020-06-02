@@ -4,6 +4,7 @@
 #include "Bsp.hpp"
 #include "CdcUartTunnel.hpp"
 #include "ControlLink.hpp"
+#include "Dispatcher.hpp"
 #include "UsbCdcLink.h"
 #include <array>
 
@@ -17,11 +18,7 @@ int main() {
     while (true) {
         cdcLinkPoll();
         tunnelPoll();
-        EspMessage incoming = EspMessage_init_default;
-        StmMessage outgoing = StmMessage_init_default;
-        if (controlLinkRx(incoming) && controlLinkTxReady()) {
-            controlLinkTx(outgoing);
-        }
+        dispatcherPoll();
     }
 }
 

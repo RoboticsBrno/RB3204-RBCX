@@ -17,7 +17,7 @@
 static DMA_HandleTypeDef dmaRxHandle;
 static DMA_HandleTypeDef dmaTxHandle;
 static rb::CoprocCodec codec;
-static rb::CoprocLinkParser<EspMessage, &EspMessage_msg, &codec> parser;
+static rb::CoprocLinkParser<CoprocReq, &CoprocReq_msg, &codec> parser;
 static ByteFifo<512> rxFifo;
 static std::array<uint8_t, codec.MaxFrameSize> txFrameBuf;
 
@@ -70,14 +70,14 @@ bool controlLinkTxReady() {
     return dmaTxHandle.State == HAL_DMA_STATE_READY;
 }
 
-void controlLinkTx(const StmMessage& outgoing) {
+void controlLinkTx(const CoprocStat& outgoing) {
     auto encodedSize = codec.encodeWithHeader(
-        &StmMessage_msg, &outgoing, txFrameBuf.data(), txFrameBuf.size());
+        &CoprocStat_msg, &outgoing, txFrameBuf.data(), txFrameBuf.size());
     HAL_DMA_Start(&dmaTxHandle, uint32_t(txFrameBuf.data()),
         uint32_t(&controlUart->DR), encodedSize);
 }
 
-bool controlLinkRx(EspMessage& incoming) {
+bool controlLinkRx(CoprocReq& incoming) {
     int rxHead = rxFifo.size() - __HAL_DMA_GET_COUNTER(&dmaRxHandle);
     rxFifo.setHead(rxHead);
 
