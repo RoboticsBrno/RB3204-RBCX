@@ -198,33 +198,6 @@ int main() {
     LL_TIM_EnableAllOutputs(servoTimer);
     LL_TIM_EnableCounter(servoTimer);
 
-/*    const char* regName[20] = {
-        "CR1  ",
-        "CR2  ",
-        "SMCR ",
-        "DIER ",
-        "SR   ",
-        "EGR  ",
-        "CCMR1",
-        "CCMR2",
-        "CCER ",
-        "CNT  ",
-        "PSC  ",
-        "AAR  ",
-        "RCR  ",
-        "CCR1 ",
-        "CCR2 ",
-        "CCR3 ",
-        "CCR4 ",
-        "BDTR ",
-        "DCR  ",
-        "DMAR "
-    };
-    for (uint8_t i = 0; i != 20; ++i) {
-        uint16_t v = reinterpret_cast<uint16_t*>(encoderTimer[0])[2*i];
-        printf("%s: %04X\n", regName[i], v);
-    }*/
-
     // main loop
     uint8_t leds = 0x01;
     const uint32_t ledPeriod = 500;
@@ -239,7 +212,8 @@ int main() {
     uint32_t nextEncoderTime = 0;
     bool sendNewLine = false;
     while (true) {
-        if (ledTest && HAL_GetTick() >= nextLedTime) {
+        const uint32_t now = HAL_GetTick();
+        if (ledTest && now >= nextLedTime) {
             switch (leds) {
             case 0x01: leds = 0x03; break;
             case 0x30: leds = 0x01; break;
@@ -271,24 +245,18 @@ int main() {
                 pinWrite(ledPin[i], 0);
             }
         }
-        pinWrite(buzzerPin, isPressed(button4Pin) && isPressed(button3Pin));
-        bool v = pinRead(usbBusDetectionPin);
-        if (v != usbConnected) {
-            usbConnected = v;
-            if (usbConnected) {
-                printf("USB connected\n");
-            } else {
-                printf("USB disconnected\n");
-            }
-        }
+        pinWrite(buzzerPin, isPressed(button4Pin) && isPressed(button3Pin) && !isPressed(button1Pin));
         if (LL_RTC_IsActiveFlag_SEC(RTC)) {
             LL_RTC_ClearFlag_SEC(RTC);
             if (isPressed(button4Pin) && isPressed(button2Pin)) {
                 HAL_Delay(1);
-                printf("Time %lu\n", LL_RTC_TIME_Get(RTC));
+                if (sendNewLine)
+                    printf("\t");
+                printf("Time %lu", LL_RTC_TIME_Get(RTC));
+                sendNewLine = true;
             }
         }
-        if (HAL_GetTick() >= nextPowerTime) {
+        if (now >= nextPowerTime) {
             nextPowerTime += powerPeriod;
             if (sendNewLine)
                 printf("\t");
@@ -303,13 +271,13 @@ int main() {
                 powerIncrement = -powerIncrement;
             }
         }
-        if (HAL_GetTick() >= nextEncoderTime) {
+        if (now >= nextEncoderTime) {
             nextEncoderTime += encoderPeriod;
             if (sendNewLine)
                 printf("\t");
             printf("Encoders");
             for(uint8_t i = 0; i != 4; ++i) {
-                printf("%6d", encoderTimer[i]->CNT);
+                printf("%6u", encoderTimer[i]->CNT);
             }
             sendNewLine = true;
         }
@@ -317,6 +285,21 @@ int main() {
             sendNewLine = false;
             printf("\n");
         }
+        bool v = pinRead(usbBusDetectionPin);
+        if (v != usbConnected) {
+            usbConnected = v;
+            if (usbConnected) {
+                printf("USB connected\n");
+            } else {
+                printf("USB disconnected\n");
+            }
+        }
+        /*if (isPressed(button1Pin) && isPressed(button3Pin) && isPressed(button4Pin)) {
+            printf("AFIO_MAPR = 0x%08X\n", AFIO->MAPR);
+            LL_GPIO_AF_Remap(AFIO_MAPR_SWJ_CFG, AFIO_MAPR_SWJ_CFG_RESET);
+            printf("JTAG enabled\n");
+            while(isPressed(button1Pin) || isPressed(button3Pin) || isPressed(button4Pin)) {}
+        }*/
         cdcLinkPoll();
         tunnelPoll();
         std::array<uint8_t, 255> loopback;

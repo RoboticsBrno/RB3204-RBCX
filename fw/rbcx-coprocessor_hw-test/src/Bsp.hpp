@@ -172,6 +172,17 @@ inline void pinToggle(PinDef pin) {
     HAL_GPIO_TogglePin(pin.first, pin.second);
 }
 
+// This is because AFIO_MAPR register bits SWJ_CFG are write-only, so classical approach
+//   read-modifi-write does not work.
+//   DO NOT USE LL_GPIO_AF_*Remap* FUNCTIONS!
+#define AFIO_MAPR_RESERVED 0xF8E00000
+inline void LL_GPIO_AF_Remap(uint32_t mask, uint32_t value) {
+    static uint32_t mapr = 0;
+    mask |= AFIO_MAPR_RESERVED;
+    mapr = (mapr & ~mask) | (value & ~AFIO_MAPR_RESERVED);
+    AFIO->MAPR = mapr;
+}
+
 inline void pinsInit() {
     pinInit(ledPins, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 
@@ -192,7 +203,8 @@ inline void pinsInit() {
     pinInit(pwm4Pin , GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
     pinInit(in4bPin , GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
     pinInit(in4aPin , GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
-    LL_GPIO_AF_EnableRemap_TIM1();
+    //LL_GPIO_AF_EnableRemap_TIM1();
+    LL_GPIO_AF_Remap(AFIO_MAPR_TIM1_REMAP, AFIO_MAPR_TIM1_REMAP_FULLREMAP);
 
     pinInit(encoder1aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
     pinInit(encoder1bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
@@ -202,14 +214,20 @@ inline void pinsInit() {
     pinInit(encoder3bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
     pinInit(encoder4aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
     pinInit(encoder4bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
-    LL_GPIO_AF_RemapPartial1_TIM2();
-    LL_GPIO_AF_RemapPartial_TIM3();
-    LL_GPIO_AF_EnableRemap_TIM4();
-    LL_GPIO_AF_Remap_SWJ_NOJTAG();
+    //LL_GPIO_AF_RemapPartial1_TIM2();
+    LL_GPIO_AF_Remap(AFIO_MAPR_TIM2_REMAP, AFIO_MAPR_TIM2_REMAP_PARTIALREMAP1);
+    //LL_GPIO_AF_RemapPartial_TIM3();
+    LL_GPIO_AF_Remap(AFIO_MAPR_TIM3_REMAP, AFIO_MAPR_TIM3_REMAP_PARTIALREMAP);
+    //LL_GPIO_AF_EnableRemap_TIM4();
+    LL_GPIO_AF_Remap(AFIO_MAPR_TIM4_REMAP, AFIO_MAPR_TIM4_REMAP);
+    //LL_GPIO_AF_Remap_SWJ_NOJTAG();
+    LL_GPIO_AF_Remap(AFIO_MAPR_SWJ_CFG, AFIO_MAPR_SWJ_CFG_JTAGDISABLE);
 
     pinInit(servoPins, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_MEDIUM);
 
-    LL_GPIO_AF_EnableRemap_USART2();
+    //LL_GPIO_AF_EnableRemap_USART2();
+    LL_GPIO_AF_Remap(AFIO_MAPR_USART2_REMAP, AFIO_MAPR_USART2_REMAP);
+    
 
     // USB
     pinInit(usbDnPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
