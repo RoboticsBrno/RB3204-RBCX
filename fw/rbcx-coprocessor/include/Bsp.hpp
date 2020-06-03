@@ -57,6 +57,9 @@ inline USART_TypeDef* const tunnelUart = USART1; //UART5;
 inline DMA_Channel_TypeDef* const tunnelUartTxDmaChannel = DMA1_Channel4;
 inline DMA_Channel_TypeDef* const tunnelUartRxDmaChannel = DMA1_Channel5;
 
+#define CONTROLUART_TX_DMA_HANDLER DMA2_Channel4_5_IRQHandler
+inline const IRQn_Type controlUartTxDmaIRQn = DMA2_Channel4_5_IRQn;
+inline const unsigned controlUartTxDmaIrqPrio = 4;
 inline DMA_Channel_TypeDef* const controlUartTxDmaChannel = DMA2_Channel5;
 inline DMA_Channel_TypeDef* const controlUartRxDmaChannel = DMA2_Channel3;
 

@@ -22,4 +22,4 @@ int main() {
     }
 }
 
-extern "C" void SysTick_Handler() { HAL_IncTick(); }
+// extern "C" void SysTick_Handler() {}

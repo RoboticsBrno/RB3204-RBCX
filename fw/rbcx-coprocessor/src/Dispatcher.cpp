@@ -8,7 +8,6 @@ static CoprocStat status;
 
 void dispatcherPoll() {
     if (controlLinkRx(request)) {
-        bool ready = controlLinkTxReady();
         status = CoprocStat_init_default;
         switch (request.which_payload) {
         case CoprocReq_setLeds_tag:
