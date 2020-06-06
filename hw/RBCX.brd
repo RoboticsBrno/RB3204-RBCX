@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.1">
+<eagle version="9.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -29,9 +29,9 @@
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
@@ -2552,7 +2552,7 @@ grid 5.08 mm, diameter 10.5 mm</description>
 <rectangle x1="-1.524" y1="-0.254" x2="-1.016" y2="0.254" layer="51"/>
 <rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
 </package>
-<package name="1X01" urn="urn:adsk.eagle:footprint:22382/1" library_version="4">
+<package name="1X01" urn="urn:adsk.eagle:footprint:22382/1">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
 <wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.1524" layer="21"/>
 <wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
@@ -2567,7 +2567,7 @@ grid 5.08 mm, diameter 10.5 mm</description>
 <text x="-1.27" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
 <rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
 </package>
-<package name="1X06" urn="urn:adsk.eagle:footprint:22361/1" library_version="4">
+<package name="1X06" urn="urn:adsk.eagle:footprint:22361/1">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
 <wire x1="0.635" y1="1.27" x2="1.905" y2="1.27" width="0.1524" layer="21"/>
 <wire x1="1.905" y1="1.27" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
@@ -2627,6 +2627,57 @@ grid 5.08 mm, diameter 10.5 mm</description>
 <rectangle x1="-6.604" y1="-0.254" x2="-6.096" y2="0.254" layer="51"/>
 <rectangle x1="6.096" y1="-0.254" x2="6.604" y2="0.254" layer="51"/>
 </package>
+<package name="1X05" urn="urn:adsk.eagle:footprint:22354/1">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<wire x1="1.905" y1="1.27" x2="3.175" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="3.175" y1="1.27" x2="3.81" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="3.81" y1="0.635" x2="3.81" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="3.81" y1="-0.635" x2="3.175" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="0.635" x2="-0.635" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="0.635" x2="1.27" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="-0.635" x2="0.635" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="-1.27" x2="-1.27" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="1.27" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="-0.635" x2="1.905" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="3.175" y1="-1.27" x2="1.905" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-5.715" y1="1.27" x2="-4.445" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-4.445" y1="1.27" x2="-3.81" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-3.81" y1="0.635" x2="-3.81" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="-3.81" y1="-0.635" x2="-4.445" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-3.81" y1="0.635" x2="-3.175" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-3.175" y1="1.27" x2="-1.905" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="1.27" x2="-1.27" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="0.635" x2="-1.27" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="-0.635" x2="-1.905" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="-1.27" x2="-3.175" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-3.175" y1="-1.27" x2="-3.81" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="-6.35" y1="0.635" x2="-6.35" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="-5.715" y1="1.27" x2="-6.35" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-6.35" y1="-0.635" x2="-5.715" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-4.445" y1="-1.27" x2="-5.715" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="4.445" y1="1.27" x2="5.715" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="5.715" y1="1.27" x2="6.35" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="6.35" y1="0.635" x2="6.35" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="6.35" y1="-0.635" x2="5.715" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="4.445" y1="1.27" x2="3.81" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="3.81" y1="-0.635" x2="4.445" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="5.715" y1="-1.27" x2="4.445" y2="-1.27" width="0.1524" layer="21"/>
+<pad name="1" x="-5.08" y="0" drill="1.016" shape="long" rot="R90"/>
+<pad name="2" x="-2.54" y="0" drill="1.016" shape="long" rot="R90"/>
+<pad name="3" x="0" y="0" drill="1.016" shape="long" rot="R90"/>
+<pad name="4" x="2.54" y="0" drill="1.016" shape="long" rot="R90"/>
+<pad name="5" x="5.08" y="0" drill="1.016" shape="long" rot="R90"/>
+<text x="-6.4262" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-6.35" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="2.286" y1="-0.254" x2="2.794" y2="0.254" layer="51"/>
+<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
+<rectangle x1="-2.794" y1="-0.254" x2="-2.286" y2="0.254" layer="51"/>
+<rectangle x1="-5.334" y1="-0.254" x2="-4.826" y2="0.254" layer="51"/>
+<rectangle x1="4.826" y1="-0.254" x2="5.334" y2="0.254" layer="51"/>
+</package>
 </packages>
 <packages3d>
 <package3d name="2X04" urn="urn:adsk.eagle:package:22461/2" type="model" library_version="3">
@@ -2659,16 +2710,22 @@ grid 5.08 mm, diameter 10.5 mm</description>
 <packageinstance name="1X02"/>
 </packageinstances>
 </package3d>
-<package3d name="1X01" urn="urn:adsk.eagle:package:22485/2" type="model" library_version="4">
-<description>PIN HEADER</description>
-<packageinstances>
-<packageinstance name="1X01"/>
-</packageinstances>
-</package3d>
-<package3d name="1X06" urn="urn:adsk.eagle:package:22472/2" type="model" library_version="4">
+<package3d name="1X06" urn="urn:adsk.eagle:package:22472/2" type="model">
 <description>PIN HEADER</description>
 <packageinstances>
 <packageinstance name="1X06"/>
+</packageinstances>
+</package3d>
+<package3d name="1X05" urn="urn:adsk.eagle:package:22469/2" type="model">
+<description>PIN HEADER</description>
+<packageinstances>
+<packageinstance name="1X05"/>
+</packageinstances>
+</package3d>
+<package3d name="1X01" urn="urn:adsk.eagle:package:22485/2" type="model">
+<description>PIN HEADER</description>
+<packageinstances>
+<packageinstance name="1X01"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -2949,152 +3006,6 @@ Source: http://www.onsemi.com/pub_link/Collateral/MBRA340T3-D.PDF</description>
 <wire x1="1.55" y1="-0.55" x2="1.55" y2="0.55" width="0.127" layer="21"/>
 </package>
 </packages>
-</library>
-<library name="pinhead">
-<description>&lt;b&gt;Pin Header Connectors&lt;/b&gt;&lt;p&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="1X01">
-<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
-<wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="0.635" x2="1.27" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="-0.635" x2="0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="0.635" x2="-1.27" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-0.635" y1="1.27" x2="-1.27" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="-0.635" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="-1.27" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
-<pad name="1" x="0" y="0" drill="1.016" shape="octagon"/>
-<text x="-1.3462" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-1.27" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
-</package>
-<package name="1X06" urn="urn:adsk.eagle:footprint:22361/1">
-<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
-<wire x1="0.635" y1="1.27" x2="1.905" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="1.905" y1="1.27" x2="2.54" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="2.54" y1="0.635" x2="2.54" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="2.54" y1="-0.635" x2="1.905" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="2.54" y1="0.635" x2="3.175" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="1.27" x2="4.445" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="4.445" y1="1.27" x2="5.08" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="5.08" y1="0.635" x2="5.08" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="5.08" y1="-0.635" x2="4.445" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="4.445" y1="-1.27" x2="3.175" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="-1.27" x2="2.54" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-2.54" y1="0.635" x2="-1.905" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-1.905" y1="1.27" x2="-0.635" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-0.635" y1="1.27" x2="0" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="0" y1="0.635" x2="0" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="0" y1="-0.635" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-0.635" y1="-1.27" x2="-1.905" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-1.905" y1="-1.27" x2="-2.54" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="1.27" x2="0" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="0" y1="-0.635" x2="0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="1.905" y1="-1.27" x2="0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-6.985" y1="1.27" x2="-5.715" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-5.715" y1="1.27" x2="-5.08" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="0.635" x2="-5.08" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="-0.635" x2="-5.715" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="0.635" x2="-4.445" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-4.445" y1="1.27" x2="-3.175" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-3.175" y1="1.27" x2="-2.54" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="-2.54" y1="0.635" x2="-2.54" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-2.54" y1="-0.635" x2="-3.175" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-3.175" y1="-1.27" x2="-4.445" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-4.445" y1="-1.27" x2="-5.08" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-7.62" y1="0.635" x2="-7.62" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-6.985" y1="1.27" x2="-7.62" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="-7.62" y1="-0.635" x2="-6.985" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-5.715" y1="-1.27" x2="-6.985" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="5.715" y1="1.27" x2="6.985" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="6.985" y1="1.27" x2="7.62" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="7.62" y1="0.635" x2="7.62" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="7.62" y1="-0.635" x2="6.985" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="5.715" y1="1.27" x2="5.08" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="5.08" y1="-0.635" x2="5.715" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="6.985" y1="-1.27" x2="5.715" y2="-1.27" width="0.1524" layer="21"/>
-<pad name="1" x="-6.35" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="2" x="-3.81" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="3" x="-1.27" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="4" x="1.27" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="5" x="3.81" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="6" x="6.35" y="0" drill="1.016" shape="long" rot="R90"/>
-<text x="-7.6962" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-7.62" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="3.556" y1="-0.254" x2="4.064" y2="0.254" layer="51"/>
-<rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
-<rectangle x1="-1.524" y1="-0.254" x2="-1.016" y2="0.254" layer="51"/>
-<rectangle x1="-4.064" y1="-0.254" x2="-3.556" y2="0.254" layer="51"/>
-<rectangle x1="-6.604" y1="-0.254" x2="-6.096" y2="0.254" layer="51"/>
-<rectangle x1="6.096" y1="-0.254" x2="6.604" y2="0.254" layer="51"/>
-</package>
-<package name="1X05" urn="urn:adsk.eagle:footprint:22354/1">
-<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
-<wire x1="1.905" y1="1.27" x2="3.175" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="1.27" x2="3.81" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="3.81" y1="0.635" x2="3.81" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="3.81" y1="-0.635" x2="3.175" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="0.635" x2="-0.635" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="0.635" x2="1.27" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="-0.635" x2="0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="-1.27" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-0.635" y1="-1.27" x2="-1.27" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="1.905" y1="1.27" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="-0.635" x2="1.905" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="-1.27" x2="1.905" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-5.715" y1="1.27" x2="-4.445" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-4.445" y1="1.27" x2="-3.81" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="-3.81" y1="0.635" x2="-3.81" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-3.81" y1="-0.635" x2="-4.445" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-3.81" y1="0.635" x2="-3.175" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-3.175" y1="1.27" x2="-1.905" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-1.905" y1="1.27" x2="-1.27" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="0.635" x2="-1.27" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="-0.635" x2="-1.905" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-1.905" y1="-1.27" x2="-3.175" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-3.175" y1="-1.27" x2="-3.81" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-6.35" y1="0.635" x2="-6.35" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-5.715" y1="1.27" x2="-6.35" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="-6.35" y1="-0.635" x2="-5.715" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-4.445" y1="-1.27" x2="-5.715" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="4.445" y1="1.27" x2="5.715" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="5.715" y1="1.27" x2="6.35" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="6.35" y1="0.635" x2="6.35" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="6.35" y1="-0.635" x2="5.715" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="4.445" y1="1.27" x2="3.81" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="3.81" y1="-0.635" x2="4.445" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="5.715" y1="-1.27" x2="4.445" y2="-1.27" width="0.1524" layer="21"/>
-<pad name="1" x="-5.08" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="2" x="-2.54" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="3" x="0" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="4" x="2.54" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="5" x="5.08" y="0" drill="1.016" shape="long" rot="R90"/>
-<text x="-6.4262" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-6.35" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="2.286" y1="-0.254" x2="2.794" y2="0.254" layer="51"/>
-<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
-<rectangle x1="-2.794" y1="-0.254" x2="-2.286" y2="0.254" layer="51"/>
-<rectangle x1="-5.334" y1="-0.254" x2="-4.826" y2="0.254" layer="51"/>
-<rectangle x1="4.826" y1="-0.254" x2="5.334" y2="0.254" layer="51"/>
-</package>
-</packages>
-<packages3d>
-<package3d name="1X06" urn="urn:adsk.eagle:package:22472/2" type="model">
-<description>PIN HEADER</description>
-<packageinstances>
-<packageinstance name="1X06"/>
-</packageinstances>
-</package3d>
-<package3d name="1X05" urn="urn:adsk.eagle:package:22469/2" type="model">
-<description>PIN HEADER</description>
-<packageinstances>
-<packageinstance name="1X05"/>
-</packageinstances>
-</package3d>
-</packages3d>
 </library>
 <library name="jumper">
 <description>&lt;b&gt;Jumpers&lt;/b&gt;&lt;p&gt;
@@ -5169,8 +5080,9 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="71.1962" y="62.7888" size="1.27" layer="26" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="71.4375" y="57.785" size="1.27" layer="28" rot="MR0"/>
 </element>
-<element name="JP1" library="pinhead" package="1X01" value="IM1_EN" x="62.23" y="63.5" smashed="yes" rot="MR0">
+<element name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X01" package3d_urn="urn:adsk.eagle:package:22485/2" value="IM1_EN" x="62.23" y="63.5" smashed="yes" rot="MR0">
 <attribute name="NAME" x="63.5762" y="65.3288" size="1.27" layer="26" ratio="10" rot="MR0"/>
+<attribute name="POPULARITY" value="64" x="62.23" y="63.5" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="VALUE" x="63.5" y="60.325" size="1.27" layer="28" rot="MR0"/>
 </element>
 <element name="D2" library="diode" package="SMA" value="SS34" x="76.835" y="52.22875" smashed="yes" rot="R270">
@@ -5261,7 +5173,7 @@ JarekParal (2020-04-14)
 <attribute name="PRICE_DATE" value="17.03.2020" x="13.97" y="25.4" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="11.035" y="26.5" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="JP39" library="pinhead" package="1X06" package3d_urn="urn:adsk.eagle:package:22472/2" value="EXPANDER_UART" x="17.78" y="41.275" smashed="yes" rot="MR180">
+<element name="JP39" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X06" package3d_urn="urn:adsk.eagle:package:22472/2" value="EXPANDER_UART" x="17.78" y="41.275" smashed="yes" rot="MR180">
 <attribute name="NAME" x="13.8938" y="39.4462" size="1.27" layer="26" ratio="10" rot="MR180"/>
 <attribute name="POPULARITY" value="79" x="17.78" y="-11.43" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="VALUE" x="13.97" y="44.45" size="1.27" layer="28" rot="MR180"/>
@@ -5679,7 +5591,7 @@ JarekParal (2020-04-14)
 <attribute name="POPULARITY" value="47" x="5.55625" y="73.66" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="VALUE" x="0.47625" y="78.105" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="JP33" library="pinhead" package="1X05" package3d_urn="urn:adsk.eagle:package:22469/2" value="USB" x="67.31" y="48.895" smashed="yes" rot="MR270">
+<element name="JP33" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X05" package3d_urn="urn:adsk.eagle:package:22469/2" value="USB" x="67.31" y="48.895" smashed="yes" rot="MR270">
 <attribute name="NAME" x="65.4812" y="54.0512" size="1.27" layer="26" ratio="10" rot="MR270"/>
 <attribute name="POPULARITY" value="69" x="67.31" y="48.895" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="VALUE" x="70.485" y="53.975" size="1.27" layer="28" rot="MR270"/>
@@ -5710,7 +5622,7 @@ JarekParal (2020-04-14)
 <attribute name="POPULARITY" value="91" x="19.685" y="8.89" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="VALUE" x="14.605" y="12.065" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="JP41" library="pinhead" package="1X06" package3d_urn="urn:adsk.eagle:package:22472/2" value="EXPANDER_CAN/I2C" x="17.78" y="43.815" smashed="yes" rot="MR180">
+<element name="JP41" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X06" package3d_urn="urn:adsk.eagle:package:22472/2" value="EXPANDER_CAN/I2C" x="17.78" y="43.815" smashed="yes" rot="MR180">
 <attribute name="NAME" x="10.0838" y="41.9862" size="1.27" layer="26" ratio="10" rot="MR180"/>
 <attribute name="POPULARITY" value="79" x="17.78" y="43.815" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="VALUE" x="10.16" y="46.99" size="1.27" layer="28" rot="MR180"/>
@@ -5765,43 +5677,43 @@ JarekParal (2020-04-14)
 <element name="TP62" library="test_points" package="TP_06" value="" x="53.34" y="21.59" smashed="yes">
 <attribute name="NAME" x="51.435" y="22.495" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="51.435" y="22.495" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="51.435" y="19.685" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="51.435" y="19.685" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="51.435" y="19.685" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="51.435" y="19.685" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP13" library="test_points" package="TP_06" value="" x="64.77" y="64.4525" smashed="yes" rot="R270">
 <attribute name="NAME" x="65.675" y="66.3575" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="65.675" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP14" library="test_points" package="TP_06" value="" x="99.06" y="66.675" smashed="yes" rot="R270">
 <attribute name="NAME" x="99.965" y="68.58" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="99.965" y="68.58" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="97.155" y="68.58" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="97.155" y="68.58" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="97.155" y="68.58" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="97.155" y="68.58" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP6" library="test_points" package="TP_06" value="" x="89.8525" y="60.325" smashed="yes" rot="R270">
 <attribute name="NAME" x="90.7575" y="62.23" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="90.7575" y="62.23" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="87.9475" y="62.23" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP2" library="test_points" package="TP_06" value="" x="86.83625" y="59.69" smashed="yes" rot="R270">
 <attribute name="NAME" x="87.74125" y="61.595" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="87.74125" y="61.595" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="84.93125" y="61.595" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP3" library="test_points" package="TP_06" value="" x="84.455" y="55.88" smashed="yes" rot="R270">
 <attribute name="NAME" x="85.36" y="57.785" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="85.36" y="57.785" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="82.55" y="57.785" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="82.55" y="57.785" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="82.55" y="57.785" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="82.55" y="57.785" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP7" library="test_points" package="TP_06" value="" x="71.755" y="86.36" smashed="yes">
@@ -5822,169 +5734,169 @@ JarekParal (2020-04-14)
 <element name="TP12" library="test_points" package="TP_06" value="" x="61.595" y="46.355" smashed="yes" rot="R270">
 <attribute name="NAME" x="62.5" y="48.26" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="62.5" y="48.26" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="59.69" y="48.26" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="59.69" y="48.26" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="59.69" y="48.26" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="59.69" y="48.26" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP31" library="test_points" package="TP_06" value="" x="64.77" y="66.3575" smashed="yes">
 <attribute name="NAME" x="62.865" y="67.2625" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="62.865" y="67.2625" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="62.865" y="64.4525" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP32" library="test_points" package="TP_06" value="" x="64.77" y="68.2625" smashed="yes">
 <attribute name="NAME" x="62.865" y="69.1675" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="62.865" y="69.1675" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="62.865" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP46" library="test_points" package="TP_06" value="" x="96.67875" y="30.63875" smashed="yes" rot="R270">
 <attribute name="NAME" x="97.58375" y="32.54375" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="97.58375" y="32.54375" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="94.77375" y="32.54375" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP45" library="test_points" package="TP_06" value="" x="82.55" y="39.0525" smashed="yes" rot="R270">
 <attribute name="NAME" x="83.455" y="40.9575" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="83.455" y="40.9575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="80.645" y="40.9575" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP23" library="test_points" package="TP_06" value="" x="60.96" y="66.3575" smashed="yes">
 <attribute name="NAME" x="59.055" y="67.2625" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="59.055" y="67.2625" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="59.055" y="64.4525" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP24" library="test_points" package="TP_06" value="" x="62.865" y="66.3575" smashed="yes">
 <attribute name="NAME" x="60.96" y="67.2625" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="60.96" y="67.2625" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="60.96" y="64.4525" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP25" library="test_points" package="TP_06" value="" x="60.96" y="68.2625" smashed="yes">
 <attribute name="NAME" x="59.055" y="69.1675" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="59.055" y="69.1675" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="59.055" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP26" library="test_points" package="TP_06" value="" x="62.865" y="68.2625" smashed="yes">
 <attribute name="NAME" x="60.96" y="69.1675" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="60.96" y="69.1675" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="60.96" y="66.3575" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP34" library="test_points" package="TP_06" value="" x="85.09" y="38.1" smashed="yes" rot="R270">
 <attribute name="NAME" x="85.995" y="40.005" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="85.995" y="40.005" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="83.185" y="40.005" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="83.185" y="40.005" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="83.185" y="40.005" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="83.185" y="40.005" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP35" library="test_points" package="TP_06" value="" x="86.995" y="38.1" smashed="yes" rot="R270">
 <attribute name="NAME" x="87.9" y="40.005" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="87.9" y="40.005" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="85.09" y="40.005" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="85.09" y="40.005" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="85.09" y="40.005" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="85.09" y="40.005" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP36" library="test_points" package="TP_06" value="" x="60.325" y="30.7975" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="32.7025" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="32.7025" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="32.7025" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP37" library="test_points" package="TP_06" value="" x="60.325" y="28.8925" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="30.7975" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="30.7975" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="30.7975" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP38" library="test_points" package="TP_06" value="" x="60.325" y="26.9875" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="28.8925" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="28.8925" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="28.8925" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP39" library="test_points" package="TP_06" value="" x="70.485" y="29.845" smashed="yes" rot="R270">
 <attribute name="NAME" x="71.39" y="31.75" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="71.39" y="31.75" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="68.58" y="31.75" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="68.58" y="31.75" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="68.58" y="31.75" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="68.58" y="31.75" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP40" library="test_points" package="TP_06" value="" x="70.485" y="27.94" smashed="yes" rot="R270">
 <attribute name="NAME" x="71.39" y="29.845" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="71.39" y="29.845" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="68.58" y="29.845" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="68.58" y="29.845" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="68.58" y="29.845" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="68.58" y="29.845" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP28" library="test_points" package="TP_06" value="" x="75.2475" y="83.82" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="85.725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="85.725" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="85.725" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP27" library="test_points" package="TP_06" value="" x="75.2475" y="81.915" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="83.82" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="83.82" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="83.82" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP30" library="test_points" package="TP_06" value="" x="75.2475" y="78.105" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="80.01" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="80.01" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="80.01" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP29" library="test_points" package="TP_06" value="" x="75.2475" y="80.01" smashed="yes" rot="R270">
 <attribute name="NAME" x="76.1525" y="81.915" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="76.1525" y="81.915" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
 <attribute name="VALUE" x="73.3425" y="81.915" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP41" library="test_points" package="TP_06" value="" x="60.325" y="25.0825" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="26.9875" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="26.9875" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="26.9875" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP42" library="test_points" package="TP_06" value="" x="60.325" y="23.1775" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="25.0825" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="25.0825" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="25.0825" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP43" library="test_points" package="TP_06" value="" x="60.325" y="21.2725" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="23.1775" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="23.1775" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="23.1775" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP44" library="test_points" package="TP_06" value="" x="60.325" y="19.3675" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="21.2725" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="21.2725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="21.2725" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP22" library="test_points" package="TP_06" value="" x="93.345" y="86.36" smashed="yes" rot="R270">
@@ -5996,15 +5908,15 @@ JarekParal (2020-04-14)
 <element name="TP59" library="test_points" package="TP_06" value="" x="60.325" y="17.4625" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.23" y="19.3675" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="61.23" y="19.3675" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="58.42" y="19.3675" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP19" library="test_points" package="TP_06" value="" x="70.485" y="33.3375" smashed="yes">
 <attribute name="NAME" x="68.58" y="34.2425" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="68.58" y="34.2425" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="68.58" y="31.4325" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP21" library="test_points" package="TP_06" value="" x="31.75" y="41.275" smashed="yes">
@@ -6013,8 +5925,8 @@ JarekParal (2020-04-14)
 <element name="TP60" library="test_points" package="TP_06" value="" x="9.36625" y="92.71" smashed="yes">
 <attribute name="NAME" x="7.46125" y="93.615" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="7.46125" y="93.615" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="7.46125" y="90.805" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="TP61" library="test_points" package="TP_06" value="" x="95.885" y="86.36" smashed="yes">
@@ -6026,44 +5938,45 @@ JarekParal (2020-04-14)
 <element name="TP4" library="test_points" package="TP_06" value="" x="19.3675" y="73.3425" smashed="yes" rot="R90">
 <attribute name="NAME" x="18.4625" y="71.4375" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="18.4625" y="71.4375" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="21.2725" y="71.4375" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP1" library="test_points" package="TP_06" value="" x="73.025" y="53.975" smashed="yes" rot="R270">
 <attribute name="NAME" x="73.93" y="55.88" size="1" layer="25" font="vector" ratio="20" rot="SR270"/>
 <attribute name="NAME" x="73.93" y="55.88" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
-<attribute name="VALUE" x="71.12" y="55.88" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="71.12" y="55.88" size="1" layer="100" font="vector" ratio="20" rot="SR270"/>
+<attribute name="VALUE" x="71.12" y="55.88" size="1" layer="27" font="vector" ratio="20" rot="R270"/>
 <attribute name="VALUE" x="71.12" y="55.88" size="1" layer="101" font="vector" ratio="20" rot="SMR90" align="bottom-right"/>
 </element>
 <element name="TP17" library="test_points" package="TP_06" value="" x="60.0075" y="48.5775" smashed="yes" rot="R180">
 <attribute name="NAME" x="61.9125" y="47.6725" size="1" layer="25" font="vector" ratio="20" rot="SR180"/>
 <attribute name="NAME" x="61.9125" y="47.6725" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
-<attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="27" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
+<attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="27" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="61.9125" y="50.4825" size="1" layer="101" font="vector" ratio="20" rot="SMR180" align="bottom-right"/>
 </element>
 <element name="TP18" library="test_points" package="TP_06" value="" x="63.8175" y="53.975" smashed="yes" rot="R180">
 <attribute name="NAME" x="65.7225" y="53.07" size="1" layer="25" font="vector" ratio="20" rot="SR180"/>
 <attribute name="NAME" x="65.7225" y="53.07" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
-<attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="27" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="100" font="vector" ratio="20" rot="SR180"/>
+<attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="27" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="65.7225" y="55.88" size="1" layer="101" font="vector" ratio="20" rot="SMR180" align="bottom-right"/>
 </element>
 <element name="TP20" library="test_points" package="TP_06" value="" x="1.27" y="35.2425" smashed="yes">
 <attribute name="NAME" x="-0.635" y="36.1475" size="1" layer="25" font="vector" ratio="20" rot="SR0"/>
 <attribute name="NAME" x="-0.635" y="36.1475" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
-<attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="100" font="vector" ratio="20" rot="SR0"/>
+<attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="27" font="vector" ratio="20"/>
 <attribute name="VALUE" x="-0.635" y="33.3375" size="1" layer="101" font="vector" ratio="20" rot="SMR0" align="bottom-right"/>
 </element>
 <element name="IM2" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="12.065" y="95.885" smashed="yes" rot="MR180">
 <attribute name="NAME" x="11.5062" y="95.9612" size="1.27" layer="26" ratio="10" rot="MR270"/>
 <attribute name="VALUE" x="16.51" y="96.2025" size="1.27" layer="28" rot="MR270"/>
 </element>
-<element name="JP29" library="pinhead" package="1X01" value="IM9_EN" x="13.335" y="84.455" smashed="yes" rot="MR90">
+<element name="JP29" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X01" package3d_urn="urn:adsk.eagle:package:22485/2" value="IM9_EN" x="13.335" y="84.455" smashed="yes" rot="MR90">
 <attribute name="NAME" x="15.1638" y="83.1088" size="1.27" layer="26" ratio="10" rot="MR90"/>
+<attribute name="POPULARITY" value="64" x="13.335" y="84.455" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" x="10.16" y="83.185" size="1.27" layer="28" rot="MR90"/>
 </element>
 <element name="R68" library="rcl_upravena" package="R1206" value="0R" x="17.4625" y="93.6625" smashed="yes">
@@ -6153,8 +6066,9 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="57.7088" y="77.5462" size="1.27" layer="26" ratio="10" rot="MR180"/>
 <attribute name="VALUE" x="57.4675" y="82.55" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="JP47" library="pinhead" package="1X01" value="SERVO1_EN" x="69.215" y="79.375" smashed="yes" rot="MR270">
+<element name="JP47" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X01" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO1_EN" x="69.215" y="79.375" smashed="yes" rot="MR270">
 <attribute name="NAME" x="67.3862" y="80.7212" size="1.27" layer="26" ratio="10" rot="MR270"/>
+<attribute name="POPULARITY" value="64" x="69.215" y="79.375" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="VALUE" x="72.39" y="80.645" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="JP51" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X03" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO1" x="64.135" y="98.425" smashed="yes" rot="MR0">
@@ -6226,30 +6140,31 @@ JarekParal (2020-04-14)
 <element name="TP55" library="test_points" package="TP_06" value="" x="69.215" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="68.31" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="68.31" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="71.12" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="71.12" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="71.12" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="71.12" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP47" library="test_points" package="TP_06" value="" x="58.7375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="57.8325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="57.8325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="60.6425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP51" library="test_points" package="TP_06" value="" x="59.055" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="58.15" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="58.15" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="60.96" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="60.96" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="60.96" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="60.96" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="IM6" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="45.085" y="78.105" smashed="yes" rot="MR90">
 <attribute name="NAME" x="45.0088" y="77.5462" size="1.27" layer="26" ratio="10" rot="MR180"/>
 <attribute name="VALUE" x="44.7675" y="82.55" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="JP48" library="pinhead" package="1X01" value="SERVO2_EN" x="56.515" y="79.375" smashed="yes" rot="MR270">
+<element name="JP48" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X01" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO2_EN" x="56.515" y="79.375" smashed="yes" rot="MR270">
 <attribute name="NAME" x="54.6862" y="80.7212" size="1.27" layer="26" ratio="10" rot="MR270"/>
+<attribute name="POPULARITY" value="64" x="56.515" y="79.375" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="VALUE" x="59.69" y="80.645" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="JP52" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X03" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO2" x="51.435" y="98.425" smashed="yes" rot="MR0">
@@ -6321,30 +6236,31 @@ JarekParal (2020-04-14)
 <element name="TP56" library="test_points" package="TP_06" value="" x="56.515" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="55.61" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="55.61" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="58.42" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="58.42" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="58.42" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="58.42" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP48" library="test_points" package="TP_06" value="" x="46.0375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="45.1325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="45.1325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="47.9425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP52" library="test_points" package="TP_06" value="" x="46.355" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="45.45" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="45.45" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="48.26" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="48.26" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="48.26" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="48.26" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="IM7" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="32.385" y="78.105" smashed="yes" rot="MR90">
 <attribute name="NAME" x="32.3088" y="77.5462" size="1.27" layer="26" ratio="10" rot="MR180"/>
 <attribute name="VALUE" x="32.0675" y="82.55" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="JP49" library="pinhead" package="1X01" value="SERVO3_EN" x="43.815" y="79.375" smashed="yes" rot="MR270">
+<element name="JP49" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X01" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO3_EN" x="43.815" y="79.375" smashed="yes" rot="MR270">
 <attribute name="NAME" x="41.9862" y="80.7212" size="1.27" layer="26" ratio="10" rot="MR270"/>
+<attribute name="POPULARITY" value="64" x="43.815" y="79.375" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="VALUE" x="46.99" y="80.645" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="JP53" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X03" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO3" x="38.735" y="98.425" smashed="yes" rot="MR0">
@@ -6416,30 +6332,31 @@ JarekParal (2020-04-14)
 <element name="TP57" library="test_points" package="TP_06" value="" x="43.815" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="42.91" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="42.91" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="45.72" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="45.72" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="45.72" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="45.72" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP49" library="test_points" package="TP_06" value="" x="33.3375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="32.4325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="32.4325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="35.2425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP53" library="test_points" package="TP_06" value="" x="33.655" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="32.75" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="32.75" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="35.56" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="35.56" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="35.56" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="35.56" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="IM8" library="StepDown" package="STEPDOWN" value="STEPDOWN" x="19.685" y="78.105" smashed="yes" rot="MR90">
 <attribute name="NAME" x="19.6088" y="77.5462" size="1.27" layer="26" ratio="10" rot="MR180"/>
 <attribute name="VALUE" x="19.3675" y="82.55" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="JP50" library="pinhead" package="1X01" value="SERVO4_EN" x="31.115" y="79.375" smashed="yes" rot="MR270">
+<element name="JP50" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X01" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO4_EN" x="31.115" y="79.375" smashed="yes" rot="MR270">
 <attribute name="NAME" x="29.2862" y="80.7212" size="1.27" layer="26" ratio="10" rot="MR270"/>
+<attribute name="POPULARITY" value="64" x="31.115" y="79.375" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="VALUE" x="34.29" y="80.645" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="JP54" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X03" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO4" x="26.035" y="98.425" smashed="yes" rot="MR0">
@@ -6511,22 +6428,22 @@ JarekParal (2020-04-14)
 <element name="TP58" library="test_points" package="TP_06" value="" x="31.115" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="30.21" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="30.21" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="33.02" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="33.02" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="33.02" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="33.02" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP50" library="test_points" package="TP_06" value="" x="20.6375" y="86.995" smashed="yes" rot="R90">
 <attribute name="NAME" x="19.7325" y="85.09" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="19.7325" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="22.5425" y="85.09" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="TP54" library="test_points" package="TP_06" value="" x="20.955" y="98.425" smashed="yes" rot="R90">
 <attribute name="NAME" x="20.05" y="96.52" size="1" layer="25" font="vector" ratio="20" rot="SR90"/>
 <attribute name="NAME" x="20.05" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
-<attribute name="VALUE" x="22.86" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="22.86" y="96.52" size="1" layer="100" font="vector" ratio="20" rot="SR90"/>
+<attribute name="VALUE" x="22.86" y="96.52" size="1" layer="27" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="22.86" y="96.52" size="1" layer="101" font="vector" ratio="20" rot="SMR270" align="bottom-right"/>
 </element>
 <element name="R115" library="rcl_upravena" package="R0402" value="4k7" x="2.06375" y="64.61125" smashed="yes" rot="R90">
