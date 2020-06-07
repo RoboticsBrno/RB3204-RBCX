@@ -12,7 +12,6 @@
 int main() {
     clocksInit();
     HAL_Init();
-    dispatcherInit();
     tunnelUartInit();
     controlUartInit();
     pinsInit();
