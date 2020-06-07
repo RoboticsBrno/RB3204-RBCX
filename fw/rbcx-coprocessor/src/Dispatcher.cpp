@@ -1,10 +1,21 @@
 #include "Dispatcher.hpp"
+#include "FreeRTOS.h"
+
 #include "Bsp.hpp"
 #include "ControlLink.hpp"
+#include "queue.h"
 #include "rbcx.pb.h"
 
 static CoprocReq request;
 static CoprocStat status;
+
+static QueueHandle_t statusQueue;
+
+void dispatcherInit() { statusQueue = xQueueCreate(64, CoprocStat_size); }
+
+bool dispatcherEnqueueStatus(const CoprocStat& status) {
+    return xQueueSendToBack(statusQueue, &status, 0) == pdTRUE;
+}
 
 void dispatcherPoll() {
     if (controlLinkRx(request)) {
@@ -22,5 +33,8 @@ void dispatcherPoll() {
             controlLinkTx(status);
             break;
         }
+    }
+    if (xQueueReceive(statusQueue, &status, 0) == pdTRUE) {
+        controlLinkTx(status);
     }
 }
