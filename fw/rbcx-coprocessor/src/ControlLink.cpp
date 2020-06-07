@@ -24,9 +24,12 @@ static rb::CoprocLinkParser<CoprocReq, &CoprocReq_msg, &codec> parser;
 static ByteFifo<512> rxFifo;
 
 // Encode TX frame in txEncodeBuf, push to txMessageBuf, move to txDmaBuf and send via DMA.
-static MessageBufferHandle_t txMessageBuf;
 static std::array<uint8_t, codec.MaxFrameSize> txEncodeBuf;
 static std::array<uint8_t, codec.MaxFrameSize> txDmaBuf;
+
+static StaticMessageBuffer_t _txMessageBufStruct;
+static uint8_t _txMessageBufStorage[512];
+static MessageBufferHandle_t txMessageBuf;
 
 void controlUartInit() {
     LL_USART_InitTypeDef init;
@@ -68,7 +71,8 @@ void controlUartInit() {
     HAL_NVIC_EnableIRQ(controlUartTxDmaIRQn);
     LL_USART_EnableDMAReq_TX(controlUart);
 
-    txMessageBuf = xMessageBufferCreate(512);
+    txMessageBuf = xMessageBufferCreateStatic(sizeof(_txMessageBufStorage),
+        _txMessageBufStorage, &_txMessageBufStruct);
 
     pinInit(
         controlUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);

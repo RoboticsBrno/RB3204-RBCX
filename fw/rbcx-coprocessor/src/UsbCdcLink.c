@@ -150,7 +150,7 @@ static const struct usb_string_descriptor* const dtable[] = {
 };
 
 usbd_device udev;
-uint32_t ubuf[0x20];
+static uint32_t ubuf[0x20];
 
 static struct usb_cdc_line_coding cdc_line = {
     .dwDTERate = 115200,
