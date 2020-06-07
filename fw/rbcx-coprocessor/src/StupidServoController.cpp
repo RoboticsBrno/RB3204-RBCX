@@ -16,8 +16,8 @@ void stupidServoInit() {
         * __LL_RCC_CALC_PCLK1_FREQ(SystemCoreClock, LL_RCC_GetAPB1Prescaler());
 
     // 1/50 s :
-    pwmInit.Prescaler = 16;
-    pwmInit.Autoreload = uint32_t(apb1TimClk / 50) / pwmInit.Prescaler;
+    pwmInit.Autoreload = 65535;
+    pwmInit.Prescaler = (apb1TimClk / 50) / pwmInit.Autoreload;
     pwmInit.CounterMode = LL_TIM_COUNTERMODE_UP;
     pwmInit.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
     pwmInit.RepetitionCounter = 0;
@@ -30,7 +30,7 @@ void stupidServoInit() {
     LL_TIM_OC_InitTypeDef ocInit;
     LL_TIM_OC_StructInit(&ocInit);
     ocInit.OCMode = LL_TIM_OCMODE_PWM1;
-    ocInit.OCState = LL_TIM_OCSTATE_ENABLE;
+    ocInit.OCState = LL_TIM_OCSTATE_DISABLE;
     ocInit.CompareValue = pwmCenterValue;
     ocInit.OCPolarity = LL_TIM_OCPOLARITY_HIGH;
     ocInit.OCIdleState = LL_TIM_OCIDLESTATE_LOW;
@@ -42,29 +42,61 @@ void stupidServoInit() {
     }
     LL_TIM_SetOffStates(servoTimer, LL_TIM_OSSI_DISABLE, LL_TIM_OSSR_ENABLE);
     LL_TIM_GenerateEvent_UPDATE(servoTimer);
-    LL_TIM_EnableAllOutputs(servoTimer);
     LL_TIM_EnableCounter(servoTimer);
+    LL_TIM_EnableAllOutputs(servoTimer);
 }
 
-void stupidServoDispatch(const CoprocReq_SetStupidServo& request) {
-    uint32_t value
-        = pwmCenterValue + int32_t(pwmCoef * request.servoCmd.setPosition);
-    switch (request.servoIndex) {
+void stupidServoDisable(int servoIndex) {
+    switch (servoIndex) {
     case 0:
+        LL_TIM_CC_DisableChannel(servoTimer, LL_TIM_CHANNEL_CH1);
+        break;
+    case 1:
+        LL_TIM_CC_DisableChannel(servoTimer, LL_TIM_CHANNEL_CH2);
+        break;
+    case 2:
+        LL_TIM_CC_DisableChannel(servoTimer, LL_TIM_CHANNEL_CH3);
+        break;
+    case 3:
+        LL_TIM_CC_DisableChannel(servoTimer, LL_TIM_CHANNEL_CH4);
+        break;
+    }
+}
+
+void stupidServoSetPosition(int servoIndex, float position) {
+    uint32_t value = pwmCenterValue + int32_t(pwmCoef * position);
+
+    switch (servoIndex) {
+    case 0:
+        LL_TIM_CC_EnableChannel(servoTimer, LL_TIM_CHANNEL_CH1);
         LL_TIM_OC_SetCompareCH1(servoTimer, value);
         break;
     case 1:
+        LL_TIM_CC_EnableChannel(servoTimer, LL_TIM_CHANNEL_CH2);
         LL_TIM_OC_SetCompareCH2(servoTimer, value);
         break;
     case 2:
+        LL_TIM_CC_EnableChannel(servoTimer, LL_TIM_CHANNEL_CH3);
         LL_TIM_OC_SetCompareCH3(servoTimer, value);
         break;
     case 3:
+        LL_TIM_CC_EnableChannel(servoTimer, LL_TIM_CHANNEL_CH4);
         LL_TIM_OC_SetCompareCH4(servoTimer, value);
         break;
-    default:
-        return;
     }
+}
+
+void stupidServoDispatch(const CoprocReq_SetStupidServo& request) {
+    switch (request.which_servoCmd) {
+    case CoprocReq_SetStupidServo_disable_tag:
+        stupidServoDisable(request.servoIndex);
+        break;
+    case CoprocReq_SetStupidServo_setPosition_tag:
+        stupidServoSetPosition(
+            request.servoIndex, request.servoCmd.setPosition);
+        break;
+    }
+
     CoprocStat status;
     status.which_payload = CoprocStat_stupidServoStat_tag;
     controlLinkTx(status);
