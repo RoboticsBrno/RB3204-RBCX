@@ -3,6 +3,7 @@
 
 #include "Bsp.hpp"
 #include "ControlLink.hpp"
+#include "StupidServoController.hpp"
 #include "queue.h"
 #include "rbcx.pb.h"
 
@@ -37,6 +38,9 @@ void dispatcherPoll() {
                 = CoprocStat_ButtonsEnum(getButtons());
             status.which_payload = CoprocStat_buttonsStat_tag;
             controlLinkTx(status);
+            break;
+        case CoprocReq_setStupidServo_tag:
+            stupidServoDispatch(request.payload.setStupidServo);
             break;
         }
     }
