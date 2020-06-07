@@ -52,6 +52,16 @@ void stupidServoDispatch(const CoprocReq_SetStupidServo& request) {
     switch (request.servoIndex) {
     case 0:
         LL_TIM_OC_SetCompareCH1(servoTimer, value);
+        break;
+    case 1:
+        LL_TIM_OC_SetCompareCH2(servoTimer, value);
+        break;
+    case 2:
+        LL_TIM_OC_SetCompareCH3(servoTimer, value);
+        break;
+    case 3:
+        LL_TIM_OC_SetCompareCH4(servoTimer, value);
+        break;
     default:
         return;
     }
