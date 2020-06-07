@@ -2,6 +2,7 @@
 #include "stm32f1xx_hal_gpio.h"
 
 #include "Bsp.hpp"
+#include "ButtonController.hpp"
 #include "CdcUartTunnel.hpp"
 #include "ControlLink.hpp"
 #include "Dispatcher.hpp"
@@ -11,6 +12,7 @@
 int main() {
     clocksInit();
     HAL_Init();
+    dispatcherInit();
     tunnelUartInit();
     controlUartInit();
     pinsInit();
@@ -19,6 +21,7 @@ int main() {
         cdcLinkPoll();
         tunnelPoll();
         dispatcherPoll();
+        buttonControllerPoll();
     }
 }
 
