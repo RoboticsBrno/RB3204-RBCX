@@ -35,6 +35,7 @@ void dispatcherPoll() {
             break;
         case CoprocReq_setStupidServo_tag:
             stupidServoDispatch(request.payload.setStupidServo);
+            break;
         }
     }
     if (xQueueReceive(statusQueue, &status, 0) == pdTRUE) {
