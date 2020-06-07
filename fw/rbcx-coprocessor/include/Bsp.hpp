@@ -63,6 +63,15 @@ inline const unsigned controlUartTxDmaIrqPrio = 4;
 inline DMA_Channel_TypeDef* const controlUartTxDmaChannel = DMA2_Channel5;
 inline DMA_Channel_TypeDef* const controlUartRxDmaChannel = DMA2_Channel3;
 
+inline const PinDef servo1Pin = std::make_pair(GPIOA, GPIO_PIN_0);
+inline const PinDef servo2Pin = std::make_pair(GPIOA, GPIO_PIN_1);
+inline const PinDef servo3Pin = std::make_pair(GPIOA, GPIO_PIN_2);
+inline const PinDef servo4Pin = std::make_pair(GPIOA, GPIO_PIN_3);
+inline const PinDef servoPins = std::make_pair(GPIOA,
+    servo1Pin.second | servo2Pin.second | servo3Pin.second | servo4Pin.second);
+
+inline TIM_TypeDef* const servoTimer = TIM5;
+
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
     RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
@@ -100,6 +109,7 @@ inline void clocksInit() {
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
     __HAL_RCC_GPIOE_CLK_ENABLE();
+    __HAL_RCC_AFIO_CLK_ENABLE();
     __HAL_RCC_USART1_CLK_ENABLE();
     __HAL_RCC_USART2_CLK_ENABLE();
     __HAL_RCC_USART3_CLK_ENABLE();
@@ -107,6 +117,14 @@ inline void clocksInit() {
     __HAL_RCC_UART5_CLK_ENABLE();
     __HAL_RCC_DMA1_CLK_ENABLE();
     __HAL_RCC_DMA2_CLK_ENABLE();
+    __HAL_RCC_PWR_CLK_ENABLE();
+    __HAL_RCC_BKP_CLK_ENABLE();
+    __HAL_RCC_TIM1_CLK_ENABLE();
+    __HAL_RCC_TIM2_CLK_ENABLE();
+    __HAL_RCC_TIM3_CLK_ENABLE();
+    __HAL_RCC_TIM4_CLK_ENABLE();
+    __HAL_RCC_TIM5_CLK_ENABLE();
+    __HAL_RCC_TIM8_CLK_ENABLE();
 }
 
 inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode,
@@ -134,6 +152,17 @@ inline void pinWrite(PinDef pin, bool value) {
 
 inline void pinToggle(PinDef pin) { HAL_GPIO_TogglePin(pin.first, pin.second); }
 
+// This is because AFIO_MAPR register bits SWJ_CFG are write-only, so classical approach
+//   read-modify-write does not work.
+//   DO NOT USE LL_GPIO_AF_*Remap* FUNCTIONS!
+#define AFIO_MAPR_RESERVED 0xF8E00000
+inline void LL_GPIO_AF_Remap(uint32_t mask, uint32_t value) {
+    static uint32_t mapr = 0;
+    mask |= AFIO_MAPR_RESERVED;
+    mapr = (mapr & ~mask) | (value & ~AFIO_MAPR_RESERVED);
+    AFIO->MAPR = mapr;
+}
+
 inline void pinsInit() {
     pinInit(ledPins, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 
@@ -150,6 +179,20 @@ inline void pinsInit() {
         usbDpPullUpPin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
     pinInit(
         usbBusDetectionPin, GPIO_MODE_INPUT, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+
+    //LL_GPIO_AF_RemapPartial1_TIM2();
+    LL_GPIO_AF_Remap(AFIO_MAPR_TIM2_REMAP, AFIO_MAPR_TIM2_REMAP_PARTIALREMAP1);
+    //LL_GPIO_AF_RemapPartial_TIM3();
+    LL_GPIO_AF_Remap(AFIO_MAPR_TIM3_REMAP, AFIO_MAPR_TIM3_REMAP_PARTIALREMAP);
+    //LL_GPIO_AF_EnableRemap_TIM4();
+    LL_GPIO_AF_Remap(AFIO_MAPR_TIM4_REMAP, AFIO_MAPR_TIM4_REMAP);
+    //LL_GPIO_AF_Remap_SWJ_NOJTAG();
+    LL_GPIO_AF_Remap(AFIO_MAPR_SWJ_CFG, AFIO_MAPR_SWJ_CFG_JTAGDISABLE);
+
+    pinInit(servoPins, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_MEDIUM);
+
+    //LL_GPIO_AF_EnableRemap_USART2();
+    LL_GPIO_AF_Remap(AFIO_MAPR_USART2_REMAP, AFIO_MAPR_USART2_REMAP);
 }
 
 inline bool isPressed(PinDef button) {

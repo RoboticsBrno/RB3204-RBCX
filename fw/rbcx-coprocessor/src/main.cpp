@@ -6,6 +6,7 @@
 #include "CdcUartTunnel.hpp"
 #include "ControlLink.hpp"
 #include "Dispatcher.hpp"
+#include "StupidServoController.hpp"
 #include "UsbCdcLink.h"
 #include <array>
 
@@ -17,6 +18,7 @@ int main() {
     controlUartInit();
     pinsInit();
     cdcLinkInit();
+    stupidServoInit();
     while (true) {
         cdcLinkPoll();
         tunnelPoll();
