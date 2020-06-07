@@ -1,12 +1,6 @@
 {
-    "spellright.language": [
-        "en"
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext",
-        "cpp"
-    ],
-    "editor.formatOnSave": true
+  "spellright.language": ["en"],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext", "cpp"],
+  "editor.formatOnSave": true,
+  "C_Cpp.default.includePath": ["include/"]
 }

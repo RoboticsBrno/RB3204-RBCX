@@ -25,6 +25,8 @@
  * 1 tab == 4 spaces!
  */
 
+#ifdef portUSING_MPU_WRAPPERS
+
 /*
  * Implementation of the wrapper functions used to raise the processor privilege
  * before calling a standard FreeRTOS API function.
@@ -1372,3 +1374,5 @@ BaseType_t xRunningPrivileged = xPortRaisePrivilege();
 #if configINCLUDE_APPLICATION_DEFINED_PRIVILEGED_FUNCTIONS == 1
 	#include "application_defined_privileged_functions.h"
 #endif
+
+#endif // #ifdef portUSING_MPU_WRAPPERS

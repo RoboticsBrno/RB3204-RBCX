@@ -10,9 +10,15 @@
 static CoprocReq request;
 static CoprocStat status;
 
+static StaticQueue_t _statusQueueStruct;
+static uint8_t _statusQueueItems[64 * CoprocStat_size];
 static QueueHandle_t statusQueue;
 
-void dispatcherInit() { statusQueue = xQueueCreate(64, CoprocStat_size); }
+void dispatcherInit() {
+    statusQueue
+        = xQueueCreateStatic(sizeof(_statusQueueItems) / CoprocStat_size,
+            CoprocStat_size, _statusQueueItems, &_statusQueueStruct);
+}
 
 bool dispatcherEnqueueStatus(const CoprocStat& status) {
     return xQueueSendToBack(statusQueue, &status, 0) == pdTRUE;
