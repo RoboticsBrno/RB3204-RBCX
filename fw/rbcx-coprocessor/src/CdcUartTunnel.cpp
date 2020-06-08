@@ -9,6 +9,7 @@
 #include "CdcUartTunnel.hpp"
 #include "UsbCdcLink.h"
 #include "utils/ByteFifo.hpp"
+#include "utils/HalDma.hpp"
 
 static DMA_HandleTypeDef dmaRxHandle;
 static DMA_HandleTypeDef dmaTxHandle;
@@ -37,8 +38,8 @@ void tunnelUartInit() {
     dmaRxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
     dmaRxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
     HAL_DMA_Init(&dmaRxHandle);
-    HAL_DMA_Start(&dmaRxHandle, uint32_t(&(tunnelUart->DR)),
-        uint32_t(rxFifo.data()), rxFifo.size());
+    HAL_DMA_Start(&dmaRxHandle, uintptr_t(&(tunnelUart->DR)),
+        uintptr_t(rxFifo.data()), rxFifo.size());
     LL_USART_EnableDMAReq_RX(tunnelUart);
 
     // UART TX burst is started ad hoc each time
@@ -65,11 +66,12 @@ static void primaryUartRxPoll() {
 }
 
 static void primaryUartTx(uint8_t* data, size_t len) {
-    HAL_DMA_Start(&dmaTxHandle, uint32_t(data), uint32_t(&tunnelUart->DR), len);
+    HAL_DMA_Start(
+        &dmaTxHandle, uintptr_t(data), uintptr_t(&tunnelUart->DR), len);
 }
 
 static bool primaryUartTxReady() {
-    HAL_DMA_PollForTransfer(&dmaTxHandle, HAL_DMA_FULL_TRANSFER, 0);
+    HAL_DMA_PollForTransfer_Really(&dmaTxHandle, HAL_DMA_FULL_TRANSFER, 0);
     return dmaTxHandle.State == HAL_DMA_STATE_READY;
 }
 
