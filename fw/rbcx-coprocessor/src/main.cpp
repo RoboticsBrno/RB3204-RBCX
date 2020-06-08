@@ -23,11 +23,10 @@ int main() {
     HAL_Init();
     pinsInit();
     debugUartInit();
-    sEsp32Manager.init();
-    cdcLinkInit();
     dispatcherInit();
     tunnelUartInit();
     controlUartInit();
+    cdcLinkInit();
     stupidServoInit();
 
     mainTask.start("main", 1, []() {
@@ -37,6 +36,7 @@ int main() {
             tunnelPoll();
             dispatcherPoll();
             buttonControllerPoll();
+            sEsp32Manager.poll();
         }
     });
 
