@@ -83,12 +83,15 @@ extern "C" void DEBUGUART_TX_DMA_HANDLER() {
     HAL_DMA_IRQHandler(&dmaTxHandle);
 
     if (dmaTxHandle.State == HAL_DMA_STATE_READY) {
-        auto len = xMessageBufferReceiveFromISR(
-            txMessageBuf, txDmaBuf.data(), txDmaBuf.size(), nullptr);
+        BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+        auto len = xMessageBufferReceiveFromISR(txMessageBuf, txDmaBuf.data(),
+            txDmaBuf.size(), &pxHigherPriorityTaskWoken);
 
         if (len > 0) {
             HAL_DMA_Start_IT(&dmaTxHandle, uint32_t(txDmaBuf.data()),
                 uint32_t(&debugUart->DR), len);
         }
+
+        portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
     }
 }

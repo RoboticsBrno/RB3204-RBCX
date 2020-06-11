@@ -15,11 +15,11 @@
 int main() {
     clocksInit();
     HAL_Init();
+    pinsInit();
     debugUartInit();
     dispatcherInit();
     tunnelUartInit();
     controlUartInit();
-    pinsInit();
     cdcLinkInit();
     stupidServoInit();
 
