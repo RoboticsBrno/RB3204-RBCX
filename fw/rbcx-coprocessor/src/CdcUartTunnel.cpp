@@ -6,9 +6,9 @@
 #include "stm32f1xx_ll_usart.h"
 
 #include "Bsp.hpp"
-#include "ByteFifo.hpp"
 #include "CdcUartTunnel.hpp"
 #include "UsbCdcLink.h"
+#include "utils/ByteFifo.hpp"
 
 static DMA_HandleTypeDef dmaRxHandle;
 static DMA_HandleTypeDef dmaTxHandle;

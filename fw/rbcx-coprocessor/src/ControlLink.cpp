@@ -11,10 +11,10 @@
 #include "stm32f1xx_ll_usart.h"
 
 #include "Bsp.hpp"
-#include "ByteFifo.hpp"
 #include "coproc_codec.h"
 #include "coproc_link_parser.h"
 #include "rbcx.pb.h"
+#include "utils/ByteFifo.hpp"
 #include <array>
 
 static DMA_HandleTypeDef dmaRxHandle;
