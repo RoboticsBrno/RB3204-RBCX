@@ -19283,6 +19283,9 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
+<part name="D32" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
+<part name="P+45" library="Supply" deviceset="+5V" device=""/>
+<part name="D33" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
 </parts>
 <sheets>
 <sheet>
@@ -21226,6 +21229,17 @@ makes filter together with gate capacitance</text>
 <attribute name="DIELECTRIC" x="121.92" y="160.02" size="1.27" layer="96" rot="MR0" display="off"/>
 <attribute name="VOLTAGE" x="121.158" y="160.02" size="1.27" layer="96" rot="R90"/>
 </instance>
+<instance part="D32" gate="G$1" x="88.9" y="215.9" smashed="yes" rot="R270">
+<attribute name="NAME" x="90.805" y="218.186" size="1.27" layer="95" rot="R270"/>
+<attribute name="VALUE" x="86.741" y="218.186" size="1.27" layer="96" rot="MR270"/>
+</instance>
+<instance part="P+45" gate="1" x="88.9" y="223.52" smashed="yes">
+<attribute name="VALUE" x="87.122" y="224.536" size="1.27" layer="96" rot="MR270"/>
+</instance>
+<instance part="D33" gate="G$1" x="96.52" y="215.9" smashed="yes" rot="R270">
+<attribute name="NAME" x="98.425" y="218.186" size="1.27" layer="95" rot="R270"/>
+<attribute name="VALUE" x="94.361" y="218.186" size="1.27" layer="96" rot="MR270"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -21234,10 +21248,11 @@ makes filter together with gate capacitance</text>
 <segment>
 <wire x1="76.2" y1="208.28" x2="81.28" y2="208.28" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="208.28" x2="88.9" y2="208.28" width="0.1524" layer="91"/>
-<wire x1="88.9" y1="208.28" x2="101.6" y2="208.28" width="0.1524" layer="91"/>
-<label x="78.74" y="209.55" size="1.27" layer="95"/>
+<wire x1="88.9" y1="208.28" x2="96.52" y2="208.28" width="0.1524" layer="91"/>
+<label x="82.55" y="209.55" size="1.27" layer="95" rot="R90"/>
 <pinref part="Q1" gate="G$1" pin="S"/>
 <pinref part="R1" gate="G$1" pin="1"/>
+<wire x1="96.52" y1="208.28" x2="101.6" y2="208.28" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="198.12" x2="88.9" y2="198.12" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="198.12" x2="88.9" y2="208.28" width="0.1524" layer="91"/>
 <junction x="88.9" y="208.28"/>
@@ -21247,6 +21262,11 @@ makes filter together with gate capacitance</text>
 <pinref part="R3" gate="G$1" pin="2"/>
 <pinref part="TP2" gate="G$1" pin="TP"/>
 <wire x1="86.36" y1="198.12" x2="88.9" y2="198.12" width="0.1524" layer="91"/>
+<pinref part="D32" gate="G$1" pin="C"/>
+<wire x1="88.9" y1="213.36" x2="88.9" y2="208.28" width="0.1524" layer="91"/>
+<pinref part="D33" gate="G$1" pin="C"/>
+<wire x1="96.52" y1="213.36" x2="96.52" y2="208.28" width="0.1524" layer="91"/>
+<junction x="96.52" y="208.28"/>
 </segment>
 </net>
 <net name="BAT+" class="0">
@@ -21795,6 +21815,11 @@ makes filter together with gate capacitance</text>
 <junction x="317.5" y="96.52"/>
 <pinref part="P+39" gate="1" pin="+5V"/>
 </segment>
+<segment>
+<pinref part="P+45" gate="1" pin="+5V"/>
+<pinref part="D32" gate="G$1" pin="A"/>
+<wire x1="88.9" y1="220.98" x2="88.9" y2="218.44" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="VUSB" class="0">
 <segment>
@@ -21819,6 +21844,11 @@ makes filter together with gate capacitance</text>
 <wire x1="264.16" y1="81.28" x2="264.16" y2="175.26" width="0.1524" layer="91"/>
 <pinref part="TP5" gate="G$1" pin="TP"/>
 <wire x1="261.62" y1="187.96" x2="264.16" y2="187.96" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="D33" gate="G$1" pin="A"/>
+<wire x1="96.52" y1="218.44" x2="96.52" y2="220.98" width="0.1524" layer="91"/>
+<label x="96.52" y="220.98" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
 </net>
 <net name="ESP_+5V" class="0">

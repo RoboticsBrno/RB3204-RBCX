@@ -6640,6 +6640,14 @@ JarekParal (2020-04-14)
 <attribute name="VALUE" x="89.69375" y="60.6425" size="1.27" layer="27" rot="R180"/>
 <attribute name="VOLTAGE" value="16V" x="89.05875" y="58.7375" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
+<element name="D32" library="diode" package="SMA" value="SS34" x="71.12" y="69.215" smashed="yes" rot="R180">
+<attribute name="NAME" x="73.87" y="67.215" size="1.27" layer="25" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="73.87" y="72.715" size="1.27" layer="27" ratio="10" rot="R180"/>
+</element>
+<element name="D33" library="diode" package="SMA" value="SS34" x="71.12" y="66.04" smashed="yes" rot="R180">
+<attribute name="NAME" x="73.87" y="64.04" size="1.27" layer="25" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="73.87" y="69.54" size="1.27" layer="27" ratio="10" rot="R180"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">
@@ -8535,6 +8543,8 @@ JarekParal (2020-04-14)
 <wire x1="92.3925" y1="50.165" x2="92.3925" y2="54.13375" width="0.6096" layer="2"/>
 <wire x1="92.3925" y1="54.13375" x2="86.83625" y2="59.69" width="0.6096" layer="2"/>
 <wire x1="86.83625" y1="58.25" x2="86.83625" y2="59.69" width="0.1524" layer="1"/>
+<contactref element="D32" pad="C"/>
+<contactref element="D33" pad="C"/>
 <wire x1="92.385" y1="51.36875" x2="91.735" y2="51.36875" width="0" layer="19" extent="1-1"/>
 <wire x1="93.035" y1="51.36875" x2="92.385" y2="51.36875" width="0" layer="19" extent="1-1"/>
 <wire x1="92.3925" y1="50.165" x2="92.385" y2="51.36875" width="0" layer="19" extent="1-1"/>
@@ -8542,6 +8552,8 @@ JarekParal (2020-04-14)
 <wire x1="92.4" y1="48.96125" x2="92.3925" y2="50.165" width="0" layer="19" extent="1-1"/>
 <wire x1="91.75" y1="48.96125" x2="92.4" y2="48.96125" width="0" layer="19" extent="1-1"/>
 <wire x1="93.05" y1="48.96125" x2="92.4" y2="48.96125" width="0" layer="19" extent="1-1"/>
+<wire x1="73.135" y1="69.215" x2="91.75" y2="48.96125" width="0" layer="19" extent="1-1"/>
+<wire x1="73.135" y1="66.04" x2="73.135" y2="69.215" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="BAT+">
 <contactref element="Q1" pad="5"/>
@@ -10228,6 +10240,37 @@ JarekParal (2020-04-14)
 <wire x1="8.89" y1="10.0965" x2="8.90025" y2="10.0965" width="0.1524" layer="1"/>
 <wire x1="33.655" y1="6.604" x2="33.655" y2="6.59375" width="0.1524" layer="1"/>
 <wire x1="8.9535" y1="10.16" x2="8.96375" y2="10.16" width="0.1524" layer="1"/>
+<contactref element="D32" pad="A"/>
+<wire x1="76.835" y1="95.885" x2="76.835" y2="98.425" width="0" layer="19" extent="1-1"/>
+<wire x1="76.835" y1="93.345" x2="76.835" y2="95.885" width="0" layer="19" extent="1-1"/>
+<wire x1="76.835" y1="90.805" x2="76.835" y2="93.345" width="0" layer="19" extent="1-1"/>
+<wire x1="76.835" y1="86.36" x2="77.355" y2="87.78875" width="0" layer="19" extent="1-1"/>
+<wire x1="67.6275" y1="83.02625" x2="76.835" y2="86.36" width="0" layer="19" extent="1-1"/>
+<wire x1="66.04" y1="83.02625" x2="67.6275" y2="83.02625" width="0" layer="19" extent="1-1"/>
+<wire x1="66.04" y1="81.43875" x2="66.04" y2="83.02625" width="0" layer="19" extent="1-1"/>
+<wire x1="67.6275" y1="81.43875" x2="67.6275" y2="83.02625" width="0" layer="19" extent="1-1"/>
+<wire x1="64.325" y1="82.2325" x2="66.04" y2="83.02625" width="0" layer="19" extent="1-1"/>
+<wire x1="75.2475" y1="73.66" x2="67.6275" y2="81.43875" width="0" layer="19" extent="1-1"/>
+<wire x1="69.85" y1="60.96" x2="75.2475" y2="73.66" width="0" layer="19" extent="1-1"/>
+<wire x1="65.515" y1="33.3375" x2="70.1675" y2="58.37125" width="0" layer="19" extent="1-1"/>
+<wire x1="81.5975" y1="29.845" x2="69.5325" y2="30.7975" width="0" layer="19" extent="1-1"/>
+<wire x1="81.915" y1="8.89" x2="81.661" y2="27.94" width="0" layer="19" extent="1-1"/>
+<wire x1="81.915" y1="6.35" x2="81.915" y2="8.89" width="0" layer="19" extent="1-1"/>
+<wire x1="81.915" y1="3.81" x2="81.915" y2="6.35" width="0" layer="19" extent="1-1"/>
+<wire x1="81.915" y1="1.27" x2="81.915" y2="3.81" width="0" layer="19" extent="1-1"/>
+<wire x1="53.975" y1="8.255" x2="69.5325" y2="30.7975" width="0" layer="19" extent="1-1"/>
+<wire x1="33.655" y1="8.09625" x2="53.975" y2="8.255" width="0" layer="19" extent="1-1"/>
+<wire x1="8.9535" y1="6.35" x2="33.655" y2="6.604" width="0" layer="19" extent="1-1"/>
+<wire x1="69.105" y1="69.215" x2="8.9535" y2="2.54" width="0" layer="19" extent="1-1"/>
+<wire x1="13.335" y1="27.01" x2="8.96375" y2="10.16" width="0" layer="19" extent="1-1"/>
+<wire x1="9.36625" y1="72.39" x2="8.5725" y2="40.64" width="0" layer="19" extent="1-1"/>
+<wire x1="9.36625" y1="74.93" x2="9.36625" y2="72.39" width="0" layer="19" extent="1-1"/>
+<wire x1="17.78" y1="90.17" x2="9.36625" y2="74.93" width="0" layer="19" extent="1-1"/>
+<wire x1="17.78" y1="91.7575" x2="17.78" y2="90.17" width="0" layer="19" extent="1-1"/>
+<wire x1="19.3675" y1="91.7575" x2="17.78" y2="91.7575" width="0" layer="19" extent="1-1"/>
+<wire x1="19.3675" y1="90.17" x2="17.78" y2="90.17" width="0" layer="19" extent="1-1"/>
+<wire x1="18.9225" y1="93.6625" x2="19.3675" y2="91.7575" width="0" layer="19" extent="1-1"/>
+<wire x1="28.8925" y1="73.18375" x2="19.3675" y2="90.17" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ISERVO">
 <contactref element="R151" pad="2"/>
@@ -11582,6 +11625,8 @@ JarekParal (2020-04-14)
 <wire x1="83.47034375" y1="58.54659375" x2="82.55" y2="57.62625" width="0.6096" layer="16"/>
 <wire x1="73.26" y1="45.875" x2="74.06" y2="45.875" width="0.508" layer="2"/>
 <wire x1="74.06" y1="45.875" x2="74.37375" y2="45.56125" width="0.508" layer="2"/>
+<contactref element="D33" pad="A"/>
+<wire x1="69.105" y1="66.04" x2="3.3625" y2="51.835" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="USB_ID">
 <contactref element="X4" pad="4"/>
