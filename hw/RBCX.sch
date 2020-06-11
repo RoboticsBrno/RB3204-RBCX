@@ -18876,7 +18876,6 @@ Updated by Yingchun, Shan 2020-01-16&lt;br&gt;
 <part name="JP42" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="BUTTONS"/>
 <part name="JP44" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="PWR_BUTTONS"/>
 <part name="GND111" library="Supply" deviceset="GND" device=""/>
-<part name="R112" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="GND113" library="Supply" deviceset="GND" device=""/>
 <part name="+3V29" library="Supply" deviceset="+3V3S" device=""/>
 <part name="IC12" library="MPU-6050" deviceset="MPU-6050" device=""/>
@@ -27603,7 +27602,7 @@ Jakub Streit
 <pinref part="X3" gate="-17" pin="S"/>
 </segment>
 </net>
-<net name="ESP-EN" class="0">
+<net name="ESP_EN" class="0">
 <segment>
 <wire x1="317.5" y1="195.58" x2="309.88" y2="195.58" width="0.1524" layer="91"/>
 <label x="309.88" y="195.58" size="1.27" layer="95" rot="MR0" xref="yes"/>
@@ -29528,10 +29527,6 @@ Jakub Streit
 <instance part="GND111" gate="1" x="167.64" y="101.6" smashed="yes">
 <attribute name="VALUE" x="165.862" y="99.822" size="1.27" layer="96"/>
 </instance>
-<instance part="R112" gate="G$1" x="81.28" y="114.3" smashed="yes">
-<attribute name="NAME" x="77.978" y="114.808" size="1.27" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="84.582" y="114.808" size="1.27" layer="96"/>
-</instance>
 <instance part="IM4" gate="G$1" x="147.32" y="25.4" smashed="yes">
 <attribute name="NAME" x="121.92" y="35.56" size="1.27" layer="95"/>
 <attribute name="VALUE" x="121.92" y="33.782" size="1.27" layer="96"/>
@@ -30298,12 +30293,11 @@ Jakub Streit
 <wire x1="152.4" y1="116.84" x2="149.86" y2="116.84" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="ESP-EN" class="0">
+<net name="ESP_EN" class="0">
 <segment>
-<pinref part="R112" gate="G$1" pin="2"/>
-<wire x1="86.36" y1="114.3" x2="147.32" y2="114.3" width="0.1524" layer="91"/>
+<label x="71.12" y="114.3" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<wire x1="71.12" y1="114.3" x2="152.4" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="JP44" gate="A" pin="5"/>
-<wire x1="147.32" y1="114.3" x2="152.4" y2="114.3" width="0.1524" layer="91"/>
 <label x="147.828" y="114.808" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
@@ -30323,13 +30317,6 @@ Jakub Streit
 <wire x1="152.4" y1="66.04" x2="149.86" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="66.04" x2="149.86" y2="68.58" width="0.1524" layer="91"/>
 <junction x="149.86" y="68.58"/>
-</segment>
-</net>
-<net name="ESP_EN" class="0">
-<segment>
-<pinref part="R112" gate="G$1" pin="1"/>
-<wire x1="76.2" y1="114.3" x2="71.12" y2="114.3" width="0.1524" layer="91"/>
-<label x="71.12" y="114.3" size="1.27" layer="95" rot="MR0" xref="yes"/>
 </segment>
 </net>
 <net name="BUZZER" class="0">
@@ -37704,7 +37691,7 @@ Jakub Streit
 <label x="175.26" y="63.5" size="1.27" layer="95" rot="MR0" xref="yes"/>
 </segment>
 </net>
-<net name="ESP-EN" class="0">
+<net name="ESP_EN" class="0">
 <segment>
 <pinref part="IM9" gate="G$1" pin="EN"/>
 <wire x1="162.56" y1="182.88" x2="157.48" y2="182.88" width="0.1524" layer="91"/>
