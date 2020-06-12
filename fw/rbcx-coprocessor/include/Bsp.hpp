@@ -36,7 +36,6 @@ inline const PinDef usbDpPullUpPin
     = std::make_pair(USBD_DP_PORT, 1 << USBD_DP_PIN);
 inline const PinDef usbBusDetectionPin = std::make_pair(GPIOC, GPIO_PIN_13);
 
-#if RBCX_HW_VERSION_10
 // We want DMA on tunnelUart, so on v1.0, we bridge UART1 to ESP
 // manually, loose UART5 and use UART2 as debugUart.
 // userUart is not available on v1.0
@@ -70,34 +69,6 @@ inline const IRQn_Type controlUartTxDmaIRQn = DMA2_Channel4_5_IRQn;
 inline const unsigned controlUartTxDmaIrqPrio = 4;
 inline DMA_Channel_TypeDef* const controlUartTxDmaChannel = DMA2_Channel5;
 inline DMA_Channel_TypeDef* const controlUartRxDmaChannel = DMA2_Channel3;
-
-#elif RBCX_HW_VERSION_11
-// TODO: add pins when HW finalized
-
-inline USART_TypeDef* const userUart = USART1;
-inline USART_TypeDef* const tunnelUart = USART2;
-inline USART_TypeDef* const controlUart = UART3;
-inline USART_TypeDef* const debugUart = USART4;
-inline USART_TypeDef* const servoUart = USART5;
-
-inline DMA_Channel_TypeDef* const tunnelUartTxDmaChannel = DMA1_Channel7;
-inline DMA_Channel_TypeDef* const tunnelUartRxDmaChannel = DMA1_Channel6;
-
-#define CONTROLUART_TX_DMA_HANDLER DMA1_Channel2_IRQHandler
-inline const IRQn_Type controlUartTxDmaIRQn = DMA1_Channel2_IRQn;
-inline const unsigned controlUartTxDmaIrqPrio = 4;
-inline DMA_Channel_TypeDef* const controlUartTxDmaChannel = DMA1_Channel2;
-inline DMA_Channel_TypeDef* const controlUartRxDmaChannel = DMA1_Channel3;
-
-#define DEBUGUART_TX_DMA_HANDLER DMA2_Channel4_5_IRQHandler
-inline const IRQn_Type debugUartTxDmaIRQn = DMA2_Channel4_5_IRQn;
-inline const unsigned debugUartTxDmaIrqPrio = 4;
-inline DMA_Channel_TypeDef* const debugUartTxDmaChannel = DMA2_Channel5;
-inline DMA_Channel_TypeDef* const debugUartRxDmaChannel = DMA2_Channel3;
-
-#else
-#error "No UART config for this HW"
-#endif
 
 inline const PinDef servo1Pin = std::make_pair(GPIOA, GPIO_PIN_0);
 inline const PinDef servo2Pin = std::make_pair(GPIOA, GPIO_PIN_1);
@@ -235,11 +206,9 @@ inline void pinsInit() {
     //LL_GPIO_AF_EnableRemap_USART2();
     LL_GPIO_AF_Remap(AFIO_MAPR_USART2_REMAP, AFIO_MAPR_USART2_REMAP);
 
-#if RBCX_HW_VERSION_10
     // Set UART5 pins to high impedance so we can override them from pinheads
     pinInit(uart5TxPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
     pinInit(uart5RxPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
-#endif
 }
 
 inline bool isPressed(PinDef button) {
