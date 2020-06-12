@@ -35,10 +35,27 @@ extern "C" void vApplicationStackOverflowHook(
     printf("Stack overflow!\n");
     printf("Task: %s\n", pcTaskName);
 
+    abort();
+}
+
+extern "C" void _exit() {
+    LL_mDelay(10);
+    puts("\n\n !!! PROGRAM EXITED, HALTING !!!\n\n");
+    LL_mDelay(10);
+
+    __disable_irq();
+
+    uint32_t on = 0xFFFFFFF;
     while (true) {
+        setLeds(on);
+        on = ~on;
+
+        // Triggers when STLink is connected, there doesn't seem to be a way
+        // to check if a debugging session is in progress :/
+        if (CoreDebug->DHCSR & CoreDebug_DHCSR_C_DEBUGEN_Msk) {
+            __BKPT();
+        }
+
         LL_mDelay(200);
-        setLeds(0);
-        LL_mDelay(200);
-        setLeds(0xFFFFFFFF);
     }
 }
