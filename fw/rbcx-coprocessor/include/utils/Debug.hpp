@@ -14,12 +14,12 @@
 
 inline void DEBUG_HEX(const uint8_t* data, size_t len) {
     static const char* hex = "0123456789ABCDEF";
-    std::array<char, 4> buf { '0', '0', ' ' };
+    char buf[] = { '0', '0', ' ' };
 
     for (size_t i = 0; i < len; ++i) {
         buf[0] = hex[data[i] & 0xF];
         buf[1] = hex[data[i] >> 4];
-        fwrite(buf.data(), buf.size(), 1, stdout);
+        fwrite(buf, sizeof(buf), 1, stdout);
     }
     putchar('\n');
 }
