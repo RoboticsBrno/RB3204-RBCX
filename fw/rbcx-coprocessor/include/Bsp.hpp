@@ -29,6 +29,38 @@ inline const PinDef buttonOnPin = std::make_pair(GPIOC, GPIO_PIN_9);
 inline const std::array<PinDef, 6> buttonPin = { buttonOffPin, button1Pin,
     button2Pin, button3Pin, button4Pin, buttonOnPin };
 
+inline const PinDef uts1TrigPin = std::make_pair(GPIOE, GPIO_PIN_0);
+inline const PinDef uts1EchoPin = std::make_pair(GPIOE, GPIO_PIN_1);
+inline const PinDef uts2TrigPin = std::make_pair(GPIOE, GPIO_PIN_2);
+inline const PinDef uts2EchoPin = std::make_pair(GPIOE, GPIO_PIN_3);
+inline const PinDef uts3TrigPin = std::make_pair(GPIOE, GPIO_PIN_4);
+inline const PinDef uts3EchoPin = std::make_pair(GPIOE, GPIO_PIN_5);
+inline const PinDef uts4TrigPin = std::make_pair(GPIOE, GPIO_PIN_6);
+inline const PinDef uts4EchoPin = std::make_pair(GPIOE, GPIO_PIN_7);
+inline const PinDef utsTrigPins = std::make_pair(GPIOE,
+    uts1TrigPin.second | uts2TrigPin.second | uts3TrigPin.second
+        | uts4TrigPin.second);
+inline const PinDef utsEchoPins = std::make_pair(GPIOE,
+    uts1EchoPin.second | uts2EchoPin.second | uts3EchoPin.second
+        | uts4EchoPin.second);
+
+inline const std::array<PinDef, 4> utsTrigPin
+    = { uts1TrigPin, uts2TrigPin, uts3TrigPin, uts4TrigPin };
+inline const std::array<PinDef, 4> utsEchoPin
+    = { uts1EchoPin, uts2EchoPin, uts3EchoPin, uts4EchoPin };
+
+#define UTSTIMER_HANDLER TIM7_IRQHandler
+inline const uint32_t utsIRQPrio = 7;
+inline const IRQn_Type utsTimerIRQn = TIM7_IRQn;
+inline const std::array<IRQn_Type, 4> utsEchoIRQns = {
+    EXTI0_IRQn,
+    EXTI1_IRQn,
+    EXTI2_IRQn,
+    EXTI3_IRQn,
+};
+
+inline TIM_TypeDef* const utsTimer = TIM7;
+
 inline const PinDef usbDnPin = std::make_pair(GPIOA, GPIO_PIN_11);
 inline const PinDef usbDpPin = std::make_pair(GPIOA, GPIO_PIN_12);
 // defined in platformio.ini, because used by STM USB C library:
@@ -59,7 +91,7 @@ inline DMA_Channel_TypeDef* const tunnelUartRxDmaChannel = DMA1_Channel5;
 
 #define CONTROLUART_TX_DMA_HANDLER DMA2_Channel4_5_IRQHandler
 inline const IRQn_Type controlUartTxDmaIRQn = DMA2_Channel4_5_IRQn;
-inline const unsigned controlUartTxDmaIrqPrio = 4;
+inline const unsigned controlUartTxDmaIRQnPrio = 8;
 inline DMA_Channel_TypeDef* const controlUartTxDmaChannel = DMA2_Channel5;
 inline DMA_Channel_TypeDef* const controlUartRxDmaChannel = DMA2_Channel3;
 
@@ -124,6 +156,8 @@ inline void clocksInit() {
     __HAL_RCC_TIM3_CLK_ENABLE();
     __HAL_RCC_TIM4_CLK_ENABLE();
     __HAL_RCC_TIM5_CLK_ENABLE();
+    __HAL_RCC_TIM6_CLK_ENABLE();
+    __HAL_RCC_TIM7_CLK_ENABLE();
     __HAL_RCC_TIM8_CLK_ENABLE();
 }
 
@@ -190,6 +224,12 @@ inline void pinsInit() {
     LL_GPIO_AF_Remap(AFIO_MAPR_SWJ_CFG, AFIO_MAPR_SWJ_CFG_JTAGDISABLE);
 
     pinInit(servoPins, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_MEDIUM);
+
+    pinWrite(utsTrigPins, 0);
+    pinInit(
+        utsTrigPins, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(utsEchoPins, GPIO_MODE_IT_RISING_FALLING, GPIO_PULLDOWN,
+        GPIO_SPEED_FREQ_MEDIUM);
 
     //LL_GPIO_AF_EnableRemap_USART2();
     LL_GPIO_AF_Remap(AFIO_MAPR_USART2_REMAP, AFIO_MAPR_USART2_REMAP);

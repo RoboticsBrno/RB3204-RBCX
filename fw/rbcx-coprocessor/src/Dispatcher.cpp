@@ -4,6 +4,7 @@
 #include "Bsp.hpp"
 #include "ControlLink.hpp"
 #include "StupidServoController.hpp"
+#include "UltrasoundController.hpp"
 #include "queue.h"
 #include "rbcx.pb.h"
 
@@ -24,6 +25,13 @@ bool dispatcherEnqueueStatus(const CoprocStat& status) {
     return xQueueSendToBack(statusQueue, &status, 0) == pdTRUE;
 }
 
+bool dispatcherEnqueueStatusFromISR(const CoprocStat& status) {
+    const auto crit = taskENTER_CRITICAL_FROM_ISR();
+    auto res = xQueueSendToBackFromISR(statusQueue, &status, 0) == pdTRUE;
+    taskEXIT_CRITICAL_FROM_ISR(crit);
+    return res;
+}
+
 void dispatcherPoll() {
     if (controlLinkRx(request)) {
         status = CoprocStat_init_default;
@@ -42,9 +50,13 @@ void dispatcherPoll() {
         case CoprocReq_setStupidServo_tag:
             stupidServoDispatch(request.payload.setStupidServo);
             break;
+        case CoprocReq_ultrasoundReq_tag:
+            ultrasoundDispatch(request.payload.ultrasoundReq);
+            break;
         }
-    }
-    if (xQueueReceive(statusQueue, &status, 0) == pdTRUE) {
-        controlLinkTx(status);
+
+        if (xQueueReceive(statusQueue, &status, 0) == pdTRUE) {
+            controlLinkTx(status);
+        }
     }
 }

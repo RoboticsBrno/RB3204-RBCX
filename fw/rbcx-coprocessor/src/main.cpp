@@ -1,5 +1,4 @@
 #include "stm32f1xx_hal.h"
-#include "stm32f1xx_hal_gpio.h"
 
 #include "Bsp.hpp"
 #include "ButtonController.hpp"
@@ -7,6 +6,7 @@
 #include "ControlLink.hpp"
 #include "Dispatcher.hpp"
 #include "StupidServoController.hpp"
+#include "UltrasoundController.hpp"
 #include "UsbCdcLink.h"
 #include <array>
 
@@ -19,6 +19,7 @@ int main() {
     pinsInit();
     cdcLinkInit();
     stupidServoInit();
+    ultrasoundInit();
     while (true) {
         cdcLinkPoll();
         tunnelPoll();
