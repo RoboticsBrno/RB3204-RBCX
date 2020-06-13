@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "CdcUartTunnel.hpp"
 #include "Esp32Manager.hpp"
 #include "UsbCdcLink.h"
 #include "usb_cdc.h"
@@ -205,9 +206,17 @@ static usbd_respond cdc_control(
             sEsp32Manager.onSerialBreak(dtr, rts);
             return usbd_ack;
         }
-        case USB_CDC_SET_LINE_CODING:
-            memcpy(req->data, &cdc_line, sizeof(cdc_line));
+        case USB_CDC_SET_LINE_CODING: {
+            if (req->wLength < sizeof(cdc_line))
+                return usbd_fail;
+            auto* newCoding = (struct usb_cdc_line_coding*)req->data;
+            if (!tunnelOnSetLineCoding(cdc_line, *newCoding))
+                return usbd_fail;
+            memcpy(&cdc_line, req->data, sizeof(cdc_line));
+            //DEBUG("USB_CDC_SET_LINE_CODING %d %d %d %d\n", cdc_line.dwDTERate,
+            //  cdc_line.bCharFormat, cdc_line.bDataBits, cdc_line.bParityType);
             return usbd_ack;
+        }
         case USB_CDC_GET_LINE_CODING:
             dev->status.data_ptr = &cdc_line;
             dev->status.data_count = sizeof(cdc_line);
