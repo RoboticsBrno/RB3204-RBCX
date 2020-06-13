@@ -36,26 +36,33 @@ inline const PinDef usbDpPullUpPin
     = std::make_pair(USBD_DP_PORT, 1 << USBD_DP_PIN);
 inline const PinDef usbBusDetectionPin = std::make_pair(GPIOC, GPIO_PIN_13);
 
-inline const PinDef debugUartTxPin = std::make_pair(GPIOA, GPIO_PIN_9);
-inline const PinDef debugUartRxPin = std::make_pair(GPIOA, GPIO_PIN_10);
-inline const PinDef userUartTxPin = std::make_pair(GPIOD, GPIO_PIN_5);
-inline const PinDef userUartRxPin = std::make_pair(GPIOD, GPIO_PIN_6);
+// We want DMA on tunnelUart, so on v1.0, we bridge UART1 to ESP
+// manually, loose UART5 and use UART2 as debugUart.
+// userUart is not available on v1.0
+inline const PinDef tunnelUartTxPin = std::make_pair(GPIOA, GPIO_PIN_9);
+inline const PinDef tunnelUartRxPin = std::make_pair(GPIOA, GPIO_PIN_10);
+inline const PinDef debugUartTxPin = std::make_pair(GPIOD, GPIO_PIN_5);
+inline const PinDef debugUartRxPin = std::make_pair(GPIOD, GPIO_PIN_6);
 inline const PinDef servoUartTxRxPin = std::make_pair(GPIOD, GPIO_PIN_8);
 inline const PinDef controlUartTxPin = std::make_pair(GPIOC, GPIO_PIN_10);
 inline const PinDef controlUartRxPin = std::make_pair(GPIOC, GPIO_PIN_11);
-// inline const PinDef   tunnelUartTxPin = std::make_pair(GPIOC, GPIO_PIN_12);
-// inline const PinDef   tunnelUartRxPin = std::make_pair(GPIOD, GPIO_PIN_2);
-inline const PinDef tunnelUartTxPin = std::make_pair(GPIOA, GPIO_PIN_9);
-inline const PinDef tunnelUartRxPin = std::make_pair(GPIOA, GPIO_PIN_10);
 
-inline USART_TypeDef* const debugUart = USART1;
-inline USART_TypeDef* const userUart = USART2;
+inline const PinDef uart5TxPin = std::make_pair(GPIOC, GPIO_PIN_12);
+inline const PinDef uart5RxPin = std::make_pair(GPIOD, GPIO_PIN_2);
+
+inline USART_TypeDef* const tunnelUart = USART1;
+inline USART_TypeDef* const debugUart = USART2;
 inline USART_TypeDef* const servoUart = USART3;
 inline USART_TypeDef* const controlUart = UART4;
-inline USART_TypeDef* const tunnelUart = USART1; //UART5;
 
 inline DMA_Channel_TypeDef* const tunnelUartTxDmaChannel = DMA1_Channel4;
 inline DMA_Channel_TypeDef* const tunnelUartRxDmaChannel = DMA1_Channel5;
+
+#define DEBUGUART_TX_DMA_HANDLER DMA1_Channel7_IRQHandler
+inline const IRQn_Type debugUartTxDmaIRQn = DMA1_Channel7_IRQn;
+inline const unsigned debugUartTxDmaIrqPrio = 4;
+inline DMA_Channel_TypeDef* const debugUartTxDmaChannel = DMA1_Channel7;
+inline DMA_Channel_TypeDef* const debugUartRxDmaChannel = DMA1_Channel6;
 
 #define CONTROLUART_TX_DMA_HANDLER DMA2_Channel4_5_IRQHandler
 inline const IRQn_Type controlUartTxDmaIRQn = DMA2_Channel4_5_IRQn;
@@ -129,6 +136,11 @@ inline void clocksInit() {
 
 inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode,
     uint32_t pull, uint32_t speed) {
+
+    // HAL_GPIO_Init leaves some flags set if called multiple times
+    // on the same pin
+    HAL_GPIO_DeInit(port, pinMask);
+
     GPIO_InitTypeDef init;
     init.Pin = pinMask;
     init.Mode = mode;
@@ -193,6 +205,10 @@ inline void pinsInit() {
 
     //LL_GPIO_AF_EnableRemap_USART2();
     LL_GPIO_AF_Remap(AFIO_MAPR_USART2_REMAP, AFIO_MAPR_USART2_REMAP);
+
+    // Set UART5 pins to high impedance so we can override them from pinheads
+    pinInit(uart5TxPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    pinInit(uart5RxPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 }
 
 inline bool isPressed(PinDef button) {

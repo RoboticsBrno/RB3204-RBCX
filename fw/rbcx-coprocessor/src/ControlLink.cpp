@@ -11,10 +11,10 @@
 #include "stm32f1xx_ll_usart.h"
 
 #include "Bsp.hpp"
-#include "ByteFifo.hpp"
 #include "coproc_codec.h"
 #include "coproc_link_parser.h"
 #include "rbcx.pb.h"
+#include "utils/ByteFifo.hpp"
 #include <array>
 
 static DMA_HandleTypeDef dmaRxHandle;
@@ -107,12 +107,14 @@ void controlLinkTx(const CoprocStat& outgoing) {
 extern "C" void CONTROLUART_TX_DMA_HANDLER() {
     HAL_DMA_IRQHandler(&dmaTxHandle);
     if (dmaTxHandle.State == HAL_DMA_STATE_READY) {
-        auto len = xMessageBufferReceiveFromISR(
-            txMessageBuf, txDmaBuf.data(), txDmaBuf.size(), nullptr);
+        BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+        auto len = xMessageBufferReceiveFromISR(txMessageBuf, txDmaBuf.data(),
+            txDmaBuf.size(), &pxHigherPriorityTaskWoken);
 
         if (len > 0) {
             HAL_DMA_Start_IT(&dmaTxHandle, uint32_t(txDmaBuf.data()),
                 uint32_t(&controlUart->DR), len);
         }
+        portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
     }
 }

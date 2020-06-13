@@ -5,20 +5,25 @@
 #include "ButtonController.hpp"
 #include "CdcUartTunnel.hpp"
 #include "ControlLink.hpp"
+#include "DebugLink.hpp"
 #include "Dispatcher.hpp"
 #include "StupidServoController.hpp"
 #include "UsbCdcLink.h"
+#include "utils/Debug.hpp"
 #include <array>
 
 int main() {
     clocksInit();
     HAL_Init();
+    pinsInit();
+    debugUartInit();
     dispatcherInit();
     tunnelUartInit();
     controlUartInit();
-    pinsInit();
     cdcLinkInit();
     stupidServoInit();
+
+    DEBUG("STM32 Coprocessor initialized.\n");
     while (true) {
         cdcLinkPoll();
         tunnelPoll();
