@@ -26,10 +26,7 @@ bool dispatcherEnqueueStatus(const CoprocStat& status) {
 }
 
 bool dispatcherEnqueueStatusFromISR(const CoprocStat& status) {
-    const auto crit = taskENTER_CRITICAL_FROM_ISR();
-    auto res = xQueueSendToBackFromISR(statusQueue, &status, 0) == pdTRUE;
-    taskEXIT_CRITICAL_FROM_ISR(crit);
-    return res;
+    return xQueueSendToBackFromISR(statusQueue, &status, 0) == pdTRUE;
 }
 
 void dispatcherPoll() {
@@ -54,9 +51,9 @@ void dispatcherPoll() {
             ultrasoundDispatch(request.payload.ultrasoundReq);
             break;
         }
+    }
 
-        if (xQueueReceive(statusQueue, &status, 0) == pdTRUE) {
-            controlLinkTx(status);
-        }
+    if (xQueueReceive(statusQueue, &status, 0) == pdTRUE) {
+        controlLinkTx(status);
     }
 }
