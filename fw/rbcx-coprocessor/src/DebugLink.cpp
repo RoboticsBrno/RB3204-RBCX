@@ -1,5 +1,5 @@
 #include "FreeRTOS.h"
-#include "message_buffer.h"
+#include "stream_buffer.h"
 #include "task.h"
 
 #include "stm32f1xx_hal.h"
@@ -18,9 +18,9 @@ static DMA_HandleTypeDef dmaTxHandle;
 
 static std::array<uint8_t, 256> txDmaBuf;
 
-static StaticMessageBuffer_t _txMessageBufStruct;
-static uint8_t _txMessageBufStorage[txDmaBuf.size() * 4];
-static MessageBufferHandle_t txMessageBuf;
+static StaticStreamBuffer_t _txStreamBufStruct;
+static uint8_t _txStreamBufStorage[txDmaBuf.size() * 4];
+static StreamBufferHandle_t txStreamBuf;
 
 void debugUartInit() {
     LL_USART_InitTypeDef init;
@@ -50,8 +50,8 @@ void debugUartInit() {
     HAL_NVIC_EnableIRQ(debugUartTxDmaIRQn);
     LL_USART_EnableDMAReq_TX(debugUart);
 
-    txMessageBuf = xMessageBufferCreateStatic(sizeof(_txMessageBufStorage),
-        _txMessageBufStorage, &_txMessageBufStruct);
+    txStreamBuf = xStreamBufferCreateStatic(sizeof(_txStreamBufStorage), 1,
+        _txStreamBufStorage, &_txStreamBufStruct);
 
     pinInit(debugUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
@@ -64,11 +64,13 @@ extern "C" int _write(int fd, char* data, int len) {
 
     if (isInInterrupt()) {
         const auto status = taskENTER_CRITICAL_FROM_ISR();
-        res = xMessageBufferSendFromISR(txMessageBuf, data, len, 0);
+        res = xStreamBufferSendFromISR(txStreamBuf, data, len, 0);
         taskEXIT_CRITICAL_FROM_ISR(status);
     } else {
+        while ((int)xStreamBufferSpacesAvailable(txStreamBuf) < len)
+            vTaskDelay(0);
         taskENTER_CRITICAL();
-        res = xMessageBufferSend(txMessageBuf, data, len, 0);
+        res = xStreamBufferSend(txStreamBuf, data, len, 0);
         taskEXIT_CRITICAL();
     }
 
@@ -84,7 +86,7 @@ extern "C" void DEBUGUART_TX_DMA_HANDLER() {
 
     if (dmaTxHandle.State == HAL_DMA_STATE_READY) {
         BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
-        auto len = xMessageBufferReceiveFromISR(txMessageBuf, txDmaBuf.data(),
+        auto len = xStreamBufferReceiveFromISR(txStreamBuf, txDmaBuf.data(),
             txDmaBuf.size(), &pxHigherPriorityTaskWoken);
 
         if (len > 0) {
