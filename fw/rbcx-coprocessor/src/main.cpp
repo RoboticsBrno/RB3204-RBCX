@@ -23,11 +23,10 @@ int main() {
     HAL_Init();
     pinsInit();
     debugUartInit();
-    sEsp32Manager.init();
-    cdcLinkInit();
     dispatcherInit();
     tunnelUartInit();
     controlUartInit();
+    cdcLinkInit();
     stupidServoInit();
     ultrasoundInit();
 
@@ -38,6 +37,7 @@ int main() {
             tunnelPoll();
             dispatcherPoll();
             buttonControllerPoll();
+            sEsp32Manager.poll();
         }
     });
 

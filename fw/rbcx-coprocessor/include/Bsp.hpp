@@ -221,6 +221,21 @@ inline void LL_GPIO_AF_Remap(uint32_t mask, uint32_t value) {
     AFIO->MAPR = mapr;
 }
 
+// Set-up ESP32 strapping pins for the normal mode functions. Esp32Manager
+// handles the strapping process and ESP32 reset, and calls this function
+// after the reset is done so that normal function can be restored.
+inline void reinitEspStrappingPins() {
+    // ControlUart uses esp0Pin and esp2Pin
+    pinInit(
+        controlUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
+    pinInit(controlUartRxPin, GPIO_MODE_AF_INPUT, GPIO_PULLUP,
+        GPIO_SPEED_FREQ_HIGH);
+
+    // Other pins are unused during normal function, set them to default state
+    pinInit(esp12Pin, GPIO_MODE_INPUT, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    pinInit(esp15Pin, GPIO_MODE_INPUT, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+}
+
 inline void pinsInit() {
     pinInit(ledPins, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 
@@ -268,6 +283,8 @@ inline void pinsInit() {
     HAL_NVIC_EnableIRQ(EXTI1_IRQn);
     HAL_NVIC_SetPriority(EXTI3_IRQn, 7, 0); // Ultrasound
     HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+
+    reinitEspStrappingPins();
 }
 
 inline bool isPressed(PinDef button) {
