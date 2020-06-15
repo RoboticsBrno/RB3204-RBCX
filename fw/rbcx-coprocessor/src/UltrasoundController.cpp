@@ -66,12 +66,11 @@ static void enqueueStatus(int itsIndex, uint16_t microseconds) {
     dispatcherEnqueueStatusFromISR(status);
 }
 
-void ultrasoundEchoHandler() {
+void onUltrasoundEchoEdge() {
     auto stampMicros = LL_TIM_GetCounter(utsTimer);
     if (!utsActiveIndex.has_value()) {
         return;
     }
-    LL_EXTI_ClearFlag_0_31(utsEchoPin[*utsActiveIndex].second);
 
     if (pinRead(utsEchoPin[*utsActiveIndex])) {
         risingEdgeMicros = stampMicros;
@@ -84,10 +83,6 @@ void ultrasoundEchoHandler() {
         LL_TIM_ClearFlag_UPDATE(utsTimer);
     }
 }
-
-extern "C" void UTS1_ECHO_HANDLER() { ultrasoundEchoHandler(); }
-extern "C" void UTS2_ECHO_HANDLER() { ultrasoundEchoHandler(); }
-extern "C" void UTS4_ECHO_HANDLER() { ultrasoundEchoHandler(); }
 
 // Timer overflow signifies ultrasound timeout
 extern "C" void UTSTIMER_HANDLER() {

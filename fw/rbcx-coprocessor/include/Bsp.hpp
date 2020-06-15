@@ -262,9 +262,12 @@ inline void pinsInit() {
     pinInit(uart5TxPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
     pinInit(uart5RxPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 
-    // Configure IRQ on espEnPin pin
-    HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
+    HAL_NVIC_SetPriority(EXTI9_5_IRQn, 7, 0); // Ultrasound, ESP_EN
     HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+    HAL_NVIC_SetPriority(EXTI1_IRQn, 7, 0); // Ultrasound
+    HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+    HAL_NVIC_SetPriority(EXTI3_IRQn, 7, 0); // Ultrasound
+    HAL_NVIC_EnableIRQ(EXTI3_IRQn);
 }
 
 inline bool isPressed(PinDef button) {
