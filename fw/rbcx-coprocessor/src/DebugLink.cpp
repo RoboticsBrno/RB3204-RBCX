@@ -63,9 +63,11 @@ extern "C" int _write(int fd, char* data, int len) {
     size_t res = 0;
 
     if (isInInterrupt()) {
+        BaseType_t woken = pdFALSE;
         const auto status = taskENTER_CRITICAL_FROM_ISR();
-        res = xStreamBufferSendFromISR(txStreamBuf, data, len, 0);
+        res = xStreamBufferSendFromISR(txStreamBuf, data, len, &woken);
         taskEXIT_CRITICAL_FROM_ISR(status);
+        portYIELD_FROM_ISR(woken);
     } else {
         while ((int)xStreamBufferSpacesAvailable(txStreamBuf) < len)
             vTaskDelay(0);

@@ -45,7 +45,7 @@ void esp32Pin2Restore() {
 void controlUartInit() {
     LL_USART_InitTypeDef init;
     LL_USART_StructInit(&init);
-    init.BaudRate = 115200;
+    init.BaudRate = 921600;
     init.DataWidth = LL_USART_DATAWIDTH_8B;
     init.HardwareFlowControl = LL_USART_HWCONTROL_NONE;
     init.Parity = LL_USART_PARITY_NONE;
