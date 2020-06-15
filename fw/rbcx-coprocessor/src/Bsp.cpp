@@ -19,6 +19,6 @@ extern "C" void HAL_GPIO_EXTI_Callback(uint16_t pin) {
         sEsp32Manager.onEnRising();
     }
     if (pin & utsEchoPins.second) {
-        onUltrasoundEchoEdge();
+        ultrasoundOnEchoEdge();
     }
 }

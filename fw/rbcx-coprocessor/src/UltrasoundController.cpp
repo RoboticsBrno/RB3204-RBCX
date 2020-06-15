@@ -23,11 +23,7 @@ void ultrasoundInit() {
     LL_TIM_Init(utsTimer, &timInit);
     LL_TIM_SetOnePulseMode(utsTimer, LL_TIM_ONEPULSEMODE_SINGLE);
     LL_TIM_SetUpdateSource(utsTimer, LL_TIM_UPDATESOURCE_COUNTER);
-
-    for (auto irqn : utsEchoIRQn) {
-        HAL_NVIC_SetPriority(irqn, utsIRQPrio, 0);
-        HAL_NVIC_EnableIRQ(irqn);
-    }
+    LL_TIM_ClearFlag_UPDATE(utsTimer);
 
     LL_EXTI_DisableIT_0_31(utsEchoPins.second);
     HAL_NVIC_SetPriority(utsTimerIRQn, utsIRQPrio, 0);
@@ -53,20 +49,21 @@ void ultrasoundDispatch(const CoprocReq_UltrasoundReq& request) {
         }
         pinWrite(utsTrigPin[request.utsIndex], false);
 
-        LL_EXTI_EnableIT_0_31(utsEchoPin[request.utsIndex].second);
         LL_TIM_EnableIT_UPDATE(utsTimer);
+        LL_EXTI_EnableIT_0_31(utsEchoPin[request.utsIndex].second);
         break;
     }
 }
 
-static void enqueueStatus(int itsIndex, uint16_t microseconds) {
+static void enqueueStatus(int utsIndex, uint16_t microseconds) {
     status = CoprocStat_init_default;
     status.which_payload = CoprocStat_ultrasoundStat_tag;
+    status.payload.ultrasoundStat.utsIndex = utsIndex;
     status.payload.ultrasoundStat.roundtripMicrosecs = microseconds;
     dispatcherEnqueueStatusFromISR(status);
 }
 
-void onUltrasoundEchoEdge() {
+void ultrasoundOnEchoEdge() {
     auto stampMicros = LL_TIM_GetCounter(utsTimer);
     if (!utsActiveIndex.has_value()) {
         return;
