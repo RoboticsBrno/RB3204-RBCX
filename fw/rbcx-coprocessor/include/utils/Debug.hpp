@@ -17,8 +17,8 @@ inline void DEBUG_HEX(const uint8_t* data, size_t len) {
     char buf[] = { '0', '0', ' ' };
 
     for (size_t i = 0; i < len; ++i) {
-        buf[0] = hex[data[i] & 0xF];
-        buf[1] = hex[data[i] >> 4];
+        buf[0] = hex[data[i] >> 4];
+        buf[1] = hex[data[i] & 0xF];
         fwrite(buf, sizeof(buf), 1, stdout);
     }
     putchar('\n');
