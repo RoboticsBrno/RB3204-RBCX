@@ -11,6 +11,7 @@
 #include "stm32f1xx_ll_usart.h"
 
 #include "Bsp.hpp"
+#include "Esp32Manager.hpp"
 #include "coproc_codec.h"
 #include "coproc_link_parser.h"
 #include "rbcx.pb.h"
@@ -30,6 +31,16 @@ static std::array<uint8_t, codec.MaxFrameSize> txDmaBuf;
 static StaticMessageBuffer_t _txMessageBufStruct;
 static uint8_t _txMessageBufStorage[512];
 static MessageBufferHandle_t txMessageBuf;
+
+void esp32Pin0Restore() {
+    pinInit(
+        controlUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
+}
+
+void esp32Pin2Restore() {
+    pinInit(controlUartRxPin, GPIO_MODE_AF_INPUT, GPIO_PULLUP,
+        GPIO_SPEED_FREQ_HIGH);
+}
 
 void controlUartInit() {
     LL_USART_InitTypeDef init;
@@ -73,11 +84,6 @@ void controlUartInit() {
 
     txMessageBuf = xMessageBufferCreateStatic(sizeof(_txMessageBufStorage),
         _txMessageBufStorage, &_txMessageBufStruct);
-
-    pinInit(
-        controlUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
-    pinInit(controlUartRxPin, GPIO_MODE_AF_INPUT, GPIO_PULLUP,
-        GPIO_SPEED_FREQ_HIGH);
 }
 
 bool controlLinkRx(CoprocReq& incoming) {
