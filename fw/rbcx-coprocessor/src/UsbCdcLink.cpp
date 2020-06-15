@@ -4,8 +4,18 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "CdcUartTunnel.hpp"
+#include "Esp32Manager.hpp"
 #include "UsbCdcLink.h"
 #include "usb_cdc.h"
+#include "utils/Debug.hpp"
+
+extern "C" {
+extern const struct usb_string_descriptor lang_desc;
+extern const struct usb_string_descriptor manuf_desc_en;
+extern const struct usb_string_descriptor prod_desc_en;
+extern const struct usb_string_descriptor cdc_iface_desc_en;
+};
 
 struct cdc_config {
     struct usb_config_descriptor config;
@@ -134,14 +144,6 @@ static const struct cdc_config config_desc = {
     },
 };
 
-static const struct usb_string_descriptor lang_desc
-    = USB_ARRAY_DESC(USB_LANGID_ENG_US);
-static const struct usb_string_descriptor manuf_desc_en
-    = USB_STRING_DESC("robotikabrno.cz");
-static const struct usb_string_descriptor prod_desc_en
-    = USB_STRING_DESC("RBCX");
-static const struct usb_string_descriptor cdc_iface_desc_en
-    = USB_STRING_DESC("RBCX Serial");
 static const struct usb_string_descriptor* const dtable[] = {
     &lang_desc,
     &manuf_desc_en,
@@ -197,11 +199,24 @@ static usbd_respond cdc_control(
             == (USB_REQ_INTERFACE | USB_REQ_CLASS)
         && req->wIndex == 0) {
         switch (req->bRequest) {
-        case USB_CDC_SET_CONTROL_LINE_STATE:
+        case USB_CDC_SET_CONTROL_LINE_STATE: {
+            const bool dtr = req->wValue & 0x01;
+            const bool rts = req->wValue & 0x02;
+            //DEBUG("CONTROL_LINE_STATE DTR %d RTS %d\n", (int)dtr, (int)rts);
+            sEsp32Manager.onSerialBreak(dtr, rts);
             return usbd_ack;
-        case USB_CDC_SET_LINE_CODING:
-            memcpy(req->data, &cdc_line, sizeof(cdc_line));
+        }
+        case USB_CDC_SET_LINE_CODING: {
+            if (req->wLength < sizeof(cdc_line))
+                return usbd_fail;
+            auto* newCoding = (struct usb_cdc_line_coding*)req->data;
+            if (!tunnelOnSetLineCoding(cdc_line, *newCoding))
+                return usbd_fail;
+            memcpy(&cdc_line, req->data, sizeof(cdc_line));
+            //DEBUG("USB_CDC_SET_LINE_CODING %d %d %d %d\n", cdc_line.dwDTERate,
+            //  cdc_line.bCharFormat, cdc_line.bDataBits, cdc_line.bParityType);
             return usbd_ack;
+        }
         case USB_CDC_GET_LINE_CODING:
             dev->status.data_ptr = &cdc_line;
             dev->status.data_count = sizeof(cdc_line);

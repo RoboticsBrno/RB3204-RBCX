@@ -1,6 +1,7 @@
 #pragma once
 /// Board Support Package maps application onto concrete pins/peripherals
 
+#include "FreeRTOSConfig.h"
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_gpio.h"
 #include "stm32f1xx_ll_utils.h"
@@ -115,6 +116,12 @@ inline const PinDef servoPins = std::make_pair(GPIOA,
     servo1Pin.second | servo2Pin.second | servo3Pin.second | servo4Pin.second);
 
 inline TIM_TypeDef* const servoTimer = TIM5;
+
+inline const PinDef espEnPin = std::make_pair(GPIOC, GPIO_PIN_8);
+inline const PinDef esp0Pin = std::make_pair(GPIOC, GPIO_PIN_10);
+inline const PinDef esp2Pin = std::make_pair(GPIOC, GPIO_PIN_11);
+inline const PinDef esp12Pin = std::make_pair(GPIOB, GPIO_PIN_15);
+inline const PinDef esp15Pin = std::make_pair(GPIOB, GPIO_PIN_14);
 
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
@@ -254,6 +261,10 @@ inline void pinsInit() {
     // Set UART5 pins to high impedance so we can override them from pinheads
     pinInit(uart5TxPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
     pinInit(uart5RxPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+
+    // Configure IRQ on espEnPin pin
+    HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
+    HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 }
 
 inline bool isPressed(PinDef button) {

@@ -11,6 +11,7 @@
 #include "ControlLink.hpp"
 #include "DebugLink.hpp"
 #include "Dispatcher.hpp"
+#include "Esp32Manager.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
 #include "UsbCdcLink.h"
@@ -22,10 +23,11 @@ int main() {
     HAL_Init();
     pinsInit();
     debugUartInit();
+    sEsp32Manager.init();
+    cdcLinkInit();
     dispatcherInit();
     tunnelUartInit();
     controlUartInit();
-    cdcLinkInit();
     stupidServoInit();
     ultrasoundInit();
 
