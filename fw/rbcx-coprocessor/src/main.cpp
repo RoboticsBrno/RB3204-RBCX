@@ -12,6 +12,7 @@
 #include "DebugLink.hpp"
 #include "Dispatcher.hpp"
 #include "Esp32Manager.hpp"
+#include "Power.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
 #include "UsbCdcLink.h"
