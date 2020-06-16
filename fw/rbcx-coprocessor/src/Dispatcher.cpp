@@ -4,6 +4,7 @@
 #include "Bsp.hpp"
 #include "ControlLink.hpp"
 #include "StupidServoController.hpp"
+#include "UltrasoundController.hpp"
 #include "queue.h"
 #include "rbcx.pb.h"
 
@@ -42,8 +43,12 @@ void dispatcherPoll() {
         case CoprocReq_setStupidServo_tag:
             stupidServoDispatch(request.payload.setStupidServo);
             break;
+        case CoprocReq_ultrasoundReq_tag:
+            ultrasoundDispatch(request.payload.ultrasoundReq);
+            break;
         }
     }
+
     if (xQueueReceive(statusQueue, &status, 0) == pdTRUE) {
         controlLinkTx(status);
     }

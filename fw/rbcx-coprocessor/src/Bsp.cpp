@@ -1,5 +1,10 @@
 #include "Bsp.hpp"
 #include "Esp32Manager.hpp"
+#include "UltrasoundController.hpp"
+
+extern "C" void EXTI1_IRQHandler(void) { HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1); }
+
+extern "C" void EXTI3_IRQHandler(void) { HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3); }
 
 extern "C" void EXTI9_5_IRQHandler(void) {
     HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
@@ -12,6 +17,8 @@ extern "C" void EXTI9_5_IRQHandler(void) {
 extern "C" void HAL_GPIO_EXTI_Callback(uint16_t pin) {
     if (pin == espEnPin.second) {
         sEsp32Manager.onEnRising();
-        __HAL_GPIO_EXTI_CLEAR_IT(espEnPin.second);
+    }
+    if (pin & utsEchoPins.second) {
+        ultrasoundOnEchoEdge();
     }
 }

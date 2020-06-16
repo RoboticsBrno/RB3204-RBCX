@@ -2,8 +2,7 @@
 
 #include "Bsp.hpp"
 #include "ControlLink.hpp"
-#include "stm32f1xx_hal.h"
-#include "stm32f1xx_ll_rcc.h"
+#include "stm32f1xx_hal_rcc.h"
 #include "stm32f1xx_ll_tim.h"
 
 static uint32_t pwmCenterValue;
@@ -12,8 +11,7 @@ static float pwmCoef;
 void stupidServoInit() {
     LL_TIM_InitTypeDef pwmInit;
     LL_TIM_StructInit(&pwmInit);
-    auto apb1TimClk = 2
-        * __LL_RCC_CALC_PCLK1_FREQ(SystemCoreClock, LL_RCC_GetAPB1Prescaler());
+    auto apb1TimClk = 2 * HAL_RCC_GetPCLK1Freq();
 
     // 1/50 s :
     pwmInit.Autoreload = 65535;

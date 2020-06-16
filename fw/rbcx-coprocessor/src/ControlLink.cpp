@@ -78,7 +78,7 @@ void controlUartInit() {
     dmaTxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
     dmaTxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
     HAL_DMA_Init(&dmaTxHandle);
-    HAL_NVIC_SetPriority(controlUartTxDmaIRQn, controlUartTxDmaIrqPrio, 0);
+    HAL_NVIC_SetPriority(controlUartTxDmaIRQn, controlUartTxDmaIRQnPrio, 0);
     HAL_NVIC_EnableIRQ(controlUartTxDmaIRQn);
     LL_USART_EnableDMAReq_TX(controlUart);
 
