@@ -143,11 +143,12 @@ inline void clocksInit() {
 }
 
 inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode,
-    uint32_t pull, uint32_t speed) {
+    uint32_t pull, uint32_t speed, bool deInitFirst = false) {
 
     // HAL_GPIO_Init leaves some flags set if called multiple times
     // on the same pin
-    HAL_GPIO_DeInit(port, pinMask);
+    if (deInitFirst)
+        HAL_GPIO_DeInit(port, pinMask);
 
     GPIO_InitTypeDef init;
     init.Pin = pinMask;
@@ -157,8 +158,9 @@ inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode,
     HAL_GPIO_Init(port, &init);
 }
 
-inline void pinInit(PinDef pin, uint32_t mode, uint32_t pull, uint32_t speed) {
-    pinInit(pin.first, pin.second, mode, pull, speed);
+inline void pinInit(PinDef pin, uint32_t mode, uint32_t pull, uint32_t speed,
+    bool deInitFirst = false) {
+    pinInit(pin.first, pin.second, mode, pull, speed, deInitFirst);
 }
 
 inline bool pinRead(PinDef pin) {

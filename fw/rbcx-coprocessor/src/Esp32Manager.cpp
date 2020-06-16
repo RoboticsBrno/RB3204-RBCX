@@ -58,8 +58,8 @@ void Esp32Manager::poll() {
 
 void Esp32Manager::holdReset(EnHolderType typ) {
     if (m_enPinHolders == 0) {
-        pinInit(
-            espEnPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+        pinInit(espEnPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW,
+            true);
         pinWrite(espEnPin, 0);
     }
     m_enPinHolders |= (1 << typ);
@@ -71,7 +71,7 @@ void Esp32Manager::releaseReset(EnHolderType typ, bool strapForBootloader) {
         strapPins(strapForBootloader);
         pinWrite(espEnPin, 1);
         pinInit(espEnPin, GPIO_MODE_IT_RISING_FALLING, GPIO_NOPULL,
-            GPIO_SPEED_FREQ_LOW);
+            GPIO_SPEED_FREQ_LOW, true);
         m_unstrapAt = xTaskGetTickCount() + 2;
     }
 }
