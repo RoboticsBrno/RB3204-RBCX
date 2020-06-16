@@ -87,13 +87,15 @@ void ultrasoundInit() {
 
 void ultrasoundDispatch(const CoprocReq_UltrasoundReq& request) {
     if (request.utsIndex > 3) {
-        DEBUG("Ultrasound index %lu out of range", request.utsIndex);
+        DEBUG("Ultrasound index %lu out of range\n", request.utsIndex);
         return;
     }
 
     switch (request.which_utsCmd) {
     case CoprocReq_UltrasoundReq_singlePing_tag:
-        trigQueue.push_back(request.utsIndex, 0);
+        if (!trigQueue.push_back(request.utsIndex, 0)) {
+            DEBUG("Ultrasound TRIG queue overflow\n");
+        }
         break;
     }
 }
