@@ -25,10 +25,6 @@ bool dispatcherEnqueueStatus(const CoprocStat& status) {
     return xQueueSendToBack(statusQueue, &status, 0) == pdTRUE;
 }
 
-bool dispatcherEnqueueStatusFromISR(const CoprocStat& status) {
-    return xQueueSendToBackFromISR(statusQueue, &status, 0) == pdTRUE;
-}
-
 void dispatcherPoll() {
     if (controlLinkRx(request)) {
         status = CoprocStat_init_default;

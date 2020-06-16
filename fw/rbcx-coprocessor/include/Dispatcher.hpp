@@ -4,5 +4,4 @@
 
 void dispatcherInit();
 bool dispatcherEnqueueStatus(const CoprocStat& status);
-bool dispatcherEnqueueStatusFromISR(const CoprocStat& status);
 void dispatcherPoll();

@@ -51,9 +51,7 @@ inline const std::array<PinDef, 4> utsTrigPin
 inline const std::array<PinDef, 4> utsEchoPin
     = { uts1EchoPin, uts2EchoPin, uts3EchoPin, uts4EchoPin };
 
-#define UTSTIMER_HANDLER TIM7_IRQHandler
 inline const uint32_t utsIRQPrio = 7;
-inline const IRQn_Type utsTimerIRQn = TIM7_IRQn;
 inline const std::array<IRQn_Type, 4> utsEchoIRQn = {
     EXTI1_IRQn,
     EXTI3_IRQn,
