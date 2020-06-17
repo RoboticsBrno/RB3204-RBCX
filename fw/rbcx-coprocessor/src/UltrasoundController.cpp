@@ -6,26 +6,17 @@
 #include "utils/Debug.hpp"
 #include "utils/QueueWrapper.hpp"
 #include "utils/TaskWrapper.hpp"
-#include <optional>
 
 #include "Bsp.hpp"
 #include "Dispatcher.hpp"
 
 static const uint16_t pingTimeoutMs = 30;
-static const uint16_t echoTimeoutMs = 200;
+static const uint16_t echoRestoreTimeoutMs = 180;
 static CoprocStat status;
 static int utsActiveIndex;
-static uint16_t risingEdgeMicros;
+static uint32_t risingMicros;
 static TaskWrapper<512> utsTask;
 static QueueWrapper<int, 16> trigQueue;
-
-static void enqueueStatus(int utsIndex, uint16_t microseconds) {
-    status = CoprocStat_init_default;
-    status.which_payload = CoprocStat_ultrasoundStat_tag;
-    status.payload.ultrasoundStat.utsIndex = utsIndex;
-    status.payload.ultrasoundStat.roundtripMicrosecs = microseconds;
-    dispatcherEnqueueStatus(status);
-}
 
 void ultrasoundInit() {
     LL_TIM_InitTypeDef timInit;
@@ -48,14 +39,23 @@ void ultrasoundInit() {
             trigQueue.pop_front(utsIndex);
 
             // Wait for potential ECHO high
-            while (pinRead(utsEchoPin[utsIndex])) {
-                vTaskDelay(pdMS_TO_TICKS(5));
-            }
-            if (pinRead(utsEchoPin[utsIndex])) {
-                DEBUG("ECHO %d hanging high", utsIndex);
+            auto echoWait = [=]() {
+                TickType_t before = xTaskGetTickCount();
+                while (pinRead(utsEchoPin[utsIndex])) {
+                    if ((xTaskGetTickCount() - before)
+                        > pdMS_TO_TICKS(echoRestoreTimeoutMs)) {
+                        return false;
+                    }
+                    vTaskDelay(pdMS_TO_TICKS(5));
+                }
+                return true;
+            };
+            if (!echoWait()) {
+                DEBUG("Ultrasound ECHO %d hanging high\n", utsIndex);
                 continue;
             }
 
+            // Reset timer
             LL_TIM_GenerateEvent_UPDATE(utsTimer);
             LL_TIM_ClearFlag_UPDATE(utsTimer);
 
@@ -71,16 +71,19 @@ void ultrasoundInit() {
 
             // Wait for ECHO measurement from ISR
             utsActiveIndex = utsIndex;
+            xTaskNotifyStateClear(nullptr);
             LL_EXTI_EnableIT_0_31(utsEchoPin[utsIndex].second);
-            uint32_t micros;
-            auto success = xTaskNotifyWait(
+            uint32_t micros = 0;
+            auto ok = xTaskNotifyWait(
                 0U, ~0U, &micros, pdMS_TO_TICKS(pingTimeoutMs));
             LL_EXTI_DisableIT_0_31(utsEchoPin[utsIndex].second);
-            if (success) {
-                enqueueStatus(utsIndex, micros);
-            } else {
-                enqueueStatus(utsIndex, 0);
-            }
+
+            // Send measurement
+            status = CoprocStat_init_default;
+            status.which_payload = CoprocStat_ultrasoundStat_tag;
+            status.payload.ultrasoundStat.utsIndex = utsIndex;
+            status.payload.ultrasoundStat.roundtripMicrosecs = ok ? micros : 0;
+            dispatcherEnqueueStatus(status);
         }
     });
 }
@@ -101,15 +104,19 @@ void ultrasoundDispatch(const CoprocReq_UltrasoundReq& request) {
 }
 
 void ultrasoundOnEchoEdge() {
-    auto stampMicros = LL_TIM_GetCounter(utsTimer);
+    auto nowMicros = LL_TIM_GetCounter(utsTimer);
 
     if (pinRead(utsEchoPin[utsActiveIndex])) {
-        risingEdgeMicros = stampMicros;
-    } else if (risingEdgeMicros > 0) {
-        uint32_t deltaMicros = stampMicros - risingEdgeMicros;
+        risingMicros = nowMicros;
+    } else if (risingMicros > 0) {
+        uint32_t resultMicros = nowMicros - risingMicros;
+        if (nowMicros < risingMicros) {
+            resultMicros = 0;
+        }
+
         BaseType_t woken = 0;
         xTaskNotifyFromISR(
-            utsTask.handle(), deltaMicros, eSetValueWithOverwrite, &woken);
+            utsTask.handle(), resultMicros, eSetValueWithoutOverwrite, &woken);
         portYIELD_FROM_ISR(woken);
     }
 }
