@@ -13814,93 +13814,6 @@ DIN A3, landscape with location and doc. field</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="con-wago-508" urn="urn:adsk.eagle:library:196">
-<description>&lt;b&gt;Wago Screw Clamps&lt;/b&gt;&lt;p&gt;
-Grid 5.08 mm&lt;p&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="W237-132" urn="urn:adsk.eagle:footprint:10712/1" library_version="1">
-<description>&lt;b&gt;WAGO SREW CLAMP&lt;/b&gt;</description>
-<wire x1="-3.5306" y1="-1.651" x2="-1.524" y2="0.3556" width="0.254" layer="51"/>
-<wire x1="1.6256" y1="-1.6764" x2="3.5306" y2="0.3556" width="0.254" layer="51"/>
-<wire x1="-5.08" y1="4.191" x2="5.08" y2="4.191" width="0.1524" layer="21"/>
-<wire x1="5.08" y1="-4.826" x2="5.08" y2="-2.413" width="0.1524" layer="21"/>
-<wire x1="5.08" y1="-4.826" x2="-5.08" y2="-4.826" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="4.191" x2="-5.08" y2="-2.413" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="-2.413" x2="-3.429" y2="-2.413" width="0.1524" layer="21"/>
-<wire x1="-3.429" y1="-2.413" x2="-1.651" y2="-2.413" width="0.1524" layer="51"/>
-<wire x1="-1.651" y1="-2.413" x2="1.651" y2="-2.413" width="0.1524" layer="21"/>
-<wire x1="3.429" y1="-2.413" x2="5.08" y2="-2.413" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="-2.413" x2="-5.08" y2="-4.826" width="0.1524" layer="21"/>
-<wire x1="5.08" y1="-2.413" x2="5.08" y2="4.191" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="4.191" x2="-5.08" y2="4.445" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="4.445" x2="5.08" y2="4.445" width="0.1524" layer="21"/>
-<wire x1="5.08" y1="4.191" x2="5.08" y2="4.445" width="0.1524" layer="21"/>
-<wire x1="1.651" y1="-2.413" x2="3.429" y2="-2.413" width="0.1524" layer="51"/>
-<circle x="-2.54" y="-0.635" radius="1.4986" width="0.1524" layer="51"/>
-<circle x="-2.54" y="2.8448" radius="0.508" width="0.1524" layer="21"/>
-<circle x="2.54" y="-0.635" radius="1.4986" width="0.1524" layer="51"/>
-<circle x="2.54" y="2.8448" radius="0.508" width="0.1524" layer="21"/>
-<pad name="1" x="-2.54" y="-0.635" drill="1.1938" shape="long" rot="R90"/>
-<pad name="2" x="2.54" y="-0.635" drill="1.1938" shape="long" rot="R90"/>
-<text x="-4.445" y="1.27" size="1.27" layer="51" ratio="10">1</text>
-<text x="0.6858" y="1.2192" size="1.27" layer="51" ratio="10">2</text>
-<text x="-3.81" y="-6.985" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-<text x="-3.81" y="-4.318" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-</package>
-</packages>
-<packages3d>
-<package3d name="W237-132" urn="urn:adsk.eagle:package:10734/1" type="box" library_version="1">
-<description>WAGO SREW CLAMP</description>
-<packageinstances>
-<packageinstance name="W237-132"/>
-</packageinstances>
-</package3d>
-</packages3d>
-<symbols>
-<symbol name="KL" urn="urn:adsk.eagle:symbol:10710/1" library_version="1">
-<wire x1="1.778" y1="0" x2="2.54" y2="0" width="0.1524" layer="94"/>
-<circle x="0.889" y="0" radius="0.898" width="0.254" layer="94"/>
-<text x="-1.27" y="0.889" size="1.778" layer="95" rot="R180">&gt;NAME</text>
-<pin name="KL" x="5.08" y="0" visible="off" length="short" direction="pas" rot="R180"/>
-</symbol>
-<symbol name="KL+V" urn="urn:adsk.eagle:symbol:10711/1" library_version="1">
-<wire x1="1.778" y1="0" x2="2.54" y2="0" width="0.1524" layer="94"/>
-<circle x="0.889" y="0" radius="0.898" width="0.254" layer="94"/>
-<text x="0" y="2.54" size="1.778" layer="96">&gt;VALUE</text>
-<text x="-1.27" y="0.889" size="1.778" layer="95" rot="R180">&gt;NAME</text>
-<pin name="KL" x="5.08" y="0" visible="off" length="short" direction="pas" rot="R180"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="W237-02P" urn="urn:adsk.eagle:component:10750/1" prefix="X" uservalue="yes" library_version="1">
-<description>&lt;b&gt;WAGO SREW CLAMP&lt;/b&gt;</description>
-<gates>
-<gate name="-1" symbol="KL" x="0" y="0" addlevel="always"/>
-<gate name="-2" symbol="KL+V" x="0" y="-5.08" addlevel="always"/>
-</gates>
-<devices>
-<device name="" package="W237-132">
-<connects>
-<connect gate="-1" pin="KL" pad="1"/>
-<connect gate="-2" pin="KL" pad="2"/>
-</connects>
-<package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:10734/1"/>
-</package3dinstances>
-<technologies>
-<technology name="">
-<attribute name="MF" value="" constant="no"/>
-<attribute name="MPN" value="" constant="no"/>
-<attribute name="OC_FARNELL" value="unknown" constant="no"/>
-<attribute name="OC_NEWARK" value="unknown" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="transistors">
 <packages>
 <package name="SOT323">
@@ -18126,12 +18039,47 @@ Grid 5.08 mm&lt;p&gt;
 <text x="-6.604" y="-4.318" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 <text x="-6.985" y="-6.858" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 </package>
+<package name="W237-132" urn="urn:adsk.eagle:footprint:10712/1">
+<description>&lt;b&gt;WAGO SREW CLAMP&lt;/b&gt;</description>
+<wire x1="-3.5306" y1="-1.651" x2="-1.524" y2="0.3556" width="0.254" layer="51"/>
+<wire x1="1.6256" y1="-1.6764" x2="3.5306" y2="0.3556" width="0.254" layer="51"/>
+<wire x1="-5.08" y1="4.191" x2="5.08" y2="4.191" width="0.1524" layer="21"/>
+<wire x1="5.08" y1="-4.826" x2="5.08" y2="-2.413" width="0.1524" layer="21"/>
+<wire x1="5.08" y1="-4.826" x2="-5.08" y2="-4.826" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="4.191" x2="-5.08" y2="-2.413" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="-2.413" x2="-3.429" y2="-2.413" width="0.1524" layer="21"/>
+<wire x1="-3.429" y1="-2.413" x2="-1.651" y2="-2.413" width="0.1524" layer="51"/>
+<wire x1="-1.651" y1="-2.413" x2="1.651" y2="-2.413" width="0.1524" layer="21"/>
+<wire x1="3.429" y1="-2.413" x2="5.08" y2="-2.413" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="-2.413" x2="-5.08" y2="-4.826" width="0.1524" layer="21"/>
+<wire x1="5.08" y1="-2.413" x2="5.08" y2="4.191" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="4.191" x2="-5.08" y2="4.445" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="4.445" x2="5.08" y2="4.445" width="0.1524" layer="21"/>
+<wire x1="5.08" y1="4.191" x2="5.08" y2="4.445" width="0.1524" layer="21"/>
+<wire x1="1.651" y1="-2.413" x2="3.429" y2="-2.413" width="0.1524" layer="51"/>
+<circle x="-2.54" y="-0.635" radius="1.4986" width="0.1524" layer="51"/>
+<circle x="-2.54" y="2.8448" radius="0.508" width="0.1524" layer="21"/>
+<circle x="2.54" y="-0.635" radius="1.4986" width="0.1524" layer="51"/>
+<circle x="2.54" y="2.8448" radius="0.508" width="0.1524" layer="21"/>
+<pad name="1" x="-2.54" y="-0.635" drill="1.1938" shape="long" rot="R90"/>
+<pad name="2" x="2.54" y="-0.635" drill="1.1938" shape="long" rot="R90"/>
+<text x="-4.445" y="1.27" size="1.27" layer="51" ratio="10">1</text>
+<text x="0.6858" y="1.2192" size="1.27" layer="51" ratio="10">2</text>
+<text x="-3.81" y="-6.985" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<text x="-3.81" y="-4.318" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+</package>
 </packages>
 <packages3d>
 <package3d name="W237-133" urn="urn:adsk.eagle:package:10737/1" type="box">
 <description>WAGO SREW CLAMP</description>
 <packageinstances>
 <packageinstance name="W237-133"/>
+</packageinstances>
+</package3d>
+<package3d name="W237-132" urn="urn:adsk.eagle:package:10734/1" type="box">
+<description>WAGO SREW CLAMP</description>
+<packageinstances>
+<packageinstance name="W237-132"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -18175,6 +18123,33 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="OC_FARNELL" value="unknown" constant="no"/>
 <attribute name="OC_NEWARK" value="unknown" constant="no"/>
 <attribute name="POPULARITY" value="3" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="W237-02P" urn="urn:adsk.eagle:component:10750/2" prefix="X" uservalue="yes">
+<description>&lt;b&gt;WAGO SREW CLAMP&lt;/b&gt;</description>
+<gates>
+<gate name="-1" symbol="KL" x="0" y="0" addlevel="always"/>
+<gate name="-2" symbol="KL+V" x="0" y="-5.08" addlevel="always"/>
+</gates>
+<devices>
+<device name="" package="W237-132">
+<connects>
+<connect gate="-1" pin="KL" pad="1"/>
+<connect gate="-2" pin="KL" pad="2"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:10734/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+<attribute name="POPULARITY" value="10" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -18270,7 +18245,7 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
-<part name="X2" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="POWER_OUT"/>
+<part name="X2" library="con-wago-508" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="POWER_OUT"/>
 <part name="P+4" library="Supply" deviceset="VCC" device=""/>
 <part name="GND12" library="Supply" deviceset="GND" device=""/>
 <part name="R132" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="10k"/>
