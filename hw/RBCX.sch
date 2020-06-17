@@ -17901,28 +17901,28 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 </package>
 <package name="USB_C_VERT_THT_8PIN">
 <description>&lt;b&gt;WR-COM&lt;/B&gt;&lt;BR&gt; Micro USB 2.0 Type AB Vertical 5 Contacts</description>
-<wire x1="-4.17" y1="-1.28" x2="-4.17" y2="1.28" width="0.1" layer="51"/>
-<wire x1="-4.17" y1="-1.28" x2="4.17" y2="-1.28" width="0.1" layer="51"/>
-<wire x1="-4.17" y1="1.28" x2="4.17" y2="1.28" width="0.1" layer="51"/>
-<wire x1="4.17" y1="-1.28" x2="4.17" y2="1.28" width="0.1" layer="51"/>
-<pad name="A1" x="-3.85" y="0.4" locked="yes" drill="0.35" diameter="0.55" rot="R270"/>
-<text x="-4" y="1.5" size="0.6096" layer="25" ratio="13" rot="SR0">&gt;NAME</text>
+<wire x1="-2.9" y1="-1.28" x2="-2.9" y2="1.28" width="0.1" layer="21" curve="-180"/>
+<wire x1="-2.9" y1="-1.28" x2="2.9" y2="-1.28" width="0.1" layer="21"/>
+<wire x1="-2.9" y1="1.28" x2="2.9" y2="1.28" width="0.1" layer="21"/>
+<wire x1="2.9" y1="-1.28" x2="2.9" y2="1.28" width="0.1" layer="21" curve="180"/>
+<pad name="A1" x="-3.85" y="0.45" drill="0.35" diameter="0.55" rot="R270"/>
+<text x="-4" y="1.55" size="0.6096" layer="25" ratio="13" rot="SR0">&gt;NAME</text>
 <text x="-4" y="-2" size="0.6096" layer="27" ratio="13" rot="SR0">&gt;VALUE</text>
-<pad name="B1" x="3.85" y="-0.4" locked="yes" drill="0.35" diameter="0.55" rot="R90"/>
-<pad name="A4" x="-1.75" y="0.4" locked="yes" drill="0.35" diameter="0.55" rot="R270"/>
-<pad name="B4" x="1.75" y="-0.4" locked="yes" drill="0.35" diameter="0.55" rot="R90"/>
-<pad name="A5" x="-1.05" y="0.4" locked="yes" drill="0.35" diameter="0.55" rot="R270"/>
-<pad name="B5" x="1.05" y="-0.4" locked="yes" drill="0.35" diameter="0.55" rot="R90"/>
-<pad name="A6" x="-0.35" y="0.4" locked="yes" drill="0.35" diameter="0.55" rot="R270"/>
-<pad name="B6" x="0.35" y="-0.4" locked="yes" drill="0.35" diameter="0.55" rot="R90"/>
-<pad name="A7" x="0.35" y="0.4" locked="yes" drill="0.35" diameter="0.55" rot="R270"/>
-<pad name="B7" x="-0.35" y="-0.4" locked="yes" drill="0.35" diameter="0.55" rot="R90"/>
-<pad name="A8" x="1.05" y="0.4" locked="yes" drill="0.35" diameter="0.55" rot="R270"/>
-<pad name="B8" x="-1.05" y="-0.4" locked="yes" drill="0.35" diameter="0.55" rot="R90"/>
-<pad name="A9" x="1.75" y="0.4" locked="yes" drill="0.35" diameter="0.55" rot="R270"/>
-<pad name="B9" x="-1.75" y="-0.4" locked="yes" drill="0.35" diameter="0.55" rot="R90"/>
-<pad name="A12" x="3.85" y="0.4" locked="yes" drill="0.35" diameter="0.55" rot="R270"/>
-<pad name="B12" x="-3.85" y="-0.4" locked="yes" drill="0.35" diameter="0.55" rot="R90"/>
+<pad name="B1" x="3.85" y="-0.45" drill="0.35" diameter="0.55" rot="R90"/>
+<pad name="A4" x="-1.75" y="0.45" drill="0.35" diameter="0.55" rot="R270"/>
+<pad name="B4" x="1.75" y="-0.45" drill="0.35" diameter="0.55" rot="R90"/>
+<pad name="A5" x="-1.05" y="0.45" drill="0.35" diameter="0.55" rot="R270"/>
+<pad name="B5" x="1.05" y="-0.45" drill="0.35" diameter="0.55" rot="R90"/>
+<pad name="A6" x="-0.35" y="0.45" drill="0.35" diameter="0.55" rot="R270"/>
+<pad name="B6" x="0.35" y="-0.45" drill="0.35" diameter="0.55" rot="R90"/>
+<pad name="A7" x="0.35" y="0.45" drill="0.35" diameter="0.55" rot="R270"/>
+<pad name="B7" x="-0.35" y="-0.45" drill="0.35" diameter="0.55" rot="R90"/>
+<pad name="A8" x="1.05" y="0.45" drill="0.35" diameter="0.55" rot="R270"/>
+<pad name="B8" x="-1.05" y="-0.45" drill="0.35" diameter="0.55" rot="R90"/>
+<pad name="A9" x="1.75" y="0.45" drill="0.35" diameter="0.55" rot="R270"/>
+<pad name="B9" x="-1.75" y="-0.45" drill="0.35" diameter="0.55" rot="R90"/>
+<pad name="A12" x="3.85" y="0.45" drill="0.35" diameter="0.55" rot="R270"/>
+<pad name="B12" x="-3.85" y="-0.45" drill="0.35" diameter="0.55" rot="R90"/>
 <wire x1="-4.318" y1="-1.397" x2="-4.318" y2="1.397" width="0.05" layer="39"/>
 <wire x1="-4.318" y1="1.397" x2="4.318" y2="1.397" width="0.05" layer="39"/>
 <wire x1="4.318" y1="1.397" x2="4.318" y2="-1.397" width="0.05" layer="39"/>
