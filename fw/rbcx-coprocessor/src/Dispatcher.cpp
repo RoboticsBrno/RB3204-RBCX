@@ -1,5 +1,6 @@
 #include "Dispatcher.hpp"
 #include "FreeRTOS.h"
+#include "utils/Debug.hpp"
 
 #include "Bsp.hpp"
 #include "ControlLink.hpp"
@@ -22,7 +23,11 @@ void dispatcherInit() {
 }
 
 bool dispatcherEnqueueStatus(const CoprocStat& status) {
-    return xQueueSendToBack(statusQueue, &status, 0) == pdTRUE;
+    auto ok = xQueueSendToBack(statusQueue, &status, 0) == pdTRUE;
+    if (!ok) {
+        DEBUG("Status queue overflow\n");
+    }
+    return ok;
 }
 
 void dispatcherPoll() {

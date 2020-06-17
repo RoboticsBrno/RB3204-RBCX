@@ -64,8 +64,8 @@ void controlUartInit() {
     dmaRxHandle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
     dmaRxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
     HAL_DMA_Init(&dmaRxHandle);
-    HAL_DMA_Start(&dmaRxHandle, uint32_t(&(controlUart->DR)),
-        uint32_t(rxFifo.data()), rxFifo.size());
+    HAL_DMA_Start(&dmaRxHandle, uintptr_t(&(controlUart->DR)),
+        uintptr_t(rxFifo.data()), rxFifo.size());
     LL_USART_EnableDMAReq_RX(controlUart);
 
     // UART TX burst is started ad hoc each time
@@ -118,8 +118,8 @@ extern "C" void CONTROLUART_TX_DMA_HANDLER() {
             txDmaBuf.size(), &pxHigherPriorityTaskWoken);
 
         if (len > 0) {
-            HAL_DMA_Start_IT(&dmaTxHandle, uint32_t(txDmaBuf.data()),
-                uint32_t(&controlUart->DR), len);
+            HAL_DMA_Start_IT(&dmaTxHandle, uintptr_t(txDmaBuf.data()),
+                uintptr_t(&controlUart->DR), len);
         }
         portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
     }
