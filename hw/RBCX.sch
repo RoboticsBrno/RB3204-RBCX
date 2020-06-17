@@ -18876,7 +18876,7 @@ Grid 5.08 mm&lt;p&gt;
 <part name="R75" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="100k"/>
 <part name="GND164" library="Supply" deviceset="GND" device=""/>
 <part name="GND165" library="Supply" deviceset="GND" device=""/>
-<part name="R74" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="100k"/>
+<part name="R74" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="P+43" library="Supply" deviceset="VCC" device=""/>
 <part name="X3" library="con-molex" library_urn="urn:adsk.eagle:library:165" deviceset="52559-3092" device="" package3d_urn="urn:adsk.eagle:package:8078603/1"/>
 <part name="JP36" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="BOOT_SW"/>

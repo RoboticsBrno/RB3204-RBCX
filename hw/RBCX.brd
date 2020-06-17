@@ -5304,7 +5304,7 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="6.985" y="42.545" size="1.27" layer="25" rot="R270"/>
 <attribute name="VALUE" x="4.445" y="42.545" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="R74" library="rcl_upravena" package="R0402" value="100k" x="7.3025" y="46.83125" smashed="yes">
+<element name="R74" library="rcl_upravena" package="R0402" value="330R" x="7.3025" y="46.83125" smashed="yes">
 <attribute name="NAME" x="6.6675" y="47.46625" size="1.27" layer="25"/>
 <attribute name="VALUE" x="6.6675" y="44.92625" size="1.27" layer="27"/>
 </element>
