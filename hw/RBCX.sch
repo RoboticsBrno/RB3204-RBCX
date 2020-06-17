@@ -19048,8 +19048,6 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND163" library="Supply" deviceset="GND" device=""/>
 <part name="R81" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
 <part name="R82" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
-<part name="NC19" library="NC" deviceset="NC" device=""/>
-<part name="NC20" library="NC" deviceset="NC" device=""/>
 <part name="TP62" library="test_points" deviceset="TP" device="_06MM"/>
 <part name="TP13" library="test_points" deviceset="TP" device="_06MM"/>
 <part name="TP14" library="test_points" deviceset="TP" device="_06MM"/>
@@ -19392,6 +19390,7 @@ Grid 5.08 mm&lt;p&gt;
 <part name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="BUZZER"/>
 <part name="D35" library="diode" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="R112" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1M"/>
+<part name="JP58" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="USBC_AUX"/>
 </parts>
 <sheets>
 <sheet>
@@ -27142,8 +27141,6 @@ Jakub Streit
 <attribute name="NAME" x="136.144" y="131.064" size="1.27" layer="95" rot="MR90"/>
 <attribute name="VALUE" x="136.144" y="136.906" size="1.27" layer="96" rot="MR90"/>
 </instance>
-<instance part="NC19" gate="G$1" x="55.88" y="149.86" smashed="yes" rot="R180"/>
-<instance part="NC20" gate="G$1" x="119.38" y="142.24" smashed="yes" rot="MR180"/>
 <instance part="TP17" gate="G$1" x="71.12" y="233.68" smashed="yes">
 <attribute name="NAME" x="68.58" y="241.3" size="1.778" layer="95"/>
 <attribute name="VALUE" x="68.58" y="239.014" size="1.778" layer="96"/>
@@ -27233,6 +27230,10 @@ Jakub Streit
 <instance part="X5" gate="G$1" x="86.36" y="147.32" smashed="yes">
 <attribute name="NAME" x="86.39" y="164.73" size="1.6764" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="81.75" y="127.025" size="1.6764" layer="96"/>
+</instance>
+<instance part="JP58" gate="A" x="101.6" y="175.26" smashed="yes">
+<attribute name="NAME" x="95.25" y="183.515" size="1.27" layer="95"/>
+<attribute name="VALUE" x="95.25" y="169.418" size="1.27" layer="96" rot="MR180"/>
 </instance>
 </instances>
 <busses>
@@ -27615,7 +27616,7 @@ Jakub Streit
 <pinref part="X5" gate="G$1" pin="DP1"/>
 </segment>
 </net>
-<net name="UUSB_SHIELD" class="0">
+<net name="USB_SHIELD" class="0">
 <segment>
 <pinref part="X4" gate="G$1" pin="SHIELD"/>
 <pinref part="NC8" gate="G$1" pin="NC"/>
@@ -27984,13 +27985,23 @@ Jakub Streit
 <pinref part="R81" gate="G$1" pin="1"/>
 <pinref part="X5" gate="G$1" pin="CC2"/>
 </segment>
+<segment>
+<pinref part="JP58" gate="A" pin="4"/>
+<wire x1="99.06" y1="172.72" x2="88.9" y2="172.72" width="0.1524" layer="91"/>
+<label x="88.9" y="172.72" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
 </net>
 <net name="USB_SBU2" class="0">
 <segment>
 <wire x1="71.12" y1="149.86" x2="55.88" y2="149.86" width="0.1524" layer="91"/>
 <label x="68.072" y="150.368" size="1.27" layer="95" rot="MR0"/>
-<pinref part="NC19" gate="G$1" pin="NC"/>
 <pinref part="X5" gate="G$1" pin="SBU2"/>
+<label x="55.88" y="149.86" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="JP58" gate="A" pin="3"/>
+<wire x1="99.06" y1="175.26" x2="88.9" y2="175.26" width="0.1524" layer="91"/>
+<label x="88.9" y="175.26" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -28086,8 +28097,13 @@ Jakub Streit
 <segment>
 <wire x1="104.14" y1="142.24" x2="119.38" y2="142.24" width="0.1524" layer="91"/>
 <label x="107.442" y="142.748" size="1.27" layer="95"/>
-<pinref part="NC20" gate="G$1" pin="NC"/>
 <pinref part="X5" gate="G$1" pin="SBU1"/>
+<label x="119.38" y="142.24" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="JP58" gate="A" pin="1"/>
+<wire x1="99.06" y1="180.34" x2="88.9" y2="180.34" width="0.1524" layer="91"/>
+<label x="88.9" y="180.34" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="USB_CC1" class="0">
@@ -28097,6 +28113,11 @@ Jakub Streit
 <label x="107.442" y="150.368" size="1.27" layer="95"/>
 <pinref part="R82" gate="G$1" pin="1"/>
 <pinref part="X5" gate="G$1" pin="CC1"/>
+</segment>
+<segment>
+<pinref part="JP58" gate="A" pin="2"/>
+<wire x1="99.06" y1="177.8" x2="88.9" y2="177.8" width="0.1524" layer="91"/>
+<label x="88.9" y="177.8" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="STM-I2C-SDA" class="0">
