@@ -14595,6 +14595,115 @@ Source: http://www.onsemi.com/pub_link/Collateral/MBRA340T3-D.PDF</description>
 <rectangle x1="0.5" y1="-1.1" x2="0.8" y2="-0.5" layer="51"/>
 <rectangle x1="-0.15" y1="0.5" x2="0.15" y2="1.1" layer="51"/>
 </package>
+<package name="SOD323">
+<description>&lt;b&gt;Diode Package&lt;/b&gt; Reflow soldering&lt;p&gt;
+INFINEON, www.infineon.com/cmc_upload/0/000/010/257/eh_db_5b.pdf</description>
+<wire x1="-0.8" y1="0.55" x2="0.8" y2="0.55" width="0.1016" layer="21"/>
+<wire x1="0.8" y1="0.55" x2="0.8" y2="-0.55" width="0.1016" layer="21"/>
+<wire x1="0.8" y1="-0.55" x2="-0.8" y2="-0.55" width="0.1016" layer="21"/>
+<wire x1="-0.8" y1="-0.55" x2="-0.8" y2="0.55" width="0.1016" layer="51"/>
+<smd name="C" x="-1.25" y="0" dx="0.8" dy="0.6" layer="1"/>
+<smd name="A" x="1.25" y="0" dx="0.8" dy="0.6" layer="1"/>
+<text x="-1.65" y="0.75" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.65" y="-2" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.8" y1="-0.55" x2="0" y2="0.55" layer="21"/>
+<rectangle x1="-1.25" y1="-0.15" x2="-0.8" y2="0.15" layer="51"/>
+<rectangle x1="0.8" y1="-0.15" x2="1.25" y2="0.15" layer="51"/>
+</package>
+<package name="SOD80">
+<description>&lt;B&gt;DIODE&lt;/B&gt;</description>
+<wire x1="1.3208" y1="0.7874" x2="-1.3208" y2="0.7874" width="0.1524" layer="51"/>
+<wire x1="1.3208" y1="-0.7874" x2="-1.3208" y2="-0.7874" width="0.1524" layer="51"/>
+<wire x1="0.627" y1="0.6" x2="-0.373" y2="0" width="0.2032" layer="21"/>
+<wire x1="-0.373" y1="0" x2="0.627" y2="-0.6" width="0.2032" layer="21"/>
+<wire x1="0.627" y1="-0.6" x2="0.627" y2="0.6" width="0.2032" layer="21"/>
+<smd name="C" x="-1.7" y="0" dx="1.4" dy="1.8" layer="1"/>
+<smd name="A" x="1.7" y="0" dx="1.4" dy="1.8" layer="1"/>
+<text x="-1.524" y="1.143" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.524" y="-2.413" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-1.8542" y1="-0.8636" x2="-1.2954" y2="0.8636" layer="51"/>
+<rectangle x1="1.2954" y1="-0.8636" x2="1.8542" y2="0.8636" layer="51"/>
+<rectangle x1="-0.8636" y1="-0.7874" x2="-0.254" y2="0.7874" layer="21"/>
+</package>
+<package name="D0805">
+<description>&lt;b&gt;DIODE 0805&lt;/b&gt;</description>
+<wire x1="-0.381" y1="0.66" x2="0.381" y2="0.66" width="0.1016" layer="51"/>
+<wire x1="-0.356" y1="-0.66" x2="0.381" y2="-0.66" width="0.1016" layer="51"/>
+<smd name="A" x="-0.95" y="0" dx="1.3" dy="1.5" layer="1" roundness="30"/>
+<smd name="C" x="0.95" y="0" dx="1.3" dy="1.5" layer="1" roundness="30"/>
+<text x="-1.27" y="1.27" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.27" y="-2.54" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-1.0922" y1="-0.7239" x2="-0.3421" y2="0.7262" layer="51"/>
+<rectangle x1="0.3556" y1="-0.7239" x2="1.1057" y2="0.7262" layer="51"/>
+<rectangle x1="-0.1001" y1="-0.4001" x2="0.1001" y2="0.4001" layer="35"/>
+<wire x1="-0.15875" y1="0.3175" x2="-0.15875" y2="0" width="0.0762" layer="21"/>
+<wire x1="-0.15875" y1="0" x2="-0.15875" y2="-0.3175" width="0.0762" layer="21"/>
+<wire x1="-0.15875" y1="-0.3175" x2="0.15875" y2="0" width="0.0762" layer="21"/>
+<wire x1="0.15875" y1="0" x2="-0.15875" y2="0.3175" width="0.0762" layer="21"/>
+<wire x1="0.15875" y1="0.3175" x2="0.15875" y2="0" width="0.0762" layer="21"/>
+<wire x1="0.15875" y1="0" x2="0.15875" y2="-0.3175" width="0.0762" layer="21"/>
+<wire x1="0.15875" y1="0" x2="0.3175" y2="0" width="0.0762" layer="21"/>
+<wire x1="-0.15875" y1="0" x2="-0.3175" y2="0" width="0.0762" layer="21"/>
+</package>
+<package name="D0603">
+<description>&lt;b&gt;DIODE 0603&lt;/b&gt;</description>
+<wire x1="-0.356" y1="0.432" x2="0.356" y2="0.432" width="0.1016" layer="51"/>
+<wire x1="-0.356" y1="-0.419" x2="0.356" y2="-0.419" width="0.1016" layer="51"/>
+<smd name="A" x="-0.85" y="0" dx="1" dy="1" layer="1" roundness="30"/>
+<smd name="C" x="0.85" y="0" dx="1" dy="1" layer="1" roundness="30"/>
+<text x="-0.635" y="0.635" size="1.27" layer="25">&gt;NAME</text>
+<text x="-0.635" y="-1.905" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.8382" y1="-0.4699" x2="-0.3381" y2="0.4801" layer="51"/>
+<rectangle x1="0.3302" y1="-0.4699" x2="0.8303" y2="0.4801" layer="51"/>
+<rectangle x1="-0.1999" y1="-0.3" x2="0.1999" y2="0.3" layer="35"/>
+<wire x1="-0.15875" y1="0.3175" x2="-0.15875" y2="0" width="0.0762" layer="21"/>
+<wire x1="-0.15875" y1="0" x2="-0.15875" y2="-0.3175" width="0.0762" layer="21"/>
+<wire x1="-0.15875" y1="-0.3175" x2="0.15875" y2="0" width="0.0762" layer="21"/>
+<wire x1="0.15875" y1="0" x2="-0.15875" y2="0.3175" width="0.0762" layer="21"/>
+<wire x1="0.15875" y1="0.3175" x2="0.15875" y2="0" width="0.0762" layer="21"/>
+<wire x1="0.15875" y1="0" x2="0.15875" y2="-0.3175" width="0.0762" layer="21"/>
+<wire x1="0.15875" y1="0" x2="0.3175" y2="0" width="0.0762" layer="21"/>
+<wire x1="-0.15875" y1="0" x2="-0.3175" y2="0" width="0.0762" layer="21"/>
+</package>
+<package name="SOD882">
+<wire x1="0.45" y1="0.25" x2="-0.45" y2="0.25" width="0.1" layer="51"/>
+<wire x1="0.45" y1="-0.25" x2="-0.45" y2="-0.25" width="0.1" layer="51"/>
+<wire x1="0.2" y1="0.25" x2="-0.2" y2="0" width="0.1" layer="21"/>
+<wire x1="-0.2" y1="0" x2="0.2" y2="-0.25" width="0.1" layer="21"/>
+<wire x1="0.2" y1="-0.25" x2="0.2" y2="0.25" width="0.1" layer="21"/>
+<smd name="C" x="-0.4" y="0" dx="0.5" dy="0.7" layer="1" roundness="16"/>
+<smd name="A" x="0.4" y="0" dx="0.5" dy="0.7" layer="1" roundness="16"/>
+<text x="-1.524" y="1.143" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.524" y="-2.413" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.5" y1="-0.3" x2="-0.3" y2="0.3" layer="51"/>
+<wire x1="0.45" y1="0.25" x2="0.45" y2="-0.25" width="0.1" layer="21"/>
+<wire x1="-0.2" y1="0" x2="-0.2" y2="0.25" width="0.1" layer="21"/>
+<wire x1="-0.2" y1="0" x2="-0.2" y2="-0.25" width="0.1" layer="21"/>
+</package>
+<package name="D0402">
+<description>&lt;b&gt;CAPACITOR&lt;/b&gt;</description>
+<wire x1="-0.245" y1="0.224" x2="0.245" y2="0.224" width="0.1524" layer="51"/>
+<wire x1="0.245" y1="-0.224" x2="-0.245" y2="-0.224" width="0.1524" layer="51"/>
+<wire x1="-1.473" y1="0.483" x2="1.473" y2="0.483" width="0.0508" layer="39"/>
+<wire x1="1.473" y1="0.483" x2="1.473" y2="-0.483" width="0.0508" layer="39"/>
+<wire x1="1.473" y1="-0.483" x2="-1.473" y2="-0.483" width="0.0508" layer="39"/>
+<wire x1="-1.473" y1="-0.483" x2="-1.473" y2="0.483" width="0.0508" layer="39"/>
+<smd name="A" x="-0.65" y="0" dx="0.7" dy="0.9" layer="1" roundness="30"/>
+<smd name="C" x="0.65" y="0" dx="0.7" dy="0.9" layer="1" roundness="30"/>
+<text x="-0.635" y="0.635" size="1.27" layer="25">&gt;NAME</text>
+<text x="-0.635" y="-1.905" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.554" y1="-0.3048" x2="-0.254" y2="0.2951" layer="51"/>
+<rectangle x1="0.2588" y1="-0.3048" x2="0.5588" y2="0.2951" layer="51"/>
+<rectangle x1="-0.1999" y1="-0.3" x2="0.1999" y2="0.3" layer="35"/>
+<wire x1="-0.10875" y1="0.1175" x2="-0.10875" y2="0" width="0.0762" layer="21"/>
+<wire x1="-0.10875" y1="0" x2="-0.10875" y2="-0.1175" width="0.0762" layer="21"/>
+<wire x1="-0.10875" y1="-0.1175" x2="0.10875" y2="0" width="0.0762" layer="21"/>
+<wire x1="0.10875" y1="0" x2="-0.10875" y2="0.1175" width="0.0762" layer="21"/>
+<wire x1="0.10875" y1="0.1175" x2="0.10875" y2="0" width="0.0762" layer="21"/>
+<wire x1="0.10875" y1="0" x2="0.10875" y2="-0.1175" width="0.0762" layer="21"/>
+<wire x1="0.10875" y1="0" x2="0.2675" y2="0" width="0.0762" layer="21"/>
+<wire x1="-0.10875" y1="0" x2="-0.2675" y2="0" width="0.0762" layer="21"/>
+</package>
 </packages>
 <packages3d>
 <package3d name="SOT23" urn="urn:adsk.eagle:package:43389/2" locally_modified="yes" type="model">
@@ -14605,6 +14714,17 @@ Source: http://www.onsemi.com/pub_link/Collateral/MBRA340T3-D.PDF</description>
 </package3d>
 </packages3d>
 <symbols>
+<symbol name="D">
+<wire x1="-1.27" y1="-1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="-1.27" y2="1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
+<text x="2.54" y="0.4826" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.54" y="-2.3114" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="A" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
+<pin name="C" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+</symbol>
 <symbol name="SHOTTKY">
 <wire x1="-1.27" y1="-1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
 <wire x1="1.27" y1="0" x2="-1.27" y2="1.27" width="0.254" layer="94"/>
@@ -14682,6 +14802,99 @@ Source: http://www.onsemi.com/pub_link/Collateral/MBRA340T3-D.PDF</description>
 </symbol>
 </symbols>
 <devicesets>
+<deviceset name="DIODE" prefix="D" uservalue="yes">
+<description>&lt;B&gt;DIODE&lt;/B&gt;&lt;p&gt;
+ultra fast-recovery rectifier</description>
+<gates>
+<gate name="1" symbol="D" x="0" y="0"/>
+</gates>
+<devices>
+<device name="-SOD323" package="SOD323">
+<connects>
+<connect gate="1" pin="A" pad="A"/>
+<connect gate="1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-SOT23-13" package="SOT23">
+<connects>
+<connect gate="1" pin="A" pad="1"/>
+<connect gate="1" pin="C" pad="3"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:43389/2"/>
+</package3dinstances>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-SOD123" package="SOD123">
+<connects>
+<connect gate="1" pin="A" pad="A"/>
+<connect gate="1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-SOD80" package="SOD80">
+<connects>
+<connect gate="1" pin="A" pad="A"/>
+<connect gate="1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-SMB" package="SMB">
+<connects>
+<connect gate="1" pin="A" pad="A"/>
+<connect gate="1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-0805" package="D0805">
+<connects>
+<connect gate="1" pin="A" pad="A"/>
+<connect gate="1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-0603" package="D0603">
+<connects>
+<connect gate="1" pin="A" pad="A"/>
+<connect gate="1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-SOD882" package="SOD882">
+<connects>
+<connect gate="1" pin="A" pad="A"/>
+<connect gate="1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-0402" package="D0402">
+<connects>
+<connect gate="1" pin="A" pad="A"/>
+<connect gate="1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 <deviceset name="SHOTTKY" prefix="D" uservalue="yes">
 <gates>
 <gate name="G$1" symbol="SHOTTKY" x="0" y="0"/>
@@ -19446,7 +19659,7 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
-<part name="D1" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
+<part name="D1" library="diode" deviceset="DIODE" device="-SOD123" value="B5819W"/>
 <part name="P+45" library="Supply" deviceset="+5V" device=""/>
 <part name="D2" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
 <part name="D9" library="diode" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04"/>
@@ -21403,7 +21616,7 @@ makes filter together with gate capacitance</text>
 <attribute name="DIELECTRIC" x="121.92" y="160.02" size="1.27" layer="96" rot="MR0" display="off"/>
 <attribute name="VOLTAGE" x="121.158" y="160.02" size="1.27" layer="96" rot="R90"/>
 </instance>
-<instance part="D1" gate="G$1" x="88.9" y="215.9" smashed="yes" rot="R270">
+<instance part="D1" gate="1" x="88.9" y="215.9" smashed="yes" rot="R270">
 <attribute name="NAME" x="90.805" y="218.186" size="1.27" layer="95" rot="R270"/>
 <attribute name="VALUE" x="86.741" y="218.186" size="1.27" layer="96" rot="MR270"/>
 </instance>
@@ -21449,7 +21662,7 @@ makes filter together with gate capacitance</text>
 <pinref part="R3" gate="G$1" pin="2"/>
 <pinref part="TP2" gate="G$1" pin="TP"/>
 <wire x1="86.36" y1="198.12" x2="88.9" y2="198.12" width="0.1524" layer="91"/>
-<pinref part="D1" gate="G$1" pin="C"/>
+<pinref part="D1" gate="1" pin="C"/>
 <wire x1="88.9" y1="213.36" x2="88.9" y2="208.28" width="0.1524" layer="91"/>
 <pinref part="D2" gate="G$1" pin="C"/>
 <wire x1="96.52" y1="213.36" x2="96.52" y2="208.28" width="0.1524" layer="91"/>
@@ -22020,7 +22233,7 @@ makes filter together with gate capacitance</text>
 </segment>
 <segment>
 <pinref part="P+45" gate="1" pin="+5V"/>
-<pinref part="D1" gate="G$1" pin="A"/>
+<pinref part="D1" gate="1" pin="A"/>
 <wire x1="88.9" y1="220.98" x2="88.9" y2="218.44" width="0.1524" layer="91"/>
 </segment>
 </net>
