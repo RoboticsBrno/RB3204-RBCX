@@ -28,7 +28,7 @@ void buttonControllerPoll() {
     buttonState = newButtonState;
 
     if ((newButtonState & CoprocStat_ButtonsEnum_BOFF) != 0) {
-        powerOffAt = xTaskGetTickCount() + pdMS_TO_TICKS(500);
+        powerOffAt = xTaskGetTickCount() + pdMS_TO_TICKS(2000);
     } else {
         powerOffAt = 0;
     }
