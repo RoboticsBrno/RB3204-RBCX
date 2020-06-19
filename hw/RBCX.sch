@@ -17063,10 +17063,10 @@ Source: http://www.molex.com/product/ffc/52559.html</description>
 <circle x="0" y="0" radius="1" width="0.1524" layer="21"/>
 <text x="-3.048" y="3.683" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-3.048" y="-5.08" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-<text x="-4.818" y="1.651" size="1.27" layer="51" ratio="10">A</text>
-<text x="3.556" y="1.524" size="1.27" layer="51" ratio="10">B</text>
-<text x="-5.072" y="-2.794" size="1.27" layer="51" ratio="10">C</text>
-<text x="3.556" y="-2.794" size="1.27" layer="51" ratio="10">D</text>
+<text x="-4.818" y="1.651" size="1.27" layer="48" ratio="10">A</text>
+<text x="3.556" y="1.524" size="1.27" layer="48" ratio="10">B</text>
+<text x="-5.072" y="-2.794" size="1.27" layer="48" ratio="10">C</text>
+<text x="3.556" y="-2.794" size="1.27" layer="48" ratio="10">D</text>
 <smd name="A" x="-3" y="1.875" dx="1" dy="0.75" layer="1" roundness="20"/>
 <smd name="B" x="3" y="1.875" dx="1" dy="0.75" layer="1" roundness="20"/>
 <smd name="C" x="-3" y="-1.875" dx="1" dy="0.75" layer="1" roundness="20"/>
@@ -21072,13 +21072,12 @@ CC BY-SA 4.0</text>
 <text x="335.28" y="25.4" size="1.778" layer="97" font="vector" align="bottom-center">Released under the Creative Commons Attribution-ShareAlike 4.0 License
 https://creativecommons.org/licenses/by-sa/4.0/
 Designed by: Jaroslav Paral, Jakub Streit
-5/2020
 
 RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-5/2020</text>
+6/2020</text>
 <text x="96.52" y="76.2" size="1.27" layer="97">÷1.56 -&gt; max = 5.148 V
 Fmax = 20.2 Hz</text>
 <text x="68.58" y="185.42" size="1.27" layer="97" rot="MR0">Protection of Q1 gate over voltage spikes
@@ -23865,13 +23864,12 @@ CC BY-SA 4.0</text>
 <text x="335.28" y="25.4" size="1.778" layer="97" font="vector" align="bottom-center">Released under the Creative Commons Attribution-ShareAlike 4.0 License
 https://creativecommons.org/licenses/by-sa/4.0/
 Designed by: Jaroslav Paral, Jakub Streit
-5/2020
 
 RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-5/2020</text>
+6/2020</text>
 <text x="111.76" y="241.3" size="2.54" layer="97">I2C</text>
 <text x="208.28" y="248.92" size="2.54" layer="97">SPI</text>
 <text x="297.18" y="248.92" size="2.54" layer="97">UART</text>
@@ -27057,13 +27055,12 @@ CC BY-SA 4.0</text>
 <text x="335.28" y="25.4" size="1.778" layer="97" font="vector" align="bottom-center">Released under the Creative Commons Attribution-ShareAlike 4.0 License
 https://creativecommons.org/licenses/by-sa/4.0/
 Designed by: Jaroslav Paral, Jakub Streit
-5/2020
 
 RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-5/2020</text>
+6/2020</text>
 <text x="172.72" y="241.3" size="2.54" layer="97">PROGRAM AND DEBUG INTERFACES</text>
 <text x="116.84" y="241.3" size="2.54" layer="97">USB</text>
 <text x="218.44" y="66.04" size="2.54" layer="97">ESP UART</text>
@@ -29761,13 +29758,12 @@ CC BY-SA 4.0</text>
 <text x="335.28" y="25.4" size="1.778" layer="97" font="vector" align="bottom-center">Released under the Creative Commons Attribution-ShareAlike 4.0 License
 https://creativecommons.org/licenses/by-sa/4.0/
 Designed by: Jaroslav Paral, Jakub Streit
-5/2020
 
 RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-5/2020</text>
+6/2020</text>
 </plain>
 <instances>
 <instance part="FRAME8" gate="G$1" x="0" y="0" smashed="yes">
@@ -32301,13 +32297,12 @@ CC BY-SA 4.0</text>
 <text x="335.28" y="25.4" size="1.778" layer="97" font="vector" align="bottom-center">Released under the Creative Commons Attribution-ShareAlike 4.0 License
 https://creativecommons.org/licenses/by-sa/4.0/
 Designed by: Jaroslav Paral, Jakub Streit
-5/2020
 
 RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-5/2020</text>
+6/2020</text>
 </plain>
 <instances>
 <instance part="IC5" gate="G$1" x="170.18" y="81.28" smashed="yes">
@@ -35190,13 +35185,12 @@ CC BY-SA 4.0</text>
 <text x="335.28" y="25.4" size="1.778" layer="97" font="vector" align="bottom-center">Released under the Creative Commons Attribution-ShareAlike 4.0 License
 https://creativecommons.org/licenses/by-sa/4.0/
 Designed by: Jaroslav Paral, Jakub Streit
-5/2020
 
 RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-5/2020</text>
+6/2020</text>
 <text x="60.96" y="156.21" size="1.27" layer="97">Fmax = 160 Hz</text>
 <text x="134.62" y="156.21" size="1.27" layer="97">Fmax = 160 Hz</text>
 <text x="208.28" y="156.21" size="1.27" layer="97">Fmax = 160 Hz</text>
@@ -37908,13 +37902,12 @@ CC BY-SA 4.0</text>
 <text x="335.28" y="25.4" size="1.778" layer="97" font="vector" align="bottom-center">Released under the Creative Commons Attribution-ShareAlike 4.0 License
 https://creativecommons.org/licenses/by-sa/4.0/
 Designed by: Jaroslav Paral, Jakub Streit
-5/2020
 
 RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-5/2020</text>
+6/2020</text>
 <text x="238.76" y="150.622" size="1.778" layer="94" rot="MR180">THIS SIGNAL MUST BE HERE!</text>
 <text x="238.76" y="148.082" size="1.778" layer="94" rot="MR180">THIS SIGNAL MUST BE HERE!</text>
 <text x="238.76" y="176.022" size="1.778" layer="94" rot="MR180">THIS SIGNAL MUST BE HERE!</text>
@@ -39795,13 +39788,12 @@ CC BY-SA 4.0</text>
 <text x="335.28" y="25.4" size="1.778" layer="97" font="vector" align="bottom-center">Released under the Creative Commons Attribution-ShareAlike 4.0 License
 https://creativecommons.org/licenses/by-sa/4.0/
 Designed by: Jaroslav Paral, Jakub Streit
-5/2020
 
 RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-5/2020</text>
+6/2020</text>
 </plain>
 <instances>
 <instance part="Y1" gate="G$1" x="266.7" y="78.74" smashed="yes" rot="R90">
