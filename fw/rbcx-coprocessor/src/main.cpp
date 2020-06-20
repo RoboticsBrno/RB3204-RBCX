@@ -5,8 +5,12 @@
 #include "utils/Debug.hpp"
 #include "utils/TaskWrapper.hpp"
 
-#include "Bsp.hpp"
 #include "ButtonController.hpp"
+#include "MotorController.hpp"
+#include "StupidServoController.hpp"
+#include "UltrasoundController.hpp"
+
+#include "Bsp.hpp"
 #include "CdcUartTunnel.hpp"
 #include "ControlLink.hpp"
 #include "DebugLink.hpp"
@@ -35,6 +39,7 @@ int main() {
         stupidServoInit();
         ultrasoundInit();
         sEsp32Manager.init();
+        motorInit();
 
         DEBUG("STM32 Coprocessor initialized, v%06x " RBCX_VER_REVISION
                   RBCX_VER_DIRTY_STR "\n",
@@ -53,5 +58,3 @@ int main() {
     vTaskStartScheduler();
     abort();
 }
-
-// extern "C" void SysTick_Handler() {}
