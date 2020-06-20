@@ -92,7 +92,7 @@ inline DMA_Channel_TypeDef* const tunnelUartRxDmaChannel = DMA1_Channel5;
 
 #define DEBUGUART_TX_DMA_HANDLER DMA1_Channel7_IRQHandler
 inline const IRQn_Type debugUartTxDmaIRQn = DMA1_Channel7_IRQn;
-inline const unsigned debugUartTxDmaIrqPrio = 4;
+inline const unsigned debugUartTxDmaIrqPrio = 9;
 inline DMA_Channel_TypeDef* const debugUartTxDmaChannel = DMA1_Channel7;
 inline DMA_Channel_TypeDef* const debugUartRxDmaChannel = DMA1_Channel6;
 
