@@ -5,15 +5,17 @@
 #include "utils/Debug.hpp"
 #include "utils/TaskWrapper.hpp"
 
-#include "Bsp.hpp"
 #include "ButtonController.hpp"
+#include "MotorController.hpp"
+#include "StupidServoController.hpp"
+#include "UltrasoundController.hpp"
+
+#include "Bsp.hpp"
 #include "CdcUartTunnel.hpp"
 #include "ControlLink.hpp"
 #include "DebugLink.hpp"
 #include "Dispatcher.hpp"
 #include "Esp32Manager.hpp"
-#include "StupidServoController.hpp"
-#include "UltrasoundController.hpp"
 #include "UsbCdcLink.h"
 
 static TaskWrapper<2048> mainTask;
@@ -29,6 +31,7 @@ int main() {
     cdcLinkInit();
     stupidServoInit();
     ultrasoundInit();
+    motorInit();
 
     mainTask.start("main", 1, []() {
         DEBUG("STM32 Coprocessor initialized.\n");
@@ -44,5 +47,3 @@ int main() {
     vTaskStartScheduler();
     abort();
 }
-
-// extern "C" void SysTick_Handler() {}

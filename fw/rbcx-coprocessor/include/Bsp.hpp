@@ -102,6 +102,32 @@ inline const unsigned controlUartTxDmaIRQnPrio = 8;
 inline DMA_Channel_TypeDef* const controlUartTxDmaChannel = DMA2_Channel5;
 inline DMA_Channel_TypeDef* const controlUartRxDmaChannel = DMA2_Channel3;
 
+#define IN4PORT GPIOD
+#define IN4AMASK GPIO_PIN_1
+#define IN4BMASK GPIO_PIN_0
+inline const PinDef pwm1bPin = std::make_pair(GPIOE, GPIO_PIN_8);
+inline const PinDef pwm1aPin = std::make_pair(GPIOE, GPIO_PIN_9);
+inline const PinDef pwm2bPin = std::make_pair(GPIOE, GPIO_PIN_10);
+inline const PinDef pwm2aPin = std::make_pair(GPIOE, GPIO_PIN_11);
+inline const PinDef pwm3bPin = std::make_pair(GPIOE, GPIO_PIN_12);
+inline const PinDef pwm3aPin = std::make_pair(GPIOE, GPIO_PIN_13);
+inline const PinDef pwm4Pin = std::make_pair(GPIOE, GPIO_PIN_14);
+inline const PinDef in4bPin = std::make_pair(IN4PORT, IN4BMASK);
+inline const PinDef in4aPin = std::make_pair(IN4PORT, IN4AMASK);
+
+inline TIM_TypeDef* const pwmTimer = TIM1;
+
+inline const PinDef encoder1aPin = std::make_pair(GPIOA, GPIO_PIN_15);
+inline const PinDef encoder1bPin = std::make_pair(GPIOB, GPIO_PIN_3);
+inline const PinDef encoder2aPin = std::make_pair(GPIOB, GPIO_PIN_4);
+inline const PinDef encoder2bPin = std::make_pair(GPIOB, GPIO_PIN_5);
+inline const PinDef encoder3aPin = std::make_pair(GPIOD, GPIO_PIN_12);
+inline const PinDef encoder3bPin = std::make_pair(GPIOD, GPIO_PIN_13);
+inline const PinDef encoder4aPin = std::make_pair(GPIOC, GPIO_PIN_6);
+inline const PinDef encoder4bPin = std::make_pair(GPIOC, GPIO_PIN_7);
+
+inline TIM_TypeDef* const encoderTimer[4] = { TIM2, TIM3, TIM4, TIM8 };
+
 inline const PinDef servo1Pin = std::make_pair(GPIOA, GPIO_PIN_0);
 inline const PinDef servo2Pin = std::make_pair(GPIOA, GPIO_PIN_1);
 inline const PinDef servo3Pin = std::make_pair(GPIOA, GPIO_PIN_2);
@@ -241,6 +267,25 @@ inline void pinsInit() {
     for (auto button : buttonPin)
         pinInit(button, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_LOW);
 
+    pinInit(pwm1bPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm1aPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm2bPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm2aPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm3bPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm3aPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(pwm4Pin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(in4bPin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    pinInit(in4aPin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+
+    pinInit(encoder1aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder1bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder2aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder2bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder3aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder3bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder4aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+    pinInit(encoder4bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
+
     // USB
     pinInit(usbDnPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
     pinInit(usbDpPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
@@ -249,6 +294,8 @@ inline void pinsInit() {
     pinInit(
         usbBusDetectionPin, GPIO_MODE_INPUT, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 
+    //LL_GPIO_AF_EnableRemap_TIM1();
+    LL_GPIO_AF_Remap(AFIO_MAPR_TIM1_REMAP, AFIO_MAPR_TIM1_REMAP_FULLREMAP);
     //LL_GPIO_AF_RemapPartial1_TIM2();
     LL_GPIO_AF_Remap(AFIO_MAPR_TIM2_REMAP, AFIO_MAPR_TIM2_REMAP_PARTIALREMAP1);
     //LL_GPIO_AF_RemapPartial_TIM3();
