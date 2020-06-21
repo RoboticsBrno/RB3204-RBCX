@@ -66,13 +66,11 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
     }
 
     switch (request.which_motorCmd) {
-    case CoprocReq_MotorReq_setPwm_tag:
-        if (request.motorCmd.setPwm > 1 || request.motorCmd.setPwm < -1) {
-            DEBUG("Motor %d power out of range <-1; 1> (%dE-3).\n",
-                int(request.motorIndex), int(request.motorCmd.setPwm * 1000));
-            return;
-        }
-        setMotorPower(request.motorIndex, request.motorCmd.setPwm, false);
+    case CoprocReq_MotorReq_setPower_tag:
+        setMotorPower(request.motorIndex, request.motorCmd.setPower, false);
+        break;
+    case CoprocReq_MotorReq_setBrake_tag:
+        setMotorPower(request.motorIndex, request.motorCmd.setPower, true);
         break;
     }
 }
@@ -82,6 +80,12 @@ static void setPwmValue(TIM_TypeDef* timer, uint8_t channel, uint16_t value) {
 }
 
 static void setMotorPower(uint8_t motorIndex, float power, bool brake) {
+    if (power > 1 || power < -1) {
+        DEBUG("Motor %d power out of range <-1; 1> (%dE-3).\n", motorIndex,
+            int(power * 1000));
+        return;
+    }
+
     uint16_t pwm = fabsf(power) * maxPwm;
     setPwmValue(pwmTimer, motorIndex, pwm);
     if (pwm == 0 || brake) {
