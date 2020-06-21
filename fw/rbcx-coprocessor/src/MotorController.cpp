@@ -40,7 +40,10 @@ void motorInit() {
     LL_TIM_EnableAllOutputs(pwmTimer);
     LL_TIM_EnableCounter(pwmTimer);
 
-    // Encoders
+    for (int motorIndex : { 0, 1, 2, 3 }) {
+        setMotorPower(motorIndex, 0, false);
+    }
+
     LL_TIM_ENCODER_InitTypeDef encInit;
     encInit.EncoderMode = LL_TIM_ENCODERMODE_X4_TI12;
     encInit.IC1Polarity = LL_TIM_IC_POLARITY_RISING;
