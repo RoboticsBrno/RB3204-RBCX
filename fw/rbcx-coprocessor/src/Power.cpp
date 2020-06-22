@@ -6,7 +6,12 @@
 #include "rbcx.pb.h"
 
 void powerShutDown() {
-    DEBUG("Shutting down...\n");
+    DEBUG("Shutting down battery power...\n");
+
+    if (pinRead(usbBusDetectionPin)) {
+        pinWrite(powerPin, 0);
+        return;
+    }
 
     vTaskDelay(1);
 

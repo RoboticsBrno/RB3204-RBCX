@@ -13,6 +13,7 @@ static uint32_t powerOffAt = 0;
 void buttonControllerPoll() {
     if (powerOffAt != 0 && xTaskGetTickCount() >= powerOffAt) {
         powerShutDown();
+        powerOffAt = 0;
     }
 
     const uint32_t newButtonState = getButtons();
@@ -31,5 +32,9 @@ void buttonControllerPoll() {
         powerOffAt = xTaskGetTickCount() + pdMS_TO_TICKS(2000);
     } else {
         powerOffAt = 0;
+    }
+
+    if ((newButtonState & CoprocStat_ButtonsEnum_BON) != 0) {
+        pinWrite(powerPin, 1);
     }
 }
