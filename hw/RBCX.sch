@@ -15509,33 +15509,33 @@ General-purpose diode for high-speed switching</description>
 </package>
 <package name="SJ_2_DEFAULT">
 <description>&lt;b&gt;Solder jumper&lt;/b&gt;</description>
-<wire x1="2.009" y1="-0.766" x2="-2.009" y2="-0.766" width="0.1524" layer="21"/>
-<wire x1="2.009" y1="0.766" x2="2.263" y2="0.512" width="0.1524" layer="21" curve="-90"/>
-<wire x1="-2.263" y1="0.512" x2="-2.009" y2="0.766" width="0.1524" layer="21" curve="-90"/>
-<wire x1="-2.263" y1="-0.512" x2="-2.009" y2="-0.766" width="0.1524" layer="21" curve="90"/>
-<wire x1="2.009" y1="-0.766" x2="2.263" y2="-0.512" width="0.1524" layer="21" curve="90"/>
-<wire x1="2.263" y1="-0.512" x2="2.263" y2="0.512" width="0.1524" layer="21"/>
-<wire x1="-2.263" y1="-0.512" x2="-2.263" y2="0.512" width="0.1524" layer="21"/>
-<wire x1="-2.009" y1="0.766" x2="2.009" y2="0.766" width="0.1524" layer="21"/>
-<wire x1="1.5" y1="0" x2="2.236" y2="0" width="0.1524" layer="51"/>
-<wire x1="-1.5" y1="0" x2="-2.236" y2="0" width="0.1524" layer="51"/>
-<wire x1="0" y1="0.512" x2="0" y2="0.766" width="0.1524" layer="51"/>
-<wire x1="0" y1="-0.766" x2="0" y2="-0.512" width="0.1524" layer="51"/>
-<wire x1="1.016" y1="0.127" x2="1.016" y2="-0.127" width="0.8" layer="51" curve="-180" cap="flat"/>
-<wire x1="-1.016" y1="-0.127" x2="-1.016" y2="0.127" width="0.8" layer="51" curve="-180" cap="flat"/>
-<rectangle x1="-0.4" y1="-0.5" x2="0.4" y2="0.5" layer="51"/>
-<wire x1="-1.262" y1="-0.325" x2="-0.262" y2="-0.325" width="0.15" layer="51"/>
-<wire x1="-0.262" y1="0.325" x2="-1.262" y2="0.325" width="0.15" layer="51"/>
-<smd name="1" x="-1.4" y="0" dx="1.2" dy="1" layer="1"/>
-<smd name="2" x="0" y="0" dx="1.2" dy="1" layer="1" rot="R180"/>
-<text x="-2.397" y="1.135" size="1.27" layer="25">&gt;NAME</text>
-<text x="-2.397" y="-2.405" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.8" y1="-0.4" x2="-0.6" y2="0.4" layer="35"/>
-<wire x1="-2.132" y1="-0.67" x2="-2.132" y2="0.67" width="0.05" layer="39"/>
-<wire x1="-2.132" y1="0.67" x2="2.132" y2="0.67" width="0.05" layer="39"/>
-<wire x1="2.132" y1="0.67" x2="2.132" y2="-0.67" width="0.05" layer="39"/>
-<wire x1="2.132" y1="-0.67" x2="-2.132" y2="-0.67" width="0.05" layer="39"/>
-<smd name="3" x="1.4" y="0" dx="1.2" dy="1" layer="1" cream="no"/>
+<wire x1="2.709" y1="-0.766" x2="-1.309" y2="-0.766" width="0.1524" layer="21"/>
+<wire x1="2.709" y1="0.766" x2="2.963" y2="0.512" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-1.563" y1="0.512" x2="-1.309" y2="0.766" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-1.563" y1="-0.512" x2="-1.309" y2="-0.766" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.709" y1="-0.766" x2="2.963" y2="-0.512" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.963" y1="-0.512" x2="2.963" y2="0.512" width="0.1524" layer="21"/>
+<wire x1="-1.563" y1="-0.512" x2="-1.563" y2="0.512" width="0.1524" layer="21"/>
+<wire x1="-1.309" y1="0.766" x2="2.709" y2="0.766" width="0.1524" layer="21"/>
+<wire x1="2.2" y1="0" x2="2.936" y2="0" width="0.1524" layer="51"/>
+<wire x1="-0.8" y1="0" x2="-1.536" y2="0" width="0.1524" layer="51"/>
+<wire x1="0.7" y1="0.512" x2="0.7" y2="0.766" width="0.1524" layer="51"/>
+<wire x1="0.7" y1="-0.766" x2="0.7" y2="-0.512" width="0.1524" layer="51"/>
+<wire x1="1.716" y1="0.127" x2="1.716" y2="-0.127" width="0.8" layer="51" curve="-180" cap="flat"/>
+<wire x1="-0.316" y1="-0.127" x2="-0.316" y2="0.127" width="0.8" layer="51" curve="-180" cap="flat"/>
+<rectangle x1="0.3" y1="-0.5" x2="1.1" y2="0.5" layer="51"/>
+<wire x1="-0.562" y1="-0.325" x2="0.438" y2="-0.325" width="0.15" layer="51"/>
+<wire x1="0.438" y1="0.325" x2="-0.562" y2="0.325" width="0.15" layer="51"/>
+<smd name="1" x="-0.7" y="0" dx="1.2" dy="1" layer="1"/>
+<smd name="2" x="0.7" y="0" dx="1.2" dy="1" layer="1" rot="R180"/>
+<text x="-1.697" y="1.135" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.697" y="-2.405" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.1" y1="-0.4" x2="0.1" y2="0.4" layer="35"/>
+<wire x1="-1.432" y1="-0.67" x2="-1.432" y2="0.67" width="0.05" layer="39"/>
+<wire x1="-1.432" y1="0.67" x2="2.832" y2="0.67" width="0.05" layer="39"/>
+<wire x1="2.832" y1="0.67" x2="2.832" y2="-0.67" width="0.05" layer="39"/>
+<wire x1="2.832" y1="-0.67" x2="-1.432" y2="-0.67" width="0.05" layer="39"/>
+<smd name="3" x="2.1" y="0" dx="1.2" dy="1" layer="1" cream="no"/>
 </package>
 <package name="SJ_2" urn="urn:adsk.eagle:footprint:15439/1" locally_modified="yes">
 <description>&lt;b&gt;Solder jumper&lt;/b&gt;</description>
