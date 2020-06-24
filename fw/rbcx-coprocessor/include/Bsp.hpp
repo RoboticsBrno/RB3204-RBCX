@@ -117,6 +117,8 @@ inline const PinDef esp2Pin = std::make_pair(GPIOC, GPIO_PIN_11);
 inline const PinDef esp12Pin = std::make_pair(GPIOB, GPIO_PIN_15);
 inline const PinDef esp15Pin = std::make_pair(GPIOB, GPIO_PIN_14);
 
+inline const PinDef buzzerPin = std::make_pair(GPIOD, GPIO_PIN_7);
+
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
     RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
@@ -279,6 +281,8 @@ inline void pinsInit() {
     HAL_NVIC_EnableIRQ(EXTI1_IRQn);
     HAL_NVIC_SetPriority(EXTI3_IRQn, 7, 0); // Ultrasound
     HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+
+    pinInit(buzzerPin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 
     reinitEspStrappingPins();
 }
