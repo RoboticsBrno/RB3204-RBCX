@@ -22,14 +22,15 @@
 // [    444506][src/UsbCdcLink.cpp:205]: CONTROL_LINE_STATE DTR 0 RTS 1 <-- 1
 // [    444607][src/UsbCdcLink.cpp:205]: CONTROL_LINE_STATE DTR 0 RTS 0 <-- 2
 
+static constexpr uint32_t Esp32WatchdogTimeoutMs = 150;
+
 Esp32Manager sEsp32Manager;
 
 Esp32Manager::Esp32Manager()
-    : m_unstrapAt(0)
-    , m_checkBreaksAt(0)
-    , m_enPinHolders {}
+    : m_enPinHolders {}
     , m_queuedReset(RstNormal)
-    , m_previousEnEdge(true) {}
+    , m_previousEnEdge(true)
+    , m_inBootloader(false) {}
 
 Esp32Manager::~Esp32Manager() {}
 
@@ -40,19 +41,21 @@ void Esp32Manager::poll() {
         m_queuedReset = RstNone;
     }
 
-    if (m_unstrapAt != 0 && m_unstrapAt <= xTaskGetTickCount()) {
-        m_unstrapAt = 0;
+    if (m_unstrapTimer.poll()) {
         unstrapPins();
     }
 
-    if (m_checkBreaksAt != 0 && m_checkBreaksAt <= xTaskGetTickCount()) {
-        m_checkBreaksAt = 0;
-
+    if (m_checkBreakTimer.poll()) {
         if (m_lastRts && !m_lastDtr) {
             holdReset(EnSerialBreaks);
         } else {
             releaseReset(EnSerialBreaks, m_lastDtr && !m_lastRts);
         }
+    }
+
+    if (m_watchdogTimer.poll() && !m_inBootloader && m_previousEnEdge) {
+        DEBUG("Esp32 watchdog timed out, resetting.\n");
+        queueReset();
     }
 }
 
@@ -66,14 +69,15 @@ void Esp32Manager::holdReset(EnHolderType typ) {
 }
 
 void Esp32Manager::releaseReset(EnHolderType typ, bool strapForBootloader) {
-    m_enPinHolders &= ~(1 << typ);
-    if (m_enPinHolders == 0) {
+    const uint32_t mask = (1 << typ);
+    if (m_enPinHolders == mask) {
         strapPins(strapForBootloader);
         pinWrite(espEnPin, 1);
         pinInit(espEnPin, GPIO_MODE_IT_RISING_FALLING, GPIO_NOPULL,
             GPIO_SPEED_FREQ_LOW, true);
-        m_unstrapAt = xTaskGetTickCount() + 2;
+        m_unstrapTimer.restart(2);
     }
+    m_enPinHolders &= ~mask;
 }
 
 void Esp32Manager::queueReset(bool bootloader) {
@@ -98,6 +102,14 @@ void Esp32Manager::strapPins(bool bootloader) {
         pinInit(esp2Pin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
         pinWrite(esp2Pin, 0); // bootloader confirm
     }
+
+    m_inBootloader = bootloader;
+
+    if (bootloader) {
+        m_watchdogTimer.stop();
+    } else {
+        m_watchdogTimer.restart(Esp32WatchdogTimeoutMs * 5);
+    }
 }
 
 void Esp32Manager::unstrapPins() { reinitEspStrappingPins(); }
@@ -113,5 +125,9 @@ void Esp32Manager::onEnRising() {
 void Esp32Manager::onSerialBreak(bool dtr, bool rts) {
     m_lastDtr = dtr;
     m_lastRts = rts;
-    m_checkBreaksAt = xTaskGetTickCount() + pdMS_TO_TICKS(25);
+    m_checkBreakTimer.restart(25);
+}
+
+void Esp32Manager::resetWatchdog() {
+    m_watchdogTimer.restart(Esp32WatchdogTimeoutMs);
 }
