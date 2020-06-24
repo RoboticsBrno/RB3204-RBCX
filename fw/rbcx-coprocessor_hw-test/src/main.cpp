@@ -4,6 +4,10 @@
 #include "stm32f1xx_ll_rcc.h"
 #include "stm32f1xx_ll_rtc.h"
 #include "stm32f1xx_ll_tim.h"
+#include "stm32f1xx_ll_adc.h"
+#include "stm32f1xx_hal_adc.h"
+#include "stm32f1xx_ll_dma.h"
+#include "stm32f1xx_hal_cortex.h"
 
 #include <array>
 #include "Bsp.hpp"
@@ -33,7 +37,7 @@ void setPwmValue(TIM_TypeDef * timer, uint8_t channel, uint16_t value) {
 }
 
 void setMotorPower(uint8_t motorID, float power, bool brake = false) {
-    assert(motorID < 4);
+    assert(motorID < MOTORS_COUNT);
     if (power > 1 || power < -1) {
         //printf("Warning: motor[%u] power out of range <-1; 1> (%9.4f).\n", uint32_t(motorID), power);
         printf("Warning: motor[%d] power out of range <-1; 1> (%dE-3).\n", int(motorID), int(power*1000));
@@ -83,15 +87,64 @@ void setMotorPower(uint8_t motorID, float power, bool brake = false) {
     }
 }
 
+#define SYSTICK_LENGTH 24
+uint32_t _sysTickToUpConting(uint32_t v) {
+    return (SysTick->LOAD & SysTick_LOAD_RELOAD_Msk) - (SysTick->VAL & SysTick_VAL_CURRENT_Msk);
+}
+uint64_t _sysTickCombineHLcounters(uint32_t h, uint32_t l) {
+    return (uint64_t(h) << SYSTICK_LENGTH) | l;
+}
+static uint32_t _sysTickHigh = 0;
+uint64_t getSysTickTime() {
+    uint32_t th1 = _sysTickHigh;
+    uint32_t tl1 = SysTick->VAL;
+    uint32_t th2 = _sysTickHigh;
+    uint32_t tl2 = SysTick->VAL;
+    tl1 = _sysTickToUpConting(tl1);
+    tl2 = _sysTickToUpConting(tl2);
+    if (tl2 < tl1)
+        return _sysTickCombineHLcounters(th1, tl1);
+    return _sysTickCombineHLcounters(th2, tl2);
+}
+void systick_delay(uint64_t t) {
+    t += getSysTickTime();
+    while (t < getSysTickTime()) {}
+}
+//if (SysTick->CTRL & SysTick_CTRL_CLKSOURCE_Msk) // [http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0552a/Bhccjgga.html]
+//    _adc_prescaler /= 8;
+
+#define LL_ADC_INJ_RANK(x) (LL_ADC_INJ_RANK_1 + x - 1)
+#define ADC_POWER_ON_STABILIZATION_TIME 2
+void adcWait(uint32_t clockCycles) {
+    if (clockCycles == 0)
+        return;
+    uint32_t adcPrescaler = 1;
+    const uint32_t APB2prescaler = LL_RCC_GetAPB2Prescaler();
+    if (APB2prescaler != 0)
+        adcPrescaler <<= ((APB2prescaler - RCC_CFGR_PPRE2_DIV2) >> RCC_CFGR_PPRE2_Pos) + 1;
+    adcPrescaler *= 2 * ((LL_RCC_GetADCClockSource(RCC_CFGR_ADCPRE) >> RCC_CFGR_ADCPRE_Pos) + 1);
+    clockCycles *= adcPrescaler;
+    while(--clockCycles != 0) {}
+}
+void LL_ADC_SetChannelSamplingTimeFix(ADC_TypeDef *ADCx, uint32_t Channel, uint32_t SamplingTime) {
+    volatile uint32_t* const reg = (Channel & ADC_SMPR2_REGOFFSET) ? &ADCx->SMPR2 : &ADCx->SMPR1;
+    const uint8_t offset = (Channel & ADC_CHANNEL_SMPx_BITOFFSET_MASK) >> ADC_CHANNEL_SMPx_BITOFFSET_POS;
+    *reg = (*reg & ~(ADC_SMPR2_SMP0 << offset))
+         | (SamplingTime & ADC_SMPR2_SMP0) << offset;
+}
+
+volatile int32_t encoder[MOTORS_COUNT] = { 0 };
+volatile uint16_t rawAio[2] = { 0 };
+
 int main() {
     clocksInit();
     HAL_Init();
     pinsInit();
     tunnelUartInit();
-    controlUartInit();    
+    controlUartInit();
     cdcLinkInit();
 
-    HAL_Delay(1000);
+    //HAL_Delay(1000);
     printf("RBCX v1.0 HW test\n\t" __DATE__ " " __TIME__ " (%lu)\n", UNIX_TIMESTAMP);
     
     // RTC
@@ -105,7 +158,7 @@ int main() {
         uint32_t timeout = HAL_GetTick();
         while (!LL_RCC_LSE_IsReady()) {
             if ((HAL_GetTick() - timeout) > 1000) {
-                printf("Could not initialize 32.768 kHz Quartz.");
+                printf("Could not initialize 32.768 kHz Quartz.\n");
                 break;
             }
         }
@@ -114,8 +167,8 @@ int main() {
         LL_RTC_EnableWriteProtection(RTC);
         timeout = HAL_GetTick();
         while (!LL_RTC_IsActiveFlag_RTOF(RTC)) {
-            if ((HAL_GetTick() - timeout) > 1000) {
-                printf("RTC synchronization timeout.");
+            if ((HAL_GetTick() - timeout) > 100) { // decreased timeout, because some problem on Renatas board and no time to solve it
+                printf("RTC synchronization timeout.\n");
                 break;
             }
         }
@@ -128,13 +181,130 @@ int main() {
     LL_RTC_WaitForSynchro(RTC);
     printf("RTC time is %lu\n", LL_RTC_TIME_Get(RTC));
 
+    // ADCs
+    ADC_TypeDef * const adcs[3] = {
+        auxiliaryAdc,
+        motorCurrentAdc,
+        servoCurrentAdc };
+    for (auto adc: adcs)
+        LL_ADC_Enable(adc);
+    adcWait(ADC_POWER_ON_STABILIZATION_TIME);
+    for (auto adc: adcs)
+        LL_ADC_StartCalibration(adc);
+    for (auto adc: adcs)
+        while (LL_ADC_IsCalibrationOnGoing(adc)) {}
+    // auxiliaryADC
+    LL_DMA_InitTypeDef adc1DmaInit = {
+        .PeriphOrM2MSrcAddress = reinterpret_cast<uintptr_t>(&auxiliaryAdc->DR),
+        .MemoryOrM2MDstAddress = reinterpret_cast<uintptr_t>(rawAio),
+        .Direction = LL_DMA_DIRECTION_PERIPH_TO_MEMORY,
+        .Mode = LL_DMA_MODE_CIRCULAR,
+        .PeriphOrM2MSrcIncMode = LL_DMA_PERIPH_NOINCREMENT,
+        .MemoryOrM2MDstIncMode = LL_DMA_MEMORY_INCREMENT,
+        .PeriphOrM2MSrcDataSize = LL_DMA_PDATAALIGN_HALFWORD,
+        .MemoryOrM2MDstDataSize = LL_DMA_MDATAALIGN_HALFWORD,
+        .NbData = 2,
+        .Priority = LL_DMA_PRIORITY_MEDIUM
+    };
+    LL_DMA_Init(auxiliaryAdcDma, auxiliaryAdcDmaChannel, &adc1DmaInit);
+    LL_DMA_EnableChannel(auxiliaryAdcDma, auxiliaryAdcDmaChannel);
+    LL_DMA_EnableIT_TC(auxiliaryAdcDma, auxiliaryAdcDmaChannel);
+    LL_DMA_EnableIT_TE(auxiliaryAdcDma, auxiliaryAdcDmaChannel);
+    LL_ADC_INJ_SetTrigAuto          (auxiliaryAdc, LL_ADC_INJ_TRIG_FROM_GRP_REGULAR);
+    LL_ADC_SetSequencersScanMode    (auxiliaryAdc, LL_ADC_SEQ_SCAN_ENABLE);
+    LL_ADC_SetChannelSamplingTimeFix(auxiliaryAdc, aio1AdcChannel                 , LL_ADC_SAMPLINGTIME_1CYCLE_5);
+    LL_ADC_SetChannelSamplingTimeFix(auxiliaryAdc, aio2AdcChannel                 , LL_ADC_SAMPLINGTIME_1CYCLE_5);
+    LL_ADC_SetChannelSamplingTimeFix(auxiliaryAdc, batteryVoltageAdcChannel       , LL_ADC_SAMPLINGTIME_1CYCLE_5);
+    LL_ADC_SetChannelSamplingTimeFix(auxiliaryAdc, batteryMiddleVoltageAdcChannel , LL_ADC_SAMPLINGTIME_1CYCLE_5);
+    LL_ADC_SetChannelSamplingTimeFix(auxiliaryAdc, LL_ADC_CHANNEL_VREFINT         , LL_ADC_SAMPLINGTIME_1CYCLE_5);
+    LL_ADC_SetChannelSamplingTimeFix(auxiliaryAdc, LL_ADC_CHANNEL_TEMPSENSOR      , LL_ADC_SAMPLINGTIME_239CYCLES_5);
+    LL_ADC_REG_SetSequencerRanks    (auxiliaryAdc, aio1AdcRank                    , aio1AdcChannel);
+    LL_ADC_REG_SetSequencerRanks    (auxiliaryAdc, aio2AdcRank                    , aio2AdcChannel);
+    auxiliaryAdc->JSQR = ADC_JSQR_JL
+                       | (batteryVoltageAdcChannel       & ADC_JSQR_JSQ1) << (ADC_JSQR_JSQ2_Pos * ((batteryVoltageAdcRank           - 1) & 3))
+                       | (LL_ADC_CHANNEL_VREFINT         & ADC_JSQR_JSQ1) << (ADC_JSQR_JSQ2_Pos * ((internalReferenceVoltageAdcRank - 1) & 3))
+                       | (batteryMiddleVoltageAdcChannel & ADC_JSQR_JSQ1) << (ADC_JSQR_JSQ2_Pos * ((batteryMiddleVoltageAdcRank     - 1) & 3))
+                       | (LL_ADC_CHANNEL_TEMPSENSOR      & ADC_JSQR_JSQ1) << (ADC_JSQR_JSQ2_Pos * ((temperatureAdcRank              - 1) & 3));
+    // Next four functions does not work, fixed with previous statement
+    //LL_ADC_INJ_SetSequencerRanks (auxiliaryAdc, batteryVoltageAdcRank          , batteryVoltageAdcChannel);
+    //LL_ADC_INJ_SetSequencerRanks (auxiliaryAdc, internalReferenceVoltageAdcRank, LL_ADC_CHANNEL_VREFINT);
+    //LL_ADC_INJ_SetSequencerRanks (auxiliaryAdc, batteryMiddleVoltageAdcRank    , batteryMiddleVoltageAdcChannel);
+    //LL_ADC_INJ_SetSequencerRanks (auxiliaryAdc, temperatureAdcRank             , LL_ADC_CHANNEL_TEMPSENSOR);
+    //LL_ADC_INJ_SetSequencerLength(auxiliaryAdc, LL_ADC_INJ_SEQ_SCAN_ENABLE_4RANKS); // included in previous hotfix (its mandatory part)
+    LL_ADC_REG_SetSequencerLength(auxiliaryAdc, LL_ADC_REG_SEQ_SCAN_ENABLE_2RANKS);
+    auxiliaryAdc->CR2 = ADC_CR2_TSVREFE             // enable temperature sensor and intermal voltage reference
+                      | ADC_CR2_DMA                 // enable DMA
+                      | LL_ADC_REG_TRIG_SOFTWARE    // software trigger for regular group
+                      | LL_ADC_INJ_TRIG_SOFTWARE    // software trigger for injected group
+                      | ADC_CR2_CONT                // enable continuous mearurement mode
+                      | ADC_CR2_SWSTART             // start the first conversion
+                      | ADC_CR2_ADON;               // keep ADC enabled and start the first conversion
+    // motorCurrentADC + servoCurrentADC
+    LL_ADC_SetSequencersScanMode(motorCurrentAdc, LL_ADC_SEQ_SCAN_ENABLE);
+    LL_ADC_SetSequencersScanMode(servoCurrentAdc, LL_ADC_SEQ_SCAN_ENABLE);
+    LL_ADC_INJ_SetSequencerDiscont(motorCurrentAdc, LL_ADC_INJ_SEQ_DISCONT_1RANK);
+    motorCurrentAdc->JSQR = ADC_JSQR_JL; // first part of LL_ADC_INJ_SetSequencerRanks hotfix
+    servoCurrentAdc->JSQR = ADC_JSQR_JL; // first part of LL_ADC_INJ_SetSequencerRanks hotfix
+    for (uint8_t i = 0; i != MOTORS_COUNT; ++i) {
+        LL_ADC_SetChannelSamplingTimeFix(motorCurrentAdc, motorCurrentAdcChannel[i], LL_ADC_SAMPLINGTIME_1CYCLE_5);
+        LL_ADC_SetChannelSamplingTimeFix(servoCurrentAdc, servoCurrentAdcChannel[i], LL_ADC_SAMPLINGTIME_1CYCLE_5);
+        motorCurrentAdc->JSQR |= (motorCurrentAdcChannel[i] & ADC_JSQR_JSQ1) << (ADC_JSQR_JSQ2_Pos * i);
+        servoCurrentAdc->JSQR |= (servoCurrentAdcChannel[i] & ADC_JSQR_JSQ1) << (ADC_JSQR_JSQ2_Pos * i);
+        // Next two functions does not work, fixed with previous statements
+        //LL_ADC_INJ_SetSequencerRanks (motorCurrentAdc, LL_ADC_INJ_RANK(i+1), motorCurrentAdcChannel[i]);
+        //LL_ADC_INJ_SetSequencerRanks (servoCurrentAdc, LL_ADC_INJ_RANK(i+1), servoCurrentAdcChannel[i]);
+    }
+    //LL_ADC_INJ_SetSequencerLength(motorCurrentAdc, LL_ADC_INJ_SEQ_SCAN_ENABLE_4RANKS); // included in previous hotfix (its mandatory part)
+    //LL_ADC_INJ_SetSequencerLength(servoCurrentAdc, LL_ADC_INJ_SEQ_SCAN_ENABLE_4RANKS); // included in previous hotfix (its mandatory part)
+    LL_ADC_EnableIT_JEOS(motorCurrentAdc);
+    LL_ADC_EnableIT_JEOS(servoCurrentAdc);
+    motorCurrentAdc->CR2 = ADC_CR2_JEXTTRIG                 // enable external trigger for injected group
+                         | LL_ADC_INJ_TRIG_EXT_TIM1_TRGO    // set TIM1_TRGO as external trigger for injected group
+                         | ADC_CR2_ADON;                    // keep ADC enabled and start the first conversion
+    servoCurrentAdc->CR2 = ADC_CR2_JEXTTRIG                 // enable external trigger for injected group
+                         | LL_ADC_INJ_TRIG_EXT_TIM5_TRGO    // set TIM1_TRGO as external trigger for injected group
+                         | ADC_CR2_ADON;                    // keep ADC enabled and start the first conversion
+    // ADCs IRQ
+    HAL_NVIC_SetPriority(auxiliaryAndMotorAdcIRQn, 1, 0);
+    HAL_NVIC_SetPriority(auxiliaryAdcDmaIRQn, 1, 0);
+    HAL_NVIC_SetPriority(servoCurrentAdcIRQn, 2, 0);
+    HAL_NVIC_EnableIRQ(auxiliaryAndMotorAdcIRQn);
+    HAL_NVIC_EnableIRQ(auxiliaryAdcDmaIRQn);
+    HAL_NVIC_EnableIRQ(servoCurrentAdcIRQn);
+
+/*    constexpr uint8_t regs = 15;
+    const char* regName[regs] = {
+        "SR   ",
+        "CR1  ",
+        "CR2  ",
+        "SMPR1",
+        "SMPR2",
+        "JOFR1",
+        "JOFR2",
+        "JOFR3",
+        "JOFR4",
+        "HTR  ",
+        "LTR  ",
+        "SQR1 ",
+        "SQR2 ",
+        "SQR3 ",
+        "JSQR "
+    };
+    for (auto adc: adcs) {
+        printf("ADC %08lX\n", reinterpret_cast<uintptr_t>(adc));
+        for (uint8_t i = 0; i != regs; ++i) {
+            uint32_t v = reinterpret_cast<uint32_t*>(adc)[i];
+            printf("\t%s: %08lX\n", regName[i], v);
+        }
+    }*/
+
     // PWM
     LL_TIM_InitTypeDef TIM_PWM_Init = {
         .Prescaler = 0,
         .CounterMode = LL_TIM_COUNTERMODE_CENTER_DOWN, // this sets interrupts flag when counter reachs TOP
         .Autoreload = maxPwm,
         .ClockDivision = LL_TIM_CLOCKDIVISION_DIV1,
-        .RepetitionCounter = 0
+        .RepetitionCounter = 1                         // update generated only at undefflow, not both underflow and overflow
     };
     LL_TIM_OC_InitTypeDef TIM_OC_Init = {
         .OCMode = LL_TIM_OCMODE_PWM2,
@@ -154,6 +324,8 @@ int main() {
     }
     LL_TIM_SetOffStates(pwmTimer, LL_TIM_OSSI_DISABLE, LL_TIM_OSSR_ENABLE);
     LL_TIM_GenerateEvent_UPDATE(pwmTimer);
+    LL_TIM_SetTriggerOutput(pwmTimer, LL_TIM_TRGO_UPDATE);
+    LL_TIM_EnableBRK(pwmTimer);
     LL_TIM_EnableAllOutputs(pwmTimer);
     LL_TIM_EnableCounter(pwmTimer);
 
@@ -169,10 +341,24 @@ int main() {
         .IC2Prescaler = LL_TIM_ICPSC_DIV1,
         .IC2Filter = LL_TIM_IC_FILTER_FDIV1
     };
-    for (auto timer: encoderTimer) {
+    for (encoderTimerTableEntry_t timer_irqn: encoderTimer) {
+        auto timer = timer_irqn.first;
+        auto irqn  = timer_irqn.second;
         LL_TIM_ENCODER_Init(timer, &TIM_Encoder_Init);
+        LL_TIM_SetAutoReload(timer, 0xFFFF);
+        LL_TIM_GenerateEvent_UPDATE(timer);
+        LL_TIM_ClearFlag_UPDATE(timer);
         LL_TIM_EnableCounter(timer);
+        if (irqn == TIM2_IRQn) {
+            LL_TIM_SetTriggerInput(timer, LL_TIM_TS_TI1F_ED);
+            LL_TIM_EnableIT_TRIG(timer);
+            LL_TIM_EnableIT_UPDATE(timer);
+            HAL_NVIC_SetPriority(irqn, 1, 0);
+            HAL_NVIC_EnableIRQ(irqn);
+        }
     }
+    //HAL_NVIC_SetPriority(TIM8_TRG_COM_IRQn, 1, 0);
+    //HAL_NVIC_EnableIRQ(TIM8_TRG_COM_IRQn);
 
     // Servos
     LL_TIM_StructInit(&TIM_PWM_Init);
@@ -195,14 +381,19 @@ int main() {
     }
     LL_TIM_SetOffStates(servoTimer, LL_TIM_OSSI_DISABLE, LL_TIM_OSSR_ENABLE);
     LL_TIM_GenerateEvent_UPDATE(servoTimer);
+    LL_TIM_SetTriggerOutput(servoTimer, LL_TIM_TRGO_UPDATE);
     LL_TIM_EnableAllOutputs(servoTimer);
     LL_TIM_EnableCounter(servoTimer);
+
+    // PWM preset
+    for(uint8_t i = 0; i != MOTORS_COUNT; ++i)
+        setMotorPower(i, 0.5);
 
     // main loop
     uint8_t leds = 0x01;
     const uint32_t ledPeriod = 500;
     uint32_t nextLedTime = ledPeriod;
-    bool ledTest = true;
+    bool ledTest = false;
     bool usbConnected = false;
     float power = 0;
     float powerIncrement = 0.1;
@@ -211,6 +402,7 @@ int main() {
     const uint32_t encoderPeriod = 1000;
     uint32_t nextEncoderTime = 0;
     bool sendNewLine = false;
+    uint32_t off_timeout = 0;
     while (true) {
         const uint32_t now = HAL_GetTick();
         if (ledTest && now >= nextLedTime) {
@@ -224,20 +416,27 @@ int main() {
             nextLedTime += ledPeriod;
         }
         if (isPressed(buttonOffPin)) {
-            pinWrite(powerPin, 0);
-            pinWrite(ledPins, 0);
-            ledTest = false;
-            if (isPressed(button4Pin) && isPressed(button2Pin)) {
-                LL_RCC_ForceBackupDomainReset();
-                printf("Force BACKUP reset.\n");
+            if (off_timeout == 0) {
+                off_timeout = now + 3200;
+            } else if (now >= off_timeout) {
+                pinWrite(powerPin, 0);
+                pinWrite(ledPins, 0);
+                ledTest = false;
+                if (isPressed(button4Pin) && isPressed(button2Pin)) {
+                    LL_RCC_ForceBackupDomainReset();
+                    printf("Force BACKUP reset.\n");
+                }
+                printf("Shutting down...\n");
+                for(;;);
             }
-            printf("Shutting down...\n");
-            for(;;);
-        } else if (isPressed(buttonOnPin)) {
-            pinWrite(powerPin, 1);
-            ledTest = true;
+        } else {
+            off_timeout = 0;
+            if (isPressed(buttonOnPin)) {
+                pinWrite(powerPin, 1);
+                ledTest = true;
+            }
         }
-        for (uint8_t i = 1; i != 5; ++i) {
+        for (uint8_t i = 1; 0 && i != 5; ++i) {
             if (isPressed(buttonPin[i])) {
                 ledTest = false;
                 pinWrite(ledPin[i], 1);
@@ -245,7 +444,14 @@ int main() {
                 pinWrite(ledPin[i], 0);
             }
         }
+        if (LL_TIM_IsActiveFlag_BRK(pwmTimer)) {
+            pinWrite(led2Pin, 1);
+            LL_TIM_ClearFlag_BRK(pwmTimer);
+        } else {
+            pinWrite(led2Pin, 0);
+        }
         pinWrite(buzzerPin, isPressed(button4Pin) && isPressed(button3Pin) && !isPressed(button1Pin));
+        pinWrite(espEnPin, !(isPressed(button1Pin) && isPressed(button2Pin)));
         if (LL_RTC_IsActiveFlag_SEC(RTC)) {
             LL_RTC_ClearFlag_SEC(RTC);
             if (isPressed(button4Pin) && isPressed(button2Pin)) {
@@ -256,7 +462,7 @@ int main() {
                 sendNewLine = true;
             }
         }
-        if (now >= nextPowerTime) {
+        if (0 && now >= nextPowerTime) {
             nextPowerTime += powerPeriod;
             if (sendNewLine)
                 printf("\t");
@@ -271,13 +477,13 @@ int main() {
                 powerIncrement = -powerIncrement;
             }
         }
-        if (now >= nextEncoderTime) {
+        if (1 && now >= nextEncoderTime) {
             nextEncoderTime += encoderPeriod;
             if (sendNewLine)
                 printf("\t");
             printf("Encoders");
             for(uint8_t i = 0; i != 4; ++i) {
-                printf("%6u", encoderTimer[i]->CNT);
+                printf("%6lu", encoderTimer[i].first->CNT);
             }
             sendNewLine = true;
         }
@@ -294,12 +500,7 @@ int main() {
                 printf("USB disconnected\n");
             }
         }
-        /*if (isPressed(button1Pin) && isPressed(button3Pin) && isPressed(button4Pin)) {
-            printf("AFIO_MAPR = 0x%08X\n", AFIO->MAPR);
-            LL_GPIO_AF_Remap(AFIO_MAPR_SWJ_CFG, AFIO_MAPR_SWJ_CFG_RESET);
-            printf("JTAG enabled\n");
-            while(isPressed(button1Pin) || isPressed(button3Pin) || isPressed(button4Pin)) {}
-        }*/
+        //if ()
         cdcLinkPoll();
         tunnelPoll();
         std::array<uint8_t, 255> loopback;
@@ -311,5 +512,85 @@ int main() {
 }
 
 extern "C" void SysTick_Handler() {
+    ++_sysTickHigh;
     HAL_IncTick();
+}
+
+extern "C" void AUXILIARY_AND_MOTOR_ADC_IRQ_HANDLER() {
+    if (LL_ADC_IsEnabledIT_JEOS(auxiliaryAdc) && LL_ADC_IsActiveFlag_JEOS(auxiliaryAdc)) {
+        //pinWrite(led1Pin, 1);
+        uint16_t rawBatteryVoltage           = LL_ADC_INJ_ReadConversionData12(auxiliaryAdc, batteryVoltageAdcRank);
+        uint16_t rawBatteryMiddleVoltage     = LL_ADC_INJ_ReadConversionData12(auxiliaryAdc, batteryMiddleVoltageAdcRank);
+        uint16_t rawInternalReferenceVoltage = LL_ADC_INJ_ReadConversionData12(auxiliaryAdc, internalReferenceVoltageAdcRank);
+        uint16_t rawTemperature              = LL_ADC_INJ_ReadConversionData12(auxiliaryAdc, temperatureAdcRank);
+        // This is place for battery voltage control, if desired in interrupt
+        LL_ADC_ClearFlag_JEOS(auxiliaryAdc);
+        //pinWrite(led1Pin, 0);
+    }
+    if (LL_ADC_IsEnabledIT_JEOS(motorCurrentAdc) && LL_ADC_IsActiveFlag_JEOS(motorCurrentAdc)) {
+        //pinWrite(led2Pin, 1);
+        for (uint8_t i = 0; i != MOTORS_COUNT; ++i) {
+            uint16_t rawCurrent = LL_ADC_INJ_ReadConversionData12(motorCurrentAdc, LL_ADC_INJ_RANK(i+1));
+            // This is place for motor current regulator, just enable this interrupt
+            // Called every fourth PWM cycle
+        }
+        LL_ADC_ClearFlag_JEOS(motorCurrentAdc);
+        //pinWrite(led2Pin, 0);
+    }
+    HAL_NVIC_ClearPendingIRQ(auxiliaryAndMotorAdcIRQn);
+}
+
+extern "C" void SERVO_CURRENT_ADC_IRQ_HANDLER() {
+    if (LL_ADC_IsEnabledIT_JEOS(servoCurrentAdc) && LL_ADC_IsActiveFlag_JEOS(servoCurrentAdc)) {
+        //pinWrite(led3Pin, 1);
+        for (uint8_t i = 0; i != SERVOS_COUNT; ++i) {
+            uint16_t rawCurrent = LL_ADC_INJ_ReadConversionData12(servoCurrentAdc, LL_ADC_INJ_RANK(i+1));
+            // This is place for servo current limitation, just enable this interrupt
+        }
+        LL_ADC_ClearFlag_JEOS(servoCurrentAdc);
+        //pinWrite(led3Pin, 0);
+    }
+    HAL_NVIC_ClearPendingIRQ(servoCurrentAdcIRQn);
+}
+
+extern "C" void AUXILIARY_ADC_DMA_IRQ_HANDLER() {
+    if (LL_DMA_IsActiveFlag_GI1(auxiliaryAdcDma) || LL_DMA_IsActiveFlag_TC1(auxiliaryAdcDma)) {
+        //pinWrite(led4Pin, 1);
+        LL_DMA_ClearFlag_TC1(auxiliaryAdcDma);
+        LL_DMA_ClearFlag_TE1(auxiliaryAdcDma);
+        LL_DMA_ClearFlag_GI1(auxiliaryAdcDma);
+        //pinWrite(led4Pin, 0);
+    }
+    HAL_NVIC_ClearPendingIRQ(auxiliaryAdcDmaIRQn);
+}
+
+void encoder_irq_handler(encoderTimerTableEntry_t encoder) {
+    auto timer = encoder.first;
+    auto irqn  = encoder.second;
+    if (LL_TIM_IsEnabledIT_TRIG(timer) && LL_TIM_IsActiveFlag_TRIG(timer)) {
+        pinToggle(led4Pin);
+        LL_TIM_ClearFlag_TRIG(timer);
+    }
+    if (LL_TIM_IsEnabledIT_UPDATE(timer) && LL_TIM_IsActiveFlag_UPDATE(timer)) {
+        pinToggle(led3Pin);
+        LL_TIM_ClearFlag_UPDATE(timer);
+    }
+    HAL_NVIC_ClearPendingIRQ(irqn);
+}
+
+extern "C" void ENCODER1_IRQ_HANDLER() {
+    encoder_irq_handler(encoderTimer[0]);
+}
+extern "C" void ENCODER2_IRQ_HANDLER() {
+    encoder_irq_handler(encoderTimer[1]);
+}
+extern "C" void ENCODER3_IRQ_HANDLER() {
+    encoder_irq_handler(encoderTimer[2]);
+}
+extern "C" void ENCODER4_IRQ_HANDLER1() {
+    encoder_irq_handler(encoderTimer[3]);
+}
+extern "C" void ENCODER4_IRQ_HANDLER2() {
+    encoder_irq_handler(encoderTimer[3]);
+    HAL_NVIC_ClearPendingIRQ(TIM8_TRG_COM_IRQn);
 }
