@@ -23,23 +23,27 @@ int main() {
     clocksInit();
     HAL_Init();
     pinsInit();
-    debugUartInit();
-    dispatcherInit();
-    tunnelUartInit();
-    controlUartInit();
-    cdcLinkInit();
-    stupidServoInit();
-    ultrasoundInit();
-    sEsp32Manager.init();
 
     mainTask.start("main", 1, []() {
+        debugUartInit();
+        powerInit();
+        dispatcherInit();
+        tunnelUartInit();
+        controlUartInit();
+        cdcLinkInit();
+        stupidServoInit();
+        ultrasoundInit();
+        sEsp32Manager.init();
+
         DEBUG("STM32 Coprocessor initialized, v%06x " RBCX_VER_REVISION
                   RBCX_VER_DIRTY_STR "\n",
             RBCX_VER_NUMBER);
         while (true) {
-            cdcLinkPoll();
-            tunnelPoll();
+            debugLinkPoll();
+            powerPoll();
             dispatcherPoll();
+            tunnelPoll();
+            cdcLinkPoll();
             buttonControllerPoll();
             sEsp32Manager.poll();
         }
