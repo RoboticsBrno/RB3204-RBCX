@@ -21,7 +21,7 @@
 static DMA_HandleTypeDef dmaRxHandle;
 static DMA_HandleTypeDef dmaTxHandle;
 static rb::CoprocCodec codec;
-static rb::CoprocLinkParser<CoprocReq, &CoprocReq_msg, &codec> parser;
+static rb::CoprocLinkParser<CoprocReq, &CoprocReq_msg> parser(codec);
 static ByteFifo<512> rxFifo;
 
 // Encode TX frame in txEncodeBuf, push to txMessageBuf, move to txDmaBuf and send via DMA.

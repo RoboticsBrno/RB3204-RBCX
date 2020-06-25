@@ -3,6 +3,7 @@
 #include "utils/Debug.hpp"
 
 #include "Bsp.hpp"
+#include "BuzzerController.hpp"
 #include "ControlLink.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
@@ -50,6 +51,9 @@ void dispatcherPoll() {
             break;
         case CoprocReq_ultrasoundReq_tag:
             ultrasoundDispatch(request.payload.ultrasoundReq);
+            break;
+        case CoprocReq_buzzerReq_tag:
+            buzzerSetState(request.payload.buzzerReq.on);
             break;
         }
     }
