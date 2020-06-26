@@ -3,10 +3,10 @@
 #include "utils/Debug.hpp"
 #include "utils/Regulator.hpp"
 
+#include <algorithm>
 #include <stdint.h>
-#include <tuple>
 
-inline const uint16_t motorLoopPeriodMs = 40;
+inline const uint16_t motorLoopPeriodMs = 10;
 
 using VelocityReg = Regulator<int32_t>;
 
@@ -17,7 +17,10 @@ enum class MotorState {
 
 class Motor {
 public:
-    std::tuple<int16_t, bool> poll(uint16_t encTicks) {
+    Motor()
+        : m_velocityReg(USHRT_MAX, 5'000'000, 5'000'000, 0) {}
+
+    std::pair<int16_t, bool> poll(uint16_t encTicks) {
         int16_t velocity = encTicks - m_lastEncTicks;
         auto action = m_velocityReg.process(velocity);
 
@@ -25,11 +28,11 @@ public:
             int(velocity), int(m_velocityReg()), int(m_velocityReg.e()),
             int(m_velocityReg.integrator()), int(m_velocityReg.x()));
         m_lastEncTicks = encTicks;
-        return std::make_tuple(action, false);
+        return std::make_pair(action, false);
     }
 
     void setTargetVelocity(int32_t edgesPerSec) {
-        int32_t edgesPerLoop = edgesPerSec / motorLoopPeriodMs;
+        int32_t edgesPerLoop = (edgesPerSec * motorLoopPeriodMs) / 1000;
         m_velocityReg(edgesPerLoop);
     }
 
