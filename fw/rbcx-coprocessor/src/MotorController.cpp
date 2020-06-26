@@ -1,12 +1,20 @@
 #include "MotorController.hpp"
 #include "Bsp.hpp"
+#include "Motor.hpp"
 #include "utils/Debug.hpp"
+#include "utils/TaskWrapper.hpp"
 
 #include "stm32f1xx_ll_tim.h"
-#include <cmath>
+#include <climits>
+#include <cstdlib>
 
-static void setMotorPower(uint8_t motorIndex, float power, bool brake);
+static void setPwmValue(TIM_TypeDef* timer, uint8_t motorIndex, uint16_t value);
+static void setMotorPower(uint8_t motorIndex, int32_t power, bool brake);
+
 static constexpr uint16_t maxPwm = 2000;
+static TaskWrapper<1024> motorTask;
+static std::array<Motor, 4> motor;
+static void taskFunc();
 
 void motorInit() {
     LL_TIM_InitTypeDef pwmInit;
@@ -23,8 +31,9 @@ void motorInit() {
     LL_TIM_OC_StructInit(&ocInit);
     ocInit.OCMode = LL_TIM_OCMODE_PWM2;
     ocInit.OCState = LL_TIM_OCSTATE_ENABLE;
+
     ocInit.OCNState = LL_TIM_OCSTATE_ENABLE;
-    ocInit.CompareValue = maxPwm / 2;
+    ocInit.CompareValue = 0;
     ocInit.OCPolarity = LL_TIM_OCPOLARITY_HIGH;
     ocInit.OCNPolarity = LL_TIM_OCPOLARITY_HIGH;
     ocInit.OCIdleState = LL_TIM_OCIDLESTATE_HIGH;
@@ -35,6 +44,7 @@ void motorInit() {
         LL_TIM_OC_Init(pwmTimer, channel, &ocInit);
         LL_TIM_OC_EnablePreload(pwmTimer, channel);
     }
+
     LL_TIM_SetOffStates(pwmTimer, LL_TIM_OSSI_DISABLE, LL_TIM_OSSR_ENABLE);
     LL_TIM_GenerateEvent_UPDATE(pwmTimer);
     LL_TIM_EnableAllOutputs(pwmTimer);
@@ -58,6 +68,18 @@ void motorInit() {
         LL_TIM_ENCODER_Init(timer, &encInit);
         LL_TIM_EnableCounter(timer);
     }
+
+    motorTask.start("motors", 2, taskFunc);
+}
+
+static void taskFunc() {
+    while (true) {
+        for (int m : { 0, 1, 2, 3 }) {
+            uint16_t encTicks = LL_TIM_GetCounter(encoderTimer[m]);
+            motor[m].poll(encTicks);
+        }
+        vTaskDelay(pdMS_TO_TICKS(motorLoopPeriodMs));
+    }
 }
 
 void motorDispatch(const CoprocReq_MotorReq& request) {
@@ -70,23 +92,32 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
         setMotorPower(request.motorIndex, request.motorCmd.setPower, false);
         break;
     case CoprocReq_MotorReq_setBrake_tag:
-        setMotorPower(request.motorIndex, request.motorCmd.setPower, true);
+        setMotorPower(request.motorIndex, request.motorCmd.setBrake, true);
+        break;
+    case CoprocReq_MotorReq_setVelocity_tag:
+        motor[request.motorIndex].setTargetVelocity(
+            request.motorCmd.setVelocity);
+        break;
+    case CoprocReq_MotorReq_setVelocityRegCoefs_tag:
+        auto& coefs = request.motorCmd.setVelocityRegCoefs;
+        motor[request.motorIndex].setVelocityPid(coefs.p, coefs.i, coefs.d);
         break;
     }
 }
 
-static void setPwmValue(TIM_TypeDef* timer, uint8_t channel, uint16_t value) {
-    reinterpret_cast<__IO uint16_t*>(&timer->CCR1)[channel << 1] = value;
+static void setPwmValue(
+    TIM_TypeDef* timer, uint8_t motorIndex, uint16_t value) {
+    reinterpret_cast<__IO uint16_t*>(&timer->CCR1)[motorIndex << 1] = value;
 }
 
-static void setMotorPower(uint8_t motorIndex, float power, bool brake) {
-    if (power > 1 || power < -1) {
-        DEBUG("Motor %d power out of range <-1; 1> (%dE-3).\n", motorIndex,
-            int(power * 1000));
+static void setMotorPower(uint8_t motorIndex, int32_t power, bool brake) {
+    if (power > SHRT_MAX || power < SHRT_MIN) {
+        DEBUG("Motor %d power out of range <-32768; 32767> (%d).\n",
+            int(motorIndex), int(power));
         return;
     }
 
-    uint16_t pwm = fabsf(power) * maxPwm;
+    uint16_t pwm = unsigned(abs(power) * maxPwm) / 32768;
     setPwmValue(pwmTimer, motorIndex, pwm);
     if (pwm == 0 || brake) {
         switch (motorIndex) {
