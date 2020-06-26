@@ -144,9 +144,9 @@ inline const PinDef esp12Pin = std::make_pair(GPIOB, GPIO_PIN_15);
 inline const PinDef esp15Pin = std::make_pair(GPIOB, GPIO_PIN_14);
 
 inline void clocksInit() {
-    RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
-    RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
-    RCC_PeriphCLKInitTypeDef PeriphClkInit = { 0 };
+    RCC_OscInitTypeDef RCC_OscInitStruct;
+    RCC_ClkInitTypeDef RCC_ClkInitStruct;
+    RCC_PeriphCLKInitTypeDef PeriphClkInit;
 
     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
     RCC_OscInitStruct.HSEState = RCC_HSE_ON;
