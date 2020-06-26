@@ -76,7 +76,8 @@ static void taskFunc() {
     while (true) {
         for (int m : { 0, 1, 2, 3 }) {
             uint16_t encTicks = LL_TIM_GetCounter(encoderTimer[m]);
-            motor[m].poll(encTicks);
+            auto action = motor[m].poll(encTicks);
+            setMotorPower(m, action.first, action.second);
         }
         vTaskDelay(pdMS_TO_TICKS(motorLoopPeriodMs));
     }

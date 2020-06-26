@@ -10,8 +10,8 @@ template <class value_type> struct Regulator {
         = default;
 
     Regulator() = default;
-    Regulator(const value_type& max_output, const coef_type& p = 1,
-        const coef_type& i = 1, const coef_type& d = 1)
+    Regulator(const value_type& max_output, const coef_type& p,
+        const coef_type& i, const coef_type& d)
         : m_w(0)
         , m_stop(false)
         , m_p(p)
