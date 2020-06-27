@@ -19,15 +19,18 @@ enum class MotorState {
 class Motor {
 public:
     Motor()
-        : m_velocityReg(SHRT_MAX, 500000, 20000, 0) {}
+        : m_velocityReg(SHRT_MAX, 300000, 500000, 100000) {}
 
     std::pair<int16_t, bool> poll(uint16_t encTicks) {
         int16_t actualTicksPerLoop = encTicks - m_lastEncTicks;
         int16_t targetTicksPerLoop = m_targetVelocity / motorLoopFreq;
         int16_t targetTicksRem = abs(m_targetVelocity % motorLoopFreq);
-        int16_t dither = abs(m_dither.next() % motorLoopFreq);
-        if (targetTicksRem > dither) {
+        int16_t dither = abs(m_dither % motorLoopFreq);
+        if ((targetTicksRem * 4) / motorLoopFreq > dither) {
             targetTicksPerLoop += m_targetVelocity < 0 ? -1 : 1;
+        }
+        if (++m_dither >= 4) {
+            m_dither = 0;
         }
 
         m_velocityReg(targetTicksPerLoop);
@@ -53,7 +56,7 @@ public:
 
 private:
     Regulator<int32_t> m_velocityReg;
-    XorShift m_dither;
+    uint16_t m_dither;
     int16_t m_targetVelocity;
     uint16_t m_lastEncTicks;
 };
