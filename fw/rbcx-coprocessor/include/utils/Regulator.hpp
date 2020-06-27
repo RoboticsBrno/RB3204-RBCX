@@ -55,9 +55,9 @@ template <class value_type> struct Regulator {
 
         m_de = m_e - m_le;
 
-        int_type x = ((int_type(m_p) * m_e) >> 16)
-            + ((int_type(m_d) * m_de) >> 16)
-            + ((int_type(m_i) * integrator) >> 16);
+        int_type x = ((int_type(m_p) * m_e) >> 8)
+            + ((int_type(m_d) * m_de) >> 8)
+            + ((int_type(m_i) * integrator) >> 8);
 
         if (x > m_max_output) {
             m_x = m_max_output;

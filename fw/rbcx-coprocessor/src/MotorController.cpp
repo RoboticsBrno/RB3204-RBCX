@@ -74,12 +74,13 @@ void motorInit() {
 
 static void taskFunc() {
     while (true) {
+        int m = 1;
         for (int m : { 0, 1, 2, 3 }) {
             uint16_t encTicks = LL_TIM_GetCounter(encoderTimer[m]);
             auto action = motor[m].poll(encTicks);
             setMotorPower(m, action.first, action.second);
         }
-        vTaskDelay(pdMS_TO_TICKS(motorLoopPeriodMs));
+        vTaskDelay(pdMS_TO_TICKS(1000 / motorLoopFreq));
     }
 }
 
@@ -88,6 +89,8 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
         return;
     }
 
+    auto& targetMotor = motor[request.motorIndex];
+
     switch (request.which_motorCmd) {
     case CoprocReq_MotorReq_setPower_tag:
         setMotorPower(request.motorIndex, request.motorCmd.setPower, false);
@@ -95,14 +98,20 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
     case CoprocReq_MotorReq_setBrake_tag:
         setMotorPower(request.motorIndex, request.motorCmd.setBrake, true);
         break;
-    case CoprocReq_MotorReq_setVelocity_tag:
-        motor[request.motorIndex].setTargetVelocity(
-            request.motorCmd.setVelocity);
-        break;
-    case CoprocReq_MotorReq_setVelocityRegCoefs_tag:
+    case CoprocReq_MotorReq_setVelocity_tag: {
+        auto ticksPerSec = request.motorCmd.setVelocity;
+        if (ticksPerSec > SHRT_MAX || ticksPerSec < SHRT_MIN) {
+            DEBUG(
+                "Motor %d target velocity out of range <-32768; 32767> (%d).\n",
+                int(request.motorIndex), int(ticksPerSec));
+            return;
+        }
+        targetMotor.setTargetVelocity(ticksPerSec);
+    } break;
+    case CoprocReq_MotorReq_setVelocityRegCoefs_tag: {
         auto& coefs = request.motorCmd.setVelocityRegCoefs;
-        motor[request.motorIndex].setVelocityPid(coefs.p, coefs.i, coefs.d);
-        break;
+        targetMotor.setVelocityPid(coefs.p, coefs.i, coefs.d);
+    } break;
     }
 }
 
