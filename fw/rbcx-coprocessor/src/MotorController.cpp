@@ -74,13 +74,13 @@ void motorInit() {
 
 static void taskFunc() {
     while (true) {
-        int m = 1;
+        auto now = xTaskGetTickCount();
         for (int m : { 0, 1, 2, 3 }) {
             uint16_t encTicks = LL_TIM_GetCounter(encoderTimer[m]);
             auto action = motor[m].poll(encTicks);
             setMotorPower(m, action.first, action.second);
         }
-        vTaskDelay(pdMS_TO_TICKS(1000 / motorLoopFreq));
+        vTaskDelayUntil(&now, pdMS_TO_TICKS(1000 / motorLoopFreq));
     }
 }
 
