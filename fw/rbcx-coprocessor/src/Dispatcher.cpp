@@ -3,6 +3,7 @@
 #include "utils/Debug.hpp"
 
 #include "Bsp.hpp"
+#include "BuzzerController.hpp"
 #include "ControlLink.hpp"
 #include "MotorController.hpp"
 #include "StupidServoController.hpp"
@@ -54,6 +55,9 @@ void dispatcherPoll() {
             break;
         case CoprocReq_motorReq_tag:
             motorDispatch(request.payload.motorReq);
+            break;
+        case CoprocReq_buzzerReq_tag:
+            buzzerSetState(request.payload.buzzerReq.on);
             break;
         }
     }

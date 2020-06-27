@@ -16,6 +16,7 @@
 #include "DebugLink.hpp"
 #include "Dispatcher.hpp"
 #include "Esp32Manager.hpp"
+#include "Power.hpp"
 #include "UsbCdcLink.h"
 
 static TaskWrapper<2048> mainTask;
