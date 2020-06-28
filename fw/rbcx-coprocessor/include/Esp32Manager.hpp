@@ -9,6 +9,7 @@ public:
     Esp32Manager();
     ~Esp32Manager();
 
+    void init();
     void poll();
 
     void queueReset(bool bootloader = false);

@@ -29,10 +29,15 @@ Esp32Manager sEsp32Manager;
 Esp32Manager::Esp32Manager()
     : m_enPinHolders {}
     , m_queuedReset(RstNormal)
-    , m_previousEnEdge(true)
+    , m_previousEnEdge(false)
     , m_inBootloader(false) {}
 
 Esp32Manager::~Esp32Manager() {}
+
+void Esp32Manager::init() {
+    pinInit(espEnPin, GPIO_MODE_INPUT, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    m_previousEnEdge = pinRead(espEnPin);
+}
 
 void Esp32Manager::poll() {
     if (m_queuedReset != RstNone) {
@@ -72,7 +77,6 @@ void Esp32Manager::releaseReset(EnHolderType typ, bool strapForBootloader) {
     const uint32_t mask = (1 << typ);
     if (m_enPinHolders == mask) {
         strapPins(strapForBootloader);
-        pinWrite(espEnPin, 1);
         pinInit(espEnPin, GPIO_MODE_IT_RISING_FALLING, GPIO_NOPULL,
             GPIO_SPEED_FREQ_LOW, true);
         m_unstrapTimer.restart(2);
