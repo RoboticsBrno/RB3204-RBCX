@@ -5,6 +5,7 @@
 #include "Bsp.hpp"
 #include "BuzzerController.hpp"
 #include "ControlLink.hpp"
+#include "Esp32Manager.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
 #include "queue.h"
@@ -34,6 +35,7 @@ bool dispatcherEnqueueStatus(const CoprocStat& status) {
 void dispatcherPoll() {
     if (controlLinkRx(request)) {
         status = CoprocStat_init_default;
+        sEsp32Manager.resetWatchdog();
         switch (request.which_payload) {
         case CoprocReq_setLeds_tag:
             setLeds(request.payload.setLeds.ledsOn);

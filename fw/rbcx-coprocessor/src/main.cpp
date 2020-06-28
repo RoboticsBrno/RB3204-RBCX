@@ -30,6 +30,7 @@ int main() {
     cdcLinkInit();
     stupidServoInit();
     ultrasoundInit();
+    sEsp32Manager.init();
 
     mainTask.start("main", 1, []() {
         DEBUG("STM32 Coprocessor initialized.\n");
