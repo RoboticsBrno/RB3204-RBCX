@@ -93,10 +93,10 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
 
     switch (request.which_motorCmd) {
     case CoprocReq_MotorReq_setPower_tag:
-        setMotorPower(request.motorIndex, request.motorCmd.setPower, false);
+        targetMotor.setTargetPower(request.motorCmd.setPower);
         break;
     case CoprocReq_MotorReq_setBrake_tag:
-        setMotorPower(request.motorIndex, request.motorCmd.setBrake, true);
+        targetMotor.setTargetBrakingPower(request.motorCmd.setBrake);
         break;
     case CoprocReq_MotorReq_setVelocity_tag: {
         auto ticksPerSec = request.motorCmd.setVelocity;
