@@ -1,5 +1,7 @@
 #pragma once
 
+#include "utils/TickTimer.hpp"
+
 class Esp32Manager {
     Esp32Manager(const Esp32Manager&) = delete;
 
@@ -7,12 +9,16 @@ public:
     Esp32Manager();
     ~Esp32Manager();
 
+    void init();
     void poll();
 
     void queueReset(bool bootloader = false);
 
     void onEnRising();
     void onSerialBreak(bool dtr, bool rst);
+
+    bool isInBootloader() const { return m_inBootloader; }
+    void resetWatchdog();
 
 private:
     enum EnHolderType {
@@ -32,8 +38,9 @@ private:
     void strapPins(bool bootloader);
     void unstrapPins();
 
-    uint32_t m_unstrapAt;
-    uint32_t m_checkBreaksAt;
+    TickTimer m_unstrapTimer;
+    TickTimer m_checkBreakTimer;
+    TickTimer m_watchdogTimer;
 
     uint32_t m_enPinHolders;
 
@@ -41,6 +48,7 @@ private:
     bool m_previousEnEdge;
     bool m_lastRts;
     bool m_lastDtr;
+    bool m_inBootloader;
 };
 
 extern Esp32Manager sEsp32Manager;
