@@ -41,10 +41,6 @@ public:
             m_velocityReg(targetTicksPerLoop);
             auto action = m_velocityReg.process(actualTicksPerLoop);
 
-            DEBUG("Pos:%d Vel:%d (W:%d E:%d I:%d X:%d)\n", int(encTicks),
-                int(actualTicksPerLoop), int(m_velocityReg()),
-                int(m_velocityReg.e()), int(m_velocityReg.integrator()),
-                int(m_velocityReg.x()));
             return std::make_pair(action, false);
         }
         return std::make_pair(0, false);
