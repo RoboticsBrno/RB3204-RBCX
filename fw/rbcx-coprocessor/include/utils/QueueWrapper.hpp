@@ -25,6 +25,8 @@ public:
 
     QueueHandle_t handle() const { return m_handle; }
 
+    void reset() { xQueueReset(m_handle); }
+
     bool push_back(const T& val, TickType_t ticks_to_wait = portMAX_DELAY,
         BaseType_t* pxHigherPriorityTaskWoken = nullptr) {
         BaseType_t res;

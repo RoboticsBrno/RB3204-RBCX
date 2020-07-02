@@ -113,3 +113,8 @@ void dispatcherPoll() {
         controlLinkTx(status);
     }
 }
+
+void dispatcherReset() {
+    requestQueue.reset();
+    statusQueue.reset();
+}

@@ -120,3 +120,5 @@ void ultrasoundOnEchoEdge() {
         portYIELD_FROM_ISR(woken);
     }
 }
+
+void ultrasoundReset() { trigQueue.reset(); }

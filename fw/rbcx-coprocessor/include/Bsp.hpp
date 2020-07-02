@@ -343,3 +343,6 @@ inline void setLeds(uint32_t ledsOn) {
         pinWrite(ledPin[i], ledsOn & (1 << i));
     }
 }
+
+void softResetInit();
+void softReset(); // Resets all peripherials to initial state, eg. when ESP32 restarts.

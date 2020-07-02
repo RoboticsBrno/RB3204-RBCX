@@ -30,8 +30,6 @@ extern "C" void vApplicationGetTimerTaskMemory(
 
 extern "C" void vApplicationStackOverflowHook(
     TaskHandle_t xTask, signed char* pcTaskName) {
-    setLeds(0xFFFFFFFF);
-
     printf("Stack overflow!\n");
     printf("Task: %s\n", pcTaskName);
 
@@ -39,6 +37,8 @@ extern "C" void vApplicationStackOverflowHook(
 }
 
 extern "C" void _exit() {
+    softReset();
+
     LL_mDelay(10);
     puts("\n\n !!! PROGRAM EXITED, HALTING !!!\n\n");
     LL_mDelay(10);
