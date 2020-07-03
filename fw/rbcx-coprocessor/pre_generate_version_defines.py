@@ -16,7 +16,11 @@ def add_version_defines():
         diff_status = subprocess.call([ "git", "diff", "--quiet" ])
         defines["RBCX_VER_DIRTY"] = 0 if diff_status == 0 else 1
         defines["RBCX_VER_DIRTY_STR"] = '\\"\\"' if diff_status == 0 else '\\"-dirty\\"'
+    except subprocess.CalledProcessError:
+        print("Calling git failed, no version info available.")
+        return
 
+    try:
         tag = subprocess.check_output([ "git", "describe", "--tags", "--match", "fw_*", "--abbrev=0"])
         m = re.match(TAG_RE, tag)
         if not m:
@@ -24,8 +28,8 @@ def add_version_defines():
         else:
             defines["RBCX_VER_NUMBER"] = (int(m.group(1)) << 16) | (int(m.group(2)) << 8) | int(m.group(3))
     except subprocess.CalledProcessError:
-        print("Calling git failed, no version info available.")
-        return
+        defines["RBCX_VER_NUMBER"] = 0
+    
     
     defines = { ("-D%s=" % k): defines[k] for k in defines }
     
