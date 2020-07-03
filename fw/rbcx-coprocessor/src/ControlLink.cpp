@@ -103,6 +103,9 @@ void controlLinkTx(const CoprocStat& outgoing) {
     auto encodedSize = codec.encodeWithHeader(
         &CoprocStat_msg, &outgoing, txEncodeBuf.data(), txEncodeBuf.size());
 
+    if (encodedSize == 0)
+        abort();
+
     auto sendResult
         = xMessageBufferSend(txMessageBuf, txEncodeBuf.data(), encodedSize, 0);
     assert(sendResult != 0);

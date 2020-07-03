@@ -57,6 +57,15 @@ void dispatcherPoll() {
         case CoprocReq_buzzerReq_tag:
             buzzerSetState(request.payload.buzzerReq.on);
             break;
+        case CoprocReq_versionReq_tag: {
+            status.which_payload = CoprocStat_versionStat_tag;
+            auto& v = status.payload.versionStat;
+            memcpy(v.revision, RBCX_VER_REVISION, 8);
+            v.dirty = RBCX_VER_DIRTY;
+            v.number = RBCX_VER_NUMBER;
+            controlLinkTx(status);
+            break;
+        }
         }
     }
 

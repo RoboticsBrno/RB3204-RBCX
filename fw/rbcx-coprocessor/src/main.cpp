@@ -33,7 +33,9 @@ int main() {
     sEsp32Manager.init();
 
     mainTask.start("main", 1, []() {
-        DEBUG("STM32 Coprocessor initialized.\n");
+        DEBUG("STM32 Coprocessor initialized, v%06x " RBCX_VER_REVISION
+                  RBCX_VER_DIRTY_STR "\n",
+            RBCX_VER_NUMBER);
         while (true) {
             cdcLinkPoll();
             tunnelPoll();
