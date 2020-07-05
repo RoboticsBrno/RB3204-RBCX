@@ -19,6 +19,7 @@
 #include "utils/Debug.hpp"
 #include "utils/MessageBufferWrapper.hpp"
 #include "utils/QueueWrapper.hpp"
+#include "utils/StreamBufferWrapper.hpp"
 
 #include "rbcx.pb.h"
 
@@ -28,17 +29,13 @@ static DMA_HandleTypeDef dmaRxHandle;
 static std::array<uint8_t, 256> txDmaBuf;
 static ByteFifo<128> rxFifo;
 
-static StaticStreamBuffer_t _txStreamBufStruct;
-static uint8_t _txStreamBufStorage[txDmaBuf.size() * 4];
-static StreamBufferHandle_t txStreamBuf;
+static StreamBufferWrapper<txDmaBuf.size() * 4> txStreamBuf;
 
 static constexpr size_t MaxLineLength = 128;
 static MessageBufferWrapper<MaxLineLength + 4> rxLineBuffer;
 
 void debugUartInit() {
-    txStreamBuf = xStreamBufferCreateStatic(sizeof(_txStreamBufStorage), 1,
-        _txStreamBufStorage, &_txStreamBufStruct);
-
+    txStreamBuf.create();
     rxLineBuffer.create();
 
     LL_USART_InitTypeDef init;
@@ -98,14 +95,14 @@ extern "C" int _write(int fd, char* data, int len) {
     if (isInInterrupt()) {
         BaseType_t woken = pdFALSE;
         const auto status = taskENTER_CRITICAL_FROM_ISR();
-        res = xStreamBufferSendFromISR(txStreamBuf, data, len, &woken);
+        res = res = txStreamBuf.write((uint8_t*)data, len, 0, &woken);
         taskEXIT_CRITICAL_FROM_ISR(status);
         portYIELD_FROM_ISR(woken);
     } else {
-        while ((int)xStreamBufferSpacesAvailable(txStreamBuf) < len)
+        while ((int)txStreamBuf.freeSpace() < len)
             vTaskDelay(0);
         taskENTER_CRITICAL();
-        res = xStreamBufferSend(txStreamBuf, data, len, 0);
+        res = txStreamBuf.write((uint8_t*)data, len, 0);
         taskEXIT_CRITICAL();
     }
 
@@ -157,8 +154,8 @@ extern "C" void DEBUGUART_TX_DMA_HANDLER() {
 
     if (dmaTxHandle.State == HAL_DMA_STATE_READY) {
         BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
-        auto len = xStreamBufferReceiveFromISR(txStreamBuf, txDmaBuf.data(),
-            txDmaBuf.size(), &pxHigherPriorityTaskWoken);
+        const auto len = txStreamBuf.read(
+            txDmaBuf.data(), txDmaBuf.size(), 0, &pxHigherPriorityTaskWoken);
 
         if (len > 0) {
             HAL_DMA_Start_IT(&dmaTxHandle, uint32_t(txDmaBuf.data()),
