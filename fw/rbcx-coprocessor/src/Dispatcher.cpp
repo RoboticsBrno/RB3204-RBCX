@@ -22,18 +22,22 @@ void dispatcherInit() {
 }
 
 bool dispatcherEnqueueStatus(const CoprocStat& status) {
-    auto ok = statusQueue.push_back(status, 0);
+    BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+    auto ok = statusQueue.push_back(status, 0, &pxHigherPriorityTaskWoken);
     if (!ok) {
         DEBUG("Status queue overflow\n");
     }
+    portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
     return ok;
 }
 
 bool dispatcherEnqueueRequest(const CoprocReq& request) {
-    auto ok = requestQueue.push_back(request, 0);
+    BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+    auto ok = requestQueue.push_back(request, 0, &pxHigherPriorityTaskWoken);
     if (!ok) {
         DEBUG("Request queue overflow\n");
     }
+    portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
     return ok;
 }
 

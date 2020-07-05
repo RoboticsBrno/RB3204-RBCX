@@ -125,6 +125,8 @@ extern "C" void DEBUGUART_HANDLER(void) {
     char buf[rxFifo.size()];
     rxFifo.peekSpan((uint8_t*)buf, fifoAvailable);
 
+    BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+
     size_t remaining = fifoAvailable;
     char* start = buf;
     while (remaining != 0) {
@@ -137,7 +139,8 @@ extern "C" void DEBUGUART_HANDLER(void) {
 
         const size_t len = end - start;
 
-        if (!rxLineBuffer.push_back((uint8_t*)start, len, 0)) {
+        if (!rxLineBuffer.push_back(
+                (uint8_t*)start, len, 0, &pxHigherPriorityTaskWoken)) {
             printf("Not enough space in line buffer, try sending commands "
                    "slower.\n");
         }
@@ -146,6 +149,7 @@ extern "C" void DEBUGUART_HANDLER(void) {
         rxFifo.notifyRead(len);
         start = end;
     }
+    portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
 }
 
 extern "C" void DEBUGUART_TX_DMA_HANDLER() {

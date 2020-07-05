@@ -26,13 +26,12 @@ public:
 
     MessageBufferHandle_t handle() const { return m_handle; }
 
-    bool push_back(uint8_t* data, size_t len, TickType_t ticks_to_wait) {
+    bool push_back(uint8_t* data, size_t len, TickType_t ticks_to_wait,
+        BaseType_t* pxHigherPriorityTaskWoken = nullptr) {
         size_t res;
         if (isInInterrupt()) {
-            BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
             res = xMessageBufferSendFromISR(
-                m_handle, (void*)data, len, &pxHigherPriorityTaskWoken);
-            portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
+                m_handle, (void*)data, len, pxHigherPriorityTaskWoken);
         } else {
             res = xMessageBufferSend(m_handle, (void*)data, len, ticks_to_wait);
         }
@@ -40,18 +39,19 @@ public:
     }
 
     template <typename T>
-    bool push_back(const T& val, TickType_t ticks_to_wait) {
+    bool push_back(const T& val, TickType_t ticks_to_wait,
+        BaseType_t* pxHigherPriorityTaskWoken = nullptr) {
         static_assert(std::is_trivial<T>::value);
-        return push_back((uint8_t*)&val, sizeof(T), ticks_to_wait);
+        return push_back((uint8_t*)&val, sizeof(T), ticks_to_wait,
+            pxHigherPriorityTaskWoken);
     }
 
-    size_t pop_front(uint8_t* dst, size_t maxLen, TickType_t ticks_to_wait) {
+    size_t pop_front(uint8_t* dst, size_t maxLen, TickType_t ticks_to_wait,
+        BaseType_t* pxHigherPriorityTaskWoken = nullptr) {
         size_t res;
         if (isInInterrupt()) {
-            BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
             res = xMessageBufferReceiveFromISR(
-                m_handle, (void*)dst, maxLen, &pxHigherPriorityTaskWoken);
-            portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
+                m_handle, (void*)dst, maxLen, pxHigherPriorityTaskWoken);
         } else {
             res = xMessageBufferReceive(
                 m_handle, (void*)dst, maxLen, ticks_to_wait);
@@ -59,10 +59,13 @@ public:
         return res;
     }
 
-    template <typename T> bool pop_front(T& dst, TickType_t ticks_to_wait) {
+    template <typename T>
+    bool pop_front(T& dst, TickType_t ticks_to_wait,
+        BaseType_t* pxHigherPriorityTaskWoken = nullptr) {
         static_assert(std::is_trivial<T>::value);
 
-        const auto res = pop_front((uint8_t*)dst, sizeof(T), ticks_to_wait);
+        const auto res = pop_front(
+            (uint8_t*)dst, sizeof(T), ticks_to_wait, pxHigherPriorityTaskWoken);
         if (res > 0 && res != sizeof(T))
             abort();
         return res != 0;
