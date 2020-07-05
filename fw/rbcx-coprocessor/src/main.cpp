@@ -17,7 +17,7 @@
 #include "UltrasoundController.hpp"
 #include "UsbCdcLink.h"
 
-static TaskWrapper<2048> mainTask;
+static TaskWrapper<3072> mainTask;
 
 int main() {
     clocksInit();
