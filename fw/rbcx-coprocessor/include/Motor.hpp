@@ -72,6 +72,7 @@ public:
         m_velocityReg.P(p);
         m_velocityReg.I(i);
         m_velocityReg.D(d);
+        m_velocityReg.clear();
     }
 
 private:

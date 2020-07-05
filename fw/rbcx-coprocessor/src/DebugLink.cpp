@@ -201,6 +201,24 @@ static void debugLinkHandleCommand(const char* cmd) {
             dispatcherEnqueueRequest(req);
             return;
         }
+    } else if (strncmp(cmd, "pid ", 4) == 0) {
+        cmd += 4;
+
+        CoprocReq req = {
+            .which_payload = CoprocReq_motorReq_tag,
+        };
+        req.payload.motorReq.which_motorCmd
+            = CoprocReq_MotorReq_setVelocityRegCoefs_tag;
+        auto& c = req.payload.motorReq.motorCmd.setVelocityRegCoefs;
+        if (sscanf(cmd, "%lu %lu %lu", &c.p, &c.i, &c.d) != 3) {
+            printf("Invalid parameters!\n");
+            return;
+        }
+
+        for (int m : { 0, 1, 2, 3 }) {
+            req.payload.motorReq.motorIndex = m;
+            dispatcherEnqueueRequest(req);
+        }
     }
 
     printf("Invalid command.\n");
