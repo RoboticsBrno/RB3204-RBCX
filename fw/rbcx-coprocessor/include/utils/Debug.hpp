@@ -8,6 +8,8 @@
 #define STRINGIFY(x) #x
 #define TOSTRING(x) STRINGIFY(x)
 
+#ifndef NDEBUG
+
 #define DEBUG(fmt, ...)                                                        \
     printf("[%10lu][" __FILE__ ":" TOSTRING(__LINE__) "]: " fmt,               \
         xTaskGetTickCount(), ##__VA_ARGS__)
@@ -23,6 +25,15 @@ inline void DEBUG_HEX(const uint8_t* data, size_t len) {
     }
     putchar('\n');
 }
+
+#else
+
+#define DEBUG(fmt, ...)                                                        \
+    do {                                                                       \
+    } while (0);
+
+inline void DEBUG_HEX(const uint8_t* data, size_t len) {}
+#endif
 
 inline bool isInInterrupt() {
     return (SCB->ICSR & SCB_ICSR_VECTACTIVE_Msk) != 0;

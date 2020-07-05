@@ -86,7 +86,7 @@ void debugUartInit() {
     pinInit(debugUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
 
-extern "C" int _write(int fd, char* data, int len) {
+ssize_t debugLinkTx(const uint8_t* data, size_t len) {
     if ((size_t)len > sizeof(txDmaBuf))
         return -1;
 
@@ -95,11 +95,11 @@ extern "C" int _write(int fd, char* data, int len) {
     if (isInInterrupt()) {
         BaseType_t woken = pdFALSE;
         const auto status = taskENTER_CRITICAL_FROM_ISR();
-        res = res = txStreamBuf.write((uint8_t*)data, len, 0, &woken);
+        res = txStreamBuf.write((uint8_t*)data, len, 0, &woken);
         taskEXIT_CRITICAL_FROM_ISR(status);
         portYIELD_FROM_ISR(woken);
     } else {
-        while ((int)txStreamBuf.freeSpace() < len)
+        while (txStreamBuf.freeSpace() < len)
             vTaskDelay(0);
         taskENTER_CRITICAL();
         res = txStreamBuf.write((uint8_t*)data, len, 0);
@@ -111,6 +111,10 @@ extern "C" int _write(int fd, char* data, int len) {
 
     HAL_NVIC_SetPendingIRQ(debugUartTxDmaIRQn);
     return res;
+}
+
+extern "C" int _write(int fd, char* data, int len) {
+    return debugLinkTx((uint8_t*)data, len);
 }
 
 extern "C" void DEBUGUART_HANDLER(void) {
