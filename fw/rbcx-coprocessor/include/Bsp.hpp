@@ -3,8 +3,12 @@
 
 #include "FreeRTOSConfig.h"
 #include "stm32f1xx_hal.h"
+#include "stm32f1xx_hal_cortex.h"
 #include "stm32f1xx_hal_gpio.h"
+#include "stm32f1xx_ll_adc.h"
+#include "stm32f1xx_ll_dma.h"
 #include "stm32f1xx_ll_utils.h"
+
 #include <algorithm>
 #include <array>
 #include <cassert>
@@ -91,8 +95,11 @@ inline DMA_Channel_TypeDef* const tunnelUartTxDmaChannel = DMA1_Channel4;
 inline DMA_Channel_TypeDef* const tunnelUartRxDmaChannel = DMA1_Channel5;
 
 #define DEBUGUART_TX_DMA_HANDLER DMA1_Channel7_IRQHandler
+#define DEBUGUART_HANDLER USART2_IRQHandler
 inline const IRQn_Type debugUartTxDmaIRQn = DMA1_Channel7_IRQn;
+inline const IRQn_Type debugUartIRQn = USART2_IRQn;
 inline const unsigned debugUartTxDmaIrqPrio = 9;
+inline const unsigned debugUartIrqPrio = 10;
 inline DMA_Channel_TypeDef* const debugUartTxDmaChannel = DMA1_Channel7;
 inline DMA_Channel_TypeDef* const debugUartRxDmaChannel = DMA1_Channel6;
 
@@ -145,6 +152,26 @@ inline const PinDef esp15Pin = std::make_pair(GPIOB, GPIO_PIN_14);
 
 inline const PinDef buzzerPin = std::make_pair(GPIOD, GPIO_PIN_7);
 
+typedef uint32_t DMA_channel_t;
+typedef uint32_t ADC_channel_t;
+typedef uint32_t ADC_rank_t;
+
+inline const ADC_channel_t batteryVoltageAdcChannel = LL_ADC_CHANNEL_6;
+inline const ADC_channel_t batteryMiddleVoltageAdcChannel = LL_ADC_CHANNEL_7;
+
+inline const ADC_rank_t batteryVoltageAdcRank = LL_ADC_INJ_RANK_1;
+inline const ADC_rank_t internalReferenceVoltageAdcRank = LL_ADC_INJ_RANK_2;
+inline const ADC_rank_t batteryMiddleVoltageAdcRank = LL_ADC_INJ_RANK_3;
+inline const ADC_rank_t temperatureAdcRank = LL_ADC_INJ_RANK_4;
+
+inline const PinDef batteryVoltagePin = std::make_pair(GPIOA, GPIO_PIN_6);
+inline const PinDef batteryMiddleVoltagePin = std::make_pair(GPIOA, GPIO_PIN_7);
+
+inline ADC_TypeDef* const auxiliaryAdc = ADC1;
+inline const IRQn_Type auxiliaryAndMotorAdcIRQn = ADC1_2_IRQn;
+inline const unsigned auxiliaryAndMotorAdcIrqPrio = 9;
+#define AUXILIARY_AND_MOTOR_ADC_IRQ_HANDLER ADC1_2_IRQHandler
+
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct;
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
@@ -173,6 +200,7 @@ inline void clocksInit() {
 
     PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
     PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
+    PeriphClkInit.AdcClockSelection = RCC_CFGR_ADCPRE_DIV6;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
         abort();
     }
@@ -200,6 +228,7 @@ inline void clocksInit() {
     __HAL_RCC_TIM6_CLK_ENABLE();
     __HAL_RCC_TIM7_CLK_ENABLE();
     __HAL_RCC_TIM8_CLK_ENABLE();
+    __HAL_RCC_ADC1_CLK_ENABLE();
 }
 
 inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode,
@@ -243,6 +272,16 @@ inline void LL_GPIO_AF_Remap(uint32_t mask, uint32_t value) {
     mask |= AFIO_MAPR_RESERVED;
     mapr = (mapr & ~mask) | (value & ~AFIO_MAPR_RESERVED);
     AFIO->MAPR = mapr;
+}
+
+inline void LL_ADC_SetChannelSamplingTimeFix(
+    ADC_TypeDef* ADCx, uint32_t Channel, uint32_t SamplingTime) {
+    volatile uint32_t* const reg
+        = (Channel & ADC_SMPR2_REGOFFSET) ? &ADCx->SMPR2 : &ADCx->SMPR1;
+    const uint8_t offset = (Channel & ADC_CHANNEL_SMPx_BITOFFSET_MASK)
+        >> ADC_CHANNEL_SMPx_BITOFFSET_POS;
+    *reg = (*reg & ~(ADC_SMPR2_SMP0 << offset))
+        | (SamplingTime & ADC_SMPR2_SMP0) << offset;
 }
 
 // Set-up ESP32 strapping pins for the normal mode functions. Esp32Manager
@@ -351,3 +390,6 @@ inline void setLeds(uint32_t ledsOn) {
         pinWrite(ledPin[i], ledsOn & (1 << i));
     }
 }
+
+void softResetInit();
+void softReset(); // Resets all peripherials to initial state, eg. when ESP32 restarts.

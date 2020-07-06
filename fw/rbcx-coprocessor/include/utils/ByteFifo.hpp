@@ -33,13 +33,25 @@ public:
     uint8_t* data() const { return (uint8_t*)m_fifo.data(); }
 
     /// Total capacity
-    size_t size() const { return m_fifo.size(); }
+    constexpr size_t size() const { return m_fifo.size(); }
+
+    /// Readable bytes
+    size_t available() const {
+        if (m_head >= m_tail) {
+            return m_head - m_tail;
+        } else {
+            return Size - m_tail + m_head;
+        }
+    }
 
     /// True if some data is ready for reading.
     bool hasData() const { return m_head != m_tail; }
 
     /// Override the write index aka. head
     void setHead(int newHead) { m_head = newHead; }
+
+    /// Clears the buffer by setting m_tail = m_head;
+    void clear() { m_tail = m_head; }
 
     /// Write len bytes into buffer starting at data.
     void writeSpan(uint8_t* data, size_t len) {
@@ -67,10 +79,19 @@ public:
         return value;
     }
 
-    /// Read len contiguous bytes into buffer starting at data.
-    void readSpan(uint8_t* data, size_t len) {
-        std::copy_n(this->data() + m_tail, len, data);
-        notifyRead(len);
+    /// Writes one byte
+    void push(uint8_t b) {
+        m_fifo[m_head] = b;
+        notifyWritten(1);
+    }
+
+    /// Read len bytes into buffer starting at data.
+    void peekSpan(uint8_t* data, size_t len) {
+        const size_t chunk = std::min(size_t(Size - m_tail), len);
+        memcpy(data, this->data() + m_tail, chunk);
+        if (chunk < len) {
+            memcpy(data + chunk, this->data(), len - chunk);
+        }
     }
 
     /// Gets a contiguous range of bytes ready for reading.

@@ -3,9 +3,8 @@
 /// COBS is used to avoid having zero bytes present on UART except as packet beginnings.
 /// https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing
 
-#include "FreeRTOS.h"
+#include <array>
 
-#include "message_buffer.h"
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_dma.h"
 #include "stm32f1xx_ll_usart.h"
@@ -16,7 +15,7 @@
 #include "coproc_link_parser.h"
 #include "rbcx.pb.h"
 #include "utils/ByteFifo.hpp"
-#include <array>
+#include "utils/MessageBufferWrapper.hpp"
 
 static DMA_HandleTypeDef dmaRxHandle;
 static DMA_HandleTypeDef dmaTxHandle;
@@ -28,9 +27,7 @@ static ByteFifo<512> rxFifo;
 static std::array<uint8_t, codec.MaxFrameSize> txEncodeBuf;
 static std::array<uint8_t, codec.MaxFrameSize> txDmaBuf;
 
-static StaticMessageBuffer_t _txMessageBufStruct;
-static uint8_t _txMessageBufStorage[512];
-static MessageBufferHandle_t txMessageBuf;
+static MessageBufferWrapper<512> txMessageBuf;
 
 void esp32Pin0Restore() {
     pinInit(
@@ -43,6 +40,8 @@ void esp32Pin2Restore() {
 }
 
 void controlUartInit() {
+    txMessageBuf.create();
+
     LL_USART_InitTypeDef init;
     LL_USART_StructInit(&init);
     init.BaudRate = 921600;
@@ -81,15 +80,15 @@ void controlUartInit() {
     HAL_NVIC_SetPriority(controlUartTxDmaIRQn, controlUartTxDmaIRQnPrio, 0);
     HAL_NVIC_EnableIRQ(controlUartTxDmaIRQn);
     LL_USART_EnableDMAReq_TX(controlUart);
+}
 
-    txMessageBuf = xMessageBufferCreateStatic(sizeof(_txMessageBufStorage),
-        _txMessageBufStorage, &_txMessageBufStruct);
+static void controlLinkUpdateRxFifo() {
+    int rxHead = rxFifo.size() - __HAL_DMA_GET_COUNTER(&dmaRxHandle);
+    rxFifo.setHead(rxHead);
 }
 
 bool controlLinkRx(CoprocReq& incoming) {
-    int rxHead = rxFifo.size() - __HAL_DMA_GET_COUNTER(&dmaRxHandle);
-    rxFifo.setHead(rxHead);
-
+    controlLinkUpdateRxFifo();
     while (rxFifo.hasData()) {
         if (parser.add(rxFifo.pop())) {
             incoming = parser.lastMessage();
@@ -103,20 +102,31 @@ void controlLinkTx(const CoprocStat& outgoing) {
     auto encodedSize = codec.encodeWithHeader(
         &CoprocStat_msg, &outgoing, txEncodeBuf.data(), txEncodeBuf.size());
 
-    auto sendResult
-        = xMessageBufferSend(txMessageBuf, txEncodeBuf.data(), encodedSize, 0);
-    assert(sendResult != 0);
+    if (encodedSize == 0)
+        abort();
+
+    if (!txMessageBuf.push_back(txEncodeBuf.data(), encodedSize, 0)) {
+        DEBUG("txMessageBuf overflow\n");
+        abort();
+    }
 
     HAL_NVIC_SetPendingIRQ(controlUartTxDmaIRQn);
+}
+
+void controlLinkReset() {
+    controlLinkUpdateRxFifo();
+    rxFifo.clear();
+    while (!txMessageBuf.reset())
+        vTaskDelay(0);
 }
 
 extern "C" void CONTROLUART_TX_DMA_HANDLER() {
     HAL_DMA_IRQHandler(&dmaTxHandle);
     if (dmaTxHandle.State == HAL_DMA_STATE_READY) {
         BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
-        auto len = xMessageBufferReceiveFromISR(txMessageBuf, txDmaBuf.data(),
-            txDmaBuf.size(), &pxHigherPriorityTaskWoken);
 
+        const auto len = txMessageBuf.pop_front(
+            txDmaBuf.data(), txDmaBuf.size(), 0, &pxHigherPriorityTaskWoken);
         if (len > 0) {
             HAL_DMA_Start_IT(&dmaTxHandle, uintptr_t(txDmaBuf.data()),
                 uintptr_t(&controlUart->DR), len);

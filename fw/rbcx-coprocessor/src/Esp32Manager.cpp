@@ -69,6 +69,7 @@ void Esp32Manager::holdReset(EnHolderType typ) {
         pinInit(espEnPin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW,
             true);
         pinWrite(espEnPin, 0);
+        softReset();
     }
     m_enPinHolders |= (1 << typ);
 }
@@ -122,6 +123,8 @@ void Esp32Manager::onEnRising() {
     const bool currentEdge = pinRead(espEnPin);
     if (currentEdge && !m_previousEnEdge && m_enPinHolders == 0) {
         queueReset(m_lastDtr && !m_lastRts);
+    } else if (!currentEdge && m_previousEnEdge) {
+        softReset();
     }
     m_previousEnEdge = currentEdge;
 }

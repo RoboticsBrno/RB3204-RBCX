@@ -2,4 +2,4 @@
 
 #include "Bsp.hpp"
 
-void buzzerSetState(bool on) { pinWrite(buzzerPin, on); }
+inline void buzzerSetState(bool on) { pinWrite(buzzerPin, on); }

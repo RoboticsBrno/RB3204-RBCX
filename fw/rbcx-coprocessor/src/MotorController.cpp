@@ -126,6 +126,15 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
     }
 }
 
+void motorReset() {
+    xSemaphoreTake(motorSem, portMAX_DELAY);
+    for (int idx : { 0, 1, 2, 3 }) {
+        motor[idx].setTargetPower(0);
+        setMotorPower(idx, 0, false);
+    }
+    xSemaphoreGive(motorSem);
+}
+
 static void setPwmValue(
     TIM_TypeDef* timer, uint8_t motorIndex, uint16_t value) {
     reinterpret_cast<__IO uint16_t*>(&timer->CCR1)[motorIndex << 1] = value;

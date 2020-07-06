@@ -19,7 +19,7 @@
 #include "Power.hpp"
 #include "UsbCdcLink.h"
 
-static TaskWrapper<2048> mainTask;
+static TaskWrapper<3072> mainTask;
 
 int main() {
     clocksInit();
@@ -36,11 +36,27 @@ int main() {
     sEsp32Manager.init();
 
     mainTask.start("main", 1, []() {
-        DEBUG("STM32 Coprocessor initialized.\n");
+        debugUartInit();
+        softResetInit();
+        powerInit();
+        dispatcherInit();
+        tunnelUartInit();
+        controlUartInit();
+        cdcLinkInit();
+        stupidServoInit();
+        ultrasoundInit();
+        sEsp32Manager.init();
+        motorInit();
+
+        DEBUG("STM32 Coprocessor initialized, v%06x " RBCX_VER_REVISION
+                  RBCX_VER_DIRTY_STR "\n",
+            RBCX_VER_NUMBER);
         while (true) {
-            cdcLinkPoll();
-            tunnelPoll();
+            debugLinkPoll();
+            powerPoll();
             dispatcherPoll();
+            tunnelPoll();
+            cdcLinkPoll();
             buttonControllerPoll();
             sEsp32Manager.poll();
         }
