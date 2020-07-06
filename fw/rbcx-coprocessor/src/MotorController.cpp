@@ -6,8 +6,8 @@
 
 #include "semphr.h"
 #include "stm32f1xx_ll_tim.h"
-#include <climits>
 #include <cstdlib>
+#include <stdint.h>
 
 static void setPwmValue(TIM_TypeDef* timer, uint8_t motorIndex, uint16_t value);
 static void setMotorPower(uint8_t motorIndex, int32_t power, bool brake);
@@ -109,7 +109,7 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
             break;
         case CoprocReq_MotorReq_setVelocity_tag: {
             auto ticksPerSec = request.motorCmd.setVelocity;
-            if (ticksPerSec > SHRT_MAX || ticksPerSec < SHRT_MIN) {
+            if (ticksPerSec > INT16_MAX || ticksPerSec < INT16_MIN) {
                 DEBUG("Motor %d target velocity out of range <-32768; 32767> "
                       "(%d).\n",
                     int(request.motorIndex), int(ticksPerSec));

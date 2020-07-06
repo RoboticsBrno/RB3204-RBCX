@@ -11,7 +11,7 @@ inline const uint16_t motorLoopFreq = 100;
 class Motor {
 public:
     Motor()
-        : m_velocityReg(SHRT_MAX, 150000, 300000, 20000)
+        : m_velocityReg(INT16_MAX, 150000, 300000, 20000)
         , m_state(PowerCtrl) {}
 
     std::pair<int16_t, bool> poll(uint16_t encTicks) {
