@@ -23,7 +23,7 @@ DIY Modules for Arduino, Raspberry Pi, CubieBoard etc.
 ## [RoboticsBrno/eagle_libraries](https://github.com/RoboticsBrno/eagle_libraries)
 
 - `diode.lbr` (revision [db6a17c](https://github.com/RoboticsBrno/eagle_libraries/commit/db6a17c6c2badfecbf21fc1ee98d5e5c62a67f65))
-- `esp32.lbr` (revision [db6a17c](https://github.com/RoboticsBrno/eagle_libraries/commit/db6a17c6c2badfecbf21fc1ee98d5e5c62a67f65))
+- `esp32.lbr` (revision [84167f9](https://github.com/RoboticsBrno/eagle_libraries/commit/84167f92d813133beb3b29ed0dc343dfd74f4acc))
 - `rcl_upravena.lbr` (revision [db6a17c](https://github.com/RoboticsBrno/eagle_libraries/commit/db6a17c6c2badfecbf21fc1ee98d5e5c62a67f65))
 - `test_points.lbr` (revision [db6a17c](https://github.com/RoboticsBrno/eagle_libraries/commit/db6a17c6c2badfecbf21fc1ee98d5e5c62a67f65))
 - `transistors.lbr` (revision [db6a17c](https://github.com/RoboticsBrno/eagle_libraries/commit/db6a17c6c2badfecbf21fc1ee98d5e5c62a67f65))

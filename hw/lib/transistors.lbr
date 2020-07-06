@@ -273,26 +273,26 @@ INTERNATIONAL RECTIFIER, irg4bc15ud-s.pdf</description>
 <text x="-3.1" y="-3.3" size="1.27" layer="27" font="vector" ratio="16">&gt;VALUE</text>
 </package>
 <package name="MLP3.3X3.3_HS">
-<smd name="1" x="1.495" y="-0.975" dx="0.76" dy="0.32" layer="1" roundness="50"/>
-<smd name="2" x="1.495" y="-0.325" dx="0.76" dy="0.32" layer="1" roundness="50"/>
-<smd name="3" x="1.495" y="0.325" dx="0.76" dy="0.32" layer="1" roundness="50"/>
-<smd name="4" x="1.495" y="0.975" dx="0.76" dy="0.32" layer="1" roundness="50"/>
-<smd name="5" x="-1.495" y="0.975" dx="0.76" dy="0.32" layer="1" roundness="50" rot="R180"/>
-<smd name="6" x="-1.495" y="0.325" dx="0.76" dy="0.32" layer="1" roundness="50" rot="R180"/>
-<smd name="7" x="-1.495" y="-0.325" dx="0.76" dy="0.32" layer="1" roundness="50" rot="R180"/>
-<smd name="8" x="-1.495" y="-0.975" dx="0.76" dy="0.32" layer="1" roundness="50" rot="R180"/>
-<wire x1="-1.6" y1="-1.6" x2="-1.6" y2="1.6" width="0.1" layer="51"/>
-<wire x1="-1.6" y1="1.6" x2="1.6" y2="1.6" width="0.1" layer="51"/>
+<smd name="1" x="-1.495" y="0.975" dx="0.76" dy="0.32" layer="1" roundness="50" rot="R180"/>
+<smd name="2" x="-1.495" y="0.325" dx="0.76" dy="0.32" layer="1" roundness="50" rot="R180"/>
+<smd name="3" x="-1.495" y="-0.325" dx="0.76" dy="0.32" layer="1" roundness="50" rot="R180"/>
+<smd name="4" x="-1.495" y="-0.975" dx="0.76" dy="0.32" layer="1" roundness="50" rot="R180"/>
+<smd name="5" x="1.495" y="-0.975" dx="0.76" dy="0.32" layer="1" roundness="50"/>
+<smd name="6" x="1.495" y="-0.325" dx="0.76" dy="0.32" layer="1" roundness="50"/>
+<smd name="7" x="1.495" y="0.325" dx="0.76" dy="0.32" layer="1" roundness="50"/>
+<smd name="8" x="1.495" y="0.975" dx="0.76" dy="0.32" layer="1" roundness="50"/>
 <wire x1="1.6" y1="1.6" x2="1.6" y2="-1.6" width="0.1" layer="51"/>
 <wire x1="1.6" y1="-1.6" x2="-1.6" y2="-1.6" width="0.1" layer="51"/>
-<circle x="1.4" y="-1.4" radius="0.1" width="0" layer="21"/>
-<text x="-2.6" y="-3.1" size="1.27" layer="25" font="vector" ratio="16" rot="R90">&gt;NAME</text>
-<text x="3.9" y="-3.1" size="1.27" layer="27" font="vector" ratio="16" rot="R90">&gt;VALUE</text>
-<smd name="9" x="-0.25" y="0" dx="2.5" dy="2" layer="1" roundness="25" rot="R90"/>
-<wire x1="-2.075" y1="1.85" x2="-2.075" y2="-1.85" width="0.05" layer="39"/>
-<wire x1="-2.075" y1="-1.85" x2="2.075" y2="-1.85" width="0.05" layer="39"/>
+<wire x1="-1.6" y1="-1.6" x2="-1.6" y2="1.6" width="0.1" layer="51"/>
+<wire x1="-1.6" y1="1.6" x2="1.6" y2="1.6" width="0.1" layer="51"/>
+<circle x="-1.4" y="1.4" radius="0.1" width="0" layer="21"/>
+<text x="2.6" y="3.1" size="1.27" layer="25" font="vector" ratio="16" rot="R270">&gt;NAME</text>
+<text x="-3.9" y="3.1" size="1.27" layer="27" font="vector" ratio="16" rot="R270">&gt;VALUE</text>
+<smd name="9" x="0.25" y="0" dx="2.5" dy="2" layer="1" roundness="25" rot="R270"/>
 <wire x1="2.075" y1="-1.85" x2="2.075" y2="1.85" width="0.05" layer="39"/>
 <wire x1="2.075" y1="1.85" x2="-2.075" y2="1.85" width="0.05" layer="39"/>
+<wire x1="-2.075" y1="1.85" x2="-2.075" y2="-1.85" width="0.05" layer="39"/>
+<wire x1="-2.075" y1="-1.85" x2="2.075" y2="-1.85" width="0.05" layer="39"/>
 </package>
 <package name="SO-8">
 <description>&lt;b&gt;SO 8 small outline&lt;/b&gt;</description>
