@@ -25,15 +25,6 @@ int main() {
     clocksInit();
     HAL_Init();
     pinsInit();
-    debugUartInit();
-    dispatcherInit();
-    tunnelUartInit();
-    controlUartInit();
-    cdcLinkInit();
-    stupidServoInit();
-    ultrasoundInit();
-    motorInit();
-    sEsp32Manager.init();
 
     mainTask.start("main", 1, []() {
         debugUartInit();
