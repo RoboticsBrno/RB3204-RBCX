@@ -24,8 +24,7 @@ public:
         } else if (m_state == VelocityCtrl) {
             int16_t targetTicksPerLoop = m_targetVelocity / motorLoopFreq;
             int16_t targetTicksRem = abs(m_targetVelocity % motorLoopFreq);
-            int16_t dither = abs(m_dither % motorLoopFreq);
-            if ((targetTicksRem * 4) / motorLoopFreq > dither) {
+            if ((targetTicksRem * 4) / motorLoopFreq > m_dither) {
                 targetTicksPerLoop += m_targetVelocity < 0 ? -1 : 1;
             }
             if (++m_dither >= 4) {
