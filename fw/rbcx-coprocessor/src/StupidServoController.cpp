@@ -44,7 +44,7 @@ void stupidServoInit() {
     LL_TIM_EnableAllOutputs(servoTimer);
 }
 
-void stupidServoDisable(int servoIndex) {
+static void stupidServoDisable(int servoIndex) {
     switch (servoIndex) {
     case 0:
         LL_TIM_CC_DisableChannel(servoTimer, LL_TIM_CHANNEL_CH1);
@@ -61,7 +61,7 @@ void stupidServoDisable(int servoIndex) {
     }
 }
 
-void stupidServoSetPosition(int servoIndex, float position) {
+static void stupidServoSetPosition(int servoIndex, float position) {
     uint32_t value = pwmCenterValue + int32_t(pwmCoef * position);
 
     switch (servoIndex) {
@@ -98,4 +98,10 @@ void stupidServoDispatch(const CoprocReq_SetStupidServo& request) {
     CoprocStat status;
     status.which_payload = CoprocStat_stupidServoStat_tag;
     controlLinkTx(status);
+}
+
+void stupidServoReset() {
+    for (int i = 0; i < 4; ++i) {
+        stupidServoDisable(i);
+    }
 }

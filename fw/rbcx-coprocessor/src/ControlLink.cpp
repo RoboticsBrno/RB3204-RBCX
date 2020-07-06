@@ -82,10 +82,13 @@ void controlUartInit() {
     LL_USART_EnableDMAReq_TX(controlUart);
 }
 
-bool controlLinkRx(CoprocReq& incoming) {
+static void controlLinkUpdateRxFifo() {
     int rxHead = rxFifo.size() - __HAL_DMA_GET_COUNTER(&dmaRxHandle);
     rxFifo.setHead(rxHead);
+}
 
+bool controlLinkRx(CoprocReq& incoming) {
+    controlLinkUpdateRxFifo();
     while (rxFifo.hasData()) {
         if (parser.add(rxFifo.pop())) {
             incoming = parser.lastMessage();
@@ -108,6 +111,13 @@ void controlLinkTx(const CoprocStat& outgoing) {
     }
 
     HAL_NVIC_SetPendingIRQ(controlUartTxDmaIRQn);
+}
+
+void controlLinkReset() {
+    controlLinkUpdateRxFifo();
+    rxFifo.clear();
+    while (!txMessageBuf.reset())
+        vTaskDelay(0);
 }
 
 extern "C" void CONTROLUART_TX_DMA_HANDLER() {

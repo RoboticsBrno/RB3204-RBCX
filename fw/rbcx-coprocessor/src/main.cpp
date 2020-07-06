@@ -26,6 +26,7 @@ int main() {
 
     mainTask.start("main", 1, []() {
         debugUartInit();
+        softResetInit();
         powerInit();
         dispatcherInit();
         tunnelUartInit();

@@ -29,6 +29,8 @@ public:
 
     StreamBufferHandle_t handle() const { return m_handle; }
 
+    bool reset() { return xStreamBufferReset(m_handle) == pdPASS; }
+
     size_t freeSpace() const { return xStreamBufferSpacesAvailable(m_handle); }
     size_t available() const { return xStreamBufferBytesAvailable(m_handle); }
 

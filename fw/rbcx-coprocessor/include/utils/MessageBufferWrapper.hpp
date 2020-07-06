@@ -26,6 +26,8 @@ public:
 
     MessageBufferHandle_t handle() const { return m_handle; }
 
+    bool reset() { return xMessageBufferReset(m_handle) == pdPASS; }
+
     bool push_back(uint8_t* data, size_t len, TickType_t ticks_to_wait,
         BaseType_t* pxHigherPriorityTaskWoken = nullptr) {
         size_t res;

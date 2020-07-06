@@ -50,6 +50,9 @@ public:
     /// Override the write index aka. head
     void setHead(int newHead) { m_head = newHead; }
 
+    /// Clears the buffer by setting m_tail = m_head;
+    void clear() { m_tail = m_head; }
+
     /// Write len bytes into buffer starting at data.
     void writeSpan(uint8_t* data, size_t len) {
         std::copy_n(data, len, this->data() + m_head);
