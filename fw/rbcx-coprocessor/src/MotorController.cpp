@@ -145,7 +145,7 @@ static void setMotorPower(uint8_t motorIndex, int32_t power, bool brake) {
         return;
     }
 
-    uint16_t pwm = unsigned(abs(power) * maxPwm) / 32768;
+    uint16_t pwm = uint32_t(abs(power) * maxPwm) / 32768;
     setPwmValue(pwmTimer, motorIndex, pwm);
     if (pwm == 0 || brake) {
         switch (motorIndex) {
