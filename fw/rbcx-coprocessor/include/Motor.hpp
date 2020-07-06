@@ -8,26 +8,20 @@
 
 inline const uint16_t motorLoopFreq = 100;
 
-enum class MotorState {
-    PowerCtrl,
-    BrakeCtrl,
-    VelocityCtrl,
-};
-
 class Motor {
 public:
     Motor()
         : m_velocityReg(SHRT_MAX, 150000, 300000, 20000)
-        , m_state(MotorState::PowerCtrl) {}
+        , m_state(PowerCtrl) {}
 
     std::pair<int16_t, bool> poll(uint16_t encTicks) {
         int16_t actualTicksPerLoop = encTicks - m_lastEncTicks;
         m_lastEncTicks = encTicks;
-        if (m_state == MotorState::PowerCtrl) {
+        if (m_state == PowerCtrl) {
             return std::make_pair(m_targetPower, false);
-        } else if (m_state == MotorState::BrakeCtrl) {
+        } else if (m_state == BrakeCtrl) {
             return std::make_pair(m_targetBrakingPower, true);
-        } else if (m_state == MotorState::VelocityCtrl) {
+        } else if (m_state == VelocityCtrl) {
             int16_t targetTicksPerLoop = m_targetVelocity / motorLoopFreq;
             int16_t targetTicksRem = abs(m_targetVelocity % motorLoopFreq);
             int16_t dither = abs(m_dither % motorLoopFreq);
@@ -47,23 +41,23 @@ public:
     }
 
     void setTargetPower(int16_t power) {
-        if (m_state != MotorState::PowerCtrl) {
-            m_state = MotorState::PowerCtrl;
+        if (m_state != PowerCtrl) {
+            m_state = PowerCtrl;
         }
         m_targetPower = power;
     }
 
     void setTargetBrakingPower(int16_t brakingPower) {
-        if (m_state != MotorState::BrakeCtrl) {
-            m_state = MotorState::BrakeCtrl;
+        if (m_state != BrakeCtrl) {
+            m_state = BrakeCtrl;
         }
         m_targetBrakingPower = brakingPower;
     }
 
     void setTargetVelocity(int16_t ticksPerSec) {
-        if (m_state != MotorState::VelocityCtrl) {
+        if (m_state != VelocityCtrl) {
             m_velocityReg.clear();
-            m_state = MotorState::VelocityCtrl;
+            m_state = VelocityCtrl;
         }
         m_targetVelocity = ticksPerSec;
     }
@@ -82,5 +76,9 @@ private:
     int16_t m_targetBrakingPower;
     uint16_t m_dither;
     uint16_t m_lastEncTicks;
-    MotorState m_state;
+    enum MotorState {
+        PowerCtrl,
+        BrakeCtrl,
+        VelocityCtrl,
+    } m_state;
 };
