@@ -31,8 +31,8 @@ public:
                 m_dither = 0;
             }
 
-            m_velocityReg(targetTicksPerLoop);
-            auto action = m_velocityReg.process(actualTicksPerLoop);
+            auto action
+                = m_velocityReg.process(targetTicksPerLoop, actualTicksPerLoop);
 
             return std::make_pair(action, false);
         }
@@ -62,14 +62,14 @@ public:
     }
 
     void setVelocityPid(uint32_t p, uint32_t i, uint32_t d) {
-        m_velocityReg.P(p);
-        m_velocityReg.I(i);
-        m_velocityReg.D(d);
+        m_velocityReg.setP(p);
+        m_velocityReg.setI(i);
+        m_velocityReg.setD(d);
         m_velocityReg.clear();
     }
 
 private:
-    Regulator<int32_t> m_velocityReg;
+    Regulator m_velocityReg;
     int16_t m_targetVelocity;
     int16_t m_targetPower;
     int16_t m_targetBrakingPower;
