@@ -2,11 +2,12 @@
 #include "Bsp.hpp"
 #include "Motor.hpp"
 #include "utils/Debug.hpp"
+#include "utils/MutexWrapper.hpp"
 #include "utils/TaskWrapper.hpp"
 
-#include "semphr.h"
 #include "stm32f1xx_ll_tim.h"
 #include <cstdlib>
+#include <mutex>
 #include <stdint.h>
 
 static void setPwmValue(TIM_TypeDef* timer, uint8_t motorIndex, uint16_t value);
@@ -14,10 +15,9 @@ static void setMotorPower(uint8_t motorIndex, int32_t power, bool brake);
 
 static constexpr uint16_t maxPwm = 2000;
 static std::array<Motor, 4> motor;
+static MutexWrapper motorMut;
 static TaskWrapper<1024> motorTask;
 static void taskFunc();
-static SemaphoreHandle_t motorSem;
-static StaticSemaphore_t motorSemStruct;
 
 void motorInit() {
     LL_TIM_InitTypeDef pwmInit;
@@ -72,21 +72,21 @@ void motorInit() {
         LL_TIM_EnableCounter(timer);
     }
 
-    motorSem = xSemaphoreCreateBinaryStatic(&motorSemStruct);
-    xSemaphoreGive(motorSem);
+    motorMut.create();
     motorTask.start("motors", 2, taskFunc);
 }
 
 static void taskFunc() {
     while (true) {
         auto now = xTaskGetTickCount();
-        if (xSemaphoreTake(motorSem, pdMS_TO_TICKS(100) == pdTRUE)) {
+        {
+            std::scoped_lock lock(motorMut);
+
             for (int m : { 0, 1, 2, 3 }) {
                 uint16_t encTicks = LL_TIM_GetCounter(encoderTimer[m]);
                 auto action = motor[m].poll(encTicks);
                 setMotorPower(m, action.first, action.second);
             }
-            xSemaphoreGive(motorSem);
         }
         vTaskDelayUntil(&now, pdMS_TO_TICKS(1000 / motorLoopFreq));
     }
@@ -98,41 +98,39 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
     }
 
     auto& targetMotor = motor[request.motorIndex];
+    std::scoped_lock lock(motorMut);
 
-    if (xSemaphoreTake(motorSem, pdMS_TO_TICKS(100)) == pdTRUE) {
-        switch (request.which_motorCmd) {
-        case CoprocReq_MotorReq_setPower_tag:
-            targetMotor.setTargetPower(request.motorCmd.setPower);
-            break;
-        case CoprocReq_MotorReq_setBrake_tag:
-            targetMotor.setTargetBrakingPower(request.motorCmd.setBrake);
-            break;
-        case CoprocReq_MotorReq_setVelocity_tag: {
-            auto ticksPerSec = request.motorCmd.setVelocity;
-            if (ticksPerSec > INT16_MAX || ticksPerSec < INT16_MIN) {
-                DEBUG("Motor %d target velocity out of range <-32768; 32767> "
-                      "(%d).\n",
-                    int(request.motorIndex), int(ticksPerSec));
-                return;
-            }
-            targetMotor.setTargetVelocity(ticksPerSec);
-        } break;
-        case CoprocReq_MotorReq_setVelocityRegCoefs_tag: {
-            auto& coefs = request.motorCmd.setVelocityRegCoefs;
-            targetMotor.setVelocityPid(coefs.p, coefs.i, coefs.d);
-        } break;
+    switch (request.which_motorCmd) {
+    case CoprocReq_MotorReq_setPower_tag:
+        targetMotor.setTargetPower(request.motorCmd.setPower);
+        break;
+    case CoprocReq_MotorReq_setBrake_tag:
+        targetMotor.setTargetBrakingPower(request.motorCmd.setBrake);
+        break;
+    case CoprocReq_MotorReq_setVelocity_tag: {
+        auto ticksPerSec = request.motorCmd.setVelocity;
+        if (ticksPerSec > INT16_MAX || ticksPerSec < INT16_MIN) {
+            DEBUG("Motor %d target velocity out of range <-32768; 32767> "
+                  "(%d).\n",
+                int(request.motorIndex), int(ticksPerSec));
+            return;
         }
-        xSemaphoreGive(motorSem);
+        targetMotor.setTargetVelocity(ticksPerSec);
+    } break;
+    case CoprocReq_MotorReq_setVelocityRegCoefs_tag: {
+        auto& coefs = request.motorCmd.setVelocityRegCoefs;
+        targetMotor.setVelocityPid(coefs.p, coefs.i, coefs.d);
+    } break;
     }
 }
 
 void motorReset() {
-    xSemaphoreTake(motorSem, portMAX_DELAY);
+    std::scoped_lock lock(motorMut);
+
     for (int idx : { 0, 1, 2, 3 }) {
         motor[idx].setTargetPower(0);
         setMotorPower(idx, 0, false);
     }
-    xSemaphoreGive(motorSem);
 }
 
 static void setPwmValue(
