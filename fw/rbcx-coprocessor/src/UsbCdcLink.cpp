@@ -10,11 +10,29 @@
 #include "usb_cdc.h"
 #include "utils/Debug.hpp"
 
+enum {
+    STRDESC_LANG,
+    STRDESC_MANUFACTURER,
+    STRDESC_PRODUCT,
+    STRDESC_CDC_IFACE,
+    STRDESC_SERIAL,
+
+    STRDESC_MAX,
+};
 extern "C" {
 extern const struct usb_string_descriptor lang_desc;
 extern const struct usb_string_descriptor manuf_desc_en;
 extern const struct usb_string_descriptor prod_desc_en;
 extern const struct usb_string_descriptor cdc_iface_desc_en;
+extern struct usb_string_descriptor serial_number_desc_en;
+};
+
+static const struct usb_string_descriptor* const dtable[STRDESC_MAX] = {
+    &lang_desc,
+    &manuf_desc_en,
+    &prod_desc_en,
+    &cdc_iface_desc_en,
+    &serial_number_desc_en,
 };
 
 struct cdc_config {
@@ -42,9 +60,9 @@ static const struct usb_device_descriptor device_desc = {
     .idVendor = 0x0483,
     .idProduct = 0x5740,
     .bcdDevice = VERSION_BCD(1, 0, 0),
-    .iManufacturer = 1,
-    .iProduct = 2,
-    .iSerialNumber = INTSERIALNO_DESCRIPTOR,
+    .iManufacturer = STRDESC_MANUFACTURER,
+    .iProduct = STRDESC_PRODUCT,
+    .iSerialNumber = STRDESC_SERIAL,
     .bNumConfigurations = 1,
 };
 
@@ -124,7 +142,7 @@ static const struct cdc_config config_desc = {
         .bInterfaceClass = USB_CLASS_CDC_DATA,
         .bInterfaceSubClass = USB_SUBCLASS_NONE,
         .bInterfaceProtocol = USB_PROTO_NONE,
-        .iInterface = 3,
+        .iInterface = STRDESC_CDC_IFACE,
     },
     .data_eprx = {
         .bLength = sizeof(struct usb_endpoint_descriptor),
@@ -142,13 +160,6 @@ static const struct cdc_config config_desc = {
         .wMaxPacketSize = CDC_DATA_SZ,
         .bInterval = 0x01,
     },
-};
-
-static const struct usb_string_descriptor* const dtable[] = {
-    &lang_desc,
-    &manuf_desc_en,
-    &prod_desc_en,
-    &cdc_iface_desc_en,
 };
 
 usbd_device udev;
@@ -176,7 +187,7 @@ static usbd_respond cdc_getdesc(
         len = sizeof(config_desc);
         break;
     case USB_DTYPE_STRING:
-        if (dnumber < 4) {
+        if (dnumber < STRDESC_MAX) {
             desc = dtable[dnumber];
         } else {
             return usbd_fail;
@@ -251,6 +262,18 @@ static usbd_respond cdc_setconf(usbd_device* dev, uint8_t cfg) {
 
 void cdcLinkInit() {
     __HAL_RCC_USB_CLK_ENABLE();
+
+    std::array<uint32_t, 3> uid;
+    HAL_GetUID(uid.data());
+
+    char buf[9];
+    size_t sn_off = 0;
+    for (auto u : uid) {
+        snprintf(buf, sizeof(buf), "%08lx", u);
+        for (int i = 0; i < 8; ++i) {
+            serial_number_desc_en.wString[sn_off++] = buf[i];
+        }
+    }
 
     usbd_init(&udev, &usbd_hw, CDC_EP0_SIZE, ubuf, sizeof(ubuf));
     usbd_reg_config(&udev, cdc_setconf);
