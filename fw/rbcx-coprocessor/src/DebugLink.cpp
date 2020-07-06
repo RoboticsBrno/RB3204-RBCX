@@ -170,6 +170,12 @@ extern "C" void DEBUGUART_TX_DMA_HANDLER() {
     }
 }
 
+#define COMMAND(name, ...)                                                     \
+    if (strncmp(cmd, name " ", sizeof(name)) == 0) {                           \
+        cmd += sizeof(name);                                                   \
+        __VA_ARGS__                                                            \
+    }
+
 static void debugLinkHandleCommand(const char* cmd) {
     if (strcmp(cmd, "help") == 0) {
         printf("Available commands: \n"
@@ -178,12 +184,8 @@ static void debugLinkHandleCommand(const char* cmd) {
         return;
     }
 
-    if (strncmp(cmd, "calibrate ", 10) == 0) {
-        cmd += 10;
-
-        if (strncmp(cmd, "power ", 6) == 0) {
-            cmd += 6;
-
+    COMMAND("calibrate", {
+        COMMAND("power", {
             CoprocReq req = {
                 .which_payload = CoprocReq_calibratePower_tag,
             };
@@ -200,26 +202,63 @@ static void debugLinkHandleCommand(const char* cmd) {
 
             dispatcherEnqueueRequest(req);
             return;
-        }
-    } else if (strncmp(cmd, "pid ", 4) == 0) {
-        cmd += 4;
+        });
+    });
 
-        CoprocReq req = {
-            .which_payload = CoprocReq_motorReq_tag,
-        };
-        req.payload.motorReq.which_motorCmd
-            = CoprocReq_MotorReq_setVelocityRegCoefs_tag;
-        auto& c = req.payload.motorReq.motorCmd.setVelocityRegCoefs;
-        if (sscanf(cmd, "%lu %lu %lu", &c.p, &c.i, &c.d) != 3) {
-            printf("Invalid parameters!\n");
+    COMMAND("motors", {
+        COMMAND("pid", {
+            CoprocReq req = {
+                .which_payload = CoprocReq_motorReq_tag,
+            };
+            req.payload.motorReq.which_motorCmd
+                = CoprocReq_MotorReq_setVelocityRegCoefs_tag;
+            auto& c = req.payload.motorReq.motorCmd.setVelocityRegCoefs;
+            if (sscanf(cmd, "%lu %lu %lu", &c.p, &c.i, &c.d) != 3) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+
+            for (int m : { 0, 1, 2, 3 }) {
+                req.payload.motorReq.motorIndex = m;
+                dispatcherEnqueueRequest(req);
+            }
             return;
-        }
+        });
 
-        for (int m : { 0, 1, 2, 3 }) {
-            req.payload.motorReq.motorIndex = m;
+        COMMAND("power", {
+            CoprocReq req = {
+                .which_payload = CoprocReq_motorReq_tag,
+            };
+            req.payload.motorReq.which_motorCmd
+                = CoprocReq_MotorReq_setPower_tag;
+            auto& c = req.payload.motorReq;
+            if (sscanf(cmd, "%lu %ld", &c.motorIndex, &c.motorCmd.setPower)
+                != 2) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+
             dispatcherEnqueueRequest(req);
-        }
-    }
+            return;
+        });
+
+        COMMAND("velocity", {
+            CoprocReq req = {
+                .which_payload = CoprocReq_motorReq_tag,
+            };
+            req.payload.motorReq.which_motorCmd
+                = CoprocReq_MotorReq_setVelocity_tag;
+            auto& c = req.payload.motorReq;
+            if (sscanf(cmd, "%lu %ld", &c.motorIndex, &c.motorCmd.setVelocity)
+                != 2) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+
+            dispatcherEnqueueRequest(req);
+            return;
+        });
+    });
 
     printf("Invalid command.\n");
 }
