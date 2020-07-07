@@ -18,7 +18,6 @@ public:
             abort();
 
         m_handle = xSemaphoreCreateMutexStatic(&m_buffer);
-        xSemaphoreGive(m_handle);
     }
 
     SemaphoreHandle_t native_handle() const { return m_handle; }
