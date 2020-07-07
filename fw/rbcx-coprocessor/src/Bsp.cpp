@@ -3,6 +3,7 @@
 #include "ControlLink.hpp"
 #include "Dispatcher.hpp"
 #include "Esp32Manager.hpp"
+#include "MotorController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
 #include "utils/Debug.hpp"
@@ -45,6 +46,7 @@ void softResetInit() {
             controlLinkReset();
             stupidServoReset();
             ultrasoundReset();
+            motorReset();
         }
     });
 }

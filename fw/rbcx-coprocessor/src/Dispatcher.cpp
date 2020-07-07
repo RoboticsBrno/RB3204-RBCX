@@ -6,6 +6,7 @@
 #include "BuzzerController.hpp"
 #include "ControlLink.hpp"
 #include "Esp32Manager.hpp"
+#include "MotorController.hpp"
 #include "Power.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
@@ -92,6 +93,9 @@ static void dispatcherProcessReq(const CoprocReq& request) {
     }
     case CoprocReq_shutdownPower_tag:
         powerShutDown();
+        break;
+    case CoprocReq_motorReq_tag:
+        motorDispatch(request.payload.motorReq);
         break;
     }
 }
