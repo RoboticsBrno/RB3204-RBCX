@@ -9,8 +9,7 @@ struct Regulator {
     constexpr Regulator& operator=(Regulator&& other) = default;
 
     Regulator() = default;
-    Regulator(const value_type& max_output, const coef_type& p,
-        const coef_type& i, const coef_type& d)
+    Regulator(value_type max_output, coef_type p, coef_type i, coef_type d)
         : m_stop(false)
         , m_p(p)
         , m_i(i)
