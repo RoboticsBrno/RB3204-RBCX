@@ -301,7 +301,7 @@ static void checkBatteryVoltage(uint16_t vccMv) {
         }
     } else if (undervoltageCounter > 0) {
         --undervoltageCounter;
-        if (undervoltageCounter == 0) {
+        if (undervoltageWarningOn) {
             undervoltageWarningOn = false;
             pinWrite(led3Pin, false);
             buzzerSetState(false);
