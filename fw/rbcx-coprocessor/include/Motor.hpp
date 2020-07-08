@@ -7,23 +7,53 @@
 #include <stdint.h>
 
 inline const uint16_t motorLoopFreq = 100;
+inline const uint32_t motorPosEpsilon = 3;
+inline const uint32_t motorVelEpsilon = 3;
+inline const uint16_t motorMaxAccel = 3000 / motorLoopFreq;
 
 class Motor {
 public:
     Motor()
         : m_velocityReg(INT16_MAX, 150000, 300000, 20000)
-        , m_positionReg(INT16_MAX, 150000, 300000, 20000)
+        , m_positionReg(500, 100000, 3000, 20000)
         , m_state(PowerCtrl) {}
 
+    bool atTargetPosition() const {
+        return uint32_t(abs(m_actualPosition - m_targetPosition))
+            <= motorPosEpsilon;
+    }
+
+    bool atStandstill() const {
+        return uint32_t(abs(m_actualTicksPerLoop)) <= motorVelEpsilon;
+    }
+
     std::pair<int16_t, bool> poll(uint16_t encTicks) {
-        int16_t actualTicksPerLoop = encTicks - m_lastEncTicks;
-        m_actualPosition += actualTicksPerLoop;
+        m_actualTicksPerLoop = encTicks - m_lastEncTicks;
+        m_actualPosition += m_actualTicksPerLoop;
         m_lastEncTicks = encTicks;
-        if (m_state == PowerCtrl) {
+
+        switch (m_state) {
+        case PowerCtrl:
             return std::make_pair(m_targetPower, false);
-        } else if (m_state == BrakeCtrl) {
+        case BrakeCtrl:
             return std::make_pair(m_targetBrakingPower, true);
-        } else if (m_state == VelocityCtrl) {
+        case PositionCtrl: {
+            DEBUG("%d %d\n", m_actualPosition, m_positionReg.integrator());
+            if (atTargetPosition() && atStandstill()) {
+                m_positionReg.clear();
+                return std::make_pair(0, false);
+            }
+            auto action
+                = m_positionReg.process(m_targetPosition, m_actualPosition);
+            if (action > m_targetVelocity + motorMaxAccel) {
+                m_targetVelocity += motorMaxAccel;
+            } else if (action < m_targetVelocity - motorMaxAccel) {
+                m_targetVelocity -= motorMaxAccel;
+            } else {
+                m_targetVelocity = action;
+            }
+        }
+        case VelocityCtrl: {
             int16_t targetTicksPerLoop = m_targetVelocity / motorLoopFreq;
             uint16_t targetTicksRem = abs(m_targetVelocity % motorLoopFreq);
             if ((targetTicksRem * 4) / motorLoopFreq > m_dither) {
@@ -33,15 +63,13 @@ public:
                 m_dither = 0;
             }
 
-            auto action
-                = m_velocityReg.process(targetTicksPerLoop, actualTicksPerLoop);
-            return std::make_pair(action, false);
-        } else if (m_state == PositionCtrl) {
-            auto action
-                = m_positionReg.process(m_targetPosition, m_actualPosition);
+            auto action = m_velocityReg.process(
+                targetTicksPerLoop, m_actualTicksPerLoop);
             return std::make_pair(action, false);
         }
-        return std::make_pair(0, false);
+        default:
+            abort();
+        }
     }
 
     void setTargetPower(int16_t power) {
@@ -109,6 +137,7 @@ private:
     int16_t m_targetVelocity;
     int32_t m_targetPosition;
     int32_t m_actualPosition;
+    int16_t m_actualTicksPerLoop;
     uint16_t m_dither;
     uint16_t m_lastEncTicks;
     enum MotorState {
