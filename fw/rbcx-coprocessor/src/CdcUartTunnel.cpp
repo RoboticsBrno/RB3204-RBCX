@@ -6,9 +6,12 @@
 #include "stm32f1xx_ll_rcc.h"
 #include "stm32f1xx_ll_usart.h"
 
+#include "FreeRTOS.h"
+
 #include "Bsp.hpp"
 #include "CdcUartTunnel.hpp"
 #include "UsbCdcLink.h"
+#include "utils/BasePriorityRaiser.hpp"
 #include "utils/ByteFifo.hpp"
 #include "utils/HalDma.hpp"
 
@@ -16,6 +19,7 @@ static DMA_HandleTypeDef dmaRxHandle;
 static DMA_HandleTypeDef dmaTxHandle;
 static ByteFifo<512> rxFifo;
 static std::array<uint8_t, CDC_DATA_SZ> txBuf;
+static BasePriorityRaiser<usbLpIRQnPrio> usbIrqPrioRaise;
 
 void tunnelUartInit() {
     LL_USART_InitTypeDef init;
@@ -78,8 +82,11 @@ static bool primaryUartTxReady() {
 
 static void tunnelDownstreamHandler() {
     if (primaryUartTxReady()) {
-        int transferred
+        usbIrqPrioRaise.lock();
+        const int transferred
             = usbd_ep_read(&udev, CDC_RXD_EP, txBuf.data(), txBuf.size());
+        usbIrqPrioRaise.unlock();
+
         if (transferred > 0) {
             primaryUartTx(txBuf.data(), transferred);
         }
@@ -90,8 +97,11 @@ static void tunnelUpstreamHandler() {
     primaryUartRxPoll();
     auto readable = rxFifo.readableSpan();
     if (readable.second > 0) {
-        int transferred = usbd_ep_write(&udev, CDC_TXD_EP, readable.first,
+        usbIrqPrioRaise.lock();
+        const int transferred = usbd_ep_write(&udev, CDC_TXD_EP, readable.first,
             std::min(readable.second, size_t(CDC_DATA_SZ)));
+        usbIrqPrioRaise.unlock();
+
         if (transferred > 0) {
             rxFifo.notifyRead(transferred);
         }
