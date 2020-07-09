@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "Bsp.hpp"
 #include "CdcUartTunnel.hpp"
 #include "Esp32Manager.hpp"
 #include "UsbCdcLink.h"
@@ -214,14 +215,14 @@ static usbd_respond cdc_control(
             const bool dtr = req->wValue & 0x01;
             const bool rts = req->wValue & 0x02;
             //DEBUG("CONTROL_LINE_STATE DTR %d RTS %d\n", (int)dtr, (int)rts);
-            sEsp32Manager.onSerialBreak(dtr, rts);
+            sEsp32Manager.onSerialBreakInIrq(dtr, rts);
             return usbd_ack;
         }
         case USB_CDC_SET_LINE_CODING: {
             if (req->wLength < sizeof(cdc_line))
                 return usbd_fail;
             auto* newCoding = (struct usb_cdc_line_coding*)req->data;
-            if (!tunnelOnSetLineCoding(cdc_line, *newCoding))
+            if (!tunnelOnSetLineCodingInIrq(cdc_line, *newCoding))
                 return usbd_fail;
             memcpy(&cdc_line, req->data, sizeof(cdc_line));
             //DEBUG("USB_CDC_SET_LINE_CODING %d %d %d %d\n", cdc_line.dwDTERate,
@@ -280,26 +281,11 @@ void cdcLinkInit() {
     usbd_reg_control(&udev, cdc_control);
     usbd_reg_descr(&udev, cdc_getdesc);
 
+    HAL_NVIC_SetPriority(usbLpIRQn, usbLpIRQnPrio, 0);
+    HAL_NVIC_EnableIRQ(usbLpIRQn);
+
     usbd_enable(&udev, true);
     usbd_connect(&udev, true);
-
-    HAL_NVIC_SetPriority(USB_LP_CAN1_RX0_IRQn, 2, 0);
-    //HAL_NVIC_EnableIRQ(USB_LP_CAN1_RX0_IRQn);
-
-    HAL_NVIC_SetPriority(USBWakeUp_IRQn, 1, 0);
-    //HAL_NVIC_EnableIRQ(USBWakeUp_IRQn);
 }
 
-void cdcLinkPoll() { usbd_poll(&udev); }
-
-void USB_HP_CAN1_TX_IRQHandler() {
-    __BKPT();
-    while (true) {
-    }
-}
-
-void USB_LP_CAN1_RX0_IRQHandler() {
-    __BKPT();
-    while (true) {
-    }
-}
+extern "C" void USB_LP_IRQ_HANDLER(void) { usbd_poll(&udev); }

@@ -47,7 +47,6 @@ int main() {
             powerPoll();
             dispatcherPoll();
             tunnelPoll();
-            cdcLinkPoll();
             buttonControllerPoll();
             sEsp32Manager.poll();
         }

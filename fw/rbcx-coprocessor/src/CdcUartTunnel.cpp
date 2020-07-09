@@ -103,7 +103,7 @@ void tunnelPoll() {
     tunnelDownstreamHandler();
 }
 
-bool tunnelOnSetLineCoding(
+bool tunnelOnSetLineCodingInIrq(
     const usb_cdc_line_coding& old, const usb_cdc_line_coding& current) {
     if (old.dwDTERate != current.dwDTERate) {
         // From inside of LL_USART_Init, wtf is this not exported as some function?

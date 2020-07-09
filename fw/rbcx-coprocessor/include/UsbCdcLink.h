@@ -17,7 +17,6 @@ extern "C" {
 #endif
 
 void cdcLinkInit();
-void cdcLinkPoll();
 
 #ifdef __cplusplus
 }

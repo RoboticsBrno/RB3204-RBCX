@@ -172,6 +172,10 @@ inline const IRQn_Type auxiliaryAndMotorAdcIRQn = ADC1_2_IRQn;
 inline const unsigned auxiliaryAndMotorAdcIrqPrio = 9;
 #define AUXILIARY_AND_MOTOR_ADC_IRQ_HANDLER ADC1_2_IRQHandler
 
+#define USB_LP_IRQ_HANDLER USB_LP_CAN1_RX0_IRQHandler
+inline const IRQn_Type usbLpIRQn = USB_LP_CAN1_RX0_IRQn;
+inline const unsigned usbLpIRQnPrio = 7;
+
 inline void clocksInit() {
     RCC_OscInitTypeDef RCC_OscInitStruct;
     RCC_ClkInitTypeDef RCC_ClkInitStruct;

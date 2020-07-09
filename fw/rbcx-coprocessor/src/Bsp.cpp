@@ -25,7 +25,7 @@ extern "C" void EXTI9_5_IRQHandler(void) {
 
 extern "C" void HAL_GPIO_EXTI_Callback(uint16_t pin) {
     if (pin == espEnPin.second) {
-        sEsp32Manager.onEnRising();
+        sEsp32Manager.onEnRisingInIrq();
     }
     if (pin & utsEchoPins.second) {
         ultrasoundOnEchoEdge();

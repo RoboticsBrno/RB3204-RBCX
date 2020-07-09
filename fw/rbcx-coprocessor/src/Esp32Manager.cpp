@@ -120,7 +120,7 @@ void Esp32Manager::strapPins(bool bootloader) {
 
 void Esp32Manager::unstrapPins() { reinitEspStrappingPins(); }
 
-void Esp32Manager::onEnRising() {
+void Esp32Manager::onEnRisingInIrq() {
     const bool currentEdge = pinRead(espEnPin);
     if (currentEdge && !m_previousEnEdge && m_enPinHolders == 0) {
         queueReset(m_lastDtr && !m_lastRts);
@@ -130,7 +130,7 @@ void Esp32Manager::onEnRising() {
     m_previousEnEdge = currentEdge;
 }
 
-void Esp32Manager::onSerialBreak(bool dtr, bool rts) {
+void Esp32Manager::onSerialBreakInIrq(bool dtr, bool rts) {
     m_lastDtr = dtr;
     m_lastRts = rts;
     m_checkBreakTimer.restart(25);
