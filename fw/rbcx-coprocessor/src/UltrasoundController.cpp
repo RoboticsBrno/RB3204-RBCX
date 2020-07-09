@@ -30,7 +30,9 @@ void ultrasoundInit() {
     LL_TIM_SetUpdateSource(utsTimer, LL_TIM_UPDATESOURCE_COUNTER);
     LL_TIM_ClearFlag_UPDATE(utsTimer);
 
-    LL_EXTI_DisableIT_0_31(utsEchoPins.second);
+    for (const auto& p : utsEchoPin) {
+        LL_EXTI_DisableIT_0_31(p.second);
+    }
 
     trigQueue.create();
     utsTask.start("ultrasound", 2, []() {

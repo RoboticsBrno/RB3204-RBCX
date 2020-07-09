@@ -10,6 +10,8 @@
 #include "stm32f1xx_ll_usart.h"
 
 #include "Bsp.hpp"
+#include "ButtonController.hpp"
+#include "BuzzerController.hpp"
 #include "Dispatcher.hpp"
 #include "Power.hpp"
 #include "coproc_codec.h"
@@ -20,6 +22,7 @@
 #include "utils/MessageBufferWrapper.hpp"
 #include "utils/QueueWrapper.hpp"
 #include "utils/StreamBufferWrapper.hpp"
+#include "utils/TickTimer.hpp"
 
 #include "rbcx.pb.h"
 
@@ -84,6 +87,8 @@ void debugUartInit() {
     LL_USART_EnableDMAReq_TX(debugUart);
 
     pinInit(debugUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
+    pinInit(
+        debugUartRxPin, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
 
 ssize_t debugLinkTx(const uint8_t* data, size_t len) {
@@ -177,15 +182,8 @@ extern "C" void DEBUGUART_TX_DMA_HANDLER() {
     }
 
 static void debugLinkHandleCommand(const char* cmd) {
-    if (strcmp(cmd, "help") == 0) {
-        printf("Available commands: \n"
-               "  calibrate power VCC_MV BATTERY_MID_MV VREF_33V_MV "
-               "TEMPERATURE_C\n");
-        return;
-    }
-
-    COMMAND("calibrate", {
-        COMMAND("power", {
+    COMMAND("power", {
+        COMMAND("calibrate", {
             CoprocReq req = {
                 .which_payload = CoprocReq_calibratePower_tag,
             };
@@ -201,6 +199,14 @@ static void debugLinkHandleCommand(const char* cmd) {
             }
 
             dispatcherEnqueueRequest(req);
+            return;
+        });
+
+        COMMAND("info", {
+            printf("Power info: VCC %d mV bMid: %dmV VRef: %d mv Temperature "
+                   "%d C\n",
+                powerBatteryMv(), powerBatteryMidMv(), powerVrefMv(),
+                powerTemperatureC());
             return;
         });
     });
@@ -256,6 +262,30 @@ static void debugLinkHandleCommand(const char* cmd) {
             }
 
             dispatcherEnqueueRequest(req);
+            return;
+        });
+    });
+
+    COMMAND("leds", {
+        COMMAND("set", {
+            uint32_t val = 0;
+            if (sscanf(cmd, "%lu", &val) != 1) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            setLeds(val);
+            return;
+        });
+    });
+
+    COMMAND("buzzer", {
+        buzzerSetState(!pinRead(buzzerPin));
+        return;
+    });
+
+    COMMAND("buttons", {
+        COMMAND("debug", {
+            buttonControllerSetDebug(true);
             return;
         });
     });

@@ -201,6 +201,8 @@ uint16_t powerTemperatureC() {
         LL_ADC_RESOLUTION_12B);
 }
 
+uint16_t powerVrefMv() { return vrefMv; }
+
 void powerCalibrate(uint16_t vccMv, uint16_t bMidMv, uint16_t vref33Mv,
     uint16_t currentTemperatureC) {
 
