@@ -42,7 +42,8 @@ public:
                 int(m_positionReg.integrator()));
             if (atTargetPosition() && atStandstill()) {
                 m_positionReg.clear();
-                return std::make_pair(0, false);
+                m_targetVelocity = 0;
+                break;
             }
             auto action
                 = m_positionReg.process(m_targetPosition, m_actualPosition);
@@ -54,6 +55,7 @@ public:
                 m_targetVelocity = action;
             }
         }
+        // fallthrough
         case VelocityCtrl: {
             int16_t targetTicksPerLoop = m_targetVelocity / motorLoopFreq;
             uint16_t targetTicksRem = abs(m_targetVelocity % motorLoopFreq);
