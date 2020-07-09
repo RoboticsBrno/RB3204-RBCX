@@ -38,7 +38,8 @@ public:
         case BrakeCtrl:
             return std::make_pair(m_targetBrakingPower, true);
         case PositionCtrl: {
-            DEBUG("%d %d\n", m_actualPosition, m_positionReg.integrator());
+            DEBUG("%d %d\n", int(m_actualPosition),
+                int(m_positionReg.integrator()));
             if (atTargetPosition() && atStandstill()) {
                 m_positionReg.clear();
                 return std::make_pair(0, false);
