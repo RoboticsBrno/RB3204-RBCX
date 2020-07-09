@@ -100,20 +100,16 @@ public:
         m_actualPosition = homedTicks;
     }
 
-    void setTargetPosition(int32_t ticks) {
+    void setTargetPosition(int32_t ticks, bool additive) {
         if (m_state != PositionCtrl) {
             m_positionReg.clear();
             m_state = PositionCtrl;
         }
-        m_targetPosition = ticks;
-    }
-
-    void addTargetPosition(int32_t ticksDelta) {
-        if (m_state != PositionCtrl) {
-            m_positionReg.clear();
-            m_state = PositionCtrl;
+        if (additive) {
+            m_targetPosition += ticks;
+        } else {
+            m_targetPosition = ticks;
         }
-        m_targetPosition += ticksDelta;
     }
 
     void setVelocityPid(uint32_t p, uint32_t i, uint32_t d) {

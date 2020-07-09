@@ -121,10 +121,10 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
         targetMotor.homePosition(request.motorCmd.homePosition);
         break;
     case CoprocReq_MotorReq_setPosition_tag:
-        targetMotor.setTargetPosition(request.motorCmd.setPosition);
+        targetMotor.setTargetPosition(request.motorCmd.setPosition, false);
         break;
     case CoprocReq_MotorReq_addPosition_tag:
-        targetMotor.addTargetPosition(request.motorCmd.addPosition);
+        targetMotor.setTargetPosition(request.motorCmd.addPosition, true);
         break;
     case CoprocReq_MotorReq_setVelocityRegCoefs_tag: {
         auto& coefs = request.motorCmd.setVelocityRegCoefs;
