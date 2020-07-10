@@ -83,8 +83,8 @@ static bool primaryUartTxReady() {
 static void tunnelDownstreamHandler() {
     if (primaryUartTxReady()) {
         usbIrqPrioRaise.lock();
-        const int transferred
-            = usbd_ep_read(&udev, CDC_RXD_EP, txBuf.data(), txBuf.size());
+        const int transferred = usbd_ep_read(
+            &udev, CDC_TUNNEL_RXD_EP, txBuf.data(), txBuf.size());
         usbIrqPrioRaise.unlock();
 
         if (transferred > 0) {
@@ -98,8 +98,8 @@ static void tunnelUpstreamHandler() {
     auto readable = rxFifo.readableSpan();
     if (readable.second > 0) {
         usbIrqPrioRaise.lock();
-        const int transferred = usbd_ep_write(&udev, CDC_TXD_EP, readable.first,
-            std::min(readable.second, size_t(CDC_DATA_SZ)));
+        const int transferred = usbd_ep_write(&udev, CDC_TUNNEL_TXD_EP,
+            readable.first, std::min(readable.second, size_t(CDC_DATA_SZ)));
         usbIrqPrioRaise.unlock();
 
         if (transferred > 0) {
