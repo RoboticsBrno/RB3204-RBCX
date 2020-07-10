@@ -6,6 +6,7 @@ void powerPoll();
 uint16_t powerBatteryMv();
 uint16_t powerBatteryMidMv();
 uint16_t powerTemperatureC();
+uint16_t powerVrefMv();
 
 static constexpr uint16_t POWER_CALIBRATE_DEFAULT = 0;
 static constexpr uint16_t POWER_CALIBRATE_NO_CHANGE = 0xFFFF;
