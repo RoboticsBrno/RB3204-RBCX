@@ -470,6 +470,8 @@ void cdcLinkInit() {
     }
 
     // reinit button and check
+    for (volatile int i = 0; i < 5000; ++i)
+        ;
     pinInit(
         button3Pin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_LOW, true);
     enableDebugEp = !pinRead(button3Pin);
