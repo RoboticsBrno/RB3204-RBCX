@@ -29,10 +29,11 @@ def add_version_defines():
             defines["RBCX_VER_NUMBER"] = (int(m.group(1)) << 16) | (int(m.group(2)) << 8) | int(m.group(3))
     except subprocess.CalledProcessError:
         defines["RBCX_VER_NUMBER"] = 0
-    
-    
+
+    print("RBCX VERSION: 0x%08x %s" % (defines["RBCX_VER_NUMBER"], defines))
+
     defines = { ("-D%s=" % k): defines[k] for k in defines }
-    
+
     newflags = []
     for f in env.get("BUILD_FLAGS", []):
         found = False
