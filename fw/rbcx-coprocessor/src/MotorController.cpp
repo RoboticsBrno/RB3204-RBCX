@@ -1,5 +1,6 @@
 #include "MotorController.hpp"
 #include "Bsp.hpp"
+#include "ControlLink.hpp"
 #include "Dispatcher.hpp"
 #include "Motor.hpp"
 #include "utils/Debug.hpp"
@@ -117,6 +118,14 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
     std::scoped_lock lock(motorMut);
 
     switch (request.which_motorCmd) {
+    case CoprocReq_MotorReq_getState_tag: {
+        CoprocStat stat = {
+            .which_payload = CoprocStat_motorStat_tag,
+        };
+        targetMotor.reportStat(stat.payload.motorStat);
+        stat.payload.motorStat.motorIndex = request.motorIndex;
+        controlLinkTx(stat);
+    } break;
     case CoprocReq_MotorReq_setPower_tag:
         targetMotor.setTargetPower(request.motorCmd.setPower);
         break;
@@ -158,7 +167,7 @@ void motorReset() {
     std::scoped_lock lock(motorMut);
 
     for (int idx : { 0, 1, 2, 3 }) {
-        motor[idx].setTargetPower(0);
+        motor[idx] = Motor();
         setMotorPower(idx, 0, false);
     }
 }

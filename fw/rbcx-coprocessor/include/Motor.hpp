@@ -11,7 +11,18 @@ class Motor {
 public:
     Motor()
         : m_velocityReg(INT16_MAX, 150000, 300000, 20000)
-        , m_positionReg(500, 1000, 0, 0) {}
+        , m_positionReg(500, 1000, 0, 0)
+        , m_actualPower(0)
+        , m_targetVelocity(0)
+        , m_targetPosition()
+        , m_actualPosition()
+        , m_actualTicksPerLoop()
+        , m_dither()
+        , m_lastEncTicks()
+        , m_posEpsilon(3)
+        , m_velEpsilon(3)
+        , m_maxAccel(2000 / motorLoopFreq)
+        , m_mode(MotorMode_POWER) {}
 
     bool atTargetPosition() const {
         return uint32_t(abs(m_actualPosition - m_targetPosition))
@@ -38,35 +49,33 @@ public:
         m_lastEncTicks = encTicks;
 
         switch (m_mode) {
-        case MotorMode_POWER:
-        case MotorMode_BRAKE:
-            break;
         case MotorMode_POSITION:
         case MotorMode_POSITION_IDLE: {
+            // DEBUG("i:%ld e:%ld s:%ld -> v:%ld\n", m_positionReg.integrator(),
+            //     m_positionReg.e(), m_actualPosition, m_positionReg.output());
             if (atTargetPosition() && atStandstill()) {
                 m_positionReg.clear();
                 m_targetVelocity = 0;
                 modeChange(MotorMode_POSITION_IDLE);
-                break;
-            }
-            auto action
-                = m_positionReg.process(m_targetPosition, m_actualPosition);
-
-            // Limit ramp-up to max acceleration
-            if (action > m_targetVelocity + m_maxAccel) {
-                m_targetVelocity += m_maxAccel;
-            } else if (action < m_targetVelocity - m_maxAccel) {
-                m_targetVelocity -= m_maxAccel;
             } else {
-                m_targetVelocity = action;
+                auto action
+                    = m_positionReg.process(m_targetPosition, m_actualPosition);
+
+                // Limit ramp-up to max acceleration
+                if (action > m_targetVelocity + m_maxAccel) {
+                    m_targetVelocity += m_maxAccel;
+                } else if (action < m_targetVelocity - m_maxAccel) {
+                    m_targetVelocity -= m_maxAccel;
+                } else {
+                    m_targetVelocity = action;
+                }
             }
-        }
-        // fallthrough
+        } // fallthrough
         case MotorMode_VELOCITY: {
             int16_t targetTicksPerLoop = m_targetVelocity / motorLoopFreq;
             uint16_t targetTicksRem = abs(m_targetVelocity % motorLoopFreq);
             if ((targetTicksRem * 4) / motorLoopFreq > m_dither) {
-                targetTicksPerLoop += sgn m_targetVelocity < 0 ? -1 : 1;
+                targetTicksPerLoop += m_targetVelocity < 0 ? -1 : 1;
             }
             if (++m_dither >= 4) {
                 m_dither = 0;
@@ -77,7 +86,7 @@ public:
             m_actualPower = action;
         } break;
         default:
-            abort();
+            break;
         }
         return m_actualPower;
     }
@@ -153,8 +162,8 @@ private:
     int16_t m_actualTicksPerLoop;
     uint16_t m_dither;
     uint16_t m_lastEncTicks;
-    uint16_t m_posEpsilon = 3;
-    uint16_t m_velEpsilon = 3;
-    uint16_t m_maxAccel = 2000 / motorLoopFreq;
-    MotorMode m_mode = MotorMode_POWER;
+    uint16_t m_posEpsilon;
+    uint16_t m_velEpsilon;
+    uint16_t m_maxAccel;
+    MotorMode m_mode;
 };
