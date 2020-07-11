@@ -30,13 +30,18 @@ Esp32Manager::Esp32Manager()
     : m_enPinHolders {}
     , m_queuedReset(RstNormal)
     , m_previousEnEdge(false)
-    , m_inBootloader(false) {}
+    , m_inBootloader(false)
+    , m_watchdogInhibit(false) {}
 
 Esp32Manager::~Esp32Manager() {}
 
 void Esp32Manager::init() {
     pinInit(espEnPin, GPIO_MODE_INPUT, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
     m_previousEnEdge = pinRead(espEnPin);
+    if (CoreDebug->DHCSR & CoreDebug_DHCSR_C_DEBUGEN_Msk) {
+        DEBUG("Watchdog inhibited with debugger attached\n");
+        m_watchdogInhibit = true;
+    }
 }
 
 void Esp32Manager::poll() {
@@ -58,8 +63,8 @@ void Esp32Manager::poll() {
         }
     }
 
-    if (m_watchdogTimer.poll() && !m_inBootloader && m_previousEnEdge
-        && m_enPinHolders == 0) {
+    if (!m_watchdogInhibit && m_watchdogTimer.poll() && !m_inBootloader
+        && m_previousEnEdge && m_enPinHolders == 0) {
         //DEBUG("Esp32 watchdog timed out, resetting.\n");
         queueReset();
     }
@@ -138,4 +143,8 @@ void Esp32Manager::onSerialBreakInIrq(bool dtr, bool rts) {
 
 void Esp32Manager::resetWatchdog() {
     m_watchdogTimer.restart(Esp32WatchdogTimeoutMs);
+}
+
+void Esp32Manager::setWatchdogInhibit(bool inhibit) {
+    m_watchdogInhibit = inhibit;
 }
