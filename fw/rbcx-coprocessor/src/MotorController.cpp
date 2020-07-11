@@ -14,6 +14,8 @@
 static void setPwmValue(TIM_TypeDef* timer, uint8_t motorIndex, uint16_t value);
 static void setMotorPower(uint8_t motorIndex, int32_t power, bool brake);
 
+// Debounce ENC signals at ~3.5us (72MHz fDTS)
+static constexpr uint32_t encoderFilter = LL_TIM_IC_FILTER_FDIV32_N8;
 static constexpr uint16_t maxPwm = 2000;
 static std::array<Motor, 4> motor;
 static MutexWrapper motorMut;
@@ -63,11 +65,11 @@ void motorInit() {
     encInit.IC1Polarity = LL_TIM_IC_POLARITY_RISING;
     encInit.IC1ActiveInput = LL_TIM_ACTIVEINPUT_DIRECTTI;
     encInit.IC1Prescaler = LL_TIM_ICPSC_DIV1;
-    encInit.IC1Filter = LL_TIM_IC_FILTER_FDIV1;
+    encInit.IC1Filter = encoderFilter;
     encInit.IC2Polarity = LL_TIM_IC_POLARITY_RISING;
     encInit.IC2ActiveInput = LL_TIM_ACTIVEINPUT_DIRECTTI;
     encInit.IC2Prescaler = LL_TIM_ICPSC_DIV1;
-    encInit.IC2Filter = LL_TIM_IC_FILTER_FDIV1;
+    encInit.IC2Filter = encoderFilter;
     for (auto timer : encoderTimer) {
         LL_TIM_ENCODER_Init(timer, &encInit);
         LL_TIM_EnableCounter(timer);
