@@ -32,8 +32,11 @@ def before_upload(source, target, env):
         return
 
     print("Sending magic RBCX sequence to %s for DFU reset..." % port["port"])
-    with serial.Serial(port["port"], baudrate=12345, timeout=0.1, parity=serial.PARITY_EVEN, stopbits=serial.STOPBITS_TWO):
-        time.sleep(0.01)
+    try:
+        with serial.Serial(port["port"], baudrate=12345, timeout=0.1, parity=serial.PARITY_EVEN, stopbits=serial.STOPBITS_TWO):
+            time.sleep(0.01)
+    except Exception as e:
+        print("    Got exeption, might be okay anyway: %s" % e)
 
     print("Waiting for USB re-enumeration...")
     for i in range(30):
