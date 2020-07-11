@@ -46,7 +46,7 @@ void softResetInit() {
             if (xTaskNotifyWait(0, 0, nullptr, portMAX_DELAY) != pdTRUE)
                 continue;
 
-            DEBUG("Soft resetting peripherials to default state.\n");
+            //DEBUG("Soft resetting peripherials to default state.\n");
 
             setLeds(0);
             buzzerSetState(false);
