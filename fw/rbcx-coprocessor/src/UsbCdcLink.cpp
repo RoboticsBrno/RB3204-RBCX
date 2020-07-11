@@ -474,7 +474,8 @@ void cdcLinkInit() {
         ;
     pinInit(
         button3Pin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_LOW, true);
-    enableDebugEp = !pinRead(button3Pin);
+    enableDebugEp = !pinRead(button3Pin)
+        || (CoreDebug->DHCSR & CoreDebug_DHCSR_C_DEBUGEN_Msk);
 
     if (enableDebugEp) {
         config_desc.config.bNumInterfaces = INTERFACE_COUNT_ALL;
