@@ -452,6 +452,11 @@ static usbd_respond cdc_setconf(usbd_device* dev, uint8_t cfg) {
 void cdcLinkInit() {
     __HAL_RCC_USB_CLK_ENABLE();
 
+    // quickly charge Button capacitor
+    pinInit(button3Pin, GPIO_MODE_OUTPUT_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH,
+        true);
+    pinWrite(button3Pin, 1);
+
     std::array<uint32_t, 3> uid;
     HAL_GetUID(uid.data());
 
@@ -464,8 +469,10 @@ void cdcLinkInit() {
         }
     }
 
-    enableDebugEp
-        = !pinRead(button1Pin) && !pinRead(button3Pin) && !pinRead(button4Pin);
+    // reinit button and check
+    pinInit(
+        button3Pin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_LOW, true);
+    enableDebugEp = !pinRead(button3Pin);
 
     if (enableDebugEp) {
         config_desc.config.bNumInterfaces = INTERFACE_COUNT_ALL;
