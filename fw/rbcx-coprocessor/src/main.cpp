@@ -24,6 +24,11 @@ static TaskWrapper<3072> mainTask;
 int main() {
     clocksInit();
     HAL_Init();
+
+#ifdef RBCX_VECT_TAB_OFFSET
+    SCB->VTOR = FLASH_BASE | RBCX_VECT_TAB_OFFSET;
+#endif
+
     pinsInit();
 
     mainTask.start("main", 1, []() {

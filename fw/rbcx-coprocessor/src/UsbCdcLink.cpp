@@ -332,6 +332,16 @@ static usbd_respond cdc_getdesc(
     return usbd_ack;
 };
 
+static void tunnel_check_for_dfu_request(
+    const struct usb_cdc_line_coding* coding) {
+#ifdef RBCX_SBOOT
+    if (coding->dwDTERate == 12345 && coding->bParityType == USB_CDC_EVEN_PARITY
+        && coding->bCharFormat == USB_CDC_2_STOP_BITS) {
+        rebootToDfu();
+    }
+#endif
+}
+
 static usbd_respond cdc_control_tunnel(usbd_device* dev, usbd_ctlreq* req) {
     switch (req->bRequest) {
     case USB_CDC_SET_CONTROL_LINE_STATE: {
@@ -344,12 +354,18 @@ static usbd_respond cdc_control_tunnel(usbd_device* dev, usbd_ctlreq* req) {
     case USB_CDC_SET_LINE_CODING: {
         if (req->wLength < sizeof(cdc_line_tunnel))
             return usbd_fail;
+
         auto* newCoding = (struct usb_cdc_line_coding*)req->data;
+
+        tunnel_check_for_dfu_request(newCoding);
+
         if (!tunnelOnSetLineCodingInIrq(cdc_line_tunnel, *newCoding))
             return usbd_fail;
+
         memcpy(&cdc_line_tunnel, req->data, sizeof(cdc_line_tunnel));
-        //DEBUG("USB_CDC_SET_LINE_CODING %d %d %d %d\n", cdc_line.dwDTERate,
-        //  cdc_line.bCharFormat, cdc_line.bDataBits, cdc_line.bParityType);
+        /*DEBUG("USB_CDC_SET_LINE_CODING %d %d %d %d\n",
+            cdc_line_tunnel.dwDTERate, cdc_line_tunnel.bCharFormat,
+            cdc_line_tunnel.bDataBits, cdc_line_tunnel.bParityType);*/
         return usbd_ack;
     }
     case USB_CDC_GET_LINE_CODING:

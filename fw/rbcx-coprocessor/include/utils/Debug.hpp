@@ -38,3 +38,5 @@ inline void DEBUG_HEX(const uint8_t* data, size_t len) {}
 inline bool isInInterrupt() {
     return (SCB->ICSR & SCB_ICSR_VECTACTIVE_Msk) != 0;
 }
+
+void rebootToDfu();
