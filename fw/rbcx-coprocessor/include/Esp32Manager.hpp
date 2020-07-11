@@ -19,6 +19,7 @@ public:
 
     bool isInBootloader() const { return m_inBootloader; }
     void resetWatchdog();
+    void setWatchdogInhibit(bool inhibit);
 
 private:
     enum EnHolderType {
@@ -49,6 +50,7 @@ private:
     bool m_lastRts;
     bool m_lastDtr;
     bool m_inBootloader;
+    bool m_watchdogInhibit;
 };
 
 extern Esp32Manager sEsp32Manager;
