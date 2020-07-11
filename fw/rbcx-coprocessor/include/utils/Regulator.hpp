@@ -27,6 +27,8 @@ struct Regulator {
     coef_type I() const { return m_i; }
     void setD(const coef_type& v) { m_d = v; }
     coef_type D() const { return m_d; }
+    void setMaxOutput(value_type max_output) { m_max_output = max_output; }
+    value_type maxOutput() { return m_max_output; }
 
     void stop(bool s = true) {
         m_stop = s;
