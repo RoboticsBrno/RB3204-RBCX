@@ -55,7 +55,16 @@ public:
 
     /// Write len bytes into buffer starting at data.
     void writeSpan(uint8_t* data, size_t len) {
-        std::copy_n(data, len, this->data() + m_head);
+        if (len > Size) {
+            data += len - Size;
+            len = Size;
+        }
+
+        const size_t chunk = std::min(size_t(Size - m_head), len);
+        std::copy_n(data, chunk, this->data() + m_head);
+        if (len > chunk) {
+            std::copy_n(data + chunk, len - chunk, this->data());
+        }
         notifyWritten(len);
     }
 

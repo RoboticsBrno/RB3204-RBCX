@@ -29,16 +29,6 @@ static std::array<uint8_t, codec.MaxFrameSize> txDmaBuf;
 
 static MessageBufferWrapper<512> txMessageBuf;
 
-void esp32Pin0Restore() {
-    pinInit(
-        controlUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
-}
-
-void esp32Pin2Restore() {
-    pinInit(controlUartRxPin, GPIO_MODE_AF_INPUT, GPIO_PULLUP,
-        GPIO_SPEED_FREQ_HIGH);
-}
-
 void controlUartInit() {
     txMessageBuf.create();
 

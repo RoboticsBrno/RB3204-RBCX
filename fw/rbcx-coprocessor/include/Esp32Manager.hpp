@@ -14,8 +14,8 @@ public:
 
     void queueReset(bool bootloader = false);
 
-    void onEnRising();
-    void onSerialBreak(bool dtr, bool rst);
+    void onEnRisingInIrq();
+    void onSerialBreakInIrq(bool dtr, bool rst);
 
     bool isInBootloader() const { return m_inBootloader; }
     void resetWatchdog();

@@ -60,7 +60,7 @@ void Esp32Manager::poll() {
 
     if (m_watchdogTimer.poll() && !m_inBootloader && m_previousEnEdge
         && m_enPinHolders == 0) {
-        DEBUG("Esp32 watchdog timed out, resetting.\n");
+        //DEBUG("Esp32 watchdog timed out, resetting.\n");
         queueReset();
     }
 }
@@ -91,7 +91,7 @@ void Esp32Manager::queueReset(bool bootloader) {
 }
 
 void Esp32Manager::strapPins(bool bootloader) {
-    DEBUG("Straping pins, bootloader: %d\n", bootloader);
+    //DEBUG("Straping pins, bootloader: %d\n", bootloader);
     pinInit(esp0Pin, GPIO_MODE_OUTPUT_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
     pinInit(esp12Pin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL,
         GPIO_SPEED_FREQ_LOW); // TODO: set pin 12 to OD on RBCX v1.1, v1.0 has HW bug
@@ -120,7 +120,7 @@ void Esp32Manager::strapPins(bool bootloader) {
 
 void Esp32Manager::unstrapPins() { reinitEspStrappingPins(); }
 
-void Esp32Manager::onEnRising() {
+void Esp32Manager::onEnRisingInIrq() {
     const bool currentEdge = pinRead(espEnPin);
     if (currentEdge && !m_previousEnEdge && m_enPinHolders == 0) {
         queueReset(m_lastDtr && !m_lastRts);
@@ -130,7 +130,7 @@ void Esp32Manager::onEnRising() {
     m_previousEnEdge = currentEdge;
 }
 
-void Esp32Manager::onSerialBreak(bool dtr, bool rts) {
+void Esp32Manager::onSerialBreakInIrq(bool dtr, bool rts) {
     m_lastDtr = dtr;
     m_lastRts = rts;
     m_checkBreakTimer.restart(25);

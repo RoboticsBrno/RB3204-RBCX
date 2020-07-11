@@ -10,32 +10,43 @@
 #include "stm32f1xx_ll_usart.h"
 
 #include "Bsp.hpp"
+#include "ButtonController.hpp"
+#include "BuzzerController.hpp"
 #include "Dispatcher.hpp"
 #include "Power.hpp"
+#include "UsbCdcLink.h"
 #include "coproc_codec.h"
 #include "coproc_link_parser.h"
 #include "rbcx.pb.h"
+#include "utils/BasePriorityRaiser.hpp"
 #include "utils/ByteFifo.hpp"
 #include "utils/Debug.hpp"
 #include "utils/MessageBufferWrapper.hpp"
+#include "utils/MutexWrapper.hpp"
 #include "utils/QueueWrapper.hpp"
 #include "utils/StreamBufferWrapper.hpp"
+#include "utils/TickTimer.hpp"
 
 #include "rbcx.pb.h"
 
 static DMA_HandleTypeDef dmaTxHandle;
 static DMA_HandleTypeDef dmaRxHandle;
 
-static std::array<uint8_t, 256> txDmaBuf;
-static ByteFifo<128> rxFifo;
-
-static StreamBufferWrapper<txDmaBuf.size() * 4> txStreamBuf;
-
 static constexpr size_t MaxLineLength = 128;
+
+static std::array<uint8_t, 256> txDmaBuf;
+static StreamBufferWrapper<txDmaBuf.size() * 4> txUartStreamBuf;
+
+static ByteFifo<MaxLineLength> uartRxFifo;
 static MessageBufferWrapper<MaxLineLength + 4> rxLineBuffer;
 
+static std::array<uint8_t, CDC_DATA_SZ> usbFrameBuf;
+static ByteFifo<MaxLineLength> usbRxFifo;
+static ByteFifo<MaxLineLength * 4> usbTxFifo;
+static BasePriorityRaiser<usbLpIRQnPrio> usbIrqPrioRaise;
+
 void debugUartInit() {
-    txStreamBuf.create();
+    txUartStreamBuf.create();
     rxLineBuffer.create();
 
     LL_USART_InitTypeDef init;
@@ -61,7 +72,7 @@ void debugUartInit() {
     dmaRxHandle.Init.Priority = DMA_PRIORITY_MEDIUM;
     HAL_DMA_Init(&dmaRxHandle);
     HAL_DMA_Start(&dmaRxHandle, uintptr_t(&(debugUart->DR)),
-        uintptr_t(rxFifo.data()), rxFifo.size());
+        uintptr_t(uartRxFifo.data()), uartRxFifo.size());
     LL_USART_EnableDMAReq_RX(debugUart);
 
     HAL_NVIC_SetPriority(debugUartIRQn, debugUartIrqPrio, 0);
@@ -84,6 +95,8 @@ void debugUartInit() {
     LL_USART_EnableDMAReq_TX(debugUart);
 
     pinInit(debugUartTxPin, GPIO_MODE_AF_PP, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
+    pinInit(
+        debugUartRxPin, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
 
 ssize_t debugLinkTx(const uint8_t* data, size_t len) {
@@ -95,14 +108,16 @@ ssize_t debugLinkTx(const uint8_t* data, size_t len) {
     if (isInInterrupt()) {
         BaseType_t woken = pdFALSE;
         const auto status = taskENTER_CRITICAL_FROM_ISR();
-        res = txStreamBuf.write((uint8_t*)data, len, 0, &woken);
+        res = txUartStreamBuf.write((uint8_t*)data, len, 0, &woken);
+        usbTxFifo.writeSpan((uint8_t*)data, len);
         taskEXIT_CRITICAL_FROM_ISR(status);
         portYIELD_FROM_ISR(woken);
     } else {
-        while (txStreamBuf.freeSpace() < len)
+        while (txUartStreamBuf.freeSpace() < len)
             vTaskDelay(0);
         taskENTER_CRITICAL();
-        res = txStreamBuf.write((uint8_t*)data, len, 0);
+        res = txUartStreamBuf.write((uint8_t*)data, len, 0);
+        usbTxFifo.writeSpan((uint8_t*)data, len);
         taskEXIT_CRITICAL();
     }
 
@@ -117,14 +132,11 @@ extern "C" int _write(int fd, char* data, int len) {
     return debugLinkTx((uint8_t*)data, len);
 }
 
-extern "C" void DEBUGUART_HANDLER(void) {
-    int rxHead = rxFifo.size() - __HAL_DMA_GET_COUNTER(&dmaRxHandle);
-    rxFifo.setHead(rxHead);
-    LL_USART_ClearFlag_IDLE(debugUart);
+template <int Size> static BaseType_t processRxBuf(ByteFifo<Size>& fifo) {
+    const auto fifoAvailable = std::min(MaxLineLength, fifo.available());
 
-    const auto fifoAvailable = rxFifo.available();
-    char buf[rxFifo.size()];
-    rxFifo.peekSpan((uint8_t*)buf, fifoAvailable);
+    char buf[MaxLineLength];
+    fifo.peekSpan((uint8_t*)buf, fifoAvailable);
 
     BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
 
@@ -147,10 +159,17 @@ extern "C" void DEBUGUART_HANDLER(void) {
         }
 
         remaining -= len;
-        rxFifo.notifyRead(len);
+        fifo.notifyRead(len);
         start = end;
     }
-    portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
+    return pxHigherPriorityTaskWoken;
+}
+
+extern "C" void DEBUGUART_HANDLER(void) {
+    int rxHead = uartRxFifo.size() - __HAL_DMA_GET_COUNTER(&dmaRxHandle);
+    uartRxFifo.setHead(rxHead);
+    LL_USART_ClearFlag_IDLE(debugUart);
+    portYIELD_FROM_ISR(processRxBuf(uartRxFifo));
 }
 
 extern "C" void DEBUGUART_TX_DMA_HANDLER() {
@@ -158,7 +177,7 @@ extern "C" void DEBUGUART_TX_DMA_HANDLER() {
 
     if (dmaTxHandle.State == HAL_DMA_STATE_READY) {
         BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
-        const auto len = txStreamBuf.read(
+        const auto len = txUartStreamBuf.read(
             txDmaBuf.data(), txDmaBuf.size(), 0, &pxHigherPriorityTaskWoken);
 
         if (len > 0) {
@@ -177,15 +196,8 @@ extern "C" void DEBUGUART_TX_DMA_HANDLER() {
     }
 
 static void debugLinkHandleCommand(const char* cmd) {
-    if (strcmp(cmd, "help") == 0) {
-        printf("Available commands: \n"
-               "  calibrate power VCC_MV BATTERY_MID_MV VREF_33V_MV "
-               "TEMPERATURE_C\n");
-        return;
-    }
-
-    COMMAND("calibrate", {
-        COMMAND("power", {
+    COMMAND("power", {
+        COMMAND("calibrate", {
             CoprocReq req = {
                 .which_payload = CoprocReq_calibratePower_tag,
             };
@@ -201,6 +213,14 @@ static void debugLinkHandleCommand(const char* cmd) {
             }
 
             dispatcherEnqueueRequest(req);
+            return;
+        });
+
+        COMMAND("info", {
+            printf("Power info: VCC %d mV bMid: %dmV VRef: %d mv Temperature "
+                   "%d C\n",
+                powerBatteryMv(), powerBatteryMidMv(), powerVrefMv(),
+                powerTemperatureC());
             return;
         });
     });
@@ -260,12 +280,67 @@ static void debugLinkHandleCommand(const char* cmd) {
         });
     });
 
+    COMMAND("leds", {
+        COMMAND("set", {
+            uint32_t val = 0;
+            if (sscanf(cmd, "%lu", &val) != 1) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            setLeds(val);
+            return;
+        });
+    });
+
+    COMMAND("buzzer", {
+        buzzerSetState(!pinRead(buzzerPin));
+        return;
+    });
+
+    COMMAND("buttons", {
+        COMMAND("debug", {
+            buttonControllerSetDebug(true);
+            return;
+        });
+    });
+
     printf("Invalid command.\n");
+}
+
+static void debugDownstreamHandler() {
+    usbIrqPrioRaise.lock();
+    const int transferred = usbd_ep_read(
+        &udev, CDC_DEBUG_RXD_EP, usbFrameBuf.data(), usbFrameBuf.size());
+    usbIrqPrioRaise.unlock();
+
+    if (transferred > 0) {
+        usbRxFifo.writeSpan(usbFrameBuf.data(), transferred);
+        processRxBuf(usbRxFifo);
+    }
+}
+
+static void debugUpstreamHandler() {
+    portDISABLE_INTERRUPTS();
+    const auto chunk = std::min(usbTxFifo.available(), usbFrameBuf.size());
+    if (chunk != 0) {
+        usbTxFifo.peekSpan(usbFrameBuf.data(), chunk);
+        int transferred
+            = usbd_ep_write(&udev, CDC_DEBUG_TXD_EP, usbFrameBuf.data(), chunk);
+        if (transferred > 0) {
+            usbTxFifo.notifyRead(transferred);
+        }
+    }
+    portENABLE_INTERRUPTS();
 }
 
 void debugLinkPoll() {
     char buf[MaxLineLength];
     if (rxLineBuffer.pop_front((uint8_t*)buf, MaxLineLength, 0)) {
         debugLinkHandleCommand(buf);
+    }
+
+    if (cdcLinkIsDebugEpEnabled()) {
+        debugDownstreamHandler();
+        debugUpstreamHandler();
     }
 }
