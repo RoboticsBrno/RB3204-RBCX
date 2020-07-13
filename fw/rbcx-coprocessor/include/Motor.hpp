@@ -9,20 +9,25 @@ inline const uint16_t motorLoopFreq = 100;
 
 class Motor {
 public:
-    Motor()
-        : m_velocityReg(INT16_MAX, 150000, 300000, 20000)
-        , m_positionReg(500, 1000, 0, 0)
-        , m_actualPower(0)
-        , m_targetVelocity(0)
-        , m_targetPosition(0)
-        , m_actualPosition(0)
-        , m_actualTicksPerLoop(0)
-        , m_dither(0)
-        , m_lastEncTicks(0)
-        , m_posEpsilon(3)
-        , m_velEpsilon(3)
-        , m_maxAccel(2000 / motorLoopFreq)
-        , m_mode(MotorMode_POWER) {}
+    Motor() {
+        m_lastEncTicks = 0;
+        reset();
+    }
+
+    void reset() {
+        m_velocityReg = Regulator(INT16_MAX, 150000, 300000, 20000);
+        m_positionReg = Regulator(500, 1000, 0, 0);
+        m_dither = 0;
+        m_targetVelocity = 0;
+        m_actualPower = 0;
+        m_actualPosition = 0;
+        m_targetPosition = 0;
+        m_actualTicksPerLoop = 0;
+        m_posEpsilon = 3;
+        m_velEpsilon = 3;
+        m_maxAccel = 2000 / motorLoopFreq;
+        m_mode = MotorMode_POWER;
+    }
 
     bool atTargetPosition() const {
         return uint32_t(abs(m_actualPosition - m_targetPosition))
@@ -93,7 +98,7 @@ public:
 
     void setTargetPower(int16_t power) {
         if (m_mode != MotorMode_POWER) {
-            m_mode = MotorMode_POWER;
+            modeChange(MotorMode_POWER);
         }
         m_actualPower = power;
     }

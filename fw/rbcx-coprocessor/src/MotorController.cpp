@@ -167,7 +167,7 @@ void motorReset() {
     std::scoped_lock lock(motorMut);
 
     for (int idx : { 0, 1, 2, 3 }) {
-        motor[idx] = Motor();
+        motor[idx].reset();
         setMotorPower(idx, 0, false);
     }
 }
