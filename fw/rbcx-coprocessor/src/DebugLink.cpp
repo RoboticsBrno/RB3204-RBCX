@@ -283,11 +283,12 @@ static void debugLinkHandleCommand(const char* cmd) {
             CoprocReq req = {
                 .which_payload = CoprocReq_motorReq_tag,
             };
-            req.payload.motorReq.which_motorCmd
-                = CoprocReq_MotorReq_setPosition_tag;
             auto& c = req.payload.motorReq;
-            if (sscanf(cmd, "%lu %ld", &c.motorIndex, &c.motorCmd.setPosition)
-                != 2) {
+            c.which_motorCmd = CoprocReq_MotorReq_setPosition_tag;
+            if (sscanf(cmd, "%lu %ld %ld", &c.motorIndex,
+                    &c.motorCmd.setPosition.targetPosition,
+                    &c.motorCmd.setPosition.runningVelocity)
+                != 3) {
                 printf("Invalid parameters!\n");
                 return;
             }
