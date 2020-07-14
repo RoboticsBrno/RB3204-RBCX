@@ -1,5 +1,7 @@
 #include "MotorController.hpp"
 #include "Bsp.hpp"
+#include "ControlLink.hpp"
+#include "Dispatcher.hpp"
 #include "Motor.hpp"
 #include "utils/Debug.hpp"
 #include "utils/MutexWrapper.hpp"
@@ -13,6 +15,8 @@
 static void setPwmValue(TIM_TypeDef* timer, uint8_t motorIndex, uint16_t value);
 static void setMotorPower(uint8_t motorIndex, int32_t power, bool brake);
 
+// Debounce ENC signals at ~3.5us (72MHz fDTS)
+static constexpr uint32_t encoderFilter = LL_TIM_IC_FILTER_FDIV32_N8;
 static constexpr uint16_t maxPwm = 2000;
 static std::array<Motor, 4> motor;
 static MutexWrapper motorMut;
@@ -62,11 +66,11 @@ void motorInit() {
     encInit.IC1Polarity = LL_TIM_IC_POLARITY_RISING;
     encInit.IC1ActiveInput = LL_TIM_ACTIVEINPUT_DIRECTTI;
     encInit.IC1Prescaler = LL_TIM_ICPSC_DIV1;
-    encInit.IC1Filter = LL_TIM_IC_FILTER_FDIV1;
+    encInit.IC1Filter = encoderFilter;
     encInit.IC2Polarity = LL_TIM_IC_POLARITY_RISING;
     encInit.IC2ActiveInput = LL_TIM_ACTIVEINPUT_DIRECTTI;
     encInit.IC2Prescaler = LL_TIM_ICPSC_DIV1;
-    encInit.IC2Filter = LL_TIM_IC_FILTER_FDIV1;
+    encInit.IC2Filter = encoderFilter;
     for (auto timer : encoderTimer) {
         LL_TIM_ENCODER_Init(timer, &encInit);
         LL_TIM_EnableCounter(timer);
@@ -84,8 +88,21 @@ static void taskFunc() {
 
             for (int m : { 0, 1, 2, 3 }) {
                 uint16_t encTicks = LL_TIM_GetCounter(encoderTimer[m]);
-                auto action = motor[m].poll(encTicks);
-                setMotorPower(m, action.first, action.second);
+                auto& targetMotor = motor[m];
+                auto modeBefore = targetMotor.mode();
+                auto action = targetMotor.poll(encTicks);
+                auto modeAfter = targetMotor.mode();
+                setMotorPower(m, action, modeAfter == MotorMode_BRAKE);
+
+                if (modeBefore == MotorMode_POSITION
+                    && modeAfter == MotorMode_POSITION_IDLE) {
+                    CoprocStat stat = {
+                        .which_payload = CoprocStat_motorStat_tag,
+                    };
+                    targetMotor.reportStat(stat.payload.motorStat);
+                    stat.payload.motorStat.motorIndex = m;
+                    dispatcherEnqueueStatus(stat);
+                }
             }
         }
         vTaskDelayUntil(&now, pdMS_TO_TICKS(1000 / motorLoopFreq));
@@ -101,6 +118,14 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
     std::scoped_lock lock(motorMut);
 
     switch (request.which_motorCmd) {
+    case CoprocReq_MotorReq_getState_tag: {
+        CoprocStat stat = {
+            .which_payload = CoprocStat_motorStat_tag,
+        };
+        targetMotor.reportStat(stat.payload.motorStat);
+        stat.payload.motorStat.motorIndex = request.motorIndex;
+        controlLinkTx(stat);
+    } break;
     case CoprocReq_MotorReq_setPower_tag:
         targetMotor.setTargetPower(request.motorCmd.setPower);
         break;
@@ -117,20 +142,24 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
         }
         targetMotor.setTargetVelocity(ticksPerSec);
     } break;
+    case CoprocReq_MotorReq_homePosition_tag:
+        targetMotor.homePosition(request.motorCmd.homePosition);
+        break;
     case CoprocReq_MotorReq_setPosition_tag:
-        targetMotor.setTargetPosition(request.motorCmd.setPosition);
+        targetMotor.setTargetPosition(request.motorCmd.setPosition, false);
         break;
     case CoprocReq_MotorReq_addPosition_tag:
-        targetMotor.addTargetPosition(request.motorCmd.addPosition);
+        targetMotor.setTargetPosition(request.motorCmd.addPosition, true);
         break;
-    case CoprocReq_MotorReq_setVelocityRegCoefs_tag: {
-        auto& coefs = request.motorCmd.setVelocityRegCoefs;
-        targetMotor.setVelocityPid(coefs.p, coefs.i, coefs.d);
-    } break;
-    case CoprocReq_MotorReq_setPositionRegCoefs_tag: {
-        auto& coefs = request.motorCmd.setPositionRegCoefs;
-        targetMotor.setPositionPid(coefs.p, coefs.i, coefs.d);
-    } break;
+    case CoprocReq_MotorReq_setVelocityRegCoefs_tag:
+        targetMotor.setVelocityPid(request.motorCmd.setVelocityRegCoefs);
+        break;
+    case CoprocReq_MotorReq_setPositionRegCoefs_tag:
+        targetMotor.setPositionPid(request.motorCmd.setPositionRegCoefs);
+        break;
+    case CoprocReq_MotorReq_setConfig_tag:
+        targetMotor.setConfig(request.motorCmd.setConfig);
+        break;
     }
 }
 
@@ -138,7 +167,7 @@ void motorReset() {
     std::scoped_lock lock(motorMut);
 
     for (int idx : { 0, 1, 2, 3 }) {
-        motor[idx].setTargetPower(0);
+        motor[idx].reset();
         setMotorPower(idx, 0, false);
     }
 }

@@ -278,6 +278,24 @@ static void debugLinkHandleCommand(const char* cmd) {
             dispatcherEnqueueRequest(req);
             return;
         });
+
+        COMMAND("position", {
+            CoprocReq req = {
+                .which_payload = CoprocReq_motorReq_tag,
+            };
+            auto& c = req.payload.motorReq;
+            c.which_motorCmd = CoprocReq_MotorReq_setPosition_tag;
+            if (sscanf(cmd, "%lu %ld %ld", &c.motorIndex,
+                    &c.motorCmd.setPosition.targetPosition,
+                    &c.motorCmd.setPosition.runningVelocity)
+                != 3) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+
+            dispatcherEnqueueRequest(req);
+            return;
+        });
     });
 
     COMMAND("leds", {
