@@ -26,7 +26,7 @@ public:
         m_actualTicksPerLoop = 0;
         m_posEpsilon = 3;
         m_velEpsilon = 3;
-        m_maxAccel = 2000 / motorLoopFreq;
+        m_maxAccel = 4000 / motorLoopFreq;
         m_mode = MotorMode_POWER;
     }
 
@@ -118,6 +118,7 @@ public:
         if (m_mode != MotorMode_VELOCITY) {
             m_velocityReg.clear();
             modeChange(MotorMode_VELOCITY);
+            m_rampingVelocity = m_actualTicksPerLoop * motorLoopFreq;
         }
         m_targetVelocity = ticksPerSec;
     }
@@ -131,13 +132,14 @@ public:
         const CoprocReq_MotorReq_SetPosition& req, bool additive) {
         if (m_mode != MotorMode_POSITION) {
             modeChange(MotorMode_POSITION);
+            m_rampingVelocity = m_actualTicksPerLoop * motorLoopFreq;
         }
+        m_targetVelocity = req.runningVelocity;
         if (additive) {
             m_targetPosition += req.targetPosition;
         } else {
             m_targetPosition = req.targetPosition;
         }
-        m_targetVelocity = req.runningVelocity;
     }
 
     void setVelocityPid(const RegCoefs& coefs) {
