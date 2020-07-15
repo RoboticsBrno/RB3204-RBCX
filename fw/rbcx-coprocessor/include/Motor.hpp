@@ -1,6 +1,7 @@
 #pragma once
 
 #include "utils/Debug.hpp"
+#include "utils/Math.hpp"
 #include "utils/Regulator.hpp"
 
 #include <math.h>
@@ -64,8 +65,7 @@ public:
             } else {
                 int32_t posDelta = m_targetPosition - m_actualPosition;
                 int16_t terminalVelocity = std::min<int32_t>(INT16_MAX,
-                    sqrt(2 * motorLoopFreq * int32_t(m_maxAccel)
-                        * abs(posDelta)));
+                    sqrti(2 * motorLoopFreq * m_maxAccel * abs(posDelta)));
 
                 int16_t targetVelocity = std::min<int32_t>(
                     abs(m_targetVelocity), terminalVelocity);
