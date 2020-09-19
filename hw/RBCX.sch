@@ -19631,14 +19631,14 @@ Grid 5.08 mm&lt;p&gt;
 <part name="R113" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
 <part name="LED22" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
 <part name="LED24" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="R20" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
+<part name="R20" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="GND47" library="Supply" deviceset="GND" device=""/>
-<part name="R22" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
+<part name="R22" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="GND48" library="Supply" deviceset="GND" device=""/>
 <part name="LED9" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
 <part name="LED11" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="R21" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
-<part name="R23" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
+<part name="R21" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
+<part name="R23" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="LED10" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
 <part name="LED12" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
 <part name="TP5" library="test_points" deviceset="TP" device="_06MM"/>

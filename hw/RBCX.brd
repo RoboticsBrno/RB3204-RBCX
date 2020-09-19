@@ -6703,11 +6703,11 @@ JarekParal (2020-04-14)
 <attribute name="POPULARITY" value="28" x="7.3025" y="90.01125" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="VALUE" x="2.2225" y="67.78625" size="1.27" layer="28" rot="MR0"/>
 </element>
-<element name="R20" library="rcl_upravena" package="R0402" value="1k" x="93.345" y="88.9" smashed="yes">
+<element name="R20" library="rcl_upravena" package="R0402" value="2k2" x="93.345" y="88.9" smashed="yes">
 <attribute name="NAME" x="92.71" y="89.535" size="1.27" layer="25"/>
 <attribute name="VALUE" x="92.71" y="86.995" size="1.27" layer="27"/>
 </element>
-<element name="R22" library="rcl_upravena" package="R0402" value="1k" x="97.79" y="88.9" smashed="yes">
+<element name="R22" library="rcl_upravena" package="R0402" value="2k2" x="97.79" y="88.9" smashed="yes">
 <attribute name="NAME" x="97.155" y="89.535" size="1.27" layer="25"/>
 <attribute name="VALUE" x="97.155" y="86.995" size="1.27" layer="27"/>
 </element>
@@ -6721,11 +6721,11 @@ JarekParal (2020-04-14)
 <attribute name="POPULARITY" value="28" x="113.03" y="90.96375" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="95.885" y="89.05875" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="R21" library="rcl_upravena" package="R0402" value="1k" x="93.345" y="88.9" smashed="yes" rot="MR180">
+<element name="R21" library="rcl_upravena" package="R0402" value="2k2" x="93.345" y="88.9" smashed="yes" rot="MR180">
 <attribute name="NAME" x="92.71" y="88.265" size="1.27" layer="26" rot="MR180"/>
 <attribute name="VALUE" x="92.71" y="90.805" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="R23" library="rcl_upravena" package="R0402" value="1k" x="97.79" y="88.9" smashed="yes" rot="MR180">
+<element name="R23" library="rcl_upravena" package="R0402" value="2k2" x="97.79" y="88.9" smashed="yes" rot="MR180">
 <attribute name="NAME" x="97.155" y="88.265" size="1.27" layer="26" rot="MR180"/>
 <attribute name="VALUE" x="97.155" y="90.805" size="1.27" layer="28" rot="MR180"/>
 </element>
