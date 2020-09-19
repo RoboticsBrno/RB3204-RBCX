@@ -19677,6 +19677,7 @@ Grid 5.08 mm&lt;p&gt;
 <part name="D13" library="diode" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="R107" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1M"/>
 <part name="JP35" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="USBC_AUX"/>
+<part name="NC7" library="NC" deviceset="NC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -24461,6 +24462,7 @@ the transistor to disconnect pull/up R64.</text>
 <instance part="+3V78" gate="G$1" x="162.56" y="81.28" smashed="yes">
 <attribute name="VALUE" x="160.528" y="78.994" size="1.27" layer="96" rot="R90"/>
 </instance>
+<instance part="NC7" gate="G$1" x="147.32" y="73.66" smashed="yes" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -25656,11 +25658,12 @@ the transistor to disconnect pull/up R64.</text>
 <label x="170.18" y="43.18" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
 </net>
-<net name="3V3_EN" class="0">
+<net name="D11_NC" class="0">
 <segment>
+<wire x1="157.48" y1="73.66" x2="147.32" y2="73.66" width="0.1524" layer="91"/>
+<pinref part="NC7" gate="G$1" pin="NC"/>
 <pinref part="D11" gate="G$1" pin="A2"/>
-<wire x1="157.48" y1="73.66" x2="152.4" y2="73.66" width="0.1524" layer="91"/>
-<label x="152.4" y="73.66" size="1.27" layer="95" rot="R180" xref="yes"/>
+<label x="157.226" y="74.422" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 </nets>
