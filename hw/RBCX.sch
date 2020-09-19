@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.0">
+<eagle version="9.6.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -19686,7 +19686,7 @@ Grid 5.08 mm&lt;p&gt;
 <text x="43.18" y="76.2" size="1.27" layer="97">÷3.4 -&gt; VCC max = 11.22 V
 Fmax = 22.5 Hz</text>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.2</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -21077,7 +21077,7 @@ RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-6/2020</text>
+9/2020</text>
 <text x="96.52" y="76.2" size="1.27" layer="97">÷1.56 -&gt; max = 5.148 V
 Fmax = 20.2 Hz</text>
 <text x="68.58" y="185.42" size="1.27" layer="97" rot="MR0">Protection of Q1 gate over voltage spikes
@@ -22478,7 +22478,7 @@ makes filter together with gate capacitance</text>
 <description>Connectors</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.2</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -23869,7 +23869,7 @@ RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-6/2020</text>
+9/2020</text>
 <text x="111.76" y="241.3" size="2.54" layer="97">I2C</text>
 <text x="208.28" y="248.92" size="2.54" layer="97">SPI</text>
 <text x="297.18" y="248.92" size="2.54" layer="97">UART</text>
@@ -25669,7 +25669,7 @@ the transistor to disconnect pull/up R64.</text>
 <description>Auxiliary connectors</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.2</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -27060,7 +27060,7 @@ RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-6/2020</text>
+9/2020</text>
 <text x="172.72" y="241.3" size="2.54" layer="97">PROGRAM AND DEBUG INTERFACES</text>
 <text x="116.84" y="241.3" size="2.54" layer="97">USB</text>
 <text x="218.44" y="66.04" size="2.54" layer="97">ESP UART</text>
@@ -28372,7 +28372,7 @@ Jakub Streit
 <description>User interface</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.2</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -29763,7 +29763,7 @@ RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-6/2020</text>
+9/2020</text>
 </plain>
 <instances>
 <instance part="FRAME8" gate="G$1" x="0" y="0" smashed="yes">
@@ -30911,7 +30911,7 @@ Jakub Streit
 <description>Motors</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.2</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -32302,7 +32302,7 @@ RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-6/2020</text>
+9/2020</text>
 </plain>
 <instances>
 <instance part="IC5" gate="G$1" x="170.18" y="81.28" smashed="yes">
@@ -33799,7 +33799,7 @@ Jakub Streit
 <description>Servos</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.2</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -35190,7 +35190,7 @@ RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-6/2020</text>
+9/2020</text>
 <text x="60.96" y="156.21" size="1.27" layer="97">Fmax = 160 Hz</text>
 <text x="134.62" y="156.21" size="1.27" layer="97">Fmax = 160 Hz</text>
 <text x="208.28" y="156.21" size="1.27" layer="97">Fmax = 160 Hz</text>
@@ -36516,7 +36516,7 @@ Jakub Streit
 <plain>
 <text x="132.08" y="148.082" size="1.778" layer="94" rot="R180">THE TDI SIGNAL MUST BE HERE!</text>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.2</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -37907,7 +37907,7 @@ RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-6/2020</text>
+9/2020</text>
 <text x="238.76" y="150.622" size="1.778" layer="94" rot="MR180">THIS SIGNAL MUST BE HERE!</text>
 <text x="238.76" y="148.082" size="1.778" layer="94" rot="MR180">THIS SIGNAL MUST BE HERE!</text>
 <text x="238.76" y="176.022" size="1.778" layer="94" rot="MR180">THIS SIGNAL MUST BE HERE!</text>
@@ -38402,7 +38402,7 @@ Jakub Streit
 <description>Coprocessor</description>
 <plain>
 <text x="344.17" y="20.32" size="2.54" layer="94">&gt;SHEET_HEADLINE</text>
-<text x="375.158" y="5.08" size="2.54" layer="94">v1.1</text>
+<text x="375.158" y="5.08" size="2.54" layer="94">v1.2</text>
 <text x="289.56" y="5.08" size="2.1844" layer="97" font="vector">RobotikaBrno
 RobotikaBrno.cz
 Robotarna
@@ -39793,7 +39793,7 @@ RB3204-RBCX
 https://github.com/RoboticsBrno/RB3204-RBCX</text>
 <text x="317.5" y="5.08" size="2.1844" layer="97" font="vector">Jaroslav Paral
 Jakub Streit
-6/2020</text>
+9/2020</text>
 </plain>
 <instances>
 <instance part="Y1" gate="G$1" x="266.7" y="78.74" smashed="yes" rot="R90">
