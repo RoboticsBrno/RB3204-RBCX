@@ -22,7 +22,7 @@
 <layer number="12" name="Route12" color="20" fill="1" visible="no" active="no"/>
 <layer number="13" name="Route13" color="21" fill="1" visible="no" active="no"/>
 <layer number="14" name="Route14" color="22" fill="1" visible="no" active="no"/>
-<layer number="15" name="Layer3-GND" color="23" fill="1" visible="no" active="yes"/>
+<layer number="15" name="Layer3-GND" color="23" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
@@ -59,7 +59,7 @@
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="55" name="tPotisk" color="7" fill="1" visible="no" active="no"/>
@@ -82,8 +82,8 @@
 <layer number="98" name="Guide" color="6" fill="1" visible="no" active="no"/>
 <layer number="99" name="SpiceOrder" color="7" fill="1" visible="no" active="no"/>
 <layer number="100" name="Muster" color="7" fill="1" visible="no" active="no"/>
-<layer number="101" name="tSilk" color="5" fill="1" visible="no" active="yes"/>
-<layer number="102" name="bSilk" color="3" fill="1" visible="no" active="yes"/>
+<layer number="101" name="tSilk" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="102" name="bSilk" color="3" fill="1" visible="yes" active="yes"/>
 <layer number="113" name="ReferenceLS" color="7" fill="1" visible="no" active="no"/>
 <layer number="118" name="Rect_Pads" color="7" fill="1" visible="no" active="no"/>
 <layer number="153" name="FabDoc1" color="6" fill="1" visible="no" active="no"/>
@@ -224,9 +224,9 @@ PWR</text>
 <wire x1="56.99125" y1="5.08" x2="56.99125" y2="2.54" width="0.2" layer="101"/>
 <wire x1="56.99125" y1="2.54" x2="56.515" y2="2.06375" width="0.2" layer="101"/>
 <wire x1="54.61" y1="5.08" x2="55.08625" y2="5.55625" width="0.2" layer="101"/>
-<text x="17.93875" y="97.79" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">iLED</text>
-<text x="13.335" y="97.155" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">+</text>
-<text x="10.795" y="97.155" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">-</text>
+<text x="17.62125" y="97.31375" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">iLED</text>
+<text x="13.49375" y="96.99625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">+</text>
+<text x="10.795" y="96.99625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="center-left">-</text>
 <text x="98.425" y="62.865" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">B-</text>
 <text x="98.425" y="47.625" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">GND</text>
 <text x="98.425" y="42.545" size="1" layer="101" font="vector" ratio="20" rot="SR270" align="bottom-center">VCC</text>
@@ -511,7 +511,7 @@ IO1 IN1 IN2</text>
 <wire x1="73.81875" y1="13.0175" x2="71.91375" y2="11.1125" width="0.2" layer="102"/>
 <wire x1="73.025" y1="14.76375" x2="68.73875" y2="10.4775" width="0.2" layer="102"/>
 <text x="53.18125" y="5.3975" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-right">SEL</text>
-<text x="17.93875" y="99.3775" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="center-left">iLED</text>
+<text x="17.30375" y="96.36125" size="1" layer="102" font="vector" ratio="20" rot="SMR0" align="center-left">iLED</text>
 <text x="13.49375" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="center-left">+</text>
 <text x="10.795" y="96.99625" size="1" layer="102" font="vector" ratio="20" rot="SR270" align="center-left">-</text>
 <text x="98.425" y="62.865" size="1" layer="102" font="vector" ratio="20" rot="SMR270" align="top-center">B-</text>
