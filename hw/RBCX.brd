@@ -22,7 +22,7 @@
 <layer number="12" name="Route12" color="20" fill="1" visible="no" active="no"/>
 <layer number="13" name="Route13" color="21" fill="1" visible="no" active="no"/>
 <layer number="14" name="Route14" color="22" fill="1" visible="no" active="no"/>
-<layer number="15" name="Layer3-GND" color="23" fill="1" visible="yes" active="yes"/>
+<layer number="15" name="Layer3-GND" color="23" fill="1" visible="no" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
@@ -31,13 +31,13 @@
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
@@ -47,9 +47,9 @@
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
@@ -82,8 +82,8 @@
 <layer number="98" name="Guide" color="6" fill="1" visible="no" active="no"/>
 <layer number="99" name="SpiceOrder" color="7" fill="1" visible="no" active="no"/>
 <layer number="100" name="Muster" color="7" fill="1" visible="no" active="no"/>
-<layer number="101" name="tSilk" color="5" fill="1" visible="yes" active="yes"/>
-<layer number="102" name="bSilk" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="101" name="tSilk" color="5" fill="1" visible="no" active="yes"/>
+<layer number="102" name="bSilk" color="3" fill="1" visible="no" active="yes"/>
 <layer number="113" name="ReferenceLS" color="7" fill="1" visible="no" active="no"/>
 <layer number="118" name="Rect_Pads" color="7" fill="1" visible="no" active="no"/>
 <layer number="153" name="FabDoc1" color="6" fill="1" visible="no" active="no"/>
@@ -968,7 +968,6 @@ M I  C O + -
 <wire x1="74.77125" y1="24.765" x2="75.08875" y2="24.4475" width="0.1524" layer="101"/>
 <wire x1="75.08875" y1="24.4475" x2="75.08875" y2="15.08125" width="0.1524" layer="101"/>
 <wire x1="75.08875" y1="15.08125" x2="78.105" y2="12.065" width="0.1524" layer="101"/>
-<wire x1="92.075" y1="95.885" x2="92.075" y2="99.695" width="0.1524" layer="42"/>
 <wire x1="95.885" y1="92.075" x2="99.695" y2="92.075" width="0.1524" layer="42"/>
 <wire x1="92.075" y1="3.81" x2="92.075" y2="0.3175" width="0.1524" layer="42"/>
 <wire x1="95.885" y1="7.9375" x2="99.695" y2="7.9375" width="0.1524" layer="42"/>
@@ -1304,6 +1303,30 @@ IO: GPIO</text>
 <wire x1="76.35875" y1="69.85" x2="76.35875" y2="74.13625" width="0.2" layer="102"/>
 <wire x1="76.35875" y1="74.13625" x2="75.8825" y2="74.6125" width="0.2" layer="102"/>
 <wire x1="75.8825" y1="74.6125" x2="70.485" y2="74.6125" width="0.2" layer="102"/>
+<polygon width="0.2" layer="29">
+<vertex x="9.525" y="100.33"/>
+<vertex x="5.715" y="100.33"/>
+<vertex x="5.715" y="95.885"/>
+<vertex x="9.525" y="95.885"/>
+</polygon>
+<polygon width="0.2" layer="30">
+<vertex x="5.715" y="100.33"/>
+<vertex x="9.525" y="100.33"/>
+<vertex x="9.525" y="95.885"/>
+<vertex x="5.715" y="95.885"/>
+</polygon>
+<polygon width="0.2" layer="30">
+<vertex x="90.805" y="100.33"/>
+<vertex x="94.615" y="100.33"/>
+<vertex x="94.615" y="95.885"/>
+<vertex x="90.805" y="95.885"/>
+</polygon>
+<polygon width="0.2" layer="29">
+<vertex x="94.615" y="100.33"/>
+<vertex x="90.805" y="100.33"/>
+<vertex x="90.805" y="95.885"/>
+<vertex x="94.615" y="95.885"/>
+</polygon>
 </plain>
 <libraries>
 <library name="rcl_upravena">
@@ -6241,8 +6264,8 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="16.1925" y="94.9325" size="1.27" layer="25"/>
 <attribute name="VALUE" x="16.1925" y="91.1225" size="1.27" layer="27"/>
 </element>
-<element name="TP15" library="test_points" package="TP_06" value="" x="8.255" y="98.425" smashed="yes" rot="MR270">
-<attribute name="NAME" x="7.62" y="100.33" size="1" layer="26" font="vector" ratio="16" rot="MR270"/>
+<element name="TP15" library="test_points" package="TP_06" value="" x="18.415" y="98.425" smashed="yes" rot="MR270">
+<attribute name="NAME" x="17.78" y="100.33" size="1" layer="26" font="vector" ratio="16" rot="MR270"/>
 </element>
 <element name="R5" library="rcl_upravena" package="R0402" value="330R" x="24.765" y="52.705" smashed="yes" rot="R180">
 <attribute name="NAME" x="25.4" y="52.07" size="1.27" layer="25" rot="R180"/>
@@ -8108,6 +8131,25 @@ JarekParal (2020-04-14)
 <wire x1="75.5527" y1="73.2603625" x2="76.35875" y2="72.4543125" width="0.6096" layer="2"/>
 <wire x1="76.35875" y1="84.29625" x2="76.35875" y2="74.8656875" width="0.6096" layer="2"/>
 <wire x1="76.35875" y1="72.4543125" x2="76.35875" y2="70.32625" width="0.6096" layer="2"/>
+<polygon width="0.2" layer="16">
+<vertex x="5.715" y="100.33"/>
+<vertex x="12.065" y="100.33"/>
+<vertex x="12.065" y="96.99625"/>
+<vertex x="10.95375" y="95.885"/>
+<vertex x="5.715" y="95.885"/>
+</polygon>
+<polygon width="0.2" layer="1">
+<vertex x="12.065" y="100.33"/>
+<vertex x="5.715" y="100.33"/>
+<vertex x="5.715" y="95.885"/>
+<vertex x="12.065" y="95.885"/>
+</polygon>
+<polygon width="0.2" layer="1">
+<vertex x="88.265" y="100.33"/>
+<vertex x="88.265" y="95.885"/>
+<vertex x="95.885" y="95.885"/>
+<vertex x="95.885" y="100.33"/>
+</polygon>
 </signal>
 <signal name="+3V3">
 <contactref element="IM9" pad="1"/>
@@ -12312,9 +12354,9 @@ JarekParal (2020-04-14)
 <wire x1="8.09625" y1="90.805" x2="8.09625" y2="70.8025" width="0.1524" layer="16"/>
 <wire x1="8.09625" y1="90.805" x2="8.73125" y2="91.44" width="0.1524" layer="16"/>
 <wire x1="10.16" y1="91.44" x2="10.95375" y2="92.23375" width="0.1524" layer="16"/>
-<wire x1="10.95375" y1="92.23375" x2="10.95375" y2="96.67875" width="0.1524" layer="16"/>
-<wire x1="10.95375" y1="96.67875" x2="11.43" y2="97.155" width="0.1524" layer="16"/>
-<wire x1="11.43" y1="97.155" x2="14.605" y2="97.155" width="0.1524" layer="16"/>
+<wire x1="10.95375" y1="92.23375" x2="10.95375" y2="95.40875" width="0.1524" layer="16"/>
+<wire x1="10.95375" y1="95.40875" x2="12.7" y2="97.155" width="0.1524" layer="16"/>
+<wire x1="12.7" y1="97.155" x2="14.605" y2="97.155" width="0.1524" layer="16"/>
 <wire x1="14.605" y1="97.155" x2="15.875" y2="98.425" width="0.1524" layer="16"/>
 <wire x1="8.73125" y1="91.44" x2="10.16" y2="91.44" width="0.1524" layer="16"/>
 <wire x1="4.92125" y1="39.0525" x2="6.82625" y2="39.0525" width="0.1524" layer="2"/>
@@ -13306,10 +13348,9 @@ JarekParal (2020-04-14)
 <wire x1="13.6525" y1="94.615" x2="13.335" y2="94.615" width="2" layer="1"/>
 <wire x1="15.875" y1="95.42" x2="15.875" y2="93.79" width="0.1524" layer="1"/>
 <wire x1="15.875" y1="93.79" x2="16.0025" y2="93.6625" width="0.1524" layer="1"/>
-<wire x1="8.255" y1="98.425" x2="9.8395" y2="96.8405" width="1.016" layer="1"/>
-<wire x1="9.8395" y1="96.8405" x2="10.156575" y2="96.8405" width="1.016" layer="1"/>
-<wire x1="10.156575" y1="96.8405" x2="10.159575" y2="96.8375" width="1.016" layer="1"/>
-<wire x1="10.159575" y1="96.8375" x2="13.335" y2="96.8375" width="1.016" layer="1"/>
+<wire x1="18.415" y1="98.425" x2="16.8275" y2="96.8375" width="1.016" layer="2"/>
+<wire x1="16.8275" y1="96.8375" x2="14.9225" y2="96.8375" width="1.016" layer="2"/>
+<wire x1="14.9225" y1="96.8375" x2="13.335" y2="98.425" width="1.016" layer="2"/>
 </signal>
 <signal name="BUTTON-ON-LV">
 <contactref element="Q3" pad="3"/>
