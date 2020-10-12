@@ -4246,6 +4246,11 @@ Grid 5.08 mm&lt;p&gt;
 <attributes>
 </attributes>
 <variantdefs>
+<variantdef name="TOP_SMD_FULL"/>
+<variantdef name="TOP_SMD_WITHOUT_MPU"/>
+<variantdef name="TOP_SMD_WITHOUT_MOTOR_CURRENT"/>
+<variantdef name="TOP_SMD_WITHOUT_SERVO_CURRENT"/>
+<variantdef name="TOP_SMD_WITHOUT_CURRENT"/>
 <variantdef name="TOP_SMD_MINIMAL"/>
 </variantdefs>
 <classes>

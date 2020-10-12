@@ -18494,6 +18494,11 @@ Grid 5.08 mm&lt;p&gt;
 <attributes>
 </attributes>
 <variantdefs>
+<variantdef name="TOP_SMD_FULL"/>
+<variantdef name="TOP_SMD_WITHOUT_MPU"/>
+<variantdef name="TOP_SMD_WITHOUT_MOTOR_CURRENT"/>
+<variantdef name="TOP_SMD_WITHOUT_SERVO_CURRENT"/>
+<variantdef name="TOP_SMD_WITHOUT_CURRENT"/>
 <variantdef name="TOP_SMD_MINIMAL"/>
 </variantdefs>
 <classes>
@@ -18505,9 +18510,23 @@ Grid 5.08 mm&lt;p&gt;
 <schematic_group name="OA-CURRENT" selectable="no"/>
 </groups>
 <parts>
-<part name="IM9" library="esp32" deviceset="DEVKITC" device=""/>
+<part name="IM9" library="esp32" deviceset="DEVKITC" device="">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="X1" library="con-wago-508" deviceset="W237-03P" device="" package3d_urn="urn:adsk.eagle:package:10737/1" value="POWER_IN"/>
+<part name="X1" library="con-wago-508" deviceset="W237-03P" device="" package3d_urn="urn:adsk.eagle:package:10737/1" value="POWER_IN">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="R1" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="100k"/>
 <part name="NC1" library="NC" deviceset="NC" device=""/>
 <part name="NC2" library="NC" deviceset="NC" device=""/>
@@ -18518,6 +18537,12 @@ Grid 5.08 mm&lt;p&gt;
 <part name="JP56" library="jst-ph" deviceset="JST-PH3" device="" value="INTELIGENT_SERVO1">
 <attribute name="DESCRIPTION" value="Connector for inteligent servo LewanSoul (e.g. LX-15D)"/>
 <attribute name="PACKAGE" value="292161-3"/>
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="D3" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
 <part name="Q1" library="transistors" deviceset="P-MOSFET" device="-MLP_HS" value="NCE20P45Q">
@@ -18537,14 +18562,27 @@ Grid 5.08 mm&lt;p&gt;
 </part>
 <part name="Y1" library="SMD5032_2P" deviceset="5032/2P" device=""/>
 <part name="BAT1" library="CR2032-circle" deviceset="CR2032" device="CR2032-BS-6-1" value="CR2032">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="Y2" library="SMD3215_2P" deviceset="3215_2P" device=""/>
+<part name="Y2" library="SMD3215_2P" deviceset="3215_2P" device="">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="IC5" library="DRV8833" deviceset="DRV8833" device="PWP" value="DRV8833PWP"/>
 <part name="SJ9" library="jumper" deviceset="SJ2W_DEFAULT" device=""/>
 <part name="JP57" library="jst-ph" deviceset="JST-PH3" device="" value="INTELIGENT_SERVO2">
 <attribute name="DESCRIPTION" value="Connector for inteligent servo LewanSoul (e.g. LX-15D)"/>
 <attribute name="PACKAGE" value="292161-3"/>
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="S2" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
 <part name="GND1" library="Supply" deviceset="GND" device=""/>
@@ -18570,7 +18608,9 @@ Grid 5.08 mm&lt;p&gt;
 <part name="R7" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1M"/>
 <part name="R6" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="10k"/>
 <part name="GND9" library="Supply" deviceset="GND" device=""/>
-<part name="R12" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
+<part name="R12" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND10" library="Supply" deviceset="GND" device=""/>
 <part name="P+2" library="Supply" deviceset="VCC" device=""/>
 <part name="GND11" library="Supply" deviceset="GND" device=""/>
@@ -18581,7 +18621,14 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
-<part name="X2" library="con-wago-508" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="POWER_OUT"/>
+<part name="X2" library="con-wago-508" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1" value="POWER_OUT">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="P+4" library="Supply" deviceset="VCC" device=""/>
 <part name="GND12" library="Supply" deviceset="GND" device=""/>
 <part name="R125" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="10k"/>
@@ -18607,9 +18654,17 @@ Grid 5.08 mm&lt;p&gt;
 <part name="+3V4" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND17" library="Supply" deviceset="GND" device=""/>
 <part name="GND18" library="Supply" deviceset="GND" device=""/>
-<part name="R126" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m"/>
+<part name="R126" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m">
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" value="0R"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" value="0R"/>
+<variant name="TOP_SMD_MINIMAL" value="0R"/>
+</part>
 <part name="GND19" library="Supply" deviceset="GND" device=""/>
-<part name="R127" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m"/>
+<part name="R127" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m">
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" value="0R"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" value="0R"/>
+<variant name="TOP_SMD_MINIMAL" value="0R"/>
+</part>
 <part name="GND20" library="Supply" deviceset="GND" device=""/>
 <part name="R120" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="R121" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
@@ -18630,6 +18685,9 @@ Grid 5.08 mm&lt;p&gt;
 <part name="C22" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="IC6" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4">
 <attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
@@ -18642,6 +18700,8 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="IC7" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4">
@@ -18655,11 +18715,16 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="C23" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND25" library="Supply" deviceset="GND" device=""/>
 <part name="GND26" library="Supply" deviceset="GND" device=""/>
@@ -18688,9 +18753,17 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND32" library="Supply" deviceset="GND" device=""/>
 <part name="+3V11" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND34" library="Supply" deviceset="GND" device=""/>
-<part name="R118" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m"/>
+<part name="R118" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m">
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" value="0R"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" value="0R"/>
+<variant name="TOP_SMD_MINIMAL" value="0R"/>
+</part>
 <part name="GND35" library="Supply" deviceset="GND" device=""/>
-<part name="R119" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m"/>
+<part name="R119" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m">
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" value="0R"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" value="0R"/>
+<variant name="TOP_SMD_MINIMAL" value="0R"/>
+</part>
 <part name="GND36" library="Supply" deviceset="GND" device=""/>
 <part name="R115" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="R114" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
@@ -18707,6 +18780,9 @@ Grid 5.08 mm&lt;p&gt;
 <part name="C17" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="IC3" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4">
 <attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
@@ -18719,6 +18795,8 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="IC4" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4">
@@ -18732,11 +18810,16 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="C18" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND41" library="Supply" deviceset="GND" device=""/>
 <part name="GND42" library="Supply" deviceset="GND" device=""/>
@@ -18806,7 +18889,14 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
-<part name="JP6" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="UTS1"/>
+<part name="JP6" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="UTS1">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND94" library="Supply" deviceset="GND" device=""/>
 <part name="C54" library="rcl_upravena" deviceset="C-EU" device="C0402" value="18p">
 <attribute name="DIELECTRIC" value="np0"/>
@@ -18819,22 +18909,45 @@ Grid 5.08 mm&lt;p&gt;
 <part name="C55" library="rcl_upravena" deviceset="C-EU" device="C0402" value="6.8p">
 <attribute name="DIELECTRIC" value="np0"/>
 <attribute name="VOLTAGE" value="50V"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="C57" library="rcl_upravena" deviceset="C-EU" device="C0402" value="6.8p">
 <attribute name="DIELECTRIC" value="np0"/>
 <attribute name="VOLTAGE" value="50V"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="R26" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R27" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP13" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="UTS2"/>
+<part name="JP13" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="UTS2">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND95" library="Supply" deviceset="GND" device=""/>
 <part name="R39" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R40" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP16" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="UTS3"/>
+<part name="JP16" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="UTS3">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND96" library="Supply" deviceset="GND" device=""/>
 <part name="R44" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R47" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP20" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="UTS4"/>
+<part name="JP20" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="UTS4">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND97" library="Supply" deviceset="GND" device=""/>
 <part name="R52" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R53" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
@@ -18855,30 +18968,79 @@ Grid 5.08 mm&lt;p&gt;
 <part name="R97" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="LED19" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="blue"/>
 <part name="R99" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP42" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="LEDS"/>
+<part name="JP42" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="LEDS">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND99" library="Supply" deviceset="GND" device=""/>
 <part name="R103" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R104" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R105" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R106" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="FRAME7" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A3L-LOC" device=""/>
-<part name="JP33" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="SWD"/>
+<part name="JP33" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="SWD">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="+3V25" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND100" library="Supply" deviceset="GND" device=""/>
 <part name="R66" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R68" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R69" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP34" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="DEBUG"/>
+<part name="JP34" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="DEBUG">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND103" library="Supply" deviceset="GND" device=""/>
 <part name="+3V27" library="Supply" deviceset="+3V3S" device=""/>
 <part name="R72" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R73" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="X4" library="USB" deviceset="614105150621" device="" package3d_urn="urn:adsk.eagle:package:16513904/2" value="uUSB"/>
+<part name="X4" library="USB" deviceset="614105150621" device="" package3d_urn="urn:adsk.eagle:package:16513904/2" value="uUSB">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND112" library="Supply" deviceset="GND" device=""/>
 <part name="NC8" library="NC" deviceset="NC" device=""/>
-<part name="JP46" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="M12FAULT"/>
-<part name="JP47" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="M34FAULT"/>
-<part name="SJ6" library="jumper" deviceset="SJ2W" device="0603"/>
+<part name="JP46" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="M12FAULT">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP47" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="M34FAULT">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="SJ6" library="jumper" deviceset="SJ2W" device="0603">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="+3V1" library="Supply" deviceset="+3V3" device=""/>
 <part name="D38" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
 <part name="SJ3" library="jumper" deviceset="SJ2W_DEFAULT" device=""/>
@@ -18887,7 +19049,14 @@ Grid 5.08 mm&lt;p&gt;
 <part name="R30" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R32" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R34" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP8" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ESP_SPI1"/>
+<part name="JP8" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ESP_SPI1">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND117" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND116" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V32" library="Supply" deviceset="+3V3" device=""/>
@@ -18931,8 +19100,22 @@ Grid 5.08 mm&lt;p&gt;
 <part name="+3V35" library="Supply" deviceset="+3V3S" device=""/>
 <part name="R31" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R33" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP9" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_UART"/>
-<part name="JP11" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_UART_AUX"/>
+<part name="JP9" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_UART">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP11" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_UART_AUX">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND120" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V36" library="Supply" deviceset="+3V3" device=""/>
 <part name="R35" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
@@ -18942,23 +19125,72 @@ Grid 5.08 mm&lt;p&gt;
 <part name="P+13" library="Supply" deviceset="+5V" device=""/>
 <part name="R55" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R56" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP23" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_UCOM"/>
-<part name="JP26" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_UCOM_AUX"/>
+<part name="JP23" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_UCOM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP26" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_UCOM_AUX">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND122" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V38" library="Supply" deviceset="+3V3" device=""/>
 <part name="R59" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP12" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_SPI_AUX1"/>
+<part name="JP12" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_SPI_AUX1">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND123" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V39" library="Supply" deviceset="+3V3" device=""/>
 <part name="R36" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP15" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ESP_SPI2"/>
+<part name="JP15" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ESP_SPI2">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND124" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="JP19" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_SPI_AUX2"/>
+<part name="JP19" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_SPI_AUX2">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND125" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V40" library="Supply" deviceset="+3V3" device=""/>
-<part name="JP21" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ESP_SPI3"/>
+<part name="JP21" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ESP_SPI3">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND126" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="JP24" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_SPI_AUX3"/>
+<part name="JP24" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_SPI_AUX3">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND127" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V41" library="Supply" deviceset="+3V3" device=""/>
 <part name="+3V42" library="Supply" deviceset="+3V3" device=""/>
@@ -18975,7 +19207,14 @@ Grid 5.08 mm&lt;p&gt;
 <part name="R38" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="R25" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="R24" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
-<part name="JP7" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C1_VSEL"/>
+<part name="JP7" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C1_VSEL">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="SJ2" library="jumper" deviceset="SJ2W_DEFAULT" device=""/>
 <part name="+3V47" library="Supply" deviceset="+3V3" device=""/>
 <part name="P+14" library="Supply" deviceset="+5V" device=""/>
@@ -18986,11 +19225,32 @@ Grid 5.08 mm&lt;p&gt;
 <part name="R42" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="R43" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="R45" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP10" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_I2C_AUX1_VSEL"/>
+<part name="JP10" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_I2C_AUX1_VSEL">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND115" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="JP14" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C2_VSEL"/>
+<part name="JP14" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C2_VSEL">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND119" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="JP17" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_I2C_AUX2_VSEL"/>
+<part name="JP17" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_I2C_AUX2_VSEL">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND128" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="D10" library="diode" deviceset="SHOTTKY" device="-SOD123" value="B5819W">
 <attribute name="DESCRIPTION" value="40V 1A 600mV @ 1A SOD-123 Schottky Barrier Diodes (SBD) RoHS"/>
@@ -19006,13 +19266,41 @@ Grid 5.08 mm&lt;p&gt;
 </part>
 <part name="R50" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="+3V48" library="Supply" deviceset="+3V3" device=""/>
-<part name="JP22" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C1"/>
+<part name="JP22" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C1">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND129" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="JP25" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_I2C_AUX1"/>
+<part name="JP25" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_I2C_AUX1">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND130" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="JP28" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C2"/>
+<part name="JP28" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_I2C2">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND131" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="JP30" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_I2C_AUX2"/>
+<part name="JP30" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ESP_I2C_AUX2">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND132" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V49" library="Supply" deviceset="+3V3" device=""/>
 <part name="+3V50" library="Supply" deviceset="+3V3" device=""/>
@@ -19020,7 +19308,14 @@ Grid 5.08 mm&lt;p&gt;
 <part name="+3V52" library="Supply" deviceset="+3V3" device=""/>
 <part name="R62" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="+3V53" library="Supply" deviceset="+3V3" device=""/>
-<part name="JP31" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ILED"/>
+<part name="JP31" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="ILED">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="R64" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="GND134" library="Supply" deviceset="GND" device=""/>
 <part name="R65" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
@@ -19028,8 +19323,22 @@ Grid 5.08 mm&lt;p&gt;
 <part name="R146" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R147" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R148" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="IM1" library="StepDown" deviceset="STEPDOWN" device=""/>
-<part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="3V3_EN"/>
+<part name="IM1" library="StepDown" deviceset="STEPDOWN" device="">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="3V3_EN">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND135" library="Supply" deviceset="GND" device=""/>
 <part name="P+23" library="Supply" deviceset="VCC" device=""/>
 <part name="D4" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
@@ -19043,21 +19352,37 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND138" library="Supply" deviceset="GND" device=""/>
 <part name="C2" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND139" library="Supply" deviceset="GND" device=""/>
 <part name="C1" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND140" library="Supply" deviceset="GND" device=""/>
-<part name="R14" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
+<part name="R14" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND141" library="Supply" deviceset="GND" device=""/>
-<part name="R16" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
+<part name="R16" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND142" library="Supply" deviceset="GND" device=""/>
 <part name="+3V55" library="Supply" deviceset="+3V3S" device=""/>
 <part name="P+36" library="Supply" deviceset="+5V" device=""/>
-<part name="R18" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
+<part name="R18" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND143" library="Supply" deviceset="GND" device=""/>
 <part name="+3V56" library="Supply" deviceset="+3V3" device=""/>
 <part name="IC1" library="ams1117" deviceset="AMS1117" device="" package3d_urn="urn:adsk.eagle:package:30370/1" value="AMS1117-3.3"/>
@@ -19073,9 +19398,20 @@ Grid 5.08 mm&lt;p&gt;
 <part name="+3V57" library="Supply" deviceset="+3V3S" device=""/>
 <part name="C40" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND150" library="Supply" deviceset="GND" device=""/>
 <part name="B1" library="piezo" deviceset="PIEZO" device="">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND156" library="Supply" deviceset="GND" device=""/>
@@ -19094,24 +19430,57 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.0342"/>
 <attribute name="PRICE_DATE" value="17.03.2020"/>
 </part>
-<part name="JP39" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="EXPANDER_UART"/>
+<part name="JP39" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="EXPANDER_UART">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND158" library="Supply" deviceset="GND" device=""/>
-<part name="R83" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="R82" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
+<part name="R83" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R82" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="+3V3STM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND159" library="Supply" deviceset="GND" device=""/>
 <part name="+3V58" library="Supply" deviceset="+3V3S" device=""/>
 <part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="+3V3">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND160" library="Supply" deviceset="GND" device=""/>
 <part name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="+5V">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND161" library="Supply" deviceset="GND" device=""/>
-<part name="JP5" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="VCC"/>
+<part name="JP5" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="VCC">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND162" library="Supply" deviceset="GND" device=""/>
 <part name="+3V59" library="Supply" deviceset="+3V3" device=""/>
 <part name="P+39" library="Supply" deviceset="+5V" device=""/>
@@ -19123,8 +19492,22 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND165" library="Supply" deviceset="GND" device=""/>
 <part name="R74" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="P+43" library="Supply" deviceset="VCC" device=""/>
-<part name="X3" library="con-molex" library_urn="urn:adsk.eagle:library:165" deviceset="52559-3092" device="" package3d_urn="urn:adsk.eagle:package:8078603/1"/>
-<part name="JP36" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="BOOT_SW"/>
+<part name="X3" library="con-molex" library_urn="urn:adsk.eagle:library:165" deviceset="52559-3092" device="" package3d_urn="urn:adsk.eagle:package:8078603/1">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP36" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="BOOT_SW">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND101" library="Supply" deviceset="GND" device=""/>
 <part name="P+15" library="Supply" deviceset="+5V" device=""/>
 <part name="Q2" library="transistors" deviceset="P-MOSFET" device="-MLP_HS" value="NCE20P45Q">
@@ -19233,18 +19616,68 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="25V"/>
 </part>
-<part name="LED1" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="LED3" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="LED5" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="LED7" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="IM4" library="diy-modules" deviceset="DISPLAY-OLED-128X32" device=""/>
-<part name="JP37" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ESP32_JTAG"/>
+<part name="LED1" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED3" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED5" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED7" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="IM4" library="diy-modules" deviceset="DISPLAY-OLED-128X32" device="">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP37" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ESP32_JTAG">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND106" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V28" library="Supply" deviceset="+3V3" device=""/>
-<part name="P1" library="jst-ph" deviceset="JST-PH6" device="" value="M1"/>
-<part name="P2" library="jst-ph" deviceset="JST-PH6" device="" value="M2"/>
-<part name="P3" library="jst-ph" deviceset="JST-PH6" device="" value="M3"/>
-<part name="P4" library="jst-ph" deviceset="JST-PH6" device="" value="M4"/>
+<part name="P1" library="jst-ph" deviceset="JST-PH6" device="" value="M1">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="P2" library="jst-ph" deviceset="JST-PH6" device="" value="M2">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="P3" library="jst-ph" deviceset="JST-PH6" device="" value="M3">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="P4" library="jst-ph" deviceset="JST-PH6" device="" value="M4">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="R3" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="24k"/>
 <part name="C13" library="rcl_upravena" deviceset="C-EU" device="C0402" value="1u">
 <attribute name="DIELECTRIC" value="X5R"/>
@@ -19290,53 +19723,165 @@ Grid 5.08 mm&lt;p&gt;
 <part name="R70" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="5k6"/>
 <part name="GND102" library="Supply" deviceset="GND" device=""/>
 <part name="+3V26" library="Supply" deviceset="+3V3S" device=""/>
-<part name="R87" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="R86" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
+<part name="R87" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R86" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND104" library="Supply" deviceset="GND" device=""/>
-<part name="JP43" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="BUTTONS"/>
-<part name="JP45" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="PWR_BUTTONS"/>
+<part name="JP43" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="BUTTONS">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP45" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="PWR_BUTTONS">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND111" library="Supply" deviceset="GND" device=""/>
 <part name="GND113" library="Supply" deviceset="GND" device=""/>
 <part name="+3V29" library="Supply" deviceset="+3V3S" device=""/>
 <part name="IC12" library="MPU-6050" deviceset="MPU-6050" device="">
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="IM3" library="diy-modules" deviceset="DISPLAY-OLED-128X64-I2C" device="-W_HOLES" value="DISPLAY-OLED-128X64-I2C-W_HOLES"/>
-<part name="R156" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="R157" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="R155" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
-<part name="R154" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
+<part name="IM3" library="diy-modules" deviceset="DISPLAY-OLED-128X64-I2C" device="-W_HOLES" value="DISPLAY-OLED-128X64-I2C-W_HOLES">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R156" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R157" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R155" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R154" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="+3V30" library="Supply" deviceset="+3V3S" device=""/>
 <part name="C43" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="C42" library="rcl_upravena" deviceset="C-EU" device="C0402" value="10n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="25V"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="C44" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="C45" library="rcl_upravena" deviceset="C-EU" device="C0402" value="2n2">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="+3V61" library="Supply" deviceset="+3V3S" device=""/>
 <part name="+3V62" library="Supply" deviceset="+3V3S" device=""/>
 <part name="GND114" library="Supply" deviceset="GND" device=""/>
 <part name="GND133" library="Supply" deviceset="GND" device=""/>
-<part name="R153" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="R81" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="R80" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP38" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="MPU_I2C"/>
+<part name="R153" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R81" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R80" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP38" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="MPU_I2C">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND136" library="Supply" deviceset="GND" device=""/>
-<part name="R78" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
-<part name="R79" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
+<part name="R78" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R79" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="+3V64" library="Supply" deviceset="+3V3S" device=""/>
-<part name="JP29" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="AIO"/>
-<part name="JP32" library="pinhead" deviceset="PINHD-1X5" device="" package3d_urn="urn:adsk.eagle:package:22469/2" value="USB"/>
+<part name="JP29" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="AIO">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP32" library="pinhead" deviceset="PINHD-1X5" device="" package3d_urn="urn:adsk.eagle:package:22469/2" value="USB">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND137" library="Supply" deviceset="GND" device=""/>
 <part name="GND144" library="Supply" deviceset="GND" device=""/>
 <part name="+3V63" library="Supply" deviceset="+3V3S" device=""/>
@@ -19345,28 +19890,73 @@ Grid 5.08 mm&lt;p&gt;
 <part name="P+30" library="Supply" deviceset="+5V" device=""/>
 <part name="R60" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R61" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="R84" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="R85" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="SJ7" library="jumper" deviceset="SJ2W" device="0603"/>
+<part name="R84" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R85" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="SJ7" library="jumper" deviceset="SJ2W" device="0603">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="P+31" library="Supply" deviceset="+5V" device=""/>
 <part name="+3V66" library="Supply" deviceset="+3V3S" device=""/>
-<part name="JP40" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_PROG_UART"/>
+<part name="JP40" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="ESP_PROG_UART">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="+3V67" library="Supply" deviceset="+3V3S" device=""/>
-<part name="JP41" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="EXPANDER_CAN/I2C"/>
+<part name="JP41" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="EXPANDER_CAN/I2C">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND148" library="Supply" deviceset="GND" device=""/>
-<part name="R88" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="R89" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
+<part name="R88" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R89" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="R49" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R48" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="GND149" library="Supply" deviceset="GND" device=""/>
-<part name="JP18" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="STM_UART"/>
+<part name="JP18" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="STM_UART">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="SJ4" library="jumper" deviceset="SJ2W_DEFAULT" device=""/>
 <part name="P+33" library="Supply" deviceset="+5V" device=""/>
 <part name="+3V69" library="Supply" deviceset="+3V3S" device=""/>
-<part name="D12" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
+<part name="D12" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="S13" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
 <part name="GND151" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="JP58" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X2" device="" package3d_urn="urn:adsk.eagle:package:22455/2" value="I2C_INTERCONNECT"/>
+<part name="JP58" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X2" device="" package3d_urn="urn:adsk.eagle:package:22455/2" value="I2C_INTERCONNECT">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND152" library="Supply" deviceset="GND" device=""/>
 <part name="GND153" library="Supply" deviceset="GND" device=""/>
 <part name="GND154" library="Supply" deviceset="GND" device=""/>
@@ -19376,135 +19966,355 @@ Grid 5.08 mm&lt;p&gt;
 <part name="R76" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="5k1"/>
 <part name="R77" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="5k1"/>
 <part name="TP61" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP13" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP14" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP6" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP2" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP3" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP7" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP8" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP9" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP10" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP11" library="test_points" deviceset="TP" device="_08MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP12" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP30" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP31" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP45" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP44" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP22" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP23" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP24" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP25" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP33" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP34" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP35" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP36" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP37" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP38" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP39" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP27" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP26" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP29" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP28" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP40" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP41" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP42" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP43" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP21" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP32" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP58" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP19" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP59" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP60" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP16" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP4" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP1" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="P+38" library="Supply" deviceset="VCC" device=""/>
@@ -19514,48 +20324,202 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND166" library="Supply" deviceset="GND" device=""/>
 <part name="+3V22" library="Supply" deviceset="+3V3S" device=""/>
 <part name="TP17" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP18" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP20" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="IM2" library="StepDown" deviceset="STEPDOWN" device=""/>
-<part name="JP27" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="ILED_EN"/>
+<part name="IM2" library="StepDown" deviceset="STEPDOWN" device="">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP27" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="ILED_EN">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND167" library="Supply" deviceset="GND" device=""/>
 <part name="P+42" library="Supply" deviceset="VCC" device=""/>
 <part name="R63" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="0R"/>
 <part name="P+16" library="Supply" deviceset="+5V" device=""/>
 <part name="TP15" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="R5" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="FRAME8" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A3L-LOC" device=""/>
-<part name="LED14" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="green"/>
-<part name="R92" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="LED16" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="yellow"/>
-<part name="R95" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="LED18" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="R98" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="LED20" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="blue"/>
-<part name="R101" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="R13" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
-<part name="R15" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
-<part name="R17" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
-<part name="R19" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
-<part name="LED2" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="LED4" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="LED6" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="LED8" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="IM5" library="StepDown" deviceset="STEPDOWN" device=""/>
-<part name="JP48" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO1_EN"/>
-<part name="JP52" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO1"/>
-<part name="R133" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m"/>
+<part name="LED14" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="green">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R92" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED16" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="yellow">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R95" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED18" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R98" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED20" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="blue">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R101" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R13" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R15" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R17" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R19" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED2" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED4" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED6" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED8" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="IM5" library="StepDown" deviceset="STEPDOWN" device="">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP48" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO1_EN">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP52" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO1">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R133" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m">
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" value="0R"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" value="0R"/>
+<variant name="TOP_SMD_MINIMAL" value="0R"/>
+</part>
 <part name="C28" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="IC8" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4">
 <attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
@@ -19568,6 +20532,8 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND53" library="Supply" deviceset="GND" device=""/>
@@ -19588,31 +20554,87 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND58" library="Supply" deviceset="GND" device=""/>
 <part name="C24" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND59" library="Supply" deviceset="GND" device=""/>
-<part name="R132" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
+<part name="R132" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k">
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="C32" library="rcl_upravena" deviceset="C-EU" device="C0402" value="1u">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND60" library="Supply" deviceset="GND" device=""/>
 <part name="R128" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="0R"/>
 <part name="TP54" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP46" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP50" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="IM6" library="StepDown" deviceset="STEPDOWN" device=""/>
-<part name="JP49" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO2_EN"/>
-<part name="JP53" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO2"/>
-<part name="R135" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m"/>
+<part name="IM6" library="StepDown" deviceset="STEPDOWN" device="">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP49" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO2_EN">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP53" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO2">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R135" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m">
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" value="0R"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" value="0R"/>
+<variant name="TOP_SMD_MINIMAL" value="0R"/>
+</part>
 <part name="C29" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="IC9" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4">
 <attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
@@ -19625,6 +20647,8 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND61" library="Supply" deviceset="GND" device=""/>
@@ -19645,32 +20669,87 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND66" library="Supply" deviceset="GND" device=""/>
 <part name="C25" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND67" library="Supply" deviceset="GND" device=""/>
-<part name="R134" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
+<part name="R134" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k">
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="C33" library="rcl_upravena" deviceset="C-EU" device="C0402" value="1u">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND68" library="Supply" deviceset="GND" device=""/>
 <part name="R129" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="0R"/>
 <part name="TP55" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP47" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP51" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="IM7" library="StepDown" deviceset="STEPDOWN" device=""/>
-<part name="JP50" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO3_EN"/>
-<part name="JP54" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO3"/>
-<part name="R137" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m"/>
+<part name="IM7" library="StepDown" deviceset="STEPDOWN" device="">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP50" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO3_EN">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP54" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO3">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R137" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m">
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" value="0R"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" value="0R"/>
+<variant name="TOP_SMD_MINIMAL" value="0R"/>
+</part>
 <part name="C30" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="IC10" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4">
 <attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
@@ -19683,6 +20762,8 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND69" library="Supply" deviceset="GND" device=""/>
@@ -19703,32 +20784,87 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND74" library="Supply" deviceset="GND" device=""/>
 <part name="C26" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND75" library="Supply" deviceset="GND" device=""/>
-<part name="R136" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
+<part name="R136" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k">
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="C34" library="rcl_upravena" deviceset="C-EU" device="C0402" value="1u">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND76" library="Supply" deviceset="GND" device=""/>
 <part name="R130" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="0R"/>
 <part name="TP56" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP48" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP52" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="IM8" library="StepDown" deviceset="STEPDOWN" device=""/>
-<part name="JP51" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO4_EN"/>
-<part name="JP55" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO4"/>
-<part name="R139" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m"/>
+<part name="IM8" library="StepDown" deviceset="STEPDOWN" device="">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP51" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO4_EN">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="JP55" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO4">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R139" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="5m">
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" value="0R"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" value="0R"/>
+<variant name="TOP_SMD_MINIMAL" value="0R"/>
+</part>
 <part name="C31" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="IC11" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4">
 <attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
@@ -19741,6 +20877,8 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND169" library="Supply" deviceset="GND" device=""/>
@@ -19761,22 +20899,50 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND174" library="Supply" deviceset="GND" device=""/>
 <part name="C27" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND175" library="Supply" deviceset="GND" device=""/>
-<part name="R138" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
+<part name="R138" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k">
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="C35" library="rcl_upravena" deviceset="C-EU" device="C0402" value="1u">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND176" library="Supply" deviceset="GND" device=""/>
 <part name="R131" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="0R"/>
 <part name="TP57" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP49" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="TP53" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="R110" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
@@ -19787,34 +20953,147 @@ Grid 5.08 mm&lt;p&gt;
 <part name="+3V14" library="Supply" deviceset="+3V3S" device=""/>
 <part name="LED21" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
 <part name="LED23" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="R111" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
-<part name="R113" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
-<part name="LED22" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="LED24" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="R20" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
+<part name="R111" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R113" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED22" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED24" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R20" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND47" library="Supply" deviceset="GND" device=""/>
-<part name="R22" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
+<part name="R22" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND48" library="Supply" deviceset="GND" device=""/>
-<part name="LED9" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="LED11" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="R21" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
-<part name="R23" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
-<part name="LED10" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="LED12" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
+<part name="LED9" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED11" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R21" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R23" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED10" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="LED12" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="TP5" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="X5" library="USB" deviceset="USB_C_8PIN" device="">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND33" library="Supply" deviceset="GND" device=""/>
-<part name="S4" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
-<part name="S6" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
-<part name="S8" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
-<part name="S10" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
-<part name="S12" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
-<part name="S14" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
-<part name="S1" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
+<part name="S4" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="S6" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="S8" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="S10" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="S12" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="S14" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="S1" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="C5" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
@@ -19831,25 +21110,61 @@ Grid 5.08 mm&lt;p&gt;
 <part name="+3V15" library="Supply" deviceset="+3V3S" device=""/>
 <part name="R102" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="+3V75" library="Supply" deviceset="+3V3S" device=""/>
-<part name="D27" library="diode" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
+<part name="D27" library="diode" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="+3V76" library="Supply" deviceset="+3V3S" device=""/>
-<part name="D28" library="diode" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
+<part name="D28" library="diode" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="+3V77" library="Supply" deviceset="+3V3S" device=""/>
-<part name="D11" library="diode" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
+<part name="D11" library="diode" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="+3V78" library="Supply" deviceset="+3V3S" device=""/>
-<part name="JP44" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="BUZZER"/>
+<part name="JP44" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="BUZZER">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="D13" library="diode" deviceset="BAS40-05" device="" package3d_urn="urn:adsk.eagle:package:43389/2"/>
 <part name="R107" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1M"/>
-<part name="JP35" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="USBC_AUX"/>
+<part name="JP35" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2" value="USBC_AUX">
+<variant name="TOP_SMD_FULL" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MPU" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_MOTOR_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_SERVO_CURRENT" populate="no"/>
+<variant name="TOP_SMD_WITHOUT_CURRENT" populate="no"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="NC7" library="NC" deviceset="NC" device=""/>
-<part name="R158" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K"/>
-<part name="R159" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K"/>
-<part name="R160" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K"/>
-<part name="R161" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K"/>
-<part name="R162" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K"/>
-<part name="R163" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K"/>
-<part name="R164" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K"/>
-<part name="R165" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K"/>
+<part name="R158" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R159" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R160" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R161" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R162" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R163" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R164" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="R165" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 </parts>
 <sheets>
 <sheet>
