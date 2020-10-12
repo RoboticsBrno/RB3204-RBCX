@@ -20939,28 +20939,28 @@ Grid 5.08 mm&lt;p&gt;
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="NC7" library="NC" deviceset="NC" device=""/>
-<part name="R158" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<part name="R158" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15k">
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="R159" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<part name="R159" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15k">
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="R160" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<part name="R160" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15k">
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="R161" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<part name="R161" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15k">
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="R162" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<part name="R162" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15k">
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="R163" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<part name="R163" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15k">
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="R164" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<part name="R164" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15k">
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
-<part name="R165" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15K">
+<part name="R165" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="15k">
 <variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 </parts>

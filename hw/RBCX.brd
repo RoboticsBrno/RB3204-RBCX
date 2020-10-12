@@ -6927,35 +6927,35 @@ JarekParal (2020-04-14)
 <attribute name="POPULARITY" value="91" x="70.64375" y="20.955" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="VALUE" x="73.81875" y="26.035" size="1.27" layer="28" rot="MR270"/>
 </element>
-<element name="R158" library="rcl_upravena" package="R0402" value="15K" x="83.82" y="82.8675" smashed="yes">
+<element name="R158" library="rcl_upravena" package="R0402" value="15k" x="83.82" y="82.8675" smashed="yes">
 <attribute name="NAME" x="67.31" y="74.295" size="0.8" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="83.185" y="80.9625" size="1.27" layer="27"/>
 </element>
-<element name="R159" library="rcl_upravena" package="R0402" value="15K" x="83.82" y="84.7725" smashed="yes" rot="R180">
+<element name="R159" library="rcl_upravena" package="R0402" value="15k" x="83.82" y="84.7725" smashed="yes" rot="R180">
 <attribute name="NAME" x="67.31" y="76.2" size="0.8" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="84.455" y="86.6775" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="R160" library="rcl_upravena" package="R0402" value="15K" x="83.82" y="80.9625" smashed="yes">
+<element name="R160" library="rcl_upravena" package="R0402" value="15k" x="83.82" y="80.9625" smashed="yes">
 <attribute name="NAME" x="67.31" y="72.39" size="0.8" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="83.185" y="79.0575" size="1.27" layer="27"/>
 </element>
-<element name="R161" library="rcl_upravena" package="R0402" value="15K" x="83.82" y="79.0575" smashed="yes" rot="R180">
+<element name="R161" library="rcl_upravena" package="R0402" value="15k" x="83.82" y="79.0575" smashed="yes" rot="R180">
 <attribute name="NAME" x="67.31" y="70.485" size="0.8" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="84.455" y="80.9625" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="R162" library="rcl_upravena" package="R0402" value="15K" x="67.945" y="26.035" smashed="yes">
+<element name="R162" library="rcl_upravena" package="R0402" value="15k" x="67.945" y="26.035" smashed="yes">
 <attribute name="NAME" x="75.565" y="27.305" size="0.8" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="67.31" y="24.13" size="1.27" layer="27"/>
 </element>
-<element name="R163" library="rcl_upravena" package="R0402" value="15K" x="67.945" y="24.13" smashed="yes" rot="R180">
+<element name="R163" library="rcl_upravena" package="R0402" value="15k" x="67.945" y="24.13" smashed="yes" rot="R180">
 <attribute name="NAME" x="75.565" y="25.4" size="0.8" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="68.58" y="26.035" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="R164" library="rcl_upravena" package="R0402" value="15K" x="67.945" y="20.32" smashed="yes">
+<element name="R164" library="rcl_upravena" package="R0402" value="15k" x="67.945" y="20.32" smashed="yes">
 <attribute name="NAME" x="75.565" y="21.59" size="0.8" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="67.31" y="18.415" size="1.27" layer="27"/>
 </element>
-<element name="R165" library="rcl_upravena" package="R0402" value="15K" x="67.945" y="16.51" smashed="yes" rot="R180">
+<element name="R165" library="rcl_upravena" package="R0402" value="15k" x="67.945" y="16.51" smashed="yes" rot="R180">
 <attribute name="NAME" x="75.565" y="17.78" size="0.8" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="68.58" y="18.415" size="1.27" layer="27" rot="R180"/>
 </element>
