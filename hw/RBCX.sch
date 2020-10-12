@@ -20889,7 +20889,18 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>
 </part>
-<part name="D1" library="diode" deviceset="SHOTTKY" device="-SOD123" value="B5819W"/>
+<part name="D1" library="diode" deviceset="SHOTTKY" device="-SOD123" value="B5819W">
+<attribute name="DESCRIPTION" value="40V 1A 600mV @ 1A SOD-123 Schottky Barrier Diodes (SBD) RoHS"/>
+<attribute name="EXTENDED" value="NO"/>
+<attribute name="LCSC_ID" value="C305445"/>
+<attribute name="MF" value="Foshan Blue Rocket Elec"/>
+<attribute name="MF_ID" value="B5819W"/>
+<attribute name="PACKAGE" value="SOD-123"/>
+<attribute name="PADS" value="2"/>
+<attribute name="PRICE_100PLUS" value="$0.0176"/>
+<attribute name="PRICE_1PLUS" value="$0.0342"/>
+<attribute name="PRICE_DATE" value="17.03.2020"/>
+</part>
 <part name="P+45" library="Supply" deviceset="+5V" device=""/>
 <part name="D2" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
 <part name="D9" library="diode" deviceset="BAS40-04" device="" package3d_urn="urn:adsk.eagle:package:43389/2" value="BAS40-04"/>
@@ -22893,6 +22904,16 @@ makes filter together with gate capacitance</text>
 <instance part="D1" gate="G$1" x="88.9" y="215.9" smashed="yes" rot="R270">
 <attribute name="NAME" x="90.805" y="218.186" size="1.27" layer="95" rot="R270"/>
 <attribute name="VALUE" x="86.741" y="218.186" size="1.27" layer="96" rot="MR270"/>
+<attribute name="DESCRIPTION" x="88.9" y="215.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="EXTENDED" x="88.9" y="215.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="LCSC_ID" x="88.9" y="215.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="MF" x="88.9" y="215.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="MF_ID" x="88.9" y="215.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PACKAGE" x="88.9" y="215.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PADS" x="88.9" y="215.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PRICE_100PLUS" x="88.9" y="215.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PRICE_1PLUS" x="88.9" y="215.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PRICE_DATE" x="88.9" y="215.9" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="P+45" gate="1" x="88.9" y="223.52" smashed="yes">
 <attribute name="VALUE" x="87.122" y="224.536" size="1.27" layer="96" rot="MR270"/>

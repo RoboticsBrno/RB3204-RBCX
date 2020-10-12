@@ -25,7 +25,7 @@
 <layer number="15" name="Layer3-GND" color="23" fill="1" visible="no" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
@@ -6868,7 +6868,17 @@ JarekParal (2020-04-14)
 <attribute name="VOLTAGE" value="16V" x="89.05875" y="58.7375" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="D1" library="diode" package="SOD123" value="B5819W" x="85.15575625" y="58.26125" smashed="yes" rot="R270">
+<attribute name="DESCRIPTION" value="40V 1A 600mV @ 1A SOD-123 Schottky Barrier Diodes (SBD) RoHS" x="85.15575625" y="58.26125" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="EXTENDED" value="NO" x="85.15575625" y="58.26125" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="LCSC_ID" value="C305445" x="85.15575625" y="58.26125" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MF" value="Foshan Blue Rocket Elec" x="85.15575625" y="58.26125" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MF_ID" value="B5819W" x="85.15575625" y="58.26125" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="84.72125" y="60.485759375" size="0.8" layer="25" font="vector" ratio="12"/>
+<attribute name="PACKAGE" value="SOD-123" x="85.15575625" y="58.26125" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="PADS" value="2" x="85.15575625" y="58.26125" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="PRICE_100PLUS" value="$0.0176" x="85.15575625" y="58.26125" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="PRICE_1PLUS" value="$0.0342" x="85.15575625" y="58.26125" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="PRICE_DATE" value="17.03.2020" x="85.15575625" y="58.26125" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="81.65575625" y="61.01125" size="1.27" layer="27" ratio="10" rot="R270"/>
 </element>
 <element name="D2" library="diode" package="SMA" value="SS34" x="92.23375" y="60.48375" smashed="yes" rot="R90">
