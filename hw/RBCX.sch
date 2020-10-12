@@ -18543,7 +18543,7 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="DESCRIPTION" value="Connector for inteligent servo LewanSoul (e.g. LX-15D)"/>
 <attribute name="PACKAGE" value="292161-3"/>
 </part>
-<part name="S2" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
+<part name="S2" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
 <part name="GND1" library="Supply" deviceset="GND" device=""/>
 <part name="GND2" library="Supply" deviceset="GND" device=""/>
 <part name="GND3" library="Supply" deviceset="GND" device=""/>
@@ -18831,10 +18831,10 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND97" library="Supply" deviceset="GND" device=""/>
 <part name="R52" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R53" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="S3" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
-<part name="S5" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
-<part name="S7" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
-<part name="S9" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
+<part name="S3" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
+<part name="S5" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
+<part name="S7" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
+<part name="S9" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
 <part name="R90" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R93" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R96" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
@@ -19099,7 +19099,7 @@ Grid 5.08 mm&lt;p&gt;
 <part name="+3V59" library="Supply" deviceset="+3V3" device=""/>
 <part name="P+39" library="Supply" deviceset="+5V" device=""/>
 <part name="P+40" library="Supply" deviceset="VCC" device=""/>
-<part name="S11" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
+<part name="S11" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
 <part name="+3V60" library="Supply" deviceset="+3V3S" device=""/>
 <part name="R75" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="100k"/>
 <part name="GND164" library="Supply" deviceset="GND" device=""/>
@@ -19345,7 +19345,7 @@ Grid 5.08 mm&lt;p&gt;
 <part name="P+33" library="Supply" deviceset="+5V" device=""/>
 <part name="+3V69" library="Supply" deviceset="+3V3S" device=""/>
 <part name="D12" library="diode" deviceset="SHOTTKY" device="-SMA" value="SS34"/>
-<part name="S13" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
+<part name="S13" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
 <part name="GND151" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="JP58" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X2" device="" package3d_urn="urn:adsk.eagle:package:22455/2" value="I2C_INTERCONNECT"/>
 <part name="GND152" library="Supply" deviceset="GND" device=""/>
@@ -19659,13 +19659,13 @@ Grid 5.08 mm&lt;p&gt;
 <part name="TP5" library="test_points" deviceset="TP" device="_06MM"/>
 <part name="X5" library="USB" deviceset="USB_C_8PIN" device=""/>
 <part name="GND33" library="Supply" deviceset="GND" device=""/>
-<part name="S4" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
-<part name="S6" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
-<part name="S8" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
-<part name="S10" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
-<part name="S12" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
-<part name="S14" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
-<part name="S1" library="switch-omron" deviceset="10-XX" device="_SMD" value="CHOOSE_ME"/>
+<part name="S4" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
+<part name="S6" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
+<part name="S8" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
+<part name="S10" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
+<part name="S12" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
+<part name="S14" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
+<part name="S1" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
 <part name="C5" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
 <attribute name="VOLTAGE" value="16V"/>

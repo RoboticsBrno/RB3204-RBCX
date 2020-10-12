@@ -28,12 +28,12 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
@@ -58,8 +58,8 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="55" name="tPotisk" color="7" fill="1" visible="no" active="no"/>
@@ -82,8 +82,8 @@
 <layer number="98" name="Guide" color="6" fill="1" visible="no" active="no"/>
 <layer number="99" name="SpiceOrder" color="7" fill="1" visible="no" active="no"/>
 <layer number="100" name="Muster" color="7" fill="1" visible="no" active="no"/>
-<layer number="101" name="tSilk" color="5" fill="1" visible="no" active="yes"/>
-<layer number="102" name="bSilk" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="101" name="tSilk" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="102" name="bSilk" color="3" fill="1" visible="no" active="yes"/>
 <layer number="113" name="ReferenceLS" color="7" fill="1" visible="no" active="no"/>
 <layer number="118" name="Rect_Pads" color="7" fill="1" visible="no" active="no"/>
 <layer number="153" name="FabDoc1" color="6" fill="1" visible="no" active="no"/>
@@ -4526,7 +4526,7 @@ JarekParal (2020-04-14)
 <attribute name="PACKAGE" value="292161-3" x="97.79" y="12.065" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="VALUE" x="101.854" y="15.875" size="1.778" layer="28" rot="MR270"/>
 </element>
-<element name="S2" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="14.605" y="59.055" smashed="yes" rot="R90">
+<element name="S2" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="14.605" y="59.055" smashed="yes" rot="R90">
 <attribute name="NAME" x="15.24" y="61.2775" size="0.8" layer="25" font="vector" ratio="12" rot="R180"/>
 <attribute name="VALUE" x="19.685" y="55.245" size="1.778" layer="27" rot="R90"/>
 </element>
@@ -4941,19 +4941,19 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="72.86625" y="13.6525" size="0.8" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="67.31" y="14.12875" size="1.27" layer="27"/>
 </element>
-<element name="S3" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="24.13" y="59.055" smashed="yes" rot="R90">
+<element name="S3" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="24.13" y="59.055" smashed="yes" rot="R90">
 <attribute name="NAME" x="24.765" y="61.2775" size="0.8" layer="25" font="vector" ratio="12" rot="R180"/>
 <attribute name="VALUE" x="29.21" y="55.245" size="1.778" layer="27" rot="R90"/>
 </element>
-<element name="S5" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="5.08" y="59.055" smashed="yes" rot="R90">
+<element name="S5" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="5.08" y="59.055" smashed="yes" rot="R90">
 <attribute name="NAME" x="5.715" y="61.11875" size="0.8" layer="25" font="vector" ratio="12" rot="R180"/>
 <attribute name="VALUE" x="10.16" y="55.245" size="1.778" layer="27" rot="R90"/>
 </element>
-<element name="S7" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="14.605" y="68.58" smashed="yes" rot="R90">
+<element name="S7" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="14.605" y="68.58" smashed="yes" rot="R90">
 <attribute name="NAME" x="15.08125" y="70.64375" size="0.8" layer="25" font="vector" ratio="12" rot="R180"/>
 <attribute name="VALUE" x="19.685" y="64.77" size="1.778" layer="27" rot="R90"/>
 </element>
-<element name="S9" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="14.605" y="49.53" smashed="yes" rot="R90">
+<element name="S9" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="14.605" y="49.53" smashed="yes" rot="R90">
 <attribute name="NAME" x="15.24" y="51.7525" size="0.8" layer="25" font="vector" ratio="12" rot="R180"/>
 <attribute name="VALUE" x="19.685" y="45.72" size="1.778" layer="27" rot="R90"/>
 </element>
@@ -5504,7 +5504,7 @@ JarekParal (2020-04-14)
 <attribute name="POPULARITY" value="47" x="168.91" y="94.615" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" x="68.58" y="89.535" size="1.27" layer="28" rot="MR90"/>
 </element>
-<element name="S11" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="24.13" y="68.58" smashed="yes" rot="R90">
+<element name="S11" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="24.13" y="68.58" smashed="yes" rot="R90">
 <attribute name="NAME" x="25.0825" y="70.64375" size="0.8" layer="25" font="vector" ratio="12" rot="R180"/>
 <attribute name="VALUE" x="29.21" y="64.77" size="1.778" layer="27" rot="R90"/>
 </element>
@@ -5945,7 +5945,7 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="14.395" y="35.17875" size="0.8" layer="25" font="vector" ratio="12"/>
 <attribute name="VALUE" x="8.68" y="32.06" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="S13" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="4.28625" y="11.90625" smashed="yes" rot="R90">
+<element name="S13" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="4.28625" y="11.90625" smashed="yes" rot="R90">
 <attribute name="NAME" x="5.11175" y="13.93825" size="0.8" layer="25" font="vector" ratio="12" rot="R180"/>
 <attribute name="VALUE" x="9.36625" y="8.85825" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
@@ -6810,31 +6810,31 @@ JarekParal (2020-04-14)
 <attribute name="NAME" x="72.99375" y="53.72875" size="0.8" layer="25" font="vector" ratio="12" rot="SR0"/>
 <attribute name="VALUE" x="75.66" y="44.895" size="0.6096" layer="27" ratio="13" rot="SR90"/>
 </element>
-<element name="S4" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="24.13" y="59.055" smashed="yes" rot="MR270">
+<element name="S4" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="24.13" y="59.055" smashed="yes" rot="MR270">
 <attribute name="NAME" x="23.622" y="57.75325" size="0.8" layer="26" font="vector" ratio="12" rot="MR180"/>
 <attribute name="VALUE" x="29.21" y="62.103" size="1.27" layer="28" ratio="10" rot="MR270"/>
 </element>
-<element name="S6" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="5.08" y="59.055" smashed="yes" rot="MR270">
+<element name="S6" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="5.08" y="59.055" smashed="yes" rot="MR270">
 <attribute name="NAME" x="4.41325" y="57.75325" size="0.8" layer="26" font="vector" ratio="12" rot="MR180"/>
 <attribute name="VALUE" x="10.16" y="62.103" size="1.27" layer="28" ratio="10" rot="MR270"/>
 </element>
-<element name="S8" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="14.605" y="68.58" smashed="yes" rot="MR270">
+<element name="S8" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="14.605" y="68.58" smashed="yes" rot="MR270">
 <attribute name="NAME" x="13.93825" y="67.27825" size="0.8" layer="26" font="vector" ratio="12" rot="MR180"/>
 <attribute name="VALUE" x="19.685" y="71.628" size="1.27" layer="28" ratio="10" rot="MR270"/>
 </element>
-<element name="S10" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="14.605" y="49.53" smashed="yes" rot="MR270">
+<element name="S10" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="14.605" y="49.53" smashed="yes" rot="MR270">
 <attribute name="NAME" x="13.62075" y="48.0695" size="0.8" layer="26" font="vector" ratio="12" rot="MR180"/>
 <attribute name="VALUE" x="19.685" y="52.578" size="1.27" layer="28" ratio="10" rot="MR270"/>
 </element>
-<element name="S12" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="24.13" y="68.58" smashed="yes" rot="MR270">
+<element name="S12" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="24.13" y="68.58" smashed="yes" rot="MR270">
 <attribute name="NAME" x="23.3045" y="67.27825" size="0.8" layer="26" font="vector" ratio="12" rot="MR180"/>
 <attribute name="VALUE" x="29.21" y="71.628" size="1.27" layer="28" ratio="10" rot="MR270"/>
 </element>
-<element name="S14" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="4.28625" y="11.90625" smashed="yes" rot="MR270">
+<element name="S14" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="4.28625" y="11.90625" smashed="yes" rot="MR270">
 <attribute name="NAME" x="3.302" y="10.44575" size="0.8" layer="26" font="vector" ratio="12" rot="MR180"/>
 <attribute name="VALUE" x="9.36625" y="14.95425" size="1.27" layer="28" ratio="10" rot="MR270"/>
 </element>
-<element name="S1" library="switch-omron" package="TS-1187A" value="CHOOSE_ME" x="14.605" y="59.055" smashed="yes" rot="MR270">
+<element name="S1" library="switch-omron" package="TS-1187A" value="TS-1187A-C-C-B" x="14.605" y="59.055" smashed="yes" rot="MR270">
 <attribute name="NAME" x="14.097" y="57.75325" size="0.8" layer="26" font="vector" ratio="12" rot="MR180"/>
 <attribute name="VALUE" x="19.685" y="62.103" size="1.27" layer="28" ratio="10" rot="MR270"/>
 </element>
