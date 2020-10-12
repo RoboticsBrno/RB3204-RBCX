@@ -19354,8 +19354,8 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND155" library="Supply" deviceset="GND" device=""/>
 <part name="GND157" library="Supply" deviceset="GND" device=""/>
 <part name="GND163" library="Supply" deviceset="GND" device=""/>
-<part name="R76" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
-<part name="R77" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
+<part name="R76" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="5k1"/>
+<part name="R77" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="5k1"/>
 <part name="TP61" library="test_points" deviceset="TP" device="_06MM"/>
 <part name="TP13" library="test_points" deviceset="TP" device="_06MM"/>
 <part name="TP14" library="test_points" deviceset="TP" device="_06MM"/>
