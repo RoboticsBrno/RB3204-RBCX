@@ -18494,6 +18494,7 @@ Grid 5.08 mm&lt;p&gt;
 <attributes>
 </attributes>
 <variantdefs>
+<variantdef name="TOP_SMD_MINIMAL"/>
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0.15" drill="0.3">
@@ -18535,7 +18536,9 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_500PLUS" value="$0.1232"/>
 </part>
 <part name="Y1" library="SMD5032_2P" deviceset="5032/2P" device=""/>
-<part name="BAT1" library="CR2032-circle" deviceset="CR2032" device="CR2032-BS-6-1" value="CR2032"/>
+<part name="BAT1" library="CR2032-circle" deviceset="CR2032" device="CR2032-BS-6-1" value="CR2032">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="Y2" library="SMD3215_2P" deviceset="3215_2P" device=""/>
 <part name="IC5" library="DRV8833" deviceset="DRV8833" device="PWP" value="DRV8833PWP"/>
 <part name="SJ9" library="jumper" deviceset="SJ2W_DEFAULT" device=""/>
@@ -18639,6 +18642,7 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="IC7" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4">
 <attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
@@ -18651,6 +18655,7 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="C23" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
@@ -18714,6 +18719,7 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="IC4" library="INA180" deviceset="INA180" device="A" package3d_urn="urn:adsk.eagle:package:8088492/1" value="INA180A4">
 <attribute name="DESCRIPTION" value="PMIC - CURRENT &amp; POWER MONITORS &amp; REGULATORS 1 200 V/V ±0.1% 105KHZ -0.2V ~ 26V 2.7V ~ 5.5V SOT-23-5 ROHS"/>
@@ -18726,6 +18732,7 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="C18" library="rcl_upravena" deviceset="C-EU" device="C0402" value="100n">
 <attribute name="DIELECTRIC" value="X5R"/>
@@ -19036,10 +19043,12 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND138" library="Supply" deviceset="GND" device=""/>
 <part name="C2" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND139" library="Supply" deviceset="GND" device=""/>
 <part name="C1" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND140" library="Supply" deviceset="GND" device=""/>
 <part name="R14" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
@@ -19066,7 +19075,9 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="VOLTAGE" value="16V"/>
 </part>
 <part name="GND150" library="Supply" deviceset="GND" device=""/>
-<part name="B1" library="piezo" deviceset="PIEZO" device=""/>
+<part name="B1" library="piezo" deviceset="PIEZO" device="">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND156" library="Supply" deviceset="GND" device=""/>
 <part name="R109" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1M"/>
 <part name="R108" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
@@ -19087,12 +19098,18 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND158" library="Supply" deviceset="GND" device=""/>
 <part name="R83" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R82" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
-<part name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="+3V3STM"/>
+<part name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="+3V3STM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND159" library="Supply" deviceset="GND" device=""/>
 <part name="+3V58" library="Supply" deviceset="+3V3S" device=""/>
-<part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="+3V3"/>
+<part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="+3V3">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND160" library="Supply" deviceset="GND" device=""/>
-<part name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="+5V"/>
+<part name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="+5V">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND161" library="Supply" deviceset="GND" device=""/>
 <part name="JP5" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="VCC"/>
 <part name="GND162" library="Supply" deviceset="GND" device=""/>
@@ -19281,7 +19298,9 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND111" library="Supply" deviceset="GND" device=""/>
 <part name="GND113" library="Supply" deviceset="GND" device=""/>
 <part name="+3V29" library="Supply" deviceset="+3V3S" device=""/>
-<part name="IC12" library="MPU-6050" deviceset="MPU-6050" device=""/>
+<part name="IC12" library="MPU-6050" deviceset="MPU-6050" device="">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="IM3" library="diy-modules" deviceset="DISPLAY-OLED-128X64-I2C" device="-W_HOLES" value="DISPLAY-OLED-128X64-I2C-W_HOLES"/>
 <part name="R156" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="R157" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
@@ -19356,66 +19375,162 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND163" library="Supply" deviceset="GND" device=""/>
 <part name="R76" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="5k1"/>
 <part name="R77" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="5k1"/>
-<part name="TP61" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP13" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP14" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP6" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP2" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP3" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP7" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP8" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP9" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP10" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP11" library="test_points" deviceset="TP" device="_08MM"/>
-<part name="TP12" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP30" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP31" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP45" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP44" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP22" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP23" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP24" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP25" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP33" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP34" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP35" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP36" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP37" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP38" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP39" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP27" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP26" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP29" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP28" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP40" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP41" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP42" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP43" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP21" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP32" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP58" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP19" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP59" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP60" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP16" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP4" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP1" library="test_points" deviceset="TP" device="_06MM"/>
+<part name="TP61" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP13" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP14" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP6" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP2" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP3" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP7" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP8" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP9" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP10" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP11" library="test_points" deviceset="TP" device="_08MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP12" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP30" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP31" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP45" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP44" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP22" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP23" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP24" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP25" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP33" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP34" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP35" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP36" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP37" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP38" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP39" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP27" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP26" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP29" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP28" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP40" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP41" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP42" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP43" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP21" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP32" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP58" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP19" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP59" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP60" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP16" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP4" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP1" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="P+38" library="Supply" deviceset="VCC" device=""/>
 <part name="P+41" library="Supply" deviceset="+5V" device=""/>
 <part name="+3V68" library="Supply" deviceset="+3V3S" device=""/>
 <part name="+3V70" library="Supply" deviceset="+3V3" device=""/>
 <part name="GND166" library="Supply" deviceset="GND" device=""/>
 <part name="+3V22" library="Supply" deviceset="+3V3S" device=""/>
-<part name="TP17" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP18" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP20" library="test_points" deviceset="TP" device="_06MM"/>
+<part name="TP17" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP18" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP20" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="IM2" library="StepDown" deviceset="STEPDOWN" device=""/>
 <part name="JP27" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="ILED_EN"/>
 <part name="GND167" library="Supply" deviceset="GND" device=""/>
 <part name="P+42" library="Supply" deviceset="VCC" device=""/>
 <part name="R63" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="0R"/>
 <part name="P+16" library="Supply" deviceset="+5V" device=""/>
-<part name="TP15" library="test_points" deviceset="TP" device="_06MM"/>
+<part name="TP15" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="R5" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="330R"/>
 <part name="FRAME8" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A3L-LOC" device=""/>
 <part name="LED14" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="green"/>
@@ -19453,6 +19568,7 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND53" library="Supply" deviceset="GND" device=""/>
 <part name="+3V16" library="Supply" deviceset="+3V3S" device=""/>
@@ -19481,9 +19597,15 @@ Grid 5.08 mm&lt;p&gt;
 </part>
 <part name="GND60" library="Supply" deviceset="GND" device=""/>
 <part name="R128" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="0R"/>
-<part name="TP54" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP46" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP50" library="test_points" deviceset="TP" device="_06MM"/>
+<part name="TP54" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP46" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP50" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="IM6" library="StepDown" deviceset="STEPDOWN" device=""/>
 <part name="JP49" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO2_EN"/>
 <part name="JP53" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO2"/>
@@ -19503,6 +19625,7 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND61" library="Supply" deviceset="GND" device=""/>
 <part name="+3V18" library="Supply" deviceset="+3V3S" device=""/>
@@ -19522,6 +19645,7 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND66" library="Supply" deviceset="GND" device=""/>
 <part name="C25" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND67" library="Supply" deviceset="GND" device=""/>
 <part name="R134" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
@@ -19531,9 +19655,15 @@ Grid 5.08 mm&lt;p&gt;
 </part>
 <part name="GND68" library="Supply" deviceset="GND" device=""/>
 <part name="R129" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="0R"/>
-<part name="TP55" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP47" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP51" library="test_points" deviceset="TP" device="_06MM"/>
+<part name="TP55" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP47" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP51" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="IM7" library="StepDown" deviceset="STEPDOWN" device=""/>
 <part name="JP50" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO3_EN"/>
 <part name="JP54" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO3"/>
@@ -19553,6 +19683,7 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND69" library="Supply" deviceset="GND" device=""/>
 <part name="+3V20" library="Supply" deviceset="+3V3S" device=""/>
@@ -19572,6 +19703,7 @@ Grid 5.08 mm&lt;p&gt;
 <part name="GND74" library="Supply" deviceset="GND" device=""/>
 <part name="C26" library="rcl_upravena" deviceset="CPOL-EU" device="E5-10.5" value="220u">
 <attribute name="VOLTAGE" value="16V"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND75" library="Supply" deviceset="GND" device=""/>
 <part name="R136" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="1k"/>
@@ -19581,9 +19713,15 @@ Grid 5.08 mm&lt;p&gt;
 </part>
 <part name="GND76" library="Supply" deviceset="GND" device=""/>
 <part name="R130" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="0R"/>
-<part name="TP56" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP48" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP52" library="test_points" deviceset="TP" device="_06MM"/>
+<part name="TP56" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP48" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP52" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="IM8" library="StepDown" deviceset="STEPDOWN" device=""/>
 <part name="JP51" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2" value="SERVO4_EN"/>
 <part name="JP55" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2" value="SERVO4"/>
@@ -19603,6 +19741,7 @@ Grid 5.08 mm&lt;p&gt;
 <attribute name="PRICE_1PLUS" value="$0.3943"/>
 <attribute name="PRICE_30PLUS" value="$0.2812"/>
 <attribute name="PRICE_500PLUS" value="$0.2566"/>
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
 </part>
 <part name="GND169" library="Supply" deviceset="GND" device=""/>
 <part name="+3V71" library="Supply" deviceset="+3V3S" device=""/>
@@ -19631,9 +19770,15 @@ Grid 5.08 mm&lt;p&gt;
 </part>
 <part name="GND176" library="Supply" deviceset="GND" device=""/>
 <part name="R131" library="rcl_upravena" deviceset="R-EU_" device="R1206" value="0R"/>
-<part name="TP57" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP49" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="TP53" library="test_points" deviceset="TP" device="_06MM"/>
+<part name="TP57" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP49" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="TP53" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="R110" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="4k7"/>
 <part name="GND45" library="Supply" deviceset="GND" device=""/>
 <part name="P+18" library="Supply" deviceset="VCC" device=""/>
@@ -19656,8 +19801,12 @@ Grid 5.08 mm&lt;p&gt;
 <part name="R23" library="rcl_upravena" deviceset="R-EU_" device="R0402" value="2k2"/>
 <part name="LED10" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
 <part name="LED12" library="led" deviceset="LED" device="CHIPLED_0603" package3d_urn="urn:adsk.eagle:package:15822/2" value="red"/>
-<part name="TP5" library="test_points" deviceset="TP" device="_06MM"/>
-<part name="X5" library="USB" deviceset="USB_C_8PIN" device=""/>
+<part name="TP5" library="test_points" deviceset="TP" device="_06MM">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
+<part name="X5" library="USB" deviceset="USB_C_8PIN" device="">
+<variant name="TOP_SMD_MINIMAL" populate="no"/>
+</part>
 <part name="GND33" library="Supply" deviceset="GND" device=""/>
 <part name="S4" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
 <part name="S6" library="switch-omron" deviceset="10-XX" device="_SMD" value="TS-1187A-C-C-B"/>
