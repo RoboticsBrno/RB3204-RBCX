@@ -190,9 +190,11 @@ inline void clocksInit() {
         abort();
     }
 
-    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
+    PeriphClkInit.PeriphClockSelection
+        = RCC_PERIPHCLK_USB | RCC_PERIPHCLK_ADC | RCC_PERIPHCLK_RTC;
     PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
     PeriphClkInit.AdcClockSelection = RCC_CFGR_ADCPRE_DIV6;
+    PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
         abort();
     }
@@ -212,6 +214,7 @@ inline void clocksInit() {
     __HAL_RCC_DMA2_CLK_ENABLE();
     __HAL_RCC_PWR_CLK_ENABLE();
     __HAL_RCC_BKP_CLK_ENABLE();
+    __HAL_RCC_RTC_ENABLE();
     __HAL_RCC_TIM1_CLK_ENABLE();
     __HAL_RCC_TIM2_CLK_ENABLE();
     __HAL_RCC_TIM3_CLK_ENABLE();
