@@ -1,4 +1,14 @@
 /*
+ * Based on .platformio/packages/framework-stm32cube/platformio/ldscripts/STM32F103VC_DEFAULT.ld
+ *
+ * This linker script creates a binary that is modified to start at 0x1000 offset from the start of
+ * FLASH memory, thus keeping the bootloader intact.
+ * The SCB->VTOR must be moved to the 0x1000 offset, as is done in src/main.cpp
+ *
+ * This script is to be used when flashing via DFU bootloader.
+ */
+
+/*
  *
  * Automatically generated file
  * PlatformIO default linker script template for STM32 F1/F2/F3/F4/F7/L0/L1/L4
@@ -14,21 +24,18 @@ _estack = 0x2000c000;    /* end of RAM */
 _Min_Heap_Size = 0x200;      /* required amount of heap  */
 _Min_Stack_Size = 0x400;     /* required amount of stack */
 
+_Bootloader_Region_Size = 0x1000;
+
 /* Specify the memory areas */
 MEMORY
 {
     RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 48K
-    FLASH (rx)      : ORIGIN = 0x8001000, LENGTH = 256K
+    FLASH (rx)      : ORIGIN = 0x8000000 + _Bootloader_Region_Size, LENGTH = 256K - _Bootloader_Region_Size
 }
 
 /* Define output sections */
 SECTIONS
 {
-  /*.gap :
-  {
-      . = . + 4096;
-  } >FLASH*/
-
   /* The startup code goes first into FLASH */
   .isr_vector :
   {
