@@ -13,4 +13,6 @@ install:
 
 script:
   - cd fw/rbcx-coprocessor
-  - platformio run -e hw10_stlink -e hw11_stlink -e hw11_sboot
+  - platformio run
+    -e hw10_stlink
+    -e hw11_stlink -e hw11_bootloader -e hw11_stlink_bootloader
