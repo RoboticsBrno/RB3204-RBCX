@@ -155,7 +155,7 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
         targetMotor.setVelocityPid(request.motorCmd.setVelocityRegCoefs);
         break;
     case CoprocReq_MotorReq_setPositionRegCoefs_tag:
-        DEBUG("setPositionRegCoefs no longer supported\n");
+        targetMotor.setPositionPid(request.motorCmd.setPositionRegCoefs);
         break;
     case CoprocReq_MotorReq_setConfig_tag:
         targetMotor.setConfig(request.motorCmd.setConfig);
