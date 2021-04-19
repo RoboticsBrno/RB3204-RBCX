@@ -337,6 +337,19 @@ static void debugLinkHandleCommand(const char* cmd) {
             rtcSetTime(val);
             return;
         });
+        COMMAND("alarm get", {
+            printf("RTC alarm: %lu\n", rtcGetAlarm());
+            return;
+        });
+        COMMAND("alarm set", {
+            uint32_t val = 0;
+            if (sscanf(cmd, "%lu", &val) != 1) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            rtcSetAlarm(val);
+            return;
+        });
     });
 
     printf("Invalid command.\n");

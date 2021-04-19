@@ -1,10 +1,13 @@
 #include "stm32f1xx_ll_adc.h"
+#include "stm32f1xx_ll_pwr.h"
 #include "stm32f1xx_ll_rcc.h"
+#include "stm32f1xx_ll_rtc.h"
+
+#include "Power.hpp"
 
 #include "Bsp.hpp"
 #include "BuzzerController.hpp"
 #include "Dispatcher.hpp"
-#include "Power.hpp"
 #include "utils/Debug.hpp"
 #include "utils/Flash.hpp"
 #include "utils/TaskWrapper.hpp"
@@ -92,6 +95,46 @@ static void loadCalibration() {
         "Loaded calibration data - VCC:%f BMID:%f VREFINT:%dmV temp:%dmV@%dC\n",
         calib.batteryCoef, calib.batteryMidCoef, calib.internalVrefMv,
         calib.tempTypicalMv, calib.tempTypicalAtC);
+}
+
+extern "C" void PVD_IRQHandler() {
+    // Enable ALARM -> powerPin override.
+    // Will generate a high pulse on alarm match, other times pulls power low.
+    LL_RTC_SetOutputSource(BKP, LL_RTC_CALIB_OUTPUT_ALARM);
+
+    __disable_irq();
+
+    pinWrite(powerPin, 0);
+
+    // Blink red LED "pretty fast"
+    uint32_t leds = 0;
+    while (true) {
+        leds ^= CoprocReq_LedsEnum_L3;
+        setLeds(leds);
+
+        for (volatile int i = 0; i < 200000; i++)
+            ;
+    }
+}
+
+void powerEarlyInit() {
+    __HAL_RCC_PWR_CLK_ENABLE();
+    __HAL_RCC_BKP_CLK_ENABLE();
+
+    // Enable PVD - will generate EXTI16(PVD_IRQn) when VDD drops.
+    // Done before disabling ALARM output to eliminate race
+    // that could result in ALARM deactivation.
+    LL_PWR_EnableBkUpAccess();
+    LL_PWR_SetPVDLevel(LL_PWR_PVDLEVEL_7);
+    LL_PWR_EnablePVD();
+
+    HAL_NVIC_SetPriority(PVD_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(PVD_IRQn);
+
+    // Disable potential RTC ALARM -> powerPin override.
+    // This way we keep VCC powered upon board power-up.
+    // This must be done very early at power-up.
+    LL_RTC_SetOutputSource(BKP, LL_RTC_CALIB_OUTPUT_NONE);
 }
 
 void powerInit() {
@@ -264,19 +307,7 @@ void powerShutDown() {
 
     vTaskDelay(1);
 
-    __disable_irq();
-
-    pinWrite(powerPin, 0);
-
-    // Blink red LED "pretty fast"
-    uint32_t leds = 0;
-    while (true) {
-        leds ^= CoprocReq_LedsEnum_L3;
-        setLeds(leds);
-
-        for (volatile int i = 0; i < 200000; i++)
-            ;
-    }
+    HAL_NVIC_SetPendingIRQ(PVD_IRQn);
 }
 
 static void checkBatteryVoltage(uint16_t vccMv) {

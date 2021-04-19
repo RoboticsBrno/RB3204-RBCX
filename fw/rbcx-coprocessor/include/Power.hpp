@@ -1,5 +1,6 @@
 #pragma once
 
+void powerEarlyInit();
 void powerInit();
 void powerPoll();
 

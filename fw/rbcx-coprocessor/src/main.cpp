@@ -17,11 +17,13 @@
 #include "Dispatcher.hpp"
 #include "Esp32Manager.hpp"
 #include "Power.hpp"
+#include "RtcController.hpp"
 #include "UsbCdcLink.h"
 
 static TaskWrapper<3072> mainTask;
 
 int main() {
+    powerEarlyInit();
     clocksInit();
     HAL_Init();
 
@@ -35,6 +37,7 @@ int main() {
         debugUartInit();
         softResetInit();
         powerInit();
+        rtcInit();
         dispatcherInit();
         tunnelUartInit();
         controlUartInit();

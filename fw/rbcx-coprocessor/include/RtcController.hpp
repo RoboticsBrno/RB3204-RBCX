@@ -1,27 +1,14 @@
 #pragma once
 
-#include "stm32f1xx_ll_pwr.h"
-#include "stm32f1xx_ll_rcc.h"
-#include "stm32f1xx_ll_rtc.h"
+#include "rbcx.pb.h"
 
-inline void rtcInit() {
-    // LSE and RTC started at board init
+#include <stdint.h>
 
-    LL_PWR_EnableBkUpAccess();
+void rtcInit();
+bool rtcInitReady();
+void rtcDispatch(const CoprocReq_RtcReq& req);
 
-    // We ensure RTC is running (noop in case it is)
-    LL_RTC_InitTypeDef init = {
-        .AsynchPrescaler = 0x7FFF, // 32kHz crystal -> 1s tick
-    };
-    LL_RTC_Init(RTC, &init);
-}
-
-inline bool rtcSetTime(uint32_t seconds) {
-    bool ok = true;
-    ok &= LL_RTC_EnterInitMode(RTC) == SUCCESS;
-    LL_RTC_TIME_Set(RTC, seconds);
-    ok &= LL_RTC_ExitInitMode(RTC) == SUCCESS;
-    return ok;
-}
-
-inline uint32_t rtcGetTime() { return LL_RTC_TIME_Get(RTC); }
+uint32_t rtcGetTime();
+void rtcSetTime(uint32_t seconds);
+uint32_t rtcGetAlarm();
+void rtcSetAlarm(uint32_t seconds);
