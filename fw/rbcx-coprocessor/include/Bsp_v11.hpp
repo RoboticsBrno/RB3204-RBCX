@@ -70,11 +70,11 @@ inline const PinDef userUartTxPin = std::make_pair(GPIOB, GPIO_PIN_6);
 inline const PinDef userUartRxPin = std::make_pair(GPIOB, GPIO_PIN_7);
 inline const PinDef tunnelUartTxPin = std::make_pair(GPIOD, GPIO_PIN_5);
 inline const PinDef tunnelUartRxPin = std::make_pair(GPIOD, GPIO_PIN_6);
-inline const PinDef controlUartTxPin = std::make_pair(GPIOB, GPIO_PIN_10);
-inline const PinDef controlUartRxPin = std::make_pair(GPIOB, GPIO_PIN_11);
 inline const PinDef debugUartTxPin = std::make_pair(GPIOC, GPIO_PIN_10);
 inline const PinDef debugUartRxPin = std::make_pair(GPIOC, GPIO_PIN_11);
 inline const PinDef servoUartTxRxPin = std::make_pair(GPIOC, GPIO_PIN_12);
+inline const PinDef controlUartTxPin = std::make_pair(GPIOB, GPIO_PIN_10);
+inline const PinDef controlUartRxPin = std::make_pair(GPIOB, GPIO_PIN_11);
 
 inline USART_TypeDef* const userUart = USART1;
 inline USART_TypeDef* const tunnelUart = USART2;
@@ -158,70 +158,6 @@ inline ADC_TypeDef* const auxiliaryAdc = ADC1;
 inline const IRQn_Type auxiliaryAndMotorAdcIRQn = ADC1_2_IRQn;
 inline const unsigned auxiliaryAndMotorAdcIrqPrio = 9;
 #define AUXILIARY_AND_MOTOR_ADC_IRQ_HANDLER ADC1_2_IRQHandler
-
-inline void clocksInit() {
-    RCC_OscInitTypeDef RCC_OscInitStruct;
-    RCC_ClkInitTypeDef RCC_ClkInitStruct;
-    RCC_PeriphCLKInitTypeDef PeriphClkInit;
-
-    RCC_OscInitStruct.OscillatorType
-        = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_LSE;
-    RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-    RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
-    RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-    RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-    RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
-    RCC_OscInitStruct.LSEState = RCC_LSE_ON;
-    if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
-        abort();
-    }
-
-    RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
-        | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
-    RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-    RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-    RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK) {
-        abort();
-    }
-
-    PeriphClkInit.PeriphClockSelection
-        = RCC_PERIPHCLK_USB | RCC_PERIPHCLK_ADC | RCC_PERIPHCLK_RTC;
-    PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
-    PeriphClkInit.AdcClockSelection = RCC_CFGR_ADCPRE_DIV6;
-    PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
-    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
-        abort();
-    }
-
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-    __HAL_RCC_GPIOC_CLK_ENABLE();
-    __HAL_RCC_GPIOD_CLK_ENABLE();
-    __HAL_RCC_GPIOE_CLK_ENABLE();
-    __HAL_RCC_AFIO_CLK_ENABLE();
-    __HAL_RCC_USART1_CLK_ENABLE();
-    __HAL_RCC_USART2_CLK_ENABLE();
-    __HAL_RCC_USART3_CLK_ENABLE();
-    __HAL_RCC_UART4_CLK_ENABLE();
-    __HAL_RCC_UART5_CLK_ENABLE();
-    __HAL_RCC_DMA1_CLK_ENABLE();
-    __HAL_RCC_DMA2_CLK_ENABLE();
-    __HAL_RCC_PWR_CLK_ENABLE();
-    __HAL_RCC_BKP_CLK_ENABLE();
-    __HAL_RCC_RTC_ENABLE();
-    __HAL_RCC_TIM1_CLK_ENABLE();
-    __HAL_RCC_TIM2_CLK_ENABLE();
-    __HAL_RCC_TIM3_CLK_ENABLE();
-    __HAL_RCC_TIM4_CLK_ENABLE();
-    __HAL_RCC_TIM5_CLK_ENABLE();
-    __HAL_RCC_TIM6_CLK_ENABLE();
-    __HAL_RCC_TIM7_CLK_ENABLE();
-    __HAL_RCC_TIM8_CLK_ENABLE();
-    __HAL_RCC_ADC1_CLK_ENABLE();
-}
 
 // Set-up ESP32 strapping pins for the normal mode functions. Esp32Manager
 // handles the strapping process and ESP32 reset, and calls this function
