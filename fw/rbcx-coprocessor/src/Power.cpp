@@ -107,33 +107,52 @@ extern "C" void PVD_IRQHandler() {
     pinWrite(powerPin, 0);
 
     // Blink red LED "pretty fast"
+    // Only blink for a limited time because we don't want to cause a denial of service
+    // if we're powered from a different source (which?)
     uint32_t leds = 0;
-    while (true) {
+    for (int blink = 0; blink < 10; blink++) {
         leds ^= CoprocReq_LedsEnum_L3;
         setLeds(leds);
 
         for (volatile int i = 0; i < 200000; i++)
             ;
     }
+
+    // Reset program if power still present (powered from elsewhere)
+    HAL_NVIC_SystemReset();
 }
 
 void powerEarlyInit() {
+    pinWrite(powerPin, true);
     __HAL_RCC_PWR_CLK_ENABLE();
     __HAL_RCC_BKP_CLK_ENABLE();
 
-    // Enable PVD - will generate EXTI16(PVD_IRQn) when VDD drops.
-    // Done before disabling ALARM output to eliminate race
+    // Enable PVD - we want EXTI16(PVD_IRQn) interrupt when VDD drops.
+    // Enabled before disabling ALARM output to eliminate race
     // that could result in ALARM deactivation.
     LL_PWR_EnableBkUpAccess();
-    LL_PWR_SetPVDLevel(LL_PWR_PVDLEVEL_7);
+    // Level 7 is the highest and seems too intolerant.
+    LL_PWR_SetPVDLevel(LL_PWR_PVDLEVEL_4);
     LL_PWR_EnablePVD();
 
+    setLeds(0x1);
+
+    // Attempt to survive a transient power-up period when PVD output may fluctuate.
+    while (LL_PWR_IsActiveFlag_PVDO())
+        ;
+    __HAL_PWR_PVD_EXTI_CLEAR_FLAG();
+    __HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE();
+    __HAL_PWR_PVD_EXTI_ENABLE_IT();
+
+    HAL_NVIC_ClearPendingIRQ(PVD_IRQn);
     HAL_NVIC_SetPriority(PVD_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(PVD_IRQn);
 
+    setLeds(0x3);
+
     // Disable potential RTC ALARM -> powerPin override.
     // This way we keep VCC powered upon board power-up.
-    // This must be done very early at power-up.
+    // This must be done early at power-up.
     LL_RTC_SetOutputSource(BKP, LL_RTC_CALIB_OUTPUT_NONE);
 }
 

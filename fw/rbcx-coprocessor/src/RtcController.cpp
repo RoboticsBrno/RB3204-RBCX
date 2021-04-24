@@ -8,13 +8,25 @@
 #include "stm32f1xx_ll_rtc.h"
 
 static void ensureInitialized() {
-    // Ensure RTC is running (noop in case it is)
+    // We use DR3 to indicate that RTC was already initialized in a prior life.
+    bool initialized = LL_RTC_BKP_GetRegister(BKP, LL_RTC_BKP_DR3);
+    if (initialized) {
+        // RTC clock selected signifies RTC already initialized.
+        return;
+    }
+
+    while (!LL_RCC_LSE_IsReady()) {
+    }
+
     LL_RTC_InitTypeDef init = {
         .AsynchPrescaler = 0x7FFF, // 32kHz crystal -> 1s tick
         .OutPutSource = LL_RTC_CALIB_OUTPUT_NONE,
     };
 
+    LL_RCC_EnableRTC();
+    LL_RCC_SetRTCClockSource(LL_RCC_RTC_CLKSOURCE_LSE);
     LL_RTC_Init(RTC, &init);
+    LL_RTC_BKP_SetRegister(BKP, LL_RTC_BKP_DR3, 0x1);
 }
 
 void rtcInit() {
@@ -27,13 +39,17 @@ void rtcInit() {
 
 bool rtcInitReady() { return LL_RCC_LSE_IsReady(); }
 
+uint32_t rtcFlags() {
+    return (!rtcInitReady()) | (LL_RTC_IsActiveFlag_ALR(RTC) << 1);
+}
+
 static void sendStatus() {
     CoprocStat status;
     status.which_payload = CoprocStat_rtcStat_tag,
     status.payload.rtcStat = CoprocStat_RtcStat {
         .time = rtcGetTime(),
         .alarm = rtcGetAlarm(),
-        .notReady = !rtcInitReady(),
+        .flags = CoprocStat_RtcFlags(rtcFlags()),
     };
     controlLinkTx(status);
 }
@@ -74,6 +90,7 @@ uint32_t rtcGetAlarm() {
 
 void rtcSetAlarm(uint32_t seconds) {
     ensureInitialized();
+    LL_RTC_ClearFlag_ALR(RTC);
     LL_RTC_ALARM_SetCounter(RTC, seconds);
 
     // We mirror the value into DR1 and DR2 16-bit regs
