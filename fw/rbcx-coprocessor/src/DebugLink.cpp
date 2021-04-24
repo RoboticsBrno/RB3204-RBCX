@@ -14,6 +14,7 @@
 #include "BuzzerController.hpp"
 #include "Dispatcher.hpp"
 #include "Power.hpp"
+#include "RtcController.hpp"
 #include "UsbCdcLink.h"
 #include "coproc_codec.h"
 #include "coproc_link_parser.h"
@@ -318,6 +319,35 @@ static void debugLinkHandleCommand(const char* cmd) {
     COMMAND("buttons", {
         COMMAND("debug", {
             buttonControllerSetDebug(true);
+            return;
+        });
+    });
+
+    COMMAND("rtc", {
+        COMMAND("get", {
+            printf("RTC seconds: %lu\n", rtcGetTime());
+            return;
+        });
+        COMMAND("set", {
+            uint32_t val = 0;
+            if (sscanf(cmd, "%lu", &val) != 1) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            rtcSetTime(val);
+            return;
+        });
+        COMMAND("alarm get", {
+            printf("RTC alarm: %lu\n", rtcGetAlarm());
+            return;
+        });
+        COMMAND("alarm set", {
+            uint32_t val = 0;
+            if (sscanf(cmd, "%lu", &val) != 1) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            rtcSetAlarm(val);
             return;
         });
     });

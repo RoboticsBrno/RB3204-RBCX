@@ -8,6 +8,7 @@
 #include "Esp32Manager.hpp"
 #include "MotorController.hpp"
 #include "Power.hpp"
+#include "RtcController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
 #include "queue.h"
@@ -96,6 +97,9 @@ static void dispatcherProcessReq(const CoprocReq& request) {
         break;
     case CoprocReq_motorReq_tag:
         motorDispatch(request.payload.motorReq);
+        break;
+    case CoprocReq_rtcReq_tag:
+        rtcDispatch(request.payload.rtcReq);
         break;
     }
 }

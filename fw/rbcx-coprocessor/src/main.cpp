@@ -17,17 +17,25 @@
 #include "Dispatcher.hpp"
 #include "Esp32Manager.hpp"
 #include "Power.hpp"
+#include "RtcController.hpp"
 #include "UsbCdcLink.h"
 
 static TaskWrapper<3072> mainTask;
 
 int main() {
-    clocksInit();
-    HAL_Init();
-
 #ifdef RBCX_VECT_TAB_OFFSET
     SCB->VTOR = FLASH_BASE | RBCX_VECT_TAB_OFFSET;
 #endif
+
+    // Allow POWER and LEDs drive in powerEarlyInit
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+    pinInit(powerPin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    pinInit(ledPins, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+
+    powerEarlyInit();
+    clocksInit();
+    HAL_Init();
 
     pinsInit();
 
@@ -35,6 +43,7 @@ int main() {
         debugUartInit();
         softResetInit();
         powerInit();
+        rtcInit();
         dispatcherInit();
         tunnelUartInit();
         controlUartInit();
