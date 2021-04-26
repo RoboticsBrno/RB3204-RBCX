@@ -2,6 +2,8 @@
 #include "stm32f1xx_ll_rcc.h"
 #include "stm32f1xx_hal_i2c.h"
 
+#include "utils/Debug.hpp"
+
 /* Default I2C address */
 #define MPU6050_I2C_ADDR 0xD2
 
@@ -77,9 +79,9 @@ void i2cInit() {
     i2cHandle.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
     i2cHandle.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
     // HAL_I2C_Init(&i2cHandle);
-    initReturn = HAL_I2C_Init(&i2cHandle);  
+    initReturn = HAL_I2C_Init(&i2cHandle);
 
-
+    DEBUG("I2C init: %d\n", initReturn);
 }
 
 uint8_t i2cInitRet() { return initReturn; }
@@ -97,10 +99,10 @@ uint8_t i2cTest() {
 
     uint8_t txBuffer[1] = { MPU6050_WHO_AM_I };
     testWrite = HAL_I2C_Master_Transmit(
-        &i2cHandle, MPU6050_I2C_ADDR >> 1, txBuffer, sizeof(txBuffer), 1000);
+        &i2cHandle, MPU6050_I2C_ADDR, txBuffer, sizeof(txBuffer), 1000);
     uint8_t rxBuffer[1];
     testRead = HAL_I2C_Master_Receive(
-        &i2cHandle, MPU6050_I2C_ADDR >> 1, rxBuffer, sizeof(rxBuffer), 1000);
+        &i2cHandle, MPU6050_I2C_ADDR, rxBuffer, sizeof(rxBuffer), 1000);
 
     return testRead;
 }
@@ -108,22 +110,21 @@ uint8_t i2cTest() {
 uint8_t i2cSetup() {
     uint8_t txBuffer[2] = { MPU6050_PWR_MGMT_1, 0x00 };
     testWrite = HAL_I2C_Master_Transmit(
-        &i2cHandle, MPU6050_I2C_ADDR >> 1, txBuffer, sizeof(txBuffer), 1000);     
+        &i2cHandle, MPU6050_I2C_ADDR, txBuffer, sizeof(txBuffer), 1000);
     return testWrite;
 }
 
-
 int16_t i2cTemp() {
-    uint8_t txBuffer[2] = { MPU6050_TEMP_OUT_H, 1};
+    uint8_t txBuffer[2] = { MPU6050_TEMP_OUT_H, 1 };
     testWrite = HAL_I2C_Master_Transmit(
-        &i2cHandle, MPU6050_I2C_ADDR >> 1, txBuffer, sizeof(txBuffer), 1000);
-    
+        &i2cHandle, MPU6050_I2C_ADDR, txBuffer, sizeof(txBuffer), 1000);
+
     uint8_t rxBuffer[2];
     testRead = HAL_I2C_Master_Receive(
-        &i2cHandle, MPU6050_I2C_ADDR >> 1, rxBuffer, 2, 1000);
+        &i2cHandle, MPU6050_I2C_ADDR, rxBuffer, 2, 1000);
 
-    int16_t raw_temp = (int16_t) (rxBuffer[0] << 8 | rxBuffer[1]);
-    int16_t temp = (float) ((int16_t) raw_temp / (float) 340.0 + (float) 36.53);
+    int16_t raw_temp = (int16_t)(rxBuffer[0] << 8 | rxBuffer[1]);
+    int16_t temp = (float)((int16_t)raw_temp / (float)340.0 + (float)36.53);
     return temp;
 }
 
