@@ -76,6 +76,9 @@ inline const PinDef debugUartTxPin = std::make_pair(GPIOC, GPIO_PIN_10);
 inline const PinDef debugUartRxPin = std::make_pair(GPIOC, GPIO_PIN_11);
 inline const PinDef servoUartTxRxPin = std::make_pair(GPIOC, GPIO_PIN_12);
 
+inline const PinDef i2cSda = std::make_pair(GPIOB, GPIO_PIN_9);
+inline const PinDef i2cScl = std::make_pair(GPIOB, GPIO_PIN_8);
+
 inline USART_TypeDef* const userUart = USART1;
 inline USART_TypeDef* const tunnelUart = USART2;
 inline USART_TypeDef* const controlUart = USART3;
@@ -216,6 +219,14 @@ inline void clocksInit() {
     __HAL_RCC_TIM7_CLK_ENABLE();
     __HAL_RCC_TIM8_CLK_ENABLE();
     __HAL_RCC_ADC1_CLK_ENABLE();
+
+    // __HAL_AFIO_REMAP_I2C1_ENABLE();
+
+    // AFIO->MAPR = (AFIO->MAPR & (!AFIO_MAPR_SWJ_CFG_Msk)) | AFIO_MAPR_SWJ_CFG_JTAGDISABLE | AFIO_MAPR_I2C1_REMAP;
+    // __HAL_AFIO_REMAP_I2C1_ENABLE();
+    // AFIO->MAPR |= AFIO_MAPR_I2C1_REMAP;
+
+    __HAL_RCC_I2C1_CLK_ENABLE();
 }
 
 // Set-up ESP32 strapping pins for the normal mode functions. Esp32Manager
@@ -261,6 +272,9 @@ inline void pinsInit() {
     pinInit(encoder4aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
     pinInit(encoder4bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
 
+    pinInit(i2cScl, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(i2cSda, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+
     // USB
     pinInit(usbDnPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
     pinInit(usbDpPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
@@ -279,6 +293,20 @@ inline void pinsInit() {
     LL_GPIO_AF_Remap(AFIO_MAPR_TIM4_REMAP, AFIO_MAPR_TIM4_REMAP);
     //LL_GPIO_AF_Remap_SWJ_NOJTAG();
     LL_GPIO_AF_Remap(AFIO_MAPR_SWJ_CFG, AFIO_MAPR_SWJ_CFG_JTAGDISABLE);
+    //I2C1-2
+    LL_GPIO_AF_Remap(AFIO_MAPR_I2C1_REMAP, AFIO_MAPR_I2C1_REMAP);
+
+    // AFIO->MAPR |= AFIO_MAPR_I2C1_REMAP;
+    // AFIO->MAPR = (AFIO->MAPR & (!AFIO_MAPR_SWJ_CFG_Msk)) | AFIO_MAPR_SWJ_CFG_JTAGDISABLE | AFIO_MAPR_I2C1_REMAP;
+    // SET_BIT()
+
+    // #define AFIO_MAPR_RESERVED 0xF8E00000
+    // inline void LL_GPIO_AF_Remap(uint32_t mask, uint32_t value) {
+    //     static uint32_t mapr = 0;
+    //     mask |= AFIO_MAPR_RESERVED;
+    //     mapr = (mapr & ~mask) | (value & ~AFIO_MAPR_RESERVED);
+    //     AFIO->MAPR = mapr;
+    // }
 
     pinInit(servoPins, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_MEDIUM);
 

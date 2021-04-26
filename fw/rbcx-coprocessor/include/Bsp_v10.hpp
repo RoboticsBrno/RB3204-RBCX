@@ -219,6 +219,7 @@ inline void clocksInit() {
     __HAL_RCC_TIM7_CLK_ENABLE();
     __HAL_RCC_TIM8_CLK_ENABLE();
     __HAL_RCC_ADC1_CLK_ENABLE();
+    __HAL_RCC_I2C1_CLK_ENABLE();
 }
 
 // Set-up ESP32 strapping pins for the normal mode functions. Esp32Manager
