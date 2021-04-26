@@ -13,6 +13,7 @@
 #include "ButtonController.hpp"
 #include "BuzzerController.hpp"
 #include "Dispatcher.hpp"
+#include "I2cController.hpp"
 #include "Power.hpp"
 #include "UsbCdcLink.h"
 #include "coproc_codec.h"
@@ -318,6 +319,26 @@ static void debugLinkHandleCommand(const char* cmd) {
     COMMAND("buttons", {
         COMMAND("debug", {
             buttonControllerSetDebug(true);
+            return;
+        });
+    });
+
+    COMMAND("i2c", {
+        COMMAND("test", {
+            printf("I2C test %d\n", i2cTest());
+            return;
+        });
+        COMMAND("setup", {
+            printf("I2C setup %d\n", i2cSetup());
+            return;
+        });
+        COMMAND("temp", {
+            printf("I2C temp %d\n", i2cTemp());
+            return;
+        });
+        COMMAND("info", {
+            printf("I2C info Init:%d; TRead: %d; TWrite %d\n", i2cInitRet(),
+                i2cTestReadRet(), i2cTestWriteRet());
             return;
         });
     });
