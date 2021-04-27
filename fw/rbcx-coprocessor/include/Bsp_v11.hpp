@@ -219,13 +219,6 @@ inline void clocksInit() {
     __HAL_RCC_TIM7_CLK_ENABLE();
     __HAL_RCC_TIM8_CLK_ENABLE();
     __HAL_RCC_ADC1_CLK_ENABLE();
-
-    // __HAL_AFIO_REMAP_I2C1_ENABLE();
-
-    // AFIO->MAPR = (AFIO->MAPR & (!AFIO_MAPR_SWJ_CFG_Msk)) | AFIO_MAPR_SWJ_CFG_JTAGDISABLE | AFIO_MAPR_I2C1_REMAP;
-    // __HAL_AFIO_REMAP_I2C1_ENABLE();
-    // AFIO->MAPR |= AFIO_MAPR_I2C1_REMAP;
-
     __HAL_RCC_I2C1_CLK_ENABLE();
 }
 
@@ -272,6 +265,7 @@ inline void pinsInit() {
     pinInit(encoder4aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
     pinInit(encoder4bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
 
+    // I2C
     pinInit(i2cScl, GPIO_MODE_AF_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
     pinInit(i2cSda, GPIO_MODE_AF_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
 
@@ -295,18 +289,6 @@ inline void pinsInit() {
     LL_GPIO_AF_Remap(AFIO_MAPR_SWJ_CFG, AFIO_MAPR_SWJ_CFG_JTAGDISABLE);
     //I2C1-2
     LL_GPIO_AF_Remap(AFIO_MAPR_I2C1_REMAP, AFIO_MAPR_I2C1_REMAP);
-
-    // AFIO->MAPR |= AFIO_MAPR_I2C1_REMAP;
-    // AFIO->MAPR = (AFIO->MAPR & (!AFIO_MAPR_SWJ_CFG_Msk)) | AFIO_MAPR_SWJ_CFG_JTAGDISABLE | AFIO_MAPR_I2C1_REMAP;
-    // SET_BIT()
-
-    // #define AFIO_MAPR_RESERVED 0xF8E00000
-    // inline void LL_GPIO_AF_Remap(uint32_t mask, uint32_t value) {
-    //     static uint32_t mapr = 0;
-    //     mask |= AFIO_MAPR_RESERVED;
-    //     mapr = (mapr & ~mask) | (value & ~AFIO_MAPR_RESERVED);
-    //     AFIO->MAPR = mapr;
-    // }
 
     pinInit(servoPins, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_MEDIUM);
 

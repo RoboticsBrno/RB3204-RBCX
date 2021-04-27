@@ -324,21 +324,44 @@ static void debugLinkHandleCommand(const char* cmd) {
     });
 
     COMMAND("i2c", {
-        COMMAND("test", {
-            printf("I2C test %d\n", i2cTest());
+        COMMAND("transmit", {
+            uint8_t DevAddress;
+            uint8_t pData[10];
+            uint8_t Size;
+            if (sscanf(cmd, "%u %u %u", &DevAddress, &pData[0], &Size) != 3) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            printf("I2C tran %d\n", i2cTransmit(DevAddress, pData, Size));
             return;
         });
-        COMMAND("setup", {
-            printf("I2C setup %d\n", i2cSetup());
+
+        COMMAND("receive", {
+            uint8_t DevAddress;
+            uint8_t pData[10];
+            uint8_t Size;
+            if (sscanf(cmd, "%u %u", &DevAddress, &Size) != 2) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            printf("I2C rec %d; ret: %d\n", i2cReceive(DevAddress, pData, Size),
+                pData[0]);
             return;
         });
-        COMMAND("temp", {
-            printf("I2C temp %d\n", i2cTemp());
+
+        COMMAND("ready", {
+            uint8_t DevAddress;
+            uint8_t Trials;
+            if (sscanf(cmd, "%u %u", &DevAddress, &Trials) != 2) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            printf("I2C ready %d\n", i2cReady(DevAddress, Trials));
             return;
         });
-        COMMAND("info", {
-            printf("I2C info Init:%d; TRead: %d; TWrite %d\n", i2cInitRet(),
-                i2cTestReadRet(), i2cTestWriteRet());
+
+        COMMAND("scan", {
+            printf("I2C scanner %d\n", i2cScanner());
             return;
         });
     });

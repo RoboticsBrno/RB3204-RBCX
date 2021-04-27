@@ -21,33 +21,6 @@
 #include "UsbCdcLink.h"
 
 static TaskWrapper<3072> mainTask;
-// static uint32_t _sysTickHigh = 0;
-
-// #define SYSTICK_LENGTH 24
-// uint32_t _sysTickToUpConting(uint32_t v) {
-//     return (SysTick->LOAD & SysTick_LOAD_RELOAD_Msk)
-//         - (SysTick->VAL & SysTick_VAL_CURRENT_Msk);
-// }
-// uint64_t _sysTickCombineHLcounters(uint32_t h, uint32_t l) {
-//     return (uint64_t(h) << SYSTICK_LENGTH) | l;
-// }
-
-// uint64_t getSysTickTime() {
-//     uint32_t th1 = _sysTickHigh;
-//     uint32_t tl1 = SysTick->VAL;
-//     uint32_t th2 = _sysTickHigh;
-//     uint32_t tl2 = SysTick->VAL;
-//     tl1 = _sysTickToUpConting(tl1);
-//     tl2 = _sysTickToUpConting(tl2);
-//     if (tl2 < tl1)
-//         return _sysTickCombineHLcounters(th1, tl1);
-//     return _sysTickCombineHLcounters(th2, tl2);
-// }
-// void systick_delay(uint64_t t) {
-//     t += getSysTickTime();
-//     while (t < getSysTickTime()) {
-//     }
-// }
 
 int main() {
     clocksInit();
@@ -89,8 +62,3 @@ int main() {
     vTaskStartScheduler();
     abort();
 }
-
-// extern "C" void SysTick_Handler() {
-//     ++_sysTickHigh;
-//     HAL_IncTick();
-// }

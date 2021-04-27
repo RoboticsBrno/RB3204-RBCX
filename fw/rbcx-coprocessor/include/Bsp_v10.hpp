@@ -80,6 +80,9 @@ inline const PinDef controlUartRxPin = std::make_pair(GPIOC, GPIO_PIN_11);
 inline const PinDef uart5TxPin = std::make_pair(GPIOC, GPIO_PIN_12);
 inline const PinDef uart5RxPin = std::make_pair(GPIOD, GPIO_PIN_2);
 
+inline const PinDef i2cSda = std::make_pair(GPIOB, GPIO_PIN_9);
+inline const PinDef i2cScl = std::make_pair(GPIOB, GPIO_PIN_8);
+
 inline USART_TypeDef* const tunnelUart = USART1;
 inline USART_TypeDef* const debugUart = USART2;
 inline USART_TypeDef* const servoUart = USART3;
@@ -265,6 +268,10 @@ inline void pinsInit() {
     pinInit(encoder4aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
     pinInit(encoder4bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
 
+    // I2C
+    pinInit(i2cScl, GPIO_MODE_AF_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(i2cSda, GPIO_MODE_AF_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+
     // USB
     pinInit(usbDnPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
     pinInit(usbDpPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
@@ -283,6 +290,8 @@ inline void pinsInit() {
     LL_GPIO_AF_Remap(AFIO_MAPR_TIM4_REMAP, AFIO_MAPR_TIM4_REMAP);
     //LL_GPIO_AF_Remap_SWJ_NOJTAG();
     LL_GPIO_AF_Remap(AFIO_MAPR_SWJ_CFG, AFIO_MAPR_SWJ_CFG_JTAGDISABLE);
+    //I2C1-2
+    LL_GPIO_AF_Remap(AFIO_MAPR_I2C1_REMAP, AFIO_MAPR_I2C1_REMAP);
 
     pinInit(servoPins, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_MEDIUM);
 
