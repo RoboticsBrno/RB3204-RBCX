@@ -7,6 +7,7 @@
 #include "ControlLink.hpp"
 #include "Esp32Manager.hpp"
 #include "MotorController.hpp"
+#include "I2cController.hpp"
 #include "Power.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
@@ -96,6 +97,9 @@ static void dispatcherProcessReq(const CoprocReq& request) {
         break;
     case CoprocReq_motorReq_tag:
         motorDispatch(request.payload.motorReq);
+        break;
+    case CoprocReq_i2cReq_tag:
+        i2cDispatch(request.payload.i2cReq);
         break;
     }
 }
