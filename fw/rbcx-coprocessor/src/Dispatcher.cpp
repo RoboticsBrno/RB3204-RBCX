@@ -98,9 +98,9 @@ static void dispatcherProcessReq(const CoprocReq& request) {
     case CoprocReq_motorReq_tag:
         motorDispatch(request.payload.motorReq);
         break;
-    case CoprocReq_i2cReq_tag:
-        i2cDispatch(request.payload.i2cReq);
-        break;
+    // case CoprocReq_i2cReq_tag:
+    //     i2cDispatch(request.payload.i2cReq);
+    //     break;
     }
 }
 

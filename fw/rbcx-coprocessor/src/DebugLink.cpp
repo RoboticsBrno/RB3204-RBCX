@@ -13,7 +13,8 @@
 #include "ButtonController.hpp"
 #include "BuzzerController.hpp"
 #include "Dispatcher.hpp"
-#include "I2cController.hpp"
+#include "I2Cdev.hpp"
+#include "MPU6050.hpp"
 #include "Power.hpp"
 #include "UsbCdcLink.h"
 #include "coproc_codec.h"
@@ -323,50 +324,75 @@ static void debugLinkHandleCommand(const char* cmd) {
         });
     });
 
-    COMMAND("i2c", {
-        COMMAND("transmit", {
-            uint8_t DevAddress;
-            uint8_t pData[10];
-            uint8_t Size;
-            if (sscanf(cmd, "%u %u %u", &DevAddress, &pData[0], &Size) != 3) {
-                printf("Invalid parameters!\n");
-                return;
-            }
-            printf("I2C tran %d\n", i2cTransmit(DevAddress, pData, Size));
+    COMMAND("mpu", {
+        COMMAND("test", {
+            printf("MPU test: %d\n", MPU6050_testConnection());
             return;
         });
-
-        COMMAND("receive", {
-            uint8_t DevAddress;
-            uint8_t pData[10];
-            uint8_t Size;
-            if (sscanf(cmd, "%u %u", &DevAddress, &Size) != 2) {
-                printf("Invalid parameters!\n");
-                return;
-            }
-            printf("I2C rec %d; ret: %d\n", i2cReceive(DevAddress, pData, Size),
-                pData[0]);
+        COMMAND("temp", {
+            printf("MPU temp: %d\n", MPU6050_getTemperature());
             return;
         });
-
-        COMMAND("ready", {
-            uint8_t DevAddress;
-            uint8_t Trials;
-            if (sscanf(cmd, "%u %u", &DevAddress, &Trials) != 2) {
-                printf("Invalid parameters!\n");
-                return;
-            }
-            printf("I2C ready %d\n", i2cReady(DevAddress, Trials));
+        COMMAND("acc", {
+            int16_t x, y, z;
+            MPU6050_getAcceleration(&x, &y, &z);
+            printf("MPU acc: x:%d, y:%d, z:%d\n", x, y, z);
             return;
         });
-
-        COMMAND("scan", {
-            printf("I2C scanner %d\n", i2cScanner());
+        COMMAND("gyro", {
+            int16_t x, y, z;
+            MPU6050_getRotation(&x, &y, &z);
+            printf("MPU gyro: x:%d, y:%d, z:%d\n", x, y, z);
             return;
         });
     });
 
-    printf("Invalid command.\n");
+    // COMMAND("i2c", {
+    //     COMMAND("transmit", {
+    //         uint8_t DevAddress;
+    //         uint8_t pData[10];
+    //         uint8_t Size;
+    //         // if (sscanf(cmd, "%u %u %u", &DevAddress, &pData[0], &Size) != 3) {
+    //         //     printf("Invalid parameters!\n");
+    //         //     return;
+    //         // }
+    //         // printf("I2C tran %d\n", i2cTransmit(DevAddress, pData, Size));
+    //         // printf("I2C tran %d\n", I2Cdev_readByte(0xD2, 0x75, pData, 100));
+    //         printf("I2C tran %d data: %d\n", I2Cdev_readByte(0x69, 0x75, pData, 100), pData[0]);
+    //         return;
+    //     });
+
+    //     COMMAND("receive", {
+    //         uint8_t DevAddress;
+    //         uint8_t pData[10];
+    //         uint8_t Size;
+    //         if (sscanf(cmd, "%u %u", &DevAddress, &Size) != 2) {
+    //             printf("Invalid parameters!\n");
+    //             return;
+    //         }
+    //         printf("I2C rec %d; ret: %d\n", i2cReceive(DevAddress, pData, Size),
+    //             pData[0]);
+    //         return;
+    //     });
+
+    //     COMMAND("ready", {
+    //         uint8_t DevAddress;
+    //         uint8_t Trials;
+    //         if (sscanf(cmd, "%u %u", &DevAddress, &Trials) != 2) {
+    //             printf("Invalid parameters!\n");
+    //             return;
+    //         }
+    //         printf("I2C ready %d\n", i2cReady(DevAddress, Trials));
+    //         return;
+    //     });
+
+    //     COMMAND("scan", {
+    //         printf("I2C scanner %d\n", i2cScanner());
+    //         return;
+    //     });
+    // });
+
+printf("Invalid command.\n");
 }
 
 static void debugDownstreamHandler() {

@@ -6,7 +6,8 @@
 #include "utils/TaskWrapper.hpp"
 
 #include "ButtonController.hpp"
-#include "I2cController.hpp"
+#include "I2Cdev.hpp"
+#include "MPU6050.hpp"
 #include "MotorController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
@@ -40,9 +41,10 @@ int main() {
         tunnelUartInit();
         controlUartInit();
         cdcLinkInit();
-        i2cInit();
+        I2Cdev_init();
         stupidServoInit();
         ultrasoundInit();
+        MPU6050_init();
         sEsp32Manager.init();
         motorInit();
 
