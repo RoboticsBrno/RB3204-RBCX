@@ -49,6 +49,8 @@ THE SOFTWARE.
 #define I2CDEV_DEFAULT_READ_TIMEOUT     10
 
 uint8_t I2Cdev_init();
+bool I2Cdev_ready(uint16_t DevAddress, uint8_t Trials = 2);
+uint8_t I2Cdev_scan();
 
 uint8_t I2Cdev_readBit(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint8_t *data, uint16_t timeout);
 uint8_t I2Cdev_readBitW(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint16_t *data, uint16_t timeout);

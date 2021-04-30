@@ -347,7 +347,7 @@ static void debugLinkHandleCommand(const char* cmd) {
         });
     });
 
-    // COMMAND("i2c", {
+    COMMAND("i2c", {
     //     COMMAND("transmit", {
     //         uint8_t DevAddress;
     //         uint8_t pData[10];
@@ -375,22 +375,22 @@ static void debugLinkHandleCommand(const char* cmd) {
     //         return;
     //     });
 
-    //     COMMAND("ready", {
-    //         uint8_t DevAddress;
-    //         uint8_t Trials;
-    //         if (sscanf(cmd, "%u %u", &DevAddress, &Trials) != 2) {
-    //             printf("Invalid parameters!\n");
-    //             return;
-    //         }
-    //         printf("I2C ready %d\n", i2cReady(DevAddress, Trials));
-    //         return;
-    //     });
+        COMMAND("ready", {
+            uint8_t DevAddress;
+            uint8_t Trials;
+            if (sscanf(cmd, "%u %u", &DevAddress, &Trials) != 2) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            printf("I2C ready %d\n", I2Cdev_ready(DevAddress, Trials));
+            return;
+        });
 
-    //     COMMAND("scan", {
-    //         printf("I2C scanner %d\n", i2cScanner());
-    //         return;
-    //     });
-    // });
+        COMMAND("scan", {
+            printf("I2C scanner %d\n", I2Cdev_scan());
+            return;
+        });
+    });
 
 printf("Invalid command.\n");
 }

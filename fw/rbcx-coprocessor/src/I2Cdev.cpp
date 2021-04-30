@@ -31,11 +31,20 @@ THE SOFTWARE.
 */
 
 #include "I2Cdev.hpp"
+#include "utils/Debug.hpp"
 
 
 
 // Hold pointer to inited HAL I2C device
 I2C_HandleTypeDef I2Cdev_hi2c;
+
+/** Default timeout value for read operations.
+ * Set this to 0 to disable timeout detection.
+ */
+uint16_t I2Cdev_readTimeout = I2CDEV_DEFAULT_READ_TIMEOUT;
+
+
+
 
 uint8_t I2Cdev_init() {
     I2Cdev_hi2c.Instance = I2C1;
@@ -51,10 +60,21 @@ uint8_t I2Cdev_init() {
 }
 
 
-/** Default timeout value for read operations.
- * Set this to 0 to disable timeout detection.
- */
-uint16_t I2Cdev_readTimeout = I2CDEV_DEFAULT_READ_TIMEOUT;
+bool I2Cdev_ready(uint16_t DevAddress, uint8_t Trials) {
+    return HAL_I2C_IsDeviceReady(&I2Cdev_hi2c, DevAddress << 1, Trials, I2Cdev_readTimeout) == HAL_OK;
+}
+
+
+uint8_t I2Cdev_scan() {
+    uint8_t counter = 0;
+    for (int range = 1; range <= 254; range++) {
+        if (I2Cdev_ready(range)) {
+            DEBUG("I2Cdev_scan[%d] ready: %#04x (%d)\n", counter, range, range);
+            counter++;
+        }
+    }
+    return counter;
+}
 
 /** Read a single bit from an 8-bit device register.
  * @param devAddr I2C slave device address
