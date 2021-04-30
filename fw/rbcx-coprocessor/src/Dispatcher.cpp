@@ -7,7 +7,6 @@
 #include "ControlLink.hpp"
 #include "Esp32Manager.hpp"
 #include "MotorController.hpp"
-#include "I2cController.hpp"
 #include "Power.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
