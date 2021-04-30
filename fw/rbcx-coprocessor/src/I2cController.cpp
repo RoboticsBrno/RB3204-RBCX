@@ -1,6 +1,7 @@
 #include "I2cController.hpp"
 #include "stm32f1xx_ll_rcc.h"
 #include "stm32f1xx_hal_i2c.h"
+#include "Dispatcher.hpp"
 
 #include "utils/Debug.hpp"
 
@@ -70,6 +71,12 @@ void i2cDispatch(const CoprocReq_I2cReq& req) {
         break;
     case CoprocReq_I2cReq_scan_tag:
         ret = i2cScanner();
+        auto status = CoprocStat();
+        status.which_payload = CoprocStat_i2cStat_tag;
+        status.payload.i2cStat.has_scan = true;
+        status.payload.i2cStat.scan.count = ret;
+        dispatcherEnqueueStatus(status);
+       
         DEBUG("I2C scanner %d\n", ret);
         break;
     }
