@@ -1,5 +1,6 @@
 #include <array>
 #include <string.h>
+// #include "printf.hpp"
 
 #include "FreeRTOS.h"
 #include "stream_buffer.h"
@@ -15,6 +16,7 @@
 #include "Dispatcher.hpp"
 #include "I2Cdev.hpp"
 #include "MPU6050.hpp"
+#include "ssd1306.hpp"
 #include "Power.hpp"
 #include "UsbCdcLink.h"
 #include "coproc_codec.h"
@@ -322,6 +324,65 @@ static void debugLinkHandleCommand(const char* cmd) {
             buttonControllerSetDebug(true);
             return;
         });
+    });
+
+
+    COMMAND("oled", {
+        COMMAND("test", {
+            printf("OLED test: %d\n", 123);
+            return;
+        });
+        COMMAND("fill", {
+            COMMAND("white", {
+                ssd1306_Fill(White);
+                ssd1306_UpdateScreen();
+                printf("OLED fill white\n");
+                return;
+            });
+            COMMAND("black", {
+                ssd1306_Fill(Black);
+                ssd1306_UpdateScreen();
+                printf("OLED fill vlack\n");
+                return;
+            });            
+        });
+        COMMAND("write", {
+            ssd1306_SetCursor(0, 0);
+            ssd1306_WriteString("AHOJ", Font_11x18, White);
+            ssd1306_UpdateScreen();
+            printf("OLED write\n");
+            return;
+        });
+        // COMMAND("gyro", {
+        //     int16_t x, y, z;
+        //     char str[10];
+
+        //     while (1)
+        //     {
+        //         // MPU6050_getRotation(&x, &y, &z);
+        //         MPU6050_getAcceleration(&x, &y, &z);
+        //         printf("MPU gyro: x:%d, y:%d, z:%d\n", x, y, z);
+        //         ssd1306_SetCursor(0, 0);
+        //         sprintf_(str, "%d", x);
+        //         ssd1306_WriteString(str, Font_11x18, White);
+        //         ssd1306_SetCursor(0, 20);
+        //         sprintf_(str, "%d", z);
+        //         ssd1306_WriteString(str, Font_11x18, White);
+        //         ssd1306_SetCursor(0, 40);
+        //         sprintf_(str, "%d", z);
+        //         ssd1306_WriteString(str, Font_11x18, White);                
+
+        //         ssd1306_SetCursor(60, 0);
+        //         uint16_t rTemp = MPU6050_getTemperature();
+        //         float temp = (float) ((int16_t) rTemp / (float) 340.0 + (float) 36.53);
+        //         printf("MPU temp %f\n", temp);
+        //         sprintf_(str, "%f", temp);
+        //         ssd1306_WriteString(str, Font_11x18, White);
+        //         ssd1306_UpdateScreen();
+        //         HAL_Delay(100);
+        //     }
+        //     return;
+        // });
     });
 
     COMMAND("mpu", {

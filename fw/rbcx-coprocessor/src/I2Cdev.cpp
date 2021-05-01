@@ -48,8 +48,8 @@ uint16_t I2Cdev_readTimeout = I2CDEV_DEFAULT_READ_TIMEOUT;
 
 uint8_t I2Cdev_init() {
     I2Cdev_hi2c.Instance = I2C1;
-    I2Cdev_hi2c.Init.ClockSpeed = 100000;
-    I2Cdev_hi2c.Init.DutyCycle = I2C_DUTYCYCLE_2; //I2C_DUTYCYCLE_16_9
+    I2Cdev_hi2c.Init.ClockSpeed = 400000;
+    I2Cdev_hi2c.Init.DutyCycle = I2C_DUTYCYCLE_2;
     I2Cdev_hi2c.Init.OwnAddress1 = 0;
     I2Cdev_hi2c.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
     I2Cdev_hi2c.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -64,7 +64,6 @@ bool I2Cdev_ready(uint16_t DevAddress, uint8_t Trials) {
     return HAL_I2C_IsDeviceReady(&I2Cdev_hi2c, DevAddress << 1, Trials, I2Cdev_readTimeout) == HAL_OK;
 }
 
-
 uint8_t I2Cdev_scan() {
     uint8_t counter = 0;
     for (int range = 1; range <= 254; range++) {
@@ -74,6 +73,11 @@ uint8_t I2Cdev_scan() {
         }
     }
     return counter;
+}
+
+
+HAL_StatusTypeDef I2Cdev_Mem_Write(uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout) {
+    return HAL_I2C_Mem_Write(&I2Cdev_hi2c, DevAddress, MemAddress, MemAddSize, pData, Size, Timeout);
 }
 
 /** Read a single bit from an 8-bit device register.

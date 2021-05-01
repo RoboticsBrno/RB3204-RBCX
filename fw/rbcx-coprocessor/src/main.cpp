@@ -8,6 +8,7 @@
 #include "ButtonController.hpp"
 #include "I2Cdev.hpp"
 #include "MPU6050.hpp"
+#include "ssd1306.hpp"
 #include "MotorController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
@@ -45,6 +46,7 @@ int main() {
         stupidServoInit();
         ultrasoundInit();
         MPU6050_init();
+        ssd1306_Init();
         sEsp32Manager.init();
         motorInit();
 
