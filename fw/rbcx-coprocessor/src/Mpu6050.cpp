@@ -39,7 +39,7 @@ THE SOFTWARE.
 ===============================================
 */
 
-#include "MPU6050.hpp"
+#include "Mpu6050.hpp"
 
 
 MPU6050_t mpu6050;

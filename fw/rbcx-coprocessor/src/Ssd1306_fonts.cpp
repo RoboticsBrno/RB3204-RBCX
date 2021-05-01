@@ -1,5 +1,5 @@
 
-#include "ssd1306_fonts.hpp"
+#include "Ssd1306_fonts.hpp"
 
 #ifdef SSD1306_INCLUDE_FONT_7x10
 static const uint16_t Font7x10 [] = {

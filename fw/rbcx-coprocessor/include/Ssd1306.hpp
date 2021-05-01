@@ -15,7 +15,7 @@
 
 _BEGIN_STD_C
 
-#include "ssd1306_conf.hpp"
+#include "Ssd1306_conf.hpp"
 
 #if defined(STM32F0)
 #include "stm32f0xx_hal.h"
@@ -38,7 +38,7 @@ _BEGIN_STD_C
 #error "SSD1306 library was tested only on  STM32F0, STM32F1, STM32F3, STM32F4, STM32F7, STM32L0, STM32L4, STM32H7 MCU families. Please modify ssd1306.h if you know what you are doing. Also please send a pull request if it turns out the library works on other MCU's as well!"
 #endif
 
-#include "ssd1306_fonts.hpp"
+#include "Ssd1306_fonts.hpp"
 
 /* vvv I2C config vvv */
 

@@ -7,8 +7,8 @@
 
 #include "ButtonController.hpp"
 #include "I2Cdev.hpp"
-#include "MPU6050.hpp"
-#include "ssd1306.hpp"
+#include "Mpu6050.hpp"
+#include "Ssd1306.hpp"
 #include "MotorController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"

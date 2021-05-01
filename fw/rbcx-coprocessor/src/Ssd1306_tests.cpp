@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
-#include "ssd1306.hpp"
-#include "ssd1306_tests.hpp"
+#include "Ssd1306.hpp"
+#include "Ssd1306_tests.hpp"
 
 void ssd1306_TestBorder() {
     ssd1306_Fill(Black);

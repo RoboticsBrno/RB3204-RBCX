@@ -15,8 +15,9 @@
 #include "BuzzerController.hpp"
 #include "Dispatcher.hpp"
 #include "I2Cdev.hpp"
-#include "MPU6050.hpp"
-#include "ssd1306.hpp"
+#include "Mpu6050.hpp"
+#include "Ssd1306.hpp"
+#include "Ssd1306_tests.hpp"
 #include "Power.hpp"
 #include "UsbCdcLink.h"
 #include "coproc_codec.h"
@@ -329,7 +330,8 @@ static void debugLinkHandleCommand(const char* cmd) {
 
     COMMAND("oled", {
         COMMAND("test", {
-            printf("OLED test: %d\n", 123);
+            ssd1306_TestAll();
+            printf("OLED test\n");
             return;
         });
         COMMAND("fill", {
@@ -443,7 +445,7 @@ static void debugLinkHandleCommand(const char* cmd) {
                 printf("Invalid parameters!\n");
                 return;
             }
-            printf("I2C ready %d\n", I2Cdev_ready(DevAddress, Trials));
+            printf("I2C ready %d\n", I2Cdev_IsDeviceReady(DevAddress, Trials) == HAL_OK);
             return;
         });
 

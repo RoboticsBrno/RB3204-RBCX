@@ -1,9 +1,8 @@
-#include "ssd1306.hpp"
+#include "Ssd1306.hpp"
 #include <math.h>
 #include <stdlib.h>
 #include "string.h"
 #include <string.h>  // For memcpy
-// #include "I2Cdev.hpp"
 
 #if defined(SSD1306_USE_I2C)
 
@@ -73,8 +72,6 @@ SSD1306_Error_t ssd1306_FillBuffer(uint8_t* buf, uint32_t len) {
 
 // Initialize the oled screen
 void ssd1306_Init(void) {
-
-    
     // Reset OLED
     ssd1306_Reset();
 
