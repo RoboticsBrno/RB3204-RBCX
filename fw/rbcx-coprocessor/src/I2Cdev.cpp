@@ -62,37 +62,37 @@ uint8_t I2Cdev_init() {
 /* Rewrited original functions */
 uint8_t I2Cdev_Master_Transmit(uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Master_Transmit(&I2Cdev_hi2c, DevAddress, pData, Size, tout);
+    return HAL_I2C_Master_Transmit(&I2Cdev_hi2c, DevAddress << 1, pData, Size, tout);
 }
 
 uint8_t I2Cdev_Master_Receive(uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Master_Receive(&I2Cdev_hi2c, DevAddress, pData, Size, tout);
+    return HAL_I2C_Master_Receive(&I2Cdev_hi2c, DevAddress << 1, pData, Size, tout);
 }
 
 uint8_t I2Cdev_Slave_Transmit(uint8_t *pData, uint16_t Size, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Slave_Transmit(&I2Cdev_hi2c, pData, Size, Timeout);
+    return HAL_I2C_Slave_Transmit(&I2Cdev_hi2c, pData, Size, tout);
 }
 
 uint8_t I2Cdev_Slave_Receive(uint8_t *pData, uint16_t Size, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Slave_Receive(&I2Cdev_hi2c, pData, Size, Timeout);
+    return HAL_I2C_Slave_Receive(&I2Cdev_hi2c, pData, Size, tout);
 }
 
 uint8_t I2Cdev_Mem_Write(uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Mem_Write(&I2Cdev_hi2c, DevAddress, MemAddress, MemAddSize, pData, Size, tout);
+    return HAL_I2C_Mem_Write(&I2Cdev_hi2c, DevAddress << 1, MemAddress, MemAddSize, pData, Size, tout);
 }
 
 uint8_t I2Cdev_Mem_Read(uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Mem_Read(&I2Cdev_hi2c, DevAddress, MemAddress, MemAddSize, pData, Size, tout);
+    return HAL_I2C_Mem_Read(&I2Cdev_hi2c, DevAddress << 1, MemAddress, MemAddSize, pData, Size, tout);
 }
 
 uint8_t I2Cdev_IsDeviceReady(uint16_t DevAddress, uint32_t Trials, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_IsDeviceReady(&I2Cdev_hi2c, DevAddress, Trials, tout);
+    return HAL_I2C_IsDeviceReady(&I2Cdev_hi2c, DevAddress << 1, Trials, tout);
 }
 /* Rewrited original functions */
 
