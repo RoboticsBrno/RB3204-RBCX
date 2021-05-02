@@ -7,9 +7,9 @@
 
 #include "ButtonController.hpp"
 #include "I2Cdev.hpp"
-#include "Mpu6050.hpp"
-#include "Ssd1306.hpp"
 #include "MotorController.hpp"
+#include "Mpu6050.hpp"
+#include "OledController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
 
@@ -46,7 +46,10 @@ int main() {
         stupidServoInit();
         ultrasoundInit();
         MPU6050_init();
-        ssd1306_Init();
+        oledInit();
+        oledFill(White);
+        oledWriteString("JEDE", Font_16x26, Black);
+        oledUpdateScreen();
         sEsp32Manager.init();
         motorInit();
 
@@ -56,6 +59,7 @@ int main() {
         while (true) {
             debugLinkPoll();
             powerPoll();
+            // MPU6050Poll();
             dispatcherPoll();
             tunnelPoll();
             buttonControllerPoll();

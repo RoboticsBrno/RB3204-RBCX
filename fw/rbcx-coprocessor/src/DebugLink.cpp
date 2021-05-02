@@ -16,8 +16,7 @@
 #include "Dispatcher.hpp"
 #include "I2Cdev.hpp"
 #include "Mpu6050.hpp"
-#include "Ssd1306.hpp"
-#include "Ssd1306_tests.hpp"
+#include "OledController.hpp"
 #include "Power.hpp"
 #include "UsbCdcLink.h"
 #include "coproc_codec.h"
@@ -327,31 +326,25 @@ static void debugLinkHandleCommand(const char* cmd) {
         });
     });
 
-
     COMMAND("oled", {
-        COMMAND("test", {
-            ssd1306_TestAll();
-            printf("OLED test\n");
-            return;
-        });
         COMMAND("fill", {
             COMMAND("white", {
-                ssd1306_Fill(White);
-                ssd1306_UpdateScreen();
+                oledFill(White);
+                oledUpdateScreen();
                 printf("OLED fill white\n");
                 return;
             });
             COMMAND("black", {
-                ssd1306_Fill(Black);
-                ssd1306_UpdateScreen();
-                printf("OLED fill vlack\n");
+                oledFill(Black);
+                oledUpdateScreen();
+                printf("OLED fill black\n");
                 return;
-            });            
+            });
         });
         COMMAND("write", {
-            ssd1306_SetCursor(0, 0);
-            ssd1306_WriteString("AHOJ", Font_11x18, White);
-            ssd1306_UpdateScreen();
+            oledSetCursor(0, 0);
+            oledWriteString("AHOJ", Font_11x18, White);
+            oledUpdateScreen();
             printf("OLED write\n");
             return;
         });
@@ -364,23 +357,23 @@ static void debugLinkHandleCommand(const char* cmd) {
         //         // MPU6050_getRotation(&x, &y, &z);
         //         MPU6050_getAcceleration(&x, &y, &z);
         //         printf("MPU gyro: x:%d, y:%d, z:%d\n", x, y, z);
-        //         ssd1306_SetCursor(0, 0);
+        //         oledSetCursor(0, 0);
         //         sprintf_(str, "%d", x);
-        //         ssd1306_WriteString(str, Font_11x18, White);
-        //         ssd1306_SetCursor(0, 20);
+        //         oledWriteString(str, Font_11x18, White);
+        //         oledSetCursor(0, 20);
         //         sprintf_(str, "%d", z);
-        //         ssd1306_WriteString(str, Font_11x18, White);
-        //         ssd1306_SetCursor(0, 40);
+        //         oledWriteString(str, Font_11x18, White);
+        //         oledSetCursor(0, 40);
         //         sprintf_(str, "%d", z);
-        //         ssd1306_WriteString(str, Font_11x18, White);                
+        //         oledWriteString(str, Font_11x18, White);
 
-        //         ssd1306_SetCursor(60, 0);
+        //         oledSetCursor(60, 0);
         //         uint16_t rTemp = MPU6050_getTemperature();
         //         float temp = (float) ((int16_t) rTemp / (float) 340.0 + (float) 36.53);
         //         printf("MPU temp %f\n", temp);
         //         sprintf_(str, "%f", temp);
-        //         ssd1306_WriteString(str, Font_11x18, White);
-        //         ssd1306_UpdateScreen();
+        //         oledWriteString(str, Font_11x18, White);
+        //         oledUpdateScreen();
         //         HAL_Delay(100);
         //     }
         //     return;
@@ -411,32 +404,31 @@ static void debugLinkHandleCommand(const char* cmd) {
     });
 
     COMMAND("i2c", {
-    //     COMMAND("transmit", {
-    //         uint8_t DevAddress;
-    //         uint8_t pData[10];
-    //         uint8_t Size;
-    //         // if (sscanf(cmd, "%u %u %u", &DevAddress, &pData[0], &Size) != 3) {
-    //         //     printf("Invalid parameters!\n");
-    //         //     return;
-    //         // }
-    //         // printf("I2C tran %d\n", i2cTransmit(DevAddress, pData, Size));
-    //         // printf("I2C tran %d\n", I2Cdev_readByte(0xD2, 0x75, pData, 100));
-    //         printf("I2C tran %d data: %d\n", I2Cdev_readByte(0x69, 0x75, pData, 100), pData[0]);
-    //         return;
-    //     });
+        COMMAND("transmit", {
+            uint8_t DevAddress;
+            uint8_t pData[10];
+            uint8_t Size;
+            if (sscanf(cmd, "%u %u %u", &DevAddress, &pData[0], &Size) != 3) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            printf("I2C tran %d\n",
+                I2Cdev_Master_Transmit(DevAddress, pData, Size, 0));
+            return;
+        });
 
-    //     COMMAND("receive", {
-    //         uint8_t DevAddress;
-    //         uint8_t pData[10];
-    //         uint8_t Size;
-    //         if (sscanf(cmd, "%u %u", &DevAddress, &Size) != 2) {
-    //             printf("Invalid parameters!\n");
-    //             return;
-    //         }
-    //         printf("I2C rec %d; ret: %d\n", i2cReceive(DevAddress, pData, Size),
-    //             pData[0]);
-    //         return;
-    //     });
+        COMMAND("receive", {
+            uint8_t DevAddress;
+            uint8_t pData[10];
+            uint8_t Size;
+            if (sscanf(cmd, "%u %u", &DevAddress, &Size) != 2) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            printf("I2C rec %d; ret: %d\n",
+                I2Cdev_Master_Receive(DevAddress, pData, Size, 0), pData[0]);
+            return;
+        });
 
         COMMAND("ready", {
             uint8_t DevAddress;
@@ -445,7 +437,8 @@ static void debugLinkHandleCommand(const char* cmd) {
                 printf("Invalid parameters!\n");
                 return;
             }
-            printf("I2C ready %d\n", I2Cdev_IsDeviceReady(DevAddress, Trials) == HAL_OK);
+            printf("I2C ready %d\n",
+                I2Cdev_IsDeviceReady(DevAddress, Trials) == HAL_OK);
             return;
         });
 
@@ -455,7 +448,7 @@ static void debugLinkHandleCommand(const char* cmd) {
         });
     });
 
-printf("Invalid command.\n");
+    printf("Invalid command.\n");
 }
 
 static void debugDownstreamHandler() {
