@@ -1,3 +1,4 @@
+#include "stm32f1xx_hal.h"
 #include "stm32f1xx_ll_utils.h"
 
 #include "Bsp.hpp"
@@ -6,6 +7,10 @@
 
 static StaticTask_t idleTaskStruct;
 static StackType_t idleTaskStack[configMINIMAL_STACK_SIZE];
+
+// While timeouts in LL functions rely on having milliseconds in SYSTICK,
+// timeouts in HAL functions require incrementing the uwTick variable:
+extern "C" void vApplicationTickHook() { HAL_IncTick(); }
 
 extern "C" void vApplicationGetIdleTaskMemory(
     StaticTask_t** ppxIdleTaskTCBBuffer, StackType_t** ppxIdleTaskStackBuffer,
