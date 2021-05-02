@@ -4,26 +4,11 @@
 #include "string.h"
 #include <string.h>  // For memcpy
 
+// OLED OLED height in pixels
+uint8_t oled_height = 64;
 
-
-// void motorDispatch(const CoprocReq_OledReq& request) {
-
-// }
-
-
-
-
-
-// Send a byte to the command register
-void oledWriteCommand(uint8_t byte) {
-    I2Cdev_Mem_Write(OLED_I2C_ADDR, 0x00, 1, &byte, 1, HAL_MAX_DELAY);
-}
-
-// Send data
-void oledWriteData(uint8_t* buffer, size_t buff_size) {
-    I2Cdev_Mem_Write(OLED_I2C_ADDR, 0x40, 1, buffer, buff_size, HAL_MAX_DELAY);
-}
-
+// OLED width in pixels
+uint8_t oled_width = 128;
 
 // Screenbuffer
 static uint8_t OLED_Buffer[OLED_BUFFER_SIZE];
@@ -31,18 +16,153 @@ static uint8_t OLED_Buffer[OLED_BUFFER_SIZE];
 // Screen object
 static OLED_t OLED;
 
-/* Fills the Screenbuffer with values from a given buffer of a fixed length */
-OLED_Error_t oledFillBuffer(uint8_t* buf, uint32_t len) {
-    OLED_Error_t ret = OLED_ERR;
-    if (len <= OLED_BUFFER_SIZE) {
-        memcpy(OLED_Buffer,buf,len);
-        ret = OLED_OK;
+
+void oledDispatch(const CoprocReq_OledReq& request) {
+    switch (request.which_oledCmd)
+    {
+    case CoprocReq_OledReq_init_tag:
+        oledInit(request.oledCmd.init);
+        break;
+    
+    case CoprocReq_OledReq_update_tag:
+        oledUpdateScreen();
+        break;
+    
+    case CoprocReq_OledReq_fill_tag:
+        oledFill(OLED_COLOR(request.oledCmd.fill.color));
+        break;
+
+    case CoprocReq_OledReq_pixel_tag:
+        const auto& pixel = request.oledCmd.pixel;
+        oledDrawPixel(pixel.x, pixel.y, OLED_COLOR(pixel.color));
+        break;
+    // case CoprocReq_OledReq_lin_tag:
+    //     const auto& pixel = request.oledCmd.pixel;
+    //     oledDrawPixel(pixel.x, pixel.y, OLED_COLOR(pixel.color));
+    //     break;
+    
     }
-    return ret;
+}
+
+
+void oledPreInit(){
+    CoprocReq_OledInit pre;
+    pre.height = 32;
+    pre.width = 128;
+    pre.rotate = true;
+    pre.inverseColor = false;
+
+    oledInit(pre);
 }
 
 // Initialize the oled screen
-void oledInit(void) {
+void oledInit(const CoprocReq_OledInit& init){
+    // Init OLED
+    oledSetDisplayOn(0); //display off
+
+    oledWriteCommand(0x20); //Set Memory Addressing Mode
+    oledWriteCommand(0x00); // 00b,Horizontal Addressing Mode; 01b,Vertical Addressing Mode;
+                                // 10b,Page Addressing Mode (RESET); 11b,Invalid
+
+    oledWriteCommand(0xB0); //Set Page Start Address for Page Addressing Mode,0-7
+
+    if(init.rotate){
+        oledWriteCommand(0xC0); // Mirror vertically
+    }
+    else{
+        oledWriteCommand(0xC8); //Set COM Output Scan Direction
+    }
+
+    oledWriteCommand(0x00); //---set low column address
+    oledWriteCommand(0x10); //---set high column address
+
+    oledWriteCommand(0x40); //--set start line address - CHECK
+
+    oledSetContrast(0xFF);
+
+    if(init.rotate){
+        oledWriteCommand(0xA0); // Mirror horizontally
+    }
+    else{
+        oledWriteCommand(0xA1); //--set segment re-map 0 to 127 - CHECK
+    }
+
+    if(init.inverseColor){
+        oledWriteCommand(0xA7); //--set inverse color
+    }
+    else{
+        oledWriteCommand(0xA6); //--set normal color
+    }
+
+
+    oledWriteCommand(0xA8); //--set multiplex ratio(1 to 64) - CHECK
+
+    if(oled_height == 32){
+        oledWriteCommand(0x1F); //
+    }
+    else if(oled_height == 64){
+        oledWriteCommand(0x3F); //
+    }
+    else{
+        //TO DO warning message
+    }
+
+    oledWriteCommand(0xA4); //0xa4,Output follows RAM content;0xa5,Output ignores RAM content
+
+    oledWriteCommand(0xD3); //-set display offset - CHECK
+    oledWriteCommand(0x00); //-not offset
+
+    oledWriteCommand(0xD5); //--set display clock divide ratio/oscillator frequency
+    oledWriteCommand(0xF0); //--set divide ratio
+
+    oledWriteCommand(0xD9); //--set pre-charge period
+    oledWriteCommand(0x22); //
+
+    oledWriteCommand(0xDA); //--set com pins hardware configuration - CHECK
+
+    if(oled_height == 32){
+        oledWriteCommand(0x02);    
+    }
+    else if(oled_height == 64){
+        oledWriteCommand(0x12);    
+    }
+    else{
+        //TO DO warning message
+    }
+
+    oledWriteCommand(0xDB); //--set vcomh
+    oledWriteCommand(0x20); //0x20,0.77xVcc
+
+    oledWriteCommand(0x8D); //--set DC-DC enable
+    oledWriteCommand(0x14); //
+    oledSetDisplayOn(1); //--turn on OLED panel
+
+    // Clear screen
+    oledFill(Black);
+    
+    // Flush buffer to screen
+    oledUpdateScreen();
+    
+    // Set default values for screen object
+    OLED.CurrentX = 0;
+    OLED.CurrentY = 0;
+    
+    OLED.Initialized = 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Initialize the oled screen
+void oledInitOld(){
     // Wait for the screen to boot
     // HAL_Delay(100);
 
@@ -80,23 +200,18 @@ void oledInit(void) {
     oledWriteCommand(0xA6); //--set normal color
 #endif
 
-// Set multiplex ratio.
-#if (OLED_HEIGHT == 128)
-    // Found in the Luma Python lib for SH1106.
-    oledWriteCommand(0xFF);
-#else
-    oledWriteCommand(0xA8); //--set multiplex ratio(1 to 64) - CHECK
-#endif
 
-#if (OLED_HEIGHT == 32)
-    oledWriteCommand(0x1F); //
-#elif (OLED_HEIGHT == 64)
-    oledWriteCommand(0x3F); //
-#elif (OLED_HEIGHT == 128)
-    oledWriteCommand(0x3F); // Seems to work for 128px high displays too.
-#else
-#error "Only 32, 64, or 128 lines of height are supported!"
-#endif
+    oledWriteCommand(0xA8); //--set multiplex ratio(1 to 64) - CHECK
+
+    if(oled_height == 32){
+        oledWriteCommand(0x1F); //
+    }
+    else if(oled_height == 64){
+        oledWriteCommand(0x3F); //
+    }
+    else{
+        //TO DO warning message
+    }
 
     oledWriteCommand(0xA4); //0xa4,Output follows RAM content;0xa5,Output ignores RAM content
 
@@ -110,15 +225,16 @@ void oledInit(void) {
     oledWriteCommand(0x22); //
 
     oledWriteCommand(0xDA); //--set com pins hardware configuration - CHECK
-#if (OLED_HEIGHT == 32)
-    oledWriteCommand(0x02);
-#elif (OLED_HEIGHT == 64)
-    oledWriteCommand(0x12);
-#elif (OLED_HEIGHT == 128)
-    oledWriteCommand(0x12);
-#else
-#error "Only 32, 64, or 128 lines of height are supported!"
-#endif
+
+    if(oled_height == 32){
+        oledWriteCommand(0x02);    
+    }
+    else if(oled_height == 64){
+        oledWriteCommand(0x12);    
+    }
+    else{
+        //TO DO warning message
+    }
 
     oledWriteCommand(0xDB); //--set vcomh
     oledWriteCommand(0x20); //0x20,0.77xVcc
@@ -158,11 +274,11 @@ void oledUpdateScreen(void) {
     //  * 32px   ==  4 pages
     //  * 64px   ==  8 pages
     //  * 128px  ==  16 pages
-    for(uint8_t i = 0; i < OLED_HEIGHT/8; i++) {
+    for(uint8_t i = 0; i < oled_height/8; i++) {
         oledWriteCommand(0xB0 + i); // Set the current RAM page address.
         oledWriteCommand(0x00);
         oledWriteCommand(0x10);
-        oledWriteData(&OLED_Buffer[OLED_WIDTH*i],OLED_WIDTH);
+        oledWriteData(&OLED_Buffer[oled_width*i],oled_width);
     }
 }
 
@@ -171,7 +287,7 @@ void oledUpdateScreen(void) {
 //    Y => Y Coordinate
 //    color => Pixel color
 void oledDrawPixel(uint8_t x, uint8_t y, OLED_COLOR color) {
-    if(x >= OLED_WIDTH || y >= OLED_HEIGHT) {
+    if(x >= oled_width || y >= oled_height) {
         // Don't write outside the buffer
         return;
     }
@@ -183,9 +299,9 @@ void oledDrawPixel(uint8_t x, uint8_t y, OLED_COLOR color) {
     
     // Draw in the right color
     if(color == White) {
-        OLED_Buffer[x + (y / 8) * OLED_WIDTH] |= 1 << (y % 8);
+        OLED_Buffer[x + (y / 8) * oled_width] |= 1 << (y % 8);
     } else { 
-        OLED_Buffer[x + (y / 8) * OLED_WIDTH] &= ~(1 << (y % 8));
+        OLED_Buffer[x + (y / 8) * oled_width] &= ~(1 << (y % 8));
     }
 }
 
@@ -201,8 +317,8 @@ char oledWriteChar(char ch, FontDef Font, OLED_COLOR color) {
         return 0;
     
     // Check remaining space on current line
-    if (OLED_WIDTH < (OLED.CurrentX + Font.FontWidth) ||
-        OLED_HEIGHT < (OLED.CurrentY + Font.FontHeight))
+    if (oled_width < (OLED.CurrentX + Font.FontWidth) ||
+        oled_height < (OLED.CurrentY + Font.FontHeight))
     {
         // Not enough space on current line
         return 0;
@@ -365,7 +481,7 @@ void oledDrawCircle(uint8_t par_x,uint8_t par_y,uint8_t par_r,OLED_COLOR par_col
   int32_t err = 2 - 2 * par_r;
   int32_t e2;
 
-  if (par_x >= OLED_WIDTH || par_y >= OLED_HEIGHT) {
+  if (par_x >= oled_width || par_y >= oled_height) {
     return;
   }
 
@@ -433,4 +549,25 @@ void oledSetDisplayOn(const uint8_t on) {
 
 uint8_t oledGetDisplayOn() {
     return OLED.DisplayOn;
+}
+
+
+// Send a byte to the command register
+void oledWriteCommand(uint8_t byte) {
+    I2Cdev_Mem_Write(OLED_I2C_ADDR, 0x00, 1, &byte, 1, HAL_MAX_DELAY);
+}
+
+// Send data
+void oledWriteData(uint8_t* buffer, size_t buff_size) {
+    I2Cdev_Mem_Write(OLED_I2C_ADDR, 0x40, 1, buffer, buff_size, HAL_MAX_DELAY);
+}
+
+/* Fills the Screenbuffer with values from a given buffer of a fixed length */
+OLED_Error_t oledFillBuffer(uint8_t* buf, uint32_t len) {
+    OLED_Error_t ret = OLED_ERR;
+    if (len <= OLED_BUFFER_SIZE) {
+        memcpy(OLED_Buffer,buf,len);
+        ret = OLED_OK;
+    }
+    return ret;
 }

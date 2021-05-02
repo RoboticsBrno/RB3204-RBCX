@@ -5,36 +5,18 @@
  * https://github.com/afiskon/stm32-oled
  */
 
-#ifndef __OLED_H__
-#define __OLED_H__
+#pragma once
 
 #include <stddef.h>
-#include <_ansi.h>
 
 #include "I2Cdev.hpp"
 #include "rbcx.pb.h"
 
-_BEGIN_STD_C
-
-#include "OledController_conf.hpp"
-#include "stm32f1xx_hal.h"
 #include "OledController_fonts.hpp"
 
-#define OLED_I2C_ADDR        0x3C
+#define OLED_I2C_ADDR       0x3C
+#define OLED_BUFFER_SIZE    1024
 
-// OLED OLED height in pixels
-#ifndef OLED_HEIGHT
-#define OLED_HEIGHT          64
-#endif
-
-// OLED width in pixels
-#ifndef OLED_WIDTH
-#define OLED_WIDTH           128
-#endif
-
-#ifndef OLED_BUFFER_SIZE
-#define OLED_BUFFER_SIZE   OLED_WIDTH * OLED_HEIGHT / 8
-#endif
 
 // Enumeration for screen colors
 typedef enum {
@@ -61,10 +43,13 @@ typedef struct {
 } OLED_VERTEX;
 
 
-void motorDispatch(const CoprocReq_OledReq& request);
+void oledDispatch(const CoprocReq_OledReq& request);
+void oledPreInit();
+void oledInit(const CoprocReq_OledInit& init);
+
 
 // Procedure definitions
-void oledInit(void);
+void oledInitOld(void);
 void oledFill(OLED_COLOR color);
 void oledUpdateScreen(void);
 void oledDrawPixel(uint8_t x, uint8_t y, OLED_COLOR color);
@@ -99,7 +84,3 @@ uint8_t oledGetDisplayOn();
 void oledWriteCommand(uint8_t byte);
 void oledWriteData(uint8_t* buffer, size_t buff_size);
 OLED_Error_t oledFillBuffer(uint8_t* buf, uint32_t len);
-
-_END_STD_C
-
-#endif // __OLED_H__

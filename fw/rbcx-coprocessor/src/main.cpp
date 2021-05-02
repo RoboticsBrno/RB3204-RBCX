@@ -46,10 +46,10 @@ int main() {
         stupidServoInit();
         ultrasoundInit();
         MPU6050_init();
-        oledInit();
-        oledFill(White);
-        oledWriteString("JEDE", Font_16x26, Black);
-        oledUpdateScreen();
+        // oledPreInit();
+        // oledFill(White);
+        // oledWriteString(__TIME__, Font_16x26, Black);
+        // oledUpdateScreen();
         sEsp32Manager.init();
         motorInit();
 

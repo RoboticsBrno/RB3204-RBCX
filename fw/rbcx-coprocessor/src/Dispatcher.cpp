@@ -11,7 +11,7 @@
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
 #include "UltrasoundController.hpp"
-
+#include "OledController.hpp"
 #include "queue.h"
 #include "rbcx.pb.h"
 #include "utils/QueueWrapper.hpp"
@@ -101,7 +101,7 @@ static void dispatcherProcessReq(const CoprocReq& request) {
         motorDispatch(request.payload.motorReq);
         break;
     case CoprocReq_oledReq_tag:
-        // oledDispatch(request.payload.oledReq);
+        oledDispatch(request.payload.oledReq);
         break;
     case CoprocReq_testReq_tag:
         const auto& test = request.payload.testReq;
