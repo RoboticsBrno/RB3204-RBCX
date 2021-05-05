@@ -14,19 +14,18 @@
 
 #include "OledController_fonts.hpp"
 
-#define OLED_I2C_ADDR       0x3C
-#define OLED_BUFFER_SIZE    1024
-
+#define OLED_I2C_ADDR 0x3C
+#define OLED_BUFFER_SIZE 1024
 
 // Enumeration for screen colors
 typedef enum {
     Black = 0x00, // Black color, no pixel
-    White = 0x01  // Pixel is set. Color depends on OLED
+    White = 0x01 // Pixel is set. Color depends on OLED
 } OLED_COLOR;
 
 typedef enum {
     OLED_OK = 0x00,
-    OLED_ERR = 0x01  // Generic error.
+    OLED_ERR = 0x01 // Generic error.
 } OLED_Error_t;
 
 // Struct to store transformations
@@ -42,11 +41,9 @@ typedef struct {
     uint8_t y;
 } OLED_VERTEX;
 
-
 void oledDispatch(const CoprocReq_OledReq& request);
 void oledPreInit();
 void oledInit(const CoprocReq_OledInit& init);
-
 
 // Procedure definitions
 void oledInitOld(void);
@@ -56,11 +53,16 @@ void oledDrawPixel(uint8_t x, uint8_t y, OLED_COLOR color);
 char oledWriteChar(char ch, FontDef Font, OLED_COLOR color);
 char oledWriteString(char* str, FontDef Font, OLED_COLOR color);
 void oledSetCursor(uint8_t x, uint8_t y);
-void oledLine(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, OLED_COLOR color);
-void oledDrawArc(uint8_t x, uint8_t y, uint8_t radius, uint16_t start_angle, uint16_t sweep, OLED_COLOR color);
-void oledDrawCircle(uint8_t par_x, uint8_t par_y, uint8_t par_r, OLED_COLOR color);
-void oledPolyline(const OLED_VERTEX *par_vertex, uint16_t par_size, OLED_COLOR color);
-void oledDrawRectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, OLED_COLOR color);
+void oledDrawLine(
+    uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, OLED_COLOR color);
+void oledDrawArc(uint8_t x, uint8_t y, uint8_t radius, uint16_t start_angle,
+    uint16_t sweep, OLED_COLOR color);
+void oledDrawCircle(
+    uint8_t par_x, uint8_t par_y, uint8_t par_r, OLED_COLOR color);
+void oledPolyline(
+    const OLED_VERTEX* par_vertex, uint16_t par_size, OLED_COLOR color);
+void oledDrawRectangle(
+    uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, OLED_COLOR color);
 /**
  * @brief Sets the contrast of the display.
  * @param[in] value contrast to set.

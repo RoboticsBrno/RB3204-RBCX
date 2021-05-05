@@ -103,27 +103,6 @@ static void dispatcherProcessReq(const CoprocReq& request) {
     case CoprocReq_oledReq_tag:
         oledDispatch(request.payload.oledReq);
         break;
-    case CoprocReq_testReq_tag:
-        const auto& test = request.payload.testReq;
-        switch (test.which_testCmd)
-        {
-        case CoprocReq_TestReq_cele_tag:
-            printf("Cislo uint32 %d\n", test.testCmd.cele);
-            break;
-        case CoprocReq_TestReq_dese_tag:
-            printf("Dese float %f\n", test.testCmd.dese);
-            break;
-        case CoprocReq_TestReq_setin_tag:
-            printf("Setin double %f\n", test.testCmd.setin);
-            break;
-        case CoprocReq_TestReq_stav_tag:
-            printf("Stav bool %d\n", test.testCmd.stav);
-            break;
-        case CoprocReq_TestReq_text_tag:
-            printf("Text %s\n", test.testCmd.text);
-            break;
-        }
-        break;
     }
 }
 
