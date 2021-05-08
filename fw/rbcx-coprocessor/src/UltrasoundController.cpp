@@ -35,7 +35,7 @@ void ultrasoundInit() {
     }
 
     trigQueue.create();
-    utsTask.start("ultrasound", 2, []() {
+    utsTask.start("ultrasound", ultrasoundTaskPrio, []() {
         while (true) {
             int utsIndex;
             trigQueue.pop_front(utsIndex);
