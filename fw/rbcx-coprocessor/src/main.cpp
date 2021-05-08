@@ -31,7 +31,7 @@ int main() {
 
     pinsInit();
 
-    mainTask.start("main", 1, []() {
+    mainTask.start("main", mainTaskPrio, []() {
         debugUartInit();
         softResetInit();
         powerInit();

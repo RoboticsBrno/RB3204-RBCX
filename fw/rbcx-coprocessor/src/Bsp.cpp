@@ -41,7 +41,7 @@ extern "C" void HAL_GPIO_EXTI_Callback(uint16_t pin) {
 }
 
 void softResetInit() {
-    softResetTask.start("softrst", configMAX_PRIORITIES - 1, []() {
+    softResetTask.start("softrst", softResetTaskPrio, []() {
         while (true) {
             if (xTaskNotifyWait(0, 0, nullptr, portMAX_DELAY) != pdTRUE)
                 continue;

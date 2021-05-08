@@ -77,7 +77,7 @@ void motorInit() {
     }
 
     motorMut.create();
-    motorTask.start("motors", 2, taskFunc);
+    motorTask.start("motors", motorTaskPrio, taskFunc);
 }
 
 static void taskFunc() {
