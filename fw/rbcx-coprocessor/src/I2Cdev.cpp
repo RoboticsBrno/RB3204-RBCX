@@ -99,7 +99,7 @@ uint8_t I2Cdev_IsDeviceReady(uint16_t DevAddress, uint32_t Trials, uint32_t Time
 
 uint8_t I2Cdev_scan() {
     uint8_t counter = 0;
-    for (int range = 1; range <= 127; range++) {
+    for (int range = 1; range <= 254; range++) {
         if (I2Cdev_IsDeviceReady(range) == HAL_OK) {
             DEBUG("I2Cdev_scan[%d] ready: %#04x (%d)\n", counter, range, range);
             counter++;

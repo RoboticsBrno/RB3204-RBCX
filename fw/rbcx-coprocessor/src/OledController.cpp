@@ -41,7 +41,6 @@ void oledDispatch(const CoprocReq_OledReq& request) {
         const auto& writeString = request.oledCmd.writeString;
         char text[101];
         strcpy(text, writeString.text);
-        DEBUG("OLED String in:%s; copy:%s\n", writeString.text, text);
         FontDef* font;
         switch (writeString.font) {
         case CoprocReq_OledFont_OLED_FONT_6X8:
@@ -98,7 +97,7 @@ void oledDispatch(const CoprocReq_OledReq& request) {
     };
 }
 
-void oledPreInit() {
+void oledInitStm() {
     CoprocReq_OledInit pre;
     pre.width = 128;
     pre.height = 64;

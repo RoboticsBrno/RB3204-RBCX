@@ -8,7 +8,7 @@
 #include "ButtonController.hpp"
 #include "I2Cdev.hpp"
 #include "MotorController.hpp"
-#include "Mpu6050.hpp"
+#include "MpuController.hpp"
 #include "OledController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
@@ -45,7 +45,7 @@ int main() {
         I2Cdev_init();
         stupidServoInit();
         ultrasoundInit();
-        MPU6050_init();
+        mpu_init();
         sEsp32Manager.init();
         motorInit();
 
@@ -55,7 +55,7 @@ int main() {
         while (true) {
             debugLinkPoll();
             powerPoll();
-            // MPU6050Poll();
+            mpuPoll();
             dispatcherPoll();
             tunnelPoll();
             buttonControllerPoll();

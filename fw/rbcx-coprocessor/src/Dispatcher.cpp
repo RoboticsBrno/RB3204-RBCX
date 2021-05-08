@@ -12,6 +12,7 @@
 #include "UltrasoundController.hpp"
 #include "UltrasoundController.hpp"
 #include "OledController.hpp"
+#include "MpuController.hpp"
 #include "queue.h"
 #include "rbcx.pb.h"
 #include "utils/QueueWrapper.hpp"
@@ -102,6 +103,9 @@ static void dispatcherProcessReq(const CoprocReq& request) {
         break;
     case CoprocReq_oledReq_tag:
         oledDispatch(request.payload.oledReq);
+        break;
+    case CoprocReq_mpuReq_tag:
+        mpuDispatch(request.payload.mpuReq);
         break;
     }
 }

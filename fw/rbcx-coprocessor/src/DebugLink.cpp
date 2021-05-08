@@ -15,7 +15,7 @@
 #include "BuzzerController.hpp"
 #include "Dispatcher.hpp"
 #include "I2Cdev.hpp"
-#include "Mpu6050.hpp"
+#include "MpuController.hpp"
 #include "OledController.hpp"
 #include "Power.hpp"
 #include "UsbCdcLink.h"
@@ -348,56 +348,28 @@ static void debugLinkHandleCommand(const char* cmd) {
             printf("OLED write\n");
             return;
         });
-        // COMMAND("gyro", {
-        //     int16_t x, y, z;
-        //     char str[10];
-
-        //     while (1)
-        //     {
-        //         // MPU6050_getRotation(&x, &y, &z);
-        //         MPU6050_getAcceleration(&x, &y, &z);
-        //         printf("MPU gyro: x:%d, y:%d, z:%d\n", x, y, z);
-        //         oledSetCursor(0, 0);
-        //         sprintf_(str, "%d", x);
-        //         oledWriteString(str, Font_11x18, White);
-        //         oledSetCursor(0, 20);
-        //         sprintf_(str, "%d", z);
-        //         oledWriteString(str, Font_11x18, White);
-        //         oledSetCursor(0, 40);
-        //         sprintf_(str, "%d", z);
-        //         oledWriteString(str, Font_11x18, White);
-
-        //         oledSetCursor(60, 0);
-        //         uint16_t rTemp = MPU6050_getTemperature();
-        //         float temp = (float) ((int16_t) rTemp / (float) 340.0 + (float) 36.53);
-        //         printf("MPU temp %f\n", temp);
-        //         sprintf_(str, "%f", temp);
-        //         oledWriteString(str, Font_11x18, White);
-        //         oledUpdateScreen();
-        //         HAL_Delay(100);
-        //     }
-        //     return;
-        // });
     });
 
     COMMAND("mpu", {
         COMMAND("test", {
-            printf("MPU test: %d\n", MPU6050_testConnection());
+            printf("MPU test: %d\n", mpu_testConnection());
             return;
         });
         COMMAND("temp", {
-            printf("MPU temp: %d\n", MPU6050_getTemperature());
+            printf("MPU temp: %d\n", mpu_getTemperature());
             return;
         });
         COMMAND("acc", {
             int16_t x, y, z;
-            MPU6050_getAcceleration(&x, &y, &z);
+            // int32_t x, y, z;
+            mpu_getAcceleration(&x, &y, &z);
             printf("MPU acc: x:%d, y:%d, z:%d\n", x, y, z);
             return;
         });
         COMMAND("gyro", {
             int16_t x, y, z;
-            MPU6050_getRotation(&x, &y, &z);
+            // int32_t x, y, z;
+            mpu_getRotation(&x, &y, &z);
             printf("MPU gyro: x:%d, y:%d, z:%d\n", x, y, z);
             return;
         });

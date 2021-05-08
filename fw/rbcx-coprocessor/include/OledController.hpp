@@ -42,7 +42,7 @@ typedef struct {
 } OLED_VERTEX;
 
 void oledDispatch(const CoprocReq_OledReq& request);
-void oledPreInit();
+void oledInitStm();
 void oledInit(const CoprocReq_OledInit& init);
 
 // Procedure definitions
