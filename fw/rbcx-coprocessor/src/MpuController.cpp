@@ -54,18 +54,31 @@ typedef struct MpuVector
 }MpuVector;
 
 
-typedef struct MpuMotion9
+typedef struct MpuVector32
+{
+    int32_t x;
+    int32_t y;
+    int32_t z;
+}MpuVector32;
+
+typedef struct MpuMotion6
 {
     MpuVector accel;
     MpuVector gyro;
-    MpuVector angle;
-}MpuMotion9;    
+}MpuMotion6;    
 
+typedef struct MpuMotion32
+{
+    MpuVector32 accel;
+    MpuVector32 gyro;
+}MpuMotion32;
 
 mpu_t mpu6050;
-MpuMotion9 mpuMotion;
+MpuMotion32 mpuMotion;
+MpuMotion6 mpuMotionHelper;
 
-static constexpr uint32_t dispatchStatPeriodMs = 40;
+static constexpr uint32_t dispatchStatPeriodMs = 10;
+static uint32_t counter = 0;
 static TickTimer dispatchStatTimer;
 
 
@@ -92,30 +105,50 @@ void mpuDispatch(const CoprocReq_MpuReq& request) {
 
 void mpuPoll() {
     if (dispatchStatTimer.poll()) {
+        
+        mpu_getAcceleration(&mpuMotionHelper.accel.x, &mpuMotionHelper.accel.y, &mpuMotionHelper.accel.z);
+        mpu_getRotation(&mpuMotionHelper.gyro.x, &mpuMotionHelper.gyro.y, &mpuMotionHelper.gyro.z);
+        // printf("DEBUG MPU [%d] acc: x:%d; y:%d; z:%d | gyro: x:%d; y:%d; z:%d\n", counter, mpuMotionHelper.accel.x, mpuMotionHelper.accel.y, mpuMotionHelper.accel.z, mpuMotionHelper.gyro.x, mpuMotionHelper.gyro.y, mpuMotionHelper.gyro.z);
+
+        mpuMotion.accel.x += (int32_t)mpuMotionHelper.accel.x;        
+        mpuMotion.accel.y += (int32_t)mpuMotionHelper.accel.y;
+        mpuMotion.accel.z += (int32_t)mpuMotionHelper.accel.z;
+        mpuMotion.gyro.x += (int32_t)mpuMotionHelper.gyro.x;
+        mpuMotion.gyro.y += (int32_t)mpuMotionHelper.gyro.y;
+        mpuMotion.gyro.z += (int32_t)mpuMotionHelper.gyro.z;
 
 
 
-        mpu_getAcceleration(&mpuMotion.accel.x, &mpuMotion.accel.y, &mpuMotion.accel.z);
-        mpu_getRotation(&mpuMotion.gyro.x, &mpuMotion.gyro.y, &mpuMotion.gyro.z);
-        printf("DEBUG MPU acc: x:%d; y:%d; z:%d | gyro: x:%d; y:%d; z:%d\n", mpuMotion.accel.x, mpuMotion.accel.y, mpuMotion.accel.z, mpuMotion.gyro.x, mpuMotion.gyro.y, mpuMotion.gyro.z);
+        if(counter>COMPRESS_COEF) {
+            CoprocStat status = {
+                .which_payload = CoprocStat_mpuStat_tag,
+            };
 
-        CoprocStat status = {
-            .which_payload = CoprocStat_mpuStat_tag,
-        };
-        status.payload.mpuStat.accel.x = mpuMotion.accel.x;
-        status.payload.mpuStat.accel.y = mpuMotion.accel.y;
-        status.payload.mpuStat.accel.z = mpuMotion.accel.z;
-        status.payload.mpuStat.has_accel = true;
+            status.payload.mpuStat.accel.x = mpuMotion.accel.x >> COMPRESS_SHIFT;
+            status.payload.mpuStat.accel.y = mpuMotion.accel.y >> COMPRESS_SHIFT;
+            status.payload.mpuStat.accel.z = mpuMotion.accel.z >> COMPRESS_SHIFT;            
+            status.payload.mpuStat.has_accel = true;
 
-        // status.payload.mpuStat.gyro.x = -153;
-        // status.payload.mpuStat.gyro.y = -253;
-        // status.payload.mpuStat.gyro.z = -353;
+            status.payload.mpuStat.gyro.x = mpuMotion.gyro.x >> COMPRESS_SHIFT;
+            status.payload.mpuStat.gyro.y = mpuMotion.gyro.y >> COMPRESS_SHIFT;
+            status.payload.mpuStat.gyro.z = mpuMotion.gyro.z >> COMPRESS_SHIFT;
+            status.payload.mpuStat.has_gyro = true;
+            dispatcherEnqueueStatus(status);
 
-        status.payload.mpuStat.gyro.x = mpuMotion.gyro.x;
-        status.payload.mpuStat.gyro.y = mpuMotion.gyro.y;
-        status.payload.mpuStat.gyro.z = mpuMotion.gyro.z;
-        status.payload.mpuStat.has_gyro = true;
-        dispatcherEnqueueStatus(status);
+            // printf("DEBUG MPU %d acc: x:%d; y:%d; z:%d | gyro: x:%d; y:%d; z:%d\n\n", counter, status.payload.mpuStat.accel.x, status.payload.mpuStat.accel.y, status.payload.mpuStat.accel.z, status.payload.mpuStat.gyro.x, status.payload.mpuStat.gyro.y, status.payload.mpuStat.gyro.z);
+            
+            mpuMotion.accel.x = 0;
+            mpuMotion.accel.y = 0;
+            mpuMotion.accel.z = 0;
+            mpuMotion.gyro.x = 0;
+            mpuMotion.gyro.y = 0;
+            mpuMotion.gyro.z = 0;
+            counter = 0;
+        }
+        else{
+            counter++;
+        }
+
 
         dispatchStatTimer.restart(dispatchStatPeriodMs);
     }

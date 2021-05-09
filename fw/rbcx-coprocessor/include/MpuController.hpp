@@ -408,6 +408,9 @@ THE SOFTWARE.
 
 // note: DMP code memory blocks defined at end of header file
 
+#define COMPRESS_COEF 4
+#define COMPRESS_SHIFT 3
+
 typedef struct mpu_t {
     uint8_t devAddr;
     uint8_t buffer[14];
