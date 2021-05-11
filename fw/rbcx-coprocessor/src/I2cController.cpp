@@ -99,6 +99,10 @@ extern "C" __weak void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef* hi2c) {
     i2cNotify();
 }
 
+extern "C" __weak void HAL_I2C_ErrorCallback(I2C_HandleTypeDef* hi2c) {
+    i2cNotify();
+}
+
 uint8_t i2cWait(HAL_StatusTypeDef beginStatus, uint32_t tout) {
     if (beginStatus == HAL_OK) {
         auto ok = xTaskNotifyWait(0, ~0, nullptr, pdMS_TO_TICKS(tout));
