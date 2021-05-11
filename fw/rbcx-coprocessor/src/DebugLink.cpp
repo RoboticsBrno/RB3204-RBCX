@@ -14,7 +14,7 @@
 #include "ButtonController.hpp"
 #include "BuzzerController.hpp"
 #include "Dispatcher.hpp"
-#include "I2Cdev.hpp"
+#include "I2cController.hpp"
 #include "Mpu6050.hpp"
 #include "OledController.hpp"
 #include "Power.hpp"

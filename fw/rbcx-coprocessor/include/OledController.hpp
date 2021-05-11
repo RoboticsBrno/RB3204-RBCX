@@ -9,7 +9,7 @@
 
 #include <stddef.h>
 
-#include "I2Cdev.hpp"
+#include "I2cController.hpp"
 #include "rbcx.pb.h"
 
 #include "OledController_fonts.hpp"

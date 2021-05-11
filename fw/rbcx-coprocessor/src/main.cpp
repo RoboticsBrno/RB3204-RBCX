@@ -6,7 +6,7 @@
 #include "utils/TaskWrapper.hpp"
 
 #include "ButtonController.hpp"
-#include "I2Cdev.hpp"
+#include "I2cController.hpp"
 #include "MotorController.hpp"
 #include "Mpu6050.hpp"
 #include "OledController.hpp"

@@ -23,6 +23,7 @@ inline constexpr unsigned usbLpIRQnPrio = 8;
 inline const int mainTaskPrio = 1;
 inline const int motorTaskPrio = 2;
 inline const int ultrasoundTaskPrio = 2;
+inline const int i2cPrio = 2;
 inline const int softResetTaskPrio = configMAX_PRIORITIES - 1;
 
 inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode,
