@@ -35,6 +35,30 @@ inline void DEBUG_HEX(const uint8_t* data, size_t len) {
 inline void DEBUG_HEX(const uint8_t* data, size_t len) {}
 #endif
 
+inline void printTaskInfo() {
+    std::array<TaskStatus_t, 10> statuses;
+
+    unsigned taskNum
+        = uxTaskGetSystemState(statuses.data(), statuses.size(), nullptr);
+
+    printf("Task stacks:\n");
+    for (unsigned i = 0; i < taskNum; i++) {
+        auto& status = statuses[i];
+
+        // Thanks FreeRTOS, because you don't allow reading pxEndOfStack
+        // to obtain the total stack size of a task,
+        // I have to use your stupid Dummy fields.
+        auto stupidTask = (StaticTask_t*)(status.xHandle);
+        auto bytesTotal
+            = uintptr_t(stupidTask->pxDummy8) - uintptr_t(stupidTask->pxDummy6);
+
+        unsigned bytesFree = status.usStackHighWaterMark * sizeof(StackType_t);
+
+        printf("#%d %s: %u bytes untouched (of %u)\n", status.xTaskNumber,
+            status.pcTaskName, bytesFree, bytesTotal);
+    }
+}
+
 inline bool isInInterrupt() {
     return (SCB->ICSR & SCB_ICSR_VECTACTIVE_Msk) != 0;
 }

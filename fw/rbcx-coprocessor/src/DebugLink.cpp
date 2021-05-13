@@ -196,6 +196,11 @@ extern "C" void DEBUGUART_TX_DMA_HANDLER() {
     }
 
 static void debugLinkHandleCommand(const char* cmd) {
+    COMMAND("diag", {
+        printTaskInfo();
+        return;
+    });
+
     COMMAND("power", {
         COMMAND("calibrate", {
             CoprocReq req = {
