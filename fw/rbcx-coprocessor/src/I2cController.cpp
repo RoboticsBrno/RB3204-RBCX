@@ -34,11 +34,16 @@ THE SOFTWARE.
 #include "OledController.hpp"
 #include "utils/Debug.hpp"
 
+#include "utils/MutexWrapper.hpp"
 #include "utils/QueueWrapper.hpp"
 #include "utils/TaskWrapper.hpp"
 
+#include <mutex>
+
 static TaskWrapper<1024> i2cTask;
 static QueueWrapper<CoprocReq_I2cReq, 16> i2cQueue;
+static xTaskHandle i2cCallingTask;
+static MutexWrapper i2cMutex;
 
 // Hold pointer to inited HAL I2C device
 I2C_HandleTypeDef I2Cdev_hi2c;
@@ -64,13 +69,8 @@ uint8_t I2Cdev_init() {
 
     if (init == HAL_OK) {
         i2cQueue.create();
+        i2cMutex.create();
         i2cTask.start("i2c", i2cPrio, []() {
-            oledInitStm();
-            DEBUG("InitStm OK\n");
-            oledFill(White);
-            oledUpdateScreen();
-            DEBUG("White\n");
-
             while (true) {
                 CoprocReq_I2cReq req;
                 i2cQueue.pop_front(req);
@@ -78,6 +78,9 @@ uint8_t I2Cdev_init() {
                 switch (req.which_payload) {
                 case CoprocReq_I2cReq_oledReq_tag:
                     oledDispatch(req.payload.oledReq);
+                    break;
+                case CoprocReq_I2cReq_mpuReq_tag:
+                    // mpuDispatch()
                     break;
                 }
             }
@@ -89,7 +92,7 @@ uint8_t I2Cdev_init() {
 
 void i2cNotify() {
     BaseType_t woken = 0;
-    xTaskNotifyFromISR(i2cTask.handle(), 1, eSetValueWithOverwrite, &woken);
+    xTaskNotifyFromISR(i2cCallingTask, 0, eNoAction, &woken);
     portYIELD_FROM_ISR(woken);
 }
 
@@ -116,10 +119,16 @@ extern "C" __weak void HAL_I2C_ErrorCallback(I2C_HandleTypeDef* hi2c) {
     i2cNotify();
 }
 
-uint8_t i2cWait(HAL_StatusTypeDef beginStatus, uint32_t tout) {
+uint8_t i2cWait(HAL_StatusTypeDef beginStatus, uint32_t tout) {}
+
+template <typename F> uint8_t i2cWrap(F fun, uint32_t Timeout) {
+    uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
+    std::scoped_lock lock(i2cMutex);
+    i2cCallingTask = xTaskGetCurrentTaskHandle();
+    auto beginStatus = fun();
+
     if (beginStatus == HAL_OK) {
         auto ok = xTaskNotifyWait(0, ~0, nullptr, pdMS_TO_TICKS(tout));
-        DEBUG("wait %s\n", ok ? "OK" : "NOT OK");
 
         if (!ok) {
             HAL_I2C_Master_Abort_IT(&I2Cdev_hi2c, 0);
@@ -132,38 +141,46 @@ uint8_t i2cWait(HAL_StatusTypeDef beginStatus, uint32_t tout) {
 /* Rewrited original functions */
 uint8_t I2Cdev_Master_Transmit(
     uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout) {
-    uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    auto beginStatus = HAL_I2C_Master_Transmit_IT(
-        &I2Cdev_hi2c, DevAddress << 1, pData, Size);
-
-    return i2cWait(beginStatus, tout);
+    return i2cWrap(
+        [=]() {
+            auto beginStatus = HAL_I2C_Master_Transmit_IT(
+                &I2Cdev_hi2c, DevAddress << 1, pData, Size);
+            return beginStatus;
+        },
+        Timeout);
 }
 
 uint8_t I2Cdev_Master_Receive(
     uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout) {
-    uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    auto beginStatus
-        = HAL_I2C_Master_Receive_IT(&I2Cdev_hi2c, DevAddress << 1, pData, Size);
-
-    return i2cWait(beginStatus, tout);
+    return i2cWrap(
+        [=]() {
+            auto beginStatus = HAL_I2C_Master_Receive_IT(
+                &I2Cdev_hi2c, DevAddress << 1, pData, Size);
+            return beginStatus;
+        },
+        Timeout);
 }
 
 uint8_t I2Cdev_Mem_Write(uint16_t DevAddress, uint16_t MemAddress,
     uint16_t MemAddSize, uint8_t* pData, uint16_t Size, uint32_t Timeout) {
-    uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    auto beginStatus = HAL_I2C_Mem_Write_IT(
-        &I2Cdev_hi2c, DevAddress << 1, MemAddress, MemAddSize, pData, Size);
-
-    return i2cWait(beginStatus, tout);
+    return i2cWrap(
+        [=]() {
+            auto beginStatus = HAL_I2C_Mem_Write_IT(&I2Cdev_hi2c,
+                DevAddress << 1, MemAddress, MemAddSize, pData, Size);
+            return beginStatus;
+        },
+        Timeout);
 }
 
 uint8_t I2Cdev_Mem_Read(uint16_t DevAddress, uint16_t MemAddress,
     uint16_t MemAddSize, uint8_t* pData, uint16_t Size, uint32_t Timeout) {
-    uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    auto beginStatus = HAL_I2C_Mem_Read_IT(
-        &I2Cdev_hi2c, DevAddress << 1, MemAddress, MemAddSize, pData, Size);
-
-    return i2cWait(beginStatus, tout);
+    return i2cWrap(
+        [=]() {
+            auto beginStatus = HAL_I2C_Mem_Read_IT(&I2Cdev_hi2c,
+                DevAddress << 1, MemAddress, MemAddSize, pData, Size);
+            return beginStatus;
+        },
+        Timeout);
 }
 
 uint8_t I2Cdev_IsDeviceReady(
@@ -449,17 +466,15 @@ uint16_t I2Cdev_writeWord(uint8_t devAddr, uint8_t regAddr, uint16_t data) {
  * @return Status of operation (true = success)
  */
 uint16_t I2Cdev_writeBytes(
-    uint8_t devAddr, uint8_t regAddr, uint8_t Size, uint8_t* pData) {
-    // Creating dynamic array to store regAddr + data in one buffer
-    uint8_t* dynBuffer;
-    dynBuffer = (uint8_t*)malloc(sizeof(uint8_t) * (Size + 1));
-    dynBuffer[0] = regAddr;
+    uint8_t devAddr, uint8_t regAddr, uint8_t length, uint8_t* pData) {
+    // Creating array to store regAddr + data in one buffer
+    uint8_t buffer[length + 1];
+    buffer[0] = regAddr;
 
     // copy array
-    memcpy(dynBuffer + 1, pData, sizeof(uint8_t) * Size);
+    memcpy(buffer + 1, pData, sizeof(uint8_t) * length);
 
-    auto ok = I2Cdev_Master_Transmit(devAddr << 1, dynBuffer, Size + 1, 1000);
-    free(dynBuffer);
+    auto ok = I2Cdev_Master_Transmit(devAddr << 1, buffer, length + 1, 1000);
     return ok;
 }
 
@@ -472,15 +487,13 @@ uint16_t I2Cdev_writeBytes(
  */
 uint16_t I2Cdev_writeWords(
     uint8_t devAddr, uint8_t regAddr, uint8_t length, uint16_t* data) {
-    // Creating dynamic array to store regAddr + data in one buffer
-    uint8_t* dynBuffer;
-    dynBuffer = (uint8_t*)malloc(sizeof(uint8_t) + sizeof(uint16_t) * length);
-    dynBuffer[0] = regAddr;
+    // Creating array to store regAddr + data in one buffer
+    uint8_t buffer[length + 1];
+    buffer[0] = regAddr;
 
     // copy array
-    memcpy(dynBuffer + 1, data, sizeof(uint16_t) * length);
-    auto ok = I2Cdev_Master_Transmit(devAddr << 1, dynBuffer,
+    memcpy(buffer + 1, data, sizeof(uint16_t) * length);
+    auto ok = I2Cdev_Master_Transmit(devAddr << 1, buffer,
         sizeof(uint8_t) + sizeof(uint16_t) * length, 1000);
-    free(dynBuffer);
     return ok;
 }

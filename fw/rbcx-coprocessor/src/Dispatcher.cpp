@@ -100,12 +100,11 @@ static void dispatcherProcessReq(const CoprocReq& request) {
         motorDispatch(request.payload.motorReq);
         break;
     case CoprocReq_i2cReq_tag:
-        DEBUG("I2cDisp\n");
-        // i2cDispatch(request.payload.i2cReq);
+        i2cDispatch(request.payload.i2cReq);
         break;
-    // case CoprocReq_mpuReq_tag:
-    //     mpuDispatch(request.payload.mpuReq);
-    //     break;
+        // case CoprocReq_mpuReq_tag:
+        //     mpuDispatch(request.payload.mpuReq);
+        //     break;
     }
 }
 
