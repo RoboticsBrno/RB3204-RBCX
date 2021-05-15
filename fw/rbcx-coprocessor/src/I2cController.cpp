@@ -29,22 +29,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ===============================================
 */
-
-#include "I2Cdev.hpp"
+#include "I2cController.hpp"
+#include "Bsp.hpp"
+#include "OledController.hpp"
 #include "utils/Debug.hpp"
 
+#include "utils/QueueWrapper.hpp"
+#include "utils/TaskWrapper.hpp"
 
+static TaskWrapper<1024> i2cTask;
+static QueueWrapper<CoprocReq_I2cReq, 16> i2cQueue;
 
 // Hold pointer to inited HAL I2C device
 I2C_HandleTypeDef I2Cdev_hi2c;
+
+void i2cDispatch(const CoprocReq_I2cReq& req) { i2cQueue.push_back(req); }
 
 /** Default timeout value for read operations.
  * Set this to 0 to disable timeout detection.
  */
 uint16_t I2Cdev_readTimeout = I2CDEV_DEFAULT_READ_TIMEOUT;
-
-
-
 
 uint8_t I2Cdev_init() {
     I2Cdev_hi2c.Instance = I2C1;
@@ -56,46 +60,118 @@ uint8_t I2Cdev_init() {
     I2Cdev_hi2c.Init.OwnAddress2 = 0;
     I2Cdev_hi2c.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
     I2Cdev_hi2c.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
-    return HAL_I2C_Init(&I2Cdev_hi2c);
+    auto init = HAL_I2C_Init(&I2Cdev_hi2c);
+
+    if (init == HAL_OK) {
+        i2cQueue.create();
+        i2cTask.start("i2c", i2cPrio, []() {
+            oledInitStm();
+            DEBUG("InitStm OK\n");
+            oledFill(White);
+            oledUpdateScreen();
+            DEBUG("White\n");
+
+            while (true) {
+                CoprocReq_I2cReq req;
+                i2cQueue.pop_front(req);
+
+                switch (req.which_payload) {
+                case CoprocReq_I2cReq_oledReq_tag:
+                    oledDispatch(req.payload.oledReq);
+                    break;
+                }
+            }
+        });
+    } else {
+        DEBUG("Error I2c Init\n");
+    }
+}
+
+void i2cNotify() {
+    BaseType_t woken = 0;
+    xTaskNotifyFromISR(i2cTask.handle(), 1, eSetValueWithOverwrite, &woken);
+    portYIELD_FROM_ISR(woken);
+}
+
+extern "C" void I2C1_EV_IRQHandler() { HAL_I2C_EV_IRQHandler(&I2Cdev_hi2c); }
+extern "C" void I2C1_ER_IRQHandler() { HAL_I2C_ER_IRQHandler(&I2Cdev_hi2c); }
+
+extern "C" __weak void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef* hi2c) {
+    i2cNotify();
+}
+
+extern "C" __weak void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef* hi2c) {
+    i2cNotify();
+}
+
+extern "C" __weak void HAL_I2C_MemTxCpltCallback(I2C_HandleTypeDef* hi2c) {
+    i2cNotify();
+}
+
+extern "C" __weak void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef* hi2c) {
+    i2cNotify();
+}
+
+extern "C" __weak void HAL_I2C_ErrorCallback(I2C_HandleTypeDef* hi2c) {
+    i2cNotify();
+}
+
+uint8_t i2cWait(HAL_StatusTypeDef beginStatus, uint32_t tout) {
+    if (beginStatus == HAL_OK) {
+        auto ok = xTaskNotifyWait(0, ~0, nullptr, pdMS_TO_TICKS(tout));
+        DEBUG("wait %s\n", ok ? "OK" : "NOT OK");
+
+        if (!ok) {
+            HAL_I2C_Master_Abort_IT(&I2Cdev_hi2c, 0);
+        }
+        return ok;
+    }
+    return 0;
 }
 
 /* Rewrited original functions */
-uint8_t I2Cdev_Master_Transmit(uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout) {
+uint8_t I2Cdev_Master_Transmit(
+    uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Master_Transmit(&I2Cdev_hi2c, DevAddress << 1, pData, Size, tout);
+    auto beginStatus = HAL_I2C_Master_Transmit_IT(
+        &I2Cdev_hi2c, DevAddress << 1, pData, Size);
+
+    return i2cWait(beginStatus, tout);
 }
 
-uint8_t I2Cdev_Master_Receive(uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout) {
+uint8_t I2Cdev_Master_Receive(
+    uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Master_Receive(&I2Cdev_hi2c, DevAddress << 1, pData, Size, tout);
+    auto beginStatus
+        = HAL_I2C_Master_Receive_IT(&I2Cdev_hi2c, DevAddress << 1, pData, Size);
+
+    return i2cWait(beginStatus, tout);
 }
 
-uint8_t I2Cdev_Slave_Transmit(uint8_t *pData, uint16_t Size, uint32_t Timeout) {
+uint8_t I2Cdev_Mem_Write(uint16_t DevAddress, uint16_t MemAddress,
+    uint16_t MemAddSize, uint8_t* pData, uint16_t Size, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Slave_Transmit(&I2Cdev_hi2c, pData, Size, tout);
+    auto beginStatus = HAL_I2C_Mem_Write_IT(
+        &I2Cdev_hi2c, DevAddress << 1, MemAddress, MemAddSize, pData, Size);
+
+    return i2cWait(beginStatus, tout);
 }
 
-uint8_t I2Cdev_Slave_Receive(uint8_t *pData, uint16_t Size, uint32_t Timeout) {
+uint8_t I2Cdev_Mem_Read(uint16_t DevAddress, uint16_t MemAddress,
+    uint16_t MemAddSize, uint8_t* pData, uint16_t Size, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Slave_Receive(&I2Cdev_hi2c, pData, Size, tout);
+    auto beginStatus = HAL_I2C_Mem_Read_IT(
+        &I2Cdev_hi2c, DevAddress << 1, MemAddress, MemAddSize, pData, Size);
+
+    return i2cWait(beginStatus, tout);
 }
 
-uint8_t I2Cdev_Mem_Write(uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout) {
-    uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Mem_Write(&I2Cdev_hi2c, DevAddress << 1, MemAddress, MemAddSize, pData, Size, tout);
-}
-
-uint8_t I2Cdev_Mem_Read(uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout) {
-    uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_Mem_Read(&I2Cdev_hi2c, DevAddress << 1, MemAddress, MemAddSize, pData, Size, tout);
-}
-
-uint8_t I2Cdev_IsDeviceReady(uint16_t DevAddress, uint32_t Trials, uint32_t Timeout) {
+uint8_t I2Cdev_IsDeviceReady(
+    uint16_t DevAddress, uint32_t Trials, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
     return HAL_I2C_IsDeviceReady(&I2Cdev_hi2c, DevAddress << 1, Trials, tout);
 }
 /* Rewrited original functions */
-
 
 uint8_t I2Cdev_scan() {
     uint8_t counter = 0;
@@ -116,8 +192,8 @@ uint8_t I2Cdev_scan() {
  * @param timeout Optional read timeout in milliseconds (0 to disable, leave off to use default class value in I2Cdev_readTimeout)
  * @return Status of read operation (true = success)
  */
-uint8_t I2Cdev_readBit(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint8_t *data, uint16_t timeout)
-{
+uint8_t I2Cdev_readBit(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum,
+    uint8_t* data, uint16_t timeout) {
     uint8_t b;
     uint8_t count = I2Cdev_readByte(devAddr, regAddr, &b, timeout);
     *data = b & (1 << bitNum);
@@ -132,8 +208,8 @@ uint8_t I2Cdev_readBit(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint8_t
  * @param timeout Optional read timeout in milliseconds (0 to disable, leave off to use default class value in I2Cdev_readTimeout)
  * @return Status of read operation (true = success)
  */
-uint8_t I2Cdev_readBitW(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint16_t *data, uint16_t timeout)
-{
+uint8_t I2Cdev_readBitW(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum,
+    uint16_t* data, uint16_t timeout) {
     uint16_t b;
     uint8_t count = I2Cdev_readWord(devAddr, regAddr, &b, timeout);
     *data = b & (1 << bitNum);
@@ -149,16 +225,15 @@ uint8_t I2Cdev_readBitW(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint16
  * @param timeout Optional read timeout in milliseconds (0 to disable, leave off to use default class value in I2Cdev_readTimeout)
  * @return Status of read operation (true = success)
  */
-uint8_t I2Cdev_readBits(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, uint8_t length, uint8_t *data, uint16_t timeout)
-{
+uint8_t I2Cdev_readBits(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart,
+    uint8_t length, uint8_t* data, uint16_t timeout) {
     // 01101001 read byte
     // 76543210 bit numbers
     //    xxx   args: bitStart=4, length=3
     //    010   masked
     //   -> 010 shifted
     uint8_t count, b;
-    if ((count = I2Cdev_readByte(devAddr, regAddr, &b, timeout)) != 0)
-    {
+    if ((count = I2Cdev_readByte(devAddr, regAddr, &b, timeout)) != 0) {
         uint8_t mask = ((1 << length) - 1) << (bitStart - length + 1);
         b &= mask;
         b >>= (bitStart - length + 1);
@@ -176,8 +251,8 @@ uint8_t I2Cdev_readBits(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, uint
  * @param timeout Optional read timeout in milliseconds (0 to disable, leave off to use default class value in I2Cdev_readTimeout)
  * @return Status of read operation (1 = success, 0 = failure, -1 = timeout)
  */
-uint8_t I2Cdev_readBitsW(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, uint8_t length, uint16_t *data, uint16_t timeout)
-{
+uint8_t I2Cdev_readBitsW(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart,
+    uint8_t length, uint16_t* data, uint16_t timeout) {
     // 1101011001101001 read byte
     // fedcba9876543210 bit numbers
     //    xxx           args: bitStart=12, length=3
@@ -185,8 +260,7 @@ uint8_t I2Cdev_readBitsW(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, uin
     //           -> 010 shifted
     uint8_t count;
     uint16_t w;
-    if ((count = I2Cdev_readWord(devAddr, regAddr, &w, timeout)) != 0)
-    {
+    if ((count = I2Cdev_readWord(devAddr, regAddr, &w, timeout)) != 0) {
         uint16_t mask = ((1 << length) - 1) << (bitStart - length + 1);
         w &= mask;
         w >>= (bitStart - length + 1);
@@ -202,8 +276,8 @@ uint8_t I2Cdev_readBitsW(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, uin
  * @param timeout Optional read timeout in milliseconds (0 to disable, leave off to use default class value in I2Cdev_readTimeout)
  * @return Status of read operation (true = success)
  */
-uint8_t I2Cdev_readByte(uint8_t devAddr, uint8_t regAddr, uint8_t *data, uint16_t timeout)
-{
+uint8_t I2Cdev_readByte(
+    uint8_t devAddr, uint8_t regAddr, uint8_t* data, uint16_t timeout) {
     return I2Cdev_readBytes(devAddr, regAddr, 1, data, timeout);
 }
 
@@ -214,8 +288,8 @@ uint8_t I2Cdev_readByte(uint8_t devAddr, uint8_t regAddr, uint8_t *data, uint16_
  * @param timeout Optional read timeout in milliseconds (0 to disable, leave off to use default class value in I2Cdev_readTimeout)
  * @return Status of read operation (true = success)
  */
-uint8_t I2Cdev_readWord(uint8_t devAddr, uint8_t regAddr, uint16_t *data, uint16_t timeout)
-{
+uint8_t I2Cdev_readWord(
+    uint8_t devAddr, uint8_t regAddr, uint16_t* data, uint16_t timeout) {
     return I2Cdev_readWords(devAddr, regAddr, 1, data, timeout);
 }
 
@@ -227,12 +301,13 @@ uint8_t I2Cdev_readWord(uint8_t devAddr, uint8_t regAddr, uint16_t *data, uint16
  * @param timeout Optional read timeout in milliseconds (0 to disable, leave off to use default class value in I2Cdev_readTimeout)
  * @return Number of bytes read (-1 indicates failure)
  */
-uint8_t I2Cdev_readBytes(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint8_t *data, uint16_t timeout)
-{
+uint8_t I2Cdev_readBytes(uint8_t devAddr, uint8_t regAddr, uint8_t length,
+    uint8_t* data, uint16_t timeout) {
     uint16_t tout = timeout > 0 ? timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
 
-    HAL_I2C_Master_Transmit(&I2Cdev_hi2c, devAddr << 1, &regAddr, 1, tout);
-    if (HAL_I2C_Master_Receive(&I2Cdev_hi2c, devAddr << 1, data, length, tout) == HAL_OK) return length;
+    I2Cdev_Master_Transmit(devAddr << 1, &regAddr, 1, tout);
+    if (I2Cdev_Master_Receive(devAddr << 1, data, length, tout) == HAL_OK)
+        return length;
     return -1;
 }
 
@@ -244,12 +319,13 @@ uint8_t I2Cdev_readBytes(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint8
  * @param timeout Optional read timeout in milliseconds (0 to disable, leave off to use default class value in I2Cdev_readTimeout)
  * @return Number of words read (-1 indicates failure)
  */
-uint8_t I2Cdev_readWords(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint16_t *data, uint16_t timeout)
-{
+uint8_t I2Cdev_readWords(uint8_t devAddr, uint8_t regAddr, uint8_t length,
+    uint16_t* data, uint16_t timeout) {
     uint16_t tout = timeout > 0 ? timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
 
-    HAL_I2C_Master_Transmit(&I2Cdev_hi2c, devAddr << 1, &regAddr, 1, tout);
-    if (HAL_I2C_Master_Receive(&I2Cdev_hi2c, devAddr << 1, (uint8_t *)data, length*2, tout) == HAL_OK)
+    I2Cdev_Master_Transmit(devAddr << 1, &regAddr, 1, tout);
+    if (I2Cdev_Master_Receive(devAddr << 1, (uint8_t*)data, length * 2, tout)
+        == HAL_OK)
         return length;
     else
         return -1;
@@ -262,8 +338,8 @@ uint8_t I2Cdev_readWords(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint1
  * @param value New bit value to write
  * @return Status of operation (true = success)
  */
-uint16_t I2Cdev_writeBit(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint8_t data)
-{
+uint16_t I2Cdev_writeBit(
+    uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint8_t data) {
     uint8_t b;
     I2Cdev_readByte(devAddr, regAddr, &b, I2Cdev_readTimeout);
     b = (data != 0) ? (b | (1 << bitNum)) : (b & ~(1 << bitNum));
@@ -277,8 +353,8 @@ uint16_t I2Cdev_writeBit(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint8
  * @param value New bit value to write
  * @return Status of operation (true = success)
  */
-uint16_t I2Cdev_writeBitW(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint16_t data)
-{
+uint16_t I2Cdev_writeBitW(
+    uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint16_t data) {
     uint16_t w;
     I2Cdev_readWord(devAddr, regAddr, &w, 100);
     w = (data != 0) ? (w | (1 << bitNum)) : (w & ~(1 << bitNum));
@@ -293,8 +369,8 @@ uint16_t I2Cdev_writeBitW(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint
  * @param data Right-aligned value to write
  * @return Status of operation (true = success)
  */
-uint16_t I2Cdev_writeBits(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, uint8_t length, uint8_t data)
-{
+uint16_t I2Cdev_writeBits(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart,
+    uint8_t length, uint8_t data) {
     //      010 value to write
     // 76543210 bit numbers
     //    xxx   args: bitStart=4, length=3
@@ -303,17 +379,14 @@ uint16_t I2Cdev_writeBits(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, ui
     // 10100011 original & ~mask
     // 10101011 masked | value
     uint8_t b;
-    if (I2Cdev_readByte(devAddr, regAddr, &b, 100) != 0)
-    {
+    if (I2Cdev_readByte(devAddr, regAddr, &b, 100) != 0) {
         uint8_t mask = ((1 << length) - 1) << (bitStart - length + 1);
         data <<= (bitStart - length + 1); // shift data into correct position
         data &= mask; // zero all non-important bits in data
         b &= ~(mask); // zero all important bits in existing byte
         b |= data; // combine data with existing byte
         return I2Cdev_writeByte(devAddr, regAddr, b);
-    }
-    else
-    {
+    } else {
         return 0;
     }
 }
@@ -326,8 +399,8 @@ uint16_t I2Cdev_writeBits(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, ui
  * @param data Right-aligned value to write
  * @return Status of operation (true = success)
  */
-uint16_t I2Cdev_writeBitsW(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, uint8_t length, uint16_t data)
-{
+uint16_t I2Cdev_writeBitsW(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart,
+    uint8_t length, uint16_t data) {
     //              010 value to write
     // fedcba9876543210 bit numbers
     //    xxx           args: bitStart=12, length=3
@@ -336,17 +409,14 @@ uint16_t I2Cdev_writeBitsW(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, u
     // 1010001110010110 original & ~mask
     // 1010101110010110 masked | value
     uint16_t w;
-    if (I2Cdev_readWord(devAddr, regAddr, &w, 100) != 0)
-    {
+    if (I2Cdev_readWord(devAddr, regAddr, &w, 100) != 0) {
         uint16_t mask = ((1 << length) - 1) << (bitStart - length + 1);
         data <<= (bitStart - length + 1); // shift data into correct position
         data &= mask; // zero all non-important bits in data
         w &= ~(mask); // zero all important bits in existing word
         w |= data; // combine data with existing word
         return I2Cdev_writeWord(devAddr, regAddr, w);
-    }
-    else
-    {
+    } else {
         return 0;
     }
 }
@@ -357,8 +427,7 @@ uint16_t I2Cdev_writeBitsW(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, u
  * @param data New byte value to write
  * @return Status of operation (true = success)
  */
-uint16_t I2Cdev_writeByte(uint8_t devAddr, uint8_t regAddr, uint8_t data)
-{
+uint16_t I2Cdev_writeByte(uint8_t devAddr, uint8_t regAddr, uint8_t data) {
     return I2Cdev_writeBytes(devAddr, regAddr, 1, &data);
 }
 
@@ -368,8 +437,7 @@ uint16_t I2Cdev_writeByte(uint8_t devAddr, uint8_t regAddr, uint8_t data)
  * @param data New word value to write
  * @return Status of operation (true = success)
  */
-uint16_t I2Cdev_writeWord(uint8_t devAddr, uint8_t regAddr, uint16_t data)
-{
+uint16_t I2Cdev_writeWord(uint8_t devAddr, uint8_t regAddr, uint16_t data) {
     return I2Cdev_writeWords(devAddr, regAddr, 1, &data);
 }
 
@@ -380,19 +448,19 @@ uint16_t I2Cdev_writeWord(uint8_t devAddr, uint8_t regAddr, uint16_t data)
  * @param data Buffer to copy new data from
  * @return Status of operation (true = success)
  */
-uint16_t I2Cdev_writeBytes(uint8_t devAddr, uint8_t regAddr, uint8_t Size, uint8_t* pData)
-{
+uint16_t I2Cdev_writeBytes(
+    uint8_t devAddr, uint8_t regAddr, uint8_t Size, uint8_t* pData) {
     // Creating dynamic array to store regAddr + data in one buffer
-    uint8_t * dynBuffer;
-    dynBuffer = (uint8_t *) malloc(sizeof(uint8_t) * (Size+1));
+    uint8_t* dynBuffer;
+    dynBuffer = (uint8_t*)malloc(sizeof(uint8_t) * (Size + 1));
     dynBuffer[0] = regAddr;
 
     // copy array
-    memcpy(dynBuffer+1, pData, sizeof(uint8_t) * Size);
+    memcpy(dynBuffer + 1, pData, sizeof(uint8_t) * Size);
 
-    HAL_StatusTypeDef status = HAL_I2C_Master_Transmit(&I2Cdev_hi2c, devAddr << 1, dynBuffer, Size+1, 1000);
+    auto ok = I2Cdev_Master_Transmit(devAddr << 1, dynBuffer, Size + 1, 1000);
     free(dynBuffer);
-    return status == HAL_OK;
+    return ok;
 }
 
 /** Write multiple words to a 16-bit device register.
@@ -402,16 +470,17 @@ uint16_t I2Cdev_writeBytes(uint8_t devAddr, uint8_t regAddr, uint8_t Size, uint8
  * @param data Buffer to copy new data from
  * @return Status of operation (true = success)
  */
-uint16_t I2Cdev_writeWords(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint16_t* data)
-{
+uint16_t I2Cdev_writeWords(
+    uint8_t devAddr, uint8_t regAddr, uint8_t length, uint16_t* data) {
     // Creating dynamic array to store regAddr + data in one buffer
-    uint8_t * dynBuffer;
-    dynBuffer = (uint8_t *) malloc(sizeof(uint8_t) + sizeof(uint16_t) * length);
+    uint8_t* dynBuffer;
+    dynBuffer = (uint8_t*)malloc(sizeof(uint8_t) + sizeof(uint16_t) * length);
     dynBuffer[0] = regAddr;
 
     // copy array
-    memcpy(dynBuffer+1, data, sizeof(uint16_t) * length);
-    HAL_StatusTypeDef status = HAL_I2C_Master_Transmit(&I2Cdev_hi2c, devAddr << 1, dynBuffer, sizeof(uint8_t) + sizeof(uint16_t) * length, 1000);
+    memcpy(dynBuffer + 1, data, sizeof(uint16_t) * length);
+    auto ok = I2Cdev_Master_Transmit(devAddr << 1, dynBuffer,
+        sizeof(uint8_t) + sizeof(uint16_t) * length, 1000);
     free(dynBuffer);
-    return status == HAL_OK;
+    return ok;
 }

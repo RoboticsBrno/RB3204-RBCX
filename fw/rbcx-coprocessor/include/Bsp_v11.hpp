@@ -79,6 +79,10 @@ inline const PinDef servoUartTxRxPin = std::make_pair(GPIOC, GPIO_PIN_12);
 inline const PinDef i2cSda = std::make_pair(GPIOB, GPIO_PIN_9);
 inline const PinDef i2cScl = std::make_pair(GPIOB, GPIO_PIN_8);
 
+inline const IRQn_Type i2cEvIRQn = I2C1_EV_IRQn;
+inline const IRQn_Type i2cErIRQn = I2C1_ER_IRQn;
+inline const unsigned i2cIRQnPrio = 8;
+
 inline USART_TypeDef* const userUart = USART1;
 inline USART_TypeDef* const tunnelUart = USART2;
 inline USART_TypeDef* const controlUart = USART3;
@@ -309,6 +313,11 @@ inline void pinsInit() {
 
     HAL_NVIC_SetPriority(EXTI9_5_IRQn, 7, 0); // Ultrasound
     HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+    HAL_NVIC_SetPriority(i2cEvIRQn, i2cIRQnPrio, 0);
+    HAL_NVIC_SetPriority(i2cErIRQn, i2cIRQnPrio, 0);
+    HAL_NVIC_EnableIRQ(i2cEvIRQn);
+    HAL_NVIC_EnableIRQ(i2cErIRQn);
 
     pinInit(buzzerPin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 

@@ -42,7 +42,7 @@ THE SOFTWARE.
 #ifndef _mpu_H_
 #define _mpu_H_
 
-#include "I2Cdev.hpp"
+#include "I2cController.hpp"
 #include <stdbool.h>
 #include "rbcx.pb.h"
 

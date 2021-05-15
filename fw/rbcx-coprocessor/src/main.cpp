@@ -6,7 +6,7 @@
 #include "utils/TaskWrapper.hpp"
 
 #include "ButtonController.hpp"
-#include "I2Cdev.hpp"
+#include "I2cController.hpp"
 #include "MotorController.hpp"
 #include "MpuController.hpp"
 #include "OledController.hpp"
@@ -34,7 +34,7 @@ int main() {
 
     pinsInit();
 
-    mainTask.start("main", 1, []() {
+    mainTask.start("main", mainTaskPrio, []() {
         debugUartInit();
         softResetInit();
         powerInit();
@@ -45,7 +45,7 @@ int main() {
         I2Cdev_init();
         stupidServoInit();
         ultrasoundInit();
-        mpu_init();
+        // mpu_init();
         sEsp32Manager.init();
         motorInit();
 
@@ -55,7 +55,7 @@ int main() {
         while (true) {
             debugLinkPoll();
             powerPoll();
-            mpuPoll();
+            // mpuPoll();
             dispatcherPoll();
             tunnelPoll();
             buttonControllerPoll();

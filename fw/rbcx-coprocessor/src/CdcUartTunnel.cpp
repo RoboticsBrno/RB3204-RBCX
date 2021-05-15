@@ -1,5 +1,5 @@
-/// Implements passthrough between the "primary" UART and USB CDC.
-/// Primary UART leads to ESP32 main UART.
+/// Implements passthrough between the "tunnel" UART and USB CDC.
+/// "Tunnel" UART leads to ESP32 main UART.
 
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_dma.h"
@@ -65,36 +65,36 @@ void tunnelUartInit() {
         tunnelUartRxPin, GPIO_MODE_AF_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
 }
 
-static void primaryUartRxPoll() {
+static void tunnelUartRxPoll() {
     int rxHead = rxFifo.size() - __HAL_DMA_GET_COUNTER(&dmaRxHandle);
     rxFifo.setHead(rxHead);
 }
 
-static void primaryUartTx(uint8_t* data, size_t len) {
+static void tunnelUartTx(uint8_t* data, size_t len) {
     HAL_DMA_Start(
         &dmaTxHandle, uintptr_t(data), uintptr_t(&tunnelUart->DR), len);
 }
 
-static bool primaryUartTxReady() {
+static bool tunnelUartTxReady() {
     HAL_DMA_PollForTransfer_Really(&dmaTxHandle, HAL_DMA_FULL_TRANSFER, 0);
     return dmaTxHandle.State == HAL_DMA_STATE_READY;
 }
 
 static void tunnelDownstreamHandler() {
-    if (primaryUartTxReady()) {
+    if (tunnelUartTxReady()) {
         usbIrqPrioRaise.lock();
         const int transferred = usbd_ep_read(
             &udev, CDC_TUNNEL_RXD_EP, txBuf.data(), txBuf.size());
         usbIrqPrioRaise.unlock();
 
         if (transferred > 0) {
-            primaryUartTx(txBuf.data(), transferred);
+            tunnelUartTx(txBuf.data(), transferred);
         }
     }
 }
 
 static void tunnelUpstreamHandler() {
-    primaryUartRxPoll();
+    tunnelUartRxPoll();
     auto readable = rxFifo.readableSpan();
     if (readable.second > 0) {
         usbIrqPrioRaise.lock();

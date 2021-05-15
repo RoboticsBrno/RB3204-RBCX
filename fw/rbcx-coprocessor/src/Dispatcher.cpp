@@ -6,13 +6,11 @@
 #include "BuzzerController.hpp"
 #include "ControlLink.hpp"
 #include "Esp32Manager.hpp"
+#include "I2cController.hpp"
 #include "MotorController.hpp"
 #include "Power.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
-#include "UltrasoundController.hpp"
-#include "OledController.hpp"
-#include "MpuController.hpp"
 #include "queue.h"
 #include "rbcx.pb.h"
 #include "utils/QueueWrapper.hpp"
@@ -101,12 +99,13 @@ static void dispatcherProcessReq(const CoprocReq& request) {
     case CoprocReq_motorReq_tag:
         motorDispatch(request.payload.motorReq);
         break;
-    case CoprocReq_oledReq_tag:
-        oledDispatch(request.payload.oledReq);
+    case CoprocReq_i2cReq_tag:
+        DEBUG("I2cDisp\n");
+        // i2cDispatch(request.payload.i2cReq);
         break;
-    case CoprocReq_mpuReq_tag:
-        mpuDispatch(request.payload.mpuReq);
-        break;
+    // case CoprocReq_mpuReq_tag:
+    //     mpuDispatch(request.payload.mpuReq);
+    //     break;
     }
 }
 

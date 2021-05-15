@@ -14,8 +14,8 @@
 #include "ButtonController.hpp"
 #include "BuzzerController.hpp"
 #include "Dispatcher.hpp"
-#include "I2Cdev.hpp"
-#include "MpuController.hpp"
+#include "I2cController.hpp"
+#include "Mpu6050.hpp"
 #include "OledController.hpp"
 #include "Power.hpp"
 #include "UsbCdcLink.h"
@@ -350,30 +350,30 @@ static void debugLinkHandleCommand(const char* cmd) {
         });
     });
 
-    COMMAND("mpu", {
-        COMMAND("test", {
-            printf("MPU test: %d\n", mpu_testConnection());
-            return;
-        });
-        COMMAND("temp", {
-            printf("MPU temp: %d\n", mpu_getTemperature());
-            return;
-        });
-        COMMAND("acc", {
-            int16_t x, y, z;
-            // int32_t x, y, z;
-            mpu_getAcceleration(&x, &y, &z);
-            printf("MPU acc: x:%d, y:%d, z:%d\n", x, y, z);
-            return;
-        });
-        COMMAND("gyro", {
-            int16_t x, y, z;
-            // int32_t x, y, z;
-            mpu_getRotation(&x, &y, &z);
-            printf("MPU gyro: x:%d, y:%d, z:%d\n", x, y, z);
-            return;
-        });
-    });
+    // COMMAND("mpu", {
+    //     COMMAND("test", {
+    //         printf("MPU test: %d\n", mpu_testConnection());
+    //         return;
+    //     });
+    //     COMMAND("temp", {
+    //         printf("MPU temp: %d\n", mpu_getTemperature());
+    //         return;
+    //     });
+    //     COMMAND("acc", {
+    //         int16_t x, y, z;
+    //         // int32_t x, y, z;
+    //         mpu_getAcceleration(&x, &y, &z);
+    //         printf("MPU acc: x:%d, y:%d, z:%d\n", x, y, z);
+    //         return;
+    //     });
+    //     COMMAND("gyro", {
+    //         int16_t x, y, z;
+    //         // int32_t x, y, z;
+    //         mpu_getRotation(&x, &y, &z);
+    //         printf("MPU gyro: x:%d, y:%d, z:%d\n", x, y, z);
+    //         return;
+    //     });
+    // });
 
     COMMAND("i2c", {
         COMMAND("transmit", {

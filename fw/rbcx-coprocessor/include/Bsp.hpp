@@ -20,6 +20,12 @@ typedef uint32_t ADC_rank_t;
 inline const IRQn_Type usbLpIRQn = USB_LP_CAN1_RX0_IRQn;
 inline constexpr unsigned usbLpIRQnPrio = 8;
 
+inline const int mainTaskPrio = 1;
+inline const int motorTaskPrio = 2;
+inline const int ultrasoundTaskPrio = 2;
+inline const int i2cPrio = 2;
+inline const int softResetTaskPrio = configMAX_PRIORITIES - 1;
+
 inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode,
     uint32_t pull, uint32_t speed, bool deInitFirst = false) {
 
