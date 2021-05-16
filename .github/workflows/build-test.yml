@@ -14,4 +14,4 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install platformio
       - name: Build examples
-        run: platformio run --project-dir="fw/rbcx-coprocessor/" --project-conf="fw/rbcx-coprocessor/platformio.ini" -e hw10_stlink -e hw11_stlink -e hw11_bootloader -e hw11_stlink_bootloader
+        run: platformio run --project-dir="fw/rbcx-coprocessor/" --project-conf="fw/rbcx-coprocessor/platformio.ini" -e hw11_stlink -e hw11_bootloader -e hw11_stlink_bootloader
