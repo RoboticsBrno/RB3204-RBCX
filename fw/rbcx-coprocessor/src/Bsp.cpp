@@ -11,12 +11,7 @@
 
 static TaskWrapper<1024> softResetTask;
 
-#if RBCX_HW_VER == 0x0100
-extern "C" void EXTI1_IRQHandler(void) { HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1); }
-extern "C" void EXTI3_IRQHandler(void) { HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3); }
-#elif RBCX_HW_VER == 0x0101
 extern "C" void EXTI4_IRQHandler(void) { HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4); }
-#endif
 
 extern "C" void EXTI9_5_IRQHandler(void) {
     HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
