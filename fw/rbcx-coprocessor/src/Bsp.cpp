@@ -11,28 +11,20 @@
 
 static TaskWrapper<1024> softResetTask;
 
-extern "C" void EXTI4_IRQHandler(void) { HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4); }
-
-extern "C" void EXTI9_5_IRQHandler(void) {
-    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
-    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
-    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7);
-    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_8);
-    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9);
+extern "C" void EXTI4_IRQHandler(void) {
+    // This EXTI vector only serves ESP_EN.
+    sEsp32Manager.onEnRisingInIrq();
+    __HAL_GPIO_EXTI_CLEAR_IT(espEnPin.second);
 }
 
-extern "C" void HAL_GPIO_EXTI_Callback(uint16_t pin) {
-    if (pin == espEnPin.second) {
-        sEsp32Manager.onEnRisingInIrq();
-        return;
-    }
+extern "C" void EXTI9_5_IRQHandler(void) {
+    // This EXTI vector only serves the ultrasound ECHO
+    // of which only one is listening at a time.
+    // We want minimum jitter so avoid the stupid HAL callback scheme.
 
-    for (const auto& p : utsEchoPin) {
-        if (pin == p.second) {
-            ultrasoundOnEchoEdge();
-            return;
-        }
-    }
+    ultrasoundOnEchoEdge();
+    __HAL_GPIO_EXTI_CLEAR_IT(uts1EchoPin.second | uts2EchoPin.second
+        | uts3EchoPin.second | uts4EchoPin.second);
 }
 
 void softResetInit() {
