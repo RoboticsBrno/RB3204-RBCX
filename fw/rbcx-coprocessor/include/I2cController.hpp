@@ -37,15 +37,25 @@ THE SOFTWARE.
 #include <stdlib.h>
 #include <string.h>
 
-// TODO: include depending on chip family
 #include "stm32f1xx_hal.h"
-//#include "stm32f2xx_hal.h"
-//#include "stm32f3xx_hal.h"
-//#include "stm32f4xx_hal.h"
+
+#include "FreeRTOS.h"
+#include "task.h"
+
+#include "event_groups.h"
+
+enum I2cEvents : uint32_t {
+    I2C_NONE = 0,
+    I2C_MPU_TICK = 1,
+    I2C_MESSAGE = 2,
+};
+
+extern TaskHandle_t i2cTaskHandle;
+extern EventGroupHandle_t i2cEventGroup;
 
 void i2cDispatch(const CoprocReq_I2cReq& req);
 
-// 1000ms default read timeout (modify with "I2Cdev::readTimeout = [ms];")
+
 #define I2CDEV_DEFAULT_READ_TIMEOUT 10
 
 uint8_t I2Cdev_init();

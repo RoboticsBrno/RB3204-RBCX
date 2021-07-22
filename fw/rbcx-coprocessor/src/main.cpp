@@ -45,7 +45,7 @@ int main() {
         I2Cdev_init();
         stupidServoInit();
         ultrasoundInit();
-        // mpu_init();
+        mpu_initialize();
         sEsp32Manager.init();
         motorInit();
 
@@ -55,7 +55,6 @@ int main() {
         while (true) {
             debugLinkPoll();
             powerPoll();
-            // mpuPoll();
             dispatcherPoll();
             tunnelPoll();
             buttonControllerPoll();

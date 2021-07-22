@@ -102,9 +102,6 @@ static void dispatcherProcessReq(const CoprocReq& request) {
     case CoprocReq_i2cReq_tag:
         i2cDispatch(request.payload.i2cReq);
         break;
-        // case CoprocReq_mpuReq_tag:
-        //     mpuDispatch(request.payload.mpuReq);
-        //     break;
     }
 }
 

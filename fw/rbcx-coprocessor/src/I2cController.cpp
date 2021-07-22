@@ -31,6 +31,7 @@ THE SOFTWARE.
 */
 #include "I2cController.hpp"
 #include "Bsp.hpp"
+#include "MpuController.hpp"
 #include "OledController.hpp"
 #include "utils/Debug.hpp"
 
@@ -38,17 +39,26 @@ THE SOFTWARE.
 #include "utils/QueueWrapper.hpp"
 #include "utils/TaskWrapper.hpp"
 
+// #include "event_groups.h"
 #include <mutex>
 
 static TaskWrapper<1024> i2cTask;
+TaskHandle_t i2cTaskHandle;
+
 static QueueWrapper<CoprocReq_I2cReq, 16> i2cQueue;
 static xTaskHandle i2cCallingTask;
 static MutexWrapper i2cMutex;
 
+EventGroupHandle_t i2cEventGroup;
+StaticEventGroup_t i2cEventBuffer;
+
 // Hold pointer to inited HAL I2C device
 I2C_HandleTypeDef I2Cdev_hi2c;
 
-void i2cDispatch(const CoprocReq_I2cReq& req) { i2cQueue.push_back(req); }
+void i2cDispatch(const CoprocReq_I2cReq& req) {
+    i2cQueue.push_back(req);
+    xEventGroupSetBits(i2cEventGroup, I2C_MESSAGE);
+}
 
 /** Default timeout value for read operations.
  * Set this to 0 to disable timeout detection.
@@ -70,21 +80,37 @@ uint8_t I2Cdev_init() {
     if (init == HAL_OK) {
         i2cQueue.create();
         i2cMutex.create();
+        i2cEventGroup = xEventGroupCreateStatic(&i2cEventBuffer);
+
         i2cTask.start("i2c", i2cPrio, []() {
+            // mpu_initialize();
             while (true) {
                 CoprocReq_I2cReq req;
-                i2cQueue.pop_front(req);
 
-                switch (req.which_payload) {
-                case CoprocReq_I2cReq_oledReq_tag:
-                    oledDispatch(req.payload.oledReq);
-                    break;
-                case CoprocReq_I2cReq_mpuReq_tag:
-                    // mpuDispatch()
-                    break;
+                EventBits_t eventsBit = I2C_NONE;
+                eventsBit = xEventGroupWaitBits(
+                    i2cEventGroup, 0xFF, pdTRUE, 0, portMAX_DELAY);
+
+                if (eventsBit & I2C_MPU_TICK) {
+                    mpuTick();
+                    // DEBUG("SEND MPU\n");
                 }
+
+                while (i2cQueue.pop_front(req, 0)) {
+                    switch (req.which_payload) {
+                    case CoprocReq_I2cReq_oledReq_tag:
+                        oledDispatch(req.payload.oledReq);
+                        break;
+                    case CoprocReq_I2cReq_mpuReq_tag:
+                        mpuDispatch(req.payload.mpuReq);
+                        // DEBUGLN("MPU Req %d", req.payload.mpuReq.which_mpuCmd);
+                        break;
+                    }
+                }
+                // vTaskDelay(pdMS_TO_TICKS(10));
             }
         });
+        i2cTaskHandle = i2cTask.handle();
     } else {
         DEBUG("Error I2c Init\n");
     }
@@ -134,8 +160,11 @@ template <typename F> uint8_t i2cWrap(F fun, uint32_t Timeout) {
             HAL_I2C_Master_Abort_IT(&I2Cdev_hi2c, 0);
         }
         return ok;
+    } else {
+        // HAL_I2C_
+        HAL_I2C_Master_Abort_IT(&I2Cdev_hi2c, 0);
+        return 0;
     }
-    return 0;
 }
 
 /* Rewrited original functions */
@@ -186,14 +215,15 @@ uint8_t I2Cdev_Mem_Read(uint16_t DevAddress, uint16_t MemAddress,
 uint8_t I2Cdev_IsDeviceReady(
     uint16_t DevAddress, uint32_t Trials, uint32_t Timeout) {
     uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-    return HAL_I2C_IsDeviceReady(&I2Cdev_hi2c, DevAddress << 1, Trials, tout);
+    return HAL_I2C_IsDeviceReady(&I2Cdev_hi2c, DevAddress << 1, Trials, tout)
+        == HAL_OK;
 }
 /* Rewrited original functions */
 
 uint8_t I2Cdev_scan() {
     uint8_t counter = 0;
     for (int range = 1; range <= 254; range++) {
-        if (I2Cdev_IsDeviceReady(range) == HAL_OK) {
+        if (I2Cdev_IsDeviceReady(range) != 0) {
             DEBUG("I2Cdev_scan[%d] ready: %#04x (%d)\n", counter, range, range);
             counter++;
         }
@@ -321,12 +351,27 @@ uint8_t I2Cdev_readWord(
 uint8_t I2Cdev_readBytes(uint8_t devAddr, uint8_t regAddr, uint8_t length,
     uint8_t* data, uint16_t timeout) {
     uint16_t tout = timeout > 0 ? timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
-
-    I2Cdev_Master_Transmit(devAddr << 1, &regAddr, 1, tout);
-    if (I2Cdev_Master_Receive(devAddr << 1, data, length, tout) == HAL_OK)
+    I2Cdev_Master_Transmit(devAddr, &regAddr, 1, tout);
+    uint8_t ret = I2Cdev_Master_Receive(devAddr, data, length, tout);
+    if (ret != 0) {
+        // DEBUG("I2Cdev_readBytes %d\n", length);
         return length;
+    }
+    DEBUG("ERR - I2Cdev_readBytes %d, ret: %d\n", length, ret);
     return -1;
 }
+
+// uint8_t I2Cdev_readBytes(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint8_t *data, uint16_t timeout)
+// {
+//     uint16_t tout = timeout > 0 ? timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
+
+//     HAL_I2C_Master_Transmit(&I2Cdev_hi2c, devAddr << 1, &regAddr, 1, tout);
+//     if (HAL_I2C_Master_Receive(&I2Cdev_hi2c, devAddr << 1, data, length, tout) == HAL_OK) {
+//         DEBUG("I2Cdev_readBytes %d\n", length);
+//         return length;
+//     }
+//     return -1;
+// }
 
 /** Read multiple words from a 16-bit device register.
  * @param devAddr I2C slave device address
@@ -340,13 +385,25 @@ uint8_t I2Cdev_readWords(uint8_t devAddr, uint8_t regAddr, uint8_t length,
     uint16_t* data, uint16_t timeout) {
     uint16_t tout = timeout > 0 ? timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
 
-    I2Cdev_Master_Transmit(devAddr << 1, &regAddr, 1, tout);
-    if (I2Cdev_Master_Receive(devAddr << 1, (uint8_t*)data, length * 2, tout)
-        == HAL_OK)
+    I2Cdev_Master_Transmit(devAddr, &regAddr, 1, tout);
+    if (I2Cdev_Master_Receive(devAddr, (uint8_t*)data, length * 2, tout) != 0)
         return length;
     else
         return -1;
 }
+
+// uint8_t I2Cdev_readWords(uint8_t devAddr, uint8_t regAddr, uint8_t length,
+//     uint16_t* data, uint16_t timeout) {
+//     uint16_t tout = timeout > 0 ? timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
+
+//     HAL_I2C_Master_Transmit(&I2Cdev_hi2c, devAddr << 1, &regAddr, 1, tout);
+//     if (HAL_I2C_Master_Receive(
+//             &I2Cdev_hi2c, devAddr << 1, (uint8_t*)data, length * 2, tout)
+//         == HAL_OK)
+//         return length;
+//     else
+//         return -1;
+// }
 
 /** write a single bit in an 8-bit device register.
  * @param devAddr I2C slave device address
@@ -474,7 +531,7 @@ uint16_t I2Cdev_writeBytes(
     // copy array
     memcpy(buffer + 1, pData, sizeof(uint8_t) * length);
 
-    auto ok = I2Cdev_Master_Transmit(devAddr << 1, buffer, length + 1, 1000);
+    auto ok = I2Cdev_Master_Transmit(devAddr, buffer, length + 1, 1000);
     return ok;
 }
 
@@ -493,7 +550,7 @@ uint16_t I2Cdev_writeWords(
 
     // copy array
     memcpy(buffer + 1, data, sizeof(uint16_t) * length);
-    auto ok = I2Cdev_Master_Transmit(devAddr << 1, buffer,
-        sizeof(uint8_t) + sizeof(uint16_t) * length, 1000);
+    auto ok = I2Cdev_Master_Transmit(
+        devAddr, buffer, sizeof(uint8_t) + sizeof(uint16_t) * length, 1000);
     return ok;
 }

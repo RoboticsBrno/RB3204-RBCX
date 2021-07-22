@@ -43,134 +43,157 @@ THE SOFTWARE.
 #include "Dispatcher.hpp"
 #include "utils/TickTimer.hpp"
 
+#include "Bsp.hpp"
 
+#include "utils/QueueWrapper.hpp"
+#include "utils/TaskWrapper.hpp"
 
+#include "FreeRTOS.h"
+#include "timers.h"
 
-typedef struct MpuVector
-{
+#include "event_groups.h"
+
+typedef struct MpuVector {
     int16_t x;
     int16_t y;
     int16_t z;
-}MpuVector;
+} MpuVector;
 
-
-typedef struct MpuVector32
-{
+typedef struct MpuVector32 {
     int32_t x;
     int32_t y;
     int32_t z;
-}MpuVector32;
+} MpuVector32;
 
-typedef struct MpuMotion6
-{
+typedef struct MpuMotion6 {
     MpuVector accel;
     MpuVector gyro;
-}MpuMotion6;    
+} MpuMotion6;
 
-typedef struct MpuMotion32
-{
+typedef struct MpuMotion32 {
     MpuVector32 accel;
     MpuVector32 gyro;
-}MpuMotion32;
+} MpuMotion32;
 
 mpu_t mpu6050;
-MpuMotion32 mpuMotion;
-MpuMotion6 mpuMotionHelper;
+MpuMotion32 mpuAggrData;
 
-static constexpr uint32_t dispatchStatPeriodMs = 10;
-static uint32_t counter = 0;
-static TickTimer dispatchStatTimer;
+static constexpr uint32_t mpuTickPeriodMs = 10;
+static uint32_t mpuAggrCounter = 0;
+static TimerHandle_t mpuTimerHandle;
+static StaticTimer_t mpuTimerBuffer;
+static uint16_t compressCoef = 4;
+static void mpuTickCallback(TimerHandle_t tim) {
+    // xTaskNotify(i2cTaskHandle, I2C_MPU_TICK, eSetBits);
+    xEventGroupSetBits(i2cEventGroup, I2C_MPU_TICK);
+    // DEBUGLN("mpuTickCallback");
+}
 
+static void mpuRead(MpuMotion6& data) {
+    mpu_getMotion6(&data.accel.x, &data.accel.y, &data.accel.z, &data.gyro.x,
+        &data.gyro.y, &data.gyro.z);
+}
 
+static void mpuSend(const MpuMotion32& data) {
+    DEBUG(
+        "DEBUG MPU SEND [%d] acc: x:%d; y:%d; z:%d | gyro: x:%d; y:%d; z:%d\n",
+        mpuAggrCounter, data.accel.x, data.accel.y, data.accel.z, data.gyro.x,
+        data.gyro.y, data.gyro.z);
 
+    CoprocStat status = {
+        .which_payload = CoprocStat_mpuStat_tag,
+    };
 
+    status.payload.mpuStat.accel.x = data.accel.x;
+    status.payload.mpuStat.accel.y = data.accel.y;
+    status.payload.mpuStat.accel.z = data.accel.z;
+    status.payload.mpuStat.has_accel = true;
 
-void mpuDispatch(const CoprocReq_MpuReq& request) {
-    switch (request.which_mpuCmd) {
+    status.payload.mpuStat.gyro.x = data.gyro.x;
+    status.payload.mpuStat.gyro.y = data.gyro.y;
+    status.payload.mpuStat.gyro.z = data.gyro.z;
+    status.payload.mpuStat.has_gyro = true;
+    status.payload.mpuStat.compressCoef = compressCoef;
+    dispatcherEnqueueStatus(status);
+}
+
+void mpuDispatch(const CoprocReq_MpuReq& req) {
+    switch (req.which_mpuCmd) {
     case CoprocReq_MpuReq_oneSend_tag:
-        
+        MpuMotion6 data;
+        MpuMotion32 data32;
+        mpuRead(data);
+        data32.accel.x = data.accel.x;
+        data32.accel.y = data.accel.y;
+        data32.accel.z = data.accel.z;
+        data32.gyro.x = data.gyro.x;
+        data32.gyro.y = data.gyro.y;
+        data32.gyro.z = data.gyro.z;
+        mpuSend(data32);
         break;
-
     case CoprocReq_MpuReq_startSend_tag:
-
+        if (xTimerStart(mpuTimerHandle, 0) == pdFALSE) {
+            DEBUG("Time queue overflow\n");
+        }
+        mpuAggrCounter = 0;
         break;
-
     case CoprocReq_MpuReq_stopSend_tag:
+        if (xTimerStop(mpuTimerHandle, 0) == pdFALSE) {
+            DEBUG("Time queue overflow\n");
+        }
         break;
+    case CoprocReq_MpuReq_setCompressCoef_tag:
+        uint16_t coef = req.mpuCmd.setCompressCoef;
+        if (coef > 0 && coef <= 20) {
+            compressCoef = coef;
+            DEBUGLN("Set new Coef: %d", compressCoef);
+        }
+        break;
+    // case CoprocReq_MpuReq_getCompressCoef_tag:
+    //     CoprocStat status = {
+    //         .which_payload = CoprocStat_mpuStat_tag,
+    //         .payload = {
+    //             .mpuStat = {
+    //                 .compressCoef = compressCoef,
+    //             }
+    //         }
+    //     };
 
+    //     dispatcherEnqueueStatus(status);        
+    //     break; 
     };
 }
 
+void mpuTick() {
+    MpuMotion6 data;
+    mpuRead(data);
+    // printf("DEBUG MPU [%d] acc: x:%d; y:%d; z:%d | gyro: x:%d; y:%d; z:%d\n",
+        // mpuAggrCounter, data.accel.x, data.accel.y, data.accel.z, data.gyro.x,
+        // data.gyro.y, data.gyro.z);
 
+    mpuAggrData.accel.x += data.accel.x;
+    mpuAggrData.accel.y += data.accel.y;
+    mpuAggrData.accel.z += data.accel.z;
+    mpuAggrData.gyro.x += data.gyro.x;
+    mpuAggrData.gyro.y += data.gyro.y;
+    mpuAggrData.gyro.z += data.gyro.z;
 
-void mpuPoll() {
-    if (dispatchStatTimer.poll()) {
-        
-        mpu_getAcceleration(&mpuMotionHelper.accel.x, &mpuMotionHelper.accel.y, &mpuMotionHelper.accel.z);
-        mpu_getRotation(&mpuMotionHelper.gyro.x, &mpuMotionHelper.gyro.y, &mpuMotionHelper.gyro.z);
-        // printf("DEBUG MPU [%d] acc: x:%d; y:%d; z:%d | gyro: x:%d; y:%d; z:%d\n", counter, mpuMotionHelper.accel.x, mpuMotionHelper.accel.y, mpuMotionHelper.accel.z, mpuMotionHelper.gyro.x, mpuMotionHelper.gyro.y, mpuMotionHelper.gyro.z);
+    // DEBUGLN("mpuTick");
 
-        mpuMotion.accel.x += (int32_t)mpuMotionHelper.accel.x;        
-        mpuMotion.accel.y += (int32_t)mpuMotionHelper.accel.y;
-        mpuMotion.accel.z += (int32_t)mpuMotionHelper.accel.z;
-        mpuMotion.gyro.x += (int32_t)mpuMotionHelper.gyro.x;
-        mpuMotion.gyro.y += (int32_t)mpuMotionHelper.gyro.y;
-        mpuMotion.gyro.z += (int32_t)mpuMotionHelper.gyro.z;
+    mpuAggrCounter++;
+    if (mpuAggrCounter >= compressCoef) {
 
+        // printf("DEBUG MPU %d acc: x:%d; y:%d; z:%d | gyro: x:%d; y:%d; z:%d\n\n", mpuAggrCounter, status.payload.mpuStat.accel.x, status.payload.mpuStat.accel.y, status.payload.mpuStat.accel.z, status.payload.mpuStat.gyro.x, status.payload.mpuStat.gyro.y, status.payload.mpuStat.gyro.z);
+        mpuSend(mpuAggrData);
 
-
-        if(counter>COMPRESS_COEF) {
-            CoprocStat status = {
-                .which_payload = CoprocStat_mpuStat_tag,
-            };
-
-            status.payload.mpuStat.accel.x = mpuMotion.accel.x >> COMPRESS_SHIFT;
-            status.payload.mpuStat.accel.y = mpuMotion.accel.y >> COMPRESS_SHIFT;
-            status.payload.mpuStat.accel.z = mpuMotion.accel.z >> COMPRESS_SHIFT;            
-            status.payload.mpuStat.has_accel = true;
-
-            status.payload.mpuStat.gyro.x = mpuMotion.gyro.x >> COMPRESS_SHIFT;
-            status.payload.mpuStat.gyro.y = mpuMotion.gyro.y >> COMPRESS_SHIFT;
-            status.payload.mpuStat.gyro.z = mpuMotion.gyro.z >> COMPRESS_SHIFT;
-            status.payload.mpuStat.has_gyro = true;
-            dispatcherEnqueueStatus(status);
-
-            // printf("DEBUG MPU %d acc: x:%d; y:%d; z:%d | gyro: x:%d; y:%d; z:%d\n\n", counter, status.payload.mpuStat.accel.x, status.payload.mpuStat.accel.y, status.payload.mpuStat.accel.z, status.payload.mpuStat.gyro.x, status.payload.mpuStat.gyro.y, status.payload.mpuStat.gyro.z);
-            
-            mpuMotion.accel.x = 0;
-            mpuMotion.accel.y = 0;
-            mpuMotion.accel.z = 0;
-            mpuMotion.gyro.x = 0;
-            mpuMotion.gyro.y = 0;
-            mpuMotion.gyro.z = 0;
-            counter = 0;
-        }
-        else{
-            counter++;
-        }
-
-
-        dispatchStatTimer.restart(dispatchStatPeriodMs);
+        mpuAggrData.accel.x = 0;
+        mpuAggrData.accel.y = 0;
+        mpuAggrData.accel.z = 0;
+        mpuAggrData.gyro.x = 0;
+        mpuAggrData.gyro.y = 0;
+        mpuAggrData.gyro.z = 0;
+        mpuAggrCounter = 0;
     }
-}
-
-
-/** RBCX mpu init
- * Set address to mpu_ADDRESS_AD0_HIGH (0x69)
- * This will activate the device and take it out of sleep mode (which must be done
- * after start-up). This function also sets both the accelerometer and the gyroscope
- * to their most sensitive settings, namely +/- 2g and +/- 250 degrees/sec, and sets
- * the clock source to use the X Gyro for reference, which is slightly better than
- * the default internal clock source.
- */
-void mpu_init() {
-    mpu6050.devAddr = mpu_ADDRESS_AD0_HIGH;
-    mpu_setClockSource(mpu_CLOCK_PLL_XGYRO);
-    mpu_setFullScaleGyroRange(mpu_GYRO_FS_250);
-    mpu_setFullScaleAccelRange(mpu_ACCEL_FS_2);
-    mpu_setSleepEnabled(
-        false); // thanks to Jack Elston for pointing this one out!
-    dispatchStatTimer.restart(dispatchStatPeriodMs);
 }
 
 /** Specific address constructor.
@@ -189,11 +212,20 @@ void mpu(uint8_t address) { mpu6050.devAddr = address; }
  * the default internal clock source.
  */
 void mpu_initialize() {
+
+    // if (mpu_testConnection()) {
+    mpu6050.devAddr = mpu_ADDRESS_AD0_HIGH;
     mpu_setClockSource(mpu_CLOCK_PLL_XGYRO);
     mpu_setFullScaleGyroRange(mpu_GYRO_FS_250);
     mpu_setFullScaleAccelRange(mpu_ACCEL_FS_2);
-    mpu_setSleepEnabled(
-        false); // thanks to Jack Elston for pointing this one out!
+    mpu_setSleepEnabled(false);
+    // } else {
+    // DEBUG("mpu is not coDEBUGLN("Init MPU");nnected\n");
+    // }
+
+    mpuTimerHandle
+        = xTimerCreateStatic("mpuTimer", pdMS_TO_TICKS(mpuTickPeriodMs), true,
+            nullptr, mpuTickCallback, &mpuTimerBuffer);
 }
 
 /** Verify the I2C connection.
@@ -2029,7 +2061,7 @@ void mpu_getMotion6(int16_t* ax, int16_t* ay, int16_t* az, int16_t* gx,
  * @see mpu_RA_GYRO_XOUT_H
  */
 void mpu_getAcceleration(int16_t* x, int16_t* y, int16_t* z) {
-// void mpu_getAcceleration(int32_t* x, int32_t* y, int32_t* z) {
+    // void mpu_getAcceleration(int32_t* x, int32_t* y, int32_t* z) {
     I2Cdev_readBytes(
         mpu6050.devAddr, mpu_RA_ACCEL_XOUT_H, 6, mpu6050.buffer, 0);
     *x = (((int16_t)mpu6050.buffer[0]) << 8) | mpu6050.buffer[1];
@@ -2113,7 +2145,7 @@ int16_t mpu_getTemperature() {
  * @see mpu_RA_GYRO_XOUT_H
  */
 void mpu_getRotation(int16_t* x, int16_t* y, int16_t* z) {
-// void mpu_getRotation(int32_t* x, int32_t* y, int32_t* z) {
+    // void mpu_getRotation(int32_t* x, int32_t* y, int32_t* z) {
     I2Cdev_readBytes(mpu6050.devAddr, mpu_RA_GYRO_XOUT_H, 6, mpu6050.buffer, 0);
     *x = (((int16_t)mpu6050.buffer[0]) << 8) | mpu6050.buffer[1];
     *y = (((int16_t)mpu6050.buffer[2]) << 8) | mpu6050.buffer[3];
@@ -2776,7 +2808,7 @@ uint8_t mpu_getClockSource() {
  * @see mpu_PWR1_CLKSEL_LENGTH
  */
 void mpu_setClockSource(uint8_t source) {
-    I2Cdev_writeBits(mpu6050.devAddr, mpu_RA_PWR_MGMT_1, mpu_PWR1_CLKSEL_BIT,
+    auto x = I2Cdev_writeBits(mpu6050.devAddr, mpu_RA_PWR_MGMT_1, mpu_PWR1_CLKSEL_BIT,
         mpu_PWR1_CLKSEL_LENGTH, source);
 }
 

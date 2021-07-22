@@ -26,6 +26,10 @@ inline void DEBUG_HEX(const uint8_t* data, size_t len) {
     putchar('\n');
 }
 
+#define DEBUGLN(fmt, ...)														\
+	DEBUG(fmt, ##__VA_ARGS__);													\
+	printf("\n");
+
 #else
 
 #define DEBUG(fmt, ...)                                                        \

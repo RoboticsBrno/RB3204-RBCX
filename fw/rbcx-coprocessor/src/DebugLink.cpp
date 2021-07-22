@@ -17,6 +17,7 @@
 #include "I2cController.hpp"
 #include "Mpu6050.hpp"
 #include "OledController.hpp"
+#include "MpuController.hpp"
 #include "Power.hpp"
 #include "UsbCdcLink.h"
 #include "coproc_codec.h"
@@ -329,6 +330,23 @@ static void debugLinkHandleCommand(const char* cmd) {
     COMMAND("oled", {
         COMMAND("fill", {
             COMMAND("white", {
+                // dispatcherEnqueueRequest(CoprocReq {
+                //     .which_payload = CoprocReq_i2cReq_tag, 
+                //     .payload = {
+                //         .i2cReq = {
+                //             .which_payload = CoprocReq_I2cReq_oledReq_tag,
+                //             .payload = {
+                //                 .oledReq = {
+                //                     .which_oledCmd = CoprocReq_OledReq_fill_tag,
+                //                     .oledCmd = {
+                //                         .fill = CoprocReq_OledColor_OLED_WHITE,
+                //                     }                                      
+                //                 },
+                //             }
+                //         }
+                //     }                    
+                // });
+                // return;                
                 oledFill(White);
                 oledUpdateScreen();
                 printf("OLED fill white\n");
@@ -348,32 +366,42 @@ static void debugLinkHandleCommand(const char* cmd) {
             printf("OLED write\n");
             return;
         });
+        COMMAND("init", {
+            oledInitStm();
+            printf("OLED init\n");
+            return;
+        });
     });
 
-    // COMMAND("mpu", {
-    //     COMMAND("test", {
-    //         printf("MPU test: %d\n", mpu_testConnection());
-    //         return;
-    //     });
-    //     COMMAND("temp", {
-    //         printf("MPU temp: %d\n", mpu_getTemperature());
-    //         return;
-    //     });
-    //     COMMAND("acc", {
-    //         int16_t x, y, z;
-    //         // int32_t x, y, z;
-    //         mpu_getAcceleration(&x, &y, &z);
-    //         printf("MPU acc: x:%d, y:%d, z:%d\n", x, y, z);
-    //         return;
-    //     });
-    //     COMMAND("gyro", {
-    //         int16_t x, y, z;
-    //         // int32_t x, y, z;
-    //         mpu_getRotation(&x, &y, &z);
-    //         printf("MPU gyro: x:%d, y:%d, z:%d\n", x, y, z);
-    //         return;
-    //     });
-    // });
+    COMMAND("mpu", {
+        COMMAND("init", {
+            mpu_initialize();
+            printf("MPU init\n");
+            return;
+        });
+        COMMAND("test", {
+            printf("MPU test: %d\n", mpu_testConnection());
+            return;
+        });
+        COMMAND("temp", {
+            printf("MPU temp: %d\n", mpu_getTemperature());
+            return;
+        });
+        COMMAND("acc", {
+            int16_t x, y, z;
+            // int32_t x, y, z;
+            mpu_getAcceleration(&x, &y, &z);
+            printf("MPU acc: x:%d, y:%d, z:%d\n", x, y, z);
+            return;
+        });
+        COMMAND("gyro", {
+            int16_t x, y, z;
+            // int32_t x, y, z;
+            mpu_getRotation(&x, &y, &z);
+            printf("MPU gyro: x:%d, y:%d, z:%d\n", x, y, z);
+            return;
+        });
+    });
 
     COMMAND("i2c", {
         COMMAND("transmit", {

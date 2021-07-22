@@ -408,8 +408,7 @@ THE SOFTWARE.
 
 // note: DMP code memory blocks defined at end of header file
 
-#define COMPRESS_COEF 4
-#define COMPRESS_SHIFT 3
+// #define COMPRESS_COEF 4
 
 typedef struct mpu_t {
     uint8_t devAddr;
@@ -417,10 +416,7 @@ typedef struct mpu_t {
 } mpu_t;
 
 void mpuDispatch(const CoprocReq_MpuReq& request);
-void mpuPoll();
-
-
-void mpu_init();
+void mpuTick();
 
 void mpu(uint8_t address);
 
