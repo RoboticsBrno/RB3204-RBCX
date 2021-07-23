@@ -53,6 +53,7 @@ int main() {
                   RBCX_VER_DIRTY_STR "\n",
             RBCX_VER_NUMBER);
         while (true) {
+            vTaskDelay(pdMS_TO_TICKS(1));
             debugLinkPoll();
             powerPoll();
             dispatcherPoll();

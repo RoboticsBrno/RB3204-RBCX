@@ -1,6 +1,5 @@
 #include <array>
 #include <string.h>
-// #include "printf.hpp"
 
 #include "FreeRTOS.h"
 #include "stream_buffer.h"
@@ -328,6 +327,11 @@ static void debugLinkHandleCommand(const char* cmd) {
     });
 
     COMMAND("oled", {
+        COMMAND("test", {
+            printf("Oled test: %d\n", oledTestConnection());
+            return;
+        });
+
         COMMAND("fill", {
             COMMAND("white", {
                 // dispatcherEnqueueRequest(CoprocReq {

@@ -65,7 +65,7 @@ void Esp32Manager::poll() {
 
     if (!m_watchdogInhibit && m_watchdogTimer.poll() && !m_inBootloader
         && m_previousEnEdge && m_enPinHolders == 0) {
-        //DEBUG("Esp32 watchdog timed out, resetting.\n");
+        DEBUG("Esp32 watchdog timed out, resetting.\n");
         queueReset();
     }
 }

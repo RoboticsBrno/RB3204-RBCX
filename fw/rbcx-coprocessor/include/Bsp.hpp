@@ -20,7 +20,7 @@ typedef uint32_t ADC_rank_t;
 inline const IRQn_Type usbLpIRQn = USB_LP_CAN1_RX0_IRQn;
 inline constexpr unsigned usbLpIRQnPrio = 8;
 
-inline const int mainTaskPrio = 1;
+inline const int mainTaskPrio = 4;
 inline const int motorTaskPrio = 2;
 inline const int ultrasoundTaskPrio = 2;
 inline const int i2cPrio = 2;

@@ -97,6 +97,10 @@ void oledDispatch(const CoprocReq_OledReq& request) {
     };
 }
 
+bool oledTestConnection() {
+    return I2Cdev_IsDeviceReady(OLED_I2C_ADDR, 1, 10);
+}
+
 void oledInitStm() {
     CoprocReq_OledInit pre;
     pre.width = 128;
@@ -108,188 +112,100 @@ void oledInitStm() {
 
 // Initialize the oled screen
 void oledInit(const CoprocReq_OledInit& init) {
-    // Init OLED
-    oledSetDisplayOn(0); //display off
 
-    oledWriteCommand(0x20); //Set Memory Addressing Mode
-    oledWriteCommand(
-        0x00); // 00b,Horizontal Addressing Mode; 01b,Vertical Addressing Mode;
-    // 10b,Page Addressing Mode (RESET); 11b,Invalid
+    if(oledTestConnection()) {
+        // Init OLED
+        oledSetDisplayOn(false); //display off
 
-    oledWriteCommand(
-        0xB0); //Set Page Start Address for Page Addressing Mode,0-7
+        oledWriteCommand(0x20); //Set Memory Addressing Mode
+        oledWriteCommand(
+            0x00); // 00b,Horizontal Addressing Mode; 01b,Vertical Addressing Mode;
+        // 10b,Page Addressing Mode (RESET); 11b,Invalid
 
-    if (init.rotate) {
-        oledWriteCommand(0xC0); // Mirror vertically
+        oledWriteCommand(
+            0xB0); //Set Page Start Address for Page Addressing Mode,0-7
+
+        if (init.rotate) {
+            oledWriteCommand(0xC0); // Mirror vertically
+        } else {
+            oledWriteCommand(0xC8); //Set COM Output Scan Direction
+        }
+
+        oledWriteCommand(0x00); //---set low column address
+        oledWriteCommand(0x10); //---set high column address
+
+        oledWriteCommand(0x40); //--set start line address - CHECK
+
+        oledSetContrast(0xFF);
+
+        if (init.rotate) {
+            oledWriteCommand(0xA0); // Mirror horizontally
+        } else {
+            oledWriteCommand(0xA1); //--set segment re-map 0 to 127 - CHECK
+        }
+
+        if (init.inverseColor) {
+            oledWriteCommand(0xA7); //--set inverse color
+        } else {
+            oledWriteCommand(0xA6); //--set normal color
+        }
+
+        oledWriteCommand(0xA8); //--set multiplex ratio(1 to 64) - CHECK
+
+        if (init.height == 32) {
+            oledWriteCommand(0x1F); //
+        } else if (init.height == 64) {
+            oledWriteCommand(0x3F); //
+        } else {
+            //TO DO warning message
+        }
+
+        oledWriteCommand(
+            0xA4); //0xa4,Output follows RAM content;0xa5,Output ignores RAM content
+
+        oledWriteCommand(0xD3); //-set display offset - CHECK
+        oledWriteCommand(0x00); //-not offset
+
+        oledWriteCommand(
+            0xD5); //--set display clock divide ratio/oscillator frequency
+        oledWriteCommand(0xF0); //--set divide ratio
+
+        oledWriteCommand(0xD9); //--set pre-charge period
+        oledWriteCommand(0x22); //
+
+        oledWriteCommand(0xDA); //--set com pins hardware configuration - CHECK
+
+        if (init.height == 32) {
+            oledWriteCommand(0x02);
+        } else if (init.height == 64) {
+            oledWriteCommand(0x12);
+        } else {
+            //TO DO warning message
+        }
+
+        oledWriteCommand(0xDB); //--set vcomh
+        oledWriteCommand(0x20); //0x20,0.77xVcc
+
+        oledWriteCommand(0x8D); //--set DC-DC enable
+        oledWriteCommand(0x14); //
+        oledSetDisplayOn(true); //--turn on OLED panel
+
+        // Clear screen
+        oledFill(Black);
+
+        // Flush buffer to screen
+        oledUpdateScreen();
+
+        // Set default values for screen object
+        OLED.CurrentX = 0;
+        OLED.CurrentY = 0;
+
     } else {
-        oledWriteCommand(0xC8); //Set COM Output Scan Direction
+        DEBUG("Oled not connected\n");
     }
-
-    oledWriteCommand(0x00); //---set low column address
-    oledWriteCommand(0x10); //---set high column address
-
-    oledWriteCommand(0x40); //--set start line address - CHECK
-
-    oledSetContrast(0xFF);
-
-    if (init.rotate) {
-        oledWriteCommand(0xA0); // Mirror horizontally
-    } else {
-        oledWriteCommand(0xA1); //--set segment re-map 0 to 127 - CHECK
-    }
-
-    if (init.inverseColor) {
-        oledWriteCommand(0xA7); //--set inverse color
-    } else {
-        oledWriteCommand(0xA6); //--set normal color
-    }
-
-    oledWriteCommand(0xA8); //--set multiplex ratio(1 to 64) - CHECK
-
-    if (init.height == 32) {
-        oledWriteCommand(0x1F); //
-    } else if (init.height == 64) {
-        oledWriteCommand(0x3F); //
-    } else {
-        //TO DO warning message
-    }
-
-    oledWriteCommand(
-        0xA4); //0xa4,Output follows RAM content;0xa5,Output ignores RAM content
-
-    oledWriteCommand(0xD3); //-set display offset - CHECK
-    oledWriteCommand(0x00); //-not offset
-
-    oledWriteCommand(
-        0xD5); //--set display clock divide ratio/oscillator frequency
-    oledWriteCommand(0xF0); //--set divide ratio
-
-    oledWriteCommand(0xD9); //--set pre-charge period
-    oledWriteCommand(0x22); //
-
-    oledWriteCommand(0xDA); //--set com pins hardware configuration - CHECK
-
-    if (init.height == 32) {
-        oledWriteCommand(0x02);
-    } else if (init.height == 64) {
-        oledWriteCommand(0x12);
-    } else {
-        //TO DO warning message
-    }
-
-    oledWriteCommand(0xDB); //--set vcomh
-    oledWriteCommand(0x20); //0x20,0.77xVcc
-
-    oledWriteCommand(0x8D); //--set DC-DC enable
-    oledWriteCommand(0x14); //
-    oledSetDisplayOn(1); //--turn on OLED panel
-
-    // Clear screen
-    oledFill(Black);
-
-    // Flush buffer to screen
-    oledUpdateScreen();
-
-    // Set default values for screen object
-    OLED.CurrentX = 0;
-    OLED.CurrentY = 0;
-
-    OLED.Initialized = 1;
+    
 }
 
-// Initialize the oled screen
-void oledInitOld() {
-    // Wait for the screen to boot
-    // HAL_Delay(100);
-
-    // Init OLED
-    oledSetDisplayOn(0); //display off
-
-    oledWriteCommand(0x20); //Set Memory Addressing Mode
-    oledWriteCommand(
-        0x00); // 00b,Horizontal Addressing Mode; 01b,Vertical Addressing Mode;
-    // 10b,Page Addressing Mode (RESET); 11b,Invalid
-
-    oledWriteCommand(
-        0xB0); //Set Page Start Address for Page Addressing Mode,0-7
-
-#ifdef OLED_MIRROR_VERT
-    oledWriteCommand(0xC0); // Mirror vertically
-#else
-    oledWriteCommand(0xC8); //Set COM Output Scan Direction
-#endif
-
-    oledWriteCommand(0x00); //---set low column address
-    oledWriteCommand(0x10); //---set high column address
-
-    oledWriteCommand(0x40); //--set start line address - CHECK
-
-    oledSetContrast(0xFF);
-
-#ifdef OLED_MIRROR_HORIZ
-    oledWriteCommand(0xA0); // Mirror horizontally
-#else
-    oledWriteCommand(0xA1); //--set segment re-map 0 to 127 - CHECK
-#endif
-
-#ifdef OLED_INVERSE_COLOR
-    oledWriteCommand(0xA7); //--set inverse color
-#else
-    oledWriteCommand(0xA6); //--set normal color
-#endif
-
-    oledWriteCommand(0xA8); //--set multiplex ratio(1 to 64) - CHECK
-
-    if (oled_height == 32) {
-        oledWriteCommand(0x1F); //
-    } else if (oled_height == 64) {
-        oledWriteCommand(0x3F); //
-    } else {
-        //TO DO warning message
-    }
-
-    oledWriteCommand(
-        0xA4); //0xa4,Output follows RAM content;0xa5,Output ignores RAM content
-
-    oledWriteCommand(0xD3); //-set display offset - CHECK
-    oledWriteCommand(0x00); //-not offset
-
-    oledWriteCommand(
-        0xD5); //--set display clock divide ratio/oscillator frequency
-    oledWriteCommand(0xF0); //--set divide ratio
-
-    oledWriteCommand(0xD9); //--set pre-charge period
-    oledWriteCommand(0x22); //
-
-    oledWriteCommand(0xDA); //--set com pins hardware configuration - CHECK
-
-    if (oled_height == 32) {
-        oledWriteCommand(0x02);
-    } else if (oled_height == 64) {
-        oledWriteCommand(0x12);
-    } else {
-        //TO DO warning message
-    }
-
-    oledWriteCommand(0xDB); //--set vcomh
-    oledWriteCommand(0x20); //0x20,0.77xVcc
-
-    oledWriteCommand(0x8D); //--set DC-DC enable
-    oledWriteCommand(0x14); //
-    oledSetDisplayOn(1); //--turn on OLED panel
-
-    // Clear screen
-    oledFill(Black);
-
-    // Flush buffer to screen
-    oledUpdateScreen();
-
-    // Set default values for screen object
-    OLED.CurrentX = 0;
-    OLED.CurrentY = 0;
-
-    OLED.Initialized = 1;
-}
 
 // Fill the whole screen with the given color
 void oledFill(OLED_COLOR color) {
@@ -554,19 +470,19 @@ void oledSetContrast(const uint8_t value) {
     oledWriteCommand(value);
 }
 
-void oledSetDisplayOn(const uint8_t on) {
+void oledSetDisplayOn(const bool on) {
     uint8_t value;
     if (on) {
         value = 0xAF; // Display on
-        OLED.DisplayOn = 1;
+        OLED.DisplayOn = true;
     } else {
         value = 0xAE; // Display off
-        OLED.DisplayOn = 0;
+        OLED.DisplayOn = false;
     }
     oledWriteCommand(value);
 }
 
-uint8_t oledGetDisplayOn() { return OLED.DisplayOn; }
+bool oledGetDisplayOn() { return OLED.DisplayOn; }
 
 // Send a byte to the command register
 void oledWriteCommand(uint8_t byte) {

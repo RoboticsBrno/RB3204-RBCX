@@ -213,15 +213,15 @@ void mpu(uint8_t address) { mpu6050.devAddr = address; }
  */
 void mpu_initialize() {
 
-    // if (mpu_testConnection()) {
     mpu6050.devAddr = mpu_ADDRESS_AD0_HIGH;
-    mpu_setClockSource(mpu_CLOCK_PLL_XGYRO);
-    mpu_setFullScaleGyroRange(mpu_GYRO_FS_250);
-    mpu_setFullScaleAccelRange(mpu_ACCEL_FS_2);
-    mpu_setSleepEnabled(false);
-    // } else {
-    // DEBUG("mpu is not coDEBUGLN("Init MPU");nnected\n");
-    // }
+    if (mpu_testConnection()) {
+        mpu_setClockSource(mpu_CLOCK_PLL_XGYRO);
+        mpu_setFullScaleGyroRange(mpu_GYRO_FS_250);
+        mpu_setFullScaleAccelRange(mpu_ACCEL_FS_2);
+        mpu_setSleepEnabled(false);
+    } else {
+        DEBUG("MPU is not connected\n");    
+    }
 
     mpuTimerHandle
         = xTimerCreateStatic("mpuTimer", pdMS_TO_TICKS(mpuTickPeriodMs), true,

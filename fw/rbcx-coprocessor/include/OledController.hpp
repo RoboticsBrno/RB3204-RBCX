@@ -33,8 +33,7 @@ typedef struct {
     uint16_t CurrentX;
     uint16_t CurrentY;
     uint8_t Inverted;
-    uint8_t Initialized;
-    uint8_t DisplayOn;
+    bool DisplayOn;
 } OLED_t;
 typedef struct {
     uint8_t x;
@@ -42,6 +41,8 @@ typedef struct {
 } OLED_VERTEX;
 
 void oledDispatch(const CoprocReq_OledReq& request);
+
+bool oledTestConnection();
 void oledInitStm();
 void oledInit(const CoprocReq_OledInit& init);
 
@@ -74,13 +75,13 @@ void oledSetContrast(const uint8_t value);
  * @brief Set Display ON/OFF.
  * @param[in] on 0 for OFF, any for ON.
  */
-void oledSetDisplayOn(const uint8_t on);
+void oledSetDisplayOn(const bool on);
 /**
  * @brief Reads DisplayOn state.
  * @return  0: OFF.
  *          1: ON.
  */
-uint8_t oledGetDisplayOn();
+bool oledGetDisplayOn();
 
 // Low-level procedures
 void oledWriteCommand(uint8_t byte);
