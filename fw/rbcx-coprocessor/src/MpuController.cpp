@@ -131,33 +131,40 @@ void mpuDispatch(const CoprocReq_MpuReq& req) {
         data32.gyro.z = data.gyro.z;
         mpuSend(data32);
         break;
-    case CoprocReq_MpuReq_startSend_tag:
+    case CoprocReq_MpuReq_startSend_tag: {
         if (xTimerStart(mpuTimerHandle, 0) == pdFALSE) {
             DEBUG("Time queue overflow\n");
         }
         mpuAggrCounter = 0;
         break;
-    case CoprocReq_MpuReq_stopSend_tag:
+    }
+    
+    case CoprocReq_MpuReq_stopSend_tag: {
         if (xTimerStop(mpuTimerHandle, 0) == pdFALSE) {
             DEBUG("Time queue overflow\n");
         }
         break;
-    case CoprocReq_MpuReq_setCompressCoef_tag:
+    }
+
+    case CoprocReq_MpuReq_setCompressCoef_tag: {
         uint16_t coef = req.mpuCmd.setCompressCoef;
         if (coef > 0 && coef <= 20) {
             compressCoef = coef;
             DEBUGLN("Set new Coef: %d", compressCoef);
         }
         break;
-    // case CoprocReq_MpuReq_getCompressCoef_tag:
-    //     CoprocStat status = {
-    //         .which_payload = CoprocStat_mpuStat_tag,
-    //         .payload = {
-    //             .mpuStat = {
-    //                 .compressCoef = compressCoef,
-    //             }
-    //         }
-    //     };
+    }
+
+    case CoprocReq_MpuReq_getCompressCoef_tag: {
+        CoprocStat status = {
+            .which_payload = CoprocStat_mpuStat_tag,
+            .payload = {
+                .mpuStat = {
+                    .compressCoef = compressCoef,
+                }
+            }
+        };
+    }
 
     //     dispatcherEnqueueStatus(status);        
     //     break; 
