@@ -56,7 +56,9 @@ StaticEventGroup_t i2cEventBuffer;
 I2C_HandleTypeDef I2Cdev_hi2c;
 
 void i2cDispatch(const CoprocReq_I2cReq& req) {
-    i2cQueue.push_back(req);
+    if (!i2cQueue.push_back(req, 0)) {
+        DEBUG("I2c TRIG queue overflow\n");
+    }
     xEventGroupSetBits(i2cEventGroup, I2C_MESSAGE);
 }
 
@@ -83,7 +85,6 @@ uint8_t I2Cdev_init() {
         i2cEventGroup = xEventGroupCreateStatic(&i2cEventBuffer);
 
         i2cTask.start("i2c", i2cPrio, []() {
-            // mpu_initialize();
             while (true) {
                 CoprocReq_I2cReq req;
 
@@ -165,6 +166,10 @@ template <typename F> uint8_t i2cWrap(F fun, uint32_t Timeout) {
         HAL_I2C_Master_Abort_IT(&I2Cdev_hi2c, 0);
         return 0;
     }
+}
+
+void i2cReset() {
+    i2cQueue.reset();
 }
 
 /* Rewrited original functions */

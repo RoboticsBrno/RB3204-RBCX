@@ -54,7 +54,7 @@ extern TaskHandle_t i2cTaskHandle;
 extern EventGroupHandle_t i2cEventGroup;
 
 void i2cDispatch(const CoprocReq_I2cReq& req);
-
+void i2cReset();
 
 #define I2CDEV_DEFAULT_READ_TIMEOUT 10
 

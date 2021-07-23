@@ -6,6 +6,7 @@
 #include "MotorController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
+#include "I2cController.hpp"
 #include "utils/Debug.hpp"
 #include "utils/TaskWrapper.hpp"
 
@@ -42,6 +43,7 @@ void softResetInit() {
             stupidServoReset();
             ultrasoundReset();
             motorReset();
+            i2cReset();
         }
     });
 }
