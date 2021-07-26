@@ -6,6 +6,7 @@
 #include "BuzzerController.hpp"
 #include "ControlLink.hpp"
 #include "Esp32Manager.hpp"
+#include "I2cController.hpp"
 #include "MotorController.hpp"
 #include "Power.hpp"
 #include "StupidServoController.hpp"
@@ -69,6 +70,7 @@ static void dispatcherProcessReq(const CoprocReq& request) {
         break;
     case CoprocReq_buzzerReq_tag:
         buzzerSetState(request.payload.buzzerReq.on);
+        buzzerSetState(request.payload.buzzerReq.on);
         break;
     case CoprocReq_versionReq_tag: {
         CoprocStat status = {
@@ -96,6 +98,9 @@ static void dispatcherProcessReq(const CoprocReq& request) {
         break;
     case CoprocReq_motorReq_tag:
         motorDispatch(request.payload.motorReq);
+        break;
+    case CoprocReq_i2cReq_tag:
+        i2cDispatch(request.payload.i2cReq);
         break;
     }
 }

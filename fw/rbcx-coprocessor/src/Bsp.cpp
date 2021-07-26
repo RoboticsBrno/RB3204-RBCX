@@ -6,6 +6,7 @@
 #include "MotorController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
+#include "I2cController.hpp"
 #include "utils/Debug.hpp"
 #include "utils/TaskWrapper.hpp"
 
@@ -33,7 +34,7 @@ void softResetInit() {
             if (xTaskNotifyWait(0, 0, nullptr, portMAX_DELAY) != pdTRUE)
                 continue;
 
-            //DEBUG("Soft resetting peripherials to default state.\n");
+            DEBUG("Soft resetting peripherials to default state.\n");
 
             setLeds(0);
             buzzerSetState(false);
@@ -42,6 +43,7 @@ void softResetInit() {
             stupidServoReset();
             ultrasoundReset();
             motorReset();
+            i2cReset();
         }
     });
 }

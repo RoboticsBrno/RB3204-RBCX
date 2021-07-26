@@ -26,6 +26,10 @@ inline void DEBUG_HEX(const uint8_t* data, size_t len) {
     putchar('\n');
 }
 
+#define DEBUGLN(fmt, ...)                                                      \
+    DEBUG(fmt, ##__VA_ARGS__);                                                 \
+    printf("\n");
+
 #else
 
 #define DEBUG(fmt, ...)                                                        \
@@ -49,7 +53,7 @@ inline void printTaskInfo() {
         // to obtain the total stack size of a task,
         // I have to use your stupid Dummy fields.
         auto stupidTask = (StaticTask_t*)(status.xHandle);
-        auto bytesTotal
+        unsigned bytesTotal
             = uintptr_t(stupidTask->pxDummy8) - uintptr_t(stupidTask->pxDummy6);
 
         unsigned bytesFree = status.usStackHighWaterMark * sizeof(StackType_t);

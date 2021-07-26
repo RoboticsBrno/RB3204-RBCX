@@ -13,6 +13,10 @@
 #include "ButtonController.hpp"
 #include "BuzzerController.hpp"
 #include "Dispatcher.hpp"
+#include "I2cController.hpp"
+#include "Mpu6050.hpp"
+#include "OledController.hpp"
+#include "MpuController.hpp"
 #include "Power.hpp"
 #include "UsbCdcLink.h"
 #include "coproc_codec.h"
@@ -323,6 +327,120 @@ static void debugLinkHandleCommand(const char* cmd) {
     COMMAND("buttons", {
         COMMAND("debug", {
             buttonControllerSetDebug(true);
+            return;
+        });
+    });
+
+    COMMAND("oled", {
+        COMMAND("test", {
+            printf("Oled test: %d\n", oledTestConnection());
+            return;
+        });
+
+        COMMAND("fill", {
+            COMMAND("white", {               
+                oledFill(White);
+                oledUpdateScreen();
+                printf("OLED fill white\n");
+                return;
+            });
+            COMMAND("black", {
+                oledFill(Black);
+                oledUpdateScreen();
+                printf("OLED fill black\n");
+                return;
+            });
+        });
+        COMMAND("write", {
+            oledSetCursor(0, 0);
+            oledWriteString("AHOJ", Font_11x18, White);
+            oledUpdateScreen();
+            printf("OLED write\n");
+            return;
+        });
+        COMMAND("init", {
+            CoprocReq_OledInit req;
+            req.width = 128;
+            req.height = 64;
+            req.rotate = true;
+            req.inverseColor = false;
+            oledInit(req);
+            printf("OLED init\n");
+            return;
+        });
+    });
+
+    COMMAND("mpu", {
+        COMMAND("init", {
+            mpu_initialize();
+            printf("MPU init\n");
+            return;
+        });
+        COMMAND("test", {
+            printf("MPU test: %d\n", mpu_testConnection());
+            return;
+        });
+        COMMAND("temp", {
+            printf("MPU temp: %d\n", mpu_getTemperature());
+            return;
+        });
+        COMMAND("acc", {
+            int16_t x, y, z;
+            // int32_t x, y, z;
+            mpu_getAcceleration(&x, &y, &z);
+            printf("MPU acc: x:%d, y:%d, z:%d\n", x, y, z);
+            return;
+        });
+        COMMAND("gyro", {
+            int16_t x, y, z;
+            // int32_t x, y, z;
+            mpu_getRotation(&x, &y, &z);
+            printf("MPU gyro: x:%d, y:%d, z:%d\n", x, y, z);
+            return;
+        });
+    });
+
+    COMMAND("i2c", {
+        COMMAND("transmit", {
+            unsigned DevAddress;
+            uint8_t pData[10];
+            unsigned Size;
+            if (sscanf(cmd, "%u %u %u", &DevAddress, &pData[0], &Size) != 3) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            printf("I2C tran %d\n",
+                I2Cdev_Master_Transmit(DevAddress, pData, Size, 0));
+            return;
+        });
+
+        COMMAND("receive", {
+            unsigned DevAddress;
+            uint8_t pData[10];
+            unsigned Size;
+            if (sscanf(cmd, "%u %u", &DevAddress, &Size) != 2) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            printf("I2C rec %d; ret: %d\n",
+                I2Cdev_Master_Receive(DevAddress, pData, Size, 0), pData[0]);
+            return;
+        });
+
+        COMMAND("ping", {
+            unsigned DevAddress;
+            unsigned Trials;
+            if (sscanf(cmd, "%u %u", &DevAddress, &Trials) != 2) {
+                printf("Invalid parameters!\n");
+                return;
+            }
+            printf("I2C ping %d\n",
+                I2Cdev_IsDeviceReady(DevAddress, Trials) == HAL_OK);
+            return;
+        });
+
+        COMMAND("scan", {
+            printf("I2C scanner %d\n", I2Cdev_scan());
             return;
         });
     });

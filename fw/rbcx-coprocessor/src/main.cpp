@@ -6,7 +6,10 @@
 #include "utils/TaskWrapper.hpp"
 
 #include "ButtonController.hpp"
+#include "I2cController.hpp"
 #include "MotorController.hpp"
+#include "MpuController.hpp"
+#include "OledController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
 
@@ -39,6 +42,7 @@ int main() {
         tunnelUartInit();
         controlUartInit();
         cdcLinkInit();
+        I2Cdev_init();
         stupidServoInit();
         ultrasoundInit();
         sEsp32Manager.init();
@@ -48,6 +52,7 @@ int main() {
                   RBCX_VER_DIRTY_STR "\n",
             RBCX_VER_NUMBER);
         while (true) {
+            vTaskDelay(pdMS_TO_TICKS(1));
             debugLinkPoll();
             powerPoll();
             dispatcherPoll();

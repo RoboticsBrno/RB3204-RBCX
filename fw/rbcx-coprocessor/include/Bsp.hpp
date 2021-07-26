@@ -24,9 +24,10 @@ typedef uint32_t ADC_rank_t;
 inline const IRQn_Type usbLpIRQn = USB_LP_CAN1_RX0_IRQn;
 inline constexpr unsigned usbLpIRQnPrio = 8;
 
-inline const int mainTaskPrio = 1;
+inline const int mainTaskPrio = 4;
 inline const int motorTaskPrio = 2;
 inline const int ultrasoundTaskPrio = 2;
+inline const int i2cPrio = 2;
 inline const int softResetTaskPrio = configMAX_PRIORITIES - 1;
 
 inline void pinInit(GPIO_TypeDef* port, uint32_t pinMask, uint32_t mode,
@@ -140,6 +141,13 @@ inline const PinDef controlUartRxPin = std::make_pair(GPIOB, GPIO_PIN_11);
 inline const PinDef debugUartTxPin = std::make_pair(GPIOC, GPIO_PIN_10);
 inline const PinDef debugUartRxPin = std::make_pair(GPIOC, GPIO_PIN_11);
 inline const PinDef servoUartTxRxPin = std::make_pair(GPIOC, GPIO_PIN_12);
+
+inline const PinDef i2cSda = std::make_pair(GPIOB, GPIO_PIN_9);
+inline const PinDef i2cScl = std::make_pair(GPIOB, GPIO_PIN_8);
+
+inline const IRQn_Type i2cEvIRQn = I2C1_EV_IRQn;
+inline const IRQn_Type i2cErIRQn = I2C1_ER_IRQn;
+inline const unsigned i2cIRQnPrio = 8;
 
 inline USART_TypeDef* const userUart = USART1;
 inline USART_TypeDef* const tunnelUart = USART2;
@@ -281,6 +289,7 @@ inline void clocksInit() {
     __HAL_RCC_TIM7_CLK_ENABLE();
     __HAL_RCC_TIM8_CLK_ENABLE();
     __HAL_RCC_ADC1_CLK_ENABLE();
+    __HAL_RCC_I2C1_CLK_ENABLE();
 }
 
 // Set-up ESP32 strapping pins for the normal mode functions. Esp32Manager
@@ -326,6 +335,10 @@ inline void pinsInit() {
     pinInit(encoder4aPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
     pinInit(encoder4bPin, GPIO_MODE_INPUT, GPIO_PULLUP, GPIO_SPEED_FREQ_MEDIUM);
 
+    // I2C
+    pinInit(i2cScl, GPIO_MODE_AF_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+    pinInit(i2cSda, GPIO_MODE_AF_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
+
     // USB
     pinInit(usbDnPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
     pinInit(usbDpPin, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
@@ -344,6 +357,8 @@ inline void pinsInit() {
     LL_GPIO_AF_Remap(AFIO_MAPR_TIM4_REMAP, AFIO_MAPR_TIM4_REMAP);
     //LL_GPIO_AF_Remap_SWJ_NOJTAG();
     LL_GPIO_AF_Remap(AFIO_MAPR_SWJ_CFG, AFIO_MAPR_SWJ_CFG_JTAGDISABLE);
+    //I2C1-2
+    LL_GPIO_AF_Remap(AFIO_MAPR_I2C1_REMAP, AFIO_MAPR_I2C1_REMAP);
 
     pinInit(servoPins, GPIO_MODE_AF_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_MEDIUM);
 
@@ -364,6 +379,11 @@ inline void pinsInit() {
 
     HAL_NVIC_SetPriority(EXTI9_5_IRQn, utsIRQPrio, 0); // Ultrasound
     HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+    HAL_NVIC_SetPriority(i2cEvIRQn, i2cIRQnPrio, 0);
+    HAL_NVIC_SetPriority(i2cErIRQn, i2cIRQnPrio, 0);
+    HAL_NVIC_EnableIRQ(i2cEvIRQn);
+    HAL_NVIC_EnableIRQ(i2cErIRQn);    
 
     pinInit(buzzerPin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 
