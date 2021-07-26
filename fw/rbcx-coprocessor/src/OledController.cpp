@@ -6,10 +6,10 @@
 #include <string.h> // For memcpy
 
 // OLED OLED height in pixels
-uint8_t oled_height = 64;
+static uint8_t oled_height = 64;
 
 // OLED width in pixels
-uint8_t oled_width = 128;
+static uint8_t oled_width = 128;
 
 // Screenbuffer
 static uint8_t OLED_Buffer[OLED_BUFFER_SIZE];
@@ -39,7 +39,7 @@ void oledDispatch(const CoprocReq_OledReq& request) {
     case CoprocReq_OledReq_writeString_tag: {
 
         const auto& writeString = request.oledCmd.writeString;
-        char text[101];
+        char text[33];
         strcpy(text, writeString.text);
         FontDef* font;
         switch (writeString.font) {
@@ -296,7 +296,7 @@ char oledWriteChar(char ch, FontDef Font, OLED_COLOR color) {
 }
 
 // Write full string to screenbuffer
-char oledWriteString(char* str, FontDef Font, OLED_COLOR color) {
+char oledWriteString(const char* str, FontDef Font, OLED_COLOR color) {
     // Write until null-byte
     while (*str) {
         if (oledWriteChar(*str, Font, color) != *str) {

@@ -414,9 +414,9 @@ static void debugLinkHandleCommand(const char* cmd) {
 
     COMMAND("i2c", {
         COMMAND("transmit", {
-            uint8_t DevAddress;
+            unsigned DevAddress;
             uint8_t pData[10];
-            uint8_t Size;
+            unsigned Size;
             if (sscanf(cmd, "%u %u %u", &DevAddress, &pData[0], &Size) != 3) {
                 printf("Invalid parameters!\n");
                 return;
@@ -427,9 +427,9 @@ static void debugLinkHandleCommand(const char* cmd) {
         });
 
         COMMAND("receive", {
-            uint8_t DevAddress;
+            unsigned DevAddress;
             uint8_t pData[10];
-            uint8_t Size;
+            unsigned Size;
             if (sscanf(cmd, "%u %u", &DevAddress, &Size) != 2) {
                 printf("Invalid parameters!\n");
                 return;
@@ -439,14 +439,14 @@ static void debugLinkHandleCommand(const char* cmd) {
             return;
         });
 
-        COMMAND("ready", {
-            uint8_t DevAddress;
-            uint8_t Trials;
+        COMMAND("ping", {
+            unsigned DevAddress;
+            unsigned Trials;
             if (sscanf(cmd, "%u %u", &DevAddress, &Trials) != 2) {
                 printf("Invalid parameters!\n");
                 return;
             }
-            printf("I2C ready %d\n",
+            printf("I2C ping %d\n",
                 I2Cdev_IsDeviceReady(DevAddress, Trials) == HAL_OK);
             return;
         });

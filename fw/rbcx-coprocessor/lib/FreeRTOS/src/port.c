@@ -439,7 +439,6 @@ void xPortSysTickHandler( void )
 			portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;
 		}
 	}
-	HAL_IncTick();
 	portENABLE_INTERRUPTS();
 }
 /*-----------------------------------------------------------*/

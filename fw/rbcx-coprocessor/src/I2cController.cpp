@@ -50,16 +50,17 @@ static xTaskHandle i2cCallingTask;
 static MutexWrapper i2cMutex;
 
 EventGroupHandle_t i2cEventGroup;
-StaticEventGroup_t i2cEventBuffer;
+static StaticEventGroup_t i2cEventBuffer;
 
 // Hold pointer to inited HAL I2C device
 I2C_HandleTypeDef I2Cdev_hi2c;
 
 void i2cDispatch(const CoprocReq_I2cReq& req) {
-    if (!i2cQueue.push_back(req, 0)) {
-        DEBUG("I2c TRIG queue overflow\n");
+    if (i2cQueue.push_back(req, 0)) {
+        xEventGroupSetBits(i2cEventGroup, I2C_MESSAGE);
+    } else {
+        DEBUG("I2c queue overflow\n");
     }
-    xEventGroupSetBits(i2cEventGroup, I2C_MESSAGE);
 }
 
 /** Default timeout value for read operations.
@@ -168,9 +169,7 @@ template <typename F> uint8_t i2cWrap(F fun, uint32_t Timeout) {
     }
 }
 
-void i2cReset() {
-    i2cQueue.reset();
-}
+void i2cReset() { i2cQueue.reset(); }
 
 /* Rewrited original functions */
 uint8_t I2Cdev_Master_Transmit(
