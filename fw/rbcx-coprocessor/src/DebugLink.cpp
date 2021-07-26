@@ -338,24 +338,7 @@ static void debugLinkHandleCommand(const char* cmd) {
         });
 
         COMMAND("fill", {
-            COMMAND("white", {
-                // dispatcherEnqueueRequest(CoprocReq {
-                //     .which_payload = CoprocReq_i2cReq_tag, 
-                //     .payload = {
-                //         .i2cReq = {
-                //             .which_payload = CoprocReq_I2cReq_oledReq_tag,
-                //             .payload = {
-                //                 .oledReq = {
-                //                     .which_oledCmd = CoprocReq_OledReq_fill_tag,
-                //                     .oledCmd = {
-                //                         .fill = CoprocReq_OledColor_OLED_WHITE,
-                //                     }                                      
-                //                 },
-                //             }
-                //         }
-                //     }                    
-                // });
-                // return;                
+            COMMAND("white", {               
                 oledFill(White);
                 oledUpdateScreen();
                 printf("OLED fill white\n");
@@ -376,7 +359,12 @@ static void debugLinkHandleCommand(const char* cmd) {
             return;
         });
         COMMAND("init", {
-            oledInitStm();
+            CoprocReq_OledInit req;
+            req.width = 128;
+            req.height = 64;
+            req.rotate = true;
+            req.inverseColor = false;
+            oledInit(req);
             printf("OLED init\n");
             return;
         });

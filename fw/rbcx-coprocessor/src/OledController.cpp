@@ -1,4 +1,5 @@
 #include "OledController.hpp"
+#include "Dispatcher.hpp"
 #include "string.h"
 #include "utils/Debug.hpp"
 #include <math.h>
@@ -97,23 +98,12 @@ void oledDispatch(const CoprocReq_OledReq& request) {
     };
 }
 
-bool oledTestConnection() {
-    return I2Cdev_IsDeviceReady(OLED_I2C_ADDR, 1, 10);
-}
-
-void oledInitStm() {
-    CoprocReq_OledInit pre;
-    pre.width = 128;
-    pre.height = 64;
-    pre.rotate = true;
-    pre.inverseColor = false;
-    oledInit(pre);
-}
+bool oledTestConnection() { return I2Cdev_IsDeviceReady(OLED_I2C_ADDR, 1, 10); }
 
 // Initialize the oled screen
 void oledInit(const CoprocReq_OledInit& init) {
 
-    if(oledTestConnection()) {
+    if (oledTestConnection()) {
         // Init OLED
         oledSetDisplayOn(false); //display off
 
@@ -202,10 +192,17 @@ void oledInit(const CoprocReq_OledInit& init) {
 
     } else {
         DEBUG("Oled not connected\n");
+        CoprocStat status = {
+            .which_payload = CoprocStat_faultStat_tag,
+            .payload = {
+                .faultStat = {
+                    .which_fault = CoprocStat_FaultStat_oledFault_tag,
+                },
+            },
+        };
+        dispatcherEnqueueStatus(status);
     }
-    
 }
-
 
 // Fill the whole screen with the given color
 void oledFill(OLED_COLOR color) {
@@ -219,6 +216,18 @@ void oledFill(OLED_COLOR color) {
 
 // Write the screenbuffer with changed to the screen
 void oledUpdateScreen(void) {
+    if (oledTestConnection()) {
+        DEBUG("Oled not connected\n");
+        CoprocStat status = {
+            .which_payload = CoprocStat_faultStat_tag,
+            .payload = {
+                .faultStat = {
+                    .which_fault = CoprocStat_FaultStat_oledFault_tag,
+                },
+            },
+        };
+        dispatcherEnqueueStatus(status);
+    }
     // Write data to each page of RAM. Number of pages
     // depends on the screen height:
     //

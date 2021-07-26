@@ -45,7 +45,6 @@ int main() {
         I2Cdev_init();
         stupidServoInit();
         ultrasoundInit();
-        mpu_initialize();
         sEsp32Manager.init();
         motorInit();
 

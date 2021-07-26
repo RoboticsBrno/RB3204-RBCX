@@ -117,6 +117,9 @@ static void mpuSend(const MpuMotion32& data) {
 
 void mpuDispatch(const CoprocReq_MpuReq& req) {
     switch (req.which_mpuCmd) {
+    case CoprocReq_MpuReq_init_tag:
+        mpu_initialize();
+        break;
     case CoprocReq_MpuReq_oneSend_tag:
         MpuMotion6 data;
         MpuMotion32 data32;
@@ -220,7 +223,16 @@ void mpu_initialize() {
         mpu_setFullScaleAccelRange(mpu_ACCEL_FS_2);
         mpu_setSleepEnabled(false);
     } else {
-        DEBUG("MPU is not connected\n");
+        DEBUG("MPU6050 is not connected\n");
+        CoprocStat status = {
+            .which_payload = CoprocStat_faultStat_tag,
+            .payload = { 
+                .faultStat = {
+                    .which_fault = CoprocStat_FaultStat_mpuFault_tag,
+                },
+            },
+        };
+        dispatcherEnqueueStatus(status);
     }
 
     mpuTimerHandle
