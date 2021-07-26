@@ -159,11 +159,11 @@ template <typename F> uint8_t i2cWrap(F fun, uint32_t Timeout) {
         auto ok = xTaskNotifyWait(0, ~0, nullptr, pdMS_TO_TICKS(tout));
 
         if (!ok) {
+            DEBUG("I2C timeout\n");
             HAL_I2C_Master_Abort_IT(&I2Cdev_hi2c, 0);
         }
         return ok;
     } else {
-        // HAL_I2C_
         HAL_I2C_Master_Abort_IT(&I2Cdev_hi2c, 0);
         return 0;
     }
@@ -178,6 +178,10 @@ uint8_t I2Cdev_Master_Transmit(
         [=]() {
             auto beginStatus = HAL_I2C_Master_Transmit_IT(
                 &I2Cdev_hi2c, DevAddress << 1, pData, Size);
+
+            if (beginStatus != HAL_OK) {
+                DEBUG("I2C ERR - Tx %d bytes, ret: %d\n", Size, beginStatus);
+            }
             return beginStatus;
         },
         Timeout);
@@ -189,6 +193,10 @@ uint8_t I2Cdev_Master_Receive(
         [=]() {
             auto beginStatus = HAL_I2C_Master_Receive_IT(
                 &I2Cdev_hi2c, DevAddress << 1, pData, Size);
+
+            if (beginStatus != HAL_OK) {
+                DEBUG("I2C ERR - Rx %d bytes, ret: %d\n", Size, beginStatus);
+            }
             return beginStatus;
         },
         Timeout);
@@ -200,6 +208,10 @@ uint8_t I2Cdev_Mem_Write(uint16_t DevAddress, uint16_t MemAddress,
         [=]() {
             auto beginStatus = HAL_I2C_Mem_Write_IT(&I2Cdev_hi2c,
                 DevAddress << 1, MemAddress, MemAddSize, pData, Size);
+
+            if (beginStatus != HAL_OK) {
+                DEBUG("I2C ERR - Mem write %d bytes, ret: %d\n", Size, beginStatus);
+            }
             return beginStatus;
         },
         Timeout);
@@ -211,6 +223,10 @@ uint8_t I2Cdev_Mem_Read(uint16_t DevAddress, uint16_t MemAddress,
         [=]() {
             auto beginStatus = HAL_I2C_Mem_Read_IT(&I2Cdev_hi2c,
                 DevAddress << 1, MemAddress, MemAddSize, pData, Size);
+
+            if (beginStatus != HAL_OK) {
+                DEBUG("I2C ERR - Mem read %d bytes, ret: %d\n", Size, beginStatus);
+            }
             return beginStatus;
         },
         Timeout);
@@ -358,10 +374,8 @@ uint8_t I2Cdev_readBytes(uint8_t devAddr, uint8_t regAddr, uint8_t length,
     I2Cdev_Master_Transmit(devAddr, &regAddr, 1, tout);
     uint8_t ret = I2Cdev_Master_Receive(devAddr, data, length, tout);
     if (ret != 0) {
-        // DEBUG("I2Cdev_readBytes %d\n", length);
         return length;
     }
-    DEBUG("ERR - I2Cdev_readBytes %d, ret: %d\n", length, ret);
     return -1;
 }
 
