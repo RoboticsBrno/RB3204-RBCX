@@ -38,6 +38,7 @@ THE SOFTWARE.
 #include "utils/MutexWrapper.hpp"
 #include "utils/QueueWrapper.hpp"
 #include "utils/TaskWrapper.hpp"
+#include "timers.h"
 
 // #include "event_groups.h"
 #include <mutex>
@@ -169,7 +170,9 @@ template <typename F> uint8_t i2cWrap(F fun, uint32_t Timeout) {
     }
 }
 
-void i2cReset() { i2cQueue.reset(); }
+void i2cReset() { 
+    i2cQueue.reset();        
+}
 
 /* Rewrited original functions */
 uint8_t I2Cdev_Master_Transmit(

@@ -3,10 +3,11 @@
 #include "ControlLink.hpp"
 #include "Dispatcher.hpp"
 #include "Esp32Manager.hpp"
+#include "I2cController.hpp"
 #include "MotorController.hpp"
+#include "MpuController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
-#include "I2cController.hpp"
 #include "utils/Debug.hpp"
 #include "utils/TaskWrapper.hpp"
 
@@ -44,6 +45,7 @@ void softResetInit() {
             ultrasoundReset();
             motorReset();
             i2cReset();
+            mpuReset();
         }
     });
 }

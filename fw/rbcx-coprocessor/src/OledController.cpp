@@ -191,7 +191,7 @@ void oledInit(const CoprocReq_OledInit& init) {
         OLED.CurrentY = 0;
 
     } else {
-        DEBUG("Oled not connected\n");
+        DEBUG("Oled not connected-init\n");
         CoprocStat status = {
             .which_payload = CoprocStat_faultStat_tag,
             .payload = {
@@ -216,7 +216,7 @@ void oledFill(OLED_COLOR color) {
 
 // Write the screenbuffer with changed to the screen
 void oledUpdateScreen(void) {
-    if (oledTestConnection()) {
+    if (!oledTestConnection()) {
         DEBUG("Oled not connected\n");
         CoprocStat status = {
             .which_payload = CoprocStat_faultStat_tag,

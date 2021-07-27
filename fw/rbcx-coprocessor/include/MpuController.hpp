@@ -43,8 +43,8 @@ THE SOFTWARE.
 #define _mpu_H_
 
 #include "I2cController.hpp"
-#include <stdbool.h>
 #include "rbcx.pb.h"
+#include <stdbool.h>
 
 #if ((defined mpu_INCLUDE_DMP_MOTIONAPPS20)                                    \
     || (defined mpu_INCLUDE_DMP_MOTIONAPPS41))
@@ -418,9 +418,9 @@ typedef struct mpu_t {
 void mpuDispatch(const CoprocReq_MpuReq& request);
 void mpuTick();
 
-void mpu(uint8_t address);
-
-void mpu_initialize();
+void mpuCreate();
+void mpuInitialize();
+void mpuReset();
 bool mpu_testConnection();
 
 // AUX_VDDIO register

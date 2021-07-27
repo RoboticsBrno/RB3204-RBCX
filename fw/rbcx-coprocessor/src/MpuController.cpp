@@ -118,7 +118,7 @@ static void mpuSend(const MpuMotion32& data) {
 void mpuDispatch(const CoprocReq_MpuReq& req) {
     switch (req.which_mpuCmd) {
     case CoprocReq_MpuReq_init_tag:
-        mpu_initialize();
+        mpuInitialize();
         break;
     case CoprocReq_MpuReq_oneSend_tag:
         MpuMotion6 data;
@@ -174,9 +174,9 @@ void mpuDispatch(const CoprocReq_MpuReq& req) {
 void mpuTick() {
     MpuMotion6 data;
     mpuRead(data);
-    // printf("DEBUG MPU [%d] acc: x:%d; y:%d; z:%d | gyro: x:%d; y:%d; z:%d\n",
-    // mpuAggrCounter, data.accel.x, data.accel.y, data.accel.z, data.gyro.x,
-    // data.gyro.y, data.gyro.z);
+    // DEBUG("MPU6050 [%d] acc: x:%d; y:%d; z:%d | gyro: x:%d; y:%d; z:%d\n",
+    //     mpuAggrCounter, data.accel.x, data.accel.y, data.accel.z, data.gyro.x,
+    //     data.gyro.y, data.gyro.z);
 
     mpuAggrData.accel.x += data.accel.x;
     mpuAggrData.accel.y += data.accel.y;
@@ -199,13 +199,12 @@ void mpuTick() {
     }
 }
 
-/** Specific address constructor.
- * @param address I2C address
- * @see mpu_DEFAULT_ADDRESS
- * @see mpu_ADDRESS_AD0_LOW
- * @see mpu_ADDRESS_AD0_HIGH
- */
-void mpu(uint8_t address) { mpu6050.devAddr = address; }
+void mpuCreate() {
+    mpu6050.devAddr = mpu_ADDRESS_AD0_HIGH;
+    mpuTimerHandle
+        = xTimerCreateStatic("mpuTimer", pdMS_TO_TICKS(mpuTickPeriodMs), true,
+            nullptr, mpuTickCallback, &mpuTimerBuffer);
+}
 
 /** Power on and prepare for general usage.
  * This will activate the device and take it out of sleep mode (which must be done
@@ -214,9 +213,9 @@ void mpu(uint8_t address) { mpu6050.devAddr = address; }
  * the clock source to use the X Gyro for reference, which is slightly better than
  * the default internal clock source.
  */
-void mpu_initialize() {
+void mpuInitialize() {
+    mpuReset();
 
-    mpu6050.devAddr = mpu_ADDRESS_AD0_HIGH;
     if (mpu_testConnection()) {
         mpu_setClockSource(mpu_CLOCK_PLL_XGYRO);
         mpu_setFullScaleGyroRange(mpu_GYRO_FS_250);
@@ -234,10 +233,12 @@ void mpu_initialize() {
         };
         dispatcherEnqueueStatus(status);
     }
+}
 
-    mpuTimerHandle
-        = xTimerCreateStatic("mpuTimer", pdMS_TO_TICKS(mpuTickPeriodMs), true,
-            nullptr, mpuTickCallback, &mpuTimerBuffer);
+void mpuReset() {
+    if (xTimerStop(mpuTimerHandle, 0) == pdFALSE) {
+        DEBUG("Time queue overflow\n");
+    }
 }
 
 /** Verify the I2C connection.

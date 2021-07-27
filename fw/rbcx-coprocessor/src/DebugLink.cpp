@@ -372,7 +372,7 @@ static void debugLinkHandleCommand(const char* cmd) {
 
     COMMAND("mpu", {
         COMMAND("init", {
-            mpu_initialize();
+            mpuInitialize();
             printf("MPU init\n");
             return;
         });
