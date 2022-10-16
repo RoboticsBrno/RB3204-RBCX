@@ -29,6 +29,8 @@ public:
         m_mode = MotorMode_POWER;
     }
 
+    int16_t actualPower() const { return m_actualPower; }
+
     bool atTargetPosition() const {
         return uint32_t(abs(m_actualPosition - m_targetPosition))
             <= m_posEpsilon;
@@ -41,6 +43,8 @@ public:
     MotorMode mode() const { return m_mode; }
     void modeChange(MotorMode newMode) { m_mode = newMode; }
 
+    uint32_t coupleAxis() const { return m_coupleAxis; }
+
     void reportStat(CoprocStat_MotorStat& stat) {
         stat.mode = m_mode;
         stat.position = m_actualPosition;
@@ -48,7 +52,7 @@ public:
         stat.velocity = m_actualTicksPerLoop * motorLoopFreq;
     };
 
-    int16_t poll(uint16_t encTicks) {
+    void poll(uint16_t encTicks) {
         m_actualTicksPerLoop = encTicks - m_lastEncTicks;
         m_actualPosition += m_actualTicksPerLoop;
         m_lastEncTicks = encTicks;
@@ -93,7 +97,6 @@ public:
         default:
             break;
         }
-        return m_actualPower;
     }
 
     void setTargetPower(int16_t power) {
@@ -157,6 +160,13 @@ public:
         m_maxAccel = config.maxAccel / motorLoopFreq;
     }
 
+    void setCoupling(const CoprocReq_SetMotorCoupling& coupling) {
+        if (m_mode != MotorMode_COUPLE_POWER) {
+            modeChange(MotorMode_COUPLE_POWER);
+        }
+        m_coupleAxis = coupling.coupleAxis;
+    }
+
 private:
     Regulator m_velocityReg;
     Regulator m_positionReg;
@@ -171,4 +181,5 @@ private:
     uint16_t m_velEpsilon;
     uint16_t m_maxAccel;
     MotorMode m_mode;
+    int32_t m_coupleAxis;
 };
