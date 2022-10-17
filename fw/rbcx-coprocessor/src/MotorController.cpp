@@ -105,16 +105,14 @@ static void taskFunc() {
             }
             // Loop split due to possible dependency when coupling one motor's output to another:
             for (int m : { 0, 1, 2, 3 }) {
-                auto& targetMotor = motor[m];
-                auto mode = targetMotor.mode();
+                auto& currentMotor = motor[m];
+                auto& targetMotor
+                    = currentMotor.mode() != MotorMode_COUPLE_POWER
+                    ? currentMotor
+                    : motor[currentMotor.coupleAxis()];
+
                 auto power = targetMotor.actualPower();
-                bool brake = mode == MotorMode_BRAKE;
-                if (mode == MotorMode_COUPLE_POWER) {
-                    // Inherit power/brake state of the coupled motor
-                    auto& coupleMotor = motor[targetMotor.coupleAxis()];
-                    power = coupleMotor.actualPower();
-                    brake = coupleMotor.mode() == MotorMode_BRAKE;
-                }
+                bool brake = targetMotor.mode() == MotorMode_BRAKE;
                 setMotorPower(m, power, brake);
             }
         }
