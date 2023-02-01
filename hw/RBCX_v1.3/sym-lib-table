@@ -1,3 +1,3 @@
 (sym_lib_table
-  (lib (name "RBCX-eagle-import")(type "KiCad")(uri "${KIPRJMOD}/RBCX-eagle-import.kicad_sym")(options "")(descr ""))
+  (lib (name "RBCX")(type "KiCad")(uri "C:/Users/Admin/Documents/github/IntegratedMultiCellBatteryCharger/PBalancer/RBCX.kicad_sym")(options "")(descr ""))
 )

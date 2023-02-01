@@ -1,3 +1,3 @@
 (fp_lib_table
-  (lib (name "RBCX")(type "KiCad")(uri "$(KIPRJMOD)/RBCX.pretty")(options "")(descr ""))
+  (lib (name "RBCX")(type "KiCad")(uri "${KIPRJMOD}/RBCX.pretty")(options "")(descr ""))
 )

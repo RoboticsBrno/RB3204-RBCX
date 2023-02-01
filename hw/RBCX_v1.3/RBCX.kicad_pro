@@ -2,7 +2,7 @@
   "board": {
     "design_settings": {
       "defaults": {
-        "board_outline_line_width": 0.049999999999999996,
+        "board_outline_line_width": 0.09999999999999999,
         "copper_line_width": 0.19999999999999998,
         "copper_text_italic": false,
         "copper_text_size_h": 1.5,
@@ -26,7 +26,7 @@
         "fab_text_size_v": 1.0,
         "fab_text_thickness": 0.15,
         "fab_text_upright": false,
-        "other_line_width": 0.09999999999999999,
+        "other_line_width": 0.15,
         "other_text_italic": false,
         "other_text_size_h": 1.0,
         "other_text_size_v": 1.0,
@@ -37,7 +37,7 @@
           "height": 1.524,
           "width": 1.524
         },
-        "silk_line_width": 0.12,
+        "silk_line_width": 0.15,
         "silk_text_italic": false,
         "silk_text_size_h": 1.0,
         "silk_text_size_v": 1.0,
@@ -45,13 +45,12 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 1e-06
+          "min_clearance": 0.508
         }
       },
       "diff_pair_dimensions": [],
       "drc_exclusions": [],
       "meta": {
-        "filename": "board_design_settings.json",
         "version": 2
       },
       "rule_severities": {
@@ -98,17 +97,19 @@
         "allow_blind_buried_vias": false,
         "allow_microvias": false,
         "max_error": 0.005,
-        "min_clearance": 0.15,
-        "min_copper_edge_clearance": 0.024999999999999998,
+        "min_clearance": 0.0,
+        "min_copper_edge_clearance": 0.0,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,
         "min_microvia_diameter": 0.19999999999999998,
         "min_microvia_drill": 0.09999999999999999,
         "min_silk_clearance": 0.0,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.15239999999999998,
-        "min_via_annular_width": 0.39999999999999997,
-        "min_via_diameter": 0.3,
+        "min_track_width": 0.19999999999999998,
+        "min_via_annular_width": 0.049999999999999996,
+        "min_via_diameter": 0.39999999999999997,
+        "solder_mask_clearance": 0.0,
+        "solder_mask_min_width": 0.0,
         "use_height_for_length_calcs": true
       },
       "track_widths": [],
@@ -328,7 +329,9 @@
     }
   },
   "libraries": {
-    "pinned_footprint_libs": [],
+    "pinned_footprint_libs": [
+      "RBCX"
+    ],
     "pinned_symbol_libs": []
   },
   "meta": {
@@ -339,7 +342,7 @@
     "classes": [
       {
         "bus_width": 12.0,
-        "clearance": 0.15,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -402,7 +405,7 @@
       "model_mode": 0,
       "workbook_filename": ""
     },
-    "page_layout_descr_file": "empty.kicad_wks",
+    "page_layout_descr_file": "",
     "plot_directory": "",
     "spice_adjust_passive_values": false,
     "spice_external_command": "spice \"%I\"",
@@ -411,40 +414,68 @@
   },
   "sheets": [
     [
-      "28a48988-c038-4432-97bc-d1e24ed3078d",
+      "98ae7cc9-34bc-4554-8ced-474d5654f225",
       ""
     ],
     [
-      "18a04d2a-83df-41d0-b28b-3f861134e157",
+      "6bbf37d2-9f87-4f2b-9e95-56d617eb6363",
       "Power"
     ],
     [
-      "a91b0f37-cd51-4efd-b93a-b7303942f39c",
+      "475071ea-f096-4c42-885f-4369ed96d957",
       "Connectors"
     ],
     [
-      "9250f1c3-5d43-4b7c-aab7-f99f62adb8fa",
+      "43427bf6-308c-4c70-af1e-6280e2ede034",
       "Auxiliary connectors"
     ],
     [
-      "17de996d-6b2d-4b3d-991b-e07a69c3cb2d",
+      "dea241d1-3fb0-42b2-8e5b-184de9902f3e",
       "User interface"
     ],
     [
-      "4efda05d-51ef-4329-b7a2-fc7c46b1a0e0",
+      "87e33376-2bf1-4543-9100-740283e1cf86",
+      "Coprocessor"
+    ],
+    [
+      "d65caaeb-1300-4efb-b74f-3694b8f8c828",
       "Motors"
     ],
     [
-      "e141dc07-81b0-4236-a11c-58376055b30a",
-      "Servos"
+      "2fc2b929-8e4e-4f84-80b3-b8be453fcdb7",
+      "Classic Sevo 1"
     ],
     [
-      "af07cf74-086a-473c-ae7d-4bea04c57744",
+      "7a43dca0-ffd3-4ed5-aa9a-80c6b1f2859b",
+      "Classic Sevo 2"
+    ],
+    [
+      "4c5b1530-3324-4efd-a39f-57105c037822",
+      "Classic Sevo 4"
+    ],
+    [
+      "c4df50ee-7da1-4a71-9cbb-e7e88bd5768a",
+      "Classic Sevo 3"
+    ],
+    [
+      "8a711bb2-e7f5-4cad-bbe6-1a71c5a5e285",
+      "STM connecors"
+    ],
+    [
+      "421164a9-6c47-4622-8022-608f6b2a467e",
       "ESP"
     ],
     [
-      "e1b9b461-354f-4998-b8ed-cc104fa0947b",
-      "Coprocessor"
+      "3f7d3d76-9e44-4006-90ec-efd7f94a558a",
+      "Servos"
+    ],
+    [
+      "72bdaae6-b602-4afd-90f1-5faa6da77e38",
+      "Battery Manager"
+    ],
+    [
+      "10e93c09-17c0-4b9f-b76a-d2803ee0aa4b",
+      "PD"
     ]
   ],
   "text_variables": {}
