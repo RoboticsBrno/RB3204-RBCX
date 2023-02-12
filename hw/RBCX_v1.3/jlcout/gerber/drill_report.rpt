@@ -1,0 +1,33 @@
+Drill report for RBCX.kicad_pcb
+Created on Sun Feb 12 19:45:13 2023
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  In1.Cu                    in1
+    L3 :  In2.Cu                    in2
+    L4 :  B.Cu                      back
+
+
+Drill file 'RBCX.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.200mm  0.0079"  (568 holes)
+    T2  0.300mm  0.0118"  (164 holes)
+    T3  0.300mm  0.0118"  (4 holes)  (with 4 slots)
+    T4  0.400mm  0.0157"  (17 holes)
+    T5  0.600mm  0.0236"  (56 holes)
+    T6  0.700mm  0.0276"  (30 holes)
+    T7  0.800mm  0.0315"  (39 holes)
+    T8  1.000mm  0.0394"  (229 holes)
+    T9  1.016mm  0.0400"  (2 holes)
+    T10  1.194mm  0.0470"  (5 holes)
+
+    Total plated holes count 1114
+
+
+Not plated through holes are merged with plated holes
+    unplated through holes:
+    =============================================================
+
+    Total unplated holes count 0
