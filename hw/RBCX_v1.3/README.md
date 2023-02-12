@@ -7,5 +7,5 @@
 - Removal of built-in micro USB
 
 <div align="center">
-    <img src="RBCX.png"width="710"/> <img src="RBCX-B.png"width="688"/>
+    <img src="RBCX.png">
 </div>
