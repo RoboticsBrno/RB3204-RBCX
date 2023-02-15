@@ -1619,7 +1619,7 @@
     (property "Basic/Extended" "E" (id 5) (at 299.72 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "JLCPCB_CORRECTION" "1.27;1.27;0" (id 6) (at 299.72 41.91 0)
+    (property "JLCPCB_CORRECTION" "1.27;-1.27;-90" (id 6) (at 299.72 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid a95d2f15-9509-4790-b8af-3cd325783487))
