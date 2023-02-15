@@ -15,5 +15,5 @@
     (tstamp 402d5077-5b43-452c-9e67-42b2a53a42db)
   )
   (pad "P$1" thru_hole circle (at 0 0) (size 1.248 1.248) (drill 0.8) (layers *.Cu *.Mask)
-    (solder_mask_margin 0.1524) (zone_connect 2) (tstamp 8d505d45-6b0b-4386-a605-02a45ddbd2b2))
+    (zone_connect 2) (tstamp 8d505d45-6b0b-4386-a605-02a45ddbd2b2))
 )

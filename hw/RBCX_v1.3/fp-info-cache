@@ -1,4 +1,4 @@
-20612398906672305
+20615773380196521
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -79345,6 +79345,13 @@ DO-214AC
 2
 2
 Robotarna_KiCad_Library
+ESP32-S3-WROOM
+
+
+0
+49
+41
+Robotarna_KiCad_Library
 ESP32-WROOM-32
 Single 2.4 GHz Wi-Fi and Bluetooth combo chip https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf
 Single 2.4 GHz Wi-Fi and Bluetooth combo  chip
@@ -86687,3 +86694,10 @@ varistor
 0
 2
 2
+kikit
+Board
+
+
+0
+0
+0
