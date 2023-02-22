@@ -573,6 +573,7 @@
     )
   )
 
+
   (junction (at 144.78 147.32) (diameter 0) (color 0 0 0 0)
     (uuid 0adb03a2-abb7-4a41-a913-bbfe1dbe69af)
   )
@@ -1747,7 +1748,7 @@
     (uuid 92768ff7-727c-4c67-abe6-309b3a36b2a9)
   )
   (text "IO12/TDI on ESP32 has internal pull-down\nduring releasing EN, so we need to switch-off\nthe transistor to disconnect pull/up R64."
-    (at 147.32 181.61 180)
+    (at 237.49 142.24 180)
     (effects (font (size 1.27 1.0795)) (justify right bottom))
     (uuid 9513539c-2621-41d7-8644-5b0de68e1562)
   )
@@ -2972,8 +2973,8 @@
   (symbol (lib_id "Device:R") (at 226.06 147.32 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 9aed98de-252c-4cd9-a77f-cc6de85bc045)
-    (property "Reference" "R43" (id 0) (at 226.06 142.24 90))
-    (property "Value" "330" (id 1) (at 226.06 144.78 90))
+    (property "Reference" "R43" (id 0) (at 228.6 149.86 90))
+    (property "Value" "330" (id 1) (at 222.25 149.86 90))
     (property "Footprint" "Capacitor_SMD:C_0201_0603Metric" (id 2) (at 226.06 149.098 90)
       (effects (font (size 1.27 1.27)) hide)
     )

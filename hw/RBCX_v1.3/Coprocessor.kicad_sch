@@ -949,6 +949,7 @@
     )
   )
 
+
   (junction (at 93.98 162.56) (diameter 0) (color 0 0 0 0)
     (uuid 06cc7e3a-9e64-4848-a02e-3774ed5f443e)
   )
@@ -1066,8 +1067,6 @@
   (junction (at 101.6 33.02) (diameter 0) (color 0 0 0 0)
     (uuid f841f3a5-242c-4822-9676-064a93d99fe3)
   )
-
-  (no_connect (at 91.44 68.58) (uuid 5b60b684-424d-47a5-aa53-d291a3423096))
 
   (wire (pts (xy 135.89 147.32) (xy 147.32 147.32))
     (stroke (width 0) (type default) (color 0 0 0 0))
@@ -1610,10 +1609,6 @@
     (uuid fd8f9ab0-fdbf-47c4-b19e-42d558737c03)
   )
 
-  (text "I'm such a lazy person" (at 92.456 69.342 0)
-    (effects (font (size 1 1)) (justify left bottom))
-    (uuid 1b7c3efd-224b-45c6-abe0-27ce378d7f1d)
-  )
   (text "v1.3" (at 217.805 191.643 180)
     (effects (font (size 2.54 2.159)) (justify left bottom))
     (uuid 239c383f-6be9-47b1-add1-7e1e7c9cb1c2)
@@ -1869,6 +1864,10 @@
   (hierarchical_label "SI2" (shape input) (at 45.72 134.62 180)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 42dd3f1a-eb68-49f3-920f-3bf3b8f957fd)
+  )
+  (hierarchical_label "PD_INT" (shape output) (at 91.44 68.58 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid 431a9d55-d396-46bf-a5ef-0e1a4655700b)
   )
   (hierarchical_label "BUTTON_ON" (shape input) (at 91.44 99.06 0)
     (effects (font (size 1.27 1.27)) (justify left))
