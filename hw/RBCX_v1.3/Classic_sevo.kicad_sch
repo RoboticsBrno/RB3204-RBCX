@@ -1059,7 +1059,7 @@
   (symbol (lib_id "Amplifier_Current:INA180A4") (at 100.33 50.8 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 7614d504-da29-420a-80b7-794a7c0915e5)
-    (property "Reference" "U?" (id 0) (at 91.44 48.26 0)
+    (property "Reference" "U14" (id 0) (at 91.44 48.26 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "INA180A4" (id 1) (at 91.44 45.72 0)
