@@ -4086,10 +4086,10 @@
       (reference "J50") (unit 1) (value "Conn_01x04") (footprint "RBCX:PinHeader_1x04_P2.54mm_Vertical")
     )
     (path "/6bbf37d2-9f87-4f2b-9e95-56d617eb6363/72bdaae6-b602-4afd-90f1-5faa6da77e38/1d93879f-ef58-4fb2-9d92-ac401fd596a4"
-      (reference "J51") (unit 1) (value "Conn_01x02") (footprint "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical")
+      (reference "J51") (unit 1) (value "Conn_01x02") (footprint "RBCX:PinHeader_1x02_P2.54mm_Vertical")
     )
     (path "/6bbf37d2-9f87-4f2b-9e95-56d617eb6363/72bdaae6-b602-4afd-90f1-5faa6da77e38/5b710af5-260d-465e-860a-977c16571c63"
-      (reference "J52") (unit 1) (value "Conn_01x02") (footprint "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical")
+      (reference "J52") (unit 1) (value "Conn_01x02") (footprint "RBCX:PinHeader_1x02_P2.54mm_Vertical")
     )
     (path "/475071ea-f096-4c42-885f-4369ed96d957/4d8be2d7-d6d3-41d0-a2d7-d12b868d59e9"
       (reference "JP1") (unit 1) (value "SolderJumper_3_Bridged12") (footprint "Jumper:SolderJumper-3_P1.3mm_Bridged12_RoundedPad1.0x1.5mm")
