@@ -1,9 +1,12 @@
 # RB3204-RBCX
 
 RBCX is a universal controller for hobby robots. It is a successor of [RB3201-RBControl](https://github.com/RoboticsBrno/RB3201-RBControl).
-It is used in the robot [Robotka](https://robotka.robotickytabor.cz).
+It is used in our robot [Robotka](https://robotka.robotickytabor.cz) on [Robo camp 2020](https://robotickytabor.cz).
 
-![RBCX](./media/robotka.jpg)
+<div align="center">
+  	<td><img src="./media/rbcx-front.png" width="49%"></td>
+	<td><img src="./media/rbcx-back.png" width="49%"></td>
+</div>
 
 ## Features
 - 4 DC motors
@@ -18,6 +21,8 @@ It is used in the robot [Robotka](https://robotka.robotickytabor.cz).
 - accelerometer and gyroscope
 - micro USB and USB-C connectors
 - battery connector (without charging circuit)
+
+![RBCX](./media/robotka.jpg)
 
 ## Hardware
 Board is based on `STM32F103VC` microcontroller and `ESP32-DevKitC`.

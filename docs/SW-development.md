@@ -1,7 +1,9 @@
-## Software development
+# Software development
 Both microcontrollers are programmed using [PlatformIO](https://platformio.org/) in [VSCode](https://code.visualstudio.com/) using C++ language.
 
-### STM32
+![RBCX development](./media/rbcx-dev.png)
+
+## STM32
 The software for STM32 is located in `fw` directory.
 STM32 uses our [bootloader](https://github.com/RoboticsBrno/sboot_stm32), which is based on [sboot_stm32](https://github.com/dmitrystu/sboot_stm32).
 The Czech manual is in the [presentation](https://docs.google.com/presentation/d/1B4t7tvKhTz8Nwm9SQEp_2enkG-x4il2hApb1tdSRLiI/edit?usp=sharing).
