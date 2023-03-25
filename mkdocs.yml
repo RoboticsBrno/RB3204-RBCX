@@ -53,27 +53,28 @@ use_directory_urls: True
 plugins:
   - search
   - glightbox
-  - mkdoxy: # https://github.com/JakubAndrysek/mkdoxy
-      projects:
-        apiStm:
-          src-dirs: fw/rbcx-coprocessor/
-          full-doc: True
-          doxy-cfg:
-            FILE_PATTERNS: "*.c* *.h*"
-            EXAMPLE_PATH: ""
-            RECURSIVE: True
-        apiEsp32:
-          src-dirs: build/RB3204-RBCX-library/
-          full-doc: True
-          doxy-cfg:
-            FILE_PATTERNS: "*.c* *.h*"
-            EXAMPLE_PATH: ""
-            RECURSIVE: True
+  # - mkdoxy: # https://github.com/JakubAndrysek/mkdoxy
+  #     projects:
+  #       apiStm:
+  #         src-dirs: fw/rbcx-coprocessor/
+  #         full-doc: True
+  #         doxy-cfg:
+  #           FILE_PATTERNS: "*.c* *.h*"
+  #           EXAMPLE_PATH: ""
+  #           RECURSIVE: True
+  #       apiEsp32:
+  #         src-dirs: build/RB3204-RBCX-library/
+  #         full-doc: True
+  #         doxy-cfg:
+  #           FILE_PATTERNS: "*.c* *.h*"
+  #           EXAMPLE_PATH: ""
+  #           RECURSIVE: True
 
-      save-api: .mkdoxy
-      full-doc: True
-      debug: False
-      ignore-errors: False
+  #     save-api: .mkdoxy
+  #     full-doc: True
+  #     debug: False
+  #     ignore-errors: False
+
   # - i18n:
   #     default_language: !ENV [DEFAULT_LANGUAGE, "en"]
   #     default_language_only: !ENV [DEFAULT_LANGUAGE_ONLY, false]
