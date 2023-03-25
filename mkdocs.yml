@@ -98,6 +98,9 @@ markdown_extensions:
   - pymdownx.superfences
   - attr_list
 
+extra_javascript:
+  - assets/js/open_in_new_tab.js
+
 nav:
   - Home: 'README.md'
   - SW-development.md
