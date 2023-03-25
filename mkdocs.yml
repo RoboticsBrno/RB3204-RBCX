@@ -1,0 +1,159 @@
+site_name: RB3204-RBCX
+site_url:
+site_author: RoboticsBrno
+site_description: >-
+
+
+# Repository
+repo_name: RoboticsBrno/RB3204-RBCX
+repo_url: https://github.com/RoboticsBrno/RB3204-RBCX
+
+# Copyright
+copyright: Copyright © 2023 RoboticsBrno
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.top
+
+  icon:
+    repo: fontawesome/brands/github
+
+  palette:
+    - scheme: slate
+      primary: green
+      accent: green
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/RoboticsBrno
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/RobotikaBrno
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/robotarna
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@robotikabrno-robotarnaasps2392
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/_robotarna_
+#    analytics:
+#        provider: google
+#        property: G-XXXXXXXXXX
+
+use_directory_urls: True
+
+plugins:
+  - search
+  - glightbox
+  - mkdoxy: # https://github.com/JakubAndrysek/mkdoxy
+      projects:
+        apiStm:
+          src-dirs: fw/rbcx-coprocessor/
+          full-doc: True
+          doxy-cfg:
+            FILE_PATTERNS: "*.c* *.h*"
+            EXAMPLE_PATH: ""
+            RECURSIVE: True
+        apiEsp32:
+          src-dirs: build/RB3204-RBCX-library/
+          full-doc: True
+          doxy-cfg:
+            FILE_PATTERNS: "*.c* *.h*"
+            EXAMPLE_PATH: ""
+            RECURSIVE: True
+        # apiEsp32:
+        #   src-dirs: sw/python-wrapper/
+        #   full-doc: True
+        #   doxy-cfg:
+        #     FILE_PATTERNS: "*.py"
+        #     EXAMPLE_PATH: ""
+        #     RECURSIVE: True
+        #     OPTIMIZE_OUTPUT_JAVA: True
+        #     JAVADOC_AUTOBRIEF: True
+        #     EXTRACT_ALL: True
+
+      save-api: .mkdoxy
+      full-doc: True
+      # full-doc: False
+      debug: False
+      ignore-errors: False
+  # - i18n:
+  #     default_language: !ENV [DEFAULT_LANGUAGE, "en"]
+  #     default_language_only: !ENV [DEFAULT_LANGUAGE_ONLY, false]
+  #     docs_structure: suffix
+  #     languages:
+  #       default:
+  #         name: Default (en)
+  #         build: true
+  #       cs:
+  #         name: Czech (cs)
+  #         build: true
+  #         # site_name:
+  #     # nav_translations:
+  #     #   fr:
+  #     #     Topic1: Sujet1
+  #     #     Topic2: Sujet2
+  # - git-revision-date-localized
+
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - attr_list
+
+nav:
+  - Home: 'README.md'
+  - SW-development.md
+  - API Reference:
+      - api/index.md
+      - API STM Coprocessor:
+          - apiStm/index.md
+          - "Links": "apiStm/links.md"
+          - "Classes":
+              - "Class List": "apiStm/annotated.md"
+              - "Class Index": "apiStm/classes.md"
+              - "Class Hierarchy": "apiStm/hierarchy.md"
+              - "Class Members": "apiStm/class_members.md"
+              - "Class Member Functions": "apiStm/class_member_functions.md"
+              - "Class Member Variables": "apiStm/class_member_variables.md"
+              - "Class Member Typedefs": "apiStm/class_member_typedefs.md"
+              - "Class Member Enumerations": "apiStm/class_member_enums.md"
+          - "Namespaces":
+              - "Namespace List": "apiStm/namespaces.md"
+              - "Namespace Members": "apiStm/namespace_members.md"
+              - "Namespace Member Functions": "apiStm/namespace_member_functions.md"
+              - "Namespace Member Variables": "apiStm/namespace_member_variables.md"
+              - "Namespace Member Typedefs": "apiStm/namespace_member_typedefs.md"
+              - "Namespace Member Enumerations": "apiStm/namespace_member_enums.md"
+          - "Functions": "apiStm/functions.md"
+          - "Variables": "apiStm/variables.md"
+          - "Macros": "apiStm/macros.md"
+          - "Files": "apiStm/files.md"
+      - API ESP32 library:
+          - apiEsp32/index.md
+          - "Links": "apiEsp32/links.md"
+          - "Classes":
+              - "Class List": "apiEsp32/annotated.md"
+              - "Class Index": "apiEsp32/classes.md"
+              - "Class Hierarchy": "apiEsp32/hierarchy.md"
+              - "Class Members": "apiEsp32/class_members.md"
+              - "Class Member Functions": "apiEsp32/class_member_functions.md"
+              - "Class Member Variables": "apiEsp32/class_member_variables.md"
+              - "Class Member Typedefs": "apiEsp32/class_member_typedefs.md"
+              - "Class Member Enumerations": "apiEsp32/class_member_enums.md"
+          - "Namespaces":
+              - "Namespace List": "apiEsp32/namespaces.md"
+              - "Namespace Members": "apiEsp32/namespace_members.md"
+              - "Namespace Member Functions": "apiEsp32/namespace_member_functions.md"
+              - "Namespace Member Variables": "apiEsp32/namespace_member_variables.md"
+              - "Namespace Member Typedefs": "apiEsp32/namespace_member_typedefs.md"
+              - "Namespace Member Enumerations": "apiEsp32/namespace_member_enums.md"
+          - "Functions": "apiEsp32/functions.md"
+          - "Variables": "apiEsp32/variables.md"
+          - "Macros": "apiEsp32/macros.md"
+          - "Files": "apiEsp32/files.md"

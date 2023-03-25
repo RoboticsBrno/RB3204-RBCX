@@ -3,7 +3,7 @@
 RBCX is a universal controller for hobby robots. It is a successor of [RB3201-RBControl](https://github.com/RoboticsBrno/RB3201-RBControl).
 It is used in the robot [Robotka](https://robotka.robotickytabor.cz).
 
-![RBCX](./docs/media/robotka.jpg)
+![RBCX](./media/robotka.jpg)
 
 ## Features
 - 4 DC motors
