@@ -9,7 +9,7 @@ It is used in our robot [Robotka](https://robotka.robotickytabor.cz) on [Robo ca
 </div>
 
 ## Features
-- 4 DC motors
+- 4 DC motors with encoders
 - 4 servos with feedback (via ADC)
 - 4 LEDs
 - buttons with the gamepad interface
