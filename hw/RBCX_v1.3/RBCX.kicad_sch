@@ -3723,7 +3723,7 @@
       (reference "C84") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0402_1005Metric")
     )
     (path "/6bbf37d2-9f87-4f2b-9e95-56d617eb6363/f8a0606d-c386-4d1f-813a-fe76fb28f2a2"
-      (reference "C?") (unit 1) (value "C_Polarized") (footprint "Capacitor_SMD:CP_Elec_8x11.9")
+      (reference "C85") (unit 1) (value "C_Polarized") (footprint "Capacitor_SMD:CP_Elec_8x11.9")
     )
     (path "/475071ea-f096-4c42-885f-4369ed96d957/f7bde2a5-9bdd-4058-808b-f32fc1b0fba0"
       (reference "D1") (unit 1) (value "D") (footprint "Diode_SMD:D_SOD-523")
