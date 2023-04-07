@@ -90,9 +90,8 @@ static void taskFunc() {
                 uint16_t encTicks = LL_TIM_GetCounter(encoderTimer[m]);
                 auto& targetMotor = motor[m];
                 auto modeBefore = targetMotor.mode();
-                auto action = targetMotor.poll(encTicks);
+                targetMotor.poll(encTicks);
                 auto modeAfter = targetMotor.mode();
-                setMotorPower(m, action, modeAfter == MotorMode_BRAKE);
 
                 if (modeBefore == MotorMode_POSITION
                     && modeAfter == MotorMode_POSITION_IDLE) {
@@ -103,6 +102,18 @@ static void taskFunc() {
                     stat.payload.motorStat.motorIndex = m;
                     dispatcherEnqueueStatus(stat);
                 }
+            }
+            // Loop split due to possible dependency when coupling one motor's output to another:
+            for (int m : { 0, 1, 2, 3 }) {
+                auto& currentMotor = motor[m];
+                auto& targetMotor
+                    = currentMotor.mode() != MotorMode_COUPLE_POWER
+                    ? currentMotor
+                    : motor[currentMotor.coupleAxis()];
+
+                auto power = targetMotor.actualPower();
+                bool brake = targetMotor.mode() == MotorMode_BRAKE;
+                setMotorPower(m, power, brake);
             }
         }
         vTaskDelayUntil(&now, pdMS_TO_TICKS(1000 / motorLoopFreq));
@@ -159,6 +170,14 @@ void motorDispatch(const CoprocReq_MotorReq& request) {
         break;
     case CoprocReq_MotorReq_setConfig_tag:
         targetMotor.setConfig(request.motorCmd.setConfig);
+        break;
+    case CoprocReq_MotorReq_setCoupling_tag:
+        if (request.motorCmd.setCoupling.coupleAxis > 3) {
+            DEBUG("Motor coupling axis %u invalid",
+                request.motorCmd.setCoupling.coupleAxis);
+            return;
+        }
+        targetMotor.setCoupling(request.motorCmd.setCoupling);
         break;
     }
 }
