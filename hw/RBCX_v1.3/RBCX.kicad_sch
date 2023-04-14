@@ -3800,6 +3800,9 @@
     (path "/6bbf37d2-9f87-4f2b-9e95-56d617eb6363/72bdaae6-b602-4afd-90f1-5faa6da77e38/32214dae-570c-4627-975d-e058202c00f9"
       (reference "D25") (unit 1) (value "D_Schottky") (footprint "Diode_SMD:D_SOD-123F")
     )
+    (path "/10e93c09-17c0-4b9f-b76a-d2803ee0aa4b/552d648b-1224-419f-bc7c-6068ae8402d9"
+      (reference "D26") (unit 1) (value "PTVSHC3N24") (footprint "Robotarna_KiCad_Library:DFN3-2x2")
+    )
     (path "/6bbf37d2-9f87-4f2b-9e95-56d617eb6363/c6773705-1703-4f22-9161-c5523121e6c3"
       (reference "D27") (unit 1) (value "red") (footprint "LED_SMD:LED_0603_1608Metric")
     )
@@ -4886,6 +4889,9 @@
     (path "/6bbf37d2-9f87-4f2b-9e95-56d617eb6363/74a77d25-c0a0-4a9e-9060-a80d0a2a1440"
       (reference "TP59") (unit 1) (value "TP_06MM") (footprint "RBCX:TP_06MM")
     )
+    (path "/3f7d3d76-9e44-4006-90ec-efd7f94a558a/ae3df6c5-f578-43fe-adc6-bedc0d2944ac"
+      (reference "TP?") (unit 1) (value "TP_06MM") (footprint "RBCX:TP_06MM")
+    )
     (path "/6bbf37d2-9f87-4f2b-9e95-56d617eb6363/b120ec92-58de-493d-baf6-86aaf685acc5"
       (reference "U1") (unit 1) (value "SY8368QNC") (footprint "RBCX:SY8368QNC")
     )
@@ -4951,6 +4957,9 @@
     )
     (path "/10e93c09-17c0-4b9f-b76a-d2803ee0aa4b/1972ebd5-b858-43c0-80ca-011d19ce84f6"
       (reference "U22") (unit 1) (value "AP33772") (footprint "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm")
+    )
+    (path "/10e93c09-17c0-4b9f-b76a-d2803ee0aa4b/8a21e7c2-d6f7-4e10-bcbf-a96a70ea3f32"
+      (reference "U23") (unit 1) (value "TPD4E02B04DQA") (footprint "Package_SON:USON-10_2.5x1.0mm_P0.5mm")
     )
     (path "/6bbf37d2-9f87-4f2b-9e95-56d617eb6363/8e9972e4-9690-4278-ba5b-a55e71cf646d"
       (reference "X1") (unit 1) (value "POWER_OUT") (footprint "RBCX:W237-132")
