@@ -43,6 +43,31 @@ bool dispatcherEnqueueRequest(const CoprocReq& request) {
     return ok;
 }
 
+static void sendButtonsStat() {
+    CoprocStat status = {
+        .which_payload = CoprocStat_buttonsStat_tag,
+    };
+    status.payload.buttonsStat.buttonsPressed
+        = CoprocStat_ButtonsEnum(getButtons());
+    controlLinkTx(status);
+}
+
+static void sendVersionStat() {
+    CoprocStat status = {
+        .which_payload = CoprocStat_versionStat_tag,
+    };
+
+    auto& v = status.payload.versionStat;
+
+    static_assert(sizeof(v.revision) == 8);
+    static_assert(sizeof(RBCX_VER_REVISION) == 9); // + NULL byte
+    memcpy(v.revision, RBCX_VER_REVISION, 8);
+
+    v.dirty = RBCX_VER_DIRTY;
+    v.number = RBCX_VER_NUMBER;
+    controlLinkTx(status);
+}
+
 static void dispatcherProcessReq(const CoprocReq& request) {
     switch (request.which_payload) {
     case CoprocReq_setLeds_tag: {
@@ -53,15 +78,9 @@ static void dispatcherProcessReq(const CoprocReq& request) {
         controlLinkTx(status);
         break;
     }
-    case CoprocReq_getButtons_tag: {
-        CoprocStat status = {
-            .which_payload = CoprocStat_buttonsStat_tag,
-        };
-        status.payload.buttonsStat.buttonsPressed
-            = CoprocStat_ButtonsEnum(getButtons());
-        controlLinkTx(status);
+    case CoprocReq_getButtons_tag:
+        sendButtonsStat();
         break;
-    }
     case CoprocReq_setStupidServo_tag:
         stupidServoDispatch(request.payload.setStupidServo);
         break;
@@ -72,22 +91,9 @@ static void dispatcherProcessReq(const CoprocReq& request) {
         buzzerSetState(request.payload.buzzerReq.on);
         buzzerSetState(request.payload.buzzerReq.on);
         break;
-    case CoprocReq_versionReq_tag: {
-        CoprocStat status = {
-            .which_payload = CoprocStat_versionStat_tag,
-        };
-
-        auto& v = status.payload.versionStat;
-
-        static_assert(sizeof(v.revision) == 8);
-        static_assert(sizeof(RBCX_VER_REVISION) == 9); // + NULL byte
-        memcpy(v.revision, RBCX_VER_REVISION, 8);
-
-        v.dirty = RBCX_VER_DIRTY;
-        v.number = RBCX_VER_NUMBER;
-        controlLinkTx(status);
+    case CoprocReq_versionReq_tag:
+        sendVersionStat();
         break;
-    }
     case CoprocReq_calibratePower_tag: {
         const auto& c = request.payload.calibratePower;
         powerCalibrate(c.vccMv, c.battMidMv, c.vRef33Mv, c.temperatureC);
@@ -102,6 +108,25 @@ static void dispatcherProcessReq(const CoprocReq& request) {
     case CoprocReq_i2cReq_tag:
         i2cDispatch(request.payload.i2cReq);
         break;
+    case CoprocReq_espWatchdogSettings_tag:
+        sEsp32Manager.handleSettings(request.payload.espWatchdogSettings);
+        break;
+    case CoprocReq_coprocStartupMessage_tag: {
+        const auto& m = request.payload.coprocStartupMessage;
+        if (m.getButtons) {
+            sendButtonsStat();
+        }
+        if (m.getVersion) {
+            sendVersionStat();
+        }
+        if (m.getRtc) {
+            // TODO RTC not yet implemented
+        }
+        if (m.has_espWatchdogSettings) {
+            sEsp32Manager.handleSettings(m.espWatchdogSettings);
+        }
+        break;
+    }
     }
 }
 

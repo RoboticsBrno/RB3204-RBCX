@@ -31,17 +31,13 @@ Esp32Manager::Esp32Manager()
     , m_queuedReset(RstNormal)
     , m_previousEnEdge(false)
     , m_inBootloader(false)
-    , m_watchdogInhibit(false) {}
+    , m_watchdogInhibit(true) {}
 
 Esp32Manager::~Esp32Manager() {}
 
 void Esp32Manager::init() {
     pinInit(espEnPin, GPIO_MODE_INPUT, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
     m_previousEnEdge = pinRead(espEnPin);
-    if (CoreDebug->DHCSR & CoreDebug_DHCSR_C_DEBUGEN_Msk) {
-        DEBUG("Watchdog inhibited with debugger attached\n");
-        m_watchdogInhibit = true;
-    }
 }
 
 void Esp32Manager::poll() {
@@ -146,5 +142,16 @@ void Esp32Manager::resetWatchdog() {
 }
 
 void Esp32Manager::setWatchdogInhibit(bool inhibit) {
-    m_watchdogInhibit = inhibit;
+    if (CoreDebug->DHCSR & CoreDebug_DHCSR_C_DEBUGEN_Msk) {
+        DEBUG("Watchdog is always inhibited with debugger attached, ignoring "
+              "setWatchdogInhibit\n");
+        m_watchdogInhibit = true;
+    } else {
+        m_watchdogInhibit = inhibit;
+    }
+}
+
+void Esp32Manager::handleSettings(
+    const CoprocReq_EspWatchdogSettings& settings) {
+    setWatchdogInhibit(settings.disable);
 }
