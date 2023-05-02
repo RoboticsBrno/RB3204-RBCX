@@ -1,5 +1,6 @@
 #pragma once
 
+#include "rbcx.pb.h"
 #include "utils/TickTimer.hpp"
 
 class Esp32Manager {
@@ -20,6 +21,8 @@ public:
     bool isInBootloader() const { return m_inBootloader; }
     void resetWatchdog();
     void setWatchdogInhibit(bool inhibit);
+
+    void handleSettings(const CoprocReq_EspWatchdogSettings& settings);
 
 private:
     enum EnHolderType {
