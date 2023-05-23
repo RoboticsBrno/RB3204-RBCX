@@ -9,6 +9,7 @@
 #include "I2cController.hpp"
 #include "MotorController.hpp"
 #include "Power.hpp"
+#include "SmartServoController.hpp"
 #include "StupidServoController.hpp"
 #include "UltrasoundController.hpp"
 #include "queue.h"
@@ -127,6 +128,9 @@ static void dispatcherProcessReq(const CoprocReq& request) {
         }
         break;
     }
+    case CoprocReq_smartServoReq_tag:
+        smartServoSendRequest(request.payload.smartServoReq);
+        break;
     }
 }
 
