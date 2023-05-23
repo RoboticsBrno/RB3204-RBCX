@@ -173,6 +173,10 @@ inline const unsigned controlUartTxDmaIRQnPrio = 8;
 inline DMA_Channel_TypeDef* const controlUartTxDmaChannel = DMA1_Channel2;
 inline DMA_Channel_TypeDef* const controlUartRxDmaChannel = DMA1_Channel3;
 
+#define SERVOUART_HANDLER UART5_IRQHandler
+inline const IRQn_Type servoUartIRQn = UART5_IRQn;
+inline const unsigned servoUartIrqPrio = 9;
+
 #define IN4PORT GPIOE
 #define IN4AMASK GPIO_PIN_5
 #define IN4BMASK GPIO_PIN_7
@@ -383,7 +387,7 @@ inline void pinsInit() {
     HAL_NVIC_SetPriority(i2cEvIRQn, i2cIRQnPrio, 0);
     HAL_NVIC_SetPriority(i2cErIRQn, i2cIRQnPrio, 0);
     HAL_NVIC_EnableIRQ(i2cEvIRQn);
-    HAL_NVIC_EnableIRQ(i2cErIRQn);    
+    HAL_NVIC_EnableIRQ(i2cErIRQn);
 
     pinInit(buzzerPin, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
 

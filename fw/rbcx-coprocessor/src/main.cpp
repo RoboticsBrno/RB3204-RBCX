@@ -20,6 +20,7 @@
 #include "Dispatcher.hpp"
 #include "Esp32Manager.hpp"
 #include "Power.hpp"
+#include "SmartServoController.hpp"
 #include "UsbCdcLink.h"
 
 static TaskWrapper<3072> mainTask;
@@ -43,6 +44,7 @@ int main() {
         controlUartInit();
         cdcLinkInit();
         I2Cdev_init();
+        smartServoInit();
         stupidServoInit();
         ultrasoundInit();
         mpuCreate();
@@ -59,6 +61,7 @@ int main() {
             dispatcherPoll();
             tunnelPoll();
             buttonControllerPoll();
+            smartServoPoll();
             sEsp32Manager.poll();
         }
     });
