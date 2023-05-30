@@ -1,0 +1,2926 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the RBCX robot controller board designed by the RoboticsBrno team. It is based on the STM32F446RE microcontroller and ESP32 microcontroller. Features: 4 motors with encoders, 4 servos, buttons with the gamepad, LEDs, ultra-sonic sensor, ...">
+      
+      
+        <meta name="author" content="RoboticsBrno">
+      
+      
+        <link rel="canonical" href="https://rbcx.robotikabrno.cz/apiStm/usbd__core_8h/">
+      
+      
+      
+      <link rel="icon" href="../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>File usbd\_core.h - RB3204-RBCX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#file-usbd_coreh" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RB3204-RBCX" class="md-header__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RB3204-RBCX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              File usbd\_core.h
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../SW-development/" class="md-tabs__link">
+      Software development
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/" class="md-tabs__link">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RB3204-RBCX" class="md-nav__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    RB3204-RBCX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SW-development/" class="md-nav__link">
+        Software development
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../api/">API Reference</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">API STM Coprocessor</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          API STM Coprocessor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../apiEsp32/">API ESP32 library</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          API ESP32 library
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-types" class="md-nav__link">
+    Public Types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-functions" class="md-nav__link">
+    Public Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-static-functions" class="md-nav__link">
+    Public Static Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    Macros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-types-documentation" class="md-nav__link">
+    Public Types Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Public Types Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enum-_usbd_respond" class="md-nav__link">
+    enum _usbd_respond
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_cfg_callback" class="md-nav__link">
+    typedef usbd_cfg_callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_ctl_callback" class="md-nav__link">
+    typedef usbd_ctl_callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum-usbd_ctl_state" class="md-nav__link">
+    enum usbd_ctl_state
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_device" class="md-nav__link">
+    typedef usbd_device
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_dsc_callback" class="md-nav__link">
+    typedef usbd_dsc_callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_evt_callback" class="md-nav__link">
+    typedef usbd_evt_callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_connect" class="md-nav__link">
+    typedef usbd_hw_connect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_enable" class="md-nav__link">
+    typedef usbd_hw_enable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_ep_config" class="md-nav__link">
+    typedef usbd_hw_ep_config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_ep_deconfig" class="md-nav__link">
+    typedef usbd_hw_ep_deconfig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_ep_isstalled" class="md-nav__link">
+    typedef usbd_hw_ep_isstalled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_ep_read" class="md-nav__link">
+    typedef usbd_hw_ep_read
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_ep_setstall" class="md-nav__link">
+    typedef usbd_hw_ep_setstall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_ep_write" class="md-nav__link">
+    typedef usbd_hw_ep_write
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_get_frameno" class="md-nav__link">
+    typedef usbd_hw_get_frameno
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_get_serialno" class="md-nav__link">
+    typedef usbd_hw_get_serialno
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_getinfo" class="md-nav__link">
+    typedef usbd_hw_getinfo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_poll" class="md-nav__link">
+    typedef usbd_hw_poll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_hw_setaddr" class="md-nav__link">
+    typedef usbd_hw_setaddr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum-usbd_machine_state" class="md-nav__link">
+    enum usbd_machine_state
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_respond" class="md-nav__link">
+    typedef usbd_respond
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-usbd_rqc_callback" class="md-nav__link">
+    typedef usbd_rqc_callback
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-functions-documentation" class="md-nav__link">
+    Public Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Public Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_poll" class="md-nav__link">
+    function usbd_poll
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-static-functions-documentation" class="md-nav__link">
+    Public Static Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Public Static Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_connect" class="md-nav__link">
+    function usbd_connect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_enable" class="md-nav__link">
+    function usbd_enable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_ep_config" class="md-nav__link">
+    function usbd_ep_config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_ep_deconfig" class="md-nav__link">
+    function usbd_ep_deconfig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_ep_read" class="md-nav__link">
+    function usbd_ep_read
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_ep_stall" class="md-nav__link">
+    function usbd_ep_stall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_ep_unstall" class="md-nav__link">
+    function usbd_ep_unstall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_ep_write" class="md-nav__link">
+    function usbd_ep_write
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_getinfo" class="md-nav__link">
+    function usbd_getinfo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_init" class="md-nav__link">
+    function usbd_init
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_reg_config" class="md-nav__link">
+    function usbd_reg_config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_reg_control" class="md-nav__link">
+    function usbd_reg_control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_reg_descr" class="md-nav__link">
+    function usbd_reg_descr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_reg_endpoint" class="md-nav__link">
+    function usbd_reg_endpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-usbd_reg_event" class="md-nav__link">
+    function usbd_reg_event
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macro-definition-documentation" class="md-nav__link">
+    Macro Definition Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Macro Definition Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_hw_addrfst" class="md-nav__link">
+    define USBD_HW_ADDRFST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_hw_bc" class="md-nav__link">
+    define USBD_HW_BC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_hw_enabled" class="md-nav__link">
+    define USBD_HW_ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_hw_enumspeed" class="md-nav__link">
+    define USBD_HW_ENUMSPEED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_hw_speed_fs" class="md-nav__link">
+    define USBD_HW_SPEED_FS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_hw_speed_hs" class="md-nav__link">
+    define USBD_HW_SPEED_HS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_hw_speed_ls" class="md-nav__link">
+    define USBD_HW_SPEED_LS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_hw_speed_nc" class="md-nav__link">
+    define USBD_HW_SPEED_NC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_eptype_dblbuf" class="md-nav__link">
+    define USB_EPTYPE_DBLBUF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_class" class="md-nav__link">
+    define USB_REQ_CLASS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_device" class="md-nav__link">
+    define USB_REQ_DEVICE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_devtohost" class="md-nav__link">
+    define USB_REQ_DEVTOHOST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_direction" class="md-nav__link">
+    define USB_REQ_DIRECTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_endpoint" class="md-nav__link">
+    define USB_REQ_ENDPOINT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_hosttodev" class="md-nav__link">
+    define USB_REQ_HOSTTODEV
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_interface" class="md-nav__link">
+    define USB_REQ_INTERFACE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_other" class="md-nav__link">
+    define USB_REQ_OTHER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_recipient" class="md-nav__link">
+    define USB_REQ_RECIPIENT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_standard" class="md-nav__link">
+    define USB_REQ_STANDARD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_type" class="md-nav__link">
+    define USB_REQ_TYPE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_req_vendor" class="md-nav__link">
+    define USB_REQ_VENDOR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usnd_hw_hs" class="md-nav__link">
+    define USND_HW_HS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_evt_count" class="md-nav__link">
+    define usbd_evt_count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_evt_eprx" class="md-nav__link">
+    define usbd_evt_eprx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_evt_epsetup" class="md-nav__link">
+    define usbd_evt_epsetup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_evt_eptx" class="md-nav__link">
+    define usbd_evt_eptx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_evt_error" class="md-nav__link">
+    define usbd_evt_error
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_evt_reset" class="md-nav__link">
+    define usbd_evt_reset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_evt_sof" class="md-nav__link">
+    define usbd_evt_sof
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_evt_susp" class="md-nav__link">
+    define usbd_evt_susp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_evt_wkup" class="md-nav__link">
+    define usbd_evt_wkup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_lane_cdp" class="md-nav__link">
+    define usbd_lane_cdp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_lane_dcp" class="md-nav__link">
+    define usbd_lane_dcp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_lane_dsc" class="md-nav__link">
+    define usbd_lane_dsc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_lane_sdp" class="md-nav__link">
+    define usbd_lane_sdp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usbd_lane_unk" class="md-nav__link">
+    define usbd_lane_unk
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="file-usbd_coreh">File usbd_core.h</h1>
+<p><a href="../files/"><strong>FileList</strong></a> <strong>&gt;</strong> <a href="../dir_b8c955b770907a816d8d814e8d2a21ac/"><strong>fw</strong></a> <strong>&gt;</strong> <a href="../dir_7d45f881dcf2fb01e973fdd38228b27f/"><strong>rbcx-coprocessor</strong></a> <strong>&gt;</strong> <a href="../dir_1f351607af1ca5dc8115007d2c3c4559/"><strong>lib</strong></a> <strong>&gt;</strong> <a href="../dir_ba91ee832338db2cc6be09eb7edd6a06/"><strong>libusb_stm32</strong></a> <strong>&gt;</strong> <a href="../dir_65452da8826453c25a2896bba09f0855/"><strong>include</strong></a> <strong>&gt;</strong> <a href="./"><strong>usbd_core.h</strong></a></p>
+<p><a href="../usbd__core_8h_source/">Go to the source code of this file.</a></p>
+<ul>
+<li><code>#include &lt;stdbool.h&gt;</code></li>
+</ul>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> <br><em>Represents a USB device data.</em></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusbd__ctlreq/"><strong>usbd_ctlreq</strong></a> <br><em>Represents generic USB control request.</em></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusbd__driver/"><strong>usbd_driver</strong></a> <br><em>Represents a hardware USB driver call table.</em></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusbd__status/"><strong>usbd_status</strong></a> <br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-types">Public Types</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">enum</td>
+<td align="left"><a href="#enum-_usbd_respond"><strong>_usbd_respond</strong></a>  <br><em>Reporting status results.</em></td>
+</tr>
+<tr>
+<td align="right">typedef <a href="./#typedef-usbd_respond"><strong>usbd_respond</strong></a>(*</td>
+<td align="left"><a href="#typedef-usbd_cfg_callback"><strong>usbd_cfg_callback</strong></a>  <br><em>USB set configuration callback function.</em></td>
+</tr>
+<tr>
+<td align="right">typedef <a href="./#typedef-usbd_respond"><strong>usbd_respond</strong></a>(*</td>
+<td align="left"><a href="#typedef-usbd_ctl_callback"><strong>usbd_ctl_callback</strong></a>  <br><em>USB control callback function.</em></td>
+</tr>
+<tr>
+<td align="right">enum</td>
+<td align="left"><a href="#enum-usbd_ctl_state"><strong>usbd_ctl_state</strong></a>  <br><em>USB device control endpoint machine state.</em></td>
+</tr>
+<tr>
+<td align="right">typedef struct <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a></td>
+<td align="left"><a href="#typedef-usbd_device"><strong>usbd_device</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef <a href="./#typedef-usbd_respond"><strong>usbd_respond</strong></a>(*</td>
+<td align="left"><a href="#typedef-usbd_dsc_callback"><strong>usbd_dsc_callback</strong></a>  <br><em>USB get descriptor callback function.</em></td>
+</tr>
+<tr>
+<td align="right">typedef void(*</td>
+<td align="left"><a href="#typedef-usbd_evt_callback"><strong>usbd_evt_callback</strong></a>  <br><em>Generic USB device event callback for events and endpoints processing.</em></td>
+</tr>
+<tr>
+<td align="right">typedef uint8_t(*</td>
+<td align="left"><a href="#typedef-usbd_hw_connect"><strong>usbd_hw_connect</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef void(*</td>
+<td align="left"><a href="#typedef-usbd_hw_enable"><strong>usbd_hw_enable</strong></a>  <br><em>Enables or disables USB hardware.</em></td>
+</tr>
+<tr>
+<td align="right">typedef bool(*</td>
+<td align="left"><a href="#typedef-usbd_hw_ep_config"><strong>usbd_hw_ep_config</strong></a>  <br><em>Configures endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">typedef void(*</td>
+<td align="left"><a href="#typedef-usbd_hw_ep_deconfig"><strong>usbd_hw_ep_deconfig</strong></a>  <br><em>De-configures, cleans and disables endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">typedef bool(*</td>
+<td align="left"><a href="#typedef-usbd_hw_ep_isstalled"><strong>usbd_hw_ep_isstalled</strong></a>  <br><em>Checks endpoint for stalled state.</em></td>
+</tr>
+<tr>
+<td align="right">typedef int32_t(*</td>
+<td align="left"><a href="#typedef-usbd_hw_ep_read"><strong>usbd_hw_ep_read</strong></a>  <br><em>Reads data from OUT or control endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">typedef void(*</td>
+<td align="left"><a href="#typedef-usbd_hw_ep_setstall"><strong>usbd_hw_ep_setstall</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef int32_t(*</td>
+<td align="left"><a href="#typedef-usbd_hw_ep_write"><strong>usbd_hw_ep_write</strong></a>  <br><em>Writes data to IN or control endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">typedef uint16_t(*</td>
+<td align="left"><a href="#typedef-usbd_hw_get_frameno"><strong>usbd_hw_get_frameno</strong></a>  <br><em>Gets frame number from usb hardware.</em></td>
+</tr>
+<tr>
+<td align="right">typedef uint16_t(*</td>
+<td align="left"><a href="#typedef-usbd_hw_get_serialno"><strong>usbd_hw_get_serialno</strong></a>  <br><em>Makes a string descriptor contains unique serial number from hardware ID's.</em></td>
+</tr>
+<tr>
+<td align="right">typedef uint32_t(*</td>
+<td align="left"><a href="#typedef-usbd_hw_getinfo"><strong>usbd_hw_getinfo</strong></a>  <br><em>Get USB device status and capabilities.</em></td>
+</tr>
+<tr>
+<td align="right">typedef void(*</td>
+<td align="left"><a href="#typedef-usbd_hw_poll"><strong>usbd_hw_poll</strong></a>  <br><em>Polls USB hardware for the events.</em></td>
+</tr>
+<tr>
+<td align="right">typedef void(*</td>
+<td align="left"><a href="#typedef-usbd_hw_setaddr"><strong>usbd_hw_setaddr</strong></a>  <br><em>Sets USB hardware address.</em></td>
+</tr>
+<tr>
+<td align="right">enum</td>
+<td align="left"><a href="#enum-usbd_machine_state"><strong>usbd_machine_state</strong></a>  <br><em>USB device machine states.</em></td>
+</tr>
+<tr>
+<td align="right">typedef enum <a href="./#enum-_usbd_respond"><strong>_usbd_respond</strong></a></td>
+<td align="left"><a href="#typedef-usbd_respond"><strong>usbd_respond</strong></a>  <br><em>Reporting status results.</em></td>
+</tr>
+<tr>
+<td align="right">typedef void(*</td>
+<td align="left"><a href="#typedef-usbd_rqc_callback"><strong>usbd_rqc_callback</strong></a>  <br><em>USB control transfer completed callback function.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions">Public Functions</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-usbd_poll"><strong>usbd_poll</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev) <br><em>Polls USB for events.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-static-functions">Public Static Functions</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">uint8_t</td>
+<td align="left"><a href="#function-usbd_connect"><strong>usbd_connect</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, bool connect) <br><em>Connects or disconnects USB hardware to/from usb host.</em></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-usbd_enable"><strong>usbd_enable</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, bool enable) <br><em>Enables or disables USB hardware.</em></td>
+</tr>
+<tr>
+<td align="right">bool</td>
+<td align="left"><a href="#function-usbd_ep_config"><strong>usbd_ep_config</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, uint8_t ep, uint8_t eptype, uint16_t epsize) <br><em>Configure endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-usbd_ep_deconfig"><strong>usbd_ep_deconfig</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, uint8_t ep) <br><em>Deconfigure endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">int32_t</td>
+<td align="left"><a href="#function-usbd_ep_read"><strong>usbd_ep_read</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, uint8_t ep, void * buf, uint16_t blen) <br><em>Read data from endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-usbd_ep_stall"><strong>usbd_ep_stall</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, uint8_t ep) <br><em>Stall endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-usbd_ep_unstall"><strong>usbd_ep_unstall</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, uint8_t ep) <br><em>Unstall endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">int32_t</td>
+<td align="left"><a href="#function-usbd_ep_write"><strong>usbd_ep_write</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, uint8_t ep, void * buf, uint16_t blen) <br><em>Write data to endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">uint32_t</td>
+<td align="left"><a href="#function-usbd_getinfo"><strong>usbd_getinfo</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev) <br><em>Retrieves status and capabilities.</em></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-usbd_init"><strong>usbd_init</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, const struct <a href="../structusbd__driver/"><strong>usbd_driver</strong></a> * drv, const uint8_t ep0size, uint32_t * buffer, const uint16_t bsize) <br><em>Initializes device structure.</em></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-usbd_reg_config"><strong>usbd_reg_config</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, <a href="./#typedef-usbd_cfg_callback"><strong>usbd_cfg_callback</strong></a> callback) <br><em>Register callback for SET_CONFIG control request.</em></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-usbd_reg_control"><strong>usbd_reg_control</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, <a href="./#typedef-usbd_ctl_callback"><strong>usbd_ctl_callback</strong></a> callback) <br><em>Register callback for all control requests.</em></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-usbd_reg_descr"><strong>usbd_reg_descr</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, <a href="./#typedef-usbd_dsc_callback"><strong>usbd_dsc_callback</strong></a> callback) <br><em>Register callback for GET_DESCRIPTOR control request.</em></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-usbd_reg_endpoint"><strong>usbd_reg_endpoint</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, uint8_t ep, <a href="./#typedef-usbd_evt_callback"><strong>usbd_evt_callback</strong></a> callback) <br><em>Register endpoint callback.</em></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-usbd_reg_event"><strong>usbd_reg_event</strong></a> (<a href="../struct__usbd__device/"><strong>usbd_device</strong></a> * dev, uint8_t evt, <a href="./#typedef-usbd_evt_callback"><strong>usbd_evt_callback</strong></a> callback) <br><em>Registers event callback.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="macros">Macros</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_hw_addrfst"><strong>USBD_HW_ADDRFST</strong></a>  (1 &lt;&lt; 0)<br><em>Set address before STATUS_OUT.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_hw_bc"><strong>USBD_HW_BC</strong></a>  (1 &lt;&lt; 1)<br><em>Battery charging detection supported.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_hw_enabled"><strong>USBD_HW_ENABLED</strong></a>  (1 &lt;&lt; 3)<br><em>USB device enabled.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_hw_enumspeed"><strong>USBD_HW_ENUMSPEED</strong></a>  (2 &lt;&lt; 4)<br><em>USB device enumeration speed mask.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_hw_speed_fs"><strong>USBD_HW_SPEED_FS</strong></a>  (2 &lt;&lt; 4)<br><em>Full speed.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_hw_speed_hs"><strong>USBD_HW_SPEED_HS</strong></a>  (3 &lt;&lt; 4)<br><em>High speed.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_hw_speed_ls"><strong>USBD_HW_SPEED_LS</strong></a>  (1 &lt;&lt; 4)<br><em>Low speed.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_hw_speed_nc"><strong>USBD_HW_SPEED_NC</strong></a>  (0 &lt;&lt; 4)<br><em>Not connected.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_eptype_dblbuf"><strong>USB_EPTYPE_DBLBUF</strong></a>  0x04<br><em>Doublebuffered endpoint (bulk endpoint only).</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_class"><strong>USB_REQ_CLASS</strong></a>  (1 &lt;&lt; 5)<br><em>Class specified request.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_device"><strong>USB_REQ_DEVICE</strong></a>  (0 &lt;&lt; 0)<br><em>Request to device.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_devtohost"><strong>USB_REQ_DEVTOHOST</strong></a>  (1 &lt;&lt; 7)<br><em>Request direction is DEVICE to HOST.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_direction"><strong>USB_REQ_DIRECTION</strong></a>  (1 &lt;&lt; 7)<br><em>Request direction mask.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_endpoint"><strong>USB_REQ_ENDPOINT</strong></a>  (2 &lt;&lt; 0)<br><em>Request to endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_hosttodev"><strong>USB_REQ_HOSTTODEV</strong></a>  (0 &lt;&lt; 7)<br><em>Request direction is HOST to DEVICE.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_interface"><strong>USB_REQ_INTERFACE</strong></a>  (1 &lt;&lt; 0)<br><em>Request to interface.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_other"><strong>USB_REQ_OTHER</strong></a>  (3 &lt;&lt; 0)<br><em>Other request.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_recipient"><strong>USB_REQ_RECIPIENT</strong></a>  (3 &lt;&lt; 0)<br><em>Request recipient mask.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_standard"><strong>USB_REQ_STANDARD</strong></a>  (0 &lt;&lt; 5)<br><em>Standard request.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_type"><strong>USB_REQ_TYPE</strong></a>  (3 &lt;&lt; 5)<br><em>Request type mask.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_req_vendor"><strong>USB_REQ_VENDOR</strong></a>  (2 &lt;&lt; 5)<br><em>Vendor specified request.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usnd_hw_hs"><strong>USND_HW_HS</strong></a>  (1 &lt;&lt; 2)<br><em>High speed supported.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_evt_count"><strong>usbd_evt_count</strong></a>  8<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_evt_eprx"><strong>usbd_evt_eprx</strong></a>  5<br><em>Data packet received.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_evt_epsetup"><strong>usbd_evt_epsetup</strong></a>  6<br><em>Setup packet received.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_evt_eptx"><strong>usbd_evt_eptx</strong></a>  4<br><em>Data packet transmitted.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_evt_error"><strong>usbd_evt_error</strong></a>  7<br><em>Data error.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_evt_reset"><strong>usbd_evt_reset</strong></a>  0<br><em>Reset.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_evt_sof"><strong>usbd_evt_sof</strong></a>  1<br><em>Start of frame.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_evt_susp"><strong>usbd_evt_susp</strong></a>  2<br><em>Suspend.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_evt_wkup"><strong>usbd_evt_wkup</strong></a>  3<br><em>Wakeup.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_lane_cdp"><strong>usbd_lane_cdp</strong></a>  3<br><em>Lanes connected to charging downstream port.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_lane_dcp"><strong>usbd_lane_dcp</strong></a>  4<br><em>Lanes connected to dedicated charging port.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_lane_dsc"><strong>usbd_lane_dsc</strong></a>  1<br><em>Lanes disconnected.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_lane_sdp"><strong>usbd_lane_sdp</strong></a>  2<br><em>Lanes connected to standard downstream port.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usbd_lane_unk"><strong>usbd_lane_unk</strong></a>  0<br><em>Unknown or proprietary charger.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-types-documentation">Public Types Documentation</h2>
+<h3 id="enum-_usbd_respond">enum _usbd_respond</h3>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="nc">_usbd_respond</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">usbd_fail</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_ack</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_nak</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="typedef-usbd_cfg_callback">typedef usbd_cfg_callback</h3>
+<p><em>USB set configuration callback function.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="n">usbd_respond</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_cfg_callback</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">cfg</span><span class="p">);</span>
+</code></pre></div></p>
+<p>called when SET_CONFIGURATION request issued </p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> pointer to USB device </li>
+<li><code>cfg</code> configuration number. </li>
+</ul>
+<p><strong>Note:</strong></p>
+<p>if config is 0 device endpoints should be de-configured </p>
+<p><strong>Returns:</strong></p>
+<p>TRUE if success </p>
+<h3 id="typedef-usbd_ctl_callback">typedef usbd_ctl_callback</h3>
+<p><em>USB control callback function.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="n">usbd_respond</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_ctl_callback</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">usbd_ctlreq</span><span class="w"> </span><span class="o">*</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">usbd_rqc_callback</span><span class="w"> </span><span class="o">*</span><span class="n">callback</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Uses for the control request processing. Some requests will be handled by core if callback don't process it (returns FALSE). If request was not processed STALL PID will be issued.
+* GET_CONFIGURATION
+* SET_CONFIGURATION (passes to <a href="./#typedef-usbd_cfg_callback"><strong>usbd_cfg_callback</strong></a>)
+* GET_DESCRIPTOR (passes to <a href="./#typedef-usbd_dsc_callback"><strong>usbd_dsc_callback</strong></a>)
+* GET_STATUS
+* SET_FEATURE, CLEAR_FEATURE (endpoints only)
+* SET_ADDRESS </p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> points to USB device </li>
+<li><code>req</code> points to usb control request </li>
+<li><code>*callback</code> USB control transfer completion callback, default is NULL (no callback) </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>usbd_respond status. </p>
+<h3 id="enum-usbd_ctl_state">enum usbd_ctl_state</h3>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="nc">usbd_ctl_state</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">usbd_ctl_idle</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_ctl_rxdata</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_ctl_txdata</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_ctl_ztxdata</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_ctl_lastdata</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_ctl_statusin</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_ctl_statusout</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="typedef-usbd_device">typedef usbd_device</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_usbd_device</span><span class="w"> </span><span class="n">usbd_device</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-usbd_dsc_callback">typedef usbd_dsc_callback</h3>
+<p><em>USB get descriptor callback function.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="n">usbd_respond</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_dsc_callback</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">usbd_ctlreq</span><span class="w"> </span><span class="o">*</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">**</span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">dsize</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Called when GET_DESCRIPTOR request issued </p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>req</code> pointer to usb control request structure </li>
+<li><code>address</code> pointer to the descriptor in memory. Points to req-&gt;data by default. You can use this buffer. </li>
+<li><code>dsize</code> descriptor size. maximum buffer size by default. </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>usbd_ack if you passed the correct descriptor, usbd_fail otherwise. </p>
+<h3 id="typedef-usbd_evt_callback">typedef usbd_evt_callback</h3>
+<p><em>Generic USB device event callback for events and endpoints processing.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_evt_callback</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">event</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> pointer to USB device </li>
+<li><code>event</code> USB event </li>
+<li><code>ep</code> active endpoint number </li>
+</ul>
+<p><strong>Note:</strong></p>
+<p>endpoints with same indexes i.e. 0x01 and 0x81 shares same callback. </p>
+<h3 id="typedef-usbd_hw_connect">typedef usbd_hw_connect</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">uint8_t</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_connect</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">connect</span><span class="p">);</span>
+</code></pre></div>
+<p>Connects or disconnects USB hardware to/from usb host </p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>connect</code> Connects USB to host if TRUE, disconnects otherwise </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>lanes connection status. </p>
+<h3 id="typedef-usbd_hw_enable">typedef usbd_hw_enable</h3>
+<p><em>Enables or disables USB hardware.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_enable</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">enable</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>enable</code> Enables USB when TRUE disables otherwise. </li>
+</ul>
+<h3 id="typedef-usbd_hw_ep_config">typedef usbd_hw_ep_config</h3>
+<p><em>Configures endpoint.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">bool</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_ep_config</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">eptype</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">epsize</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>ep</code> endpoint address. Use USB_EPDIR_ macros to set endpoint direction </li>
+<li><code>eptype</code> endpoint type. Use USB_EPTYPE_* macros. </li>
+<li><code>epsize</code> endpoint size in bytes </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>TRUE if success </p>
+<h3 id="typedef-usbd_hw_ep_deconfig">typedef usbd_hw_ep_deconfig</h3>
+<p><em>De-configures, cleans and disables endpoint.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_ep_deconfig</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>ep</code> endpoint index </li>
+</ul>
+<p><strong>Note:</strong></p>
+<p>if you have two one-direction single-buffered endpoints with same index (i.e. 0x02 and 0x82) both will be deconfigured. </p>
+<h3 id="typedef-usbd_hw_ep_isstalled">typedef usbd_hw_ep_isstalled</h3>
+<p><em>Checks endpoint for stalled state.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">bool</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_ep_isstalled</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>ep</code> endpoint address </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>TRUE if endpoint is stalled </p>
+<h3 id="typedef-usbd_hw_ep_read">typedef usbd_hw_ep_read</h3>
+<p><em>Reads data from OUT or control endpoint.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">int32_t</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_ep_read</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">blen</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>ep</code> endpoint index, should belong to OUT or CONTROL endpoint. </li>
+<li><code>buf</code> pointer to read buffer </li>
+<li><code>blen</code> size of the read buffer in bytes </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>size of the actually received data, -1 on error. </p>
+<h3 id="typedef-usbd_hw_ep_setstall">typedef usbd_hw_ep_setstall</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_ep_setstall</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">stall</span><span class="p">);</span>
+</code></pre></div>
+<p>Stalls and unstalls endpoint </p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>ep</code> endpoint address </li>
+<li><code>stall</code> endpoint will be stalled if TRUE and unstalled otherwise. </li>
+</ul>
+<p><strong>Note:</strong></p>
+<p>Has no effect on inactive endpoints. </p>
+<h3 id="typedef-usbd_hw_ep_write">typedef usbd_hw_ep_write</h3>
+<p><em>Writes data to IN or control endpoint.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">int32_t</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_ep_write</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">blen</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>ep</code> endpoint index, hould belong to IN or CONTROL endpoint </li>
+<li><code>buf</code> pointer to data buffer </li>
+<li><code>blen</code> size of data will be written </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>number of written bytes </p>
+<h3 id="typedef-usbd_hw_get_frameno">typedef usbd_hw_get_frameno</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">uint16_t</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_get_frameno</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="typedef-usbd_hw_get_serialno">typedef usbd_hw_get_serialno</h3>
+<p><em>Makes a string descriptor contains unique serial number from hardware ID's.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">uint16_t</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_get_serialno</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>buffer</code> pointer to buffer for the descriptor </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>of the descriptor in bytes </p>
+<h3 id="typedef-usbd_hw_getinfo">typedef usbd_hw_getinfo</h3>
+<p><em>Get USB device status and capabilities.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">uint32_t</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_getinfo</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>Hardware status and capabilities USBD_HW_CAPS </p>
+<h3 id="typedef-usbd_hw_poll">typedef usbd_hw_poll</h3>
+<p><em>Polls USB hardware for the events.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_poll</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">usbd_evt_callback</span><span class="w"> </span><span class="n">callback</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> pointer to usb device structure </li>
+<li><code>callback</code> callback to event processing subroutine </li>
+</ul>
+<h3 id="typedef-usbd_hw_setaddr">typedef usbd_hw_setaddr</h3>
+<p><em>Sets USB hardware address.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_hw_setaddr</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">address</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>address</code> USB address </li>
+</ul>
+<h3 id="enum-usbd_machine_state">enum usbd_machine_state</h3>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="nc">usbd_machine_state</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">usbd_state_disabled</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_state_disconnected</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_state_default</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_state_addressed</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_state_configured</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="typedef-usbd_respond">typedef usbd_respond</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">_usbd_respond</span><span class="w"> </span><span class="n">usbd_respond</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-usbd_rqc_callback">typedef usbd_rqc_callback</h3>
+<p><em>USB control transfer completed callback function.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">usbd_rqc_callback</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">usbd_ctlreq</span><span class="w"> </span><span class="o">*</span><span class="n">req</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> pointer to USB device </li>
+<li><code>req</code> pointer to usb request structure </li>
+</ul>
+<p><strong>Note:</strong></p>
+<p>usbd_device-&gt;complete_callback will be set to NULL after this callback completion. </p>
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+<h3 id="function-usbd_poll">function usbd_poll</h3>
+<p><em>Polls USB for events.</em> 
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">usbd_poll</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> Pointer to device structure </li>
+</ul>
+<p><strong>Note:</strong></p>
+<p>can be called as from main routine as from USB interrupt </p>
+<h2 id="public-static-functions-documentation">Public Static Functions Documentation</h2>
+<h3 id="function-usbd_connect">function usbd_connect</h3>
+<p><em>Connects or disconnects USB hardware to/from usb host.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">usbd_connect</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">connect</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>connect</code> Connects USB to host if TRUE, disconnects otherwise </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>lanes connection status. USB_LANES_STATUS </p>
+<h3 id="function-usbd_enable">function usbd_enable</h3>
+<p><em>Enables or disables USB hardware.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">usbd_enable</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">enable</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>enable</code> Enables USB when TRUE disables otherwise </li>
+</ul>
+<h3 id="function-usbd_ep_config">function usbd_ep_config</h3>
+<p><em>Configure endpoint.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">usbd_ep_config</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">eptype</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">epsize</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>ep</code> endpoint address. Use USB_EPDIR_ macros to set endpoint direction </li>
+<li><code>eptype</code> endpoint type. Use USB_EPTYPE_* macros. </li>
+<li><code>epsize</code> endpoint size in bytes </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>TRUE if success </p>
+<h3 id="function-usbd_ep_deconfig">function usbd_ep_deconfig</h3>
+<p><em>Deconfigure endpoint.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">usbd_ep_deconfig</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>ep</code> endpoint index </li>
+</ul>
+<p><strong>Note:</strong></p>
+<p>if you have two one-direction single-buffered endpoints with same index (i.e. 0x02 and 0x82) both will be deconfigured. </p>
+<h3 id="function-usbd_ep_read">function usbd_ep_read</h3>
+<p><em>Read data from endpoint.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">usbd_ep_read</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">blen</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>ep</code> endpoint index, should belong to OUT or CONTROL endpoint. </li>
+<li><code>buf</code> pointer to read buffer </li>
+<li><code>blen</code> size of the read buffer in bytes </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>size of the actually received data, -1 on error. </p>
+<h3 id="function-usbd_ep_stall">function usbd_ep_stall</h3>
+<p><em>Stall endpoint.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">usbd_ep_stall</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>ep</code> endpoint address </li>
+</ul>
+<h3 id="function-usbd_ep_unstall">function usbd_ep_unstall</h3>
+<p><em>Unstall endpoint.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">usbd_ep_unstall</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>ep</code> endpoint address </li>
+</ul>
+<h3 id="function-usbd_ep_write">function usbd_ep_write</h3>
+<p><em>Write data to endpoint.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">usbd_ep_write</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">blen</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>ep</code> endpoint index, hould belong to IN or CONTROL endpoint </li>
+<li><code>buf</code> pointer to data buffer </li>
+<li><code>blen</code> size of data will be written </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>number of written bytes </p>
+<h3 id="function-usbd_getinfo">function usbd_getinfo</h3>
+<p><em>Retrieves status and capabilities.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">usbd_getinfo</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>current HW status, enumeration speed and capabilities USBD_HW_CAPS </p>
+<h3 id="function-usbd_init">function usbd_init</h3>
+<p><em>Initializes device structure.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">usbd_init</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">usbd_driver</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">drv</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep0size</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">bsize</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> USB device that will be initialized </li>
+<li><code>drv</code> Pointer to hardware driver </li>
+<li><code>ep0size</code> Control endpoint 0 size </li>
+<li><code>buffer</code> Pointer to control request data buffer (32-bit aligned) </li>
+<li><code>bsize</code> Size of the data buffer </li>
+</ul>
+<h3 id="function-usbd_reg_config">function usbd_reg_config</h3>
+<p><em>Register callback for SET_CONFIG control request.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">usbd_reg_config</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_cfg_callback</span><span class="w"> </span><span class="n">callback</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>callback</code> pointer to user <a href="./#typedef-usbd_cfg_callback"><strong>usbd_cfg_callback</strong></a> </li>
+</ul>
+<h3 id="function-usbd_reg_control">function usbd_reg_control</h3>
+<p><em>Register callback for all control requests.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">usbd_reg_control</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_ctl_callback</span><span class="w"> </span><span class="n">callback</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>callback</code> user control callback <a href="./#typedef-usbd_ctl_callback"><strong>usbd_ctl_callback</strong></a> </li>
+</ul>
+<h3 id="function-usbd_reg_descr">function usbd_reg_descr</h3>
+<p><em>Register callback for GET_DESCRIPTOR control request.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">usbd_reg_descr</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_dsc_callback</span><span class="w"> </span><span class="n">callback</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>callback</code> pointer to user <a href="./#typedef-usbd_ctl_callback"><strong>usbd_ctl_callback</strong></a> </li>
+</ul>
+<h3 id="function-usbd_reg_endpoint">function usbd_reg_endpoint</h3>
+<p><em>Register endpoint callback.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">usbd_reg_endpoint</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ep</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_evt_callback</span><span class="w"> </span><span class="n">callback</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>ep</code> endpoint index </li>
+<li><code>callback</code> pointer to user <a href="./#typedef-usbd_evt_callback"><strong>usbd_evt_callback</strong></a> callback for endpoint events </li>
+</ul>
+<h3 id="function-usbd_reg_event">function usbd_reg_event</h3>
+<p><em>Registers event callback.</em> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">usbd_reg_event</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">usbd_device</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">evt</span><span class="p">,</span>
+<span class="w">    </span><span class="n">usbd_evt_callback</span><span class="w"> </span><span class="n">callback</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dev</code> dev usb device <a href="../struct__usbd__device/"><strong>_usbd_device</strong></a> </li>
+<li><code>evt</code> device event wants to be registered </li>
+<li><code>callback</code> pointer to user <a href="./#typedef-usbd_evt_callback"><strong>usbd_evt_callback</strong></a> for this event </li>
+</ul>
+<h2 id="macro-definition-documentation">Macro Definition Documentation</h2>
+<h3 id="define-usbd_hw_addrfst">define USBD_HW_ADDRFST</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USBD_HW_ADDRFST (1 &lt;&lt; 0)</span>
+</code></pre></div>
+<h3 id="define-usbd_hw_bc">define USBD_HW_BC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USBD_HW_BC (1 &lt;&lt; 1)</span>
+</code></pre></div>
+<h3 id="define-usbd_hw_enabled">define USBD_HW_ENABLED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USBD_HW_ENABLED (1 &lt;&lt; 3)</span>
+</code></pre></div>
+<h3 id="define-usbd_hw_enumspeed">define USBD_HW_ENUMSPEED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USBD_HW_ENUMSPEED (2 &lt;&lt; 4)</span>
+</code></pre></div>
+<h3 id="define-usbd_hw_speed_fs">define USBD_HW_SPEED_FS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USBD_HW_SPEED_FS (2 &lt;&lt; 4)</span>
+</code></pre></div>
+<h3 id="define-usbd_hw_speed_hs">define USBD_HW_SPEED_HS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USBD_HW_SPEED_HS (3 &lt;&lt; 4)</span>
+</code></pre></div>
+<h3 id="define-usbd_hw_speed_ls">define USBD_HW_SPEED_LS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USBD_HW_SPEED_LS (1 &lt;&lt; 4)</span>
+</code></pre></div>
+<h3 id="define-usbd_hw_speed_nc">define USBD_HW_SPEED_NC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USBD_HW_SPEED_NC (0 &lt;&lt; 4)</span>
+</code></pre></div>
+<h3 id="define-usb_eptype_dblbuf">define USB_EPTYPE_DBLBUF</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPTYPE_DBLBUF 0x04</span>
+</code></pre></div>
+<h3 id="define-usb_req_class">define USB_REQ_CLASS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_CLASS (1 &lt;&lt; 5)</span>
+</code></pre></div>
+<h3 id="define-usb_req_device">define USB_REQ_DEVICE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_DEVICE (0 &lt;&lt; 0)</span>
+</code></pre></div>
+<h3 id="define-usb_req_devtohost">define USB_REQ_DEVTOHOST</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_DEVTOHOST (1 &lt;&lt; 7)</span>
+</code></pre></div>
+<h3 id="define-usb_req_direction">define USB_REQ_DIRECTION</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_DIRECTION (1 &lt;&lt; 7)</span>
+</code></pre></div>
+<h3 id="define-usb_req_endpoint">define USB_REQ_ENDPOINT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_ENDPOINT (2 &lt;&lt; 0)</span>
+</code></pre></div>
+<h3 id="define-usb_req_hosttodev">define USB_REQ_HOSTTODEV</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_HOSTTODEV (0 &lt;&lt; 7)</span>
+</code></pre></div>
+<h3 id="define-usb_req_interface">define USB_REQ_INTERFACE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_INTERFACE (1 &lt;&lt; 0)</span>
+</code></pre></div>
+<h3 id="define-usb_req_other">define USB_REQ_OTHER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_OTHER (3 &lt;&lt; 0)</span>
+</code></pre></div>
+<h3 id="define-usb_req_recipient">define USB_REQ_RECIPIENT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_RECIPIENT (3 &lt;&lt; 0)</span>
+</code></pre></div>
+<h3 id="define-usb_req_standard">define USB_REQ_STANDARD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_STANDARD (0 &lt;&lt; 5)</span>
+</code></pre></div>
+<h3 id="define-usb_req_type">define USB_REQ_TYPE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_TYPE (3 &lt;&lt; 5)</span>
+</code></pre></div>
+<h3 id="define-usb_req_vendor">define USB_REQ_VENDOR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_REQ_VENDOR (2 &lt;&lt; 5)</span>
+</code></pre></div>
+<h3 id="define-usnd_hw_hs">define USND_HW_HS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USND_HW_HS (1 &lt;&lt; 2)</span>
+</code></pre></div>
+<h3 id="define-usbd_evt_count">define usbd_evt_count</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_evt_count 8</span>
+</code></pre></div>
+<h3 id="define-usbd_evt_eprx">define usbd_evt_eprx</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_evt_eprx 5</span>
+</code></pre></div>
+<h3 id="define-usbd_evt_epsetup">define usbd_evt_epsetup</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_evt_epsetup 6</span>
+</code></pre></div>
+<h3 id="define-usbd_evt_eptx">define usbd_evt_eptx</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_evt_eptx 4</span>
+</code></pre></div>
+<h3 id="define-usbd_evt_error">define usbd_evt_error</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_evt_error 7</span>
+</code></pre></div>
+<h3 id="define-usbd_evt_reset">define usbd_evt_reset</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_evt_reset 0</span>
+</code></pre></div>
+<h3 id="define-usbd_evt_sof">define usbd_evt_sof</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_evt_sof 1</span>
+</code></pre></div>
+<h3 id="define-usbd_evt_susp">define usbd_evt_susp</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_evt_susp 2</span>
+</code></pre></div>
+<h3 id="define-usbd_evt_wkup">define usbd_evt_wkup</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_evt_wkup 3</span>
+</code></pre></div>
+<h3 id="define-usbd_lane_cdp">define usbd_lane_cdp</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_lane_cdp 3</span>
+</code></pre></div>
+<h3 id="define-usbd_lane_dcp">define usbd_lane_dcp</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_lane_dcp 4</span>
+</code></pre></div>
+<h3 id="define-usbd_lane_dsc">define usbd_lane_dsc</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_lane_dsc 1</span>
+</code></pre></div>
+<h3 id="define-usbd_lane_sdp">define usbd_lane_sdp</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_lane_sdp 2</span>
+</code></pre></div>
+<h3 id="define-usbd_lane_unk">define usbd_lane_unk</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define usbd_lane_unk 0</span>
+</code></pre></div>
+<hr />
+<p>The documentation for this class was generated from the following file <code>fw/rbcx-coprocessor/lib/libusb_stm32/include/usbd_core.h</code></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2023 RoboticsBrno
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/RoboticsBrno" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/RobotikaBrno" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/robotarna" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@robotikabrno-robotarnaasps2392" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/_robotarna_" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+        <script src="../../assets/js/open_in_new_tab.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

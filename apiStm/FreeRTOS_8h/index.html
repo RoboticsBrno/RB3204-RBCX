@@ -1,0 +1,4862 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the RBCX robot controller board designed by the RoboticsBrno team. It is based on the STM32F446RE microcontroller and ESP32 microcontroller. Features: 4 motors with encoders, 4 servos, buttons with the gamepad, LEDs, ultra-sonic sensor, ...">
+      
+      
+        <meta name="author" content="RoboticsBrno">
+      
+      
+        <link rel="canonical" href="https://rbcx.robotikabrno.cz/apiStm/FreeRTOS_8h/">
+      
+      
+      
+      <link rel="icon" href="../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>File FreeRTOS.h - RB3204-RBCX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#file-freertosh" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RB3204-RBCX" class="md-header__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RB3204-RBCX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              File FreeRTOS.h
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../SW-development/" class="md-tabs__link">
+      Software development
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/" class="md-tabs__link">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RB3204-RBCX" class="md-nav__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    RB3204-RBCX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SW-development/" class="md-nav__link">
+        Software development
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../api/">API Reference</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">API STM Coprocessor</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          API STM Coprocessor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../apiEsp32/">API ESP32 library</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          API ESP32 library
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-types" class="md-nav__link">
+    Public Types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    Macros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-types-documentation" class="md-nav__link">
+    Public Types Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Public Types Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typedef-staticeventgroup_t" class="md-nav__link">
+    typedef StaticEventGroup_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-staticlistitem_t" class="md-nav__link">
+    typedef StaticListItem_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-staticlist_t" class="md-nav__link">
+    typedef StaticList_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-staticmessagebuffer_t" class="md-nav__link">
+    typedef StaticMessageBuffer_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-staticminilistitem_t" class="md-nav__link">
+    typedef StaticMiniListItem_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-staticqueue_t" class="md-nav__link">
+    typedef StaticQueue_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-staticsemaphore_t" class="md-nav__link">
+    typedef StaticSemaphore_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-staticstreambuffer_t" class="md-nav__link">
+    typedef StaticStreamBuffer_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-statictask_t" class="md-nav__link">
+    typedef StaticTask_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-statictimer_t" class="md-nav__link">
+    typedef StaticTimer_t
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macro-definition-documentation" class="md-nav__link">
+    Macro Definition Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Macro Definition Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#define-include_etaskgetstate" class="md-nav__link">
+    define INCLUDE_eTaskGetState
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_uxtaskgetstackhighwatermark" class="md-nav__link">
+    define INCLUDE_uxTaskGetStackHighWaterMark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_uxtaskgetstackhighwatermark2" class="md-nav__link">
+    define INCLUDE_uxTaskGetStackHighWaterMark2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_uxtaskpriorityget" class="md-nav__link">
+    define INCLUDE_uxTaskPriorityGet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_vtaskdelay" class="md-nav__link">
+    define INCLUDE_vTaskDelay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_vtaskdelayuntil" class="md-nav__link">
+    define INCLUDE_vTaskDelayUntil
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_vtaskdelete" class="md-nav__link">
+    define INCLUDE_vTaskDelete
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_vtaskpriorityset" class="md-nav__link">
+    define INCLUDE_vTaskPrioritySet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_vtasksuspend" class="md-nav__link">
+    define INCLUDE_vTaskSuspend
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_xqueuegetmutexholder" class="md-nav__link">
+    define INCLUDE_xQueueGetMutexHolder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_xsemaphoregetmutexholder" class="md-nav__link">
+    define INCLUDE_xSemaphoreGetMutexHolder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_xtaskabortdelay" class="md-nav__link">
+    define INCLUDE_xTaskAbortDelay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_xtaskgetcurrenttaskhandle" class="md-nav__link">
+    define INCLUDE_xTaskGetCurrentTaskHandle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_xtaskgethandle" class="md-nav__link">
+    define INCLUDE_xTaskGetHandle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_xtaskgetidletaskhandle" class="md-nav__link">
+    define INCLUDE_xTaskGetIdleTaskHandle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_xtaskgetschedulerstate" class="md-nav__link">
+    define INCLUDE_xTaskGetSchedulerState
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_xtaskresumefromisr" class="md-nav__link">
+    define INCLUDE_xTaskResumeFromISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-include_xtimerpendfunctioncall" class="md-nav__link">
+    define INCLUDE_xTimerPendFunctionCall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configapplication_allocated_heap" class="md-nav__link">
+    define configAPPLICATION_ALLOCATED_HEAP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configassert" class="md-nav__link">
+    define configASSERT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configassert_defined" class="md-nav__link">
+    define configASSERT_DEFINED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configcheck_for_stack_overflow" class="md-nav__link">
+    define configCHECK_FOR_STACK_OVERFLOW
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configenable_backward_compatibility" class="md-nav__link">
+    define configENABLE_BACKWARD_COMPATIBILITY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configenable_fpu" class="md-nav__link">
+    define configENABLE_FPU
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configenable_mpu" class="md-nav__link">
+    define configENABLE_MPU
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configenable_trustzone" class="md-nav__link">
+    define configENABLE_TRUSTZONE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configexpected_idle_time_before_sleep" class="md-nav__link">
+    define configEXPECTED_IDLE_TIME_BEFORE_SLEEP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configgenerate_run_time_stats" class="md-nav__link">
+    define configGENERATE_RUN_TIME_STATS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configidle_should_yield" class="md-nav__link">
+    define configIDLE_SHOULD_YIELD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configinclude_application_defined_privileged_functions" class="md-nav__link">
+    define configINCLUDE_APPLICATION_DEFINED_PRIVILEGED_FUNCTIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configinclude_freertos_task_c_additions_h" class="md-nav__link">
+    define configINCLUDE_FREERTOS_TASK_C_ADDITIONS_H
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configinitial_tick_count" class="md-nav__link">
+    define configINITIAL_TICK_COUNT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configmax" class="md-nav__link">
+    define configMAX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configmax_task_name_len" class="md-nav__link">
+    define configMAX_TASK_NAME_LEN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configmessage_buffer_length_type" class="md-nav__link">
+    define configMESSAGE_BUFFER_LENGTH_TYPE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configmin" class="md-nav__link">
+    define configMIN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-confignum_thread_local_storage_pointers" class="md-nav__link">
+    define configNUM_THREAD_LOCAL_STORAGE_POINTERS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configpost_sleep_processing" class="md-nav__link">
+    define configPOST_SLEEP_PROCESSING
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configprecondition" class="md-nav__link">
+    define configPRECONDITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configprecondition_defined" class="md-nav__link">
+    define configPRECONDITION_DEFINED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configpre_sleep_processing" class="md-nav__link">
+    define configPRE_SLEEP_PROCESSING
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configpre_suppress_ticks_and_sleep_processing" class="md-nav__link">
+    define configPRE_SUPPRESS_TICKS_AND_SLEEP_PROCESSING
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configprintf" class="md-nav__link">
+    define configPRINTF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configqueue_registry_size" class="md-nav__link">
+    define configQUEUE_REGISTRY_SIZE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configrecord_stack_high_address" class="md-nav__link">
+    define configRECORD_STACK_HIGH_ADDRESS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configrun_freertos_secure_only" class="md-nav__link">
+    define configRUN_FREERTOS_SECURE_ONLY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configstack_depth_type" class="md-nav__link">
+    define configSTACK_DEPTH_TYPE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configsupport_dynamic_allocation" class="md-nav__link">
+    define configSUPPORT_DYNAMIC_ALLOCATION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configsupport_static_allocation" class="md-nav__link">
+    define configSUPPORT_STATIC_ALLOCATION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_alternative_api" class="md-nav__link">
+    define configUSE_ALTERNATIVE_API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_application_task_tag" class="md-nav__link">
+    define configUSE_APPLICATION_TASK_TAG
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_counting_semaphores" class="md-nav__link">
+    define configUSE_COUNTING_SEMAPHORES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_co_routines" class="md-nav__link">
+    define configUSE_CO_ROUTINES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_daemon_task_startup_hook" class="md-nav__link">
+    define configUSE_DAEMON_TASK_STARTUP_HOOK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_malloc_failed_hook" class="md-nav__link">
+    define configUSE_MALLOC_FAILED_HOOK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_mutexes" class="md-nav__link">
+    define configUSE_MUTEXES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_newlib_reentrant" class="md-nav__link">
+    define configUSE_NEWLIB_REENTRANT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_port_optimised_task_selection" class="md-nav__link">
+    define configUSE_PORT_OPTIMISED_TASK_SELECTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_posix_errno" class="md-nav__link">
+    define configUSE_POSIX_ERRNO
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_queue_sets" class="md-nav__link">
+    define configUSE_QUEUE_SETS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_recursive_mutexes" class="md-nav__link">
+    define configUSE_RECURSIVE_MUTEXES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_stats_formatting_functions" class="md-nav__link">
+    define configUSE_STATS_FORMATTING_FUNCTIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_task_fpu_support" class="md-nav__link">
+    define configUSE_TASK_FPU_SUPPORT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_task_notifications" class="md-nav__link">
+    define configUSE_TASK_NOTIFICATIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_tickless_idle" class="md-nav__link">
+    define configUSE_TICKLESS_IDLE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_timers" class="md-nav__link">
+    define configUSE_TIMERS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_time_slicing" class="md-nav__link">
+    define configUSE_TIME_SLICING
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-configuse_trace_facility" class="md-nav__link">
+    define configUSE_TRACE_FACILITY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-etaskstateget" class="md-nav__link">
+    define eTaskStateGet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-mtcoverage_test_delay" class="md-nav__link">
+    define mtCOVERAGE_TEST_DELAY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-mtcoverage_test_marker" class="md-nav__link">
+    define mtCOVERAGE_TEST_MARKER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-pcqueuegetname" class="md-nav__link">
+    define pcQueueGetName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-pcqueuegetqueuename" class="md-nav__link">
+    define pcQueueGetQueueName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-pctaskgettaskname" class="md-nav__link">
+    define pcTaskGetTaskName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-pctimergettimername" class="md-nav__link">
+    define pcTimerGetTimerName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-pdtask_code" class="md-nav__link">
+    define pdTASK_CODE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-pdtask_hook_code" class="md-nav__link">
+    define pdTASK_HOOK_CODE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portallocate_secure_context" class="md-nav__link">
+    define portALLOCATE_SECURE_CONTEXT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portassert_if_interrupt_priority_invalid" class="md-nav__link">
+    define portASSERT_IF_INTERRUPT_PRIORITY_INVALID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portassert_if_in_isr" class="md-nav__link">
+    define portASSERT_IF_IN_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portclean_up_tcb" class="md-nav__link">
+    define portCLEAN_UP_TCB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portclear_interrupt_mask_from_isr" class="md-nav__link">
+    define portCLEAR_INTERRUPT_MASK_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portconfigure_timer_for_run_time_stats" class="md-nav__link">
+    define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portcritical_nesting_in_tcb" class="md-nav__link">
+    define portCRITICAL_NESTING_IN_TCB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portdont_discard" class="md-nav__link">
+    define portDONT_DISCARD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portmemory_barrier" class="md-nav__link">
+    define portMEMORY_BARRIER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portpointer_size_type" class="md-nav__link">
+    define portPOINTER_SIZE_TYPE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portpre_task_delete_hook" class="md-nav__link">
+    define portPRE_TASK_DELETE_HOOK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portprivilege_bit" class="md-nav__link">
+    define portPRIVILEGE_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portsetup_tcb" class="md-nav__link">
+    define portSETUP_TCB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portset_interrupt_mask_from_isr" class="md-nav__link">
+    define portSET_INTERRUPT_MASK_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portsoftware_barrier" class="md-nav__link">
+    define portSOFTWARE_BARRIER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portsuppress_ticks_and_sleep" class="md-nav__link">
+    define portSUPPRESS_TICKS_AND_SLEEP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-porttask_uses_floating_point" class="md-nav__link">
+    define portTASK_USES_FLOATING_POINT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-porttick_rate_ms" class="md-nav__link">
+    define portTICK_RATE_MS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-porttick_type_clear_interrupt_mask_from_isr" class="md-nav__link">
+    define portTICK_TYPE_CLEAR_INTERRUPT_MASK_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-porttick_type_enter_critical" class="md-nav__link">
+    define portTICK_TYPE_ENTER_CRITICAL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-porttick_type_exit_critical" class="md-nav__link">
+    define portTICK_TYPE_EXIT_CRITICAL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-porttick_type_is_atomic" class="md-nav__link">
+    define portTICK_TYPE_IS_ATOMIC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-porttick_type_set_interrupt_mask_from_isr" class="md-nav__link">
+    define portTICK_TYPE_SET_INTERRUPT_MASK_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portticktype" class="md-nav__link">
+    define portTickType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-portyield_within_api" class="md-nav__link">
+    define portYIELD_WITHIN_API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-pxcontainer" class="md-nav__link">
+    define pxContainer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tmrtimer_callback" class="md-nav__link">
+    define tmrTIMER_CALLBACK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceblocking_on_queue_peek" class="md-nav__link">
+    define traceBLOCKING_ON_QUEUE_PEEK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceblocking_on_queue_receive" class="md-nav__link">
+    define traceBLOCKING_ON_QUEUE_RECEIVE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceblocking_on_queue_send" class="md-nav__link">
+    define traceBLOCKING_ON_QUEUE_SEND
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceblocking_on_stream_buffer_receive" class="md-nav__link">
+    define traceBLOCKING_ON_STREAM_BUFFER_RECEIVE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceblocking_on_stream_buffer_send" class="md-nav__link">
+    define traceBLOCKING_ON_STREAM_BUFFER_SEND
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracecreate_counting_semaphore" class="md-nav__link">
+    define traceCREATE_COUNTING_SEMAPHORE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracecreate_counting_semaphore_failed" class="md-nav__link">
+    define traceCREATE_COUNTING_SEMAPHORE_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracecreate_mutex" class="md-nav__link">
+    define traceCREATE_MUTEX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracecreate_mutex_failed" class="md-nav__link">
+    define traceCREATE_MUTEX_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceend" class="md-nav__link">
+    define traceEND
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceevent_group_clear_bits" class="md-nav__link">
+    define traceEVENT_GROUP_CLEAR_BITS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceevent_group_clear_bits_from_isr" class="md-nav__link">
+    define traceEVENT_GROUP_CLEAR_BITS_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceevent_group_create" class="md-nav__link">
+    define traceEVENT_GROUP_CREATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceevent_group_create_failed" class="md-nav__link">
+    define traceEVENT_GROUP_CREATE_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceevent_group_delete" class="md-nav__link">
+    define traceEVENT_GROUP_DELETE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceevent_group_set_bits" class="md-nav__link">
+    define traceEVENT_GROUP_SET_BITS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceevent_group_set_bits_from_isr" class="md-nav__link">
+    define traceEVENT_GROUP_SET_BITS_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceevent_group_sync_block" class="md-nav__link">
+    define traceEVENT_GROUP_SYNC_BLOCK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceevent_group_sync_end" class="md-nav__link">
+    define traceEVENT_GROUP_SYNC_END
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceevent_group_wait_bits_block" class="md-nav__link">
+    define traceEVENT_GROUP_WAIT_BITS_BLOCK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceevent_group_wait_bits_end" class="md-nav__link">
+    define traceEVENT_GROUP_WAIT_BITS_END
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracefree" class="md-nav__link">
+    define traceFREE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracegive_mutex_recursive" class="md-nav__link">
+    define traceGIVE_MUTEX_RECURSIVE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracegive_mutex_recursive_failed" class="md-nav__link">
+    define traceGIVE_MUTEX_RECURSIVE_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-traceincrease_tick_count" class="md-nav__link">
+    define traceINCREASE_TICK_COUNT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracelow_power_idle_begin" class="md-nav__link">
+    define traceLOW_POWER_IDLE_BEGIN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracelow_power_idle_end" class="md-nav__link">
+    define traceLOW_POWER_IDLE_END
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracemalloc" class="md-nav__link">
+    define traceMALLOC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracemoved_task_to_ready_state" class="md-nav__link">
+    define traceMOVED_TASK_TO_READY_STATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracepend_func_call" class="md-nav__link">
+    define tracePEND_FUNC_CALL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracepend_func_call_from_isr" class="md-nav__link">
+    define tracePEND_FUNC_CALL_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracepost_moved_task_to_ready_state" class="md-nav__link">
+    define tracePOST_MOVED_TASK_TO_READY_STATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_create" class="md-nav__link">
+    define traceQUEUE_CREATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_create_failed" class="md-nav__link">
+    define traceQUEUE_CREATE_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_delete" class="md-nav__link">
+    define traceQUEUE_DELETE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_peek" class="md-nav__link">
+    define traceQUEUE_PEEK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_peek_failed" class="md-nav__link">
+    define traceQUEUE_PEEK_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_peek_from_isr" class="md-nav__link">
+    define traceQUEUE_PEEK_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_peek_from_isr_failed" class="md-nav__link">
+    define traceQUEUE_PEEK_FROM_ISR_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_receive" class="md-nav__link">
+    define traceQUEUE_RECEIVE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_receive_failed" class="md-nav__link">
+    define traceQUEUE_RECEIVE_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_receive_from_isr" class="md-nav__link">
+    define traceQUEUE_RECEIVE_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_receive_from_isr_failed" class="md-nav__link">
+    define traceQUEUE_RECEIVE_FROM_ISR_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_registry_add" class="md-nav__link">
+    define traceQUEUE_REGISTRY_ADD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_send" class="md-nav__link">
+    define traceQUEUE_SEND
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_send_failed" class="md-nav__link">
+    define traceQUEUE_SEND_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_send_from_isr" class="md-nav__link">
+    define traceQUEUE_SEND_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracequeue_send_from_isr_failed" class="md-nav__link">
+    define traceQUEUE_SEND_FROM_ISR_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestart" class="md-nav__link">
+    define traceSTART
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestream_buffer_create" class="md-nav__link">
+    define traceSTREAM_BUFFER_CREATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestream_buffer_create_failed" class="md-nav__link">
+    define traceSTREAM_BUFFER_CREATE_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestream_buffer_create_static_failed" class="md-nav__link">
+    define traceSTREAM_BUFFER_CREATE_STATIC_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestream_buffer_delete" class="md-nav__link">
+    define traceSTREAM_BUFFER_DELETE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestream_buffer_receive" class="md-nav__link">
+    define traceSTREAM_BUFFER_RECEIVE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestream_buffer_receive_failed" class="md-nav__link">
+    define traceSTREAM_BUFFER_RECEIVE_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestream_buffer_receive_from_isr" class="md-nav__link">
+    define traceSTREAM_BUFFER_RECEIVE_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestream_buffer_reset" class="md-nav__link">
+    define traceSTREAM_BUFFER_RESET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestream_buffer_send" class="md-nav__link">
+    define traceSTREAM_BUFFER_SEND
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestream_buffer_send_failed" class="md-nav__link">
+    define traceSTREAM_BUFFER_SEND_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracestream_buffer_send_from_isr" class="md-nav__link">
+    define traceSTREAM_BUFFER_SEND_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetake_mutex_recursive" class="md-nav__link">
+    define traceTAKE_MUTEX_RECURSIVE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetake_mutex_recursive_failed" class="md-nav__link">
+    define traceTAKE_MUTEX_RECURSIVE_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_create" class="md-nav__link">
+    define traceTASK_CREATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_create_failed" class="md-nav__link">
+    define traceTASK_CREATE_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_delay" class="md-nav__link">
+    define traceTASK_DELAY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_delay_until" class="md-nav__link">
+    define traceTASK_DELAY_UNTIL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_delete" class="md-nav__link">
+    define traceTASK_DELETE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_increment_tick" class="md-nav__link">
+    define traceTASK_INCREMENT_TICK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_notify" class="md-nav__link">
+    define traceTASK_NOTIFY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_notify_from_isr" class="md-nav__link">
+    define traceTASK_NOTIFY_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_notify_give_from_isr" class="md-nav__link">
+    define traceTASK_NOTIFY_GIVE_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_notify_take" class="md-nav__link">
+    define traceTASK_NOTIFY_TAKE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_notify_take_block" class="md-nav__link">
+    define traceTASK_NOTIFY_TAKE_BLOCK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_notify_wait" class="md-nav__link">
+    define traceTASK_NOTIFY_WAIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_notify_wait_block" class="md-nav__link">
+    define traceTASK_NOTIFY_WAIT_BLOCK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_priority_disinherit" class="md-nav__link">
+    define traceTASK_PRIORITY_DISINHERIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_priority_inherit" class="md-nav__link">
+    define traceTASK_PRIORITY_INHERIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_priority_set" class="md-nav__link">
+    define traceTASK_PRIORITY_SET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_resume" class="md-nav__link">
+    define traceTASK_RESUME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_resume_from_isr" class="md-nav__link">
+    define traceTASK_RESUME_FROM_ISR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_suspend" class="md-nav__link">
+    define traceTASK_SUSPEND
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_switched_in" class="md-nav__link">
+    define traceTASK_SWITCHED_IN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetask_switched_out" class="md-nav__link">
+    define traceTASK_SWITCHED_OUT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetimer_command_received" class="md-nav__link">
+    define traceTIMER_COMMAND_RECEIVED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetimer_command_send" class="md-nav__link">
+    define traceTIMER_COMMAND_SEND
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetimer_create" class="md-nav__link">
+    define traceTIMER_CREATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetimer_create_failed" class="md-nav__link">
+    define traceTIMER_CREATE_FAILED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tracetimer_expired" class="md-nav__link">
+    define traceTIMER_EXPIRED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-tskstatic_and_dynamic_allocation_possible" class="md-nav__link">
+    define tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-vqueueaddtoregistry" class="md-nav__link">
+    define vQueueAddToRegistry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-vqueueunregisterqueue" class="md-nav__link">
+    define vQueueUnregisterQueue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-vtaskgettaskinfo" class="md-nav__link">
+    define vTaskGetTaskInfo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xcoroutinehandle" class="md-nav__link">
+    define xCoRoutineHandle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xlist" class="md-nav__link">
+    define xList
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xlistitem" class="md-nav__link">
+    define xListItem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xmemoryregion" class="md-nav__link">
+    define xMemoryRegion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xqueuehandle" class="md-nav__link">
+    define xQueueHandle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xqueuesethandle" class="md-nav__link">
+    define xQueueSetHandle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xqueuesetmemberhandle" class="md-nav__link">
+    define xQueueSetMemberHandle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xsemaphorehandle" class="md-nav__link">
+    define xSemaphoreHandle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xtaskgetidleruntimecounter" class="md-nav__link">
+    define xTaskGetIdleRunTimeCounter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xtaskhandle" class="md-nav__link">
+    define xTaskHandle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xtaskparameters" class="md-nav__link">
+    define xTaskParameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xtaskstatustype" class="md-nav__link">
+    define xTaskStatusType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xtimeouttype" class="md-nav__link">
+    define xTimeOutType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-xtimerhandle" class="md-nav__link">
+    define xTimerHandle
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="file-freertosh">File FreeRTOS.h</h1>
+<p><a href="../files/"><strong>FileList</strong></a> <strong>&gt;</strong> <a href="../dir_6728f3a9088eeb382ccd8bff3a2a4804/"><strong>FreeRTOS</strong></a> <strong>&gt;</strong> <a href="../dir_e69eea06f0148442287c48e06ff575f4/"><strong>include</strong></a> <strong>&gt;</strong> <a href="./"><strong>FreeRTOS.h</strong></a></p>
+<p><a href="../FreeRTOS_8h_source/">Go to the source code of this file.</a></p>
+<ul>
+<li><code>#include &lt;stddef.h&gt;</code></li>
+<li><code>#include &lt;stdint.h&gt;</code></li>
+<li><code>#include "FreeRTOSConfig.h"</code></li>
+<li><code>#include "projdefs.h"</code></li>
+<li><code>#include "portable.h"</code></li>
+</ul>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structxSTATIC__EVENT__GROUP/"><strong>xSTATIC_EVENT_GROUP</strong></a> <br></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structxSTATIC__LIST/"><strong>xSTATIC_LIST</strong></a> <br></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structxSTATIC__LIST__ITEM/"><strong>xSTATIC_LIST_ITEM</strong></a> <br></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structxSTATIC__MINI__LIST__ITEM/"><strong>xSTATIC_MINI_LIST_ITEM</strong></a> <br></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structxSTATIC__QUEUE/"><strong>xSTATIC_QUEUE</strong></a> <br></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structxSTATIC__STREAM__BUFFER/"><strong>xSTATIC_STREAM_BUFFER</strong></a> <br></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structxSTATIC__TCB/"><strong>xSTATIC_TCB</strong></a> <br></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structxSTATIC__TIMER/"><strong>xSTATIC_TIMER</strong></a> <br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-types">Public Types</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">typedef struct <a href="../structxSTATIC__EVENT__GROUP/"><strong>xSTATIC_EVENT_GROUP</strong></a></td>
+<td align="left"><a href="#typedef-staticeventgroup_t"><strong>StaticEventGroup_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef struct <a href="../structxSTATIC__LIST__ITEM/"><strong>xSTATIC_LIST_ITEM</strong></a></td>
+<td align="left"><a href="#typedef-staticlistitem_t"><strong>StaticListItem_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef struct <a href="../structxSTATIC__LIST/"><strong>xSTATIC_LIST</strong></a></td>
+<td align="left"><a href="#typedef-staticlist_t"><strong>StaticList_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef <a href="../structxSTATIC__STREAM__BUFFER/"><strong>StaticStreamBuffer_t</strong></a></td>
+<td align="left"><a href="#typedef-staticmessagebuffer_t"><strong>StaticMessageBuffer_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef struct <a href="../structxSTATIC__MINI__LIST__ITEM/"><strong>xSTATIC_MINI_LIST_ITEM</strong></a></td>
+<td align="left"><a href="#typedef-staticminilistitem_t"><strong>StaticMiniListItem_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef struct <a href="../structxSTATIC__QUEUE/"><strong>xSTATIC_QUEUE</strong></a></td>
+<td align="left"><a href="#typedef-staticqueue_t"><strong>StaticQueue_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef <a href="../structxSTATIC__QUEUE/"><strong>StaticQueue_t</strong></a></td>
+<td align="left"><a href="#typedef-staticsemaphore_t"><strong>StaticSemaphore_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef struct <a href="../structxSTATIC__STREAM__BUFFER/"><strong>xSTATIC_STREAM_BUFFER</strong></a></td>
+<td align="left"><a href="#typedef-staticstreambuffer_t"><strong>StaticStreamBuffer_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef struct <a href="../structxSTATIC__TCB/"><strong>xSTATIC_TCB</strong></a></td>
+<td align="left"><a href="#typedef-statictask_t"><strong>StaticTask_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef struct <a href="../structxSTATIC__TIMER/"><strong>xSTATIC_TIMER</strong></a></td>
+<td align="left"><a href="#typedef-statictimer_t"><strong>StaticTimer_t</strong></a>  <br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="macros">Macros</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_etaskgetstate"><strong>INCLUDE_eTaskGetState</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_uxtaskgetstackhighwatermark"><strong>INCLUDE_uxTaskGetStackHighWaterMark</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_uxtaskgetstackhighwatermark2"><strong>INCLUDE_uxTaskGetStackHighWaterMark2</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_uxtaskpriorityget"><strong>INCLUDE_uxTaskPriorityGet</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_vtaskdelay"><strong>INCLUDE_vTaskDelay</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_vtaskdelayuntil"><strong>INCLUDE_vTaskDelayUntil</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_vtaskdelete"><strong>INCLUDE_vTaskDelete</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_vtaskpriorityset"><strong>INCLUDE_vTaskPrioritySet</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_vtasksuspend"><strong>INCLUDE_vTaskSuspend</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_xqueuegetmutexholder"><strong>INCLUDE_xQueueGetMutexHolder</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_xsemaphoregetmutexholder"><strong>INCLUDE_xSemaphoreGetMutexHolder</strong></a>  INCLUDE_xQueueGetMutexHolder<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_xtaskabortdelay"><strong>INCLUDE_xTaskAbortDelay</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_xtaskgetcurrenttaskhandle"><strong>INCLUDE_xTaskGetCurrentTaskHandle</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_xtaskgethandle"><strong>INCLUDE_xTaskGetHandle</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_xtaskgetidletaskhandle"><strong>INCLUDE_xTaskGetIdleTaskHandle</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_xtaskgetschedulerstate"><strong>INCLUDE_xTaskGetSchedulerState</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_xtaskresumefromisr"><strong>INCLUDE_xTaskResumeFromISR</strong></a>  1<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-include_xtimerpendfunctioncall"><strong>INCLUDE_xTimerPendFunctionCall</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configapplication_allocated_heap"><strong>configAPPLICATION_ALLOCATED_HEAP</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configassert"><strong>configASSERT</strong></a> (x) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configassert_defined"><strong>configASSERT_DEFINED</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configcheck_for_stack_overflow"><strong>configCHECK_FOR_STACK_OVERFLOW</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configenable_backward_compatibility"><strong>configENABLE_BACKWARD_COMPATIBILITY</strong></a>  1<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configenable_fpu"><strong>configENABLE_FPU</strong></a>  1<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configenable_mpu"><strong>configENABLE_MPU</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configenable_trustzone"><strong>configENABLE_TRUSTZONE</strong></a>  1<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configexpected_idle_time_before_sleep"><strong>configEXPECTED_IDLE_TIME_BEFORE_SLEEP</strong></a>  2<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configgenerate_run_time_stats"><strong>configGENERATE_RUN_TIME_STATS</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configidle_should_yield"><strong>configIDLE_SHOULD_YIELD</strong></a>  1<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configinclude_application_defined_privileged_functions"><strong>configINCLUDE_APPLICATION_DEFINED_PRIVILEGED_FUNCTIONS</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configinclude_freertos_task_c_additions_h"><strong>configINCLUDE_FREERTOS_TASK_C_ADDITIONS_H</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configinitial_tick_count"><strong>configINITIAL_TICK_COUNT</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configmax"><strong>configMAX</strong></a> (a, b) ( ( ( a ) &gt; ( b ) ) ? ( a ) : ( b ) )<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configmax_task_name_len"><strong>configMAX_TASK_NAME_LEN</strong></a>  16<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configmessage_buffer_length_type"><strong>configMESSAGE_BUFFER_LENGTH_TYPE</strong></a>  size_t<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configmin"><strong>configMIN</strong></a> (a, b) ( ( ( a ) &lt; ( b ) ) ? ( a ) : ( b ) )<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-confignum_thread_local_storage_pointers"><strong>configNUM_THREAD_LOCAL_STORAGE_POINTERS</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configpost_sleep_processing"><strong>configPOST_SLEEP_PROCESSING</strong></a> (x) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configprecondition"><strong>configPRECONDITION</strong></a> (X) configASSERT(X)<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configprecondition_defined"><strong>configPRECONDITION_DEFINED</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configpre_sleep_processing"><strong>configPRE_SLEEP_PROCESSING</strong></a> (x) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configpre_suppress_ticks_and_sleep_processing"><strong>configPRE_SUPPRESS_TICKS_AND_SLEEP_PROCESSING</strong></a> (x) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configprintf"><strong>configPRINTF</strong></a> (X) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configqueue_registry_size"><strong>configQUEUE_REGISTRY_SIZE</strong></a>  0U<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configrecord_stack_high_address"><strong>configRECORD_STACK_HIGH_ADDRESS</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configrun_freertos_secure_only"><strong>configRUN_FREERTOS_SECURE_ONLY</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configstack_depth_type"><strong>configSTACK_DEPTH_TYPE</strong></a>  uint16_t<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configsupport_dynamic_allocation"><strong>configSUPPORT_DYNAMIC_ALLOCATION</strong></a>  1<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configsupport_static_allocation"><strong>configSUPPORT_STATIC_ALLOCATION</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_alternative_api"><strong>configUSE_ALTERNATIVE_API</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_application_task_tag"><strong>configUSE_APPLICATION_TASK_TAG</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_counting_semaphores"><strong>configUSE_COUNTING_SEMAPHORES</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_co_routines"><strong>configUSE_CO_ROUTINES</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_daemon_task_startup_hook"><strong>configUSE_DAEMON_TASK_STARTUP_HOOK</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_malloc_failed_hook"><strong>configUSE_MALLOC_FAILED_HOOK</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_mutexes"><strong>configUSE_MUTEXES</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_newlib_reentrant"><strong>configUSE_NEWLIB_REENTRANT</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_port_optimised_task_selection"><strong>configUSE_PORT_OPTIMISED_TASK_SELECTION</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_posix_errno"><strong>configUSE_POSIX_ERRNO</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_queue_sets"><strong>configUSE_QUEUE_SETS</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_recursive_mutexes"><strong>configUSE_RECURSIVE_MUTEXES</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_stats_formatting_functions"><strong>configUSE_STATS_FORMATTING_FUNCTIONS</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_task_fpu_support"><strong>configUSE_TASK_FPU_SUPPORT</strong></a>  1<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_task_notifications"><strong>configUSE_TASK_NOTIFICATIONS</strong></a>  1<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_tickless_idle"><strong>configUSE_TICKLESS_IDLE</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_timers"><strong>configUSE_TIMERS</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_time_slicing"><strong>configUSE_TIME_SLICING</strong></a>  1<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-configuse_trace_facility"><strong>configUSE_TRACE_FACILITY</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-etaskstateget"><strong>eTaskStateGet</strong></a>  eTaskGetState<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-mtcoverage_test_delay"><strong>mtCOVERAGE_TEST_DELAY</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-mtcoverage_test_marker"><strong>mtCOVERAGE_TEST_MARKER</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-pcqueuegetname"><strong>pcQueueGetName</strong></a> (xQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-pcqueuegetqueuename"><strong>pcQueueGetQueueName</strong></a>  pcQueueGetName<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-pctaskgettaskname"><strong>pcTaskGetTaskName</strong></a>  pcTaskGetName<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-pctimergettimername"><strong>pcTimerGetTimerName</strong></a>  pcTimerGetName<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-pdtask_code"><strong>pdTASK_CODE</strong></a>  TaskFunction_t<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-pdtask_hook_code"><strong>pdTASK_HOOK_CODE</strong></a>  TaskHookFunction_t<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portallocate_secure_context"><strong>portALLOCATE_SECURE_CONTEXT</strong></a> (ulSecureStackSize) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portassert_if_interrupt_priority_invalid"><strong>portASSERT_IF_INTERRUPT_PRIORITY_INVALID</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portassert_if_in_isr"><strong>portASSERT_IF_IN_ISR</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portclean_up_tcb"><strong>portCLEAN_UP_TCB</strong></a> (pxTCB) ( void ) pxTCB<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portclear_interrupt_mask_from_isr"><strong>portCLEAR_INTERRUPT_MASK_FROM_ISR</strong></a> (uxSavedStatusValue) ( void ) uxSavedStatusValue<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portconfigure_timer_for_run_time_stats"><strong>portCONFIGURE_TIMER_FOR_RUN_TIME_STATS</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portcritical_nesting_in_tcb"><strong>portCRITICAL_NESTING_IN_TCB</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portdont_discard"><strong>portDONT_DISCARD</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portmemory_barrier"><strong>portMEMORY_BARRIER</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portpointer_size_type"><strong>portPOINTER_SIZE_TYPE</strong></a>  uint32_t<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portpre_task_delete_hook"><strong>portPRE_TASK_DELETE_HOOK</strong></a> (pvTaskToDelete, pxYieldPending) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portprivilege_bit"><strong>portPRIVILEGE_BIT</strong></a>  ( ( UBaseType_t ) 0x00 )<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portsetup_tcb"><strong>portSETUP_TCB</strong></a> (pxTCB) ( void ) pxTCB<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portset_interrupt_mask_from_isr"><strong>portSET_INTERRUPT_MASK_FROM_ISR</strong></a> () 0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portsoftware_barrier"><strong>portSOFTWARE_BARRIER</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portsuppress_ticks_and_sleep"><strong>portSUPPRESS_TICKS_AND_SLEEP</strong></a> (xExpectedIdleTime) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-porttask_uses_floating_point"><strong>portTASK_USES_FLOATING_POINT</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-porttick_rate_ms"><strong>portTICK_RATE_MS</strong></a>  portTICK_PERIOD_MS<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-porttick_type_clear_interrupt_mask_from_isr"><strong>portTICK_TYPE_CLEAR_INTERRUPT_MASK_FROM_ISR</strong></a> (x) portCLEAR_INTERRUPT_MASK_FROM_ISR( ( x ) )<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-porttick_type_enter_critical"><strong>portTICK_TYPE_ENTER_CRITICAL</strong></a> () portENTER_CRITICAL()<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-porttick_type_exit_critical"><strong>portTICK_TYPE_EXIT_CRITICAL</strong></a> () portEXIT_CRITICAL()<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-porttick_type_is_atomic"><strong>portTICK_TYPE_IS_ATOMIC</strong></a>  0<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-porttick_type_set_interrupt_mask_from_isr"><strong>portTICK_TYPE_SET_INTERRUPT_MASK_FROM_ISR</strong></a> () portSET_INTERRUPT_MASK_FROM_ISR()<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portticktype"><strong>portTickType</strong></a>  TickType_t<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-portyield_within_api"><strong>portYIELD_WITHIN_API</strong></a>  portYIELD<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-pxcontainer"><strong>pxContainer</strong></a>  pvContainer<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tmrtimer_callback"><strong>tmrTIMER_CALLBACK</strong></a>  TimerCallbackFunction_t<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceblocking_on_queue_peek"><strong>traceBLOCKING_ON_QUEUE_PEEK</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceblocking_on_queue_receive"><strong>traceBLOCKING_ON_QUEUE_RECEIVE</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceblocking_on_queue_send"><strong>traceBLOCKING_ON_QUEUE_SEND</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceblocking_on_stream_buffer_receive"><strong>traceBLOCKING_ON_STREAM_BUFFER_RECEIVE</strong></a> (xStreamBuffer) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceblocking_on_stream_buffer_send"><strong>traceBLOCKING_ON_STREAM_BUFFER_SEND</strong></a> (xStreamBuffer) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracecreate_counting_semaphore"><strong>traceCREATE_COUNTING_SEMAPHORE</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracecreate_counting_semaphore_failed"><strong>traceCREATE_COUNTING_SEMAPHORE_FAILED</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracecreate_mutex"><strong>traceCREATE_MUTEX</strong></a> (pxNewQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracecreate_mutex_failed"><strong>traceCREATE_MUTEX_FAILED</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceend"><strong>traceEND</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceevent_group_clear_bits"><strong>traceEVENT_GROUP_CLEAR_BITS</strong></a> (xEventGroup, uxBitsToClear) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceevent_group_clear_bits_from_isr"><strong>traceEVENT_GROUP_CLEAR_BITS_FROM_ISR</strong></a> (xEventGroup, uxBitsToClear) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceevent_group_create"><strong>traceEVENT_GROUP_CREATE</strong></a> (xEventGroup) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceevent_group_create_failed"><strong>traceEVENT_GROUP_CREATE_FAILED</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceevent_group_delete"><strong>traceEVENT_GROUP_DELETE</strong></a> (xEventGroup) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceevent_group_set_bits"><strong>traceEVENT_GROUP_SET_BITS</strong></a> (xEventGroup, uxBitsToSet) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceevent_group_set_bits_from_isr"><strong>traceEVENT_GROUP_SET_BITS_FROM_ISR</strong></a> (xEventGroup, uxBitsToSet) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceevent_group_sync_block"><strong>traceEVENT_GROUP_SYNC_BLOCK</strong></a> (xEventGroup, uxBitsToSet, uxBitsToWaitFor) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceevent_group_sync_end"><strong>traceEVENT_GROUP_SYNC_END</strong></a> (xEventGroup, uxBitsToSet, uxBitsToWaitFor, xTimeoutOccurred) ( void ) xTimeoutOccurred<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceevent_group_wait_bits_block"><strong>traceEVENT_GROUP_WAIT_BITS_BLOCK</strong></a> (xEventGroup, uxBitsToWaitFor) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceevent_group_wait_bits_end"><strong>traceEVENT_GROUP_WAIT_BITS_END</strong></a> (xEventGroup, uxBitsToWaitFor, xTimeoutOccurred) ( void ) xTimeoutOccurred<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracefree"><strong>traceFREE</strong></a> (pvAddress, uiSize) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracegive_mutex_recursive"><strong>traceGIVE_MUTEX_RECURSIVE</strong></a> (pxMutex) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracegive_mutex_recursive_failed"><strong>traceGIVE_MUTEX_RECURSIVE_FAILED</strong></a> (pxMutex) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-traceincrease_tick_count"><strong>traceINCREASE_TICK_COUNT</strong></a> (x) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracelow_power_idle_begin"><strong>traceLOW_POWER_IDLE_BEGIN</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracelow_power_idle_end"><strong>traceLOW_POWER_IDLE_END</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracemalloc"><strong>traceMALLOC</strong></a> (pvAddress, uiSize) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracemoved_task_to_ready_state"><strong>traceMOVED_TASK_TO_READY_STATE</strong></a> (pxTCB) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracepend_func_call"><strong>tracePEND_FUNC_CALL</strong></a> (xFunctionToPend, pvParameter1, ulParameter2, ret) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracepend_func_call_from_isr"><strong>tracePEND_FUNC_CALL_FROM_ISR</strong></a> (xFunctionToPend, pvParameter1, ulParameter2, ret) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracepost_moved_task_to_ready_state"><strong>tracePOST_MOVED_TASK_TO_READY_STATE</strong></a> (pxTCB) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_create"><strong>traceQUEUE_CREATE</strong></a> (pxNewQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_create_failed"><strong>traceQUEUE_CREATE_FAILED</strong></a> (ucQueueType) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_delete"><strong>traceQUEUE_DELETE</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_peek"><strong>traceQUEUE_PEEK</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_peek_failed"><strong>traceQUEUE_PEEK_FAILED</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_peek_from_isr"><strong>traceQUEUE_PEEK_FROM_ISR</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_peek_from_isr_failed"><strong>traceQUEUE_PEEK_FROM_ISR_FAILED</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_receive"><strong>traceQUEUE_RECEIVE</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_receive_failed"><strong>traceQUEUE_RECEIVE_FAILED</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_receive_from_isr"><strong>traceQUEUE_RECEIVE_FROM_ISR</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_receive_from_isr_failed"><strong>traceQUEUE_RECEIVE_FROM_ISR_FAILED</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_registry_add"><strong>traceQUEUE_REGISTRY_ADD</strong></a> (xQueue, pcQueueName) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_send"><strong>traceQUEUE_SEND</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_send_failed"><strong>traceQUEUE_SEND_FAILED</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_send_from_isr"><strong>traceQUEUE_SEND_FROM_ISR</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracequeue_send_from_isr_failed"><strong>traceQUEUE_SEND_FROM_ISR_FAILED</strong></a> (pxQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestart"><strong>traceSTART</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestream_buffer_create"><strong>traceSTREAM_BUFFER_CREATE</strong></a> (pxStreamBuffer, xIsMessageBuffer) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestream_buffer_create_failed"><strong>traceSTREAM_BUFFER_CREATE_FAILED</strong></a> (xIsMessageBuffer) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestream_buffer_create_static_failed"><strong>traceSTREAM_BUFFER_CREATE_STATIC_FAILED</strong></a> (xReturn, xIsMessageBuffer) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestream_buffer_delete"><strong>traceSTREAM_BUFFER_DELETE</strong></a> (xStreamBuffer) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestream_buffer_receive"><strong>traceSTREAM_BUFFER_RECEIVE</strong></a> (xStreamBuffer, xReceivedLength) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestream_buffer_receive_failed"><strong>traceSTREAM_BUFFER_RECEIVE_FAILED</strong></a> (xStreamBuffer) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestream_buffer_receive_from_isr"><strong>traceSTREAM_BUFFER_RECEIVE_FROM_ISR</strong></a> (xStreamBuffer, xReceivedLength) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestream_buffer_reset"><strong>traceSTREAM_BUFFER_RESET</strong></a> (xStreamBuffer) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestream_buffer_send"><strong>traceSTREAM_BUFFER_SEND</strong></a> (xStreamBuffer, xBytesSent) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestream_buffer_send_failed"><strong>traceSTREAM_BUFFER_SEND_FAILED</strong></a> (xStreamBuffer) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracestream_buffer_send_from_isr"><strong>traceSTREAM_BUFFER_SEND_FROM_ISR</strong></a> (xStreamBuffer, xBytesSent) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetake_mutex_recursive"><strong>traceTAKE_MUTEX_RECURSIVE</strong></a> (pxMutex) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetake_mutex_recursive_failed"><strong>traceTAKE_MUTEX_RECURSIVE_FAILED</strong></a> (pxMutex) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_create"><strong>traceTASK_CREATE</strong></a> (pxNewTCB) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_create_failed"><strong>traceTASK_CREATE_FAILED</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_delay"><strong>traceTASK_DELAY</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_delay_until"><strong>traceTASK_DELAY_UNTIL</strong></a> (x) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_delete"><strong>traceTASK_DELETE</strong></a> (pxTaskToDelete) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_increment_tick"><strong>traceTASK_INCREMENT_TICK</strong></a> (xTickCount) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_notify"><strong>traceTASK_NOTIFY</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_notify_from_isr"><strong>traceTASK_NOTIFY_FROM_ISR</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_notify_give_from_isr"><strong>traceTASK_NOTIFY_GIVE_FROM_ISR</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_notify_take"><strong>traceTASK_NOTIFY_TAKE</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_notify_take_block"><strong>traceTASK_NOTIFY_TAKE_BLOCK</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_notify_wait"><strong>traceTASK_NOTIFY_WAIT</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_notify_wait_block"><strong>traceTASK_NOTIFY_WAIT_BLOCK</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_priority_disinherit"><strong>traceTASK_PRIORITY_DISINHERIT</strong></a> (pxTCBOfMutexHolder, uxOriginalPriority) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_priority_inherit"><strong>traceTASK_PRIORITY_INHERIT</strong></a> (pxTCBOfMutexHolder, uxInheritedPriority) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_priority_set"><strong>traceTASK_PRIORITY_SET</strong></a> (pxTask, uxNewPriority) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_resume"><strong>traceTASK_RESUME</strong></a> (pxTaskToResume) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_resume_from_isr"><strong>traceTASK_RESUME_FROM_ISR</strong></a> (pxTaskToResume) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_suspend"><strong>traceTASK_SUSPEND</strong></a> (pxTaskToSuspend) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_switched_in"><strong>traceTASK_SWITCHED_IN</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetask_switched_out"><strong>traceTASK_SWITCHED_OUT</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetimer_command_received"><strong>traceTIMER_COMMAND_RECEIVED</strong></a> (pxTimer, xMessageID, xMessageValue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetimer_command_send"><strong>traceTIMER_COMMAND_SEND</strong></a> (xTimer, xMessageID, xMessageValueValue, xReturn) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetimer_create"><strong>traceTIMER_CREATE</strong></a> (pxNewTimer) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetimer_create_failed"><strong>traceTIMER_CREATE_FAILED</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tracetimer_expired"><strong>traceTIMER_EXPIRED</strong></a> (pxTimer) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-tskstatic_and_dynamic_allocation_possible"><strong>tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-vqueueaddtoregistry"><strong>vQueueAddToRegistry</strong></a> (xQueue, pcName) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-vqueueunregisterqueue"><strong>vQueueUnregisterQueue</strong></a> (xQueue) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-vtaskgettaskinfo"><strong>vTaskGetTaskInfo</strong></a>  vTaskGetInfo<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xcoroutinehandle"><strong>xCoRoutineHandle</strong></a>  CoRoutineHandle_t<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xlist"><strong>xList</strong></a>  <a href="../structxLIST/"><strong>List_t</strong></a><br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xlistitem"><strong>xListItem</strong></a>  <a href="../structxLIST__ITEM/"><strong>ListItem_t</strong></a><br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xmemoryregion"><strong>xMemoryRegion</strong></a>  <a href="../structxMEMORY__REGION/"><strong>MemoryRegion_t</strong></a><br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xqueuehandle"><strong>xQueueHandle</strong></a>  <a href="../structQueueDefinition/"><strong>QueueHandle_t</strong></a><br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xqueuesethandle"><strong>xQueueSetHandle</strong></a>  <a href="../structQueueDefinition/"><strong>QueueSetHandle_t</strong></a><br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xqueuesetmemberhandle"><strong>xQueueSetMemberHandle</strong></a>  <a href="../structQueueDefinition/"><strong>QueueSetMemberHandle_t</strong></a><br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xsemaphorehandle"><strong>xSemaphoreHandle</strong></a>  <a href="../structQueueDefinition/"><strong>SemaphoreHandle_t</strong></a><br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xtaskgetidleruntimecounter"><strong>xTaskGetIdleRunTimeCounter</strong></a>  ulTaskGetIdleRunTimeCounter<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xtaskhandle"><strong>xTaskHandle</strong></a>  <a href="../structtskTaskControlBlock/"><strong>TaskHandle_t</strong></a><br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xtaskparameters"><strong>xTaskParameters</strong></a>  <a href="../structxTASK__PARAMETERS/"><strong>TaskParameters_t</strong></a><br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xtaskstatustype"><strong>xTaskStatusType</strong></a>  <a href="../structxTASK__STATUS/"><strong>TaskStatus_t</strong></a><br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xtimeouttype"><strong>xTimeOutType</strong></a>  <a href="../structxTIME__OUT/"><strong>TimeOut_t</strong></a><br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-xtimerhandle"><strong>xTimerHandle</strong></a>  TimerHandle_t<br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-types-documentation">Public Types Documentation</h2>
+<h3 id="typedef-staticeventgroup_t">typedef StaticEventGroup_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_EVENT_GROUP</span><span class="w"> </span><span class="n">StaticEventGroup_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-staticlistitem_t">typedef StaticListItem_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_LIST_ITEM</span><span class="w"> </span><span class="n">StaticListItem_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-staticlist_t">typedef StaticList_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_LIST</span><span class="w"> </span><span class="n">StaticList_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-staticmessagebuffer_t">typedef StaticMessageBuffer_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="n">StaticStreamBuffer_t</span><span class="w"> </span><span class="n">StaticMessageBuffer_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-staticminilistitem_t">typedef StaticMiniListItem_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_MINI_LIST_ITEM</span><span class="w"> </span><span class="n">StaticMiniListItem_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-staticqueue_t">typedef StaticQueue_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_QUEUE</span><span class="w"> </span><span class="n">StaticQueue_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-staticsemaphore_t">typedef StaticSemaphore_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="n">StaticQueue_t</span><span class="w"> </span><span class="n">StaticSemaphore_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-staticstreambuffer_t">typedef StaticStreamBuffer_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_STREAM_BUFFER</span><span class="w"> </span><span class="n">StaticStreamBuffer_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-statictask_t">typedef StaticTask_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_TCB</span><span class="w"> </span><span class="n">StaticTask_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-statictimer_t">typedef StaticTimer_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_TIMER</span><span class="w"> </span><span class="n">StaticTimer_t</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="macro-definition-documentation">Macro Definition Documentation</h2>
+<h3 id="define-include_etaskgetstate">define INCLUDE_eTaskGetState</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_eTaskGetState 0</span>
+</code></pre></div>
+<h3 id="define-include_uxtaskgetstackhighwatermark">define INCLUDE_uxTaskGetStackHighWaterMark</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_uxTaskGetStackHighWaterMark 0</span>
+</code></pre></div>
+<h3 id="define-include_uxtaskgetstackhighwatermark2">define INCLUDE_uxTaskGetStackHighWaterMark2</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_uxTaskGetStackHighWaterMark2 0</span>
+</code></pre></div>
+<h3 id="define-include_uxtaskpriorityget">define INCLUDE_uxTaskPriorityGet</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_uxTaskPriorityGet 0</span>
+</code></pre></div>
+<h3 id="define-include_vtaskdelay">define INCLUDE_vTaskDelay</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_vTaskDelay 0</span>
+</code></pre></div>
+<h3 id="define-include_vtaskdelayuntil">define INCLUDE_vTaskDelayUntil</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_vTaskDelayUntil 0</span>
+</code></pre></div>
+<h3 id="define-include_vtaskdelete">define INCLUDE_vTaskDelete</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_vTaskDelete 0</span>
+</code></pre></div>
+<h3 id="define-include_vtaskpriorityset">define INCLUDE_vTaskPrioritySet</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_vTaskPrioritySet 0</span>
+</code></pre></div>
+<h3 id="define-include_vtasksuspend">define INCLUDE_vTaskSuspend</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_vTaskSuspend 0</span>
+</code></pre></div>
+<h3 id="define-include_xqueuegetmutexholder">define INCLUDE_xQueueGetMutexHolder</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_xQueueGetMutexHolder 0</span>
+</code></pre></div>
+<h3 id="define-include_xsemaphoregetmutexholder">define INCLUDE_xSemaphoreGetMutexHolder</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_xSemaphoreGetMutexHolder INCLUDE_xQueueGetMutexHolder</span>
+</code></pre></div>
+<h3 id="define-include_xtaskabortdelay">define INCLUDE_xTaskAbortDelay</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_xTaskAbortDelay 0</span>
+</code></pre></div>
+<h3 id="define-include_xtaskgetcurrenttaskhandle">define INCLUDE_xTaskGetCurrentTaskHandle</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_xTaskGetCurrentTaskHandle 0</span>
+</code></pre></div>
+<h3 id="define-include_xtaskgethandle">define INCLUDE_xTaskGetHandle</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_xTaskGetHandle 0</span>
+</code></pre></div>
+<h3 id="define-include_xtaskgetidletaskhandle">define INCLUDE_xTaskGetIdleTaskHandle</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_xTaskGetIdleTaskHandle 0</span>
+</code></pre></div>
+<h3 id="define-include_xtaskgetschedulerstate">define INCLUDE_xTaskGetSchedulerState</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_xTaskGetSchedulerState 0</span>
+</code></pre></div>
+<h3 id="define-include_xtaskresumefromisr">define INCLUDE_xTaskResumeFromISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_xTaskResumeFromISR 1</span>
+</code></pre></div>
+<h3 id="define-include_xtimerpendfunctioncall">define INCLUDE_xTimerPendFunctionCall</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INCLUDE_xTimerPendFunctionCall 0</span>
+</code></pre></div>
+<h3 id="define-configapplication_allocated_heap">define configAPPLICATION_ALLOCATED_HEAP</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configAPPLICATION_ALLOCATED_HEAP 0</span>
+</code></pre></div>
+<h3 id="define-configassert">define configASSERT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configASSERT (</span>
+<span class="w">    </span><span class="n">x</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-configassert_defined">define configASSERT_DEFINED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configASSERT_DEFINED 0</span>
+</code></pre></div>
+<h3 id="define-configcheck_for_stack_overflow">define configCHECK_FOR_STACK_OVERFLOW</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configCHECK_FOR_STACK_OVERFLOW 0</span>
+</code></pre></div>
+<h3 id="define-configenable_backward_compatibility">define configENABLE_BACKWARD_COMPATIBILITY</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configENABLE_BACKWARD_COMPATIBILITY 1</span>
+</code></pre></div>
+<h3 id="define-configenable_fpu">define configENABLE_FPU</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configENABLE_FPU 1</span>
+</code></pre></div>
+<h3 id="define-configenable_mpu">define configENABLE_MPU</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configENABLE_MPU 0</span>
+</code></pre></div>
+<h3 id="define-configenable_trustzone">define configENABLE_TRUSTZONE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configENABLE_TRUSTZONE 1</span>
+</code></pre></div>
+<h3 id="define-configexpected_idle_time_before_sleep">define configEXPECTED_IDLE_TIME_BEFORE_SLEEP</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configEXPECTED_IDLE_TIME_BEFORE_SLEEP 2</span>
+</code></pre></div>
+<h3 id="define-configgenerate_run_time_stats">define configGENERATE_RUN_TIME_STATS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configGENERATE_RUN_TIME_STATS 0</span>
+</code></pre></div>
+<h3 id="define-configidle_should_yield">define configIDLE_SHOULD_YIELD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configIDLE_SHOULD_YIELD 1</span>
+</code></pre></div>
+<h3 id="define-configinclude_application_defined_privileged_functions">define configINCLUDE_APPLICATION_DEFINED_PRIVILEGED_FUNCTIONS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configINCLUDE_APPLICATION_DEFINED_PRIVILEGED_FUNCTIONS 0</span>
+</code></pre></div>
+<h3 id="define-configinclude_freertos_task_c_additions_h">define configINCLUDE_FREERTOS_TASK_C_ADDITIONS_H</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configINCLUDE_FREERTOS_TASK_C_ADDITIONS_H 0</span>
+</code></pre></div>
+<h3 id="define-configinitial_tick_count">define configINITIAL_TICK_COUNT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configINITIAL_TICK_COUNT 0</span>
+</code></pre></div>
+<h3 id="define-configmax">define configMAX</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configMAX (</span>
+<span class="w">    </span><span class="n">a</span><span class="p">,</span>
+<span class="w">    </span><span class="n">b</span>
+<span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-configmax_task_name_len">define configMAX_TASK_NAME_LEN</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configMAX_TASK_NAME_LEN 16</span>
+</code></pre></div>
+<h3 id="define-configmessage_buffer_length_type">define configMESSAGE_BUFFER_LENGTH_TYPE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configMESSAGE_BUFFER_LENGTH_TYPE size_t</span>
+</code></pre></div>
+<h3 id="define-configmin">define configMIN</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configMIN (</span>
+<span class="w">    </span><span class="n">a</span><span class="p">,</span>
+<span class="w">    </span><span class="n">b</span>
+<span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-confignum_thread_local_storage_pointers">define configNUM_THREAD_LOCAL_STORAGE_POINTERS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configNUM_THREAD_LOCAL_STORAGE_POINTERS 0</span>
+</code></pre></div>
+<h3 id="define-configpost_sleep_processing">define configPOST_SLEEP_PROCESSING</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configPOST_SLEEP_PROCESSING (</span>
+<span class="w">    </span><span class="n">x</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-configprecondition">define configPRECONDITION</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configPRECONDITION (</span>
+<span class="w">    </span><span class="n">X</span>
+<span class="p">)</span><span class="w"> </span><span class="n">configASSERT</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-configprecondition_defined">define configPRECONDITION_DEFINED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configPRECONDITION_DEFINED 0</span>
+</code></pre></div>
+<h3 id="define-configpre_sleep_processing">define configPRE_SLEEP_PROCESSING</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configPRE_SLEEP_PROCESSING (</span>
+<span class="w">    </span><span class="n">x</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-configpre_suppress_ticks_and_sleep_processing">define configPRE_SUPPRESS_TICKS_AND_SLEEP_PROCESSING</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configPRE_SUPPRESS_TICKS_AND_SLEEP_PROCESSING (</span>
+<span class="w">    </span><span class="n">x</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-configprintf">define configPRINTF</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configPRINTF (</span>
+<span class="w">    </span><span class="n">X</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-configqueue_registry_size">define configQUEUE_REGISTRY_SIZE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configQUEUE_REGISTRY_SIZE 0U</span>
+</code></pre></div>
+<h3 id="define-configrecord_stack_high_address">define configRECORD_STACK_HIGH_ADDRESS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configRECORD_STACK_HIGH_ADDRESS 0</span>
+</code></pre></div>
+<h3 id="define-configrun_freertos_secure_only">define configRUN_FREERTOS_SECURE_ONLY</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configRUN_FREERTOS_SECURE_ONLY 0</span>
+</code></pre></div>
+<h3 id="define-configstack_depth_type">define configSTACK_DEPTH_TYPE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configSTACK_DEPTH_TYPE uint16_t</span>
+</code></pre></div>
+<h3 id="define-configsupport_dynamic_allocation">define configSUPPORT_DYNAMIC_ALLOCATION</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configSUPPORT_DYNAMIC_ALLOCATION 1</span>
+</code></pre></div>
+<h3 id="define-configsupport_static_allocation">define configSUPPORT_STATIC_ALLOCATION</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configSUPPORT_STATIC_ALLOCATION 0</span>
+</code></pre></div>
+<h3 id="define-configuse_alternative_api">define configUSE_ALTERNATIVE_API</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_ALTERNATIVE_API 0</span>
+</code></pre></div>
+<h3 id="define-configuse_application_task_tag">define configUSE_APPLICATION_TASK_TAG</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_APPLICATION_TASK_TAG 0</span>
+</code></pre></div>
+<h3 id="define-configuse_counting_semaphores">define configUSE_COUNTING_SEMAPHORES</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_COUNTING_SEMAPHORES 0</span>
+</code></pre></div>
+<h3 id="define-configuse_co_routines">define configUSE_CO_ROUTINES</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_CO_ROUTINES 0</span>
+</code></pre></div>
+<h3 id="define-configuse_daemon_task_startup_hook">define configUSE_DAEMON_TASK_STARTUP_HOOK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_DAEMON_TASK_STARTUP_HOOK 0</span>
+</code></pre></div>
+<h3 id="define-configuse_malloc_failed_hook">define configUSE_MALLOC_FAILED_HOOK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_MALLOC_FAILED_HOOK 0</span>
+</code></pre></div>
+<h3 id="define-configuse_mutexes">define configUSE_MUTEXES</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_MUTEXES 0</span>
+</code></pre></div>
+<h3 id="define-configuse_newlib_reentrant">define configUSE_NEWLIB_REENTRANT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_NEWLIB_REENTRANT 0</span>
+</code></pre></div>
+<h3 id="define-configuse_port_optimised_task_selection">define configUSE_PORT_OPTIMISED_TASK_SELECTION</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_PORT_OPTIMISED_TASK_SELECTION 0</span>
+</code></pre></div>
+<h3 id="define-configuse_posix_errno">define configUSE_POSIX_ERRNO</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_POSIX_ERRNO 0</span>
+</code></pre></div>
+<h3 id="define-configuse_queue_sets">define configUSE_QUEUE_SETS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_QUEUE_SETS 0</span>
+</code></pre></div>
+<h3 id="define-configuse_recursive_mutexes">define configUSE_RECURSIVE_MUTEXES</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_RECURSIVE_MUTEXES 0</span>
+</code></pre></div>
+<h3 id="define-configuse_stats_formatting_functions">define configUSE_STATS_FORMATTING_FUNCTIONS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_STATS_FORMATTING_FUNCTIONS 0</span>
+</code></pre></div>
+<h3 id="define-configuse_task_fpu_support">define configUSE_TASK_FPU_SUPPORT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_TASK_FPU_SUPPORT 1</span>
+</code></pre></div>
+<h3 id="define-configuse_task_notifications">define configUSE_TASK_NOTIFICATIONS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_TASK_NOTIFICATIONS 1</span>
+</code></pre></div>
+<h3 id="define-configuse_tickless_idle">define configUSE_TICKLESS_IDLE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_TICKLESS_IDLE 0</span>
+</code></pre></div>
+<h3 id="define-configuse_timers">define configUSE_TIMERS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_TIMERS 0</span>
+</code></pre></div>
+<h3 id="define-configuse_time_slicing">define configUSE_TIME_SLICING</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_TIME_SLICING 1</span>
+</code></pre></div>
+<h3 id="define-configuse_trace_facility">define configUSE_TRACE_FACILITY</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define configUSE_TRACE_FACILITY 0</span>
+</code></pre></div>
+<h3 id="define-etaskstateget">define eTaskStateGet</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define eTaskStateGet eTaskGetState</span>
+</code></pre></div>
+<h3 id="define-mtcoverage_test_delay">define mtCOVERAGE_TEST_DELAY</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define mtCOVERAGE_TEST_DELAY (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-mtcoverage_test_marker">define mtCOVERAGE_TEST_MARKER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define mtCOVERAGE_TEST_MARKER (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-pcqueuegetname">define pcQueueGetName</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define pcQueueGetName (</span>
+<span class="w">    </span><span class="n">xQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-pcqueuegetqueuename">define pcQueueGetQueueName</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define pcQueueGetQueueName pcQueueGetName</span>
+</code></pre></div>
+<h3 id="define-pctaskgettaskname">define pcTaskGetTaskName</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define pcTaskGetTaskName pcTaskGetName</span>
+</code></pre></div>
+<h3 id="define-pctimergettimername">define pcTimerGetTimerName</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define pcTimerGetTimerName pcTimerGetName</span>
+</code></pre></div>
+<h3 id="define-pdtask_code">define pdTASK_CODE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define pdTASK_CODE TaskFunction_t</span>
+</code></pre></div>
+<h3 id="define-pdtask_hook_code">define pdTASK_HOOK_CODE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define pdTASK_HOOK_CODE TaskHookFunction_t</span>
+</code></pre></div>
+<h3 id="define-portallocate_secure_context">define portALLOCATE_SECURE_CONTEXT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portALLOCATE_SECURE_CONTEXT (</span>
+<span class="w">    </span><span class="n">ulSecureStackSize</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-portassert_if_interrupt_priority_invalid">define portASSERT_IF_INTERRUPT_PRIORITY_INVALID</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portASSERT_IF_INTERRUPT_PRIORITY_INVALID (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-portassert_if_in_isr">define portASSERT_IF_IN_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portASSERT_IF_IN_ISR (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-portclean_up_tcb">define portCLEAN_UP_TCB</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portCLEAN_UP_TCB (</span>
+<span class="w">    </span><span class="n">pxTCB</span>
+<span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">pxTCB</span>
+</code></pre></div>
+<h3 id="define-portclear_interrupt_mask_from_isr">define portCLEAR_INTERRUPT_MASK_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portCLEAR_INTERRUPT_MASK_FROM_ISR (</span>
+<span class="w">    </span><span class="n">uxSavedStatusValue</span>
+<span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">uxSavedStatusValue</span>
+</code></pre></div>
+<h3 id="define-portconfigure_timer_for_run_time_stats">define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-portcritical_nesting_in_tcb">define portCRITICAL_NESTING_IN_TCB</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portCRITICAL_NESTING_IN_TCB 0</span>
+</code></pre></div>
+<h3 id="define-portdont_discard">define portDONT_DISCARD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portDONT_DISCARD </span>
+</code></pre></div>
+<h3 id="define-portmemory_barrier">define portMEMORY_BARRIER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portMEMORY_BARRIER (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-portpointer_size_type">define portPOINTER_SIZE_TYPE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portPOINTER_SIZE_TYPE uint32_t</span>
+</code></pre></div>
+<h3 id="define-portpre_task_delete_hook">define portPRE_TASK_DELETE_HOOK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portPRE_TASK_DELETE_HOOK (</span>
+<span class="w">    </span><span class="n">pvTaskToDelete</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pxYieldPending</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-portprivilege_bit">define portPRIVILEGE_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portPRIVILEGE_BIT ( ( UBaseType_t ) 0x00 )</span>
+</code></pre></div>
+<h3 id="define-portsetup_tcb">define portSETUP_TCB</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portSETUP_TCB (</span>
+<span class="w">    </span><span class="n">pxTCB</span>
+<span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">pxTCB</span>
+</code></pre></div>
+<h3 id="define-portset_interrupt_mask_from_isr">define portSET_INTERRUPT_MASK_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portSET_INTERRUPT_MASK_FROM_ISR (</span>
+
+<span class="p">)</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+<h3 id="define-portsoftware_barrier">define portSOFTWARE_BARRIER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portSOFTWARE_BARRIER (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-portsuppress_ticks_and_sleep">define portSUPPRESS_TICKS_AND_SLEEP</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portSUPPRESS_TICKS_AND_SLEEP (</span>
+<span class="w">    </span><span class="n">xExpectedIdleTime</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-porttask_uses_floating_point">define portTASK_USES_FLOATING_POINT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portTASK_USES_FLOATING_POINT (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-porttick_rate_ms">define portTICK_RATE_MS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portTICK_RATE_MS portTICK_PERIOD_MS</span>
+</code></pre></div>
+<h3 id="define-porttick_type_clear_interrupt_mask_from_isr">define portTICK_TYPE_CLEAR_INTERRUPT_MASK_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portTICK_TYPE_CLEAR_INTERRUPT_MASK_FROM_ISR (</span>
+<span class="w">    </span><span class="n">x</span>
+<span class="p">)</span><span class="w"> </span><span class="n">portCLEAR_INTERRUPT_MASK_FROM_ISR</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-porttick_type_enter_critical">define portTICK_TYPE_ENTER_CRITICAL</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portTICK_TYPE_ENTER_CRITICAL (</span>
+
+<span class="p">)</span><span class="w"> </span><span class="n">portENTER_CRITICAL</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="define-porttick_type_exit_critical">define portTICK_TYPE_EXIT_CRITICAL</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portTICK_TYPE_EXIT_CRITICAL (</span>
+
+<span class="p">)</span><span class="w"> </span><span class="n">portEXIT_CRITICAL</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="define-porttick_type_is_atomic">define portTICK_TYPE_IS_ATOMIC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portTICK_TYPE_IS_ATOMIC 0</span>
+</code></pre></div>
+<h3 id="define-porttick_type_set_interrupt_mask_from_isr">define portTICK_TYPE_SET_INTERRUPT_MASK_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portTICK_TYPE_SET_INTERRUPT_MASK_FROM_ISR (</span>
+
+<span class="p">)</span><span class="w"> </span><span class="n">portSET_INTERRUPT_MASK_FROM_ISR</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="define-portticktype">define portTickType</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portTickType TickType_t</span>
+</code></pre></div>
+<h3 id="define-portyield_within_api">define portYIELD_WITHIN_API</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define portYIELD_WITHIN_API portYIELD</span>
+</code></pre></div>
+<h3 id="define-pxcontainer">define pxContainer</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define pxContainer pvContainer</span>
+</code></pre></div>
+<h3 id="define-tmrtimer_callback">define tmrTIMER_CALLBACK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define tmrTIMER_CALLBACK TimerCallbackFunction_t</span>
+</code></pre></div>
+<h3 id="define-traceblocking_on_queue_peek">define traceBLOCKING_ON_QUEUE_PEEK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceBLOCKING_ON_QUEUE_PEEK (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceblocking_on_queue_receive">define traceBLOCKING_ON_QUEUE_RECEIVE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceBLOCKING_ON_QUEUE_RECEIVE (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceblocking_on_queue_send">define traceBLOCKING_ON_QUEUE_SEND</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceBLOCKING_ON_QUEUE_SEND (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceblocking_on_stream_buffer_receive">define traceBLOCKING_ON_STREAM_BUFFER_RECEIVE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceBLOCKING_ON_STREAM_BUFFER_RECEIVE (</span>
+<span class="w">    </span><span class="n">xStreamBuffer</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceblocking_on_stream_buffer_send">define traceBLOCKING_ON_STREAM_BUFFER_SEND</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceBLOCKING_ON_STREAM_BUFFER_SEND (</span>
+<span class="w">    </span><span class="n">xStreamBuffer</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracecreate_counting_semaphore">define traceCREATE_COUNTING_SEMAPHORE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceCREATE_COUNTING_SEMAPHORE (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracecreate_counting_semaphore_failed">define traceCREATE_COUNTING_SEMAPHORE_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceCREATE_COUNTING_SEMAPHORE_FAILED (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracecreate_mutex">define traceCREATE_MUTEX</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceCREATE_MUTEX (</span>
+<span class="w">    </span><span class="n">pxNewQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracecreate_mutex_failed">define traceCREATE_MUTEX_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceCREATE_MUTEX_FAILED (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceend">define traceEND</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEND (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceevent_group_clear_bits">define traceEVENT_GROUP_CLEAR_BITS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEVENT_GROUP_CLEAR_BITS (</span>
+<span class="w">    </span><span class="n">xEventGroup</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxBitsToClear</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceevent_group_clear_bits_from_isr">define traceEVENT_GROUP_CLEAR_BITS_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEVENT_GROUP_CLEAR_BITS_FROM_ISR (</span>
+<span class="w">    </span><span class="n">xEventGroup</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxBitsToClear</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceevent_group_create">define traceEVENT_GROUP_CREATE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEVENT_GROUP_CREATE (</span>
+<span class="w">    </span><span class="n">xEventGroup</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceevent_group_create_failed">define traceEVENT_GROUP_CREATE_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEVENT_GROUP_CREATE_FAILED (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceevent_group_delete">define traceEVENT_GROUP_DELETE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEVENT_GROUP_DELETE (</span>
+<span class="w">    </span><span class="n">xEventGroup</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceevent_group_set_bits">define traceEVENT_GROUP_SET_BITS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEVENT_GROUP_SET_BITS (</span>
+<span class="w">    </span><span class="n">xEventGroup</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxBitsToSet</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceevent_group_set_bits_from_isr">define traceEVENT_GROUP_SET_BITS_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEVENT_GROUP_SET_BITS_FROM_ISR (</span>
+<span class="w">    </span><span class="n">xEventGroup</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxBitsToSet</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceevent_group_sync_block">define traceEVENT_GROUP_SYNC_BLOCK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEVENT_GROUP_SYNC_BLOCK (</span>
+<span class="w">    </span><span class="n">xEventGroup</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxBitsToSet</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxBitsToWaitFor</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceevent_group_sync_end">define traceEVENT_GROUP_SYNC_END</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEVENT_GROUP_SYNC_END (</span>
+<span class="w">    </span><span class="n">xEventGroup</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxBitsToSet</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxBitsToWaitFor</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xTimeoutOccurred</span>
+<span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">xTimeoutOccurred</span>
+</code></pre></div>
+<h3 id="define-traceevent_group_wait_bits_block">define traceEVENT_GROUP_WAIT_BITS_BLOCK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEVENT_GROUP_WAIT_BITS_BLOCK (</span>
+<span class="w">    </span><span class="n">xEventGroup</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxBitsToWaitFor</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceevent_group_wait_bits_end">define traceEVENT_GROUP_WAIT_BITS_END</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceEVENT_GROUP_WAIT_BITS_END (</span>
+<span class="w">    </span><span class="n">xEventGroup</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxBitsToWaitFor</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xTimeoutOccurred</span>
+<span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">xTimeoutOccurred</span>
+</code></pre></div>
+<h3 id="define-tracefree">define traceFREE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceFREE (</span>
+<span class="w">    </span><span class="n">pvAddress</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uiSize</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracegive_mutex_recursive">define traceGIVE_MUTEX_RECURSIVE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceGIVE_MUTEX_RECURSIVE (</span>
+<span class="w">    </span><span class="n">pxMutex</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracegive_mutex_recursive_failed">define traceGIVE_MUTEX_RECURSIVE_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceGIVE_MUTEX_RECURSIVE_FAILED (</span>
+<span class="w">    </span><span class="n">pxMutex</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-traceincrease_tick_count">define traceINCREASE_TICK_COUNT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceINCREASE_TICK_COUNT (</span>
+<span class="w">    </span><span class="n">x</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracelow_power_idle_begin">define traceLOW_POWER_IDLE_BEGIN</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceLOW_POWER_IDLE_BEGIN (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracelow_power_idle_end">define traceLOW_POWER_IDLE_END</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceLOW_POWER_IDLE_END (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracemalloc">define traceMALLOC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceMALLOC (</span>
+<span class="w">    </span><span class="n">pvAddress</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uiSize</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracemoved_task_to_ready_state">define traceMOVED_TASK_TO_READY_STATE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceMOVED_TASK_TO_READY_STATE (</span>
+<span class="w">    </span><span class="n">pxTCB</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracepend_func_call">define tracePEND_FUNC_CALL</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define tracePEND_FUNC_CALL (</span>
+<span class="w">    </span><span class="n">xFunctionToPend</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pvParameter1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ulParameter2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ret</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracepend_func_call_from_isr">define tracePEND_FUNC_CALL_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define tracePEND_FUNC_CALL_FROM_ISR (</span>
+<span class="w">    </span><span class="n">xFunctionToPend</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pvParameter1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ulParameter2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ret</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracepost_moved_task_to_ready_state">define tracePOST_MOVED_TASK_TO_READY_STATE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define tracePOST_MOVED_TASK_TO_READY_STATE (</span>
+<span class="w">    </span><span class="n">pxTCB</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_create">define traceQUEUE_CREATE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_CREATE (</span>
+<span class="w">    </span><span class="n">pxNewQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_create_failed">define traceQUEUE_CREATE_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_CREATE_FAILED (</span>
+<span class="w">    </span><span class="n">ucQueueType</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_delete">define traceQUEUE_DELETE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_DELETE (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_peek">define traceQUEUE_PEEK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_PEEK (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_peek_failed">define traceQUEUE_PEEK_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_PEEK_FAILED (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_peek_from_isr">define traceQUEUE_PEEK_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_PEEK_FROM_ISR (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_peek_from_isr_failed">define traceQUEUE_PEEK_FROM_ISR_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_PEEK_FROM_ISR_FAILED (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_receive">define traceQUEUE_RECEIVE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_RECEIVE (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_receive_failed">define traceQUEUE_RECEIVE_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_RECEIVE_FAILED (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_receive_from_isr">define traceQUEUE_RECEIVE_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_RECEIVE_FROM_ISR (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_receive_from_isr_failed">define traceQUEUE_RECEIVE_FROM_ISR_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_RECEIVE_FROM_ISR_FAILED (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_registry_add">define traceQUEUE_REGISTRY_ADD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_REGISTRY_ADD (</span>
+<span class="w">    </span><span class="n">xQueue</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pcQueueName</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_send">define traceQUEUE_SEND</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_SEND (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_send_failed">define traceQUEUE_SEND_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_SEND_FAILED (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_send_from_isr">define traceQUEUE_SEND_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_SEND_FROM_ISR (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracequeue_send_from_isr_failed">define traceQUEUE_SEND_FROM_ISR_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceQUEUE_SEND_FROM_ISR_FAILED (</span>
+<span class="w">    </span><span class="n">pxQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestart">define traceSTART</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTART (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestream_buffer_create">define traceSTREAM_BUFFER_CREATE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTREAM_BUFFER_CREATE (</span>
+<span class="w">    </span><span class="n">pxStreamBuffer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xIsMessageBuffer</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestream_buffer_create_failed">define traceSTREAM_BUFFER_CREATE_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTREAM_BUFFER_CREATE_FAILED (</span>
+<span class="w">    </span><span class="n">xIsMessageBuffer</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestream_buffer_create_static_failed">define traceSTREAM_BUFFER_CREATE_STATIC_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTREAM_BUFFER_CREATE_STATIC_FAILED (</span>
+<span class="w">    </span><span class="n">xReturn</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xIsMessageBuffer</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestream_buffer_delete">define traceSTREAM_BUFFER_DELETE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTREAM_BUFFER_DELETE (</span>
+<span class="w">    </span><span class="n">xStreamBuffer</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestream_buffer_receive">define traceSTREAM_BUFFER_RECEIVE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTREAM_BUFFER_RECEIVE (</span>
+<span class="w">    </span><span class="n">xStreamBuffer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xReceivedLength</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestream_buffer_receive_failed">define traceSTREAM_BUFFER_RECEIVE_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTREAM_BUFFER_RECEIVE_FAILED (</span>
+<span class="w">    </span><span class="n">xStreamBuffer</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestream_buffer_receive_from_isr">define traceSTREAM_BUFFER_RECEIVE_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTREAM_BUFFER_RECEIVE_FROM_ISR (</span>
+<span class="w">    </span><span class="n">xStreamBuffer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xReceivedLength</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestream_buffer_reset">define traceSTREAM_BUFFER_RESET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTREAM_BUFFER_RESET (</span>
+<span class="w">    </span><span class="n">xStreamBuffer</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestream_buffer_send">define traceSTREAM_BUFFER_SEND</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTREAM_BUFFER_SEND (</span>
+<span class="w">    </span><span class="n">xStreamBuffer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xBytesSent</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestream_buffer_send_failed">define traceSTREAM_BUFFER_SEND_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTREAM_BUFFER_SEND_FAILED (</span>
+<span class="w">    </span><span class="n">xStreamBuffer</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracestream_buffer_send_from_isr">define traceSTREAM_BUFFER_SEND_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceSTREAM_BUFFER_SEND_FROM_ISR (</span>
+<span class="w">    </span><span class="n">xStreamBuffer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xBytesSent</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetake_mutex_recursive">define traceTAKE_MUTEX_RECURSIVE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTAKE_MUTEX_RECURSIVE (</span>
+<span class="w">    </span><span class="n">pxMutex</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetake_mutex_recursive_failed">define traceTAKE_MUTEX_RECURSIVE_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTAKE_MUTEX_RECURSIVE_FAILED (</span>
+<span class="w">    </span><span class="n">pxMutex</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_create">define traceTASK_CREATE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_CREATE (</span>
+<span class="w">    </span><span class="n">pxNewTCB</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_create_failed">define traceTASK_CREATE_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_CREATE_FAILED (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_delay">define traceTASK_DELAY</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_DELAY (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_delay_until">define traceTASK_DELAY_UNTIL</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_DELAY_UNTIL (</span>
+<span class="w">    </span><span class="n">x</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_delete">define traceTASK_DELETE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_DELETE (</span>
+<span class="w">    </span><span class="n">pxTaskToDelete</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_increment_tick">define traceTASK_INCREMENT_TICK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_INCREMENT_TICK (</span>
+<span class="w">    </span><span class="n">xTickCount</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_notify">define traceTASK_NOTIFY</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_NOTIFY (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_notify_from_isr">define traceTASK_NOTIFY_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_NOTIFY_FROM_ISR (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_notify_give_from_isr">define traceTASK_NOTIFY_GIVE_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_NOTIFY_GIVE_FROM_ISR (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_notify_take">define traceTASK_NOTIFY_TAKE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_NOTIFY_TAKE (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_notify_take_block">define traceTASK_NOTIFY_TAKE_BLOCK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_NOTIFY_TAKE_BLOCK (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_notify_wait">define traceTASK_NOTIFY_WAIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_NOTIFY_WAIT (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_notify_wait_block">define traceTASK_NOTIFY_WAIT_BLOCK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_NOTIFY_WAIT_BLOCK (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_priority_disinherit">define traceTASK_PRIORITY_DISINHERIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_PRIORITY_DISINHERIT (</span>
+<span class="w">    </span><span class="n">pxTCBOfMutexHolder</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxOriginalPriority</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_priority_inherit">define traceTASK_PRIORITY_INHERIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_PRIORITY_INHERIT (</span>
+<span class="w">    </span><span class="n">pxTCBOfMutexHolder</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxInheritedPriority</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_priority_set">define traceTASK_PRIORITY_SET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_PRIORITY_SET (</span>
+<span class="w">    </span><span class="n">pxTask</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uxNewPriority</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_resume">define traceTASK_RESUME</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_RESUME (</span>
+<span class="w">    </span><span class="n">pxTaskToResume</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_resume_from_isr">define traceTASK_RESUME_FROM_ISR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_RESUME_FROM_ISR (</span>
+<span class="w">    </span><span class="n">pxTaskToResume</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_suspend">define traceTASK_SUSPEND</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_SUSPEND (</span>
+<span class="w">    </span><span class="n">pxTaskToSuspend</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_switched_in">define traceTASK_SWITCHED_IN</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_SWITCHED_IN (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetask_switched_out">define traceTASK_SWITCHED_OUT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTASK_SWITCHED_OUT (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetimer_command_received">define traceTIMER_COMMAND_RECEIVED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTIMER_COMMAND_RECEIVED (</span>
+<span class="w">    </span><span class="n">pxTimer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xMessageID</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xMessageValue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetimer_command_send">define traceTIMER_COMMAND_SEND</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTIMER_COMMAND_SEND (</span>
+<span class="w">    </span><span class="n">xTimer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xMessageID</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xMessageValueValue</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xReturn</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetimer_create">define traceTIMER_CREATE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTIMER_CREATE (</span>
+<span class="w">    </span><span class="n">pxNewTimer</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetimer_create_failed">define traceTIMER_CREATE_FAILED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTIMER_CREATE_FAILED (</span>
+
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tracetimer_expired">define traceTIMER_EXPIRED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define traceTIMER_EXPIRED (</span>
+<span class="w">    </span><span class="n">pxTimer</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-tskstatic_and_dynamic_allocation_possible">define tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE ( ( ( portUSING_MPU_WRAPPERS == 0 ) &amp;&amp; ( configSUPPORT_DYNAMIC_ALLOCATION == 1 ) &amp;&amp; ( configSUPPORT_STATIC_ALLOCATION == 1 ) ) || \</span>
+<span class="cp">                                                      ( ( portUSING_MPU_WRAPPERS == 1 ) &amp;&amp; ( configSUPPORT_DYNAMIC_ALLOCATION == 1 ) ) )</span>
+</code></pre></div>
+<h3 id="define-vqueueaddtoregistry">define vQueueAddToRegistry</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define vQueueAddToRegistry (</span>
+<span class="w">    </span><span class="n">xQueue</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pcName</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-vqueueunregisterqueue">define vQueueUnregisterQueue</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define vQueueUnregisterQueue (</span>
+<span class="w">    </span><span class="n">xQueue</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="define-vtaskgettaskinfo">define vTaskGetTaskInfo</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define vTaskGetTaskInfo vTaskGetInfo</span>
+</code></pre></div>
+<h3 id="define-xcoroutinehandle">define xCoRoutineHandle</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xCoRoutineHandle CoRoutineHandle_t</span>
+</code></pre></div>
+<h3 id="define-xlist">define xList</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xList List_t</span>
+</code></pre></div>
+<h3 id="define-xlistitem">define xListItem</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xListItem ListItem_t</span>
+</code></pre></div>
+<h3 id="define-xmemoryregion">define xMemoryRegion</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xMemoryRegion MemoryRegion_t</span>
+</code></pre></div>
+<h3 id="define-xqueuehandle">define xQueueHandle</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xQueueHandle QueueHandle_t</span>
+</code></pre></div>
+<h3 id="define-xqueuesethandle">define xQueueSetHandle</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xQueueSetHandle QueueSetHandle_t</span>
+</code></pre></div>
+<h3 id="define-xqueuesetmemberhandle">define xQueueSetMemberHandle</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xQueueSetMemberHandle QueueSetMemberHandle_t</span>
+</code></pre></div>
+<h3 id="define-xsemaphorehandle">define xSemaphoreHandle</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xSemaphoreHandle SemaphoreHandle_t</span>
+</code></pre></div>
+<h3 id="define-xtaskgetidleruntimecounter">define xTaskGetIdleRunTimeCounter</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xTaskGetIdleRunTimeCounter ulTaskGetIdleRunTimeCounter</span>
+</code></pre></div>
+<h3 id="define-xtaskhandle">define xTaskHandle</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xTaskHandle TaskHandle_t</span>
+</code></pre></div>
+<h3 id="define-xtaskparameters">define xTaskParameters</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xTaskParameters TaskParameters_t</span>
+</code></pre></div>
+<h3 id="define-xtaskstatustype">define xTaskStatusType</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xTaskStatusType TaskStatus_t</span>
+</code></pre></div>
+<h3 id="define-xtimeouttype">define xTimeOutType</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xTimeOutType TimeOut_t</span>
+</code></pre></div>
+<h3 id="define-xtimerhandle">define xTimerHandle</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define xTimerHandle TimerHandle_t</span>
+</code></pre></div>
+<hr />
+<p>The documentation for this class was generated from the following file <code>fw/rbcx-coprocessor/lib/FreeRTOS/include/FreeRTOS.h</code></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2023 RoboticsBrno
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/RoboticsBrno" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/RobotikaBrno" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/robotarna" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@robotikabrno-robotarnaasps2392" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/_robotarna_" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+        <script src="../../assets/js/open_in_new_tab.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

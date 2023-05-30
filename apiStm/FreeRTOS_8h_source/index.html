@@ -1,0 +1,2670 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the RBCX robot controller board designed by the RoboticsBrno team. It is based on the STM32F446RE microcontroller and ESP32 microcontroller. Features: 4 motors with encoders, 4 servos, buttons with the gamepad, LEDs, ultra-sonic sensor, ...">
+      
+      
+        <meta name="author" content="RoboticsBrno">
+      
+      
+        <link rel="canonical" href="https://rbcx.robotikabrno.cz/apiStm/FreeRTOS_8h_source/">
+      
+      
+      
+      <link rel="icon" href="../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>File FreeRTOS.h - RB3204-RBCX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#file-freertosh" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RB3204-RBCX" class="md-header__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RB3204-RBCX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              File FreeRTOS.h
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../SW-development/" class="md-tabs__link">
+      Software development
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/" class="md-tabs__link">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RB3204-RBCX" class="md-nav__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    RB3204-RBCX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SW-development/" class="md-nav__link">
+        Software development
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../api/">API Reference</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">API STM Coprocessor</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          API STM Coprocessor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../apiEsp32/">API ESP32 library</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          API ESP32 library
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="file-freertosh">File FreeRTOS.h</h1>
+<p><a href="../files/"><strong>File List</strong></a> <strong>&gt;</strong> <a href="../dir_6728f3a9088eeb382ccd8bff3a2a4804/"><strong>FreeRTOS</strong></a> <strong>&gt;</strong> <a href="../dir_e69eea06f0148442287c48e06ff575f4/"><strong>include</strong></a> <strong>&gt;</strong> <a href="../FreeRTOS_8h/"><strong>FreeRTOS.h</strong></a></p>
+<p><a href="../FreeRTOS_8h/">Go to the documentation of this file.</a> </p>
+<div class="highlight"><pre><span></span><code><span class="cm">/*</span>
+<span class="cm"> * FreeRTOS Kernel V10.3.1</span>
+<span class="cm"> * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Permission is hereby granted, free of charge, to any person obtaining a copy of</span>
+<span class="cm"> * this software and associated documentation files (the &quot;Software&quot;), to deal in</span>
+<span class="cm"> * the Software without restriction, including without limitation the rights to</span>
+<span class="cm"> * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of</span>
+<span class="cm"> * the Software, and to permit persons to whom the Software is furnished to do so,</span>
+<span class="cm"> * subject to the following conditions:</span>
+<span class="cm"> *</span>
+<span class="cm"> * The above copyright notice and this permission notice shall be included in all</span>
+<span class="cm"> * copies or substantial portions of the Software.</span>
+<span class="cm"> *</span>
+<span class="cm"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="cm"> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS</span>
+<span class="cm"> * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR</span>
+<span class="cm"> * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER</span>
+<span class="cm"> * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN</span>
+<span class="cm"> * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * http://www.FreeRTOS.org</span>
+<span class="cm"> * http://aws.amazon.com/freertos</span>
+<span class="cm"> *</span>
+<span class="cm"> * 1 tab == 4 spaces!</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef INC_FREERTOS_H</span>
+<span class="cp">#define INC_FREERTOS_H</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Include the generic headers required for the FreeRTOS port being used.</span>
+<span class="cm"> */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stddef.h&gt;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * If stdint.h cannot be located then:</span>
+<span class="cm"> *   + If using GCC ensure the -nostdint options is *not* being used.</span>
+<span class="cm"> *   + Ensure the project&#39;s include path includes the directory in which your</span>
+<span class="cm"> *     compiler stores stdint.h.</span>
+<span class="cm"> *   + Set any compiler options necessary for it to support C99, as technically</span>
+<span class="cm"> *     stdint.h is only mandatory with C99 (FreeRTOS does not require C99 in any</span>
+<span class="cm"> *     other way).</span>
+<span class="cm"> *   + The FreeRTOS download includes a simple stdint.h definition that can be</span>
+<span class="cm"> *     used in cases where none is provided by the compiler.  The files only</span>
+<span class="cm"> *     contains the typedefs required to build FreeRTOS.  Read the instructions</span>
+<span class="cm"> *     in FreeRTOS/source/stdint.readme for more information.</span>
+<span class="cm"> */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span><span class="c1"> /* READ COMMENT ABOVE. */</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Application specific configuration options. */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FreeRTOSConfig.h&quot;</span>
+
+<span class="cm">/* Basic FreeRTOS definitions. */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;projdefs.h&quot;</span>
+
+<span class="cm">/* Definitions specific to the port being used. */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;portable.h&quot;</span>
+
+<span class="cm">/* Must be defaulted before configUSE_NEWLIB_REENTRANT is used below. */</span>
+<span class="cp">#ifndef configUSE_NEWLIB_REENTRANT</span>
+<span class="w">    </span><span class="cp">#define configUSE_NEWLIB_REENTRANT 0</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Required if struct _reent is used. */</span>
+<span class="cp">#if ( configUSE_NEWLIB_REENTRANT == 1 )</span>
+<span class="w">    </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;reent.h&gt;</span>
+<span class="cp">#endif</span>
+<span class="cm">/*</span>
+<span class="cm"> * Check all the required application specific macros have been defined.</span>
+<span class="cm"> * These macros are application specific and (as downloaded) are defined</span>
+<span class="cm"> * within FreeRTOSConfig.h.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef configMINIMAL_STACK_SIZE</span>
+<span class="w">    </span><span class="cp">#error Missing definition:  configMINIMAL_STACK_SIZE must be defined in FreeRTOSConfig.h.  configMINIMAL_STACK_SIZE defines the size (in words) of the stack allocated to the idle task.  Refer to the demo project provided for your port for a suitable value.</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configMAX_PRIORITIES</span>
+<span class="w">    </span><span class="cp">#error Missing definition:  configMAX_PRIORITIES must be defined in FreeRTOSConfig.h.  See the Configuration section of the FreeRTOS API documentation for details.</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if configMAX_PRIORITIES &lt; 1</span>
+<span class="w">    </span><span class="cp">#error configMAX_PRIORITIES must be defined to be greater than or equal to 1.</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_PREEMPTION</span>
+<span class="w">    </span><span class="cp">#error Missing definition:  configUSE_PREEMPTION must be defined in FreeRTOSConfig.h as either 1 or 0.  See the Configuration section of the FreeRTOS API documentation for details.</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_IDLE_HOOK</span>
+<span class="w">    </span><span class="cp">#error Missing definition:  configUSE_IDLE_HOOK must be defined in FreeRTOSConfig.h as either 1 or 0.  See the Configuration section of the FreeRTOS API documentation for details.</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_TICK_HOOK</span>
+<span class="w">    </span><span class="cp">#error Missing definition:  configUSE_TICK_HOOK must be defined in FreeRTOSConfig.h as either 1 or 0.  See the Configuration section of the FreeRTOS API documentation for details.</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_16_BIT_TICKS</span>
+<span class="w">    </span><span class="cp">#error Missing definition:  configUSE_16_BIT_TICKS must be defined in FreeRTOSConfig.h as either 1 or 0.  See the Configuration section of the FreeRTOS API documentation for details.</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_CO_ROUTINES</span>
+<span class="w">    </span><span class="cp">#define configUSE_CO_ROUTINES 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_vTaskPrioritySet</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_vTaskPrioritySet 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_uxTaskPriorityGet</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_uxTaskPriorityGet 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_vTaskDelete</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_vTaskDelete 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_vTaskSuspend</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_vTaskSuspend 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_vTaskDelayUntil</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_vTaskDelayUntil 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_vTaskDelay</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_vTaskDelay 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_xTaskGetIdleTaskHandle</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_xTaskGetIdleTaskHandle 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_xTaskAbortDelay</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_xTaskAbortDelay 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_xQueueGetMutexHolder</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_xQueueGetMutexHolder 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_xSemaphoreGetMutexHolder</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_xSemaphoreGetMutexHolder INCLUDE_xQueueGetMutexHolder</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_xTaskGetHandle</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_xTaskGetHandle 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_uxTaskGetStackHighWaterMark</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_uxTaskGetStackHighWaterMark 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_uxTaskGetStackHighWaterMark2</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_uxTaskGetStackHighWaterMark2 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_eTaskGetState</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_eTaskGetState 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_xTaskResumeFromISR</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_xTaskResumeFromISR 1</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_xTimerPendFunctionCall</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_xTimerPendFunctionCall 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_xTaskGetSchedulerState</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_xTaskGetSchedulerState 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef INCLUDE_xTaskGetCurrentTaskHandle</span>
+<span class="w">    </span><span class="cp">#define INCLUDE_xTaskGetCurrentTaskHandle 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if configUSE_CO_ROUTINES != 0</span>
+<span class="w">    </span><span class="cp">#ifndef configMAX_CO_ROUTINE_PRIORITIES</span>
+<span class="w">        </span><span class="cp">#error configMAX_CO_ROUTINE_PRIORITIES must be greater than or equal to 1.</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_DAEMON_TASK_STARTUP_HOOK</span>
+<span class="w">    </span><span class="cp">#define configUSE_DAEMON_TASK_STARTUP_HOOK 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_APPLICATION_TASK_TAG</span>
+<span class="w">    </span><span class="cp">#define configUSE_APPLICATION_TASK_TAG 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configNUM_THREAD_LOCAL_STORAGE_POINTERS</span>
+<span class="w">    </span><span class="cp">#define configNUM_THREAD_LOCAL_STORAGE_POINTERS 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_RECURSIVE_MUTEXES</span>
+<span class="w">    </span><span class="cp">#define configUSE_RECURSIVE_MUTEXES 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_MUTEXES</span>
+<span class="w">    </span><span class="cp">#define configUSE_MUTEXES 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_TIMERS</span>
+<span class="w">    </span><span class="cp">#define configUSE_TIMERS 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_COUNTING_SEMAPHORES</span>
+<span class="w">    </span><span class="cp">#define configUSE_COUNTING_SEMAPHORES 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_ALTERNATIVE_API</span>
+<span class="w">    </span><span class="cp">#define configUSE_ALTERNATIVE_API 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portCRITICAL_NESTING_IN_TCB</span>
+<span class="w">    </span><span class="cp">#define portCRITICAL_NESTING_IN_TCB 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configMAX_TASK_NAME_LEN</span>
+<span class="w">    </span><span class="cp">#define configMAX_TASK_NAME_LEN 16</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configIDLE_SHOULD_YIELD</span>
+<span class="w">    </span><span class="cp">#define configIDLE_SHOULD_YIELD     1</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if configMAX_TASK_NAME_LEN &lt; 1</span>
+<span class="w">    </span><span class="cp">#error configMAX_TASK_NAME_LEN must be set to a minimum of 1 in FreeRTOSConfig.h</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configASSERT</span>
+<span class="w">    </span><span class="cp">#define configASSERT( x )</span>
+<span class="w">    </span><span class="cp">#define configASSERT_DEFINED 0</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="cp">#define configASSERT_DEFINED 1</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* configPRECONDITION should be defined as configASSERT.</span>
+<span class="cm">The CBMC proofs need a way to track assumptions and assertions.</span>
+<span class="cm">A configPRECONDITION statement should express an implicit invariant or</span>
+<span class="cm">assumption made.  A configASSERT statement should express an invariant that must</span>
+<span class="cm">hold explicit before calling the code. */</span>
+<span class="cp">#ifndef configPRECONDITION</span>
+<span class="w">    </span><span class="cp">#define configPRECONDITION( X ) configASSERT(X)</span>
+<span class="w">    </span><span class="cp">#define configPRECONDITION_DEFINED 0</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="cp">#define configPRECONDITION_DEFINED 1</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portMEMORY_BARRIER</span>
+<span class="w">    </span><span class="cp">#define portMEMORY_BARRIER()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portSOFTWARE_BARRIER</span>
+<span class="w">    </span><span class="cp">#define portSOFTWARE_BARRIER()</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* The timers module relies on xTaskGetSchedulerState(). */</span>
+<span class="cp">#if configUSE_TIMERS == 1</span>
+
+<span class="w">    </span><span class="cp">#ifndef configTIMER_TASK_PRIORITY</span>
+<span class="w">        </span><span class="cp">#error If configUSE_TIMERS is set to 1 then configTIMER_TASK_PRIORITY must also be defined.</span>
+<span class="w">    </span><span class="cp">#endif </span><span class="cm">/* configTIMER_TASK_PRIORITY */</span>
+
+<span class="w">    </span><span class="cp">#ifndef configTIMER_QUEUE_LENGTH</span>
+<span class="w">        </span><span class="cp">#error If configUSE_TIMERS is set to 1 then configTIMER_QUEUE_LENGTH must also be defined.</span>
+<span class="w">    </span><span class="cp">#endif </span><span class="cm">/* configTIMER_QUEUE_LENGTH */</span>
+
+<span class="w">    </span><span class="cp">#ifndef configTIMER_TASK_STACK_DEPTH</span>
+<span class="w">        </span><span class="cp">#error If configUSE_TIMERS is set to 1 then configTIMER_TASK_STACK_DEPTH must also be defined.</span>
+<span class="w">    </span><span class="cp">#endif </span><span class="cm">/* configTIMER_TASK_STACK_DEPTH */</span>
+
+<span class="cp">#endif </span><span class="cm">/* configUSE_TIMERS */</span>
+
+<span class="cp">#ifndef portSET_INTERRUPT_MASK_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define portSET_INTERRUPT_MASK_FROM_ISR() 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portCLEAR_INTERRUPT_MASK_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedStatusValue ) ( void ) uxSavedStatusValue</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portCLEAN_UP_TCB</span>
+<span class="w">    </span><span class="cp">#define portCLEAN_UP_TCB( pxTCB ) ( void ) pxTCB</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portPRE_TASK_DELETE_HOOK</span>
+<span class="w">    </span><span class="cp">#define portPRE_TASK_DELETE_HOOK( pvTaskToDelete, pxYieldPending )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portSETUP_TCB</span>
+<span class="w">    </span><span class="cp">#define portSETUP_TCB( pxTCB ) ( void ) pxTCB</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configQUEUE_REGISTRY_SIZE</span>
+<span class="w">    </span><span class="cp">#define configQUEUE_REGISTRY_SIZE 0U</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if ( configQUEUE_REGISTRY_SIZE &lt; 1 )</span>
+<span class="w">    </span><span class="cp">#define vQueueAddToRegistry( xQueue, pcName )</span>
+<span class="w">    </span><span class="cp">#define vQueueUnregisterQueue( xQueue )</span>
+<span class="w">    </span><span class="cp">#define pcQueueGetName( xQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portPOINTER_SIZE_TYPE</span>
+<span class="w">    </span><span class="cp">#define portPOINTER_SIZE_TYPE uint32_t</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Remove any unused trace macros. */</span>
+<span class="cp">#ifndef traceSTART</span>
+<span class="w">    </span><span class="cm">/* Used to perform any necessary initialisation - for example, open a file</span>
+<span class="cm">    into which trace is to be written. */</span>
+<span class="w">    </span><span class="cp">#define traceSTART()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEND</span>
+<span class="w">    </span><span class="cm">/* Use to close a trace, for example close a file into which trace has been</span>
+<span class="cm">    written. */</span>
+<span class="w">    </span><span class="cp">#define traceEND()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_SWITCHED_IN</span>
+<span class="w">    </span><span class="cm">/* Called after a task has been selected to run.  pxCurrentTCB holds a pointer</span>
+<span class="cm">    to the task control block of the selected task. */</span>
+<span class="w">    </span><span class="cp">#define traceTASK_SWITCHED_IN()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceINCREASE_TICK_COUNT</span>
+<span class="w">    </span><span class="cm">/* Called before stepping the tick count after waking from tickless idle</span>
+<span class="cm">    sleep. */</span>
+<span class="w">    </span><span class="cp">#define traceINCREASE_TICK_COUNT( x )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceLOW_POWER_IDLE_BEGIN</span>
+<span class="w">    </span><span class="cm">/* Called immediately before entering tickless idle. */</span>
+<span class="w">    </span><span class="cp">#define traceLOW_POWER_IDLE_BEGIN()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceLOW_POWER_IDLE_END</span>
+<span class="w">    </span><span class="cm">/* Called when returning to the Idle task after a tickless idle. */</span>
+<span class="w">    </span><span class="cp">#define traceLOW_POWER_IDLE_END()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_SWITCHED_OUT</span>
+<span class="w">    </span><span class="cm">/* Called before a task has been selected to run.  pxCurrentTCB holds a pointer</span>
+<span class="cm">    to the task control block of the task being switched out. */</span>
+<span class="w">    </span><span class="cp">#define traceTASK_SWITCHED_OUT()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_PRIORITY_INHERIT</span>
+<span class="w">    </span><span class="cm">/* Called when a task attempts to take a mutex that is already held by a</span>
+<span class="cm">    lower priority task.  pxTCBOfMutexHolder is a pointer to the TCB of the task</span>
+<span class="cm">    that holds the mutex.  uxInheritedPriority is the priority the mutex holder</span>
+<span class="cm">    will inherit (the priority of the task that is attempting to obtain the</span>
+<span class="cm">    muted. */</span>
+<span class="w">    </span><span class="cp">#define traceTASK_PRIORITY_INHERIT( pxTCBOfMutexHolder, uxInheritedPriority )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_PRIORITY_DISINHERIT</span>
+<span class="w">    </span><span class="cm">/* Called when a task releases a mutex, the holding of which had resulted in</span>
+<span class="cm">    the task inheriting the priority of a higher priority task.</span>
+<span class="cm">    pxTCBOfMutexHolder is a pointer to the TCB of the task that is releasing the</span>
+<span class="cm">    mutex.  uxOriginalPriority is the task&#39;s configured (base) priority. */</span>
+<span class="w">    </span><span class="cp">#define traceTASK_PRIORITY_DISINHERIT( pxTCBOfMutexHolder, uxOriginalPriority )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceBLOCKING_ON_QUEUE_RECEIVE</span>
+<span class="w">    </span><span class="cm">/* Task is about to block because it cannot read from a</span>
+<span class="cm">    queue/mutex/semaphore.  pxQueue is a pointer to the queue/mutex/semaphore</span>
+<span class="cm">    upon which the read was attempted.  pxCurrentTCB points to the TCB of the</span>
+<span class="cm">    task that attempted the read. */</span>
+<span class="w">    </span><span class="cp">#define traceBLOCKING_ON_QUEUE_RECEIVE( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceBLOCKING_ON_QUEUE_PEEK</span>
+<span class="w">    </span><span class="cm">/* Task is about to block because it cannot read from a</span>
+<span class="cm">    queue/mutex/semaphore.  pxQueue is a pointer to the queue/mutex/semaphore</span>
+<span class="cm">    upon which the read was attempted.  pxCurrentTCB points to the TCB of the</span>
+<span class="cm">    task that attempted the read. */</span>
+<span class="w">    </span><span class="cp">#define traceBLOCKING_ON_QUEUE_PEEK( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceBLOCKING_ON_QUEUE_SEND</span>
+<span class="w">    </span><span class="cm">/* Task is about to block because it cannot write to a</span>
+<span class="cm">    queue/mutex/semaphore.  pxQueue is a pointer to the queue/mutex/semaphore</span>
+<span class="cm">    upon which the write was attempted.  pxCurrentTCB points to the TCB of the</span>
+<span class="cm">    task that attempted the write. */</span>
+<span class="w">    </span><span class="cp">#define traceBLOCKING_ON_QUEUE_SEND( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configCHECK_FOR_STACK_OVERFLOW</span>
+<span class="w">    </span><span class="cp">#define configCHECK_FOR_STACK_OVERFLOW 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configRECORD_STACK_HIGH_ADDRESS</span>
+<span class="w">    </span><span class="cp">#define configRECORD_STACK_HIGH_ADDRESS 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configINCLUDE_FREERTOS_TASK_C_ADDITIONS_H</span>
+<span class="w">    </span><span class="cp">#define configINCLUDE_FREERTOS_TASK_C_ADDITIONS_H 0</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* The following event macros are embedded in the kernel API calls. */</span>
+
+<span class="cp">#ifndef traceMOVED_TASK_TO_READY_STATE</span>
+<span class="w">    </span><span class="cp">#define traceMOVED_TASK_TO_READY_STATE( pxTCB )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef tracePOST_MOVED_TASK_TO_READY_STATE</span>
+<span class="w">    </span><span class="cp">#define tracePOST_MOVED_TASK_TO_READY_STATE( pxTCB )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_CREATE</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_CREATE( pxNewQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_CREATE_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_CREATE_FAILED( ucQueueType )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceCREATE_MUTEX</span>
+<span class="w">    </span><span class="cp">#define traceCREATE_MUTEX( pxNewQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceCREATE_MUTEX_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceCREATE_MUTEX_FAILED()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceGIVE_MUTEX_RECURSIVE</span>
+<span class="w">    </span><span class="cp">#define traceGIVE_MUTEX_RECURSIVE( pxMutex )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceGIVE_MUTEX_RECURSIVE_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceGIVE_MUTEX_RECURSIVE_FAILED( pxMutex )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTAKE_MUTEX_RECURSIVE</span>
+<span class="w">    </span><span class="cp">#define traceTAKE_MUTEX_RECURSIVE( pxMutex )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTAKE_MUTEX_RECURSIVE_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceTAKE_MUTEX_RECURSIVE_FAILED( pxMutex )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceCREATE_COUNTING_SEMAPHORE</span>
+<span class="w">    </span><span class="cp">#define traceCREATE_COUNTING_SEMAPHORE()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceCREATE_COUNTING_SEMAPHORE_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceCREATE_COUNTING_SEMAPHORE_FAILED()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_SEND</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_SEND( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_SEND_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_SEND_FAILED( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_RECEIVE</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_RECEIVE( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_PEEK</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_PEEK( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_PEEK_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_PEEK_FAILED( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_PEEK_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_PEEK_FROM_ISR( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_RECEIVE_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_RECEIVE_FAILED( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_SEND_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_SEND_FROM_ISR( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_SEND_FROM_ISR_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_SEND_FROM_ISR_FAILED( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_RECEIVE_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_RECEIVE_FROM_ISR( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_RECEIVE_FROM_ISR_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_RECEIVE_FROM_ISR_FAILED( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_PEEK_FROM_ISR_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_PEEK_FROM_ISR_FAILED( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_DELETE</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_DELETE( pxQueue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_CREATE</span>
+<span class="w">    </span><span class="cp">#define traceTASK_CREATE( pxNewTCB )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_CREATE_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceTASK_CREATE_FAILED()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_DELETE</span>
+<span class="w">    </span><span class="cp">#define traceTASK_DELETE( pxTaskToDelete )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_DELAY_UNTIL</span>
+<span class="w">    </span><span class="cp">#define traceTASK_DELAY_UNTIL( x )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_DELAY</span>
+<span class="w">    </span><span class="cp">#define traceTASK_DELAY()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_PRIORITY_SET</span>
+<span class="w">    </span><span class="cp">#define traceTASK_PRIORITY_SET( pxTask, uxNewPriority )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_SUSPEND</span>
+<span class="w">    </span><span class="cp">#define traceTASK_SUSPEND( pxTaskToSuspend )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_RESUME</span>
+<span class="w">    </span><span class="cp">#define traceTASK_RESUME( pxTaskToResume )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_RESUME_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define traceTASK_RESUME_FROM_ISR( pxTaskToResume )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_INCREMENT_TICK</span>
+<span class="w">    </span><span class="cp">#define traceTASK_INCREMENT_TICK( xTickCount )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTIMER_CREATE</span>
+<span class="w">    </span><span class="cp">#define traceTIMER_CREATE( pxNewTimer )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTIMER_CREATE_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceTIMER_CREATE_FAILED()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTIMER_COMMAND_SEND</span>
+<span class="w">    </span><span class="cp">#define traceTIMER_COMMAND_SEND( xTimer, xMessageID, xMessageValueValue, xReturn )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTIMER_EXPIRED</span>
+<span class="w">    </span><span class="cp">#define traceTIMER_EXPIRED( pxTimer )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTIMER_COMMAND_RECEIVED</span>
+<span class="w">    </span><span class="cp">#define traceTIMER_COMMAND_RECEIVED( pxTimer, xMessageID, xMessageValue )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceMALLOC</span>
+<span class="w">    </span><span class="cp">#define traceMALLOC( pvAddress, uiSize )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceFREE</span>
+<span class="w">    </span><span class="cp">#define traceFREE( pvAddress, uiSize )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEVENT_GROUP_CREATE</span>
+<span class="w">    </span><span class="cp">#define traceEVENT_GROUP_CREATE( xEventGroup )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEVENT_GROUP_CREATE_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceEVENT_GROUP_CREATE_FAILED()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEVENT_GROUP_SYNC_BLOCK</span>
+<span class="w">    </span><span class="cp">#define traceEVENT_GROUP_SYNC_BLOCK( xEventGroup, uxBitsToSet, uxBitsToWaitFor )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEVENT_GROUP_SYNC_END</span>
+<span class="w">    </span><span class="cp">#define traceEVENT_GROUP_SYNC_END( xEventGroup, uxBitsToSet, uxBitsToWaitFor, xTimeoutOccurred ) ( void ) xTimeoutOccurred</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEVENT_GROUP_WAIT_BITS_BLOCK</span>
+<span class="w">    </span><span class="cp">#define traceEVENT_GROUP_WAIT_BITS_BLOCK( xEventGroup, uxBitsToWaitFor )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEVENT_GROUP_WAIT_BITS_END</span>
+<span class="w">    </span><span class="cp">#define traceEVENT_GROUP_WAIT_BITS_END( xEventGroup, uxBitsToWaitFor, xTimeoutOccurred ) ( void ) xTimeoutOccurred</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEVENT_GROUP_CLEAR_BITS</span>
+<span class="w">    </span><span class="cp">#define traceEVENT_GROUP_CLEAR_BITS( xEventGroup, uxBitsToClear )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEVENT_GROUP_CLEAR_BITS_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define traceEVENT_GROUP_CLEAR_BITS_FROM_ISR( xEventGroup, uxBitsToClear )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEVENT_GROUP_SET_BITS</span>
+<span class="w">    </span><span class="cp">#define traceEVENT_GROUP_SET_BITS( xEventGroup, uxBitsToSet )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEVENT_GROUP_SET_BITS_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define traceEVENT_GROUP_SET_BITS_FROM_ISR( xEventGroup, uxBitsToSet )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceEVENT_GROUP_DELETE</span>
+<span class="w">    </span><span class="cp">#define traceEVENT_GROUP_DELETE( xEventGroup )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef tracePEND_FUNC_CALL</span>
+<span class="w">    </span><span class="cp">#define tracePEND_FUNC_CALL(xFunctionToPend, pvParameter1, ulParameter2, ret)</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef tracePEND_FUNC_CALL_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define tracePEND_FUNC_CALL_FROM_ISR(xFunctionToPend, pvParameter1, ulParameter2, ret)</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceQUEUE_REGISTRY_ADD</span>
+<span class="w">    </span><span class="cp">#define traceQUEUE_REGISTRY_ADD(xQueue, pcQueueName)</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_NOTIFY_TAKE_BLOCK</span>
+<span class="w">    </span><span class="cp">#define traceTASK_NOTIFY_TAKE_BLOCK()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_NOTIFY_TAKE</span>
+<span class="w">    </span><span class="cp">#define traceTASK_NOTIFY_TAKE()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_NOTIFY_WAIT_BLOCK</span>
+<span class="w">    </span><span class="cp">#define traceTASK_NOTIFY_WAIT_BLOCK()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_NOTIFY_WAIT</span>
+<span class="w">    </span><span class="cp">#define traceTASK_NOTIFY_WAIT()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_NOTIFY</span>
+<span class="w">    </span><span class="cp">#define traceTASK_NOTIFY()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_NOTIFY_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define traceTASK_NOTIFY_FROM_ISR()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceTASK_NOTIFY_GIVE_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define traceTASK_NOTIFY_GIVE_FROM_ISR()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceSTREAM_BUFFER_CREATE_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceSTREAM_BUFFER_CREATE_FAILED( xIsMessageBuffer )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceSTREAM_BUFFER_CREATE_STATIC_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceSTREAM_BUFFER_CREATE_STATIC_FAILED( xReturn, xIsMessageBuffer )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceSTREAM_BUFFER_CREATE</span>
+<span class="w">    </span><span class="cp">#define traceSTREAM_BUFFER_CREATE( pxStreamBuffer, xIsMessageBuffer )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceSTREAM_BUFFER_DELETE</span>
+<span class="w">    </span><span class="cp">#define traceSTREAM_BUFFER_DELETE( xStreamBuffer )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceSTREAM_BUFFER_RESET</span>
+<span class="w">    </span><span class="cp">#define traceSTREAM_BUFFER_RESET( xStreamBuffer )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceBLOCKING_ON_STREAM_BUFFER_SEND</span>
+<span class="w">    </span><span class="cp">#define traceBLOCKING_ON_STREAM_BUFFER_SEND( xStreamBuffer )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceSTREAM_BUFFER_SEND</span>
+<span class="w">    </span><span class="cp">#define traceSTREAM_BUFFER_SEND( xStreamBuffer, xBytesSent )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceSTREAM_BUFFER_SEND_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceSTREAM_BUFFER_SEND_FAILED( xStreamBuffer )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceSTREAM_BUFFER_SEND_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define traceSTREAM_BUFFER_SEND_FROM_ISR( xStreamBuffer, xBytesSent )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceBLOCKING_ON_STREAM_BUFFER_RECEIVE</span>
+<span class="w">    </span><span class="cp">#define traceBLOCKING_ON_STREAM_BUFFER_RECEIVE( xStreamBuffer )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceSTREAM_BUFFER_RECEIVE</span>
+<span class="w">    </span><span class="cp">#define traceSTREAM_BUFFER_RECEIVE( xStreamBuffer, xReceivedLength )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceSTREAM_BUFFER_RECEIVE_FAILED</span>
+<span class="w">    </span><span class="cp">#define traceSTREAM_BUFFER_RECEIVE_FAILED( xStreamBuffer )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef traceSTREAM_BUFFER_RECEIVE_FROM_ISR</span>
+<span class="w">    </span><span class="cp">#define traceSTREAM_BUFFER_RECEIVE_FROM_ISR( xStreamBuffer, xReceivedLength )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configGENERATE_RUN_TIME_STATS</span>
+<span class="w">    </span><span class="cp">#define configGENERATE_RUN_TIME_STATS 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if ( configGENERATE_RUN_TIME_STATS == 1 )</span>
+
+<span class="w">    </span><span class="cp">#ifndef portCONFIGURE_TIMER_FOR_RUN_TIME_STATS</span>
+<span class="w">        </span><span class="cp">#error If configGENERATE_RUN_TIME_STATS is defined then portCONFIGURE_TIMER_FOR_RUN_TIME_STATS must also be defined.  portCONFIGURE_TIMER_FOR_RUN_TIME_STATS should call a port layer function to setup a peripheral timer/counter that can then be used as the run time counter time base.</span>
+<span class="w">    </span><span class="cp">#endif </span><span class="cm">/* portCONFIGURE_TIMER_FOR_RUN_TIME_STATS */</span>
+
+<span class="w">    </span><span class="cp">#ifndef portGET_RUN_TIME_COUNTER_VALUE</span>
+<span class="w">        </span><span class="cp">#ifndef portALT_GET_RUN_TIME_COUNTER_VALUE</span>
+<span class="w">            </span><span class="cp">#error If configGENERATE_RUN_TIME_STATS is defined then either portGET_RUN_TIME_COUNTER_VALUE or portALT_GET_RUN_TIME_COUNTER_VALUE must also be defined.  See the examples provided and the FreeRTOS web site for more information.</span>
+<span class="w">        </span><span class="cp">#endif </span><span class="cm">/* portALT_GET_RUN_TIME_COUNTER_VALUE */</span>
+<span class="w">    </span><span class="cp">#endif </span><span class="cm">/* portGET_RUN_TIME_COUNTER_VALUE */</span>
+
+<span class="cp">#endif </span><span class="cm">/* configGENERATE_RUN_TIME_STATS */</span>
+
+<span class="cp">#ifndef portCONFIGURE_TIMER_FOR_RUN_TIME_STATS</span>
+<span class="w">    </span><span class="cp">#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_MALLOC_FAILED_HOOK</span>
+<span class="w">    </span><span class="cp">#define configUSE_MALLOC_FAILED_HOOK 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portPRIVILEGE_BIT</span>
+<span class="w">    </span><span class="cp">#define portPRIVILEGE_BIT ( ( UBaseType_t ) 0x00 )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portYIELD_WITHIN_API</span>
+<span class="w">    </span><span class="cp">#define portYIELD_WITHIN_API portYIELD</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portSUPPRESS_TICKS_AND_SLEEP</span>
+<span class="w">    </span><span class="cp">#define portSUPPRESS_TICKS_AND_SLEEP( xExpectedIdleTime )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configEXPECTED_IDLE_TIME_BEFORE_SLEEP</span>
+<span class="w">    </span><span class="cp">#define configEXPECTED_IDLE_TIME_BEFORE_SLEEP 2</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if configEXPECTED_IDLE_TIME_BEFORE_SLEEP &lt; 2</span>
+<span class="w">    </span><span class="cp">#error configEXPECTED_IDLE_TIME_BEFORE_SLEEP must not be less than 2</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_TICKLESS_IDLE</span>
+<span class="w">    </span><span class="cp">#define configUSE_TICKLESS_IDLE 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configPRE_SUPPRESS_TICKS_AND_SLEEP_PROCESSING</span>
+<span class="w">    </span><span class="cp">#define configPRE_SUPPRESS_TICKS_AND_SLEEP_PROCESSING( x )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configPRE_SLEEP_PROCESSING</span>
+<span class="w">    </span><span class="cp">#define configPRE_SLEEP_PROCESSING( x )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configPOST_SLEEP_PROCESSING</span>
+<span class="w">    </span><span class="cp">#define configPOST_SLEEP_PROCESSING( x )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_QUEUE_SETS</span>
+<span class="w">    </span><span class="cp">#define configUSE_QUEUE_SETS 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portTASK_USES_FLOATING_POINT</span>
+<span class="w">    </span><span class="cp">#define portTASK_USES_FLOATING_POINT()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portALLOCATE_SECURE_CONTEXT</span>
+<span class="w">    </span><span class="cp">#define portALLOCATE_SECURE_CONTEXT( ulSecureStackSize )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portDONT_DISCARD</span>
+<span class="w">    </span><span class="cp">#define portDONT_DISCARD</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_TIME_SLICING</span>
+<span class="w">    </span><span class="cp">#define configUSE_TIME_SLICING 1</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configINCLUDE_APPLICATION_DEFINED_PRIVILEGED_FUNCTIONS</span>
+<span class="w">    </span><span class="cp">#define configINCLUDE_APPLICATION_DEFINED_PRIVILEGED_FUNCTIONS 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_STATS_FORMATTING_FUNCTIONS</span>
+<span class="w">    </span><span class="cp">#define configUSE_STATS_FORMATTING_FUNCTIONS 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portASSERT_IF_INTERRUPT_PRIORITY_INVALID</span>
+<span class="w">    </span><span class="cp">#define portASSERT_IF_INTERRUPT_PRIORITY_INVALID()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_TRACE_FACILITY</span>
+<span class="w">    </span><span class="cp">#define configUSE_TRACE_FACILITY 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef mtCOVERAGE_TEST_MARKER</span>
+<span class="w">    </span><span class="cp">#define mtCOVERAGE_TEST_MARKER()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef mtCOVERAGE_TEST_DELAY</span>
+<span class="w">    </span><span class="cp">#define mtCOVERAGE_TEST_DELAY()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portASSERT_IF_IN_ISR</span>
+<span class="w">    </span><span class="cp">#define portASSERT_IF_IN_ISR()</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_PORT_OPTIMISED_TASK_SELECTION</span>
+<span class="w">    </span><span class="cp">#define configUSE_PORT_OPTIMISED_TASK_SELECTION 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configAPPLICATION_ALLOCATED_HEAP</span>
+<span class="w">    </span><span class="cp">#define configAPPLICATION_ALLOCATED_HEAP 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_TASK_NOTIFICATIONS</span>
+<span class="w">    </span><span class="cp">#define configUSE_TASK_NOTIFICATIONS 1</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configUSE_POSIX_ERRNO</span>
+<span class="w">    </span><span class="cp">#define configUSE_POSIX_ERRNO 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef portTICK_TYPE_IS_ATOMIC</span>
+<span class="w">    </span><span class="cp">#define portTICK_TYPE_IS_ATOMIC 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configSUPPORT_STATIC_ALLOCATION</span>
+<span class="w">    </span><span class="cm">/* Defaults to 0 for backward compatibility. */</span>
+<span class="w">    </span><span class="cp">#define configSUPPORT_STATIC_ALLOCATION 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configSUPPORT_DYNAMIC_ALLOCATION</span>
+<span class="w">    </span><span class="cm">/* Defaults to 1 for backward compatibility. */</span>
+<span class="w">    </span><span class="cp">#define configSUPPORT_DYNAMIC_ALLOCATION 1</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configSTACK_DEPTH_TYPE</span>
+<span class="w">    </span><span class="cm">/* Defaults to uint16_t for backward compatibility, but can be overridden</span>
+<span class="cm">    in FreeRTOSConfig.h if uint16_t is too restrictive. */</span>
+<span class="w">    </span><span class="cp">#define configSTACK_DEPTH_TYPE uint16_t</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configMESSAGE_BUFFER_LENGTH_TYPE</span>
+<span class="w">    </span><span class="cm">/* Defaults to size_t for backward compatibility, but can be overridden</span>
+<span class="cm">    in FreeRTOSConfig.h if lengths will always be less than the number of bytes</span>
+<span class="cm">    in a size_t. */</span>
+<span class="w">    </span><span class="cp">#define configMESSAGE_BUFFER_LENGTH_TYPE size_t</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Sanity check the configuration. */</span>
+<span class="cp">#if( configUSE_TICKLESS_IDLE != 0 )</span>
+<span class="w">    </span><span class="cp">#if( INCLUDE_vTaskSuspend != 1 )</span>
+<span class="w">        </span><span class="cp">#error INCLUDE_vTaskSuspend must be set to 1 if configUSE_TICKLESS_IDLE is not set to 0</span>
+<span class="w">    </span><span class="cp">#endif </span><span class="cm">/* INCLUDE_vTaskSuspend */</span>
+<span class="cp">#endif </span><span class="cm">/* configUSE_TICKLESS_IDLE */</span>
+
+<span class="cp">#if( ( configSUPPORT_STATIC_ALLOCATION == 0 ) &amp;&amp; ( configSUPPORT_DYNAMIC_ALLOCATION == 0 ) )</span>
+<span class="w">    </span><span class="cp">#error configSUPPORT_STATIC_ALLOCATION and configSUPPORT_DYNAMIC_ALLOCATION cannot both be 0, but can both be 1.</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if( ( configUSE_RECURSIVE_MUTEXES == 1 ) &amp;&amp; ( configUSE_MUTEXES != 1 ) )</span>
+<span class="w">    </span><span class="cp">#error configUSE_MUTEXES must be set to 1 to use recursive mutexes</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configINITIAL_TICK_COUNT</span>
+<span class="w">    </span><span class="cp">#define configINITIAL_TICK_COUNT 0</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if( portTICK_TYPE_IS_ATOMIC == 0 )</span>
+<span class="w">    </span><span class="cm">/* Either variables of tick type cannot be read atomically, or</span>
+<span class="cm">    portTICK_TYPE_IS_ATOMIC was not set - map the critical sections used when</span>
+<span class="cm">    the tick count is returned to the standard critical section macros. */</span>
+<span class="w">    </span><span class="cp">#define portTICK_TYPE_ENTER_CRITICAL() portENTER_CRITICAL()</span>
+<span class="w">    </span><span class="cp">#define portTICK_TYPE_EXIT_CRITICAL() portEXIT_CRITICAL()</span>
+<span class="w">    </span><span class="cp">#define portTICK_TYPE_SET_INTERRUPT_MASK_FROM_ISR() portSET_INTERRUPT_MASK_FROM_ISR()</span>
+<span class="w">    </span><span class="cp">#define portTICK_TYPE_CLEAR_INTERRUPT_MASK_FROM_ISR( x ) portCLEAR_INTERRUPT_MASK_FROM_ISR( ( x ) )</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="cm">/* The tick type can be read atomically, so critical sections used when the</span>
+<span class="cm">    tick count is returned can be defined away. */</span>
+<span class="w">    </span><span class="cp">#define portTICK_TYPE_ENTER_CRITICAL()</span>
+<span class="w">    </span><span class="cp">#define portTICK_TYPE_EXIT_CRITICAL()</span>
+<span class="w">    </span><span class="cp">#define portTICK_TYPE_SET_INTERRUPT_MASK_FROM_ISR() 0</span>
+<span class="w">    </span><span class="cp">#define portTICK_TYPE_CLEAR_INTERRUPT_MASK_FROM_ISR( x ) ( void ) x</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Definitions to allow backward compatibility with FreeRTOS versions prior to</span>
+<span class="cm">V8 if desired. */</span>
+<span class="cp">#ifndef configENABLE_BACKWARD_COMPATIBILITY</span>
+<span class="w">    </span><span class="cp">#define configENABLE_BACKWARD_COMPATIBILITY 1</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configPRINTF</span>
+<span class="w">    </span><span class="cm">/* configPRINTF() was not defined, so define it away to nothing.  To use</span>
+<span class="cm">    configPRINTF() then define it as follows (where MyPrintFunction() is</span>
+<span class="cm">    provided by the application writer):</span>
+
+<span class="cm">    void MyPrintFunction(const char *pcFormat, ... );</span>
+<span class="cm">    #define configPRINTF( X )   MyPrintFunction X</span>
+
+<span class="cm">    Then call like a standard printf() function, but placing brackets around</span>
+<span class="cm">    all parameters so they are passed as a single parameter.  For example:</span>
+<span class="cm">    configPRINTF( (&quot;Value = %d&quot;, MyVariable) ); */</span>
+<span class="w">    </span><span class="cp">#define configPRINTF( X )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configMAX</span>
+<span class="w">    </span><span class="cm">/* The application writer has not provided their own MAX macro, so define</span>
+<span class="cm">    the following generic implementation. */</span>
+<span class="w">    </span><span class="cp">#define configMAX( a, b ) ( ( ( a ) &gt; ( b ) ) ? ( a ) : ( b ) )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configMIN</span>
+<span class="w">    </span><span class="cm">/* The application writer has not provided their own MAX macro, so define</span>
+<span class="cm">    the following generic implementation. */</span>
+<span class="w">    </span><span class="cp">#define configMIN( a, b ) ( ( ( a ) &lt; ( b ) ) ? ( a ) : ( b ) )</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if configENABLE_BACKWARD_COMPATIBILITY == 1</span>
+<span class="w">    </span><span class="cp">#define eTaskStateGet eTaskGetState</span>
+<span class="w">    </span><span class="cp">#define portTickType TickType_t</span>
+<span class="w">    </span><span class="cp">#define xTaskHandle TaskHandle_t</span>
+<span class="w">    </span><span class="cp">#define xQueueHandle QueueHandle_t</span>
+<span class="w">    </span><span class="cp">#define xSemaphoreHandle SemaphoreHandle_t</span>
+<span class="w">    </span><span class="cp">#define xQueueSetHandle QueueSetHandle_t</span>
+<span class="w">    </span><span class="cp">#define xQueueSetMemberHandle QueueSetMemberHandle_t</span>
+<span class="w">    </span><span class="cp">#define xTimeOutType TimeOut_t</span>
+<span class="w">    </span><span class="cp">#define xMemoryRegion MemoryRegion_t</span>
+<span class="w">    </span><span class="cp">#define xTaskParameters TaskParameters_t</span>
+<span class="w">    </span><span class="cp">#define xTaskStatusType TaskStatus_t</span>
+<span class="w">    </span><span class="cp">#define xTimerHandle TimerHandle_t</span>
+<span class="w">    </span><span class="cp">#define xCoRoutineHandle CoRoutineHandle_t</span>
+<span class="w">    </span><span class="cp">#define pdTASK_HOOK_CODE TaskHookFunction_t</span>
+<span class="w">    </span><span class="cp">#define portTICK_RATE_MS portTICK_PERIOD_MS</span>
+<span class="w">    </span><span class="cp">#define pcTaskGetTaskName pcTaskGetName</span>
+<span class="w">    </span><span class="cp">#define pcTimerGetTimerName pcTimerGetName</span>
+<span class="w">    </span><span class="cp">#define pcQueueGetQueueName pcQueueGetName</span>
+<span class="w">    </span><span class="cp">#define vTaskGetTaskInfo vTaskGetInfo</span>
+<span class="w">    </span><span class="cp">#define xTaskGetIdleRunTimeCounter ulTaskGetIdleRunTimeCounter</span>
+
+<span class="w">    </span><span class="cm">/* Backward compatibility within the scheduler code only - these definitions</span>
+<span class="cm">    are not really required but are included for completeness. */</span>
+<span class="w">    </span><span class="cp">#define tmrTIMER_CALLBACK TimerCallbackFunction_t</span>
+<span class="w">    </span><span class="cp">#define pdTASK_CODE TaskFunction_t</span>
+<span class="w">    </span><span class="cp">#define xListItem ListItem_t</span>
+<span class="w">    </span><span class="cp">#define xList List_t</span>
+
+<span class="w">    </span><span class="cm">/* For libraries that break the list data hiding, and access list structure</span>
+<span class="cm">    members directly (which is not supposed to be done). */</span>
+<span class="w">    </span><span class="cp">#define pxContainer pvContainer</span>
+<span class="cp">#endif </span><span class="cm">/* configENABLE_BACKWARD_COMPATIBILITY */</span>
+
+<span class="cp">#if( configUSE_ALTERNATIVE_API != 0 )</span>
+<span class="w">    </span><span class="cp">#error The alternative API was deprecated some time ago, and was removed in FreeRTOS V9.0 0</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Set configUSE_TASK_FPU_SUPPORT to 0 to omit floating point support even</span>
+<span class="cm">if floating point hardware is otherwise supported by the FreeRTOS port in use.</span>
+<span class="cm">This constant is not supported by all FreeRTOS ports that include floating</span>
+<span class="cm">point support. */</span>
+<span class="cp">#ifndef configUSE_TASK_FPU_SUPPORT</span>
+<span class="w">    </span><span class="cp">#define configUSE_TASK_FPU_SUPPORT 1</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Set configENABLE_MPU to 1 to enable MPU support and 0 to disable it. This is</span>
+<span class="cm">currently used in ARMv8M ports. */</span>
+<span class="cp">#ifndef configENABLE_MPU</span>
+<span class="w">    </span><span class="cp">#define configENABLE_MPU 0</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Set configENABLE_FPU to 1 to enable FPU support and 0 to disable it. This is</span>
+<span class="cm">currently used in ARMv8M ports. */</span>
+<span class="cp">#ifndef configENABLE_FPU</span>
+<span class="w">    </span><span class="cp">#define configENABLE_FPU 1</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Set configENABLE_TRUSTZONE to 1 enable TrustZone support and 0 to disable it.</span>
+<span class="cm">This is currently used in ARMv8M ports. */</span>
+<span class="cp">#ifndef configENABLE_TRUSTZONE</span>
+<span class="w">    </span><span class="cp">#define configENABLE_TRUSTZONE 1</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Set configRUN_FREERTOS_SECURE_ONLY to 1 to run the FreeRTOS ARMv8M port on</span>
+<span class="cm">the Secure Side only. */</span>
+<span class="cp">#ifndef configRUN_FREERTOS_SECURE_ONLY</span>
+<span class="w">    </span><span class="cp">#define configRUN_FREERTOS_SECURE_ONLY 0</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Sometimes the FreeRTOSConfig.h settings only allow a task to be created using</span>
+<span class="cm"> * dynamically allocated RAM, in which case when any task is deleted it is known</span>
+<span class="cm"> * that both the task&#39;s stack and TCB need to be freed.  Sometimes the</span>
+<span class="cm"> * FreeRTOSConfig.h settings only allow a task to be created using statically</span>
+<span class="cm"> * allocated RAM, in which case when any task is deleted it is known that neither</span>
+<span class="cm"> * the task&#39;s stack or TCB should be freed.  Sometimes the FreeRTOSConfig.h</span>
+<span class="cm"> * settings allow a task to be created using either statically or dynamically</span>
+<span class="cm"> * allocated RAM, in which case a member of the TCB is used to record whether the</span>
+<span class="cm"> * stack and/or TCB were allocated statically or dynamically, so when a task is</span>
+<span class="cm"> * deleted the RAM that was allocated dynamically is freed again and no attempt is</span>
+<span class="cm"> * made to free the RAM that was allocated statically.</span>
+<span class="cm"> * tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE is only true if it is possible for a</span>
+<span class="cm"> * task to be created using either statically or dynamically allocated RAM.  Note</span>
+<span class="cm"> * that if portUSING_MPU_WRAPPERS is 1 then a protected task can be created with</span>
+<span class="cm"> * a statically allocated stack and a dynamically allocated TCB.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The following table lists various combinations of portUSING_MPU_WRAPPERS,</span>
+<span class="cm"> * configSUPPORT_DYNAMIC_ALLOCATION and configSUPPORT_STATIC_ALLOCATION and</span>
+<span class="cm"> * when it is possible to have both static and dynamic allocation:</span>
+<span class="cm"> *  +-----+---------+--------+-----------------------------+-----------------------------------+------------------+-----------+</span>
+<span class="cm"> * | MPU | Dynamic | Static |     Available Functions     |       Possible Allocations        | Both Dynamic and | Need Free |</span>
+<span class="cm"> * |     |         |        |                             |                                   | Static Possible  |           |</span>
+<span class="cm"> * +-----+---------+--------+-----------------------------+-----------------------------------+------------------+-----------+</span>
+<span class="cm"> * | 0   | 0       | 1      | xTaskCreateStatic           | TCB - Static, Stack - Static      | No               | No        |</span>
+<span class="cm"> * +-----|---------|--------|-----------------------------|-----------------------------------|------------------|-----------|</span>
+<span class="cm"> * | 0   | 1       | 0      | xTaskCreate                 | TCB - Dynamic, Stack - Dynamic    | No               | Yes       |</span>
+<span class="cm"> * +-----|---------|--------|-----------------------------|-----------------------------------|------------------|-----------|</span>
+<span class="cm"> * | 0   | 1       | 1      | xTaskCreate,                | 1. TCB - Dynamic, Stack - Dynamic | Yes              | Yes       |</span>
+<span class="cm"> * |     |         |        | xTaskCreateStatic           | 2. TCB - Static, Stack - Static   |                  |           |</span>
+<span class="cm"> * +-----|---------|--------|-----------------------------|-----------------------------------|------------------|-----------|</span>
+<span class="cm"> * | 1   | 0       | 1      | xTaskCreateStatic,          | TCB - Static, Stack - Static      | No               | No        |</span>
+<span class="cm"> * |     |         |        | xTaskCreateRestrictedStatic |                                   |                  |           |</span>
+<span class="cm"> * +-----|---------|--------|-----------------------------|-----------------------------------|------------------|-----------|</span>
+<span class="cm"> * | 1   | 1       | 0      | xTaskCreate,                | 1. TCB - Dynamic, Stack - Dynamic | Yes              | Yes       |</span>
+<span class="cm"> * |     |         |        | xTaskCreateRestricted       | 2. TCB - Dynamic, Stack - Static  |                  |           |</span>
+<span class="cm"> * +-----|---------|--------|-----------------------------|-----------------------------------|------------------|-----------|</span>
+<span class="cm"> * | 1   | 1       | 1      | xTaskCreate,                | 1. TCB - Dynamic, Stack - Dynamic | Yes              | Yes       |</span>
+<span class="cm"> * |     |         |        | xTaskCreateStatic,          | 2. TCB - Dynamic, Stack - Static  |                  |           |</span>
+<span class="cm"> * |     |         |        | xTaskCreateRestricted,      | 3. TCB - Static, Stack - Static   |                  |           |</span>
+<span class="cm"> * |     |         |        | xTaskCreateRestrictedStatic |                                   |                  |           |</span>
+<span class="cm"> * +-----+---------+--------+-----------------------------+-----------------------------------+------------------+-----------+</span>
+<span class="cm"> */</span>
+<span class="cp">#define tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE   ( ( ( portUSING_MPU_WRAPPERS == 0 ) &amp;&amp; ( configSUPPORT_DYNAMIC_ALLOCATION == 1 ) &amp;&amp; ( configSUPPORT_STATIC_ALLOCATION == 1 ) ) || \</span>
+<span class="cp">                                                      ( ( portUSING_MPU_WRAPPERS == 1 ) &amp;&amp; ( configSUPPORT_DYNAMIC_ALLOCATION == 1 ) ) )</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * In line with software engineering best practice, FreeRTOS implements a strict</span>
+<span class="cm"> * data hiding policy, so the real structures used by FreeRTOS to maintain the</span>
+<span class="cm"> * state of tasks, queues, semaphores, etc. are not accessible to the application</span>
+<span class="cm"> * code.  However, if the application writer wants to statically allocate such</span>
+<span class="cm"> * an object then the size of the object needs to be know.  Dummy structures</span>
+<span class="cm"> * that are guaranteed to have the same size and alignment requirements of the</span>
+<span class="cm"> * real objects are used for this purpose.  The dummy list and list item</span>
+<span class="cm"> * structures below are used for inclusion in such a dummy structure.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_LIST_ITEM</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cp">#if( configUSE_LIST_DATA_INTEGRITY_CHECK_BYTES == 1 )</span>
+<span class="w">        </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xDummy1</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xDummy2</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pvDummy3</span><span class="p">[</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="cp">#if( configUSE_LIST_DATA_INTEGRITY_CHECK_BYTES == 1 )</span>
+<span class="w">        </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xDummy4</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="p">};</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_LIST_ITEM</span><span class="w"> </span><span class="n">StaticListItem_t</span><span class="p">;</span>
+
+<span class="cm">/* See the comments above the struct xSTATIC_LIST_ITEM definition. */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_MINI_LIST_ITEM</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cp">#if( configUSE_LIST_DATA_INTEGRITY_CHECK_BYTES == 1 )</span>
+<span class="w">        </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xDummy1</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xDummy2</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pvDummy3</span><span class="p">[</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">];</span>
+<span class="p">};</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_MINI_LIST_ITEM</span><span class="w"> </span><span class="n">StaticMiniListItem_t</span><span class="p">;</span>
+
+<span class="cm">/* See the comments above the struct xSTATIC_LIST_ITEM definition. */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_LIST</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cp">#if( configUSE_LIST_DATA_INTEGRITY_CHECK_BYTES == 1 )</span>
+<span class="w">        </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xDummy1</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="n">UBaseType_t</span><span class="w"> </span><span class="n">uxDummy2</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pvDummy3</span><span class="p">;</span>
+<span class="w">    </span><span class="n">StaticMiniListItem_t</span><span class="w"> </span><span class="n">xDummy4</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#if( configUSE_LIST_DATA_INTEGRITY_CHECK_BYTES == 1 )</span>
+<span class="w">        </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xDummy5</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="p">}</span><span class="w"> </span><span class="n">StaticList_t</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * In line with software engineering best practice, especially when supplying a</span>
+<span class="cm"> * library that is likely to change in future versions, FreeRTOS implements a</span>
+<span class="cm"> * strict data hiding policy.  This means the Task structure used internally by</span>
+<span class="cm"> * FreeRTOS is not accessible to application code.  However, if the application</span>
+<span class="cm"> * writer wants to statically allocate the memory required to create a task then</span>
+<span class="cm"> * the size of the task object needs to be know.  The StaticTask_t structure</span>
+<span class="cm"> * below is provided for this purpose.  Its sizes and alignment requirements are</span>
+<span class="cm"> * guaranteed to match those of the genuine structure, no matter which</span>
+<span class="cm"> * architecture is being used, and no matter how the values in FreeRTOSConfig.h</span>
+<span class="cm"> * are set.  Its contents are somewhat obfuscated in the hope users will</span>
+<span class="cm"> * recognise that it would be unwise to make direct use of the structure members.</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_TCB</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w">                </span><span class="o">*</span><span class="n">pxDummy1</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#if ( portUSING_MPU_WRAPPERS == 1 )</span>
+<span class="w">        </span><span class="n">xMPU_SETTINGS</span><span class="w">   </span><span class="n">xDummy2</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="n">StaticListItem_t</span><span class="w">    </span><span class="n">xDummy3</span><span class="p">[</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="n">UBaseType_t</span><span class="w">         </span><span class="n">uxDummy5</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w">                </span><span class="o">*</span><span class="n">pxDummy6</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">             </span><span class="n">ucDummy7</span><span class="p">[</span><span class="w"> </span><span class="n">configMAX_TASK_NAME_LEN</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="cp">#if ( ( portSTACK_GROWTH &gt; 0 ) || ( configRECORD_STACK_HIGH_ADDRESS == 1 ) )</span>
+<span class="w">        </span><span class="kt">void</span><span class="w">            </span><span class="o">*</span><span class="n">pxDummy8</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="cp">#if ( portCRITICAL_NESTING_IN_TCB == 1 )</span>
+<span class="w">        </span><span class="n">UBaseType_t</span><span class="w">     </span><span class="n">uxDummy9</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="cp">#if ( configUSE_TRACE_FACILITY == 1 )</span>
+<span class="w">        </span><span class="n">UBaseType_t</span><span class="w">     </span><span class="n">uxDummy10</span><span class="p">[</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="cp">#if ( configUSE_MUTEXES == 1 )</span>
+<span class="w">        </span><span class="n">UBaseType_t</span><span class="w">     </span><span class="n">uxDummy12</span><span class="p">[</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="cp">#if ( configUSE_APPLICATION_TASK_TAG == 1 )</span>
+<span class="w">        </span><span class="kt">void</span><span class="w">            </span><span class="o">*</span><span class="n">pxDummy14</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="cp">#if( configNUM_THREAD_LOCAL_STORAGE_POINTERS &gt; 0 )</span>
+<span class="w">        </span><span class="kt">void</span><span class="w">            </span><span class="o">*</span><span class="n">pvDummy15</span><span class="p">[</span><span class="w"> </span><span class="n">configNUM_THREAD_LOCAL_STORAGE_POINTERS</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="cp">#if ( configGENERATE_RUN_TIME_STATS == 1 )</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w">        </span><span class="n">ulDummy16</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="cp">#if ( configUSE_NEWLIB_REENTRANT == 1 )</span>
+<span class="w">        </span><span class="k">struct</span><span class="w">  </span><span class="nc">_reent</span><span class="w">  </span><span class="n">xDummy17</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="cp">#if ( configUSE_TASK_NOTIFICATIONS == 1 )</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w">        </span><span class="n">ulDummy18</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w">         </span><span class="n">ucDummy19</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="cp">#if ( tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE != 0 )</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w">         </span><span class="n">uxDummy20</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+
+<span class="w">    </span><span class="cp">#if( INCLUDE_xTaskAbortDelay == 1 )</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ucDummy21</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="cp">#if ( configUSE_POSIX_ERRNO == 1 )</span>
+<span class="w">        </span><span class="kt">int</span><span class="w">             </span><span class="n">iDummy22</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="p">}</span><span class="w"> </span><span class="n">StaticTask_t</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * In line with software engineering best practice, especially when supplying a</span>
+<span class="cm"> * library that is likely to change in future versions, FreeRTOS implements a</span>
+<span class="cm"> * strict data hiding policy.  This means the Queue structure used internally by</span>
+<span class="cm"> * FreeRTOS is not accessible to application code.  However, if the application</span>
+<span class="cm"> * writer wants to statically allocate the memory required to create a queue</span>
+<span class="cm"> * then the size of the queue object needs to be know.  The StaticQueue_t</span>
+<span class="cm"> * structure below is provided for this purpose.  Its sizes and alignment</span>
+<span class="cm"> * requirements are guaranteed to match those of the genuine structure, no</span>
+<span class="cm"> * matter which architecture is being used, and no matter how the values in</span>
+<span class="cm"> * FreeRTOSConfig.h are set.  Its contents are somewhat obfuscated in the hope</span>
+<span class="cm"> * users will recognise that it would be unwise to make direct use of the</span>
+<span class="cm"> * structure members.</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_QUEUE</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pvDummy1</span><span class="p">[</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">];</span>
+
+<span class="w">    </span><span class="k">union</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pvDummy2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">UBaseType_t</span><span class="w"> </span><span class="n">uxDummy2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">StaticList_t</span><span class="w"> </span><span class="n">xDummy3</span><span class="p">[</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="n">UBaseType_t</span><span class="w"> </span><span class="n">uxDummy4</span><span class="p">[</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ucDummy5</span><span class="p">[</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">];</span>
+
+<span class="w">    </span><span class="cp">#if( ( configSUPPORT_STATIC_ALLOCATION == 1 ) &amp;&amp; ( configSUPPORT_DYNAMIC_ALLOCATION == 1 ) )</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ucDummy6</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+
+<span class="w">    </span><span class="cp">#if ( configUSE_QUEUE_SETS == 1 )</span>
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pvDummy7</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+
+<span class="w">    </span><span class="cp">#if ( configUSE_TRACE_FACILITY == 1 )</span>
+<span class="w">        </span><span class="n">UBaseType_t</span><span class="w"> </span><span class="n">uxDummy8</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ucDummy9</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+
+<span class="p">}</span><span class="w"> </span><span class="n">StaticQueue_t</span><span class="p">;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">StaticQueue_t</span><span class="w"> </span><span class="n">StaticSemaphore_t</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * In line with software engineering best practice, especially when supplying a</span>
+<span class="cm"> * library that is likely to change in future versions, FreeRTOS implements a</span>
+<span class="cm"> * strict data hiding policy.  This means the event group structure used</span>
+<span class="cm"> * internally by FreeRTOS is not accessible to application code.  However, if</span>
+<span class="cm"> * the application writer wants to statically allocate the memory required to</span>
+<span class="cm"> * create an event group then the size of the event group object needs to be</span>
+<span class="cm"> * know.  The StaticEventGroup_t structure below is provided for this purpose.</span>
+<span class="cm"> * Its sizes and alignment requirements are guaranteed to match those of the</span>
+<span class="cm"> * genuine structure, no matter which architecture is being used, and no matter</span>
+<span class="cm"> * how the values in FreeRTOSConfig.h are set.  Its contents are somewhat</span>
+<span class="cm"> * obfuscated in the hope users will recognise that it would be unwise to make</span>
+<span class="cm"> * direct use of the structure members.</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_EVENT_GROUP</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xDummy1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">StaticList_t</span><span class="w"> </span><span class="n">xDummy2</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cp">#if( configUSE_TRACE_FACILITY == 1 )</span>
+<span class="w">        </span><span class="n">UBaseType_t</span><span class="w"> </span><span class="n">uxDummy3</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+
+<span class="w">    </span><span class="cp">#if( ( configSUPPORT_STATIC_ALLOCATION == 1 ) &amp;&amp; ( configSUPPORT_DYNAMIC_ALLOCATION == 1 ) )</span>
+<span class="w">            </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ucDummy4</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+
+<span class="p">}</span><span class="w"> </span><span class="n">StaticEventGroup_t</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * In line with software engineering best practice, especially when supplying a</span>
+<span class="cm"> * library that is likely to change in future versions, FreeRTOS implements a</span>
+<span class="cm"> * strict data hiding policy.  This means the software timer structure used</span>
+<span class="cm"> * internally by FreeRTOS is not accessible to application code.  However, if</span>
+<span class="cm"> * the application writer wants to statically allocate the memory required to</span>
+<span class="cm"> * create a software timer then the size of the queue object needs to be know.</span>
+<span class="cm"> * The StaticTimer_t structure below is provided for this purpose.  Its sizes</span>
+<span class="cm"> * and alignment requirements are guaranteed to match those of the genuine</span>
+<span class="cm"> * structure, no matter which architecture is being used, and no matter how the</span>
+<span class="cm"> * values in FreeRTOSConfig.h are set.  Its contents are somewhat obfuscated in</span>
+<span class="cm"> * the hope users will recognise that it would be unwise to make direct use of</span>
+<span class="cm"> * the structure members.</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_TIMER</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w">                </span><span class="o">*</span><span class="n">pvDummy1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">StaticListItem_t</span><span class="w">    </span><span class="n">xDummy2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TickType_t</span><span class="w">          </span><span class="n">xDummy3</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w">                </span><span class="o">*</span><span class="n">pvDummy5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TaskFunction_t</span><span class="w">      </span><span class="n">pvDummy6</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#if( configUSE_TRACE_FACILITY == 1 )</span>
+<span class="w">        </span><span class="n">UBaseType_t</span><span class="w">     </span><span class="n">uxDummy7</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">             </span><span class="n">ucDummy8</span><span class="p">;</span>
+
+<span class="p">}</span><span class="w"> </span><span class="n">StaticTimer_t</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm">* In line with software engineering best practice, especially when supplying a</span>
+<span class="cm">* library that is likely to change in future versions, FreeRTOS implements a</span>
+<span class="cm">* strict data hiding policy.  This means the stream buffer structure used</span>
+<span class="cm">* internally by FreeRTOS is not accessible to application code.  However, if</span>
+<span class="cm">* the application writer wants to statically allocate the memory required to</span>
+<span class="cm">* create a stream buffer then the size of the stream buffer object needs to be</span>
+<span class="cm">* know.  The StaticStreamBuffer_t structure below is provided for this purpose.</span>
+<span class="cm">* Its size and alignment requirements are guaranteed to match those of the</span>
+<span class="cm">* genuine structure, no matter which architecture is being used, and no matter</span>
+<span class="cm">* how the values in FreeRTOSConfig.h are set.  Its contents are somewhat</span>
+<span class="cm">* obfuscated in the hope users will recognise that it would be unwise to make</span>
+<span class="cm">* direct use of the structure members.</span>
+<span class="cm">*/</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">xSTATIC_STREAM_BUFFER</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">uxDummy1</span><span class="p">[</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pvDummy2</span><span class="p">[</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ucDummy3</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#if ( configUSE_TRACE_FACILITY == 1 )</span>
+<span class="w">        </span><span class="n">UBaseType_t</span><span class="w"> </span><span class="n">uxDummy4</span><span class="p">;</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="p">}</span><span class="w"> </span><span class="n">StaticStreamBuffer_t</span><span class="p">;</span>
+
+<span class="cm">/* Message buffers are built on stream buffers. */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">StaticStreamBuffer_t</span><span class="w"> </span><span class="n">StaticMessageBuffer_t</span><span class="p">;</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#endif </span><span class="cm">/* INC_FREERTOS_H */</span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2023 RoboticsBrno
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/RoboticsBrno" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/RobotikaBrno" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/robotarna" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@robotikabrno-robotarnaasps2392" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/_robotarna_" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+        <script src="../../assets/js/open_in_new_tab.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

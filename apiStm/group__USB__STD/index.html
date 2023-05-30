@@ -1,0 +1,2103 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the RBCX robot controller board designed by the RoboticsBrno team. It is based on the STM32F446RE microcontroller and ESP32 microcontroller. Features: 4 motors with encoders, 4 servos, buttons with the gamepad, LEDs, ultra-sonic sensor, ...">
+      
+      
+        <meta name="author" content="RoboticsBrno">
+      
+      
+        <link rel="canonical" href="https://rbcx.robotikabrno.cz/apiStm/group__USB__STD/">
+      
+      
+      
+      <link rel="icon" href="../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>Group USB\_STD - RB3204-RBCX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#group-usb_std" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RB3204-RBCX" class="md-header__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RB3204-RBCX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Group USB\_STD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../SW-development/" class="md-tabs__link">
+      Software development
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/" class="md-tabs__link">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RB3204-RBCX" class="md-nav__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    RB3204-RBCX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SW-development/" class="md-nav__link">
+        Software development
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../api/">API Reference</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">API STM Coprocessor</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          API STM Coprocessor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../apiEsp32/">API ESP32 library</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          API ESP32 library
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-functions" class="md-nav__link">
+    Public Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    Macros
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="group-usb_std">Group USB_STD</h1>
+<p><a href="../modules/"><strong>Modules</strong></a> <strong>&gt;</strong> <a href="./"><strong>USB_STD</strong></a></p>
+<p><em>This module contains generic USB device framework definitions.</em> <a href="#detailed-description">More...</a></p>
+<h2 id="modules">Modules</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">module</td>
+<td align="left"><a href="../group__USB__STD__LANGID/"><strong>USB standard LANGID codes</strong></a> <br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusb__config__descriptor/"><strong>usb_config_descriptor</strong></a> <br><em>USB device configuration descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusb__debug__descriptor/"><strong>usb_debug_descriptor</strong></a> <br><em>USB debug descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a> <br><em>Represents a USB device descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusb__endpoint__descriptor/"><strong>usb_endpoint_descriptor</strong></a> <br><em>USB endpoint descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusb__header__descriptor/"><strong>usb_header_descriptor</strong></a> <br><em>common USB descriptor header</em></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusb__iad__descriptor/"><strong>usb_iad_descriptor</strong></a> <br><em>USB interface association descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusb__interface__descriptor/"><strong>usb_interface_descriptor</strong></a> <br><em>USB interface descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusb__qualifier__descriptor/"><strong>usb_qualifier_descriptor</strong></a> <br><em>USB device qualifier descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">struct</td>
+<td align="left"><a href="../structusb__string__descriptor/"><strong>usb_string_descriptor</strong></a> <br><em>USB string descriptor.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions">Public Functions</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">struct <a href="../structusb__header__descriptor/"><strong>usb_header_descriptor</strong></a></td>
+<td align="left"><a href="#function-__attribute__"><strong>__attribute__</strong></a> ((packed)) <br></td>
+</tr>
+<tr>
+<td align="right">struct <a href="../structusb__string__descriptor/"><strong>usb_string_descriptor</strong></a></td>
+<td align="left"><a href="#function-__attribute__"><strong>__attribute__</strong></a> ((packed, aligned(2))) <br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="macros">Macros</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-intserialno_descriptor"><strong>INTSERIALNO_DESCRIPTOR</strong></a>  0xFE<br><em>String descriptor is an internal serial number provided by hardware driver.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-no_descriptor"><strong>NO_DESCRIPTOR</strong></a>  0x00<br><em>String descriptor doesn't exists in the device.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_array_desc"><strong>USB_ARRAY_DESC</strong></a> (...) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_cfg_attr_reserved"><strong>USB_CFG_ATTR_RESERVED</strong></a>  0x80<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_cfg_attr_selfpowered"><strong>USB_CFG_ATTR_SELFPOWERED</strong></a>  0x40<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_cfg_power_ma"><strong>USB_CFG_POWER_MA</strong></a> (mA) ((mA) &gt;&gt; 1)<br><em>Macro to set мaximum power consumption field for the</em> <a href="../structusb__config__descriptor/"><em><strong>usb_config_descriptor</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_app_spec"><strong>USB_CLASS_APP_SPEC</strong></a>  0xFE<br><em>Application Specific class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_audio"><strong>USB_CLASS_AUDIO</strong></a>  0x01<br><em>Audio device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_av"><strong>USB_CLASS_AV</strong></a>  0x10<br><em>Audio/Video device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_billboard"><strong>USB_CLASS_BILLBOARD</strong></a>  0x11<br><em>Billboard device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_cbridge"><strong>USB_CLASS_CBRIDGE</strong></a>  0x12<br><em>USB Type-C Bridge device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_content_sec"><strong>USB_CLASS_CONTENT_SEC</strong></a>  0x0D<br><em>Content Security device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_cscid"><strong>USB_CLASS_CSCID</strong></a>  0x0B<br><em>Smart Card device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_diagnostic"><strong>USB_CLASS_DIAGNOSTIC</strong></a>  0xDC<br><em>Diagnostic device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_healthcare"><strong>USB_CLASS_HEALTHCARE</strong></a>  0x0F<br><em>Personal Healthcare device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_hub"><strong>USB_CLASS_HUB</strong></a>  0x09<br><em>HUB device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_iad"><strong>USB_CLASS_IAD</strong></a>  0xEF<br><em>Class defined on interface association level.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_mass_storage"><strong>USB_CLASS_MASS_STORAGE</strong></a>  0x08<br><em>Mass Storage device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_misc"><strong>USB_CLASS_MISC</strong></a>  0xEF<br><em>Miscellanious device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_per_interface"><strong>USB_CLASS_PER_INTERFACE</strong></a>  0x00<br><em>Class defined on interface level.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_physical"><strong>USB_CLASS_PHYSICAL</strong></a>  0x05<br><em>Physical device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_printer"><strong>USB_CLASS_PRINTER</strong></a>  0x07<br><em>Printer device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_still_image"><strong>USB_CLASS_STILL_IMAGE</strong></a>  0x06<br><em>Still Imaging device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_vendor"><strong>USB_CLASS_VENDOR</strong></a>  0xFF<br><em>Vendor specific class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_video"><strong>USB_CLASS_VIDEO</strong></a>  0x0E<br><em>Video device class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_class_wireless"><strong>USB_CLASS_WIRELESS</strong></a>  0xE0<br><em>Wireless controller class.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_configuration"><strong>USB_DTYPE_CONFIGURATION</strong></a>  0x02<br><em>Configuration descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_cs_endpoint"><strong>USB_DTYPE_CS_ENDPOINT</strong></a>  0x25<br><em>Class specific endpoint descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_cs_interface"><strong>USB_DTYPE_CS_INTERFACE</strong></a>  0x24<br><em>Class specific interface descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_debug"><strong>USB_DTYPE_DEBUG</strong></a>  0x0A<br><em>Debug descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_device"><strong>USB_DTYPE_DEVICE</strong></a>  0x01<br><em>Device descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_endpoint"><strong>USB_DTYPE_ENDPOINT</strong></a>  0x05<br><em>Endpoint descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_interface"><strong>USB_DTYPE_INTERFACE</strong></a>  0x04<br><em>Interface descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_interfacepower"><strong>USB_DTYPE_INTERFACEPOWER</strong></a>  0x08<br><em>Interface power descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_interfaseassoc"><strong>USB_DTYPE_INTERFASEASSOC</strong></a>  0x0B<br><em>Interface association descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_otg"><strong>USB_DTYPE_OTG</strong></a>  0x09<br><em>OTG descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_other"><strong>USB_DTYPE_OTHER</strong></a>  0x07<br><em>Descriptor is of other type.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_qualifier"><strong>USB_DTYPE_QUALIFIER</strong></a>  0x06<br><em>Qualifier descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_dtype_string"><strong>USB_DTYPE_STRING</strong></a>  0x03<br><em>String descriptor.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_epattr_adaptive"><strong>USB_EPATTR_ADAPTIVE</strong></a>  0x08<br><em>Adaptive endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_epattr_async"><strong>USB_EPATTR_ASYNC</strong></a>  0x04<br><em>Asynchronous endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_epattr_no_sync"><strong>USB_EPATTR_NO_SYNC</strong></a>  0x00<br><em>No synchronization.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_epattr_sync"><strong>USB_EPATTR_SYNC</strong></a>  0x0C<br><em>Synchronous endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_epdir_in"><strong>USB_EPDIR_IN</strong></a>  0x00<br><em>Host-to-device endpoint direction.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_epdir_out"><strong>USB_EPDIR_OUT</strong></a>  0x80<br><em>Device-to-host endpoint direction.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_eptype_bulk"><strong>USB_EPTYPE_BULK</strong></a>  0x02<br><em>Bbulk endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_eptype_control"><strong>USB_EPTYPE_CONTROL</strong></a>  0x00<br><em>Control endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_eptype_interrupt"><strong>USB_EPTYPE_INTERRUPT</strong></a>  0x03<br><em>Interrupt endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_eptype_isochronus"><strong>USB_EPTYPE_ISOCHRONUS</strong></a>  0x01<br><em>Isochronous endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_epusage_data"><strong>USB_EPUSAGE_DATA</strong></a>  0x00<br><em>Data endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_epusage_feedback"><strong>USB_EPUSAGE_FEEDBACK</strong></a>  0x10<br><em>Feedback endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_epusage_imp_feedback"><strong>USB_EPUSAGE_IMP_FEEDBACK</strong></a>  0x20<br><em>Implicit feedback Data endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_feat_debug_mode"><strong>USB_FEAT_DEBUG_MODE</strong></a>  0x06<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_feat_endpoint_halt"><strong>USB_FEAT_ENDPOINT_HALT</strong></a>  0x00<br><em>Halt endpoint.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_feat_remote_wkup"><strong>USB_FEAT_REMOTE_WKUP</strong></a>  0x01<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_feat_test_mode"><strong>USB_FEAT_TEST_MODE</strong></a>  0x02<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_proto_iad"><strong>USB_PROTO_IAD</strong></a>  0x01<br><em>Protocol defined on interface association level.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_proto_none"><strong>USB_PROTO_NONE</strong></a>  0x00<br><em>No protocol defined.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_proto_vendor"><strong>USB_PROTO_VENDOR</strong></a>  0xFF<br><em>Vendor specific protocol.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_std_clear_feature"><strong>USB_STD_CLEAR_FEATURE</strong></a>  0x01<br><em>Used to clear or disable a specific feature.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_std_get_config"><strong>USB_STD_GET_CONFIG</strong></a>  0x08<br><em>Returns the current device configuration value.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_std_get_descriptor"><strong>USB_STD_GET_DESCRIPTOR</strong></a>  0x06<br><em>Returns the specified descriptor if the descriptor exists.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_std_get_interface"><strong>USB_STD_GET_INTERFACE</strong></a>  0x0A<br><em>Returns the selected alternate setting for the specified interface.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_std_get_status"><strong>USB_STD_GET_STATUS</strong></a>  0x00<br><em>Returns status for the specified recipient.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_std_set_address"><strong>USB_STD_SET_ADDRESS</strong></a>  0x05<br><em>Sets the device address for all future device accesses.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_std_set_config"><strong>USB_STD_SET_CONFIG</strong></a>  0x09<br><em>Sets the device configuration.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_std_set_descriptor"><strong>USB_STD_SET_DESCRIPTOR</strong></a>  0x07<br><em>This request is optional and may be used to update existing descriptors or new descriptors may be added.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_std_set_feature"><strong>USB_STD_SET_FEATURE</strong></a>  0x03<br><em>Used to set or enable a specific feature.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_std_set_interface"><strong>USB_STD_SET_INTERFACE</strong></a>  0x0B<br><em>Allows the host to select an alternate setting for the specified interface.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_std_synch_frame"><strong>USB_STD_SYNCH_FRAME</strong></a>  0x0C<br><em>Used to set and then report an endpoint's synchronization frame.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_string_desc"><strong>USB_STRING_DESC</strong></a> (s) <br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_subclass_iad"><strong>USB_SUBCLASS_IAD</strong></a>  0x02<br><em>Subclass defined on interface association level.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_subclass_none"><strong>USB_SUBCLASS_NONE</strong></a>  0x00<br><em>No subclass defined.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_subclass_vendor"><strong>USB_SUBCLASS_VENDOR</strong></a>  0xFF<br><em>Vendor specific subclass.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_test_force_enable"><strong>USB_TEST_FORCE_ENABLE</strong></a>  0x05<br><em>Test Force Enable.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_test_j"><strong>USB_TEST_J</strong></a>  0x01<br><em>Test J.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_test_k"><strong>USB_TEST_K</strong></a>  0x02<br><em>Test K.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_test_packet"><strong>USB_TEST_PACKET</strong></a>  0x04<br><em>Test Pcaket.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-usb_test_se0_nak"><strong>USB_TEST_SE0_NAK</strong></a>  0x03<br><em>Test SE0 NAK.</em></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="../usb__std_8h/#define-version_bcd"><strong>VERSION_BCD</strong></a> (maj, min, rev) (((maj &amp; 0xFF) &lt;&lt; 8) | ((min &amp; 0x0F) &lt;&lt; 4) | (rev &amp; 0x0F))<br></td>
+</tr>
+</tbody>
+</table>
+<h1 id="detailed-description">Detailed Description</h1>
+<p>This module based on
+* Chapter 9 of the <a href="https://www.usb.org/sites/default/files/usb_20_20181221.zip">Universal Serial Bus Specification Revision 2.0</a>
+* <a href="https://github.com/abcminiuser/lufa">LUFA - the Lightweight USB Framework for AVRs.</a> </p>
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+<h3 id="function-__attribute__">function __attribute__</h3>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">usb_header_descriptor</span><span class="w"> </span><span class="n">__attribute__</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">(</span><span class="n">packed</span><span class="p">)</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-__attribute___1">function __attribute__</h3>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">usb_string_descriptor</span><span class="w"> </span><span class="n">__attribute__</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">(</span><span class="n">packed</span><span class="p">,</span><span class="w"> </span><span class="n">aligned</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h2 id="macro-definition-documentation">Macro Definition Documentation</h2>
+<h3 id="define-intserialno_descriptor">define INTSERIALNO_DESCRIPTOR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INTSERIALNO_DESCRIPTOR 0xFE</span>
+</code></pre></div>
+<h3 id="define-no_descriptor">define NO_DESCRIPTOR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define NO_DESCRIPTOR 0x00</span>
+</code></pre></div>
+<h3 id="define-usb_array_desc">define USB_ARRAY_DESC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_ARRAY_DESC (</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{.</span><span class="n">bLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">sizeof</span><span class="p">((</span><span class="kt">uint16_t</span><span class="p">[]){</span><span class="n">__VA_ARGS__</span><span class="p">}),</span>\
+<span class="w">                                    </span><span class="p">.</span><span class="n">bDescriptorType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">USB_DTYPE_STRING</span><span class="w"> </span><span class="p">,</span>\
+<span class="w">                                    </span><span class="p">.</span><span class="n">wString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">__VA_ARGS__</span><span class="p">}}</span>
+</code></pre></div>
+<p>Macro to create <a href="../structusb__string__descriptor/"><strong>usb_string_descriptor</strong></a> from array </p>
+<h3 id="define-usb_cfg_attr_reserved">define USB_CFG_ATTR_RESERVED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CFG_ATTR_RESERVED 0x80</span>
+</code></pre></div>
+<h3 id="define-usb_cfg_attr_selfpowered">define USB_CFG_ATTR_SELFPOWERED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CFG_ATTR_SELFPOWERED 0x40</span>
+</code></pre></div>
+<h3 id="define-usb_cfg_power_ma">define USB_CFG_POWER_MA</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CFG_POWER_MA (</span>
+<span class="w">    </span><span class="n">mA</span>
+<span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="n">mA</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-usb_class_app_spec">define USB_CLASS_APP_SPEC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_APP_SPEC 0xFE</span>
+</code></pre></div>
+<h3 id="define-usb_class_audio">define USB_CLASS_AUDIO</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_AUDIO 0x01</span>
+</code></pre></div>
+<h3 id="define-usb_class_av">define USB_CLASS_AV</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_AV 0x10</span>
+</code></pre></div>
+<h3 id="define-usb_class_billboard">define USB_CLASS_BILLBOARD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_BILLBOARD 0x11</span>
+</code></pre></div>
+<h3 id="define-usb_class_cbridge">define USB_CLASS_CBRIDGE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_CBRIDGE 0x12</span>
+</code></pre></div>
+<h3 id="define-usb_class_content_sec">define USB_CLASS_CONTENT_SEC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_CONTENT_SEC 0x0D</span>
+</code></pre></div>
+<h3 id="define-usb_class_cscid">define USB_CLASS_CSCID</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_CSCID 0x0B</span>
+</code></pre></div>
+<h3 id="define-usb_class_diagnostic">define USB_CLASS_DIAGNOSTIC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_DIAGNOSTIC 0xDC</span>
+</code></pre></div>
+<h3 id="define-usb_class_healthcare">define USB_CLASS_HEALTHCARE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_HEALTHCARE 0x0F</span>
+</code></pre></div>
+<h3 id="define-usb_class_hub">define USB_CLASS_HUB</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_HUB 0x09</span>
+</code></pre></div>
+<h3 id="define-usb_class_iad">define USB_CLASS_IAD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_IAD 0xEF</span>
+</code></pre></div>
+<h3 id="define-usb_class_mass_storage">define USB_CLASS_MASS_STORAGE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_MASS_STORAGE 0x08</span>
+</code></pre></div>
+<h3 id="define-usb_class_misc">define USB_CLASS_MISC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_MISC 0xEF</span>
+</code></pre></div>
+<h3 id="define-usb_class_per_interface">define USB_CLASS_PER_INTERFACE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_PER_INTERFACE 0x00</span>
+</code></pre></div>
+<h3 id="define-usb_class_physical">define USB_CLASS_PHYSICAL</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_PHYSICAL 0x05</span>
+</code></pre></div>
+<h3 id="define-usb_class_printer">define USB_CLASS_PRINTER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_PRINTER 0x07</span>
+</code></pre></div>
+<h3 id="define-usb_class_still_image">define USB_CLASS_STILL_IMAGE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_STILL_IMAGE 0x06</span>
+</code></pre></div>
+<h3 id="define-usb_class_vendor">define USB_CLASS_VENDOR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_VENDOR 0xFF</span>
+</code></pre></div>
+<h3 id="define-usb_class_video">define USB_CLASS_VIDEO</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_VIDEO 0x0E</span>
+</code></pre></div>
+<h3 id="define-usb_class_wireless">define USB_CLASS_WIRELESS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_CLASS_WIRELESS 0xE0</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_configuration">define USB_DTYPE_CONFIGURATION</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_CONFIGURATION 0x02</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_cs_endpoint">define USB_DTYPE_CS_ENDPOINT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_CS_ENDPOINT 0x25</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_cs_interface">define USB_DTYPE_CS_INTERFACE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_CS_INTERFACE 0x24</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_debug">define USB_DTYPE_DEBUG</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_DEBUG 0x0A</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_device">define USB_DTYPE_DEVICE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_DEVICE 0x01</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_endpoint">define USB_DTYPE_ENDPOINT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_ENDPOINT 0x05</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_interface">define USB_DTYPE_INTERFACE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_INTERFACE 0x04</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_interfacepower">define USB_DTYPE_INTERFACEPOWER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_INTERFACEPOWER 0x08</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_interfaseassoc">define USB_DTYPE_INTERFASEASSOC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_INTERFASEASSOC 0x0B</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_otg">define USB_DTYPE_OTG</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_OTG 0x09</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_other">define USB_DTYPE_OTHER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_OTHER 0x07</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_qualifier">define USB_DTYPE_QUALIFIER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_QUALIFIER 0x06</span>
+</code></pre></div>
+<h3 id="define-usb_dtype_string">define USB_DTYPE_STRING</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_DTYPE_STRING 0x03</span>
+</code></pre></div>
+<h3 id="define-usb_epattr_adaptive">define USB_EPATTR_ADAPTIVE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPATTR_ADAPTIVE 0x08</span>
+</code></pre></div>
+<h3 id="define-usb_epattr_async">define USB_EPATTR_ASYNC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPATTR_ASYNC 0x04</span>
+</code></pre></div>
+<h3 id="define-usb_epattr_no_sync">define USB_EPATTR_NO_SYNC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPATTR_NO_SYNC 0x00</span>
+</code></pre></div>
+<h3 id="define-usb_epattr_sync">define USB_EPATTR_SYNC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPATTR_SYNC 0x0C</span>
+</code></pre></div>
+<h3 id="define-usb_epdir_in">define USB_EPDIR_IN</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPDIR_IN 0x00</span>
+</code></pre></div>
+<h3 id="define-usb_epdir_out">define USB_EPDIR_OUT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPDIR_OUT 0x80</span>
+</code></pre></div>
+<h3 id="define-usb_eptype_bulk">define USB_EPTYPE_BULK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPTYPE_BULK 0x02</span>
+</code></pre></div>
+<h3 id="define-usb_eptype_control">define USB_EPTYPE_CONTROL</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPTYPE_CONTROL 0x00</span>
+</code></pre></div>
+<h3 id="define-usb_eptype_interrupt">define USB_EPTYPE_INTERRUPT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPTYPE_INTERRUPT 0x03</span>
+</code></pre></div>
+<h3 id="define-usb_eptype_isochronus">define USB_EPTYPE_ISOCHRONUS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPTYPE_ISOCHRONUS 0x01</span>
+</code></pre></div>
+<h3 id="define-usb_epusage_data">define USB_EPUSAGE_DATA</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPUSAGE_DATA 0x00</span>
+</code></pre></div>
+<h3 id="define-usb_epusage_feedback">define USB_EPUSAGE_FEEDBACK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPUSAGE_FEEDBACK 0x10</span>
+</code></pre></div>
+<h3 id="define-usb_epusage_imp_feedback">define USB_EPUSAGE_IMP_FEEDBACK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_EPUSAGE_IMP_FEEDBACK 0x20</span>
+</code></pre></div>
+<h3 id="define-usb_feat_debug_mode">define USB_FEAT_DEBUG_MODE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_FEAT_DEBUG_MODE 0x06</span>
+</code></pre></div>
+<h3 id="define-usb_feat_endpoint_halt">define USB_FEAT_ENDPOINT_HALT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_FEAT_ENDPOINT_HALT 0x00</span>
+</code></pre></div>
+<h3 id="define-usb_feat_remote_wkup">define USB_FEAT_REMOTE_WKUP</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_FEAT_REMOTE_WKUP 0x01</span>
+</code></pre></div>
+<h3 id="define-usb_feat_test_mode">define USB_FEAT_TEST_MODE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_FEAT_TEST_MODE 0x02</span>
+</code></pre></div>
+<h3 id="define-usb_proto_iad">define USB_PROTO_IAD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_PROTO_IAD 0x01</span>
+</code></pre></div>
+<h3 id="define-usb_proto_none">define USB_PROTO_NONE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_PROTO_NONE 0x00</span>
+</code></pre></div>
+<h3 id="define-usb_proto_vendor">define USB_PROTO_VENDOR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_PROTO_VENDOR 0xFF</span>
+</code></pre></div>
+<h3 id="define-usb_std_clear_feature">define USB_STD_CLEAR_FEATURE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STD_CLEAR_FEATURE 0x01</span>
+</code></pre></div>
+<h3 id="define-usb_std_get_config">define USB_STD_GET_CONFIG</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STD_GET_CONFIG 0x08</span>
+</code></pre></div>
+<h3 id="define-usb_std_get_descriptor">define USB_STD_GET_DESCRIPTOR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STD_GET_DESCRIPTOR 0x06</span>
+</code></pre></div>
+<h3 id="define-usb_std_get_interface">define USB_STD_GET_INTERFACE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STD_GET_INTERFACE 0x0A</span>
+</code></pre></div>
+<h3 id="define-usb_std_get_status">define USB_STD_GET_STATUS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STD_GET_STATUS 0x00</span>
+</code></pre></div>
+<h3 id="define-usb_std_set_address">define USB_STD_SET_ADDRESS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STD_SET_ADDRESS 0x05</span>
+</code></pre></div>
+<h3 id="define-usb_std_set_config">define USB_STD_SET_CONFIG</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STD_SET_CONFIG 0x09</span>
+</code></pre></div>
+<h3 id="define-usb_std_set_descriptor">define USB_STD_SET_DESCRIPTOR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STD_SET_DESCRIPTOR 0x07</span>
+</code></pre></div>
+<h3 id="define-usb_std_set_feature">define USB_STD_SET_FEATURE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STD_SET_FEATURE 0x03</span>
+</code></pre></div>
+<h3 id="define-usb_std_set_interface">define USB_STD_SET_INTERFACE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STD_SET_INTERFACE 0x0B</span>
+</code></pre></div>
+<h3 id="define-usb_std_synch_frame">define USB_STD_SYNCH_FRAME</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STD_SYNCH_FRAME 0x0C</span>
+</code></pre></div>
+<h3 id="define-usb_string_desc">define USB_STRING_DESC</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_STRING_DESC (</span>
+<span class="w">    </span><span class="n">s</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{.</span><span class="n">bLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">CAT</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">s</span><span class="p">)),</span>\
+<span class="w">                                    </span><span class="p">.</span><span class="n">bDescriptorType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">USB_DTYPE_STRING</span><span class="w"> </span><span class="p">,</span>\
+<span class="w">                                    </span><span class="p">.</span><span class="n">wString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">CAT</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">s</span><span class="p">)}}</span>
+</code></pre></div>
+<p>Macro to create <a href="../structusb__string__descriptor/"><strong>usb_string_descriptor</strong></a> from string </p>
+<h3 id="define-usb_subclass_iad">define USB_SUBCLASS_IAD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_SUBCLASS_IAD 0x02</span>
+</code></pre></div>
+<h3 id="define-usb_subclass_none">define USB_SUBCLASS_NONE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_SUBCLASS_NONE 0x00</span>
+</code></pre></div>
+<h3 id="define-usb_subclass_vendor">define USB_SUBCLASS_VENDOR</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_SUBCLASS_VENDOR 0xFF</span>
+</code></pre></div>
+<h3 id="define-usb_test_force_enable">define USB_TEST_FORCE_ENABLE</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_TEST_FORCE_ENABLE 0x05</span>
+</code></pre></div>
+<h3 id="define-usb_test_j">define USB_TEST_J</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_TEST_J 0x01</span>
+</code></pre></div>
+<h3 id="define-usb_test_k">define USB_TEST_K</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_TEST_K 0x02</span>
+</code></pre></div>
+<h3 id="define-usb_test_packet">define USB_TEST_PACKET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_TEST_PACKET 0x04</span>
+</code></pre></div>
+<h3 id="define-usb_test_se0_nak">define USB_TEST_SE0_NAK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_TEST_SE0_NAK 0x03</span>
+</code></pre></div>
+<h3 id="define-version_bcd">define VERSION_BCD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define VERSION_BCD (</span>
+<span class="w">    </span><span class="n">maj</span><span class="p">,</span>
+<span class="w">    </span><span class="n">min</span><span class="p">,</span>
+<span class="w">    </span><span class="n">rev</span>
+<span class="p">)</span><span class="w"> </span><span class="p">(((</span><span class="n">maj</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">((</span><span class="n">min</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x0F</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">rev</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x0F</span><span class="p">))</span>
+</code></pre></div>
+<p>Macro to encode major/minor/version number into BCD code </p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>maj</code> Major version </li>
+<li><code>min</code> Minor version </li>
+<li><code>rev</code> Revision </li>
+</ul>
+<hr />
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2023 RoboticsBrno
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/RoboticsBrno" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/RobotikaBrno" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/robotarna" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@robotikabrno-robotarnaasps2392" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/_robotarna_" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+        <script src="../../assets/js/open_in_new_tab.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

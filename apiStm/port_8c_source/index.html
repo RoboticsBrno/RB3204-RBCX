@@ -1,0 +1,2072 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the RBCX robot controller board designed by the RoboticsBrno team. It is based on the STM32F446RE microcontroller and ESP32 microcontroller. Features: 4 motors with encoders, 4 servos, buttons with the gamepad, LEDs, ultra-sonic sensor, ...">
+      
+      
+        <meta name="author" content="RoboticsBrno">
+      
+      
+        <link rel="canonical" href="https://rbcx.robotikabrno.cz/apiStm/port_8c_source/">
+      
+      
+      
+      <link rel="icon" href="../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>File port.c - RB3204-RBCX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#file-portc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RB3204-RBCX" class="md-header__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RB3204-RBCX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              File port.c
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../SW-development/" class="md-tabs__link">
+      Software development
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/" class="md-tabs__link">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RB3204-RBCX" class="md-nav__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    RB3204-RBCX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SW-development/" class="md-nav__link">
+        Software development
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../api/">API Reference</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">API STM Coprocessor</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          API STM Coprocessor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../apiEsp32/">API ESP32 library</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          API ESP32 library
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="file-portc">File port.c</h1>
+<p><a href="../files/"><strong>File List</strong></a> <strong>&gt;</strong> <a href="../dir_6728f3a9088eeb382ccd8bff3a2a4804/"><strong>FreeRTOS</strong></a> <strong>&gt;</strong> <a href="../dir_3e946fa640f7764a34038834221bbde8/"><strong>src</strong></a> <strong>&gt;</strong> <a href="../port_8c/"><strong>port.c</strong></a></p>
+<p><a href="../port_8c/">Go to the documentation of this file.</a> </p>
+<div class="highlight"><pre><span></span><code><span class="cm">/*</span>
+<span class="cm"> * FreeRTOS Kernel V10.3.1</span>
+<span class="cm"> * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Permission is hereby granted, free of charge, to any person obtaining a copy of</span>
+<span class="cm"> * this software and associated documentation files (the &quot;Software&quot;), to deal in</span>
+<span class="cm"> * the Software without restriction, including without limitation the rights to</span>
+<span class="cm"> * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of</span>
+<span class="cm"> * the Software, and to permit persons to whom the Software is furnished to do so,</span>
+<span class="cm"> * subject to the following conditions:</span>
+<span class="cm"> *</span>
+<span class="cm"> * The above copyright notice and this permission notice shall be included in all</span>
+<span class="cm"> * copies or substantial portions of the Software.</span>
+<span class="cm"> *</span>
+<span class="cm"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="cm"> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS</span>
+<span class="cm"> * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR</span>
+<span class="cm"> * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER</span>
+<span class="cm"> * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN</span>
+<span class="cm"> * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * http://www.FreeRTOS.org</span>
+<span class="cm"> * http://aws.amazon.com/freertos</span>
+<span class="cm"> *</span>
+<span class="cm"> * 1 tab == 4 spaces!</span>
+<span class="cm"> */</span>
+
+<span class="cm">/*-----------------------------------------------------------</span>
+<span class="cm"> * Implementation of functions defined in portable.h for the ARM CM3 port.</span>
+<span class="cm"> *----------------------------------------------------------*/</span>
+
+<span class="cm">/* Scheduler includes. */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FreeRTOS.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;task.h&quot;</span>
+
+<span class="cm">/* For backward compatibility, ensure configKERNEL_INTERRUPT_PRIORITY is</span>
+<span class="cm">defined.  The value should also ensure backward compatibility.</span>
+<span class="cm">FreeRTOS.org versions prior to V4.4.0 did not include this definition. */</span>
+<span class="cp">#ifndef configKERNEL_INTERRUPT_PRIORITY</span>
+<span class="w">    </span><span class="cp">#define configKERNEL_INTERRUPT_PRIORITY 255</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef configSYSTICK_CLOCK_HZ</span>
+<span class="w">    </span><span class="cp">#define configSYSTICK_CLOCK_HZ configCPU_CLOCK_HZ</span>
+<span class="w">    </span><span class="cm">/* Ensure the SysTick is clocked at the same frequency as the core. */</span>
+<span class="w">    </span><span class="cp">#define portNVIC_SYSTICK_CLK_BIT    ( 1UL &lt;&lt; 2UL )</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="cm">/* The way the SysTick is clocked is not modified in case it is not the same</span>
+<span class="cm">    as the core. */</span>
+<span class="w">    </span><span class="cp">#define portNVIC_SYSTICK_CLK_BIT    ( 0 )</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Constants required to manipulate the core.  Registers first... */</span>
+<span class="cp">#define portNVIC_SYSTICK_CTRL_REG           ( * ( ( volatile uint32_t * ) 0xe000e010 ) )</span>
+<span class="cp">#define portNVIC_SYSTICK_LOAD_REG           ( * ( ( volatile uint32_t * ) 0xe000e014 ) )</span>
+<span class="cp">#define portNVIC_SYSTICK_CURRENT_VALUE_REG  ( * ( ( volatile uint32_t * ) 0xe000e018 ) )</span>
+<span class="cp">#define portNVIC_SYSPRI2_REG                ( * ( ( volatile uint32_t * ) 0xe000ed20 ) )</span>
+<span class="cm">/* ...then bits in the registers. */</span>
+<span class="cp">#define portNVIC_SYSTICK_INT_BIT            ( 1UL &lt;&lt; 1UL )</span>
+<span class="cp">#define portNVIC_SYSTICK_ENABLE_BIT         ( 1UL &lt;&lt; 0UL )</span>
+<span class="cp">#define portNVIC_SYSTICK_COUNT_FLAG_BIT     ( 1UL &lt;&lt; 16UL )</span>
+<span class="cp">#define portNVIC_PENDSVCLEAR_BIT            ( 1UL &lt;&lt; 27UL )</span>
+<span class="cp">#define portNVIC_PEND_SYSTICK_CLEAR_BIT     ( 1UL &lt;&lt; 25UL )</span>
+
+<span class="cp">#define portNVIC_PENDSV_PRI                 ( ( ( uint32_t ) configKERNEL_INTERRUPT_PRIORITY ) &lt;&lt; 16UL )</span>
+<span class="cp">#define portNVIC_SYSTICK_PRI                ( ( ( uint32_t ) configKERNEL_INTERRUPT_PRIORITY ) &lt;&lt; 24UL )</span>
+
+<span class="cm">/* Constants required to check the validity of an interrupt priority. */</span>
+<span class="cp">#define portFIRST_USER_INTERRUPT_NUMBER     ( 16 )</span>
+<span class="cp">#define portNVIC_IP_REGISTERS_OFFSET_16     ( 0xE000E3F0 )</span>
+<span class="cp">#define portAIRCR_REG                       ( * ( ( volatile uint32_t * ) 0xE000ED0C ) )</span>
+<span class="cp">#define portMAX_8_BIT_VALUE                 ( ( uint8_t ) 0xff )</span>
+<span class="cp">#define portTOP_BIT_OF_BYTE                 ( ( uint8_t ) 0x80 )</span>
+<span class="cp">#define portMAX_PRIGROUP_BITS               ( ( uint8_t ) 7 )</span>
+<span class="cp">#define portPRIORITY_GROUP_MASK             ( 0x07UL &lt;&lt; 8UL )</span>
+<span class="cp">#define portPRIGROUP_SHIFT                  ( 8UL )</span>
+
+<span class="cm">/* Masks off all bits but the VECTACTIVE bits in the ICSR register. */</span>
+<span class="cp">#define portVECTACTIVE_MASK                 ( 0xFFUL )</span>
+
+<span class="cm">/* Constants required to set up the initial stack. */</span>
+<span class="cp">#define portINITIAL_XPSR                    ( 0x01000000UL )</span>
+
+<span class="cm">/* The systick is a 24-bit counter. */</span>
+<span class="cp">#define portMAX_24_BIT_NUMBER               ( 0xffffffUL )</span>
+
+<span class="cm">/* A fiddle factor to estimate the number of SysTick counts that would have</span>
+<span class="cm">occurred while the SysTick counter is stopped during tickless idle</span>
+<span class="cm">calculations. */</span>
+<span class="cp">#define portMISSED_COUNTS_FACTOR            ( 45UL )</span>
+
+<span class="cm">/* For strict compliance with the Cortex-M spec the task start address should</span>
+<span class="cm">have bit-0 clear, as it is loaded into the PC on exit from an ISR. */</span>
+<span class="cp">#define portSTART_ADDRESS_MASK              ( ( StackType_t ) 0xfffffffeUL )</span>
+
+<span class="cm">/* Let the user override the pre-loading of the initial LR with the address of</span>
+<span class="cm">prvTaskExitError() in case it messes up unwinding of the stack in the</span>
+<span class="cm">debugger. */</span>
+<span class="cp">#ifdef configTASK_RETURN_ADDRESS</span>
+<span class="w">    </span><span class="cp">#define portTASK_RETURN_ADDRESS configTASK_RETURN_ADDRESS</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="cp">#define portTASK_RETURN_ADDRESS prvTaskExitError</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Setup the timer to generate the tick interrupts.  The implementation in this</span>
+<span class="cm"> * file is weak to allow application writers to change the timer used to</span>
+<span class="cm"> * generate the tick interrupt.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">vPortSetupTimerInterrupt</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">);</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Exception handlers.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">xPortPendSVHandler</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="w"> </span><span class="kr">naked</span><span class="w"> </span><span class="p">));</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">xPortSysTickHandler</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">vPortSVCHandler</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="w"> </span><span class="kr">naked</span><span class="w"> </span><span class="p">));</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Start first task is a separate function so it can be tested in isolation.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">prvPortStartFirstTask</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="w"> </span><span class="kr">naked</span><span class="w"> </span><span class="p">));</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Used to catch tasks that attempt to return from their implementing function.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">prvTaskExitError</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">);</span>
+
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="cm">/* Each task maintains its own interrupt status in the critical nesting</span>
+<span class="cm">variable. */</span>
+<span class="k">static</span><span class="w"> </span><span class="n">UBaseType_t</span><span class="w"> </span><span class="n">uxCriticalNesting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xaaaaaaaa</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * The number of SysTick increments that make up one tick period.</span>
+<span class="cm"> */</span>
+<span class="cp">#if( configUSE_TICKLESS_IDLE == 1 )</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ulTimerCountsForOneTick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="cp">#endif </span><span class="cm">/* configUSE_TICKLESS_IDLE */</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * The maximum number of tick periods that can be suppressed is limited by the</span>
+<span class="cm"> * 24 bit resolution of the SysTick timer.</span>
+<span class="cm"> */</span>
+<span class="cp">#if( configUSE_TICKLESS_IDLE == 1 )</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">xMaximumPossibleSuppressedTicks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="cp">#endif </span><span class="cm">/* configUSE_TICKLESS_IDLE */</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Compensate for the CPU cycles that pass while the SysTick is stopped (low</span>
+<span class="cm"> * power functionality only.</span>
+<span class="cm"> */</span>
+<span class="cp">#if( configUSE_TICKLESS_IDLE == 1 )</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ulStoppedTimerCompensation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="cp">#endif </span><span class="cm">/* configUSE_TICKLESS_IDLE */</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Used by the portASSERT_IF_INTERRUPT_PRIORITY_INVALID() macro to ensure</span>
+<span class="cm"> * FreeRTOS API functions are not called from interrupts that have been assigned</span>
+<span class="cm"> * a priority above configMAX_SYSCALL_INTERRUPT_PRIORITY.</span>
+<span class="cm"> */</span>
+<span class="cp">#if( configASSERT_DEFINED == 1 )</span>
+<span class="w">     </span><span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ucMaxSysCallPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">     </span><span class="k">static</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ulMaxPRIGROUPValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">     </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">pcInterruptPriorityRegisters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">portNVIC_IP_REGISTERS_OFFSET_16</span><span class="p">;</span>
+<span class="cp">#endif </span><span class="cm">/* configASSERT_DEFINED */</span>
+
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * See header file for description.</span>
+<span class="cm"> */</span>
+<span class="n">StackType_t</span><span class="w"> </span><span class="o">*</span><span class="nf">pxPortInitialiseStack</span><span class="p">(</span><span class="w"> </span><span class="n">StackType_t</span><span class="w"> </span><span class="o">*</span><span class="n">pxTopOfStack</span><span class="p">,</span><span class="w"> </span><span class="n">TaskFunction_t</span><span class="w"> </span><span class="n">pxCode</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pvParameters</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Simulate the stack frame as it would be created by a context switch</span>
+<span class="cm">    interrupt. */</span>
+<span class="w">    </span><span class="n">pxTopOfStack</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Offset added to account for the way the MCU uses the stack on entry/exit of interrupts. */</span>
+<span class="w">    </span><span class="o">*</span><span class="n">pxTopOfStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portINITIAL_XPSR</span><span class="p">;</span><span class="w">   </span><span class="cm">/* xPSR */</span>
+<span class="w">    </span><span class="n">pxTopOfStack</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">pxTopOfStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">StackType_t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">pxCode</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">portSTART_ADDRESS_MASK</span><span class="p">;</span><span class="w">    </span><span class="cm">/* PC */</span>
+<span class="w">    </span><span class="n">pxTopOfStack</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">pxTopOfStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">StackType_t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">portTASK_RETURN_ADDRESS</span><span class="p">;</span><span class="w">    </span><span class="cm">/* LR */</span>
+<span class="w">    </span><span class="n">pxTopOfStack</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">  </span><span class="cm">/* R12, R3, R2 and R1. */</span>
+<span class="w">    </span><span class="o">*</span><span class="n">pxTopOfStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">StackType_t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">pvParameters</span><span class="p">;</span><span class="w">   </span><span class="cm">/* R0 */</span>
+<span class="w">    </span><span class="n">pxTopOfStack</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w">  </span><span class="cm">/* R11, R10, R9, R8, R7, R6, R5 and R4. */</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">pxTopOfStack</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">prvTaskExitError</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ulDummy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0UL</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* A function that implements a task must not exit or attempt to return to</span>
+<span class="cm">    its caller as there is nothing to return to.  If a task wants to exit it</span>
+<span class="cm">    should instead call vTaskDelete( NULL ).</span>
+
+<span class="cm">    Artificially force an assert() to be triggered if configASSERT() is</span>
+<span class="cm">    defined, then stop here so application writers can catch the error. */</span>
+<span class="w">    </span><span class="n">configASSERT</span><span class="p">(</span><span class="w"> </span><span class="n">uxCriticalNesting</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">~</span><span class="mi">0UL</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="n">portDISABLE_INTERRUPTS</span><span class="p">();</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="w"> </span><span class="n">ulDummy</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="cm">/* This file calls prvTaskExitError() after the scheduler has been</span>
+<span class="cm">        started to remove a compiler warning about the function being defined</span>
+<span class="cm">        but never called.  ulDummy is used purely to quieten other warnings</span>
+<span class="cm">        about code appearing after this function is called - making ulDummy</span>
+<span class="cm">        volatile makes the compiler think the function could return and</span>
+<span class="cm">        therefore not output an &#39;unreachable code&#39; warning for code that appears</span>
+<span class="cm">        after it. */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">vPortSVCHandler</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="p">(</span>
+<span class="w">                    </span><span class="s">&quot;   ldr r3, pxCurrentTCBConst2      </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Restore the context. */</span>
+<span class="w">                    </span><span class="s">&quot;   ldr r1, [r3]                    </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Use pxCurrentTCBConst to get the pxCurrentTCB address. */</span>
+<span class="w">                    </span><span class="s">&quot;   ldr r0, [r1]                    </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* The first item in pxCurrentTCB is the task top of stack. */</span>
+<span class="w">                    </span><span class="s">&quot;   ldmia r0!, {r4-r11}             </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Pop the registers that are not automatically saved on exception entry and the critical nesting count. */</span>
+<span class="w">                    </span><span class="s">&quot;   msr psp, r0                     </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Restore the task stack pointer. */</span>
+<span class="w">                    </span><span class="s">&quot;   isb                             </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot;   mov r0, #0                      </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot;   msr basepri, r0                 </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot;   orr r14, #0xd                   </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot;   bx r14                          </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot;                                   </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot;   .align 4                        </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot;pxCurrentTCBConst2: .word pxCurrentTCB             </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                </span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">prvPortStartFirstTask</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span>
+<span class="w">                    </span><span class="s">&quot; ldr r0, =0xE000ED08   </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Use the NVIC offset register to locate the stack. */</span>
+<span class="w">                    </span><span class="s">&quot; ldr r0, [r0]          </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot; ldr r0, [r0]          </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot; msr msp, r0           </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Set the msp back to the start of the stack. */</span>
+<span class="w">                    </span><span class="s">&quot; cpsie i               </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Globally enable interrupts. */</span>
+<span class="w">                    </span><span class="s">&quot; cpsie f               </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot; dsb                   </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot; isb                   </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                    </span><span class="s">&quot; svc 0                 </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* System call to start first task. */</span>
+<span class="w">                    </span><span class="s">&quot; nop                   </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">                </span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * See header file for description.</span>
+<span class="cm"> */</span>
+<span class="n">BaseType_t</span><span class="w"> </span><span class="nf">xPortStartScheduler</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* configMAX_SYSCALL_INTERRUPT_PRIORITY must not be set to 0.</span>
+<span class="cm">    See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html */</span>
+<span class="w">    </span><span class="n">configASSERT</span><span class="p">(</span><span class="w"> </span><span class="n">configMAX_SYSCALL_INTERRUPT_PRIORITY</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">    </span><span class="cp">#if( configASSERT_DEFINED == 1 )</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ulOriginalPriority</span><span class="p">;</span>
+<span class="w">        </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">pucFirstUserPriorityRegister</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">portNVIC_IP_REGISTERS_OFFSET_16</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">portFIRST_USER_INTERRUPT_NUMBER</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ucMaxPriorityValue</span><span class="p">;</span>
+
+<span class="w">        </span><span class="cm">/* Determine the maximum priority from which ISR safe FreeRTOS API</span>
+<span class="cm">        functions can be called.  ISR safe functions are those that end in</span>
+<span class="cm">        &quot;FromISR&quot;.  FreeRTOS maintains separate thread and ISR API functions to</span>
+<span class="cm">        ensure interrupt entry is as fast and simple as possible.</span>
+
+<span class="cm">        Save the interrupt priority value that is about to be clobbered. */</span>
+<span class="w">        </span><span class="n">ulOriginalPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">pucFirstUserPriorityRegister</span><span class="p">;</span>
+
+<span class="w">        </span><span class="cm">/* Determine the number of priority bits available.  First write to all</span>
+<span class="cm">        possible bits. */</span>
+<span class="w">        </span><span class="o">*</span><span class="n">pucFirstUserPriorityRegister</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portMAX_8_BIT_VALUE</span><span class="p">;</span>
+
+<span class="w">        </span><span class="cm">/* Read the value back to see how many bits stuck. */</span>
+<span class="w">        </span><span class="n">ucMaxPriorityValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">pucFirstUserPriorityRegister</span><span class="p">;</span>
+
+<span class="w">        </span><span class="cm">/* Use the same mask on the maximum system call priority. */</span>
+<span class="w">        </span><span class="n">ucMaxSysCallPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configMAX_SYSCALL_INTERRUPT_PRIORITY</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ucMaxPriorityValue</span><span class="p">;</span>
+
+<span class="w">        </span><span class="cm">/* Calculate the maximum acceptable priority group value for the number</span>
+<span class="cm">        of bits read back. */</span>
+<span class="w">        </span><span class="n">ulMaxPRIGROUPValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portMAX_PRIGROUP_BITS</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ucMaxPriorityValue</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">portTOP_BIT_OF_BYTE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">portTOP_BIT_OF_BYTE</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ulMaxPRIGROUPValue</span><span class="o">--</span><span class="p">;</span>
+<span class="w">            </span><span class="n">ucMaxPriorityValue</span><span class="w"> </span><span class="o">&lt;&lt;=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="mh">0x01</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="cp">#ifdef __NVIC_PRIO_BITS</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/* Check the CMSIS configuration that defines the number of</span>
+<span class="cm">            priority bits matches the number of priority bits actually queried</span>
+<span class="cm">            from the hardware. */</span>
+<span class="w">            </span><span class="n">configASSERT</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">portMAX_PRIGROUP_BITS</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ulMaxPRIGROUPValue</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">__NVIC_PRIO_BITS</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="cp">#endif</span>
+
+<span class="w">        </span><span class="cp">#ifdef configPRIO_BITS</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/* Check the FreeRTOS configuration that defines the number of</span>
+<span class="cm">            priority bits matches the number of priority bits actually queried</span>
+<span class="cm">            from the hardware. */</span>
+<span class="w">            </span><span class="n">configASSERT</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">portMAX_PRIGROUP_BITS</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ulMaxPRIGROUPValue</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">configPRIO_BITS</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="cp">#endif</span>
+
+<span class="w">        </span><span class="cm">/* Shift the priority group value back to its position within the AIRCR</span>
+<span class="cm">        register. */</span>
+<span class="w">        </span><span class="n">ulMaxPRIGROUPValue</span><span class="w"> </span><span class="o">&lt;&lt;=</span><span class="w"> </span><span class="n">portPRIGROUP_SHIFT</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ulMaxPRIGROUPValue</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="n">portPRIORITY_GROUP_MASK</span><span class="p">;</span>
+
+<span class="w">        </span><span class="cm">/* Restore the clobbered interrupt priority register to its original</span>
+<span class="cm">        value. */</span>
+<span class="w">        </span><span class="o">*</span><span class="n">pucFirstUserPriorityRegister</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ulOriginalPriority</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="cp">#endif </span><span class="cm">/* conifgASSERT_DEFINED */</span>
+
+<span class="w">    </span><span class="cm">/* Make PendSV and SysTick the lowest priority interrupts. */</span>
+<span class="w">    </span><span class="n">portNVIC_SYSPRI2_REG</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">portNVIC_PENDSV_PRI</span><span class="p">;</span>
+<span class="w">    </span><span class="n">portNVIC_SYSPRI2_REG</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_PRI</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Start the timer that generates the tick ISR.  Interrupts are disabled</span>
+<span class="cm">    here already. */</span>
+<span class="w">    </span><span class="n">vPortSetupTimerInterrupt</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Initialise the critical nesting count ready for the first task. */</span>
+<span class="w">    </span><span class="n">uxCriticalNesting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Start the first task. */</span>
+<span class="w">    </span><span class="n">prvPortStartFirstTask</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Should never get here as the tasks will now be executing!  Call the task</span>
+<span class="cm">    exit error function to prevent compiler warnings about a static function</span>
+<span class="cm">    not being called in the case that the application writer overrides this</span>
+<span class="cm">    functionality by defining configTASK_RETURN_ADDRESS.  Call</span>
+<span class="cm">    vTaskSwitchContext() so link time optimisation does not remove the</span>
+<span class="cm">    symbol. */</span>
+<span class="w">    </span><span class="n">vTaskSwitchContext</span><span class="p">();</span>
+<span class="w">    </span><span class="n">prvTaskExitError</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Should not get here! */</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">vPortEndScheduler</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Not implemented in ports where there is nothing to return to.</span>
+<span class="cm">    Artificially force an assert. */</span>
+<span class="w">    </span><span class="n">configASSERT</span><span class="p">(</span><span class="w"> </span><span class="n">uxCriticalNesting</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1000UL</span><span class="w"> </span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">vPortEnterCritical</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">portDISABLE_INTERRUPTS</span><span class="p">();</span>
+<span class="w">    </span><span class="n">uxCriticalNesting</span><span class="o">++</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* This is not the interrupt safe version of the enter critical function so</span>
+<span class="cm">    assert() if it is being called from an interrupt context.  Only API</span>
+<span class="cm">    functions that end in &quot;FromISR&quot; can be used in an interrupt.  Only assert if</span>
+<span class="cm">    the critical nesting count is 1 to protect against recursive calls if the</span>
+<span class="cm">    assert function also uses a critical section. */</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">uxCriticalNesting</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">configASSERT</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">portNVIC_INT_CTRL_REG</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">portVECTACTIVE_MASK</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">vPortExitCritical</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">configASSERT</span><span class="p">(</span><span class="w"> </span><span class="n">uxCriticalNesting</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="n">uxCriticalNesting</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">uxCriticalNesting</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">portENABLE_INTERRUPTS</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">xPortPendSVHandler</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* This is a naked function. */</span>
+
+<span class="w">    </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;   mrs r0, psp                         </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   isb                                 </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;                                       </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   ldr r3, pxCurrentTCBConst           </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Get the location of the current TCB. */</span>
+<span class="w">    </span><span class="s">&quot;   ldr r2, [r3]                        </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;                                       </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   stmdb r0!, {r4-r11}                 </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Save the remaining registers. */</span>
+<span class="w">    </span><span class="s">&quot;   str r0, [r2]                        </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Save the new top of stack into the first member of the TCB. */</span>
+<span class="w">    </span><span class="s">&quot;                                       </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   stmdb sp!, {r3, r14}                </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   mov r0, %0                          </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   msr basepri, r0                     </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   bl vTaskSwitchContext               </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   mov r0, #0                          </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   msr basepri, r0                     </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   ldmia sp!, {r3, r14}                </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;                                       </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Restore the context, including the critical nesting count. */</span>
+<span class="w">    </span><span class="s">&quot;   ldr r1, [r3]                        </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   ldr r0, [r1]                        </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* The first item in pxCurrentTCB is the task top of stack. */</span>
+<span class="w">    </span><span class="s">&quot;   ldmia r0!, {r4-r11}                 </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* Pop the registers. */</span>
+<span class="w">    </span><span class="s">&quot;   msr psp, r0                         </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   isb                                 </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   bx r14                              </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;                                       </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;   .align 4                            </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;pxCurrentTCBConst: .word pxCurrentTCB  </span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="o">::</span><span class="s">&quot;i&quot;</span><span class="p">(</span><span class="n">configMAX_SYSCALL_INTERRUPT_PRIORITY</span><span class="p">)</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">xPortSysTickHandler</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* The SysTick runs at the lowest interrupt priority, so when this interrupt</span>
+<span class="cm">    executes all interrupts must be unmasked.  There is therefore no need to</span>
+<span class="cm">    save and then restore the interrupt mask value as its value is already</span>
+<span class="cm">    known. */</span>
+<span class="w">    </span><span class="n">portDISABLE_INTERRUPTS</span><span class="p">();</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="cm">/* Increment the RTOS tick. */</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">xTaskIncrementTick</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">pdFALSE</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/* A context switch is required.  Context switching is performed in</span>
+<span class="cm">            the PendSV interrupt.  Pend the PendSV interrupt. */</span>
+<span class="w">            </span><span class="n">portNVIC_INT_CTRL_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portNVIC_PENDSVSET_BIT</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">portENABLE_INTERRUPTS</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="cp">#if( configUSE_TICKLESS_IDLE == 1 )</span>
+
+<span class="w">    </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">weak</span><span class="p">))</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">vPortSuppressTicksAndSleep</span><span class="p">(</span><span class="w"> </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xExpectedIdleTime</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ulReloadValue</span><span class="p">,</span><span class="w"> </span><span class="n">ulCompleteTickPeriods</span><span class="p">,</span><span class="w"> </span><span class="n">ulCompletedSysTickDecrements</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xModifiableIdleTime</span><span class="p">;</span>
+
+<span class="w">        </span><span class="cm">/* Make sure the SysTick reload value does not overflow the counter. */</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">xExpectedIdleTime</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xMaximumPossibleSuppressedTicks</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">xExpectedIdleTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xMaximumPossibleSuppressedTicks</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="cm">/* Stop the SysTick momentarily.  The time the SysTick is stopped for</span>
+<span class="cm">        is accounted for as best it can be, but using the tickless mode will</span>
+<span class="cm">        inevitably result in some tiny drift of the time maintained by the</span>
+<span class="cm">        kernel with respect to calendar time. */</span>
+<span class="w">        </span><span class="n">portNVIC_SYSTICK_CTRL_REG</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">portNVIC_SYSTICK_ENABLE_BIT</span><span class="p">;</span>
+
+<span class="w">        </span><span class="cm">/* Calculate the reload value required to wait xExpectedIdleTime</span>
+<span class="cm">        tick periods.  -1 is used because this code will execute part way</span>
+<span class="cm">        through one of the tick periods. */</span>
+<span class="w">        </span><span class="n">ulReloadValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_CURRENT_VALUE_REG</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ulTimerCountsForOneTick</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">xExpectedIdleTime</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1UL</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">ulReloadValue</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ulStoppedTimerCompensation</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ulReloadValue</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">ulStoppedTimerCompensation</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="cm">/* Enter a critical section but don&#39;t use the taskENTER_CRITICAL()</span>
+<span class="cm">        method as that will mask interrupts that should exit sleep mode. */</span>
+<span class="w">        </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;cpsid i&quot;</span><span class="w"> </span><span class="o">:::</span><span class="w"> </span><span class="s">&quot;memory&quot;</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;dsb&quot;</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;isb&quot;</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">        </span><span class="cm">/* If a context switch is pending or a task is waiting for the scheduler</span>
+<span class="cm">        to be unsuspended then abandon the low power entry. */</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">eTaskConfirmSleepModeStatus</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">eAbortSleep</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/* Restart from whatever is left in the count register to complete</span>
+<span class="cm">            this tick period. */</span>
+<span class="w">            </span><span class="n">portNVIC_SYSTICK_LOAD_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_CURRENT_VALUE_REG</span><span class="p">;</span>
+
+<span class="w">            </span><span class="cm">/* Restart SysTick. */</span>
+<span class="w">            </span><span class="n">portNVIC_SYSTICK_CTRL_REG</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_ENABLE_BIT</span><span class="p">;</span>
+
+<span class="w">            </span><span class="cm">/* Reset the reload register to the value required for normal tick</span>
+<span class="cm">            periods. */</span>
+<span class="w">            </span><span class="n">portNVIC_SYSTICK_LOAD_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ulTimerCountsForOneTick</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1UL</span><span class="p">;</span>
+
+<span class="w">            </span><span class="cm">/* Re-enable interrupts - see comments above the cpsid instruction()</span>
+<span class="cm">            above. */</span>
+<span class="w">            </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;cpsie i&quot;</span><span class="w"> </span><span class="o">:::</span><span class="w"> </span><span class="s">&quot;memory&quot;</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/* Set the new reload value. */</span>
+<span class="w">            </span><span class="n">portNVIC_SYSTICK_LOAD_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ulReloadValue</span><span class="p">;</span>
+
+<span class="w">            </span><span class="cm">/* Clear the SysTick count flag and set the count value back to</span>
+<span class="cm">            zero. */</span>
+<span class="w">            </span><span class="n">portNVIC_SYSTICK_CURRENT_VALUE_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0UL</span><span class="p">;</span>
+
+<span class="w">            </span><span class="cm">/* Restart SysTick. */</span>
+<span class="w">            </span><span class="n">portNVIC_SYSTICK_CTRL_REG</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_ENABLE_BIT</span><span class="p">;</span>
+
+<span class="w">            </span><span class="cm">/* Sleep until something happens.  configPRE_SLEEP_PROCESSING() can</span>
+<span class="cm">            set its parameter to 0 to indicate that its implementation contains</span>
+<span class="cm">            its own wait for interrupt or wait for event instruction, and so wfi</span>
+<span class="cm">            should not be executed again.  However, the original expected idle</span>
+<span class="cm">            time variable must remain unmodified, so a copy is taken. */</span>
+<span class="w">            </span><span class="n">xModifiableIdleTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xExpectedIdleTime</span><span class="p">;</span>
+<span class="w">            </span><span class="n">configPRE_SLEEP_PROCESSING</span><span class="p">(</span><span class="w"> </span><span class="n">xModifiableIdleTime</span><span class="w"> </span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">xModifiableIdleTime</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;dsb&quot;</span><span class="w"> </span><span class="o">:::</span><span class="w"> </span><span class="s">&quot;memory&quot;</span><span class="w"> </span><span class="p">);</span>
+<span class="w">                </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;wfi&quot;</span><span class="w"> </span><span class="p">);</span>
+<span class="w">                </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;isb&quot;</span><span class="w"> </span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">configPOST_SLEEP_PROCESSING</span><span class="p">(</span><span class="w"> </span><span class="n">xExpectedIdleTime</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">            </span><span class="cm">/* Re-enable interrupts to allow the interrupt that brought the MCU</span>
+<span class="cm">            out of sleep mode to execute immediately.  see comments above</span>
+<span class="cm">            __disable_interrupt() call above. */</span>
+<span class="w">            </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;cpsie i&quot;</span><span class="w"> </span><span class="o">:::</span><span class="w"> </span><span class="s">&quot;memory&quot;</span><span class="w"> </span><span class="p">);</span>
+<span class="w">            </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;dsb&quot;</span><span class="w"> </span><span class="p">);</span>
+<span class="w">            </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;isb&quot;</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">            </span><span class="cm">/* Disable interrupts again because the clock is about to be stopped</span>
+<span class="cm">            and interrupts that execute while the clock is stopped will increase</span>
+<span class="cm">            any slippage between the time maintained by the RTOS and calendar</span>
+<span class="cm">            time. */</span>
+<span class="w">            </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;cpsid i&quot;</span><span class="w"> </span><span class="o">:::</span><span class="w"> </span><span class="s">&quot;memory&quot;</span><span class="w"> </span><span class="p">);</span>
+<span class="w">            </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;dsb&quot;</span><span class="w"> </span><span class="p">);</span>
+<span class="w">            </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;isb&quot;</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">            </span><span class="cm">/* Disable the SysTick clock without reading the</span>
+<span class="cm">            portNVIC_SYSTICK_CTRL_REG register to ensure the</span>
+<span class="cm">            portNVIC_SYSTICK_COUNT_FLAG_BIT is not cleared if it is set.  Again,</span>
+<span class="cm">            the time the SysTick is stopped for is accounted for as best it can</span>
+<span class="cm">            be, but using the tickless mode will inevitably result in some tiny</span>
+<span class="cm">            drift of the time maintained by the kernel with respect to calendar</span>
+<span class="cm">            time*/</span>
+<span class="w">            </span><span class="n">portNVIC_SYSTICK_CTRL_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_CLK_BIT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_INT_BIT</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">            </span><span class="cm">/* Determine if the SysTick clock has already counted to zero and</span>
+<span class="cm">            been set back to the current reload value (the reload back being</span>
+<span class="cm">            correct for the entire expected idle time) or if the SysTick is yet</span>
+<span class="cm">            to count to zero (in which case an interrupt other than the SysTick</span>
+<span class="cm">            must have brought the system out of sleep mode). */</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_CTRL_REG</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_COUNT_FLAG_BIT</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ulCalculatedLoadValue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="cm">/* The tick interrupt is already pending, and the SysTick count</span>
+<span class="cm">                reloaded with ulReloadValue.  Reset the</span>
+<span class="cm">                portNVIC_SYSTICK_LOAD_REG with whatever remains of this tick</span>
+<span class="cm">                period. */</span>
+<span class="w">                </span><span class="n">ulCalculatedLoadValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ulTimerCountsForOneTick</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1UL</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ulReloadValue</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_CURRENT_VALUE_REG</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">                </span><span class="cm">/* Don&#39;t allow a tiny value, or values that have somehow</span>
+<span class="cm">                underflowed because the post sleep hook did something</span>
+<span class="cm">                that took too long. */</span>
+<span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ulCalculatedLoadValue</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ulStoppedTimerCompensation</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ulCalculatedLoadValue</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ulTimerCountsForOneTick</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">ulCalculatedLoadValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ulTimerCountsForOneTick</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1UL</span><span class="w"> </span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="n">portNVIC_SYSTICK_LOAD_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ulCalculatedLoadValue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="cm">/* As the pending tick will be processed as soon as this</span>
+<span class="cm">                function exits, the tick value maintained by the tick is stepped</span>
+<span class="cm">                forward by one less than the time spent waiting. */</span>
+<span class="w">                </span><span class="n">ulCompleteTickPeriods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xExpectedIdleTime</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1UL</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="cm">/* Something other than the tick interrupt ended the sleep.</span>
+<span class="cm">                Work out how long the sleep lasted rounded to complete tick</span>
+<span class="cm">                periods (not the ulReload value which accounted for part</span>
+<span class="cm">                ticks). */</span>
+<span class="w">                </span><span class="n">ulCompletedSysTickDecrements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">xExpectedIdleTime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ulTimerCountsForOneTick</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_CURRENT_VALUE_REG</span><span class="p">;</span>
+
+<span class="w">                </span><span class="cm">/* How many complete tick periods passed while the processor</span>
+<span class="cm">                was waiting? */</span>
+<span class="w">                </span><span class="n">ulCompleteTickPeriods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ulCompletedSysTickDecrements</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">ulTimerCountsForOneTick</span><span class="p">;</span>
+
+<span class="w">                </span><span class="cm">/* The reload value is set to whatever fraction of a single tick</span>
+<span class="cm">                period remains. */</span>
+<span class="w">                </span><span class="n">portNVIC_SYSTICK_LOAD_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ulCompleteTickPeriods</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1UL</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ulTimerCountsForOneTick</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ulCompletedSysTickDecrements</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="cm">/* Restart SysTick so it runs from portNVIC_SYSTICK_LOAD_REG</span>
+<span class="cm">            again, then set portNVIC_SYSTICK_LOAD_REG back to its standard</span>
+<span class="cm">            value. */</span>
+<span class="w">            </span><span class="n">portNVIC_SYSTICK_CURRENT_VALUE_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0UL</span><span class="p">;</span>
+<span class="w">            </span><span class="n">portNVIC_SYSTICK_CTRL_REG</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_ENABLE_BIT</span><span class="p">;</span>
+<span class="w">            </span><span class="n">vTaskStepTick</span><span class="p">(</span><span class="w"> </span><span class="n">ulCompleteTickPeriods</span><span class="w"> </span><span class="p">);</span>
+<span class="w">            </span><span class="n">portNVIC_SYSTICK_LOAD_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ulTimerCountsForOneTick</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1UL</span><span class="p">;</span>
+
+<span class="w">            </span><span class="cm">/* Exit with interrupts enabled. */</span>
+<span class="w">            </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;cpsie i&quot;</span><span class="w"> </span><span class="o">:::</span><span class="w"> </span><span class="s">&quot;memory&quot;</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="cp">#endif </span><span class="cm">/* configUSE_TICKLESS_IDLE */</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Setup the systick timer to generate the tick interrupts at the required</span>
+<span class="cm"> * frequency.</span>
+<span class="cm"> */</span>
+<span class="n">__attribute__</span><span class="p">((</span><span class="w"> </span><span class="n">weak</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">vPortSetupTimerInterrupt</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Calculate the constants required to configure the tick interrupt. */</span>
+<span class="w">    </span><span class="cp">#if( configUSE_TICKLESS_IDLE == 1 )</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ulTimerCountsForOneTick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">configSYSTICK_CLOCK_HZ</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">configTICK_RATE_HZ</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="n">xMaximumPossibleSuppressedTicks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portMAX_24_BIT_NUMBER</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">ulTimerCountsForOneTick</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ulStoppedTimerCompensation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portMISSED_COUNTS_FACTOR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">configCPU_CLOCK_HZ</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">configSYSTICK_CLOCK_HZ</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="cp">#endif </span><span class="cm">/* configUSE_TICKLESS_IDLE */</span>
+
+<span class="w">    </span><span class="cm">/* Stop and clear the SysTick. */</span>
+<span class="w">    </span><span class="n">portNVIC_SYSTICK_CTRL_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0UL</span><span class="p">;</span>
+<span class="w">    </span><span class="n">portNVIC_SYSTICK_CURRENT_VALUE_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0UL</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Configure SysTick to interrupt at the requested rate. */</span>
+<span class="w">    </span><span class="n">portNVIC_SYSTICK_LOAD_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">configSYSTICK_CLOCK_HZ</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">configTICK_RATE_HZ</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1UL</span><span class="p">;</span>
+<span class="w">    </span><span class="n">portNVIC_SYSTICK_CTRL_REG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_CLK_BIT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_INT_BIT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">portNVIC_SYSTICK_ENABLE_BIT</span><span class="w"> </span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cm">/*-----------------------------------------------------------*/</span>
+
+<span class="cp">#if( configASSERT_DEFINED == 1 )</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">vPortValidateInterruptPriority</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ulCurrentInterrupt</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ucCurrentPriority</span><span class="p">;</span>
+
+<span class="w">        </span><span class="cm">/* Obtain the number of the currently executing interrupt. */</span>
+<span class="w">        </span><span class="kr">__asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;mrs %0, ipsr&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;=r&quot;</span><span class="p">(</span><span class="w"> </span><span class="n">ulCurrentInterrupt</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;memory&quot;</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">        </span><span class="cm">/* Is the interrupt number a user defined interrupt? */</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">ulCurrentInterrupt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">portFIRST_USER_INTERRUPT_NUMBER</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/* Look up the interrupt&#39;s priority. */</span>
+<span class="w">            </span><span class="n">ucCurrentPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcInterruptPriorityRegisters</span><span class="p">[</span><span class="w"> </span><span class="n">ulCurrentInterrupt</span><span class="w"> </span><span class="p">];</span>
+
+<span class="w">            </span><span class="cm">/* The following assertion will fail if a service routine (ISR) for</span>
+<span class="cm">            an interrupt that has been assigned a priority above</span>
+<span class="cm">            configMAX_SYSCALL_INTERRUPT_PRIORITY calls an ISR safe FreeRTOS API</span>
+<span class="cm">            function.  ISR safe FreeRTOS API functions must *only* be called</span>
+<span class="cm">            from interrupts that have been assigned a priority at or below</span>
+<span class="cm">            configMAX_SYSCALL_INTERRUPT_PRIORITY.</span>
+
+<span class="cm">            Numerically low interrupt priority numbers represent logically high</span>
+<span class="cm">            interrupt priorities, therefore the priority of the interrupt must</span>
+<span class="cm">            be set to a value equal to or numerically *higher* than</span>
+<span class="cm">            configMAX_SYSCALL_INTERRUPT_PRIORITY.</span>
+
+<span class="cm">            Interrupts that use the FreeRTOS API must not be left at their</span>
+<span class="cm">            default priority of zero as that is the highest possible priority,</span>
+<span class="cm">            which is guaranteed to be above configMAX_SYSCALL_INTERRUPT_PRIORITY,</span>
+<span class="cm">            and therefore also guaranteed to be invalid.</span>
+
+<span class="cm">            FreeRTOS maintains separate thread and ISR API functions to ensure</span>
+<span class="cm">            interrupt entry is as fast and simple as possible.</span>
+
+<span class="cm">            The following links provide detailed information:</span>
+<span class="cm">            http://www.freertos.org/RTOS-Cortex-M3-M4.html</span>
+<span class="cm">            http://www.freertos.org/FAQHelp.html */</span>
+<span class="w">            </span><span class="n">configASSERT</span><span class="p">(</span><span class="w"> </span><span class="n">ucCurrentPriority</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">ucMaxSysCallPriority</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="cm">/* Priority grouping:  The interrupt controller (NVIC) allows the bits</span>
+<span class="cm">        that define each interrupt&#39;s priority to be split between bits that</span>
+<span class="cm">        define the interrupt&#39;s pre-emption priority bits and bits that define</span>
+<span class="cm">        the interrupt&#39;s sub-priority.  For simplicity all bits must be defined</span>
+<span class="cm">        to be pre-emption priority bits.  The following assertion will fail if</span>
+<span class="cm">        this is not the case (if some bits represent a sub-priority).</span>
+
+<span class="cm">        If the application only uses CMSIS libraries for interrupt</span>
+<span class="cm">        configuration then the correct setting can be achieved on all Cortex-M</span>
+<span class="cm">        devices by calling NVIC_SetPriorityGrouping( 0 ); before starting the</span>
+<span class="cm">        scheduler.  Note however that some vendor specific peripheral libraries</span>
+<span class="cm">        assume a non-zero priority group setting, in which cases using a value</span>
+<span class="cm">        of zero will result in unpredictable behaviour. */</span>
+<span class="w">        </span><span class="n">configASSERT</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">portAIRCR_REG</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">portPRIORITY_GROUP_MASK</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ulMaxPRIGROUPValue</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="cp">#endif </span><span class="cm">/* configASSERT_DEFINED */</span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2023 RoboticsBrno
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/RoboticsBrno" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/RobotikaBrno" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/robotarna" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@robotikabrno-robotarnaasps2392" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/_robotarna_" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+        <script src="../../assets/js/open_in_new_tab.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

@@ -1,0 +1,1977 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the RBCX robot controller board designed by the RoboticsBrno team. It is based on the STM32F446RE microcontroller and ESP32 microcontroller. Features: 4 motors with encoders, 4 servos, buttons with the gamepad, LEDs, ultra-sonic sensor, ...">
+      
+      
+        <meta name="author" content="RoboticsBrno">
+      
+      
+        <link rel="canonical" href="https://rbcx.robotikabrno.cz/apiStm/class_member_variables/">
+      
+      
+        <link rel="prev" href="../class_member_functions/">
+      
+      
+        <link rel="next" href="../class_member_typedefs/">
+      
+      <link rel="icon" href="../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>Class Member Variables - RB3204-RBCX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#class-member-variables" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RB3204-RBCX" class="md-header__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RB3204-RBCX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Class Member Variables
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../SW-development/" class="md-tabs__link">
+      Software development
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/" class="md-tabs__link md-tabs__link--active">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RB3204-RBCX" class="md-nav__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    RB3204-RBCX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SW-development/" class="md-nav__link">
+        Software development
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../api/">API Reference</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">API STM Coprocessor</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          API STM Coprocessor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Class Member Variables
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Class Member Variables
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    a
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    b
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    c
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    d
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    e
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    f
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#g" class="md-nav__link">
+    g
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    i
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#m" class="md-nav__link">
+    m
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p" class="md-nav__link">
+    p
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    s
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t" class="md-nav__link">
+    t
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u" class="md-nav__link">
+    u
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#w" class="md-nav__link">
+    w
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x" class="md-nav__link">
+    x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#y" class="md-nav__link">
+    y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z" class="md-nav__link">
+    z
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../apiEsp32/">API ESP32 library</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          API ESP32 library
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    a
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    b
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    c
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    d
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    e
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    f
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#g" class="md-nav__link">
+    g
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    i
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#m" class="md-nav__link">
+    m
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p" class="md-nav__link">
+    p
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    s
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t" class="md-nav__link">
+    t
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#u" class="md-nav__link">
+    u
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#w" class="md-nav__link">
+    w
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x" class="md-nav__link">
+    x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#y" class="md-nav__link">
+    y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z" class="md-nav__link">
+    z
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="class-member-variables">Class Member Variables</h1>
+<h2 id="a">a</h2>
+<ul>
+<li><strong>accel</strong> (<a href="../structMpuMotion32/"><strong>MpuMotion32</strong></a>, <a href="../structMpuMotion6/"><strong>MpuMotion6</strong></a>)</li>
+</ul>
+<h2 id="b">b</h2>
+<ul>
+<li><strong>batteryCoef</strong> (<a href="../structCalibrationData/"><strong>CalibrationData</strong></a>)</li>
+<li><strong>batteryMidCoef</strong> (<a href="../structCalibrationData/"><strong>CalibrationData</strong></a>)</li>
+<li><strong>buffer</strong> (<a href="../structMPU6050__t/"><strong>MPU6050_t</strong></a>, <a href="../structmpu__t/"><strong>mpu_t</strong></a>)</li>
+<li><strong>bDescriptorSubType</strong> (<a href="../structusb__cdc__acm__desc/"><strong>usb_cdc_acm_desc</strong></a>, <a href="../structusb__cdc__call__mgmt__desc/"><strong>usb_cdc_call_mgmt_desc</strong></a>, <a href="../structusb__cdc__country__desc/"><strong>usb_cdc_country_desc</strong></a>, <a href="../structusb__cdc__header__desc/"><strong>usb_cdc_header_desc</strong></a>, <a href="../structusb__cdc__union__desc/"><strong>usb_cdc_union_desc</strong></a>)</li>
+<li><strong>bDescriptorType</strong> (<a href="../structusb__cdc__acm__desc/"><strong>usb_cdc_acm_desc</strong></a>, <a href="../structusb__cdc__call__mgmt__desc/"><strong>usb_cdc_call_mgmt_desc</strong></a>, <a href="../structusb__cdc__country__desc/"><strong>usb_cdc_country_desc</strong></a>, <a href="../structusb__cdc__header__desc/"><strong>usb_cdc_header_desc</strong></a>, <a href="../structusb__cdc__union__desc/"><strong>usb_cdc_union_desc</strong></a>, <a href="../structusb__config__descriptor/"><strong>usb_config_descriptor</strong></a>, <a href="../structusb__debug__descriptor/"><strong>usb_debug_descriptor</strong></a>, <a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>, <a href="../structusb__endpoint__descriptor/"><strong>usb_endpoint_descriptor</strong></a>, <a href="../structusb__header__descriptor/"><strong>usb_header_descriptor</strong></a>, <a href="../structusb__iad__descriptor/"><strong>usb_iad_descriptor</strong></a>, <a href="../structusb__interface__descriptor/"><strong>usb_interface_descriptor</strong></a>, <a href="../structusb__qualifier__descriptor/"><strong>usb_qualifier_descriptor</strong></a>, <a href="../structusb__string__descriptor/"><strong>usb_string_descriptor</strong></a>)</li>
+<li><strong>bFunctionLength</strong> (<a href="../structusb__cdc__acm__desc/"><strong>usb_cdc_acm_desc</strong></a>, <a href="../structusb__cdc__call__mgmt__desc/"><strong>usb_cdc_call_mgmt_desc</strong></a>, <a href="../structusb__cdc__country__desc/"><strong>usb_cdc_country_desc</strong></a>, <a href="../structusb__cdc__header__desc/"><strong>usb_cdc_header_desc</strong></a>, <a href="../structusb__cdc__union__desc/"><strong>usb_cdc_union_desc</strong></a>)</li>
+<li><strong>bmCapabilities</strong> (<a href="../structusb__cdc__acm__desc/"><strong>usb_cdc_acm_desc</strong></a>, <a href="../structusb__cdc__call__mgmt__desc/"><strong>usb_cdc_call_mgmt_desc</strong></a>)</li>
+<li><strong>bDataInterface</strong> (<a href="../structusb__cdc__call__mgmt__desc/"><strong>usb_cdc_call_mgmt_desc</strong></a>)</li>
+<li><strong>bcdCDC</strong> (<a href="../structusb__cdc__header__desc/"><strong>usb_cdc_header_desc</strong></a>)</li>
+<li><strong>bCharFormat</strong> (<a href="../structusb__cdc__line__coding/"><strong>usb_cdc_line_coding</strong></a>)</li>
+<li><strong>bDataBits</strong> (<a href="../structusb__cdc__line__coding/"><strong>usb_cdc_line_coding</strong></a>)</li>
+<li><strong>bParityType</strong> (<a href="../structusb__cdc__line__coding/"><strong>usb_cdc_line_coding</strong></a>)</li>
+<li><strong>bNotificationType</strong> (<a href="../structusb__cdc__notification/"><strong>usb_cdc_notification</strong></a>)</li>
+<li><strong>bmRequestType</strong> (<a href="../structusb__cdc__notification/"><strong>usb_cdc_notification</strong></a>, <a href="../structusbd__ctlreq/"><strong>usbd_ctlreq</strong></a>)</li>
+<li><strong>bMasterInterface0</strong> (<a href="../structusb__cdc__union__desc/"><strong>usb_cdc_union_desc</strong></a>)</li>
+<li><strong>bSlaveInterface0</strong> (<a href="../structusb__cdc__union__desc/"><strong>usb_cdc_union_desc</strong></a>)</li>
+<li><strong>bConfigurationValue</strong> (<a href="../structusb__config__descriptor/"><strong>usb_config_descriptor</strong></a>)</li>
+<li><strong>bLength</strong> (<a href="../structusb__config__descriptor/"><strong>usb_config_descriptor</strong></a>, <a href="../structusb__debug__descriptor/"><strong>usb_debug_descriptor</strong></a>, <a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>, <a href="../structusb__endpoint__descriptor/"><strong>usb_endpoint_descriptor</strong></a>, <a href="../structusb__header__descriptor/"><strong>usb_header_descriptor</strong></a>, <a href="../structusb__iad__descriptor/"><strong>usb_iad_descriptor</strong></a>, <a href="../structusb__interface__descriptor/"><strong>usb_interface_descriptor</strong></a>, <a href="../structusb__qualifier__descriptor/"><strong>usb_qualifier_descriptor</strong></a>, <a href="../structusb__string__descriptor/"><strong>usb_string_descriptor</strong></a>)</li>
+<li><strong>bMaxPower</strong> (<a href="../structusb__config__descriptor/"><strong>usb_config_descriptor</strong></a>)</li>
+<li><strong>bNumInterfaces</strong> (<a href="../structusb__config__descriptor/"><strong>usb_config_descriptor</strong></a>)</li>
+<li><strong>bmAttributes</strong> (<a href="../structusb__config__descriptor/"><strong>usb_config_descriptor</strong></a>, <a href="../structusb__endpoint__descriptor/"><strong>usb_endpoint_descriptor</strong></a>)</li>
+<li><strong>bDebugInEndpoint</strong> (<a href="../structusb__debug__descriptor/"><strong>usb_debug_descriptor</strong></a>)</li>
+<li><strong>bDebugOutEndpoint</strong> (<a href="../structusb__debug__descriptor/"><strong>usb_debug_descriptor</strong></a>)</li>
+<li><strong>bDeviceClass</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>, <a href="../structusb__qualifier__descriptor/"><strong>usb_qualifier_descriptor</strong></a>)</li>
+<li><strong>bDeviceProtocol</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>, <a href="../structusb__qualifier__descriptor/"><strong>usb_qualifier_descriptor</strong></a>)</li>
+<li><strong>bDeviceSubClass</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>, <a href="../structusb__qualifier__descriptor/"><strong>usb_qualifier_descriptor</strong></a>)</li>
+<li><strong>bMaxPacketSize0</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>, <a href="../structusb__qualifier__descriptor/"><strong>usb_qualifier_descriptor</strong></a>)</li>
+<li><strong>bNumConfigurations</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>, <a href="../structusb__qualifier__descriptor/"><strong>usb_qualifier_descriptor</strong></a>)</li>
+<li><strong>bcdDevice</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>)</li>
+<li><strong>bcdUSB</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>, <a href="../structusb__qualifier__descriptor/"><strong>usb_qualifier_descriptor</strong></a>)</li>
+<li><strong>bEndpointAddress</strong> (<a href="../structusb__endpoint__descriptor/"><strong>usb_endpoint_descriptor</strong></a>)</li>
+<li><strong>bInterval</strong> (<a href="../structusb__endpoint__descriptor/"><strong>usb_endpoint_descriptor</strong></a>)</li>
+<li><strong>bFirstInterface</strong> (<a href="../structusb__iad__descriptor/"><strong>usb_iad_descriptor</strong></a>)</li>
+<li><strong>bFunctionClass</strong> (<a href="../structusb__iad__descriptor/"><strong>usb_iad_descriptor</strong></a>)</li>
+<li><strong>bFunctionProtocol</strong> (<a href="../structusb__iad__descriptor/"><strong>usb_iad_descriptor</strong></a>)</li>
+<li><strong>bFunctionSubClass</strong> (<a href="../structusb__iad__descriptor/"><strong>usb_iad_descriptor</strong></a>)</li>
+<li><strong>bInterfaceCount</strong> (<a href="../structusb__iad__descriptor/"><strong>usb_iad_descriptor</strong></a>)</li>
+<li><strong>bAlternateSetting</strong> (<a href="../structusb__interface__descriptor/"><strong>usb_interface_descriptor</strong></a>)</li>
+<li><strong>bInterfaceClass</strong> (<a href="../structusb__interface__descriptor/"><strong>usb_interface_descriptor</strong></a>)</li>
+<li><strong>bInterfaceNumber</strong> (<a href="../structusb__interface__descriptor/"><strong>usb_interface_descriptor</strong></a>)</li>
+<li><strong>bInterfaceProtocol</strong> (<a href="../structusb__interface__descriptor/"><strong>usb_interface_descriptor</strong></a>)</li>
+<li><strong>bInterfaceSubClass</strong> (<a href="../structusb__interface__descriptor/"><strong>usb_interface_descriptor</strong></a>)</li>
+<li><strong>bNumEndpoints</strong> (<a href="../structusb__interface__descriptor/"><strong>usb_interface_descriptor</strong></a>)</li>
+<li><strong>bReserved</strong> (<a href="../structusb__qualifier__descriptor/"><strong>usb_qualifier_descriptor</strong></a>)</li>
+<li><strong>bRequest</strong> (<a href="../structusbd__ctlreq/"><strong>usbd_ctlreq</strong></a>)</li>
+</ul>
+<h2 id="c">c</h2>
+<ul>
+<li><strong>CurrentX</strong> (<a href="../structOLED__t/"><strong>OLED_t</strong></a>)</li>
+<li><strong>CurrentY</strong> (<a href="../structOLED__t/"><strong>OLED_t</strong></a>)</li>
+<li><strong>cRxLock</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>)</li>
+<li><strong>cTxLock</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>)</li>
+<li><strong>complete_callback</strong> (<a href="../struct__usbd__device/"><strong>_usbd_device</strong></a>)</li>
+<li><strong>config_callback</strong> (<a href="../struct__usbd__device/"><strong>_usbd_device</strong></a>)</li>
+<li><strong>control_callback</strong> (<a href="../struct__usbd__device/"><strong>_usbd_device</strong></a>)</li>
+<li><strong>config</strong> (<a href="../structcdc__config/"><strong>cdc_config</strong></a>)</li>
+<li><strong>connect</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+<li><strong>control_state</strong> (<a href="../structusbd__status/"><strong>usbd_status</strong></a>)</li>
+</ul>
+<h2 id="d">d</h2>
+<ul>
+<li><strong>data</strong> (<a href="../structFontDef/"><strong>FontDef</strong></a>, <a href="../structusbd__ctlreq/"><strong>usbd_ctlreq</strong></a>)</li>
+<li><strong>devAddr</strong> (<a href="../structMPU6050__t/"><strong>MPU6050_t</strong></a>, <a href="../structmpu__t/"><strong>mpu_t</strong></a>)</li>
+<li><strong>DisplayOn</strong> (<a href="../structOLED__t/"><strong>OLED_t</strong></a>)</li>
+<li><strong>descriptor_callback</strong> (<a href="../struct__usbd__device/"><strong>_usbd_device</strong></a>)</li>
+<li><strong>driver</strong> (<a href="../struct__usbd__device/"><strong>_usbd_device</strong></a>)</li>
+<li><strong>dwDTERate</strong> (<a href="../structusb__cdc__line__coding/"><strong>usb_cdc_line_coding</strong></a>)</li>
+<li><strong>Data</strong> (<a href="../structusb__cdc__notification/"><strong>usb_cdc_notification</strong></a>)</li>
+<li><strong>data_buf</strong> (<a href="../structusbd__status/"><strong>usbd_status</strong></a>)</li>
+<li><strong>data_count</strong> (<a href="../structusbd__status/"><strong>usbd_status</strong></a>)</li>
+<li><strong>data_maxsize</strong> (<a href="../structusbd__status/"><strong>usbd_status</strong></a>)</li>
+<li><strong>data_ptr</strong> (<a href="../structusbd__status/"><strong>usbd_status</strong></a>)</li>
+<li><strong>device_cfg</strong> (<a href="../structusbd__status/"><strong>usbd_status</strong></a>)</li>
+<li><strong>device_state</strong> (<a href="../structusbd__status/"><strong>usbd_status</strong></a>)</li>
+</ul>
+<h2 id="e">e</h2>
+<ul>
+<li><strong>endpoint</strong> (<a href="../struct__usbd__device/"><strong>_usbd_device</strong></a>)</li>
+<li><strong>events</strong> (<a href="../struct__usbd__device/"><strong>_usbd_device</strong></a>)</li>
+<li><strong>enable</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+<li><strong>ep_config</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+<li><strong>ep_deconfig</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+<li><strong>ep_isstalled</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+<li><strong>ep_read</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+<li><strong>ep_setstall</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+<li><strong>ep_write</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+<li><strong>ep0size</strong> (<a href="../structusbd__status/"><strong>usbd_status</strong></a>)</li>
+<li><strong>eCurrentState</strong> (<a href="../structxTASK__STATUS/"><strong>xTASK_STATUS</strong></a>)</li>
+</ul>
+<h2 id="f">f</h2>
+<ul>
+<li><strong>FontHeight</strong> (<a href="../structFontDef/"><strong>FontDef</strong></a>)</li>
+<li><strong>FontWidth</strong> (<a href="../structFontDef/"><strong>FontDef</strong></a>)</li>
+<li><strong>frame_no</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+</ul>
+<h2 id="g">g</h2>
+<ul>
+<li><strong>gyro</strong> (<a href="../structMpuMotion32/"><strong>MpuMotion32</strong></a>, <a href="../structMpuMotion6/"><strong>MpuMotion6</strong></a>)</li>
+<li><strong>get_serialno_desc</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+<li><strong>getinfo</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+</ul>
+<h2 id="i">i</h2>
+<ul>
+<li><strong>internalVrefMv</strong> (<a href="../structCalibrationData/"><strong>CalibrationData</strong></a>)</li>
+<li><strong>Inverted</strong> (<a href="../structOLED__t/"><strong>OLED_t</strong></a>)</li>
+<li><strong>iCountryCodeRelDate</strong> (<a href="../structusb__cdc__country__desc/"><strong>usb_cdc_country_desc</strong></a>)</li>
+<li><strong>iConfiguration</strong> (<a href="../structusb__config__descriptor/"><strong>usb_config_descriptor</strong></a>)</li>
+<li><strong>iManufacturer</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>)</li>
+<li><strong>iProduct</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>)</li>
+<li><strong>iSerialNumber</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>)</li>
+<li><strong>idProduct</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>)</li>
+<li><strong>idVendor</strong> (<a href="../structusb__device__descriptor/"><strong>usb_device_descriptor</strong></a>)</li>
+<li><strong>iFunction</strong> (<a href="../structusb__iad__descriptor/"><strong>usb_iad_descriptor</strong></a>)</li>
+<li><strong>iInterface</strong> (<a href="../structusb__interface__descriptor/"><strong>usb_interface_descriptor</strong></a>)</li>
+</ul>
+<h2 id="m">m</h2>
+<ul>
+<li><strong>m_fifo</strong> (<a href="../classByteFifo/"><strong>ByteFifo</strong></a>)</li>
+<li><strong>m_head</strong> (<a href="../classByteFifo/"><strong>ByteFifo</strong></a>)</li>
+<li><strong>m_tail</strong> (<a href="../classByteFifo/"><strong>ByteFifo</strong></a>)</li>
+<li><strong>magic</strong> (<a href="../structCalibrationData/"><strong>CalibrationData</strong></a>)</li>
+<li><strong>m_checkBreakTimer</strong> (<a href="../classEsp32Manager/"><strong>Esp32Manager</strong></a>)</li>
+<li><strong>m_enPinHolders</strong> (<a href="../classEsp32Manager/"><strong>Esp32Manager</strong></a>)</li>
+<li><strong>m_inBootloader</strong> (<a href="../classEsp32Manager/"><strong>Esp32Manager</strong></a>)</li>
+<li><strong>m_lastDtr</strong> (<a href="../classEsp32Manager/"><strong>Esp32Manager</strong></a>)</li>
+<li><strong>m_lastRts</strong> (<a href="../classEsp32Manager/"><strong>Esp32Manager</strong></a>)</li>
+<li><strong>m_previousEnEdge</strong> (<a href="../classEsp32Manager/"><strong>Esp32Manager</strong></a>)</li>
+<li><strong>m_queuedReset</strong> (<a href="../classEsp32Manager/"><strong>Esp32Manager</strong></a>)</li>
+<li><strong>m_unstrapTimer</strong> (<a href="../classEsp32Manager/"><strong>Esp32Manager</strong></a>)</li>
+<li><strong>m_watchdogInhibit</strong> (<a href="../classEsp32Manager/"><strong>Esp32Manager</strong></a>)</li>
+<li><strong>m_watchdogTimer</strong> (<a href="../classEsp32Manager/"><strong>Esp32Manager</strong></a>)</li>
+<li><strong>m_buffer</strong> (<a href="../classMessageBufferWrapper/"><strong>MessageBufferWrapper</strong></a>, <a href="../classMutexWrapper/"><strong>MutexWrapper</strong></a>, <a href="../classQueueWrapper/"><strong>QueueWrapper</strong></a>, <a href="../classStreamBufferWrapper/"><strong>StreamBufferWrapper</strong></a>)</li>
+<li><strong>m_bufferStruct</strong> (<a href="../classMessageBufferWrapper/"><strong>MessageBufferWrapper</strong></a>, <a href="../classStreamBufferWrapper/"><strong>StreamBufferWrapper</strong></a>)</li>
+<li><strong>m_handle</strong> (<a href="../classMessageBufferWrapper/"><strong>MessageBufferWrapper</strong></a>, <a href="../classMutexWrapper/"><strong>MutexWrapper</strong></a>, <a href="../classQueueWrapper/"><strong>QueueWrapper</strong></a>, <a href="../classStreamBufferWrapper/"><strong>StreamBufferWrapper</strong></a>, <a href="../classTaskWrapper/"><strong>TaskWrapper</strong></a>)</li>
+<li><strong>m_actualPosition</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_actualPower</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_actualTicksPerLoop</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_dither</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_lastEncTicks</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_maxAccel</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_mode</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_posEpsilon</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_positionReg</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_targetPosition</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_targetVelocity</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_velEpsilon</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_velocityReg</strong> (<a href="../classMotor/"><strong>Motor</strong></a>)</li>
+<li><strong>m_queueStruct</strong> (<a href="../classQueueWrapper/"><strong>QueueWrapper</strong></a>)</li>
+<li><strong>m_d</strong> (<a href="../structRegulator/"><strong>Regulator</strong></a>)</li>
+<li><strong>m_de</strong> (<a href="../structRegulator/"><strong>Regulator</strong></a>)</li>
+<li><strong>m_e</strong> (<a href="../structRegulator/"><strong>Regulator</strong></a>)</li>
+<li><strong>m_i</strong> (<a href="../structRegulator/"><strong>Regulator</strong></a>)</li>
+<li><strong>m_integrator</strong> (<a href="../structRegulator/"><strong>Regulator</strong></a>)</li>
+<li><strong>m_le</strong> (<a href="../structRegulator/"><strong>Regulator</strong></a>)</li>
+<li><strong>m_max_output</strong> (<a href="../structRegulator/"><strong>Regulator</strong></a>)</li>
+<li><strong>m_output</strong> (<a href="../structRegulator/"><strong>Regulator</strong></a>)</li>
+<li><strong>m_p</strong> (<a href="../structRegulator/"><strong>Regulator</strong></a>)</li>
+<li><strong>m_stop</strong> (<a href="../structRegulator/"><strong>Regulator</strong></a>)</li>
+<li><strong>m_func</strong> (<a href="../classTaskWrapper/"><strong>TaskWrapper</strong></a>)</li>
+<li><strong>m_stack</strong> (<a href="../classTaskWrapper/"><strong>TaskWrapper</strong></a>)</li>
+<li><strong>m_taskStruct</strong> (<a href="../classTaskWrapper/"><strong>TaskWrapper</strong></a>)</li>
+<li><strong>MaxDelay</strong> (<a href="../classTickTimer/"><strong>TickTimer</strong></a>)</li>
+<li><strong>m_timeoutAt</strong> (<a href="../classTickTimer/"><strong>TickTimer</strong></a>)</li>
+<li><strong>m_state</strong> (<a href="../classXorShift/"><strong>XorShift</strong></a>)</li>
+</ul>
+<h2 id="p">p</h2>
+<ul>
+<li><strong>pxNextFreeBlock</strong> (<a href="../structA__BLOCK__LINK/"><strong>A_BLOCK_LINK</strong></a>)</li>
+<li><strong>pucStartAddress</strong> (<a href="../structHeapRegion/"><strong>HeapRegion</strong></a>)</li>
+<li><strong>pcHead</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>)</li>
+<li><strong>pcWriteTo</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>)</li>
+<li><strong>pcReadFrom</strong> (<a href="../structQueuePointers/"><strong>QueuePointers</strong></a>)</li>
+<li><strong>pcTail</strong> (<a href="../structQueuePointers/"><strong>QueuePointers</strong></a>)</li>
+<li><strong>pucBuffer</strong> (<a href="../structStreamBufferDef__t/"><strong>StreamBufferDef_t</strong></a>)</li>
+<li><strong>pxCoRoutineFunction</strong> (<a href="../structcorCoRoutineControlBlock/"><strong>corCoRoutineControlBlock</strong></a>)</li>
+<li><strong>pcTaskName</strong> (<a href="../structtskTaskControlBlock/"><strong>tskTaskControlBlock</strong></a>, <a href="../structxTASK__STATUS/"><strong>xTASK_STATUS</strong></a>)</li>
+<li><strong>pxStack</strong> (<a href="../structtskTaskControlBlock/"><strong>tskTaskControlBlock</strong></a>)</li>
+<li><strong>pxTopOfStack</strong> (<a href="../structtskTaskControlBlock/"><strong>tskTaskControlBlock</strong></a>)</li>
+<li><strong>poll</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+<li><strong>pxIndex</strong> (<a href="../structxLIST/"><strong>xLIST</strong></a>)</li>
+<li><strong>pvOwner</strong> (<a href="../structxLIST__ITEM/"><strong>xLIST_ITEM</strong></a>)</li>
+<li><strong>pxContainer</strong> (<a href="../structxLIST__ITEM/"><strong>xLIST_ITEM</strong></a>)</li>
+<li><strong>pxNext</strong> (<a href="../structxLIST__ITEM/"><strong>xLIST_ITEM</strong></a>, <a href="../structxMINI__LIST__ITEM/"><strong>xMINI_LIST_ITEM</strong></a>)</li>
+<li><strong>pxPrevious</strong> (<a href="../structxLIST__ITEM/"><strong>xLIST_ITEM</strong></a>, <a href="../structxMINI__LIST__ITEM/"><strong>xMINI_LIST_ITEM</strong></a>)</li>
+<li><strong>pvBaseAddress</strong> (<a href="../structxMEMORY__REGION/"><strong>xMEMORY_REGION</strong></a>)</li>
+<li><strong>pvDummy3</strong> (<a href="../structxSTATIC__LIST/"><strong>xSTATIC_LIST</strong></a>, <a href="../structxSTATIC__LIST__ITEM/"><strong>xSTATIC_LIST_ITEM</strong></a>, <a href="../structxSTATIC__MINI__LIST__ITEM/"><strong>xSTATIC_MINI_LIST_ITEM</strong></a>)</li>
+<li><strong>pvDummy1</strong> (<a href="../structxSTATIC__QUEUE/"><strong>xSTATIC_QUEUE</strong></a>, <a href="../structxSTATIC__TIMER/"><strong>xSTATIC_TIMER</strong></a>)</li>
+<li><strong>pvDummy2</strong> (<a href="../structxSTATIC__QUEUE/"><strong>xSTATIC_QUEUE</strong></a>, <a href="../structxSTATIC__STREAM__BUFFER/"><strong>xSTATIC_STREAM_BUFFER</strong></a>)</li>
+<li><strong>pxDummy1</strong> (<a href="../structxSTATIC__TCB/"><strong>xSTATIC_TCB</strong></a>)</li>
+<li><strong>pxDummy6</strong> (<a href="../structxSTATIC__TCB/"><strong>xSTATIC_TCB</strong></a>)</li>
+<li><strong>pvDummy5</strong> (<a href="../structxSTATIC__TIMER/"><strong>xSTATIC_TIMER</strong></a>)</li>
+<li><strong>pvDummy6</strong> (<a href="../structxSTATIC__TIMER/"><strong>xSTATIC_TIMER</strong></a>)</li>
+<li><strong>pcName</strong> (<a href="../structxTASK__PARAMETERS/"><strong>xTASK_PARAMETERS</strong></a>)</li>
+<li><strong>puxStackBuffer</strong> (<a href="../structxTASK__PARAMETERS/"><strong>xTASK_PARAMETERS</strong></a>)</li>
+<li><strong>pvParameters</strong> (<a href="../structxTASK__PARAMETERS/"><strong>xTASK_PARAMETERS</strong></a>)</li>
+<li><strong>pvTaskCode</strong> (<a href="../structxTASK__PARAMETERS/"><strong>xTASK_PARAMETERS</strong></a>)</li>
+<li><strong>pxStackBase</strong> (<a href="../structxTASK__STATUS/"><strong>xTASK_STATUS</strong></a>)</li>
+</ul>
+<h2 id="s">s</h2>
+<ul>
+<li><strong>status</strong> (<a href="../struct__usbd__device/"><strong>_usbd_device</strong></a>)</li>
+<li><strong>setaddr</strong> (<a href="../structusbd__driver/"><strong>usbd_driver</strong></a>)</li>
+</ul>
+<h2 id="t">t</h2>
+<ul>
+<li><strong>tempTypicalAtC</strong> (<a href="../structCalibrationData/"><strong>CalibrationData</strong></a>)</li>
+<li><strong>tempTypicalMv</strong> (<a href="../structCalibrationData/"><strong>CalibrationData</strong></a>)</li>
+<li><strong>tunnel_cdc_acm</strong> (<a href="../structcdc__config/"><strong>cdc_config</strong></a>)</li>
+<li><strong>tunnel_cdc_hdr</strong> (<a href="../structcdc__config/"><strong>cdc_config</strong></a>)</li>
+<li><strong>tunnel_cdc_mgmt</strong> (<a href="../structcdc__config/"><strong>cdc_config</strong></a>)</li>
+<li><strong>tunnel_cdc_union</strong> (<a href="../structcdc__config/"><strong>cdc_config</strong></a>)</li>
+<li><strong>tunnel_comm</strong> (<a href="../structcdc__config/"><strong>cdc_config</strong></a>)</li>
+<li><strong>tunnel_comm_ep</strong> (<a href="../structcdc__config/"><strong>cdc_config</strong></a>)</li>
+<li><strong>tunnel_comm_iad</strong> (<a href="../structcdc__config/"><strong>cdc_config</strong></a>)</li>
+<li><strong>tunnel_data</strong> (<a href="../structcdc__config/"><strong>cdc_config</strong></a>)</li>
+<li><strong>tunnel_data_eprx</strong> (<a href="../structcdc__config/"><strong>cdc_config</strong></a>)</li>
+<li><strong>tunnel_data_eptx</strong> (<a href="../structcdc__config/"><strong>cdc_config</strong></a>)</li>
+</ul>
+<h2 id="u">u</h2>
+<ul>
+<li><strong>uxEventBits</strong> (<a href="../structEventGroupDef__t/"><strong>EventGroupDef_t</strong></a>)</li>
+<li><strong>u</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>, <a href="../structxSTATIC__QUEUE/"><strong>xSTATIC_QUEUE</strong></a>)</li>
+<li><strong>uxItemSize</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>)</li>
+<li><strong>uxLength</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>)</li>
+<li><strong>uxMessagesWaiting</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>)</li>
+<li><strong>uxRecursiveCallCount</strong> (<a href="../structSemaphoreData/"><strong>SemaphoreData</strong></a>)</li>
+<li><strong>ucFlags</strong> (<a href="../structStreamBufferDef__t/"><strong>StreamBufferDef_t</strong></a>)</li>
+<li><strong>uxIndex</strong> (<a href="../structcorCoRoutineControlBlock/"><strong>corCoRoutineControlBlock</strong></a>)</li>
+<li><strong>uxPriority</strong> (<a href="../structcorCoRoutineControlBlock/"><strong>corCoRoutineControlBlock</strong></a>, <a href="../structtskTaskControlBlock/"><strong>tskTaskControlBlock</strong></a>, <a href="../structxTASK__PARAMETERS/"><strong>xTASK_PARAMETERS</strong></a>)</li>
+<li><strong>uxState</strong> (<a href="../structcorCoRoutineControlBlock/"><strong>corCoRoutineControlBlock</strong></a>)</li>
+<li><strong>uxNumberOfItems</strong> (<a href="../structxLIST/"><strong>xLIST</strong></a>)</li>
+<li><strong>ulLengthInBytes</strong> (<a href="../structxMEMORY__REGION/"><strong>xMEMORY_REGION</strong></a>)</li>
+<li><strong>ulParameters</strong> (<a href="../structxMEMORY__REGION/"><strong>xMEMORY_REGION</strong></a>)</li>
+<li><strong>uxDummy2</strong> (<a href="../structxSTATIC__LIST/"><strong>xSTATIC_LIST</strong></a>, <a href="../structxSTATIC__QUEUE/"><strong>xSTATIC_QUEUE</strong></a>)</li>
+<li><strong>ucDummy5</strong> (<a href="../structxSTATIC__QUEUE/"><strong>xSTATIC_QUEUE</strong></a>)</li>
+<li><strong>uxDummy4</strong> (<a href="../structxSTATIC__QUEUE/"><strong>xSTATIC_QUEUE</strong></a>)</li>
+<li><strong>ucDummy3</strong> (<a href="../structxSTATIC__STREAM__BUFFER/"><strong>xSTATIC_STREAM_BUFFER</strong></a>)</li>
+<li><strong>uxDummy1</strong> (<a href="../structxSTATIC__STREAM__BUFFER/"><strong>xSTATIC_STREAM_BUFFER</strong></a>)</li>
+<li><strong>ucDummy19</strong> (<a href="../structxSTATIC__TCB/"><strong>xSTATIC_TCB</strong></a>)</li>
+<li><strong>ucDummy7</strong> (<a href="../structxSTATIC__TCB/"><strong>xSTATIC_TCB</strong></a>)</li>
+<li><strong>ulDummy18</strong> (<a href="../structxSTATIC__TCB/"><strong>xSTATIC_TCB</strong></a>)</li>
+<li><strong>uxDummy5</strong> (<a href="../structxSTATIC__TCB/"><strong>xSTATIC_TCB</strong></a>)</li>
+<li><strong>ucDummy8</strong> (<a href="../structxSTATIC__TIMER/"><strong>xSTATIC_TIMER</strong></a>)</li>
+<li><strong>usStackDepth</strong> (<a href="../structxTASK__PARAMETERS/"><strong>xTASK_PARAMETERS</strong></a>)</li>
+<li><strong>ulRunTimeCounter</strong> (<a href="../structxTASK__STATUS/"><strong>xTASK_STATUS</strong></a>)</li>
+<li><strong>usStackHighWaterMark</strong> (<a href="../structxTASK__STATUS/"><strong>xTASK_STATUS</strong></a>)</li>
+<li><strong>uxBasePriority</strong> (<a href="../structxTASK__STATUS/"><strong>xTASK_STATUS</strong></a>)</li>
+<li><strong>uxCurrentPriority</strong> (<a href="../structxTASK__STATUS/"><strong>xTASK_STATUS</strong></a>)</li>
+</ul>
+<h2 id="w">w</h2>
+<ul>
+<li><strong>wCountyCode0</strong> (<a href="../structusb__cdc__country__desc/"><strong>usb_cdc_country_desc</strong></a>)</li>
+<li><strong>wIndex</strong> (<a href="../structusb__cdc__notification/"><strong>usb_cdc_notification</strong></a>, <a href="../structusbd__ctlreq/"><strong>usbd_ctlreq</strong></a>)</li>
+<li><strong>wLength</strong> (<a href="../structusb__cdc__notification/"><strong>usb_cdc_notification</strong></a>, <a href="../structusbd__ctlreq/"><strong>usbd_ctlreq</strong></a>)</li>
+<li><strong>wValue</strong> (<a href="../structusb__cdc__notification/"><strong>usb_cdc_notification</strong></a>, <a href="../structusbd__ctlreq/"><strong>usbd_ctlreq</strong></a>)</li>
+<li><strong>wTotalLength</strong> (<a href="../structusb__config__descriptor/"><strong>usb_config_descriptor</strong></a>)</li>
+<li><strong>wMaxPacketSize</strong> (<a href="../structusb__endpoint__descriptor/"><strong>usb_endpoint_descriptor</strong></a>)</li>
+<li><strong>wString</strong> (<a href="../structusb__string__descriptor/"><strong>usb_string_descriptor</strong></a>)</li>
+</ul>
+<h2 id="x">x</h2>
+<ul>
+<li><strong>xBlockSize</strong> (<a href="../structA__BLOCK__LINK/"><strong>A_BLOCK_LINK</strong></a>)</li>
+<li><strong>xTasksWaitingForBits</strong> (<a href="../structEventGroupDef__t/"><strong>EventGroupDef_t</strong></a>)</li>
+<li><strong>xSizeInBytes</strong> (<a href="../structHeapRegion/"><strong>HeapRegion</strong></a>)</li>
+<li><strong>x</strong> (<a href="../structMpuVector/"><strong>MpuVector</strong></a>, <a href="../structMpuVector32/"><strong>MpuVector32</strong></a>, <a href="../structOLED__VERTEX/"><strong>OLED_VERTEX</strong></a>)</li>
+<li><strong>xQueue</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>)</li>
+<li><strong>xSemaphore</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>)</li>
+<li><strong>xTasksWaitingToReceive</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>)</li>
+<li><strong>xTasksWaitingToSend</strong> (<a href="../structQueueDefinition/"><strong>QueueDefinition</strong></a>)</li>
+<li><strong>xMutexHolder</strong> (<a href="../structSemaphoreData/"><strong>SemaphoreData</strong></a>)</li>
+<li><strong>xHead</strong> (<a href="../structStreamBufferDef__t/"><strong>StreamBufferDef_t</strong></a>)</li>
+<li><strong>xLength</strong> (<a href="../structStreamBufferDef__t/"><strong>StreamBufferDef_t</strong></a>)</li>
+<li><strong>xTail</strong> (<a href="../structStreamBufferDef__t/"><strong>StreamBufferDef_t</strong></a>)</li>
+<li><strong>xTaskWaitingToReceive</strong> (<a href="../structStreamBufferDef__t/"><strong>StreamBufferDef_t</strong></a>)</li>
+<li><strong>xTaskWaitingToSend</strong> (<a href="../structStreamBufferDef__t/"><strong>StreamBufferDef_t</strong></a>)</li>
+<li><strong>xTriggerLevelBytes</strong> (<a href="../structStreamBufferDef__t/"><strong>StreamBufferDef_t</strong></a>)</li>
+<li><strong>xEventListItem</strong> (<a href="../structcorCoRoutineControlBlock/"><strong>corCoRoutineControlBlock</strong></a>, <a href="../structtskTaskControlBlock/"><strong>tskTaskControlBlock</strong></a>)</li>
+<li><strong>xGenericListItem</strong> (<a href="../structcorCoRoutineControlBlock/"><strong>corCoRoutineControlBlock</strong></a>)</li>
+<li><strong>xStateListItem</strong> (<a href="../structtskTaskControlBlock/"><strong>tskTaskControlBlock</strong></a>)</li>
+<li><strong>xAvailableHeapSpaceInBytes</strong> (<a href="../structxHeapStats/"><strong>xHeapStats</strong></a>)</li>
+<li><strong>xMinimumEverFreeBytesRemaining</strong> (<a href="../structxHeapStats/"><strong>xHeapStats</strong></a>)</li>
+<li><strong>xNumberOfFreeBlocks</strong> (<a href="../structxHeapStats/"><strong>xHeapStats</strong></a>)</li>
+<li><strong>xNumberOfSuccessfulAllocations</strong> (<a href="../structxHeapStats/"><strong>xHeapStats</strong></a>)</li>
+<li><strong>xNumberOfSuccessfulFrees</strong> (<a href="../structxHeapStats/"><strong>xHeapStats</strong></a>)</li>
+<li><strong>xSizeOfLargestFreeBlockInBytes</strong> (<a href="../structxHeapStats/"><strong>xHeapStats</strong></a>)</li>
+<li><strong>xSizeOfSmallestFreeBlockInBytes</strong> (<a href="../structxHeapStats/"><strong>xHeapStats</strong></a>)</li>
+<li><strong>xListEnd</strong> (<a href="../structxLIST/"><strong>xLIST</strong></a>)</li>
+<li><strong>xItemValue</strong> (<a href="../structxLIST__ITEM/"><strong>xLIST_ITEM</strong></a>, <a href="../structxMINI__LIST__ITEM/"><strong>xMINI_LIST_ITEM</strong></a>)</li>
+<li><strong>xDummy1</strong> (<a href="../structxSTATIC__EVENT__GROUP/"><strong>xSTATIC_EVENT_GROUP</strong></a>)</li>
+<li><strong>xDummy2</strong> (<a href="../structxSTATIC__EVENT__GROUP/"><strong>xSTATIC_EVENT_GROUP</strong></a>, <a href="../structxSTATIC__LIST__ITEM/"><strong>xSTATIC_LIST_ITEM</strong></a>, <a href="../structxSTATIC__MINI__LIST__ITEM/"><strong>xSTATIC_MINI_LIST_ITEM</strong></a>, <a href="../structxSTATIC__TIMER/"><strong>xSTATIC_TIMER</strong></a>)</li>
+<li><strong>xDummy4</strong> (<a href="../structxSTATIC__LIST/"><strong>xSTATIC_LIST</strong></a>)</li>
+<li><strong>xDummy3</strong> (<a href="../structxSTATIC__QUEUE/"><strong>xSTATIC_QUEUE</strong></a>, <a href="../structxSTATIC__TCB/"><strong>xSTATIC_TCB</strong></a>, <a href="../structxSTATIC__TIMER/"><strong>xSTATIC_TIMER</strong></a>)</li>
+<li><strong>xRegions</strong> (<a href="../structxTASK__PARAMETERS/"><strong>xTASK_PARAMETERS</strong></a>)</li>
+<li><strong>xHandle</strong> (<a href="../structxTASK__STATUS/"><strong>xTASK_STATUS</strong></a>)</li>
+<li><strong>xTaskNumber</strong> (<a href="../structxTASK__STATUS/"><strong>xTASK_STATUS</strong></a>)</li>
+<li><strong>xOverflowCount</strong> (<a href="../structxTIME__OUT/"><strong>xTIME_OUT</strong></a>)</li>
+<li><strong>xTimeOnEntering</strong> (<a href="../structxTIME__OUT/"><strong>xTIME_OUT</strong></a>)</li>
+</ul>
+<h2 id="y">y</h2>
+<ul>
+<li><strong>y</strong> (<a href="../structMpuVector/"><strong>MpuVector</strong></a>, <a href="../structMpuVector32/"><strong>MpuVector32</strong></a>, <a href="../structOLED__VERTEX/"><strong>OLED_VERTEX</strong></a>)</li>
+</ul>
+<h2 id="z">z</h2>
+<ul>
+<li><strong>z</strong> (<a href="../structMpuVector/"><strong>MpuVector</strong></a>, <a href="../structMpuVector32/"><strong>MpuVector32</strong></a>)</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2023 RoboticsBrno
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/RoboticsBrno" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/RobotikaBrno" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/robotarna" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@robotikabrno-robotarnaasps2392" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/_robotarna_" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+        <script src="../../assets/js/open_in_new_tab.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

@@ -1,0 +1,3542 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the RBCX robot controller board designed by the RoboticsBrno team. It is based on the STM32F446RE microcontroller and ESP32 microcontroller. Features: 4 motors with encoders, 4 servos, buttons with the gamepad, LEDs, ultra-sonic sensor, ...">
+      
+      
+        <meta name="author" content="RoboticsBrno">
+      
+      
+        <link rel="canonical" href="https://rbcx.robotikabrno.cz/apiStm/Bsp_8hpp/">
+      
+      
+      
+      <link rel="icon" href="../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>File Bsp.hpp - RB3204-RBCX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#file-bsphpp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RB3204-RBCX" class="md-header__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RB3204-RBCX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              File Bsp.hpp
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../SW-development/" class="md-tabs__link">
+      Software development
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/" class="md-tabs__link">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RB3204-RBCX" class="md-nav__button md-logo" aria-label="RB3204-RBCX" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    RB3204-RBCX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/RoboticsBrno/RB3204-RBCX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboticsBrno/RB3204-RBCX
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SW-development/" class="md-nav__link">
+        Software development
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../api/">API Reference</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">API STM Coprocessor</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          API STM Coprocessor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../apiEsp32/">API ESP32 library</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          API ESP32 library
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/annotated/" class="md-nav__link">
+        Class List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/classes/" class="md-nav__link">
+        Class Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/hierarchy/" class="md-nav__link">
+        Class Hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_members/" class="md-nav__link">
+        Class Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_functions/" class="md-nav__link">
+        Class Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_variables/" class="md-nav__link">
+        Class Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_typedefs/" class="md-nav__link">
+        Class Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/class_member_enums/" class="md-nav__link">
+        Class Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespaces/" class="md-nav__link">
+        Namespace List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_members/" class="md-nav__link">
+        Namespace Members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_functions/" class="md-nav__link">
+        Namespace Member Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_variables/" class="md-nav__link">
+        Namespace Member Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_typedefs/" class="md-nav__link">
+        Namespace Member Typedefs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/namespace_member_enums/" class="md-nav__link">
+        Namespace Member Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/macros/" class="md-nav__link">
+        Macros
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apiEsp32/files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#public-types" class="md-nav__link">
+    Public Types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-attributes" class="md-nav__link">
+    Public Attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-functions" class="md-nav__link">
+    Public Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    Macros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-types-documentation" class="md-nav__link">
+    Public Types Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Public Types Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typedef-adc_channel_t" class="md-nav__link">
+    typedef ADC_channel_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-adc_rank_t" class="md-nav__link">
+    typedef ADC_rank_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-dma_channel_t" class="md-nav__link">
+    typedef DMA_channel_t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedef-pindef" class="md-nav__link">
+    typedef PinDef
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-attributes-documentation" class="md-nav__link">
+    Public Attributes Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Public Attributes Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variable-auxiliaryadc" class="md-nav__link">
+    variable auxiliaryAdc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-auxiliaryandmotoradcirqn" class="md-nav__link">
+    variable auxiliaryAndMotorAdcIRQn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-auxiliaryandmotoradcirqprio" class="md-nav__link">
+    variable auxiliaryAndMotorAdcIrqPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-batterymiddlevoltageadcchannel" class="md-nav__link">
+    variable batteryMiddleVoltageAdcChannel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-batterymiddlevoltageadcrank" class="md-nav__link">
+    variable batteryMiddleVoltageAdcRank
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-batterymiddlevoltagepin" class="md-nav__link">
+    variable batteryMiddleVoltagePin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-batteryvoltageadcchannel" class="md-nav__link">
+    variable batteryVoltageAdcChannel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-batteryvoltageadcrank" class="md-nav__link">
+    variable batteryVoltageAdcRank
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-batteryvoltagepin" class="md-nav__link">
+    variable batteryVoltagePin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-button1pin" class="md-nav__link">
+    variable button1Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-button2pin" class="md-nav__link">
+    variable button2Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-button3pin" class="md-nav__link">
+    variable button3Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-button4pin" class="md-nav__link">
+    variable button4Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-buttonoffpin" class="md-nav__link">
+    variable buttonOffPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-buttononpin" class="md-nav__link">
+    variable buttonOnPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-buttonpin" class="md-nav__link">
+    variable buttonPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-buzzerpin" class="md-nav__link">
+    variable buzzerPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-controluart" class="md-nav__link">
+    variable controlUart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-controluartrxdmachannel" class="md-nav__link">
+    variable controlUartRxDmaChannel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-controluartrxpin" class="md-nav__link">
+    variable controlUartRxPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-controluarttxdmachannel" class="md-nav__link">
+    variable controlUartTxDmaChannel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-controluarttxdmairqn" class="md-nav__link">
+    variable controlUartTxDmaIRQn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-controluarttxdmairqnprio" class="md-nav__link">
+    variable controlUartTxDmaIRQnPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-controluarttxpin" class="md-nav__link">
+    variable controlUartTxPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-debuguart" class="md-nav__link">
+    variable debugUart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-debuguartirqn" class="md-nav__link">
+    variable debugUartIRQn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-debuguartirqprio" class="md-nav__link">
+    variable debugUartIrqPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-debuguartrxdmachannel" class="md-nav__link">
+    variable debugUartRxDmaChannel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-debuguartrxpin" class="md-nav__link">
+    variable debugUartRxPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-debuguarttxdmachannel" class="md-nav__link">
+    variable debugUartTxDmaChannel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-debuguarttxdmairqn" class="md-nav__link">
+    variable debugUartTxDmaIRQn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-debuguarttxdmairqprio" class="md-nav__link">
+    variable debugUartTxDmaIrqPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-debuguarttxpin" class="md-nav__link">
+    variable debugUartTxPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-encoder1apin" class="md-nav__link">
+    variable encoder1aPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-encoder1bpin" class="md-nav__link">
+    variable encoder1bPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-encoder2apin" class="md-nav__link">
+    variable encoder2aPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-encoder2bpin" class="md-nav__link">
+    variable encoder2bPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-encoder3apin" class="md-nav__link">
+    variable encoder3aPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-encoder3bpin" class="md-nav__link">
+    variable encoder3bPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-encoder4apin" class="md-nav__link">
+    variable encoder4aPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-encoder4bpin" class="md-nav__link">
+    variable encoder4bPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-encodertimer" class="md-nav__link">
+    variable encoderTimer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-esp0pin" class="md-nav__link">
+    variable esp0Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-esp12pin" class="md-nav__link">
+    variable esp12Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-esp15pin" class="md-nav__link">
+    variable esp15Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-esp2pin" class="md-nav__link">
+    variable esp2Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-espenpin" class="md-nav__link">
+    variable espEnPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-i2cerirqn" class="md-nav__link">
+    variable i2cErIRQn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-i2cevirqn" class="md-nav__link">
+    variable i2cEvIRQn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-i2cirqnprio" class="md-nav__link">
+    variable i2cIRQnPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-i2cprio" class="md-nav__link">
+    variable i2cPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-i2cscl" class="md-nav__link">
+    variable i2cScl
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-i2csda" class="md-nav__link">
+    variable i2cSda
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-in4apin" class="md-nav__link">
+    variable in4aPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-in4bpin" class="md-nav__link">
+    variable in4bPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-internalreferencevoltageadcrank" class="md-nav__link">
+    variable internalReferenceVoltageAdcRank
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-led1pin" class="md-nav__link">
+    variable led1Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-led2pin" class="md-nav__link">
+    variable led2Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-led3pin" class="md-nav__link">
+    variable led3Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-led4pin" class="md-nav__link">
+    variable led4Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-ledpin" class="md-nav__link">
+    variable ledPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-ledpins" class="md-nav__link">
+    variable ledPins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-maintaskprio" class="md-nav__link">
+    variable mainTaskPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-motortaskprio" class="md-nav__link">
+    variable motorTaskPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-powerpin" class="md-nav__link">
+    variable powerPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-pwm1apin" class="md-nav__link">
+    variable pwm1aPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-pwm1bpin" class="md-nav__link">
+    variable pwm1bPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-pwm2apin" class="md-nav__link">
+    variable pwm2aPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-pwm2bpin" class="md-nav__link">
+    variable pwm2bPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-pwm3apin" class="md-nav__link">
+    variable pwm3aPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-pwm3bpin" class="md-nav__link">
+    variable pwm3bPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-pwm4pin" class="md-nav__link">
+    variable pwm4Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-pwmtimer" class="md-nav__link">
+    variable pwmTimer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-servo1pin" class="md-nav__link">
+    variable servo1Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-servo2pin" class="md-nav__link">
+    variable servo2Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-servo3pin" class="md-nav__link">
+    variable servo3Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-servo4pin" class="md-nav__link">
+    variable servo4Pin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-servopins" class="md-nav__link">
+    variable servoPins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-servotimer" class="md-nav__link">
+    variable servoTimer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-servouart" class="md-nav__link">
+    variable servoUart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-servouartirqn" class="md-nav__link">
+    variable servoUartIRQn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-servouartirqprio" class="md-nav__link">
+    variable servoUartIrqPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-servouarttxrxpin" class="md-nav__link">
+    variable servoUartTxRxPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-softresettaskprio" class="md-nav__link">
+    variable softResetTaskPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-temperatureadcrank" class="md-nav__link">
+    variable temperatureAdcRank
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-tunneluart" class="md-nav__link">
+    variable tunnelUart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-tunneluartrxdmachannel" class="md-nav__link">
+    variable tunnelUartRxDmaChannel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-tunneluartrxpin" class="md-nav__link">
+    variable tunnelUartRxPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-tunneluarttxdmachannel" class="md-nav__link">
+    variable tunnelUartTxDmaChannel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-tunneluarttxpin" class="md-nav__link">
+    variable tunnelUartTxPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-ultrasoundtaskprio" class="md-nav__link">
+    variable ultrasoundTaskPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-usbbusdetectionpin" class="md-nav__link">
+    variable usbBusDetectionPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-usbdnpin" class="md-nav__link">
+    variable usbDnPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-usbdppin" class="md-nav__link">
+    variable usbDpPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-usbdppulluppin" class="md-nav__link">
+    variable usbDpPullUpPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-usblpirqn" class="md-nav__link">
+    variable usbLpIRQn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-usblpirqnprio" class="md-nav__link">
+    variable usbLpIRQnPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-useruart" class="md-nav__link">
+    variable userUart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-useruartrxpin" class="md-nav__link">
+    variable userUartRxPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-useruarttxpin" class="md-nav__link">
+    variable userUartTxPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-uts1echopin" class="md-nav__link">
+    variable uts1EchoPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-uts1trigpin" class="md-nav__link">
+    variable uts1TrigPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-uts2echopin" class="md-nav__link">
+    variable uts2EchoPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-uts2trigpin" class="md-nav__link">
+    variable uts2TrigPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-uts3echopin" class="md-nav__link">
+    variable uts3EchoPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-uts3trigpin" class="md-nav__link">
+    variable uts3TrigPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-uts4echopin" class="md-nav__link">
+    variable uts4EchoPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-uts4trigpin" class="md-nav__link">
+    variable uts4TrigPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-utsechopin" class="md-nav__link">
+    variable utsEchoPin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-utsirqprio" class="md-nav__link">
+    variable utsIRQPrio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-utstimer" class="md-nav__link">
+    variable utsTimer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-utstrigpin" class="md-nav__link">
+    variable utsTrigPin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-functions-documentation" class="md-nav__link">
+    Public Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Public Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-ll_adc_setchannelsamplingtimefix" class="md-nav__link">
+    function LL_ADC_SetChannelSamplingTimeFix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-ll_gpio_af_remap" class="md-nav__link">
+    function LL_GPIO_AF_Remap
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-clocksinit" class="md-nav__link">
+    function clocksInit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-getbuttons" class="md-nav__link">
+    function getButtons
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-ispressed" class="md-nav__link">
+    function isPressed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-pininit" class="md-nav__link">
+    function pinInit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-pininit_1" class="md-nav__link">
+    function pinInit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-pinread" class="md-nav__link">
+    function pinRead
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-pintoggle" class="md-nav__link">
+    function pinToggle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-pinwrite" class="md-nav__link">
+    function pinWrite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-pinsinit" class="md-nav__link">
+    function pinsInit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-reinitespstrappingpins" class="md-nav__link">
+    function reinitEspStrappingPins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-setleds" class="md-nav__link">
+    function setLeds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-softreset" class="md-nav__link">
+    function softReset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-softresetinit" class="md-nav__link">
+    function softResetInit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macro-definition-documentation" class="md-nav__link">
+    Macro Definition Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Macro Definition Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#define-afio_mapr_reserved" class="md-nav__link">
+    define AFIO_MAPR_RESERVED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-auxiliary_and_motor_adc_irq_handler" class="md-nav__link">
+    define AUXILIARY_AND_MOTOR_ADC_IRQ_HANDLER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-controluart_tx_dma_handler" class="md-nav__link">
+    define CONTROLUART_TX_DMA_HANDLER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-debuguart_handler" class="md-nav__link">
+    define DEBUGUART_HANDLER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-debuguart_tx_dma_handler" class="md-nav__link">
+    define DEBUGUART_TX_DMA_HANDLER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-in4amask" class="md-nav__link">
+    define IN4AMASK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-in4bmask" class="md-nav__link">
+    define IN4BMASK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-in4port" class="md-nav__link">
+    define IN4PORT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-servouart_handler" class="md-nav__link">
+    define SERVOUART_HANDLER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-usb_lp_irq_handler" class="md-nav__link">
+    define USB_LP_IRQ_HANDLER
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="file-bsphpp">File Bsp.hpp</h1>
+<p><a href="../files/"><strong>FileList</strong></a> <strong>&gt;</strong> <a href="../dir_b8c955b770907a816d8d814e8d2a21ac/"><strong>fw</strong></a> <strong>&gt;</strong> <a href="../dir_7d45f881dcf2fb01e973fdd38228b27f/"><strong>rbcx-coprocessor</strong></a> <strong>&gt;</strong> <a href="../dir_8a5935015f0d5820975f6d369cb4d3c0/"><strong>include</strong></a> <strong>&gt;</strong> <a href="./"><strong>Bsp.hpp</strong></a></p>
+<p><a href="../Bsp_8hpp_source/">Go to the source code of this file.</a></p>
+<ul>
+<li><code>#include "FreeRTOSConfig.h"</code></li>
+<li><code>#include "stm32f1xx_hal.h"</code></li>
+<li><code>#include "stm32f1xx_hal_cortex.h"</code></li>
+<li><code>#include "stm32f1xx_hal_gpio.h"</code></li>
+<li><code>#include "stm32f1xx_ll_adc.h"</code></li>
+<li><code>#include "stm32f1xx_ll_dma.h"</code></li>
+<li><code>#include "stm32f1xx_ll_utils.h"</code></li>
+<li><code>#include &lt;algorithm&gt;</code></li>
+<li><code>#include &lt;array&gt;</code></li>
+<li><code>#include &lt;cassert&gt;</code></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">typedef uint32_t</td>
+<td align="left"><a href="#typedef-adc_channel_t"><strong>ADC_channel_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef uint32_t</td>
+<td align="left"><a href="#typedef-adc_rank_t"><strong>ADC_rank_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef uint32_t</td>
+<td align="left"><a href="#typedef-dma_channel_t"><strong>DMA_channel_t</strong></a>  <br></td>
+</tr>
+<tr>
+<td align="right">typedef std::pair&lt; GPIO_TypeDef *, uint16_t &gt;</td>
+<td align="left"><a href="#typedef-pindef"><strong>PinDef</strong></a>  <br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-attributes">Public Attributes</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">ADC_TypeDef *const</td>
+<td align="left"><a href="#variable-auxiliaryadc"><strong>auxiliaryAdc</strong></a>   = = ADC1<br></td>
+</tr>
+<tr>
+<td align="right">const IRQn_Type</td>
+<td align="left"><a href="#variable-auxiliaryandmotoradcirqn"><strong>auxiliaryAndMotorAdcIRQn</strong></a>   = = ADC1_2_IRQn<br></td>
+</tr>
+<tr>
+<td align="right">const unsigned</td>
+<td align="left"><a href="#variable-auxiliaryandmotoradcirqprio"><strong>auxiliaryAndMotorAdcIrqPrio</strong></a>   = = 9<br></td>
+</tr>
+<tr>
+<td align="right">const ADC_channel_t</td>
+<td align="left"><a href="#variable-batterymiddlevoltageadcchannel"><strong>batteryMiddleVoltageAdcChannel</strong></a>   = = LL_ADC_CHANNEL_3<br></td>
+</tr>
+<tr>
+<td align="right">const ADC_rank_t</td>
+<td align="left"><a href="#variable-batterymiddlevoltageadcrank"><strong>batteryMiddleVoltageAdcRank</strong></a>   = = LL_ADC_INJ_RANK_3<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-batterymiddlevoltagepin"><strong>batteryMiddleVoltagePin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_3)<br></td>
+</tr>
+<tr>
+<td align="right">const ADC_channel_t</td>
+<td align="left"><a href="#variable-batteryvoltageadcchannel"><strong>batteryVoltageAdcChannel</strong></a>   = = LL_ADC_CHANNEL_6<br></td>
+</tr>
+<tr>
+<td align="right">const ADC_rank_t</td>
+<td align="left"><a href="#variable-batteryvoltageadcrank"><strong>batteryVoltageAdcRank</strong></a>   = = LL_ADC_INJ_RANK_1<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-batteryvoltagepin"><strong>batteryVoltagePin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_6)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-button1pin"><strong>button1Pin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_0)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-button2pin"><strong>button2Pin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_10)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-button3pin"><strong>button3Pin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_2)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-button4pin"><strong>button4Pin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_11)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-buttonoffpin"><strong>buttonOffPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_15)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-buttononpin"><strong>buttonOnPin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_14)<br></td>
+</tr>
+<tr>
+<td align="right">const std::array&lt; PinDef, 6 &gt;</td>
+<td align="left"><a href="#variable-buttonpin"><strong>buttonPin</strong></a>   = = { buttonOffPin, button1Pin,</td>
+</tr>
+<tr>
+<td align="right">button2Pin, button3Pin, button4Pin, buttonOnPin }<br></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-buzzerpin"><strong>buzzerPin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_3)<br></td>
+</tr>
+<tr>
+<td align="right">USART_TypeDef *const</td>
+<td align="left"><a href="#variable-controluart"><strong>controlUart</strong></a>   = = USART3<br></td>
+</tr>
+<tr>
+<td align="right">DMA_Channel_TypeDef *const</td>
+<td align="left"><a href="#variable-controluartrxdmachannel"><strong>controlUartRxDmaChannel</strong></a>   = = DMA1_Channel3<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-controluartrxpin"><strong>controlUartRxPin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_11)<br></td>
+</tr>
+<tr>
+<td align="right">DMA_Channel_TypeDef *const</td>
+<td align="left"><a href="#variable-controluarttxdmachannel"><strong>controlUartTxDmaChannel</strong></a>   = = DMA1_Channel2<br></td>
+</tr>
+<tr>
+<td align="right">const IRQn_Type</td>
+<td align="left"><a href="#variable-controluarttxdmairqn"><strong>controlUartTxDmaIRQn</strong></a>   = = DMA1_Channel2_IRQn<br></td>
+</tr>
+<tr>
+<td align="right">const unsigned</td>
+<td align="left"><a href="#variable-controluarttxdmairqnprio"><strong>controlUartTxDmaIRQnPrio</strong></a>   = = 8<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-controluarttxpin"><strong>controlUartTxPin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_10)<br></td>
+</tr>
+<tr>
+<td align="right">USART_TypeDef *const</td>
+<td align="left"><a href="#variable-debuguart"><strong>debugUart</strong></a>   = = UART4<br></td>
+</tr>
+<tr>
+<td align="right">const IRQn_Type</td>
+<td align="left"><a href="#variable-debuguartirqn"><strong>debugUartIRQn</strong></a>   = = UART4_IRQn<br></td>
+</tr>
+<tr>
+<td align="right">const unsigned</td>
+<td align="left"><a href="#variable-debuguartirqprio"><strong>debugUartIrqPrio</strong></a>   = = 10<br></td>
+</tr>
+<tr>
+<td align="right">DMA_Channel_TypeDef *const</td>
+<td align="left"><a href="#variable-debuguartrxdmachannel"><strong>debugUartRxDmaChannel</strong></a>   = = DMA2_Channel3<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-debuguartrxpin"><strong>debugUartRxPin</strong></a>   = = std::make_pair(GPIOC, GPIO_PIN_11)<br></td>
+</tr>
+<tr>
+<td align="right">DMA_Channel_TypeDef *const</td>
+<td align="left"><a href="#variable-debuguarttxdmachannel"><strong>debugUartTxDmaChannel</strong></a>   = = DMA2_Channel5<br></td>
+</tr>
+<tr>
+<td align="right">const IRQn_Type</td>
+<td align="left"><a href="#variable-debuguarttxdmairqn"><strong>debugUartTxDmaIRQn</strong></a>   = = DMA2_Channel4_5_IRQn<br></td>
+</tr>
+<tr>
+<td align="right">const unsigned</td>
+<td align="left"><a href="#variable-debuguarttxdmairqprio"><strong>debugUartTxDmaIrqPrio</strong></a>   = = 9<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-debuguarttxpin"><strong>debugUartTxPin</strong></a>   = = std::make_pair(GPIOC, GPIO_PIN_10)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-encoder1apin"><strong>encoder1aPin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_12)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-encoder1bpin"><strong>encoder1bPin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_13)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-encoder2apin"><strong>encoder2aPin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_0)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-encoder2bpin"><strong>encoder2bPin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_1)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-encoder3apin"><strong>encoder3aPin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_15)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-encoder3bpin"><strong>encoder3bPin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_3)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-encoder4apin"><strong>encoder4aPin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_4)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-encoder4bpin"><strong>encoder4bPin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_5)<br></td>
+</tr>
+<tr>
+<td align="right">TIM_TypeDef *const</td>
+<td align="left"><a href="#variable-encodertimer"><strong>encoderTimer</strong></a>   = = { TIM4, TIM5, TIM2, TIM3 }<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-esp0pin"><strong>esp0Pin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_10)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-esp12pin"><strong>esp12Pin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_15)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-esp15pin"><strong>esp15Pin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_14)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-esp2pin"><strong>esp2Pin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_11)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-espenpin"><strong>espEnPin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_4)<br></td>
+</tr>
+<tr>
+<td align="right">const IRQn_Type</td>
+<td align="left"><a href="#variable-i2cerirqn"><strong>i2cErIRQn</strong></a>   = = I2C1_ER_IRQn<br></td>
+</tr>
+<tr>
+<td align="right">const IRQn_Type</td>
+<td align="left"><a href="#variable-i2cevirqn"><strong>i2cEvIRQn</strong></a>   = = I2C1_EV_IRQn<br></td>
+</tr>
+<tr>
+<td align="right">const unsigned</td>
+<td align="left"><a href="#variable-i2cirqnprio"><strong>i2cIRQnPrio</strong></a>   = = 8<br></td>
+</tr>
+<tr>
+<td align="right">const int</td>
+<td align="left"><a href="#variable-i2cprio"><strong>i2cPrio</strong></a>   = = 2<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-i2cscl"><strong>i2cScl</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_8)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-i2csda"><strong>i2cSda</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_9)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-in4apin"><strong>in4aPin</strong></a>   = = std::make_pair(IN4PORT, IN4AMASK)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-in4bpin"><strong>in4bPin</strong></a>   = = std::make_pair(IN4PORT, IN4BMASK)<br></td>
+</tr>
+<tr>
+<td align="right">const ADC_rank_t</td>
+<td align="left"><a href="#variable-internalreferencevoltageadcrank"><strong>internalReferenceVoltageAdcRank</strong></a>   = = LL_ADC_INJ_RANK_2<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-led1pin"><strong>led1Pin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_7)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-led2pin"><strong>led2Pin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_8)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-led3pin"><strong>led3Pin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_9)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-led4pin"><strong>led4Pin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_10)<br></td>
+</tr>
+<tr>
+<td align="right">const std::array&lt; PinDef, 4 &gt;</td>
+<td align="left"><a href="#variable-ledpin"><strong>ledPin</strong></a>   = = { led1Pin, led2Pin, led3Pin, led4Pin }<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-ledpins"><strong>ledPins</strong></a>   = = std::make_pair(</td>
+</tr>
+<tr>
+<td align="right">GPIOA, led1Pin.second | led2Pin.second | led3Pin.second | led4Pin.second)<br></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">const int</td>
+<td align="left"><a href="#variable-maintaskprio"><strong>mainTaskPrio</strong></a>   = = 4<br></td>
+</tr>
+<tr>
+<td align="right">const int</td>
+<td align="left"><a href="#variable-motortaskprio"><strong>motorTaskPrio</strong></a>   = = 2<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-powerpin"><strong>powerPin</strong></a>   = = std::make_pair(GPIOC, GPIO_PIN_13)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-pwm1apin"><strong>pwm1aPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_9)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-pwm1bpin"><strong>pwm1bPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_8)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-pwm2apin"><strong>pwm2aPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_11)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-pwm2bpin"><strong>pwm2bPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_10)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-pwm3apin"><strong>pwm3aPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_13)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-pwm3bpin"><strong>pwm3bPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_12)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-pwm4pin"><strong>pwm4Pin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_14)<br></td>
+</tr>
+<tr>
+<td align="right">TIM_TypeDef *const</td>
+<td align="left"><a href="#variable-pwmtimer"><strong>pwmTimer</strong></a>   = = TIM1<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-servo1pin"><strong>servo1Pin</strong></a>   = = std::make_pair(GPIOC, GPIO_PIN_6)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-servo2pin"><strong>servo2Pin</strong></a>   = = std::make_pair(GPIOC, GPIO_PIN_7)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-servo3pin"><strong>servo3Pin</strong></a>   = = std::make_pair(GPIOC, GPIO_PIN_8)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-servo4pin"><strong>servo4Pin</strong></a>   = = std::make_pair(GPIOC, GPIO_PIN_9)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-servopins"><strong>servoPins</strong></a>   = = std::make_pair(GPIOC,</td>
+</tr>
+<tr>
+<td align="right">servo1Pin.second | servo2Pin.second | servo3Pin.second | servo4Pin.second)<br></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right">TIM_TypeDef *const</td>
+<td align="left"><a href="#variable-servotimer"><strong>servoTimer</strong></a>   = = TIM8<br></td>
+</tr>
+<tr>
+<td align="right">USART_TypeDef *const</td>
+<td align="left"><a href="#variable-servouart"><strong>servoUart</strong></a>   = = UART5<br></td>
+</tr>
+<tr>
+<td align="right">const IRQn_Type</td>
+<td align="left"><a href="#variable-servouartirqn"><strong>servoUartIRQn</strong></a>   = = UART5_IRQn<br></td>
+</tr>
+<tr>
+<td align="right">const unsigned</td>
+<td align="left"><a href="#variable-servouartirqprio"><strong>servoUartIrqPrio</strong></a>   = = 9<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-servouarttxrxpin"><strong>servoUartTxRxPin</strong></a>   = = std::make_pair(GPIOC, GPIO_PIN_12)<br></td>
+</tr>
+<tr>
+<td align="right">const int</td>
+<td align="left"><a href="#variable-softresettaskprio"><strong>softResetTaskPrio</strong></a>   = = configMAX_PRIORITIES - 1<br></td>
+</tr>
+<tr>
+<td align="right">const ADC_rank_t</td>
+<td align="left"><a href="#variable-temperatureadcrank"><strong>temperatureAdcRank</strong></a>   = = LL_ADC_INJ_RANK_4<br></td>
+</tr>
+<tr>
+<td align="right">USART_TypeDef *const</td>
+<td align="left"><a href="#variable-tunneluart"><strong>tunnelUart</strong></a>   = = USART2<br></td>
+</tr>
+<tr>
+<td align="right">DMA_Channel_TypeDef *const</td>
+<td align="left"><a href="#variable-tunneluartrxdmachannel"><strong>tunnelUartRxDmaChannel</strong></a>   = = DMA1_Channel6<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-tunneluartrxpin"><strong>tunnelUartRxPin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_6)<br></td>
+</tr>
+<tr>
+<td align="right">DMA_Channel_TypeDef *const</td>
+<td align="left"><a href="#variable-tunneluarttxdmachannel"><strong>tunnelUartTxDmaChannel</strong></a>   = = DMA1_Channel7<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-tunneluarttxpin"><strong>tunnelUartTxPin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_5)<br></td>
+</tr>
+<tr>
+<td align="right">const int</td>
+<td align="left"><a href="#variable-ultrasoundtaskprio"><strong>ultrasoundTaskPrio</strong></a>   = = 2<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-usbbusdetectionpin"><strong>usbBusDetectionPin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_2)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-usbdnpin"><strong>usbDnPin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_11)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-usbdppin"><strong>usbDpPin</strong></a>   = = std::make_pair(GPIOA, GPIO_PIN_12)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-usbdppulluppin"><strong>usbDpPullUpPin</strong></a>   = = std::make_pair(USBD_DP_PORT, 1 &lt;&lt; USBD_DP_PIN)<br></td>
+</tr>
+<tr>
+<td align="right">const IRQn_Type</td>
+<td align="left"><a href="#variable-usblpirqn"><strong>usbLpIRQn</strong></a>   = = USB_LP_CAN1_RX0_IRQn<br></td>
+</tr>
+<tr>
+<td align="right">constexpr unsigned</td>
+<td align="left"><a href="#variable-usblpirqnprio"><strong>usbLpIRQnPrio</strong></a>   = = 8<br></td>
+</tr>
+<tr>
+<td align="right">USART_TypeDef *const</td>
+<td align="left"><a href="#variable-useruart"><strong>userUart</strong></a>   = = USART1<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-useruartrxpin"><strong>userUartRxPin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_7)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-useruarttxpin"><strong>userUartTxPin</strong></a>   = = std::make_pair(GPIOB, GPIO_PIN_6)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-uts1echopin"><strong>uts1EchoPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_6)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-uts1trigpin"><strong>uts1TrigPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_1)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-uts2echopin"><strong>uts2EchoPin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_7)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-uts2trigpin"><strong>uts2TrigPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_2)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-uts3echopin"><strong>uts3EchoPin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_8)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-uts3trigpin"><strong>uts3TrigPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_3)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-uts4echopin"><strong>uts4EchoPin</strong></a>   = = std::make_pair(GPIOD, GPIO_PIN_9)<br></td>
+</tr>
+<tr>
+<td align="right">const PinDef</td>
+<td align="left"><a href="#variable-uts4trigpin"><strong>uts4TrigPin</strong></a>   = = std::make_pair(GPIOE, GPIO_PIN_4)<br></td>
+</tr>
+<tr>
+<td align="right">const std::array&lt; PinDef, 4 &gt;</td>
+<td align="left"><a href="#variable-utsechopin"><strong>utsEchoPin</strong></a>   = = { uts1EchoPin, uts2EchoPin, uts3EchoPin, uts4EchoPin }<br></td>
+</tr>
+<tr>
+<td align="right">const uint32_t</td>
+<td align="left"><a href="#variable-utsirqprio"><strong>utsIRQPrio</strong></a>   = = 7<br></td>
+</tr>
+<tr>
+<td align="right">TIM_TypeDef *const</td>
+<td align="left"><a href="#variable-utstimer"><strong>utsTimer</strong></a>   = = TIM7<br></td>
+</tr>
+<tr>
+<td align="right">const std::array&lt; PinDef, 4 &gt;</td>
+<td align="left"><a href="#variable-utstrigpin"><strong>utsTrigPin</strong></a>   = = { uts1TrigPin, uts2TrigPin, uts3TrigPin, uts4TrigPin }<br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions">Public Functions</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-ll_adc_setchannelsamplingtimefix"><strong>LL_ADC_SetChannelSamplingTimeFix</strong></a> (ADC_TypeDef * ADCx, uint32_t Channel, uint32_t SamplingTime) <br></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-ll_gpio_af_remap"><strong>LL_GPIO_AF_Remap</strong></a> (uint32_t mask, uint32_t value) <br></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-clocksinit"><strong>clocksInit</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">uint32_t</td>
+<td align="left"><a href="#function-getbuttons"><strong>getButtons</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">bool</td>
+<td align="left"><a href="#function-ispressed"><strong>isPressed</strong></a> (PinDef button) <br></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-pininit"><strong>pinInit</strong></a> (GPIO_TypeDef * port, uint32_t pinMask, uint32_t mode, uint32_t pull, uint32_t speed, bool deInitFirst=false) <br></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-pininit"><strong>pinInit</strong></a> (PinDef pin, uint32_t mode, uint32_t pull, uint32_t speed, bool deInitFirst=false) <br></td>
+</tr>
+<tr>
+<td align="right">bool</td>
+<td align="left"><a href="#function-pinread"><strong>pinRead</strong></a> (PinDef pin) <br></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-pintoggle"><strong>pinToggle</strong></a> (PinDef pin) <br></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-pinwrite"><strong>pinWrite</strong></a> (PinDef pin, bool value) <br></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-pinsinit"><strong>pinsInit</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-reinitespstrappingpins"><strong>reinitEspStrappingPins</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-setleds"><strong>setLeds</strong></a> (uint32_t ledsOn) <br></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-softreset"><strong>softReset</strong></a> () <br></td>
+</tr>
+<tr>
+<td align="right">void</td>
+<td align="left"><a href="#function-softresetinit"><strong>softResetInit</strong></a> () <br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="macros">Macros</h2>
+<table>
+<thead>
+<tr>
+<th align="right">Type</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-afio_mapr_reserved"><strong>AFIO_MAPR_RESERVED</strong></a>  0xF8E00000<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-auxiliary_and_motor_adc_irq_handler"><strong>AUXILIARY_AND_MOTOR_ADC_IRQ_HANDLER</strong></a>  ADC1_2_IRQHandler<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-controluart_tx_dma_handler"><strong>CONTROLUART_TX_DMA_HANDLER</strong></a>  DMA1_Channel2_IRQHandler<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-debuguart_handler"><strong>DEBUGUART_HANDLER</strong></a>  UART4_IRQHandler<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-debuguart_tx_dma_handler"><strong>DEBUGUART_TX_DMA_HANDLER</strong></a>  DMA2_Channel4_5_IRQHandler<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-in4amask"><strong>IN4AMASK</strong></a>  GPIO_PIN_5<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-in4bmask"><strong>IN4BMASK</strong></a>  GPIO_PIN_7<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-in4port"><strong>IN4PORT</strong></a>  GPIOE<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-servouart_handler"><strong>SERVOUART_HANDLER</strong></a>  UART5_IRQHandler<br></td>
+</tr>
+<tr>
+<td align="right">define</td>
+<td align="left"><a href="./#define-usb_lp_irq_handler"><strong>USB_LP_IRQ_HANDLER</strong></a>  USB_LP_CAN1_RX0_IRQHandler<br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-types-documentation">Public Types Documentation</h2>
+<h3 id="typedef-adc_channel_t">typedef ADC_channel_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ADC_channel_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-adc_rank_t">typedef ADC_rank_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ADC_rank_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-dma_channel_t">typedef DMA_channel_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">DMA_channel_t</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="typedef-pindef">typedef PinDef</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">GPIO_TypeDef</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
+<h3 id="variable-auxiliaryadc">variable auxiliaryAdc</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ADC_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">auxiliaryAdc</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-auxiliaryandmotoradcirqn">variable auxiliaryAndMotorAdcIRQn</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">IRQn_Type</span><span class="w"> </span><span class="n">auxiliaryAndMotorAdcIRQn</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-auxiliaryandmotoradcirqprio">variable auxiliaryAndMotorAdcIrqPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">auxiliaryAndMotorAdcIrqPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-batterymiddlevoltageadcchannel">variable batteryMiddleVoltageAdcChannel</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">ADC_channel_t</span><span class="w"> </span><span class="n">batteryMiddleVoltageAdcChannel</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-batterymiddlevoltageadcrank">variable batteryMiddleVoltageAdcRank</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">ADC_rank_t</span><span class="w"> </span><span class="n">batteryMiddleVoltageAdcRank</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-batterymiddlevoltagepin">variable batteryMiddleVoltagePin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">batteryMiddleVoltagePin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-batteryvoltageadcchannel">variable batteryVoltageAdcChannel</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">ADC_channel_t</span><span class="w"> </span><span class="n">batteryVoltageAdcChannel</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-batteryvoltageadcrank">variable batteryVoltageAdcRank</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">ADC_rank_t</span><span class="w"> </span><span class="n">batteryVoltageAdcRank</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-batteryvoltagepin">variable batteryVoltagePin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">batteryVoltagePin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-button1pin">variable button1Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">button1Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-button2pin">variable button2Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">button2Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-button3pin">variable button3Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">button3Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-button4pin">variable button4Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">button4Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-buttonoffpin">variable buttonOffPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">buttonOffPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-buttononpin">variable buttonOnPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">buttonOnPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-buttonpin">variable buttonPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">PinDef</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">buttonPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-buzzerpin">variable buzzerPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">buzzerPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-controluart">variable controlUart</h3>
+<div class="highlight"><pre><span></span><code><span class="n">USART_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">controlUart</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-controluartrxdmachannel">variable controlUartRxDmaChannel</h3>
+<div class="highlight"><pre><span></span><code><span class="n">DMA_Channel_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">controlUartRxDmaChannel</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-controluartrxpin">variable controlUartRxPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">controlUartRxPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-controluarttxdmachannel">variable controlUartTxDmaChannel</h3>
+<div class="highlight"><pre><span></span><code><span class="n">DMA_Channel_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">controlUartTxDmaChannel</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-controluarttxdmairqn">variable controlUartTxDmaIRQn</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">IRQn_Type</span><span class="w"> </span><span class="n">controlUartTxDmaIRQn</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-controluarttxdmairqnprio">variable controlUartTxDmaIRQnPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">controlUartTxDmaIRQnPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-controluarttxpin">variable controlUartTxPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">controlUartTxPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-debuguart">variable debugUart</h3>
+<div class="highlight"><pre><span></span><code><span class="n">USART_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">debugUart</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-debuguartirqn">variable debugUartIRQn</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">IRQn_Type</span><span class="w"> </span><span class="n">debugUartIRQn</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-debuguartirqprio">variable debugUartIrqPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">debugUartIrqPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-debuguartrxdmachannel">variable debugUartRxDmaChannel</h3>
+<div class="highlight"><pre><span></span><code><span class="n">DMA_Channel_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">debugUartRxDmaChannel</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-debuguartrxpin">variable debugUartRxPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">debugUartRxPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-debuguarttxdmachannel">variable debugUartTxDmaChannel</h3>
+<div class="highlight"><pre><span></span><code><span class="n">DMA_Channel_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">debugUartTxDmaChannel</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-debuguarttxdmairqn">variable debugUartTxDmaIRQn</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">IRQn_Type</span><span class="w"> </span><span class="n">debugUartTxDmaIRQn</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-debuguarttxdmairqprio">variable debugUartTxDmaIrqPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">debugUartTxDmaIrqPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-debuguarttxpin">variable debugUartTxPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">debugUartTxPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-encoder1apin">variable encoder1aPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">encoder1aPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-encoder1bpin">variable encoder1bPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">encoder1bPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-encoder2apin">variable encoder2aPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">encoder2aPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-encoder2bpin">variable encoder2bPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">encoder2bPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-encoder3apin">variable encoder3aPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">encoder3aPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-encoder3bpin">variable encoder3bPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">encoder3bPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-encoder4apin">variable encoder4aPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">encoder4aPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-encoder4bpin">variable encoder4bPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">encoder4bPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-encodertimer">variable encoderTimer</h3>
+<div class="highlight"><pre><span></span><code><span class="n">TIM_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">encoderTimer</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</code></pre></div>
+<h3 id="variable-esp0pin">variable esp0Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">esp0Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-esp12pin">variable esp12Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">esp12Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-esp15pin">variable esp15Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">esp15Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-esp2pin">variable esp2Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">esp2Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-espenpin">variable espEnPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">espEnPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-i2cerirqn">variable i2cErIRQn</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">IRQn_Type</span><span class="w"> </span><span class="n">i2cErIRQn</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-i2cevirqn">variable i2cEvIRQn</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">IRQn_Type</span><span class="w"> </span><span class="n">i2cEvIRQn</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-i2cirqnprio">variable i2cIRQnPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">i2cIRQnPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-i2cprio">variable i2cPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i2cPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-i2cscl">variable i2cScl</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">i2cScl</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-i2csda">variable i2cSda</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">i2cSda</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-in4apin">variable in4aPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">in4aPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-in4bpin">variable in4bPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">in4bPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-internalreferencevoltageadcrank">variable internalReferenceVoltageAdcRank</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">ADC_rank_t</span><span class="w"> </span><span class="n">internalReferenceVoltageAdcRank</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-led1pin">variable led1Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">led1Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-led2pin">variable led2Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">led2Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-led3pin">variable led3Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">led3Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-led4pin">variable led4Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">led4Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-ledpin">variable ledPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">PinDef</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ledPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-ledpins">variable ledPins</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">ledPins</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-maintaskprio">variable mainTaskPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mainTaskPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-motortaskprio">variable motorTaskPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">motorTaskPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-powerpin">variable powerPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">powerPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-pwm1apin">variable pwm1aPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">pwm1aPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-pwm1bpin">variable pwm1bPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">pwm1bPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-pwm2apin">variable pwm2aPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">pwm2aPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-pwm2bpin">variable pwm2bPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">pwm2bPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-pwm3apin">variable pwm3aPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">pwm3aPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-pwm3bpin">variable pwm3bPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">pwm3bPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-pwm4pin">variable pwm4Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">pwm4Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-pwmtimer">variable pwmTimer</h3>
+<div class="highlight"><pre><span></span><code><span class="n">TIM_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">pwmTimer</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-servo1pin">variable servo1Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">servo1Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-servo2pin">variable servo2Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">servo2Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-servo3pin">variable servo3Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">servo3Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-servo4pin">variable servo4Pin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">servo4Pin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-servopins">variable servoPins</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">servoPins</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-servotimer">variable servoTimer</h3>
+<div class="highlight"><pre><span></span><code><span class="n">TIM_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">servoTimer</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-servouart">variable servoUart</h3>
+<div class="highlight"><pre><span></span><code><span class="n">USART_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">servoUart</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-servouartirqn">variable servoUartIRQn</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">IRQn_Type</span><span class="w"> </span><span class="n">servoUartIRQn</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-servouartirqprio">variable servoUartIrqPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">servoUartIrqPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-servouarttxrxpin">variable servoUartTxRxPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">servoUartTxRxPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-softresettaskprio">variable softResetTaskPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">softResetTaskPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-temperatureadcrank">variable temperatureAdcRank</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">ADC_rank_t</span><span class="w"> </span><span class="n">temperatureAdcRank</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-tunneluart">variable tunnelUart</h3>
+<div class="highlight"><pre><span></span><code><span class="n">USART_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tunnelUart</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-tunneluartrxdmachannel">variable tunnelUartRxDmaChannel</h3>
+<div class="highlight"><pre><span></span><code><span class="n">DMA_Channel_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tunnelUartRxDmaChannel</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-tunneluartrxpin">variable tunnelUartRxPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">tunnelUartRxPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-tunneluarttxdmachannel">variable tunnelUartTxDmaChannel</h3>
+<div class="highlight"><pre><span></span><code><span class="n">DMA_Channel_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tunnelUartTxDmaChannel</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-tunneluarttxpin">variable tunnelUartTxPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">tunnelUartTxPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-ultrasoundtaskprio">variable ultrasoundTaskPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ultrasoundTaskPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-usbbusdetectionpin">variable usbBusDetectionPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">usbBusDetectionPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-usbdnpin">variable usbDnPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">usbDnPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-usbdppin">variable usbDpPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">usbDpPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-usbdppulluppin">variable usbDpPullUpPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">usbDpPullUpPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-usblpirqn">variable usbLpIRQn</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">IRQn_Type</span><span class="w"> </span><span class="n">usbLpIRQn</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-usblpirqnprio">variable usbLpIRQnPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">usbLpIRQnPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-useruart">variable userUart</h3>
+<div class="highlight"><pre><span></span><code><span class="n">USART_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">userUart</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-useruartrxpin">variable userUartRxPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">userUartRxPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-useruarttxpin">variable userUartTxPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">userUartTxPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-uts1echopin">variable uts1EchoPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">uts1EchoPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-uts1trigpin">variable uts1TrigPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">uts1TrigPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-uts2echopin">variable uts2EchoPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">uts2EchoPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-uts2trigpin">variable uts2TrigPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">uts2TrigPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-uts3echopin">variable uts3EchoPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">uts3EchoPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-uts3trigpin">variable uts3TrigPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">uts3TrigPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-uts4echopin">variable uts4EchoPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">uts4EchoPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-uts4trigpin">variable uts4TrigPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">PinDef</span><span class="w"> </span><span class="n">uts4TrigPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-utsechopin">variable utsEchoPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">PinDef</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">utsEchoPin</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-utsirqprio">variable utsIRQPrio</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">utsIRQPrio</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-utstimer">variable utsTimer</h3>
+<div class="highlight"><pre><span></span><code><span class="n">TIM_TypeDef</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">utsTimer</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-utstrigpin">variable utsTrigPin</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">PinDef</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">utsTrigPin</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+<h3 id="function-ll_adc_setchannelsamplingtimefix">function LL_ADC_SetChannelSamplingTimeFix</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">LL_ADC_SetChannelSamplingTimeFix</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">ADC_TypeDef</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ADCx</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">Channel</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">SamplingTime</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-ll_gpio_af_remap">function LL_GPIO_AF_Remap</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">LL_GPIO_AF_Remap</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">value</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-clocksinit">function clocksInit</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">clocksInit</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-getbuttons">function getButtons</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">getButtons</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-ispressed">function isPressed</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isPressed</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">PinDef</span><span class="w"> </span><span class="n">button</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-pininit">function pinInit</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">pinInit</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">GPIO_TypeDef</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">port</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">pinMask</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">pull</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">speed</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">deInitFirst</span><span class="o">=</span><span class="nb">false</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-pininit_1">function pinInit</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">pinInit</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">PinDef</span><span class="w"> </span><span class="n">pin</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">pull</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">speed</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">deInitFirst</span><span class="o">=</span><span class="nb">false</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-pinread">function pinRead</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">pinRead</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">PinDef</span><span class="w"> </span><span class="n">pin</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-pintoggle">function pinToggle</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">pinToggle</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">PinDef</span><span class="w"> </span><span class="n">pin</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-pinwrite">function pinWrite</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">pinWrite</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">PinDef</span><span class="w"> </span><span class="n">pin</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-pinsinit">function pinsInit</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">pinsInit</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-reinitespstrappingpins">function reinitEspStrappingPins</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">reinitEspStrappingPins</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-setleds">function setLeds</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">setLeds</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ledsOn</span>
+<span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-softreset">function softReset</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">softReset</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="function-softresetinit">function softResetInit</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">softResetInit</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+</code></pre></div>
+<h2 id="macro-definition-documentation">Macro Definition Documentation</h2>
+<h3 id="define-afio_mapr_reserved">define AFIO_MAPR_RESERVED</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define AFIO_MAPR_RESERVED 0xF8E00000</span>
+</code></pre></div>
+<h3 id="define-auxiliary_and_motor_adc_irq_handler">define AUXILIARY_AND_MOTOR_ADC_IRQ_HANDLER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define AUXILIARY_AND_MOTOR_ADC_IRQ_HANDLER ADC1_2_IRQHandler</span>
+</code></pre></div>
+<h3 id="define-controluart_tx_dma_handler">define CONTROLUART_TX_DMA_HANDLER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define CONTROLUART_TX_DMA_HANDLER DMA1_Channel2_IRQHandler</span>
+</code></pre></div>
+<h3 id="define-debuguart_handler">define DEBUGUART_HANDLER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define DEBUGUART_HANDLER UART4_IRQHandler</span>
+</code></pre></div>
+<h3 id="define-debuguart_tx_dma_handler">define DEBUGUART_TX_DMA_HANDLER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define DEBUGUART_TX_DMA_HANDLER DMA2_Channel4_5_IRQHandler</span>
+</code></pre></div>
+<h3 id="define-in4amask">define IN4AMASK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define IN4AMASK GPIO_PIN_5</span>
+</code></pre></div>
+<h3 id="define-in4bmask">define IN4BMASK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define IN4BMASK GPIO_PIN_7</span>
+</code></pre></div>
+<h3 id="define-in4port">define IN4PORT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define IN4PORT GPIOE</span>
+</code></pre></div>
+<h3 id="define-servouart_handler">define SERVOUART_HANDLER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SERVOUART_HANDLER UART5_IRQHandler</span>
+</code></pre></div>
+<h3 id="define-usb_lp_irq_handler">define USB_LP_IRQ_HANDLER</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define USB_LP_IRQ_HANDLER USB_LP_CAN1_RX0_IRQHandler</span>
+</code></pre></div>
+<hr />
+<p>The documentation for this class was generated from the following file <code>fw/rbcx-coprocessor/include/Bsp.hpp</code></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2023 RoboticsBrno
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/RoboticsBrno" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/RobotikaBrno" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/robotarna" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@robotikabrno-robotarnaasps2392" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/_robotarna_" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+        <script src="../../assets/js/open_in_new_tab.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
