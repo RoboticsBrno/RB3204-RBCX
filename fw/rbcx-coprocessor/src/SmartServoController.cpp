@@ -8,16 +8,20 @@
 
 enum SmartServoState { IDLE, TX, RX };
 
-static SmartServoState gState = IDLE;
-static std::array<uint8_t, 16> gBuff;
+// assert that response fits into gBuff
+static_assert(sizeof(CoprocStat_SmartServoStat_data_t::bytes)
+    <= sizeof(CoprocReq_SmartServoReq_data_t::bytes));
+
+static std::array<uint8_t, sizeof(CoprocReq_SmartServoReq_data_t::bytes)> gBuff;
+
 static size_t gBuffSize = 0;
 static size_t gBuffIndex = 0;
+
+static SmartServoState gState = IDLE;
 static bool gExpectResponse = false;
-
-static CoprocStat_SmartServoStat gResponse;
 static bool gResponseReady = false;
-static TickTimer gResponseTimeout;
 
+static TickTimer gResponseTimeout;
 static TickTimer gStateTimeout;
 
 void smartServoInit() {
@@ -38,9 +42,6 @@ void smartServoInit() {
 
     HAL_NVIC_SetPriority(servoUartIRQn, servoUartIrqPrio, 0);
     HAL_NVIC_EnableIRQ(servoUartIRQn);
-
-    LL_USART_DisableIT_ERROR(servoUart);
-    LL_USART_DisableIT_IDLE(servoUart);
 
     pinInit(
         servoUartTxRxPin, GPIO_MODE_AF_OD, GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
@@ -64,12 +65,17 @@ static void smartServoStopRx() {
 
 void smartServoPoll() {
     if (gResponseReady) {
-        const CoprocStat stat = {
+        CoprocStat stat = {
             .which_payload = CoprocStat_smartServoStat_tag,
             .payload = {
-                .smartServoStat = gResponse,
+                .smartServoStat = {
+                    .data = {
+                        .size = gBuffSize,
+                    },
+                },
             },
         };
+        memcpy(stat.payload.smartServoStat.data.bytes, gBuff.data(), gBuffSize);
         gResponseReady = false;
         controlLinkTx(stat);
     }
@@ -92,16 +98,16 @@ extern "C" void SERVOUART_HANDLER(void) {
         } else {
             LL_USART_DisableIT_TXE(servoUart);
 
+            gBuffSize = 0;
+
             if (!gExpectResponse) {
                 smartServoSetResponseReady();
                 gState = IDLE;
             } else {
                 gState = RX;
-                gBuffIndex = 0;
-
                 LL_USART_EnableIT_TC(servoUart);
 
-                gResponseTimeout.restart(30);
+                gResponseTimeout.restart(5);
             }
         }
     }
@@ -111,40 +117,32 @@ extern "C" void SERVOUART_HANDLER(void) {
         if (LL_USART_IsActiveFlag_TC(servoUart)) {
             LL_USART_DisableIT_TC(servoUart);
             LL_USART_ClearFlag_TC(servoUart);
+            LL_USART_ClearFlag_IDLE(servoUart);
 
             LL_USART_SetTransferDirection(servoUart, LL_USART_DIRECTION_RX);
 
+            LL_USART_ReceiveData8(servoUart);
             LL_USART_EnableIT_RXNE(servoUart);
+
+            gResponseTimeout.restart(2);
         }
 
         // RX not empty
         if (LL_USART_IsActiveFlag_RXNE(servoUart)) {
             const uint8_t ch = LL_USART_ReceiveData8(servoUart);
-            switch (gBuffIndex) {
-            case 0:
-            case 1:
-                if (ch == 0x55) {
-                    ++gBuffIndex;
-                } else {
-                    gBuffIndex = 0;
-                }
-                break;
-            case 2:
-                gResponse.id = ch;
-                ++gBuffIndex;
-                break;
-            case 3:
-                gResponse.data.size = ch - 1;
-                ++gBuffIndex;
-                break;
-            default:
-                gResponse.data.bytes[gBuffIndex - 4] = ch;
-                ++gBuffIndex;
-                if (gBuffIndex - 4 >= gResponse.data.size) {
-                    smartServoStopRx();
-                }
-                break;
+
+            if (gBuffSize < gBuff.size()) {
+                gBuff[gBuffSize++] = ch;
+            } else {
+                DEBUGLN("SmartServo RX buffer overrun!");
             }
+            gResponseTimeout.restart(2);
+        }
+
+        // RX overrun, is enabled by the same bit as RXNE so we have to clear it
+        if (LL_USART_IsActiveFlag_ORE(servoUart)) {
+            LL_USART_ClearFlag_ORE(servoUart);
+            DEBUGLN("SmartServo ORE bit set!");
         }
     }
 }
@@ -155,29 +153,19 @@ void smartServoSendRequest(const CoprocReq_SmartServoReq& req) {
         return;
     }
 
-    gStateTimeout.restart(60);
-
-    gState = TX;
-
-    gBuff[0] = 0x55;
-    gBuff[1] = 0x55;
-    gBuff[2] = req.id;
-    gBuff[3] = 2 + req.data.size;
-
-    uint8_t chksum = gBuff[2] + gBuff[3];
-
-    for (size_t i = 0; i < req.data.size; ++i) {
-        gBuff[4 + i] = req.data.bytes[i];
-        chksum += req.data.bytes[i];
+    if (req.data.size == 0) {
+        gBuffSize = 0;
+        smartServoSetResponseReady();
+        return;
     }
 
-    gBuff[4 + req.data.size] = ~chksum;
-    gBuffSize = 4 + req.data.size + 1;
+    gStateTimeout.restart(10);
+    gState = TX;
+
+    memcpy(gBuff.data(), req.data.bytes, req.data.size);
+    gBuffSize = req.data.size;
     gBuffIndex = 1;
     gExpectResponse = req.expect_response;
-
-    gResponse.id = req.id;
-    gResponse.data.size = 0;
 
     LL_USART_SetTransferDirection(servoUart, LL_USART_DIRECTION_TX);
 
