@@ -25,6 +25,21 @@ public:
 
     TaskHandle_t handle() const { return m_handle; }
 
+    void onTaskEnd() {
+#ifndef NDEBUG
+        if(m_handle != xTaskGetCurrentTaskHandle()) {
+            DEBUG("on_task_end was called from different task!\n");
+            abort();
+        }
+#endif
+
+        if (!m_handle)
+            return;
+
+        vTaskDelete(nullptr);
+        m_handle = nullptr;
+    }
+
 private:
     TaskWrapper(const TaskWrapper&) = delete;
 

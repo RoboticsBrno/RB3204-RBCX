@@ -142,6 +142,8 @@ inline const PinDef debugUartTxPin = std::make_pair(GPIOC, GPIO_PIN_10);
 inline const PinDef debugUartRxPin = std::make_pair(GPIOC, GPIO_PIN_11);
 inline const PinDef servoUartTxRxPin = std::make_pair(GPIOC, GPIO_PIN_12);
 
+inline const PinDef mpuIntPin = std::make_pair(GPIOD, GPIO_PIN_15);
+
 inline const PinDef i2cSda = std::make_pair(GPIOB, GPIO_PIN_9);
 inline const PinDef i2cScl = std::make_pair(GPIOB, GPIO_PIN_8);
 
@@ -383,6 +385,10 @@ inline void pinsInit() {
 
     HAL_NVIC_SetPriority(EXTI9_5_IRQn, utsIRQPrio, 0); // Ultrasound
     HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+    // MPU interrupt
+    pinInit(mpuIntPin, GPIO_MODE_IT_RISING, GPIO_NOPULL, GPIO_SPEED_FREQ_LOW);
+    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 7, 0);
 
     HAL_NVIC_SetPriority(i2cEvIRQn, i2cIRQnPrio, 0);
     HAL_NVIC_SetPriority(i2cErIRQn, i2cIRQnPrio, 0);

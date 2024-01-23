@@ -46,15 +46,14 @@ THE SOFTWARE.
 
 enum I2cEvents : uint32_t {
     I2C_NONE = 0,
-    I2C_MPU_TICK = 1,
-    I2C_MESSAGE = 2,
+    I2C_MPU_TICK = 1 << 0,
+    I2C_MESSAGE = 1 << 1,
 };
-
-extern TaskHandle_t i2cTaskHandle;
-extern EventGroupHandle_t i2cEventGroup;
 
 void i2cDispatch(const CoprocReq_I2cReq& req);
 void i2cReset();
+void i2cSetEventFlag(I2cEvents flag);
+void i2cSetEventFlagFromIsr(I2cEvents flag);
 
 #define I2CDEV_DEFAULT_READ_TIMEOUT 10
 
@@ -103,6 +102,6 @@ uint16_t I2Cdev_writeBitsW(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart,
 uint16_t I2Cdev_writeByte(uint8_t devAddr, uint8_t regAddr, uint8_t data);
 uint16_t I2Cdev_writeWord(uint8_t devAddr, uint8_t regAddr, uint16_t data);
 uint16_t I2Cdev_writeBytes(
-    uint8_t devAddr, uint8_t regAddr, uint8_t length, uint8_t* data);
+    uint8_t devAddr, uint8_t regAddr, uint8_t length, const uint8_t* data);
 uint16_t I2Cdev_writeWords(
-    uint8_t devAddr, uint8_t regAddr, uint8_t length, uint16_t* data);
+    uint8_t devAddr, uint8_t regAddr, uint8_t length, const uint16_t* data);
