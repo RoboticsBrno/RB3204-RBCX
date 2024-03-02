@@ -35,30 +35,37 @@ THE SOFTWARE.
 #include "OledController.hpp"
 #include "utils/Debug.hpp"
 
+#include "timers.h"
 #include "utils/MutexWrapper.hpp"
 #include "utils/QueueWrapper.hpp"
+#include "utils/SemaphoreWrapper.hpp"
 #include "utils/TaskWrapper.hpp"
-#include "timers.h"
 
 // #include "event_groups.h"
 #include <mutex>
 
 static TaskWrapper<1024> i2cTask;
-TaskHandle_t i2cTaskHandle;
 
 static QueueWrapper<CoprocReq_I2cReq, 16> i2cQueue;
-static xTaskHandle i2cCallingTask;
 static MutexWrapper i2cMutex;
-
-EventGroupHandle_t i2cEventGroup;
-static StaticEventGroup_t i2cEventBuffer;
+static BinarySemaphoreWrapper i2cTxSemaphore;
 
 // Hold pointer to inited HAL I2C device
 I2C_HandleTypeDef I2Cdev_hi2c;
 
+void i2cSetEventFlag(I2cEvents flag) {
+    xTaskNotify(i2cTask.handle(), flag, eSetBits);
+}
+
+void i2cSetEventFlagFromIsr(I2cEvents flag) {
+    BaseType_t woken = 0;
+    xTaskNotifyFromISR(i2cTask.handle(), flag, eSetBits, &woken);
+    portYIELD_FROM_ISR(woken);
+}
+
 void i2cDispatch(const CoprocReq_I2cReq& req) {
     if (i2cQueue.push_back(req, 0)) {
-        xEventGroupSetBits(i2cEventGroup, I2C_MESSAGE);
+        i2cSetEventFlag(I2C_MESSAGE);
     } else {
         DEBUG("I2c queue overflow\n");
     }
@@ -84,80 +91,74 @@ uint8_t I2Cdev_init() {
     if (init == HAL_OK) {
         i2cQueue.create();
         i2cMutex.create();
-        i2cEventGroup = xEventGroupCreateStatic(&i2cEventBuffer);
+        i2cTxSemaphore.create();
 
         i2cTask.start("i2c", i2cPrio, []() {
-            while (true) {
-                CoprocReq_I2cReq req;
+            CoprocReq_I2cReq req;
+            EventBits_t eventsBit = I2C_NONE;
 
-                EventBits_t eventsBit = I2C_NONE;
-                eventsBit = xEventGroupWaitBits(
-                    i2cEventGroup, 0xFF, pdTRUE, 0, portMAX_DELAY);
+            while (true) {
+                if (xTaskNotifyWait(0, 0xFFFFFFFF, &eventsBit, portMAX_DELAY)
+                    == pdFAIL) {
+                    continue;
+                }
 
                 if (eventsBit & I2C_MPU_TICK) {
                     mpuTick();
-                    // DEBUG("SEND MPU\n");
                 }
 
-                while (i2cQueue.pop_front(req, 0)) {
-                    switch (req.which_payload) {
-                    case CoprocReq_I2cReq_oledReq_tag:
-                        oledDispatch(req.payload.oledReq);
-                        break;
-                    case CoprocReq_I2cReq_mpuReq_tag:
-                        mpuDispatch(req.payload.mpuReq);
-                        // DEBUGLN("MPU Req %d", req.payload.mpuReq.which_mpuCmd);
-                        break;
+                if (eventsBit & I2C_MESSAGE) {
+                    while (i2cQueue.pop_front(req, 0)) {
+                        switch (req.which_payload) {
+                        case CoprocReq_I2cReq_oledReq_tag:
+                            oledDispatch(req.payload.oledReq);
+                            break;
+                        case CoprocReq_I2cReq_mpuReq_tag:
+                            mpuDispatch(req.payload.mpuReq);
+                            // DEBUGLN("MPU Req %d", req.payload.mpuReq.which_mpuCmd);
+                            break;
+                        }
                     }
                 }
                 // vTaskDelay(pdMS_TO_TICKS(10));
             }
         });
-        i2cTaskHandle = i2cTask.handle();
     } else {
         DEBUG("Error I2c Init\n");
     }
-}
-
-void i2cNotify() {
-    BaseType_t woken = 0;
-    xTaskNotifyFromISR(i2cCallingTask, 0, eNoAction, &woken);
-    portYIELD_FROM_ISR(woken);
 }
 
 extern "C" void I2C1_EV_IRQHandler() { HAL_I2C_EV_IRQHandler(&I2Cdev_hi2c); }
 extern "C" void I2C1_ER_IRQHandler() { HAL_I2C_ER_IRQHandler(&I2Cdev_hi2c); }
 
 extern "C" __weak void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef* hi2c) {
-    i2cNotify();
+    i2cTxSemaphore.giveFromIsr();
 }
 
 extern "C" __weak void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef* hi2c) {
-    i2cNotify();
+    i2cTxSemaphore.giveFromIsr();
 }
 
 extern "C" __weak void HAL_I2C_MemTxCpltCallback(I2C_HandleTypeDef* hi2c) {
-    i2cNotify();
+    i2cTxSemaphore.giveFromIsr();
 }
 
 extern "C" __weak void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef* hi2c) {
-    i2cNotify();
+    i2cTxSemaphore.giveFromIsr();
 }
 
 extern "C" __weak void HAL_I2C_ErrorCallback(I2C_HandleTypeDef* hi2c) {
-    i2cNotify();
+    i2cTxSemaphore.giveFromIsr();
 }
 
-uint8_t i2cWait(HAL_StatusTypeDef beginStatus, uint32_t tout) {}
-
 template <typename F> uint8_t i2cWrap(F fun, uint32_t Timeout) {
-    uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
     std::scoped_lock lock(i2cMutex);
-    i2cCallingTask = xTaskGetCurrentTaskHandle();
-    auto beginStatus = fun();
 
+    uint16_t tout = Timeout > 0 ? Timeout : I2CDEV_DEFAULT_READ_TIMEOUT;
+
+    auto beginStatus = fun();
     if (beginStatus == HAL_OK) {
-        auto ok = xTaskNotifyWait(0, ~0, nullptr, pdMS_TO_TICKS(tout));
+        auto ok = i2cTxSemaphore.take(pdMS_TO_TICKS(tout));
 
         if (!ok) {
             DEBUG("I2C timeout\n");
@@ -170,9 +171,7 @@ template <typename F> uint8_t i2cWrap(F fun, uint32_t Timeout) {
     }
 }
 
-void i2cReset() { 
-    i2cQueue.reset();        
-}
+void i2cReset() { i2cQueue.reset(); }
 
 /* Rewrited original functions */
 uint8_t I2Cdev_Master_Transmit(
@@ -183,7 +182,9 @@ uint8_t I2Cdev_Master_Transmit(
                 &I2Cdev_hi2c, DevAddress << 1, pData, Size);
 
             if (beginStatus != HAL_OK) {
-                DEBUG("I2C ERR - Tx %d bytes, ret: %d\n", Size, beginStatus);
+                DEBUG("I2C ERR - Tx %d bytes, ret: %d %d %d\n", Size,
+                    beginStatus, HAL_I2C_GetError(&I2Cdev_hi2c),
+                    HAL_I2C_GetState(&I2Cdev_hi2c));
             }
             return beginStatus;
         },
@@ -198,7 +199,9 @@ uint8_t I2Cdev_Master_Receive(
                 &I2Cdev_hi2c, DevAddress << 1, pData, Size);
 
             if (beginStatus != HAL_OK) {
-                DEBUG("I2C ERR - Rx %d bytes, ret: %d\n", Size, beginStatus);
+                DEBUG("I2C ERR - Rx %d bytes, ret: %d %d %d\n", Size,
+                    beginStatus, HAL_I2C_GetError(&I2Cdev_hi2c),
+                    HAL_I2C_GetState(&I2Cdev_hi2c));
             }
             return beginStatus;
         },
@@ -213,7 +216,8 @@ uint8_t I2Cdev_Mem_Write(uint16_t DevAddress, uint16_t MemAddress,
                 DevAddress << 1, MemAddress, MemAddSize, pData, Size);
 
             if (beginStatus != HAL_OK) {
-                DEBUG("I2C ERR - Mem write %d bytes, ret: %d\n", Size, beginStatus);
+                DEBUG("I2C ERR - Mem write %d bytes, ret: %d\n", Size,
+                    beginStatus);
             }
             return beginStatus;
         },
@@ -228,7 +232,8 @@ uint8_t I2Cdev_Mem_Read(uint16_t DevAddress, uint16_t MemAddress,
                 DevAddress << 1, MemAddress, MemAddSize, pData, Size);
 
             if (beginStatus != HAL_OK) {
-                DEBUG("I2C ERR - Mem read %d bytes, ret: %d\n", Size, beginStatus);
+                DEBUG("I2C ERR - Mem read %d bytes, ret: %d\n", Size,
+                    beginStatus);
             }
             return beginStatus;
         },
@@ -544,7 +549,7 @@ uint16_t I2Cdev_writeWord(uint8_t devAddr, uint8_t regAddr, uint16_t data) {
  * @return Status of operation (true = success)
  */
 uint16_t I2Cdev_writeBytes(
-    uint8_t devAddr, uint8_t regAddr, uint8_t length, uint8_t* pData) {
+    uint8_t devAddr, uint8_t regAddr, uint8_t length, const uint8_t* pData) {
     // Creating array to store regAddr + data in one buffer
     uint8_t buffer[length + 1];
     buffer[0] = regAddr;
@@ -564,7 +569,7 @@ uint16_t I2Cdev_writeBytes(
  * @return Status of operation (true = success)
  */
 uint16_t I2Cdev_writeWords(
-    uint8_t devAddr, uint8_t regAddr, uint8_t length, uint16_t* data) {
+    uint8_t devAddr, uint8_t regAddr, uint8_t length, const uint16_t* data) {
     // Creating array to store regAddr + data in one buffer
     uint8_t buffer[length + 1];
     buffer[0] = regAddr;

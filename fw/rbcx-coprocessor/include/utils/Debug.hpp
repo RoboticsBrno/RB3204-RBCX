@@ -58,7 +58,7 @@ inline void printTaskInfo() {
 
         unsigned bytesFree = status.usStackHighWaterMark * sizeof(StackType_t);
 
-        printf("#%d %s: %u bytes untouched (of %u)\n", status.xTaskNumber,
+        printf("#%lu %s: %u bytes untouched (of %u)\n", status.xTaskNumber,
             status.pcTaskName, bytesFree, bytesTotal);
     }
 }

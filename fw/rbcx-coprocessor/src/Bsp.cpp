@@ -10,6 +10,7 @@
 #include "UltrasoundController.hpp"
 #include "utils/Debug.hpp"
 #include "utils/TaskWrapper.hpp"
+#include "MpuController.hpp"
 
 static TaskWrapper<1024> softResetTask;
 
@@ -27,6 +28,13 @@ extern "C" void EXTI9_5_IRQHandler(void) {
     ultrasoundOnEchoEdge();
     __HAL_GPIO_EXTI_CLEAR_IT(uts1EchoPin.second | uts2EchoPin.second
         | uts3EchoPin.second | uts4EchoPin.second);
+}
+
+extern "C" void EXTI15_10_IRQHandler(void) {
+    // This EXTI vector only serves MPU interrupt pin
+
+    mpuOnIntTriggered();
+    __HAL_GPIO_EXTI_CLEAR_IT(mpuIntPin.second);
 }
 
 void softResetInit() {
